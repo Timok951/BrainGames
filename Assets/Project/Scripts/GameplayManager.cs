@@ -20,7 +20,9 @@ namespace Connect.Core {
         [SerializeField] private TMP_Text _titleText;
         [SerializeField] GameObject _winText;
         [SerializeField] private SpriteRenderer _clickHighlight;
-
+        [SerializeField] private float _cellSize = 1f;
+        [SerializeField] private float _cellSpacing = 0.1f;
+        [SerializeField] private float _boardPadding = 0.08f; 
         private void Awake()
         {
             Instance = this;
@@ -40,26 +42,36 @@ namespace Connect.Core {
         [SerializeField] private SpriteRenderer _boardPrefab, _bgcellPrefab;
         private void SpawndBoard()
         {
-            int currentLevelSize = GameManager.Instance.CurrentLevel + 4;
+            int currentLevelSize = Mathf.Min(GameManager.Instance.CurrentLevel + 1, 14);
+            float totalCellSize = _cellSize + _cellSpacing;
 
-            var board = Instantiate(_boardPrefab, 
-                new Vector3(currentLevelSize / 2f, currentLevelSize / 2f, 0f),
-                Quaternion.identity);
-            board.size = new Vector2(currentLevelSize + 0.08f, currentLevelSize + 0.08f);
 
-            for (int i = 0; i < currentLevelSize; i++) { 
-                for(int j = 0; i < currentLevelSize; i++)
+            float boardSize = currentLevelSize * totalCellSize; 
+
+            float boardOffsetX = -((currentLevelSize - 1) * totalCellSize) / 2f;
+            float boardOffsetY = -((currentLevelSize - 1) * totalCellSize) / 2f;
+            var board = Instantiate(_boardPrefab, Vector3.zero,Quaternion.identity);
+            board.transform.localScale = new Vector2(currentLevelSize, currentLevelSize);
+            Debug.Log(totalCellSize + " " + boardSize);
+
+            for (int i = 0; i < currentLevelSize; i++)
+            {
+                for (int j = 0; j < currentLevelSize; j++)
                 {
-                    Instantiate(_bgcellPrefab, new Vector3(i + 0.5f, j + 0.5f, 0f), Quaternion.identity);
+                    Instantiate(_bgcellPrefab,
+                        new Vector3(i * totalCellSize + boardOffsetX, j * totalCellSize + boardOffsetY, 0f),
+                        Quaternion.identity);
                 }
             }
-            Camera.main.orthographicSize = currentLevelSize + 2f;
-            Camera.main.transform.position = new Vector3(currentLevelSize/2, currentLevelSize/2, -10f);
 
-            _clickHighlight.size = new Vector2(currentLevelSize / 4, currentLevelSize / 4);
+
+           Camera.main.orthographicSize = currentLevelSize + 2f;
+
+            
+            _clickHighlight.size = new Vector2(boardSize / 4, boardSize / 4);
             _clickHighlight.transform.position = Vector3.zero;
             _clickHighlight.gameObject.SetActive(false);
-         }
+        }
     
 
 
