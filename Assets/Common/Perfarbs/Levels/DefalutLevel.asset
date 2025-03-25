@@ -12,20 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c98d5c940b70d4c940736255615040, type: 3}
   m_Name: DefalutLevel
   m_EditorClassIdentifier: 
-  LevelName: 1
+  LevelName: DefaultLevel
   Edges:
   - Points:
-    - {x: 1, y: 0}
-    - {x: 1, y: 4}
-  - Points:
+    - {x: 0, y: 0}
     - {x: 1, y: 1}
-    - {x: 2, y: 4}
   - Points:
-    - {x: 2, y: 0}
-    - {x: 2, y: 3}
-  - Points:
-    - {x: 3, y: 0}
-    - {x: 4, y: 3}
-  - Points:
-    - {x: 3, y: 1}
-    - {x: 4, y: 4}
+    - {x: 1, y: 2}
+    - {x: 2, y: 2}
