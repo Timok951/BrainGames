@@ -956,8 +956,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4282795590
+  m_fontColor: {r: 0.27450982, g: 0.27450982, b: 0.27450982, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1286,7 +1286,6 @@ MonoBehaviour:
   _clickHighlight: {fileID: 713086154}
   _cellSize: 1
   _cellSpacing: 0.1
-  _boardPadding: 0.1
   _boardPrefab: {fileID: 1643209071020185112, guid: 07f09f99216b37d49b184ab797b286d1, type: 3}
   _bgcellPrefab: {fileID: 7107929718303569497, guid: e6982e3f96db6b44bab18a3c39ee27bb, type: 3}
   _nodePrefab: {fileID: 1157277944143024732, guid: f72367209d4d692459bc72550575f9b2, type: 3}

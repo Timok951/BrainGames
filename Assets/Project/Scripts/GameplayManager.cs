@@ -206,10 +206,12 @@ namespace Connect.Core {
 
                 if (hit && hit.collider.gameObject.TryGetComponent(out Node tmpNode) && startNode != tmpNode)
                 {
+                    Debug.Log($"Trying to connect {startNode.name} to {tmpNode.name}");
                     if (startNode.colorId != tmpNode.colorId && tmpNode.IsEndNode)
                     {
                         return;
                     }
+                    Debug.Log($"Connected {startNode.name} to {tmpNode.name}. {startNode.name} now has {startNode.ConnectedNodes.Count} connections.");
                     startNode.UpdateInput(tmpNode);
                     CheckWin();
                     startNode = null;
@@ -233,28 +235,69 @@ namespace Connect.Core {
         //Win condition
         private void CheckWin()
         {
-            bool IsWinning = true;
-
-            foreach (var item in _nodes)
+            if (CurrentLevelData == null || CurrentLevelData.Edges == null || CurrentLevelData.Edges.Count == 0)
             {
-                item.SolveHighlight();
+                Debug.LogError("CurrentLevelData or Edges is invalid!");
+                return;
             }
-            //if evry node in win position
-            foreach (var item in _nodes)
-            { //IsWinning = IsWinning && item.Iswin;
-                IsWinning &= item.Iswin;
-                if (!IsWinning)
+
+            bool IsWinning = true;
+            //Specifies pairs of nodes that must be connected to win
+            foreach (var edge in CurrentLevelData.Edges)
+            {
+                Vector2Int startPos = edge.StartPoint;
+                Vector2Int endPos = edge.EndPoint;
+                //if Dictionary has these nodes
+                if (!_nodeGrid.ContainsKey(startPos) || !_nodeGrid.ContainsKey(endPos))
                 {
+                    Debug.LogError($"Edge nodes not found: Start {startPos}, End {endPos}");
                     return;
                 }
+                //Getting end node and start node
+                Node startNode = _nodeGrid[startPos];
+                Node endNode = _nodeGrid[endPos];
 
+                //Checking conditions for startnode
+                bool startConnected = startNode.IsEndNode && startNode.ConnectedNodes.Count == 1;
+                //Checking conditions for endNode
+                bool endConnected = endNode.IsEndNode && endNode.ConnectedNodes.Count == 1;
+                //Checking connections between two nodes
+                bool areConnected = AreNodesConnected(startNode, endNode);
+
+                Debug.Log($"Edge {startPos} -> {endPos}: StartConnected = {startConnected}, EndConnected = {endConnected}, AreConnected = {areConnected}");
+                //Updating winnig flag
+                IsWinning &= startConnected && endConnected && areConnected;
+                if (!IsWinning)
+                {
+                    Debug.Log($"Win condition failed for edge {startPos} -> {endPos}");
+                    return;
+                }
             }
-            //Unlock new level and hilight the text 
-            GameManager.Instance.UnlockLevel();
-            _winText.gameObject.SetActive(true);
-            _clickHighlight.gameObject.SetActive(false);
 
+            Debug.Log("All edges connected successfully! Level won!");
+            GameManager.Instance.UnlockLevel();
+            _winText.SetActive(true);
+            _clickHighlight.gameObject.SetActive(false);
             hasGameFinished = true;
+        }
+        //Recursively checks if a path exists between two nodes via their ConnectedNodes
+        private bool AreNodesConnected(Node start, Node end, HashSet<Node> visited = null)
+        {
+            //It keeps track of already visited nodes to avoid infinite loops in case of looped connections.
+            if (visited == null) visited = new HashSet<Node>();
+            if (start == end) return true;
+            if (visited.Contains(start)) return false;
+
+            visited.Add(start);
+            //checking neighbour nodes
+            foreach (var node in start.ConnectedNodes)
+            {
+                if (AreNodesConnected(node, end, visited))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
         #endregion
 

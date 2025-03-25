@@ -46,13 +46,14 @@ namespace Connect.Core{
 
         private void Clicked()
         {
-            GameManager.Instance.CurrentLevel = currentLevel;
-            GameManager.Instance.GoToGameplay();
 
             if (!isLevelUnlocked)
             {
                 return;
             }
+            GameManager.Instance.CurrentLevel = currentLevel;
+            GameManager.Instance.GoToGameplay();
+
             GameManager.Instance.CurrentLevel = currentLevel;
             GameManager.Instance.GoToGameplay();
 

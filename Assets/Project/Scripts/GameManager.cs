@@ -28,6 +28,7 @@ namespace Connect.Core
 
         private void Init()
         {
+            ResetLevels();
 
             CurrentLevel = 1; 
 
@@ -93,6 +94,13 @@ namespace Connect.Core
             return DefaultLevel;
         }
         #endregion
+
+
+        void ResetLevels()
+        {
+            PlayerPrefs.DeleteAll();
+            Debug.Log("All levels reset");
+        }
 
         #region SCENE_LOAD
         private const string MainMenu = "MainMenu";
