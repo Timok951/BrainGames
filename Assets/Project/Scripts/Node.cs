@@ -119,8 +119,6 @@ namespace Connect.Core
         public void UpdateInput(Node connectedNode)
         {
 
-  
-
             //Invalid Input
             if (!ConnectEdges.ContainsKey(connectedNode))
             {
@@ -161,67 +159,32 @@ namespace Connect.Core
                 Node tempNode = ConnectedNodes[0];
                 if (!tempNode.IsConnectedToEndNode())
                 {
-                    RemoveConnection(this, tempNode); 
+                    RemoveConnection(this, tempNode);
                 }
                 else
                 {
                     tempNode = ConnectedNodes[1];
-                    RemoveConnection(this, tempNode); 
+                    RemoveConnection(this, tempNode);
                 }
             }
-            
-            //If connectedNode has one cannoction and othe color
-            if(connectedNode.ConnectedNodes.Count == 1 && connectedNode.colorId != colorId)
+
+            //If connectedNode has one connection and othe color
+            if (connectedNode.ConnectedNodes.Count > 0 && connectedNode.colorId != colorId && !connectedNode.IsEndNode)
             {
-                Node tempNode = ConnectedNodes[0];
-                if (!tempNode.IsConnectedToEndNode())
-                {
-                    RemoveConnection(this, tempNode);
-                }
-                else
-                {
-                    tempNode = ConnectedNodes[1];
-                    RemoveConnection(this, tempNode);
-                }
+                RemoveChainToStart(connectedNode);
             }
-
-
 
 
             AddEdge(connectedNode);
             Debug.Log($"Connected {name} -> {connectedNode.name}");
 
             //Checking for 3 preventing boxes
-            List<Node> checkingNodes = new List<Node> { this };
-            List<Node> resultNodes = new List<Node> { this };
 
-            while (checkingNodes.Count > 0)
+            if (WouldCreateCycle(connectedNode))
             {
-                foreach (var item in checkingNodes[0].ConnectedNodes)
-                {
-                    if (!resultNodes.Contains(item))
-                    {
-                        resultNodes.Add(item);
-                        checkingNodes.Add(item);
-                    }
-                }
-                checkingNodes.Remove(checkingNodes[0]);
-            }
-
-            foreach (var item in resultNodes)
-            {
-                if (!item.IsEndNode && item.IsDegreeThree(resultNodes))
-                {
-                    Debug.Log($"Node {item.name} has degree 3 or more, breaking connections");
-                    Node tempNode = item.ConnectedNodes[0];
-                    item.RemoveConnection(item, tempNode);
-
-                    if (item.ConnectedNodes.Count == 0) return;
-
-                    tempNode = item.ConnectedNodes[0];
-                    item.RemoveConnection(item, tempNode);
-                    return;
-                }
+                Debug.Log($"Connection from {name} to {connectedNode.name} would create a cycle, removing it");
+                RemoveConnection(this, connectedNode);
+                return;
             }
 
 
@@ -233,53 +196,38 @@ namespace Connect.Core
             Vector2Int.up, Vector2Int.left, Vector2Int.down, Vector2Int.right
         };
         //Checking for boxes
-        public bool IsDegreeThree(List<Node> resultNodes)
+        private bool WouldCreateCycle(Node connectedNode)
         {
-            bool isDegreeThree = false;
-            int numOfNeighbours = 0;
+            HashSet<Node> visited = new HashSet<Node>();
+            visited.Add(this);
+            return CheckCycle(connectedNode, visited);
+        }
 
-            for (int i = 0; i < directionCheck.Count; i++)
+        private bool CheckCycle(Node node, HashSet<Node> visited)
+        {
+            if (visited.Contains(node))
             {
-                for (int j = 0; j < 3; j++)
-                {
-                    Vector2Int checkingPos = Pos2D + directionCheck[(i + j) % directionCheck.Count];
-                    if (GameplayManager.Instance._nodeGrid.TryGetValue(checkingPos, out Node result))
-                    {
-                        if (resultNodes.Contains(result))
-                        {
-                            numOfNeighbours++;
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-                }
-
-                if (numOfNeighbours == 3)
-                {
-                    break;
-                }
-                numOfNeighbours = 0;
+                return true; // Найден цикл
             }
-
-            if (numOfNeighbours >= 3)
+            visited.Add(node);
+            foreach (var neighbor in node.ConnectedNodes)
             {
-                isDegreeThree = true;
+                if (neighbor != this && CheckCycle(neighbor, visited))
+                {
+                    return true;
+                }
             }
-
-            return isDegreeThree;
+            return false;
         }
 
         //Adding edge for node 
         private void AddEdge(Node connectedNode)
         {
-            if (!connectedNode.IsEndNode) 
+            if (!connectedNode.IsEndNode)
             {
                 connectedNode.colorId = colorId;
             }
 
-            connectedNode.colorId = colorId;
             connectedNode.ConnectedNodes.Add(this);
             ConnectedNodes.Add(connectedNode);
 
@@ -342,12 +290,53 @@ namespace Connect.Core
                 return;
             }
 
-            // Удаляем связь между startNode и targetNode
             startNode.ConnectedNodes.Remove(targetNode);
             targetNode.ConnectedNodes.Remove(startNode);
             startNode.RemoveEdge(targetNode);
 
             Debug.Log($"Removed connection: {startNode.name} <--> {targetNode.name}");
+        }
+
+        private void RemoveChainToStart(Node targetNode)
+        {
+            HashSet<Node> visited = new HashSet<Node>();
+            List<Node> nodesToRemove = new List<Node>();
+
+            Node startNode = FindStartNode(targetNode, visited);
+            if (startNode == null || startNode == targetNode)
+            {
+                Debug.Log($"No chain to remove for {targetNode.name}");
+                return;
+            }
+
+            visited.Clear();
+            CollectChainToTarget(startNode, targetNode, nodesToRemove, visited);
+
+            foreach (Node node in nodesToRemove)
+            {
+                if (node.ConnectedNodes.Count > 0)
+                {
+                    List<Node> neighbors = new List<Node>(node.ConnectedNodes);
+                    foreach (Node nextNode in neighbors)
+                    {
+                        // Удаляем только соединения, ведущие к узлам до targetNode
+                        if (nodesToRemove.Contains(nextNode))
+                        {
+                            RemoveConnection(node, nextNode);
+                        }
+                    }
+                }
+            }
+
+            // Удаляем соединения targetNode с узлами до него
+            List<Node> targetNeighbors = new List<Node>(targetNode.ConnectedNodes);
+            foreach (Node neighbor in targetNeighbors)
+            {
+                if (neighbor != this && neighbor.colorId != colorId) // Оставляем новое соединение
+                {
+                    RemoveConnection(targetNode, neighbor);
+                }
+            }
         }
 
         private void DeleteNode()
@@ -372,9 +361,9 @@ namespace Connect.Core
             }
         }
 
-         
+
         //Checking if node was connected to other node
-        public bool IsConnectedToEndNode(List<Node> checkedNode=null)
+        public bool IsConnectedToEndNode(List<Node> checkedNode = null)
         {
             if (checkedNode == null)
             {
@@ -384,7 +373,7 @@ namespace Connect.Core
             {
                 return true;
             }
-            foreach(var item in ConnectedNodes)
+            foreach (var item in ConnectedNodes)
             {
                 if (!checkedNode.Contains(item))
                 {
@@ -394,6 +383,35 @@ namespace Connect.Core
             }
 
             return false;
+        }
+
+        //Finding startNode for deleting
+        private Node FindStartNode(Node node, HashSet<Node> visited)
+        {
+            if (visited.Contains(node)) return null;
+            visited.Add(node);
+
+            if (node.IsEndNode) return node;
+
+            foreach (var neighbor in node.ConnectedNodes)
+            {
+                Node start = FindStartNode(neighbor, visited);
+                if (start != null) return start;
+            }
+            return null;
+        }
+
+        //Collecting chains to traget for deleting
+        private void CollectChainToTarget(Node current, Node target, List<Node> nodesToRemove, HashSet<Node> visited)
+        {
+            if (current == target || visited.Contains(current)) return;
+            visited.Add(current);
+            nodesToRemove.Add(current);
+
+            foreach (var neighbor in current.ConnectedNodes)
+            {
+                CollectChainToTarget(neighbor, target, nodesToRemove, visited);
+            }
         }
 
 
