@@ -236,7 +236,7 @@ namespace Connect.Core
             connectedEdge.GetComponent<SpriteRenderer>().color = GameplayManager.Instance.NodeColors[colorId];
 
             Debug.Log($"Added edge: {this.name} <--> {connectedNode.name}, Total connections: {ConnectedNodes.Count}");
-
+            SolveHighlight();
         }
 
 
@@ -295,6 +295,8 @@ namespace Connect.Core
             startNode.RemoveEdge(targetNode);
 
             Debug.Log($"Removed connection: {startNode.name} <--> {targetNode.name}");
+            startNode.SolveHighlight();
+            targetNode.SolveHighlight();
         }
 
         private void RemoveChainToStart(Node targetNode)
@@ -415,9 +417,63 @@ namespace Connect.Core
         }
 
 
-        //Highlighting solving Node
+        //Highlighting solving Node to indicate win
         internal void SolveHighlight()
         {
+
+            // If no connectioins disabling
+            if (ConnectedNodes.Count == 0)
+            {
+                _highlight.SetActive(false);
+                return;
+            }
+
+            // Собираем все узлы цепочки
+            HashSet<Node> visited = new HashSet<Node>();
+            List<Node> allNodes = new List<Node>();
+            CollectChain(this, visited, allNodes);
+
+            // Counting endedges
+            int endNodeCount = 0;
+            foreach (var node in allNodes)
+            {
+                if (node.IsEndNode)
+                {
+                    endNodeCount++;
+                }
+            }
+
+            // ActivatingHilight 
+            if (endNodeCount == 2)
+            {
+                foreach (var node in allNodes)
+                {
+                    node._highlight.SetActive(true);
+                    node._highlight.GetComponent<SpriteRenderer>().color = GameplayManager.Instance.GetHighLightColor(node.colorId);
+                }
+            }
+            else
+            {
+                // Disabling Hilight
+                foreach (var node in allNodes)
+                {
+                    node._highlight.SetActive(false);
+                }
+            }
+        }
+
+        // Collecting all nodes
+        private void CollectChain(Node current, HashSet<Node> visited, List<Node> allNodes)
+        {
+            if (visited.Contains(current)) return;
+            visited.Add(current);
+            allNodes.Add(current);
+
+            foreach (var neighbor in current.ConnectedNodes)
+            {
+                CollectChain(neighbor, visited, allNodes);
+            }
+
 
 
         }

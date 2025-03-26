@@ -15,6 +15,7 @@ namespace Connect.Core {
         #region StartVariables
         public static GameplayManager Instance;
 
+        public int levelmaxsize = 11;
         [HideInInspector] public bool hasGameFinished;
         public float BoardSize { get; private set; }
         [SerializeField] private TMP_Text _titleText;
@@ -32,7 +33,7 @@ namespace Connect.Core {
             _titleText.gameObject.SetActive(true);
             _titleText.text = "Level " + GameManager.Instance.CurrentLevel.ToString();
 
-            CurrentLevelData = GameManager.Instance.GetLevel();
+            CurrentLevelData = GameManager.Instance.GetLevelConnect();
             SpawndBoard();
             SpawnNodes();
         }
@@ -44,7 +45,7 @@ namespace Connect.Core {
         [SerializeField] private SpriteRenderer _boardPrefab, _bgcellPrefab;
         private void SpawndBoard()
         {
-            int currentLevelSize = Mathf.Min(GameManager.Instance.CurrentLevel + 1, 14);
+            int currentLevelSize = Mathf.Min(GameManager.Instance.CurrentLevel + 4, levelmaxsize);
             float totalCellSize = _cellSize + _cellSpacing;
             BoardSize = currentLevelSize * totalCellSize;
 
@@ -96,7 +97,7 @@ namespace Connect.Core {
         {
             _nodes = new List<Node>();
             _nodeGrid = new Dictionary<Vector2Int, Node>();
-            int currentLevelSize = Mathf.Min(GameManager.Instance.CurrentLevel + 1, 14);
+            int currentLevelSize = Mathf.Min(GameManager.Instance.CurrentLevel + 4, levelmaxsize);
             float totalCellSize = _cellSize + _cellSpacing;
             Node spawnedNode;
             Vector3 spawnPos;
@@ -126,6 +127,7 @@ namespace Connect.Core {
                     _nodeGrid.Add(new Vector2Int(i, j), spawnedNode);
                     spawnedNode.gameObject.name = i.ToString() + j.ToString();
                     spawnedNode.Pos2D = new Vector2Int(i, j);
+
                 }
             }
             List<Vector2Int> offsetPos = new List<Vector2Int>()
@@ -141,6 +143,7 @@ namespace Connect.Core {
                     }
                 }
             }
+
         }
         //Getting color for hilghlight
         public Color GetHighLightColor(int colorId)
@@ -289,7 +292,7 @@ namespace Connect.Core {
             }
 
             Debug.Log("All edges connected successfully! Level won!");
-            GameManager.Instance.UnlockLevel();
+            GameManager.Instance.UnlockLevelConnect();
             _winText.SetActive(true);
             _clickHighlight.gameObject.SetActive(false);
             hasGameFinished = true;
@@ -323,14 +326,14 @@ namespace Connect.Core {
 
         public void ClickedRestart()
         {
-            GameManager.Instance.GoToGameplay();
+            GameManager.Instance.GoToGameplayConnect();
         }
 
         public void ClickedNextLevel()
         {
             if (!hasGameFinished) return;
            
-            GameManager.Instance.GoToGameplay();
+            GameManager.Instance.GoToGameplayConnect();
         }
         #endregion
 

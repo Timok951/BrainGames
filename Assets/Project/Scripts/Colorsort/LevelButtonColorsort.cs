@@ -1,15 +1,12 @@
-using Connect.Core;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Connect.Core{
-    public class LevelButton : MonoBehaviour
+namespace Connect.Core
+{
+    public class LevelButtonColorsort : MonoBehaviour
     {
-
         [SerializeField] private Button _button;
         [SerializeField] TMP_Text _leveltext;
         [SerializeField] private Color _inactiveColor;
@@ -36,30 +33,26 @@ namespace Connect.Core{
         private void LevelOpened()
         {
             string gameObjectName = gameObject.name;
-            string[]parts = gameObjectName.Split('_');
-            _leveltext.text = parts[parts.Length - 1];
-            currentLevel = int.Parse(_leveltext.text);
-            isLevelUnlocked = GameManager.Instance.IsLevelUnlocked(currentLevel);
-
-            _image.color = isLevelUnlocked ? MainMenuManager.Instance.CurremtColor : _inactiveColor;
+            string[] parts = gameObjectName.Split('_');
+            if (parts.Length > 1 && int.TryParse(parts[parts.Length - 1], out int levelNum))
+            {
+                _leveltext.text = parts[parts.Length - 1];
+                currentLevel = levelNum;
+                isLevelUnlocked = GameManager.Instance.IsLevelUnlockedColorsort(currentLevel);
+                _image.color = isLevelUnlocked ? MainMenuManager.Instance.CurrentColor : _inactiveColor;
+            }
+            else
+            {
+                Debug.LogError($"Invalid level name format: {gameObjectName}", gameObject);
+                _leveltext.text = "Error";
+            }
         }
 
         private void Clicked()
         {
-
-            if (!isLevelUnlocked)
-            {
-                return;
-            }
+            if (!isLevelUnlocked) return;
             GameManager.Instance.CurrentLevel = currentLevel;
-            GameManager.Instance.GoToGameplay();
-
-            GameManager.Instance.CurrentLevel = currentLevel;
-            GameManager.Instance.GoToGameplay();
-
+            GameManager.Instance.GoToGameplayColorSort();
         }
-
-
-
     }
 }
