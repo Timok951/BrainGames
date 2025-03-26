@@ -118,6 +118,9 @@ namespace Connect.Core
         //Updating nodee
         public void UpdateInput(Node connectedNode)
         {
+
+  
+
             //Invalid Input
             if (!ConnectEdges.ContainsKey(connectedNode))
             {
@@ -129,9 +132,8 @@ namespace Connect.Core
             //Delete the Edge and the parts
             if (ConnectedNodes.Contains(connectedNode))
             {
-                DeleteChain(this);
+                RemoveConnection(this, connectedNode);
                 return;
-
             }
 
             if (IsEndNode && ConnectedNodes.Count >= 1)
@@ -146,17 +148,136 @@ namespace Connect.Core
                 return;
             }
 
+            //Disabling for connection different colors
+            if (IsEndNode && connectedNode.IsEndNode && colorId != connectedNode.colorId)
+            {
+                Debug.Log($"Cannot connect {name} to {connectedNode.name} - different colors for end nodes");
+                return;
+            }
+
+            //Start Node has 2 Edges
+            if (ConnectedNodes.Count == 2)
+            {
+                Node tempNode = ConnectedNodes[0];
+                if (!tempNode.IsConnectedToEndNode())
+                {
+                    RemoveConnection(this, tempNode); 
+                }
+                else
+                {
+                    tempNode = ConnectedNodes[1];
+                    RemoveConnection(this, tempNode); 
+                }
+            }
+            
+            //If connectedNode has one cannoction and othe color
+            if(connectedNode.ConnectedNodes.Count == 1 && connectedNode.colorId != colorId)
+            {
+                Node tempNode = ConnectedNodes[0];
+                if (!tempNode.IsConnectedToEndNode())
+                {
+                    RemoveConnection(this, tempNode);
+                }
+                else
+                {
+                    tempNode = ConnectedNodes[1];
+                    RemoveConnection(this, tempNode);
+                }
+            }
+
+
+
+
             AddEdge(connectedNode);
             Debug.Log($"Connected {name} -> {connectedNode.name}");
+
+            //Checking for 3 preventing boxes
+            List<Node> checkingNodes = new List<Node> { this };
+            List<Node> resultNodes = new List<Node> { this };
+
+            while (checkingNodes.Count > 0)
+            {
+                foreach (var item in checkingNodes[0].ConnectedNodes)
+                {
+                    if (!resultNodes.Contains(item))
+                    {
+                        resultNodes.Add(item);
+                        checkingNodes.Add(item);
+                    }
+                }
+                checkingNodes.Remove(checkingNodes[0]);
+            }
+
+            foreach (var item in resultNodes)
+            {
+                if (!item.IsEndNode && item.IsDegreeThree(resultNodes))
+                {
+                    Debug.Log($"Node {item.name} has degree 3 or more, breaking connections");
+                    Node tempNode = item.ConnectedNodes[0];
+                    item.RemoveConnection(item, tempNode);
+
+                    if (item.ConnectedNodes.Count == 0) return;
+
+                    tempNode = item.ConnectedNodes[0];
+                    item.RemoveConnection(item, tempNode);
+                    return;
+                }
+            }
 
 
         }
         [HideInInspector] public List<Node> ConnectedNodes;
 
+        private List<Vector2Int> directionCheck = new List<Vector2Int>()
+        {
+            Vector2Int.up, Vector2Int.left, Vector2Int.down, Vector2Int.right
+        };
+        //Checking for boxes
+        public bool IsDegreeThree(List<Node> resultNodes)
+        {
+            bool isDegreeThree = false;
+            int numOfNeighbours = 0;
+
+            for (int i = 0; i < directionCheck.Count; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    Vector2Int checkingPos = Pos2D + directionCheck[(i + j) % directionCheck.Count];
+                    if (GameplayManager.Instance._nodeGrid.TryGetValue(checkingPos, out Node result))
+                    {
+                        if (resultNodes.Contains(result))
+                        {
+                            numOfNeighbours++;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+
+                if (numOfNeighbours == 3)
+                {
+                    break;
+                }
+                numOfNeighbours = 0;
+            }
+
+            if (numOfNeighbours >= 3)
+            {
+                isDegreeThree = true;
+            }
+
+            return isDegreeThree;
+        }
 
         //Adding edge for node 
         private void AddEdge(Node connectedNode)
         {
+            if (!connectedNode.IsEndNode) 
+            {
+                connectedNode.colorId = colorId;
+            }
 
             connectedNode.colorId = colorId;
             connectedNode.ConnectedNodes.Add(this);
@@ -171,17 +292,15 @@ namespace Connect.Core
         }
 
 
-
         private void DeleteChain(Node startNode, HashSet<Node> visited = null)
         {
             if (visited == null) visited = new HashSet<Node>();
-            if (visited.Contains(startNode)) return;
+            if (visited.Contains(startNode) || startNode.IsEndNode) return;
 
             visited.Add(startNode);
             Debug.Log($"Deleting node: {startNode.name}, Connections: {startNode.ConnectedNodes.Count}");
 
             List<Node> nodesToDelete = new List<Node>(startNode.ConnectedNodes);
-
             foreach (var node in nodesToDelete)
             {
                 startNode.ConnectedNodes.Remove(node);
@@ -198,13 +317,37 @@ namespace Connect.Core
             if (ConnectEdges.ContainsKey(node))
             {
                 GameObject edge = ConnectEdges[node];
-                edge.SetActive(false);
+                if (edge != null)
+                {
+                    edge.SetActive(false);
+                    Debug.Log($"Hid edge from {name} to {node.name}");
+                }
             }
             if (node.ConnectEdges.ContainsKey(this))
             {
                 GameObject edge = node.ConnectEdges[this];
-                edge.SetActive(false);
+                if (edge != null)
+                {
+                    edge.SetActive(false);
+                    Debug.Log($"Hid edge from {node.name} to {name}");
+                }
             }
+        }
+
+        private void RemoveConnection(Node startNode, Node targetNode)
+        {
+            if (!startNode.ConnectedNodes.Contains(targetNode))
+            {
+                Debug.Log($"{targetNode.name} is not connected to {startNode.name}");
+                return;
+            }
+
+            // Удаляем связь между startNode и targetNode
+            startNode.ConnectedNodes.Remove(targetNode);
+            targetNode.ConnectedNodes.Remove(startNode);
+            startNode.RemoveEdge(targetNode);
+
+            Debug.Log($"Removed connection: {startNode.name} <--> {targetNode.name}");
         }
 
         private void DeleteNode()
@@ -216,18 +359,19 @@ namespace Connect.Core
             }
             while (startNode != null)
             {
-                Node tempNode = null;
-                if(startNode.ConnectedNodes.Count != 0)
+                Node tempnode = null;
+                if (startNode == startNode.ConnectedNodes[0])
                 {
-                    tempNode = startNode.ConnectedNodes[0];
                     startNode.ConnectedNodes.Clear();
-                    tempNode.ConnectedNodes.Remove(startNode);
-                    startNode = tempNode;
-                    startNode.RemoveEdge(tempNode);
+                    tempnode.ConnectedNodes.Remove(startNode);
+                    startNode.RemoveEdge(tempnode);
                 }
-                startNode = tempNode;
+                startNode = tempnode;
+
+
             }
         }
+
          
         //Checking if node was connected to other node
         public bool IsConnectedToEndNode(List<Node> checkedNode=null)

@@ -16,7 +16,7 @@ namespace Connect.Core {
         public static GameplayManager Instance;
 
         [HideInInspector] public bool hasGameFinished;
-
+        public float BoardSize { get; private set; }
         [SerializeField] private TMP_Text _titleText;
         [SerializeField] GameObject _winText;
         [SerializeField] private SpriteRenderer _clickHighlight;
@@ -46,17 +46,18 @@ namespace Connect.Core {
         {
             int currentLevelSize = Mathf.Min(GameManager.Instance.CurrentLevel + 1, 14);
             float totalCellSize = _cellSize + _cellSpacing;
-            float boardSize = currentLevelSize * totalCellSize;
+            BoardSize = currentLevelSize * totalCellSize;
+
             float boardScaleFactor = 1.1f;
 
             var board = Instantiate(_boardPrefab,
-                new Vector3(boardSize / 2f, boardSize / 2f, 0f),
+                new Vector3(BoardSize / 2f, BoardSize / 2f, 0f),
                 Quaternion.identity);
 
-            board.size = new Vector2(boardSize, boardSize);
+            board.size = new Vector2(BoardSize, BoardSize);
             //boardoffset
-            float startX = (boardSize - totalCellSize * currentLevelSize) / 2f + totalCellSize / 2f;
-            float startY = (boardSize - totalCellSize * currentLevelSize) / 2f + totalCellSize / 2f;
+            float startX = (BoardSize - totalCellSize * currentLevelSize) / 2f + totalCellSize / 2f;
+            float startY = (BoardSize - totalCellSize * currentLevelSize) / 2f + totalCellSize / 2f;
 
             //spawning cells
             for (int i = 0; i < currentLevelSize; i++)
@@ -70,8 +71,8 @@ namespace Connect.Core {
             }
 
             //moving camera to fully show the level
-            Camera.main.orthographicSize = (boardSize * boardScaleFactor) / 2f + 1f;
-            Camera.main.transform.position = new Vector3(boardSize / 2f, boardSize / 2f, -10f);
+            Camera.main.orthographicSize = (BoardSize * boardScaleFactor) / 2f + 1f;
+            Camera.main.transform.position = new Vector3(BoardSize / 2f, BoardSize / 2f, -10f);
 
             _clickHighlight.size = new Vector2(currentLevelSize / 4f, currentLevelSize / 4f);
             _clickHighlight.transform.position = Vector3.zero;
@@ -95,7 +96,7 @@ namespace Connect.Core {
         {
             _nodes = new List<Node>();
             _nodeGrid = new Dictionary<Vector2Int, Node>();
-            int currentLevelSize = Mathf.Min(GameManager.Instance.CurrentLevel + 2, 14);
+            int currentLevelSize = Mathf.Min(GameManager.Instance.CurrentLevel + 1, 14);
             float totalCellSize = _cellSize + _cellSpacing;
             Node spawnedNode;
             Vector3 spawnPos;
@@ -207,6 +208,12 @@ namespace Connect.Core {
                 if (hit && hit.collider.gameObject.TryGetComponent(out Node tmpNode) && startNode != tmpNode)
                 {
                     Debug.Log($"Trying to connect {startNode.name} to {tmpNode.name}");
+
+                    if (!IsWithinBoardBounds(tmpNode.Pos2D))
+                    {
+                        Debug.Log($"{tmpNode.name} at {tmpNode.Pos2D} is outside board bounds ({BoardSize}x{BoardSize}), line not drawn");
+                        return;
+                    }
                     if (startNode.colorId != tmpNode.colorId && tmpNode.IsEndNode)
                     {
                         return;
@@ -218,6 +225,8 @@ namespace Connect.Core {
                 }
                 return;
             }
+
+
             if (Input.GetMouseButtonUp(0))
             {
                 //Highlight 
@@ -228,6 +237,11 @@ namespace Connect.Core {
 
             }
 
+        }
+
+        private bool IsWithinBoardBounds(Vector2Int position)
+        {
+            return position.x >= 0 && position.x < BoardSize && position.y >= 0 && position.y < BoardSize;
         }
         #endregion
 
