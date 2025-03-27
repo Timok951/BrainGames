@@ -30,42 +30,46 @@ namespace Connect.Core
         {
             //ResetLevels();
 
-            CurrentLevel = 1;
+            CurrentLevelConnect = 1;
+            CurrentLevelColorsort = 1;
+            CurrentLevelPipes = 1;
 
             LevelsConnect = new Dictionary<string, LevelData>();
+
+
 
             foreach (var item in _allLevelsconnect.Levels)
             {
                 LevelsConnect[item.LevelName] = item;
             }
 
-            LevelsColorSort = new Dictionary<string, LevelData>();
+            LevelsColorSort = new Dictionary<string, LevelColorSort>();
 
 
             foreach (var item in _allLevelscolorsort.Levels)
             {
-                LevelsConnect[item.LevelName] = item;
+                LevelsColorSort[item.LevelName] = item;
             }
 
 
-            LevelsPipes = new Dictionary<string, LevelData>();
+            LevelsPipes = new Dictionary<string, LevelDataPipe>();
 
 
-            foreach (var item in _allLevelspipes.Levels)
+            foreach (var item in _allLevelspipes.LevelsPipes)
             {
-                LevelsConnect[item.LevelName] = item;
+                LevelsPipes[item.LevelName] = item;
             }
 
         }
         #endregion
 
         #region UnlockLevel
-        [HideInInspector]
-        public int CurrentLevel;
         private string levelNameConnect = "Connect";
-        private string levelNameColosort = "ColorSort";
+        private string levelNameColosort = "Colorsort";
         private string levelNamePipes = "Pipes";
-
+        [HideInInspector] public int CurrentLevelConnect;
+        [HideInInspector] public int CurrentLevelColorsort;
+        [HideInInspector] public int CurrentLevelPipes;
 
 
         public bool IsLevelUnlockedConnect(int level)
@@ -126,29 +130,28 @@ namespace Connect.Core
 
         public void UnlockLevelConnect()
         {
-            CurrentLevel++;
+            CurrentLevelConnect++;
 
             
-            string levelName = "Level"  + CurrentLevel.ToString();
+            string levelName = "Level"  + CurrentLevelConnect.ToString();
             PlayerPrefs.SetInt(levelName + levelNameConnect, 1);
         }
 
         public void UnlockLevelConnectColorsort()
         {
-            CurrentLevel++;
-
-
-            string levelName = "Level" + CurrentLevel.ToString();
+            CurrentLevelColorsort++;
+            string levelName = "Level" + CurrentLevelColorsort.ToString(); 
             PlayerPrefs.SetInt(levelName + levelNameColosort, 1);
+            Debug.Log($"Unlocked level: {levelName + levelNameColosort}"); 
         }
 
         public void UnlockLevelPipes()
         {
-            CurrentLevel++;
+            CurrentLevelPipes++;
 
 
-            string levelName = "Level" + CurrentLevel.ToString();
-            PlayerPrefs.SetInt(levelName + levelNameColosort, 1);
+            string levelName = "Level" + CurrentLevelPipes.ToString();
+            PlayerPrefs.SetInt(levelName + levelNamePipes, 1);
         }
         #endregion
 
@@ -157,25 +160,31 @@ namespace Connect.Core
         private LevelData DefaultLevel;
 
         [SerializeField]
+        private LevelColorSort DefaultLevelColorSort;
+
+        [SerializeField]
+        private LevelDataPipe DefaultLevelPipe;
+
+        [SerializeField]
         private LevelList _allLevelsconnect;
 
         [SerializeField]
-        private LevelList _allLevelspipes;
+        private AllLevelsPipes _allLevelspipes;
 
         [SerializeField]
-        private LevelList _allLevelscolorsort;
+        private AllLevelsColorSort _allLevelscolorsort;
 
         private Dictionary<string, LevelData> LevelsConnect;
 
-        private Dictionary<string, LevelData> LevelsColorSort;
+        private Dictionary<string, LevelColorSort> LevelsColorSort;
 
-        private Dictionary<string, LevelData> LevelsPipes;
+        private Dictionary<string, LevelDataPipe> LevelsPipes;
 
 
 
         public LevelData GetLevelConnect()
         {
-            string levelName = "Level" + CurrentLevel.ToString();
+            string levelName = "Level" + CurrentLevelConnect.ToString();
             if(LevelsConnect.ContainsKey(levelName))
             {
                 return LevelsConnect[levelName];
@@ -183,29 +192,33 @@ namespace Connect.Core
             return DefaultLevel;
         }
 
-        public LevelData GetLevelColorSort()
+        public LevelColorSort GetLevelColorSort()
         {
-            string levelName = "Level" + CurrentLevel.ToString();
-            if (LevelsConnect.ContainsKey(levelName))
+            string levelName = "Level" + CurrentLevelColorsort.ToString();
+            if (LevelsColorSort.ContainsKey(levelName))
             {
                 return LevelsColorSort[levelName];
             }
-            return DefaultLevel;
+            return DefaultLevelColorSort;
+        }
+
+        public LevelDataPipe GetLevelPipes()
+        {
+            string levelName = "Level" + CurrentLevelPipes.ToString();
+            if (LevelsPipes.ContainsKey(levelName))
+            {
+                return LevelsPipes[levelName];
+            }
+            return DefaultLevelPipe;
         }
         #endregion
 
-
-        void ResetLevels()
-        {
-            PlayerPrefs.DeleteAll();
-            Debug.Log("All levels reset");
-        }
 
         #region SCENE_LOAD
         private const string MainMenu = "MainMenu";
         private const string Gameplay = "GameplayConnect";
         private const string GameplayColorsort = "GameplayColorsort";
-        private const string GameplayPipes = "GameplayPipes";
+        private const string GameplayPipes = "PipesGameplay";
 
 
 
@@ -239,5 +252,12 @@ namespace Connect.Core
         #endregion
 
 
+        #region UPDATE_METHODS
+        void ResetLevels()
+        {
+            PlayerPrefs.DeleteAll();
+            Debug.Log("All levels reset");
+        }
+        #endregion
     }
 }

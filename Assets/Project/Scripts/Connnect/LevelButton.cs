@@ -52,7 +52,7 @@ namespace Connect.Core{
             {
                 return;
             }
-            GameManager.Instance.CurrentLevel = currentLevel;
+            GameManager.Instance.CurrentLevelConnect = currentLevel;
             GameManager.Instance.GoToGameplayConnect();
 
 

@@ -51,7 +51,7 @@ namespace Connect.Core
         private void Clicked()
         {
             if (!isLevelUnlocked) return;
-            GameManager.Instance.CurrentLevel = currentLevel;
+            GameManager.Instance.CurrentLevelColorsort = currentLevel;
             GameManager.Instance.GoToGameplayColorSort();
         }
     }

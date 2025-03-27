@@ -31,7 +31,7 @@ namespace Connect.Core {
             hasGameFinished = false;
             _winText.SetActive(false);
             _titleText.gameObject.SetActive(true);
-            _titleText.text = "Level " + GameManager.Instance.CurrentLevel.ToString();
+            _titleText.text = "Level " + GameManager.Instance.CurrentLevelConnect.ToString();
 
             CurrentLevelData = GameManager.Instance.GetLevelConnect();
             SpawndBoard();
@@ -45,7 +45,7 @@ namespace Connect.Core {
         [SerializeField] private SpriteRenderer _boardPrefab, _bgcellPrefab;
         private void SpawndBoard()
         {
-            int currentLevelSize = Mathf.Min(GameManager.Instance.CurrentLevel + 4, levelmaxsize);
+            int currentLevelSize = Mathf.Min(GameManager.Instance.CurrentLevelConnect + 4, levelmaxsize);
             float totalCellSize = _cellSize + _cellSpacing;
             BoardSize = currentLevelSize * totalCellSize;
 
@@ -97,7 +97,7 @@ namespace Connect.Core {
         {
             _nodes = new List<Node>();
             _nodeGrid = new Dictionary<Vector2Int, Node>();
-            int currentLevelSize = Mathf.Min(GameManager.Instance.CurrentLevel + 4, levelmaxsize);
+            int currentLevelSize = Mathf.Min(GameManager.Instance.CurrentLevelConnect + 4, levelmaxsize);
             float totalCellSize = _cellSize + _cellSpacing;
             Node spawnedNode;
             Vector3 spawnPos;
