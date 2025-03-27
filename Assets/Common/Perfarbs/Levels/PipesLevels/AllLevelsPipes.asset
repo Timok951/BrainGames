@@ -12,4 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da96db1b3c77fdd4ab4bdc42fc6de91e, type: 3}
   m_Name: AllLevelsPipes
   m_EditorClassIdentifier: 
-  LevelsPipes: []
+  LevelsPipes:
+  - {fileID: 11400000, guid: 03c76abaa4ed7e044a097e73a11d9690, type: 2}
+  - {fileID: 11400000, guid: a79a9b2787be6d64f8a760fe84e1f04c, type: 2}
+  - {fileID: 11400000, guid: a79a9b2787be6d64f8a760fe84e1f04c, type: 2}
+  - {fileID: 11400000, guid: 87af8810b6cdfbd48ba553685f54a30a, type: 2}
+  - {fileID: 11400000, guid: 165d1f7490ae7ac4694d88494e7be0ea, type: 2}
+  - {fileID: 11400000, guid: 2180ca7cd8f902349867dfe6c0ae87f8, type: 2}
+  - {fileID: 11400000, guid: 021fa3f81b26ddd45b085011ac20e8c6, type: 2}
+  - {fileID: 11400000, guid: 356b8753c57d58c4f8c3f94f65781582, type: 2}
+  - {fileID: 11400000, guid: 9071ade372bb7834b9a088f511d41d6c, type: 2}
+  - {fileID: 11400000, guid: 14c53f3a304a595479763d8cc605748a, type: 2}
+  - {fileID: 11400000, guid: 2bb12283ddcc25c4d9c5044d19ebe407, type: 2}
+  - {fileID: 11400000, guid: fb7d3479a5ef48045918442d8b08a580, type: 2}
+  - {fileID: 11400000, guid: 37f171622d862c44d9bdff5803b0036b, type: 2}
+  - {fileID: 11400000, guid: fcfb87bad22cffe4a9fa9dce519ba4aa, type: 2}
+  - {fileID: 11400000, guid: 5f1c315345b20af4984ecb222097e86a, type: 2}
+  - {fileID: 11400000, guid: 60b3b628ca40f804aa66a710c58f0a21, type: 2}

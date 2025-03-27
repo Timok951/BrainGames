@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f9ac79dc2d4ccd4fb456b6b68e8ec96, type: 3}
-  m_Name: DefaultLevel
+  m_Name: Level1
   m_EditorClassIdentifier: 
-  LevelName: DefaultLevel
-  Row: 4
-  Col: 4
-  Data: 150000000b000000170000002200000022000000210000000e000000170000000c0000002200000021000000170000000b000000040000000200000002000000
+  LevelName: Level1
+  Row: 2
+  Col: 2
+  Data: 150000000e000000180000000e000000
