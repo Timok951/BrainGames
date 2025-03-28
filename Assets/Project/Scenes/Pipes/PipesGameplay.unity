@@ -1411,6 +1411,9 @@ MonoBehaviour:
   _titleText: {fileID: 185113937}
   _winText: {fileID: 2108875831}
   _cellPrefab: {fileID: -3462475486109890765, guid: 99ebfb2ec83c3bb4d8d32d2f4e0f6b35, type: 3}
+  _nextLevelButton: {fileID: 1009343679}
+  _restartButton: {fileID: 531253920}
+  _backButton: {fileID: 1303553946}
 --- !u!1 &1877859351
 GameObject:
   m_ObjectHideFlags: 0

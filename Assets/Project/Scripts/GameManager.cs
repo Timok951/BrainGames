@@ -128,6 +128,25 @@ namespace Connect.Core
             return false;
 
         }
+        #region FOR_DAILY_GAME
+        public void SetCurrentLevelConnect(int levelIndex)
+        {
+            CurrentLevelConnect = levelIndex;
+            Debug.Log($"Set CurrentLevelConnect to {CurrentLevelConnect}");
+        }
+
+        public void SetCurrentLevelColorSort(int levelIndex)
+        {
+            CurrentLevelColorsort = levelIndex;
+            Debug.Log($"Set CurrentLevelColorsort to {CurrentLevelColorsort}");
+        }
+
+        public void SetCurrentLevelPipes(int levelIndex)
+        {
+            CurrentLevelPipes = levelIndex;
+            Debug.Log($"Set CurrentLevelPipes to {CurrentLevelPipes}");
+        }
+        #endregion
 
         public void UnlockLevelConnect()
         {
@@ -214,6 +233,24 @@ namespace Connect.Core
         }
         #endregion
 
+        //Getting random levels
+        public int GetRandomLevelIndexConnect()
+        {
+            int maxLevel = LevelsConnect.Count; 
+            return Random.Range(1, maxLevel + 1);
+        }
+
+        public int GetRandomLevelIndexColorSort()
+        {
+            int maxLevel = LevelsColorSort.Count;
+            return Random.Range(1, maxLevel + 1);
+        }
+
+        public int GetRandomLevelIndexPipes()
+        {
+            int maxLevel = LevelsPipes.Count;
+            return Random.Range(1, maxLevel + 1);
+        }
 
         #region SCENE_LOAD
         private const string MainMenu = "MainMenu";

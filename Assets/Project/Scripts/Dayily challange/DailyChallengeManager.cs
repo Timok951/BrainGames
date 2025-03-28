@@ -23,11 +23,16 @@ namespace Connect.Core
         private int _CurrentModeIndex;
         private bool _hasChallengeFinished;
 
+
+        private int _pipesLevel;
+        private int _colorSortLevel;
+        private int _connectLevel;
+
         private List<string> _modSequence = new List<string>()
         {
-            "PipesGameplayScene",
-            "ColorSortGameplayScene",
-            "ConnectGameplayScene"
+            "PipesGameplay",
+            "GameplaycolorSort",
+            "GameplayConnect"
         };
 
         private const string LastDailyChallengeDateKey = "LastDailyChallengeDate";
@@ -43,19 +48,56 @@ namespace Connect.Core
             _CurrentModeIndex = 0;
             _timer = 0f;
             _isTimerRunning = false;
+            _pipesLevel = GameManager.Instance.GetRandomLevelIndexPipes();
+            _colorSortLevel = GameManager.Instance.GetRandomLevelIndexColorSort();
+            _connectLevel = GameManager.Instance.GetRandomLevelIndexConnect();
+
+            if (_challengeUI != null)
+            {
+                _challengeUI.SetActive(true);
+            }
+            else
+            {
+                Debug.LogError("_challengeUI is not assigned!");
+            }
+
+            if (_timerText == null) Debug.LogError("_timerText is not assigned!");
+            if (_modeText == null) Debug.LogError("_modeText is not assigned!");
+            if (_winText == null) Debug.LogError("_winText is not assigned!");
 
         }
+        private void Start()
+        {
+            ResetChallenge();
+            StartChallenge();
+        }
+
         private void StartChallenge()
         {
             _isTimerRunning = true;
+            LoadCurrentMode();
 
         }
         private void LoadCurrentMode()
         {
             if (_CurrentModeIndex < _modSequence.Count)
             {
-                SceneManager.LoadScene(_modSequence[_CurrentModeIndex], LoadSceneMode.Additive);
+                switch (_modSequence[_CurrentModeIndex])
+                {
+                    case "GameplaycolorSort":
+                        
+                        GameManager.Instance.SetCurrentLevelPipes(_pipesLevel);
+                        break;
+                    case "PipesGameplay":
+                        GameManager.Instance.SetCurrentLevelColorSort(_colorSortLevel);
+                        break;
+                    case "GameplayConnect":
+                        GameManager.Instance.SetCurrentLevelConnect(_connectLevel);
+                        break;
+                }
             }
+            SceneManager.LoadScene(_modSequence[_CurrentModeIndex], LoadSceneMode.Additive);
+            UpdateModeText();
         }
 
         private void UpdateModeText()

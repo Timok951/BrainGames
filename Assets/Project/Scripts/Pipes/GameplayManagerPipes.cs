@@ -13,6 +13,11 @@ namespace Connect.Core
         [SerializeField] private TMP_Text _titleText;
         [SerializeField] private TMP_Text _winText;
         [SerializeField] private Pipe _cellPrefab;
+        [SerializeField] private GameObject _nextLevelButton; 
+        [SerializeField] private GameObject _restartButton;   
+        [SerializeField] private GameObject _backButton;
+
+
 
         private bool hasGameFinished;
         private Pipe[,] pipes;
@@ -30,6 +35,16 @@ namespace Connect.Core
             _currentLevelData = GameManager.Instance.GetLevelPipes();
             hasGameFinished = false;
             SpawnLevel();
+            if (DailyChallengeManager.Instance != null)
+            {
+                if (_nextLevelButton != null) _nextLevelButton.SetActive(false);
+                if (_restartButton != null) _restartButton.SetActive(false);
+                if (_backButton != null) _backButton.SetActive(false);
+                if (_winText.gameObject != null) _winText.gameObject.SetActive(false);
+                if (_titleText.gameObject != null) _titleText.gameObject.SetActive(false);
+
+
+            }
         }
         private void SpawnLevel()
         {
