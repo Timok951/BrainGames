@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Project/Scenes/Pipes/PipesGameplay.unity
     guid: ab2d2d1fd127f2d4ab3bfc21f20f6b15
+  - enabled: 1
+    path: Assets/Project/Scenes/DailyChallengeScene.unity
+    guid: 89bdc2e7d893b224e8741ba7582f8d58
   m_configObjects: {}

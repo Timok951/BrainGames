@@ -289,6 +289,10 @@ namespace Connect.Core {
                     Debug.Log($"Win condition failed for edge {startPos} -> {endPos}");
                     return;
                 }
+                if (DailyChallengeManager.Instance != null)
+                {
+                    DailyChallengeManager.Instance.OnModeCompleted();
+                }
             }
 
             Debug.Log("All edges connected successfully! Level won!");

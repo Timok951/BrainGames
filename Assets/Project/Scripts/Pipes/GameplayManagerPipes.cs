@@ -174,6 +174,10 @@ namespace Connect.Core
             _winText.gameObject.SetActive(true);
             hasGameFinished = true;
             Debug.Log("Game has been finished");
+            if (DailyChallengeManager.Instance != null)
+            {
+                DailyChallengeManager.Instance.OnModeCompleted();
+            }
         }
         #endregion
 

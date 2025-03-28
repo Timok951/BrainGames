@@ -303,6 +303,10 @@ namespace Connect.Core
             GameManager.Instance.UnlockLevelConnectColorsort();
 
             PlayerPrefs.SetInt("Best" + _currentLevelData, bestNum);
+            if (DailyChallengeManager.Instance != null)
+            {
+                DailyChallengeManager.Instance.OnModeCompleted();
+            }
 
         }
         #endregion

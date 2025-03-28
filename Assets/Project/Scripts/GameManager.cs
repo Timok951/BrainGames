@@ -2,6 +2,7 @@ using Connect.Common;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Connect.Core
 {
@@ -246,6 +247,11 @@ namespace Connect.Core
 
             UnityEngine.SceneManagement.SceneManager.LoadScene(GameplayPipes);
 
+        }
+
+        public void GoToDailyChallenge()
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("DailyChallengeScene");
         }
 
 
