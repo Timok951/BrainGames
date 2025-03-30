@@ -58,6 +58,7 @@ namespace Connect.Core
         #endregion
         public float offsetX;
         public float offsetY;
+        private bool _isDailyChallengeMode;
 
         #region START_METHODS
         private void Awake()
@@ -78,7 +79,7 @@ namespace Connect.Core
             Rows = _currentLevelData.Row;
             Cols = _currentLevelData.Col;
 
-            _levelText.text = "Level"+ " " + GameManager.Instance.CurrentLevelConnect.ToString();
+            _levelText.text = "Level"+ " " + GameManager.Instance.CurrentLevelColorsort.ToString();
             _movesText.text = "Moves " + moveNum.ToString();
             _bestText.text = bestNum.ToString();
             moveNum = 0;
@@ -93,10 +94,25 @@ namespace Connect.Core
                     Debug.Log($"Correct color at ({i}, {j}): {correctColors[i, j]}");
                 }
             }
+
+            _isDailyChallengeMode = DailyChallengeManager.Instance != null;
+
+            if (_isDailyChallengeMode)
+            {
+                if (_nextButton != null) _nextButton.gameObject.SetActive(false);
+                if (_restartButton != null) _restartButton.gameObject.SetActive(false);
+                if (_backButton != null) _backButton.gameObject.SetActive(false);
+
+                if (_winText.gameObject != null) _winText.gameObject.SetActive(false);
+                if (_levelText.gameObject != null) _levelText.gameObject.SetActive(false);
+                if (_movesText.gameObject != null) _movesText.gameObject.SetActive(false);
+
+            }
         }
 
         private IEnumerator WaitForInitialAnimation()
         {
+
             yield return new WaitForSeconds(0.5f + (Rows + Cols) * _cellPrefab._startScalelDelay + _cellPrefab._startScaleTime);
             foreach (var cell in cells)
             {
@@ -104,8 +120,10 @@ namespace Connect.Core
                     cell.startAnimation.Complete();
                 cell.transform.localScale = Vector3.one * 0.4f;
             }
+
             PerformSwaps();
-            AnimateCells();
+
+            yield return new WaitForSeconds(_cellPrefab._startMoveAnimationTime);
         }
 
         private void SpawnCells()
@@ -126,8 +144,11 @@ namespace Connect.Core
                     Color rightColor = Color.Lerp(_currentLevelData.BottomRightColor, _currentLevelData.TopRightColor, yLerp);
                     Color currentColor = Color.Lerp(leftColor, rightColor, xLerp);
                     correctColors[x, y] = currentColor;
+                    bool isLocked = _currentLevelData.LockedCells.Contains(new Vector2Int(x, y));
+
                     cells[x, y] = Instantiate(_cellPrefab, _gridParent);
-                    cells[x, y].Init(currentColor, y, x, offsetX, offsetY);
+                    cells[x, y].Init(currentColor, y, x, offsetX, offsetY, isLocked); 
+                    Debug.Log($"Cell at ({x}, {y}) - Locked: {isLocked}");
                 }
             }
             Camera.main.orthographicSize = Mathf.Max(Rows, Cols) * 1.5f / 2f + 1f;
@@ -159,8 +180,8 @@ namespace Connect.Core
                         cells[swapX, swapY] = temp;
                         temp.Position = swappedPosition;
 
-                        cells[i, j].transform.localPosition = new Vector3(cells[i, j].Position.x - offsetX, cells[i, j].Position.y - offsetY, 0);
-                        cells[swapX, swapY].transform.localPosition = new Vector3(cells[swapX, swapY].Position.x - offsetX, cells[swapX, swapY].Position.y - offsetY, 0);
+                        cells[i, j].AnimateStartPosition(offsetX, offsetY);
+                        cells[swapX, swapY].AnimateStartPosition(offsetX, offsetY);
                     }
                 }
             }
@@ -218,13 +239,23 @@ namespace Connect.Core
                 Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
                 RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
                 Debug.Log($"Mouse pos: {mousePos2D}, Hit: {(hit.collider != null ? hit.collider.name : "None")}");
-                if (hit.collider != null && hit.collider.TryGetComponent(out selectedCell))
+                if (hit.collider != null && hit.collider.TryGetComponent(out Cell clickedCell))
                 {
-                    if (_currentLevelData.LockedCells.Contains(new Vector2Int(selectedCell.Position.y, selectedCell.Position.x)))
+                    if (_currentLevelData.LockedCells.Contains(new Vector2Int(clickedCell.Position.y, clickedCell.Position.x)))
                     {
-                        selectedCell = null;
+                        if (selectedCell != null)
+                        {
+                            selectedCell.SelectedMoveEnd();
+                            selectedCell = null;
+                        }
                         return;
                     }
+
+                    if (selectedCell != null && selectedCell != clickedCell)
+                    {
+                        selectedCell.SelectedMoveEnd();
+                    }
+                    selectedCell = clickedCell;
                     startPos = mousePos2D;
                     selectedCell.SelectedMoveStart();
                 }
@@ -300,10 +331,14 @@ namespace Connect.Core
             {
 
             }
-            GameManager.Instance.UnlockLevelConnectColorsort();
 
             PlayerPrefs.SetInt("Best" + _currentLevelData, bestNum);
-            if (DailyChallengeManager.Instance != null)
+
+            if (!_isDailyChallengeMode)
+            {
+                GameManager.Instance.UnlockLevelColorsort();
+            }
+            else if (DailyChallengeManager.Instance != null)
             {
                 DailyChallengeManager.Instance.OnModeCompleted();
             }

@@ -15,9 +15,9 @@ MonoBehaviour:
   LevelName: Level14
   BackgroundColor: {r: 1, g: 1, b: 1, a: 1}
   TopLeftColor: {r: 0.43529412, g: 0.43529412, b: 0.9411765, a: 1}
-  TopRightColor: {r: 0.2784314, g: 0.32941177, b: 0.4392157, a: 1}
+  TopRightColor: {r: 0.4392157, g: 0.3019608, b: 0.2784314, a: 1}
   BottomLeftColor: {r: 0.32941177, g: 0.2784314, b: 0.4392157, a: 1}
-  BottomRightColor: {r: 0.2784314, g: 0.38039216, b: 0.4392157, a: 1}
+  BottomRightColor: {r: 0.6862745, g: 0.9411765, b: 0.12156863, a: 1}
   Row: 8
   Col: 8
   LockedCells:

@@ -28,12 +28,17 @@ namespace Connect.Core
         private int _colorSortLevel;
         private int _connectLevel;
 
+        private const string DAILY_SCORE_KEY = "DailyChallengeScore";
+
         private List<string> _modSequence = new List<string>()
         {
             "PipesGameplay",
-            "GameplaycolorSort",
+            "GameplayColorSort",
             "GameplayConnect"
         };
+
+        private const int MAX_DAILY_SCORE = 5000; 
+        private const float MAX_TIME = 180f;
 
         private const string LastDailyChallengeDateKey = "LastDailyChallengeDate";
         private const string CHALLENGE_AVAILABLE = "DailyChallengeAvailable";
@@ -68,7 +73,7 @@ namespace Connect.Core
         }
         private void Start()
         {
-            ResetChallenge();
+            //ResetChallenge();
             StartChallenge();
         }
 
@@ -84,20 +89,19 @@ namespace Connect.Core
             {
                 switch (_modSequence[_CurrentModeIndex])
                 {
-                    case "GameplaycolorSort":
-                        
+                    case "PipesGameplay":
                         GameManager.Instance.SetCurrentLevelPipes(_pipesLevel);
                         break;
-                    case "PipesGameplay":
+                    case "GameplayColorSort":
                         GameManager.Instance.SetCurrentLevelColorSort(_colorSortLevel);
                         break;
                     case "GameplayConnect":
                         GameManager.Instance.SetCurrentLevelConnect(_connectLevel);
                         break;
                 }
+                SceneManager.LoadScene(_modSequence[_CurrentModeIndex], LoadSceneMode.Additive);
+                UpdateModeText();
             }
-            SceneManager.LoadScene(_modSequence[_CurrentModeIndex], LoadSceneMode.Additive);
-            UpdateModeText();
         }
 
         private void UpdateModeText()
@@ -139,13 +143,33 @@ namespace Connect.Core
         private void CompleteChallenge()
         {
             _hasChallengeFinished = true;
-            _isTimerRunning=false;
-            _winText.text = $"Challenge Completed!\nTime: {Mathf.Floor(_timer/ 60):00}:{Mathf.Floor(_timer % 60)}:00";
+            _isTimerRunning = false;
+            int dailyScore = CalculateDailyScore(_timer);
+            int currentDailyScore = PlayerPrefs.GetInt(DAILY_SCORE_KEY, 0);
+            if (dailyScore > currentDailyScore)
+            {
+                PlayerPrefs.SetInt(DAILY_SCORE_KEY, dailyScore);
+                DBManager.levelscore += dailyScore; 
+                PlayerPrefs.SetInt("LevelScore", DBManager.levelscore);
+                PlayerPrefs.Save();
 
-            //Savind data
+                if (DBManager.LoggedIn && GameManager.Instance != null)
+                {
+                    StartCoroutine(GameManager.Instance.UpdateServerData()); 
+                }
+            }
+            _winText.gameObject.SetActive(true); 
+            _winText.text = $"Challenge Completed!\nTime: {Mathf.Floor(_timer / 60):00}:{Mathf.Floor(_timer % 60):00}\nScore: {dailyScore}";
             PlayerPrefs.SetString(LastDailyChallengeDateKey, DateTime.Now.ToString("yyyy-MM-dd"));
         }
-        
+
+        private int CalculateDailyScore(float timeTaken)
+        {
+            if (timeTaken >= MAX_TIME) return 0; 
+            float scoreFactor = 1f - (timeTaken / MAX_TIME); 
+            return Mathf.RoundToInt(MAX_DAILY_SCORE * scoreFactor); 
+        }
+
         private void ReturnToMainMenu()
         {
             GameManager.Instance.GoToMainMenu();
@@ -174,6 +198,7 @@ namespace Connect.Core
         {
             PlayerPrefs.DeleteKey(LastDailyChallengeDateKey);
             PlayerPrefs.DeleteKey(CHALLENGE_AVAILABLE);
+            PlayerPrefs.DeleteKey(DAILY_SCORE_KEY);
             Debug.Log("Daily Challenge reset!");
         }
         #endregion

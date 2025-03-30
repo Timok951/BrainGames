@@ -23,6 +23,13 @@ namespace Connect.Core {
         [SerializeField] private SpriteRenderer _clickHighlight;
         [SerializeField] private float _cellSize = 1f;
         [SerializeField] private float _cellSpacing = 0.1f;
+
+        [SerializeField] private GameObject _nextLevelButton;
+        [SerializeField] private GameObject _restartButton;
+        [SerializeField] private GameObject _backButton;
+
+        private bool _isDailyChallengeMode;
+
         //Initializing
         private void Awake()
         {
@@ -36,6 +43,20 @@ namespace Connect.Core {
             CurrentLevelData = GameManager.Instance.GetLevelConnect();
             SpawndBoard();
             SpawnNodes();
+
+            _isDailyChallengeMode = DailyChallengeManager.Instance != null;
+
+
+            if (_isDailyChallengeMode)
+            {
+                if (_nextLevelButton != null) _nextLevelButton.SetActive(false);
+                if (_restartButton != null) _restartButton.gameObject.SetActive(false);
+                if (_backButton != null) _backButton.gameObject.SetActive(false);
+
+                if (_winText.gameObject != null) _winText.gameObject.SetActive(false);
+                if (_titleText.gameObject != null) _titleText.gameObject.SetActive(false);
+
+            }
         }
         #endregion
 
@@ -296,10 +317,18 @@ namespace Connect.Core {
             }
 
             Debug.Log("All edges connected successfully! Level won!");
-            GameManager.Instance.UnlockLevelConnect();
             _winText.SetActive(true);
             _clickHighlight.gameObject.SetActive(false);
             hasGameFinished = true;
+
+            if (!_isDailyChallengeMode)
+            {
+                GameManager.Instance.UnlockLevelConnect();
+            }
+            else if (DailyChallengeManager.Instance != null)
+            {
+                DailyChallengeManager.Instance.OnModeCompleted();
+            }
         }
         //Recursively checks if a path exists between two nodes via their ConnectedNodes
         private bool AreNodesConnected(Node start, Node end, HashSet<Node> visited = null)

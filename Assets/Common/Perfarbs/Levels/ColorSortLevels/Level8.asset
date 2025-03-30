@@ -18,8 +18,8 @@ MonoBehaviour:
   TopRightColor: {r: 0.12156863, g: 0.40392157, b: 0.9411765, a: 1}
   BottomLeftColor: {r: 0.6862745, g: 0.9411765, b: 0.12156863, a: 1}
   BottomRightColor: {r: 0.4392157, g: 0.3019608, b: 0.2784314, a: 1}
-  Row: 7
-  Col: 7
+  Row: 6
+  Col: 6
   LockedCells:
   - {x: 0, y: 0}
   - {x: 1, y: 1}

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static PlasticPipe.PlasticProtocol.Client.ConnectionCreator.PlasticProtoSocketConnection;
 
 namespace Connect.Core
 {
@@ -23,7 +24,7 @@ namespace Connect.Core
         public Tween moveAnimation;
 
         [SerializeField] private SpriteRenderer _bgSprite;
-
+        [SerializeField] private SpriteRenderer _lockIcon;
         private const int FRONT = 1;
         private const int BACK = 0;
 
@@ -31,10 +32,12 @@ namespace Connect.Core
         public bool IsStarMovePlaying => startMoveAnimation != null && startMoveAnimation.IsActive();
         public bool hasSelectedMoveFinished => selectedMoveAnimation == null || !selectedMoveAnimation.IsActive();
         public bool hasMoveFinished => moveAnimation == null || !moveAnimation.IsActive();
+
+        private bool _isLocked;
         #endregion
 
         #region Init
-        public void Init(Color color, int x, int y, float offsetX, float offsetY)
+        public void Init(Color color, int x, int y, float offsetX, float offsetY, bool isLocked = false)
         {
             Color = color;
             _bgSprite.color = Color;
@@ -44,9 +47,12 @@ namespace Connect.Core
             float delay = (x + y) * _startScalelDelay;
             startAnimation = transform.DOScale(0.4f, _startScaleTime);
             startAnimation.SetEase(Ease.OutExpo);
+            _isLocked = isLocked; 
+            UpdateLockIcon();
             startAnimation.SetDelay(0.5f + delay);
             startAnimation.Play();
-            Debug.Log($"Sprite size: {_bgSprite.bounds.size}, Scale: {transform.localScale}");
+
+          
         }
 
         public void AnimateStartPosition(float offsetX, float offsetY)
@@ -71,6 +77,7 @@ namespace Connect.Core
 
         public void SelectedMoveStart()
         {
+            if (_isLocked) return;
             _bgSprite.sortingOrder = FRONT;
             transform.localScale = Vector3.one * 0.6f;
         }
@@ -90,6 +97,7 @@ namespace Connect.Core
 
         public void SelectedMove(Vector2 offset)
         {
+            if (_isLocked) return;
             transform.localPosition = new Vector3(Position.x - GameplayManagerColorSort.Instance.offsetX, Position.y - GameplayManagerColorSort.Instance.offsetY, 0) + (Vector3)offset;
             float minY = -GameplayManagerColorSort.Instance.offsetY;
             float maxY = GameplayManagerColorSort.Rows - 1 - GameplayManagerColorSort.Instance.offsetY;
@@ -114,6 +122,22 @@ namespace Connect.Core
             moveAnimation.Play();
         }
         #endregion
+
+        private void UpdateLockIcon()
+        {
+            if (_lockIcon != null)
+            {
+                _lockIcon.gameObject.SetActive(_isLocked); 
+                if (_isLocked)
+                {
+                    _lockIcon.sortingOrder = FRONT + 1; 
+                }
+            }
+            else
+            {
+                Debug.LogWarning("LockIcon SpriteRenderer is not assigned!", this);
+            }
+        }
 
 
 

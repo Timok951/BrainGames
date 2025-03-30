@@ -45,7 +45,7 @@ namespace Connect.Core
             }
 
             //Rotating Sprite 
-            if (pipe >= 10)
+            if (pipe >= 10 || PipeType != 1 || PipeType != 2)
             {
                 rotation = pipe / 10;
 

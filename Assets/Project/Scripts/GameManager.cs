@@ -2,6 +2,7 @@ using Connect.Common;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
 namespace Connect.Core
@@ -29,38 +30,45 @@ namespace Connect.Core
 
         private void Init()
         {
-            //ResetLevels();
+            CurrentLevelConnect = PlayerPrefs.GetInt("ConnectLevels", 1);
+            CurrentLevelColorsort = PlayerPrefs.GetInt("ColorsortLevels", 1);
+            CurrentLevelPipes = PlayerPrefs.GetInt("PipesLevels", 1);
 
-            CurrentLevelConnect = 1;
-            CurrentLevelColorsort = 1;
-            CurrentLevelPipes = 1;
+            DBManager.levelscore = PlayerPrefs.GetInt("LevelScore", 0);
 
             LevelsConnect = new Dictionary<string, LevelData>();
-
-
-
             foreach (var item in _allLevelsconnect.Levels)
             {
                 LevelsConnect[item.LevelName] = item;
             }
 
             LevelsColorSort = new Dictionary<string, LevelColorSort>();
-
-
             foreach (var item in _allLevelscolorsort.Levels)
             {
                 LevelsColorSort[item.LevelName] = item;
             }
 
-
             LevelsPipes = new Dictionary<string, LevelDataPipe>();
-
-
             foreach (var item in _allLevelspipes.LevelsPipes)
             {
                 LevelsPipes[item.LevelName] = item;
             }
 
+            if (DBManager.LoggedIn && !string.IsNullOrEmpty(PlayerPrefs.GetString("Nick", "")))
+            {
+                StartCoroutine(SyncWithServerOnStart());
+            }
+        }
+
+        private IEnumerator SyncWithServerOnStart()
+        {
+            string nick = PlayerPrefs.GetString("Nick", "");
+            string password = PlayerPrefs.GetString("Password", "");
+
+            if (!string.IsNullOrEmpty(nick) && !string.IsNullOrEmpty(password))
+            {
+                yield return StartCoroutine(MainMenuManager.Instance.Login(nick, password));
+            }
         }
         #endregion
 
@@ -76,58 +84,21 @@ namespace Connect.Core
         public bool IsLevelUnlockedConnect(int level)
         {
             string levelName = "Level" + level.ToString();
-
-            if (level == 1)
-            {
-                PlayerPrefs.SetInt(levelName + levelNameConnect, 1);
-                return true;
-            }
-            if (PlayerPrefs.HasKey(levelName + levelNameConnect))
-                {
-                return PlayerPrefs.GetInt(levelName + levelNameConnect) == 1;
-            }
-            PlayerPrefs.SetInt(levelName, 0);
-            return false;
-
+            return PlayerPrefs.GetInt(levelName + levelNameConnect, level == 1 ? 1 : 0) == 1;
         }
-
 
         public bool IsLevelUnlockedColorsort(int level)
         {
             string levelName = "Level" + level.ToString();
-
-            if (level == 1)
-            {
-                PlayerPrefs.SetInt(levelName + levelNameColosort, 1);
-                return true;
-            }
-            if (PlayerPrefs.HasKey(levelName + levelNameColosort))
-            {
-                return PlayerPrefs.GetInt(levelName + levelNameColosort) == 1;
-            }
-            PlayerPrefs.SetInt(levelName, 0);
-            return false;
-
+            return PlayerPrefs.GetInt(levelName + levelNameColosort, level == 1 ? 1 : 0) == 1;
         }
-
 
         public bool IsLevelUnlockedPipes(int level)
         {
             string levelName = "Level" + level.ToString();
-
-            if (level == 1)
-            {
-                PlayerPrefs.SetInt(levelName + levelNamePipes, 1);
-                return true;
-            }
-            if (PlayerPrefs.HasKey(levelName + levelNamePipes))
-            {
-                return PlayerPrefs.GetInt(levelName + levelNamePipes) == 1;
-            }
-            PlayerPrefs.SetInt(levelName, 0);
-            return false;
-
+            return PlayerPrefs.GetInt(levelName + levelNamePipes, level == 1 ? 1 : 0) == 1;
         }
+
         #region FOR_DAILY_GAME
         public void SetCurrentLevelConnect(int levelIndex)
         {
@@ -151,27 +122,97 @@ namespace Connect.Core
         public void UnlockLevelConnect()
         {
             CurrentLevelConnect++;
-
-            
-            string levelName = "Level"  + CurrentLevelConnect.ToString();
+            string levelName = "Level" + CurrentLevelConnect.ToString();
             PlayerPrefs.SetInt(levelName + levelNameConnect, 1);
+            DBManager.connectLevels = CurrentLevelConnect;
+            DBManager.levelscore += 100;
+
+            PlayerPrefs.SetInt("ConnectLevels", DBManager.connectLevels);
+            PlayerPrefs.SetInt("LevelScore", DBManager.levelscore);
+            PlayerPrefs.Save();
+
+            if (DBManager.LoggedIn)
+            {
+                StartCoroutine(UpdateServerData());
+            }
         }
 
-        public void UnlockLevelConnectColorsort()
+        public void UnlockLevelColorsort()
         {
             CurrentLevelColorsort++;
-            string levelName = "Level" + CurrentLevelColorsort.ToString(); 
+            string levelName = "Level" + CurrentLevelColorsort.ToString();
             PlayerPrefs.SetInt(levelName + levelNameColosort, 1);
-            Debug.Log($"Unlocked level: {levelName + levelNameColosort}"); 
+            DBManager.colorsortLevels = CurrentLevelColorsort;
+            DBManager.levelscore += 100;
+
+            PlayerPrefs.SetInt("ColorsortLevels", DBManager.colorsortLevels);
+            PlayerPrefs.SetInt("LevelScore", DBManager.levelscore);
+            PlayerPrefs.Save();
+            Debug.Log($"Unlocked level: {levelName + levelNameColosort}");
+
+            if (DBManager.LoggedIn)
+            {
+                StartCoroutine(UpdateServerData());
+            }
         }
 
         public void UnlockLevelPipes()
         {
+            Debug.Log($"Before unlocking: CurrentLevelPipes = {CurrentLevelPipes}");
             CurrentLevelPipes++;
-
-
             string levelName = "Level" + CurrentLevelPipes.ToString();
             PlayerPrefs.SetInt(levelName + levelNamePipes, 1);
+            DBManager.pipesLevels = CurrentLevelPipes;
+            DBManager.levelscore += 100;
+
+            PlayerPrefs.SetInt("PipesLevels", DBManager.pipesLevels);
+            PlayerPrefs.SetInt("LevelScore", DBManager.levelscore);
+            PlayerPrefs.Save();
+            Debug.Log($"Level {CurrentLevelPipes} unlocked. LevelScore: {DBManager.levelscore}");
+
+            if (DBManager.LoggedIn)
+            {
+                StartCoroutine(UpdateServerData());
+            }
+        }
+
+        public IEnumerator UpdateServerData()
+        {
+string url = "http://93.81.252.217/unity/update_score_and_levels.php";
+    WWWForm form = new WWWForm();
+    form.AddField("nick", DBManager.nick);
+    form.AddField("levelscore", DBManager.levelscore);
+    form.AddField("colorsortLevels", DBManager.colorsortLevels);
+    form.AddField("connectLevels", DBManager.connectLevels);
+    form.AddField("pipesLevels", DBManager.pipesLevels);
+    form.AddField("infinityscore", DBManager.infinityscore);
+
+    Debug.Log($"Sending to server: nick={DBManager.nick}, levelscore={DBManager.levelscore}, " +
+              $"colorsortLevels={DBManager.colorsortLevels}, connectLevels={DBManager.connectLevels}, " +
+              $"pipesLevels={DBManager.pipesLevels}, infinityscore={DBManager.infinityscore}");
+
+    using (UnityWebRequest www = UnityWebRequest.Post(url, form))
+    {
+        www.certificateHandler = new BypassCertificate();
+        yield return www.SendWebRequest();
+
+        if (www.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Server updated: " + www.downloadHandler.text);
+        }
+        else
+        {
+            Debug.LogError("Error updating server: " + www.error);
+        }
+    }
+        }
+
+        private class BypassCertificate : CertificateHandler
+        {
+            protected override bool ValidateCertificate(byte[] certificateData)
+            {
+                return true; 
+            }
         }
         #endregion
 

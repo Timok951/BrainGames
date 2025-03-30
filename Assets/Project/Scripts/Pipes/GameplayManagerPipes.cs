@@ -23,6 +23,7 @@ namespace Connect.Core
         private Pipe[,] pipes;
         private List<Pipe> startPipes;
 
+        private bool _isDailyChallengeMode;
 
         public static GameplayManagerPipes Instance;
 
@@ -35,15 +36,16 @@ namespace Connect.Core
             _currentLevelData = GameManager.Instance.GetLevelPipes();
             hasGameFinished = false;
             SpawnLevel();
-            if (DailyChallengeManager.Instance != null)
+            _isDailyChallengeMode = DailyChallengeManager.Instance != null;
+
+            if (_isDailyChallengeMode)
             {
                 if (_nextLevelButton != null) _nextLevelButton.SetActive(false);
                 if (_restartButton != null) _restartButton.SetActive(false);
                 if (_backButton != null) _backButton.SetActive(false);
+
                 if (_winText.gameObject != null) _winText.gameObject.SetActive(false);
                 if (_titleText.gameObject != null) _titleText.gameObject.SetActive(false);
-
-
             }
         }
         private void SpawnLevel()
@@ -99,7 +101,7 @@ namespace Connect.Core
                 StartCoroutine(ShowHint());
 
             }
-                        CheckWin();
+            CheckWin();
             CheckFill();
         }
 
@@ -177,6 +179,8 @@ namespace Connect.Core
 
         private void CheckWin()
         {
+            if (hasGameFinished) return;
+
             for (int i = 0; i < _currentLevelData.Row; i++)
             {
                 for (int j = 0; j < _currentLevelData.Col; j++)
@@ -185,11 +189,15 @@ namespace Connect.Core
                 }
             }
             hasGameFinished = true;
-            GameManager.Instance.UnlockLevelPipes();
             _winText.gameObject.SetActive(true);
             hasGameFinished = true;
             Debug.Log("Game has been finished");
-            if (DailyChallengeManager.Instance != null)
+
+            if (!_isDailyChallengeMode)
+            {
+                GameManager.Instance.UnlockLevelPipes();
+            }
+            else if (DailyChallengeManager.Instance != null)
             {
                 DailyChallengeManager.Instance.OnModeCompleted();
             }

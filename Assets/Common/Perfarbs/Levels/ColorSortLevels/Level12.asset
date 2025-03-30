@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelName: Level12
   BackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  TopLeftColor: {r: 0.7254902, g: 0.12156863, b: 0.9411765, a: 1}
-  TopRightColor: {r: 0.29411766, g: 0.2627451, b: 0.6901961, a: 1}
+  TopLeftColor: {r: 0.9411765, g: 0.23921569, b: 0.12156863, a: 1}
+  TopRightColor: {r: 0.4392157, g: 0.3019608, b: 0.2784314, a: 1}
   BottomLeftColor: {r: 0.1882353, g: 0.12156863, b: 0.9411765, a: 1}
   BottomRightColor: {r: 0.5764706, g: 0.2627451, b: 0.6901961, a: 1}
   Row: 8
