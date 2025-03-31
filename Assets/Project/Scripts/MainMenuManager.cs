@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,6 +6,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
 
 namespace Connect.Core
 {
@@ -23,7 +26,8 @@ namespace Connect.Core
         [SerializeField] private GameObject _profilePannel;
         [SerializeField] private GameObject _passwordchangepannel;
         [SerializeField] private GameObject _passwordchangepannelunnokwn;
-
+        private Tween playStartTween;
+        private Tween playNextTween;
 
         [SerializeField] private GameObject _syncPanel;
         [SerializeField] private TMP_Text _syncMessage;
@@ -54,9 +58,14 @@ namespace Connect.Core
         [SerializeField] private TMP_InputField _newPasswordField;
         [SerializeField] private Button _confirmResetButton;
         [SerializeField] private TMP_Text _resetMessageText;
+
+        [SerializeField] public TMP_Text ErrorRegistration;
+
         #endregion
 
         #region START_REGION
+
+        //Awakening
         private void Awake()
         {
             Instance = this;
@@ -78,61 +87,116 @@ namespace Connect.Core
 
         [SerializeField] public Color CurrentColor;
         [SerializeField] private TMP_Text _levelTitleText;
-        [SerializeField] private Image _levelTitleImage;
+        [SerializeField] private UnityEngine.UI.Image _levelTitleImage;
 
-        public void ClickedPlay()
+        //Click playing button
+        public void ClickedPlay(Button button)
         {
-            _titlePanel.SetActive(false);
-            _choosegamescreen.SetActive(true);
-            _levelPanelColorsort.SetActive(false);
-            _levelPanelPipes.SetActive(false);
-            _registerPannel.SetActive(false);
-            _loginPannel.SetActive(false);
-            _leaderboardPannel.SetActive(false);
+            AnimateAndSwitch(button, () =>
+            {
+                _titlePanel.SetActive(false);
+                _levelPanelConnect.SetActive(false);
+                _levelPanelPipes.SetActive(false);
+                _choosegamescreen.SetActive(false);
+                _leaderboardPannel.SetActive(false);
+                _registerPannel.SetActive(false);
+                _passwordchangepannel.SetActive(false);
+                _passwordchangepannelunnokwn.SetActive(false);
+                _AuthorithationPannel.SetActive(false);
+
+                _choosegamescreen.SetActive(true);
+            });
+
         }
 
-        public void ClickedBackToTitle()
+        public void ClickedBackToTitle(Button button)
         {
-            _titlePanel.SetActive(true);
-            _levelPanelConnect.SetActive(false);
-            _choosegamescreen.SetActive(false);
+            AnimateAndSwitch(button, () =>
+            {
+                _titlePanel.SetActive(false);
+                _levelPanelConnect.SetActive(false);
+                _levelPanelPipes.SetActive(false);
+                _choosegamescreen.SetActive(false);
+                _leaderboardPannel.SetActive(false);
+                _registerPannel.SetActive(false);
+                _passwordchangepannel.SetActive(false);
+                _passwordchangepannelunnokwn.SetActive(false);
+                _AuthorithationPannel.SetActive(false);
+                _levelPanelConnect.SetActive(false);
+                _choosegamescreen.SetActive(false);
+
+                _titlePanel.SetActive(true);
+
+            });
         }
 
-        public void ClickedBackToGamemodes()
+        public void ClickedBackToGamemodes(Button button)
         {
-            _titlePanel.SetActive(false);
-            _levelPanelConnect.SetActive(false);
-            _levelPanelColorsort.SetActive(false);
-            _levelPanelPipes.SetActive(false);
-            _choosegamescreen.SetActive(true);
+            AnimateAndSwitch(button, () =>
+            {
+                _titlePanel.SetActive(false);
+                _levelPanelConnect.SetActive(false);
+                _levelPanelPipes.SetActive(false);
+                _choosegamescreen.SetActive(false);
+                _leaderboardPannel.SetActive(false);
+                _registerPannel.SetActive(false);
+                _passwordchangepannel.SetActive(false);
+                _passwordchangepannelunnokwn.SetActive(false);
+                _AuthorithationPannel.SetActive(false);
+                _levelPanelConnect.SetActive(false);
+                _choosegamescreen.SetActive(false);
+
+                _choosegamescreen.SetActive(true);
+            });
         }
 
-        public void ClickedConnect()
+        public void QuitGame(Button button)
         {
-            _titlePanel.SetActive(false);
-            _choosegamescreen.SetActive(false);
-            _levelPanelConnect.SetActive(true);
-            _levelTitleImage.color = CurrentColor;
-            LevelOpened?.Invoke();
+            AnimateAndSwitch(button, () =>
+            {
+                Application.Quit();
+            });
         }
 
-        public void ClickedColorSort()
+        public void ClickedConnect(Button button)
         {
-            _titlePanel.SetActive(false);
-            _choosegamescreen.SetActive(false);
-            _levelPanelColorsort.SetActive(true);
-            _levelTitleImage.color = CurrentColor;
-            LevelOpened?.Invoke();
+            AnimateAndSwitch(button, () =>
+            {
+                _titlePanel.SetActive(false);
+                _choosegamescreen.SetActive(false);
+                _levelPanelConnect.SetActive(true);
+                _levelTitleImage.color = CurrentColor;
+                LevelOpened?.Invoke();
+            });
+
         }
 
-        public void ClickLogin()
+        public void ClickedColorSort(Button button)
         {
-            _titlePanel.SetActive(false);
-            _choosegamescreen.SetActive(false);
-            _levelPanelPipes.SetActive(false);
-            _leaderboardPannel.SetActive(false);
-            _AuthorithationPannel.SetActive(false);
-            _loginPannel.SetActive(true);
+
+            AnimateAndSwitch(button, () =>
+            {
+                _titlePanel.SetActive(false);
+                _choosegamescreen.SetActive(false);
+                _levelPanelColorsort.SetActive(true);
+                _levelTitleImage.color = CurrentColor;
+                LevelOpened?.Invoke();
+            });
+
+        }
+
+        public void ClickLogin(Button button)
+        {
+            AnimateAndSwitch(button, () =>
+            {
+                _titlePanel.SetActive(false);
+                _choosegamescreen.SetActive(false);
+                _levelPanelPipes.SetActive(false);
+                _leaderboardPannel.SetActive(false);
+                _AuthorithationPannel.SetActive(false);
+                _loginPannel.SetActive(true);
+            });
+
         }
 
         private void ClickPasswordChange()
@@ -162,47 +226,68 @@ namespace Connect.Core
             _passwordchangepannelunnokwn.SetActive(false);
         }
 
-        public void CLickProfile()
+        public void CLickProfile(Button button)
         {
-            _titlePanel.SetActive(false);
-            _levelPanelConnect.SetActive(false);
-            _levelPanelColorsort.SetActive(false);
-            _levelPanelPipes.SetActive(false);
-            _choosegamescreen.SetActive(false);
-            _leaderboardPannel.SetActive(false);
-            _AuthorithationPannel.SetActive(false);
-            _registerPannel.SetActive(false);
-            _loginPannel.SetActive(false);
-            _profilePannel.SetActive(true);
-        }
-
-        public void ClickedPipes()
-        {
-            _titlePanel.SetActive(false);
-            _choosegamescreen.SetActive(false);
-            _levelPanelPipes.SetActive(true);
-            _levelTitleImage.color = CurrentColor;
-            LevelOpened?.Invoke();
-        }
-
-        public void ClickedLeaderboard()
-        {
-            _titlePanel.SetActive(false);
-            _choosegamescreen.SetActive(false);
-            _levelPanelPipes.SetActive(false);
-
-            string nick = PlayerPrefs.GetString("Nick", "");
-            string password = PlayerPrefs.GetString("Password", "");
-
-            if (string.IsNullOrEmpty(nick) || string.IsNullOrEmpty(password))
+            AnimateAndSwitch(button, () =>
             {
+                _titlePanel.SetActive(false);
+                _levelPanelConnect.SetActive(false);
+                _levelPanelColorsort.SetActive(false);
+                _levelPanelPipes.SetActive(false);
+                _choosegamescreen.SetActive(false);
                 _leaderboardPannel.SetActive(false);
-                AthorisationEnable();
-            }
-            else
+                _AuthorithationPannel.SetActive(false);
+                _registerPannel.SetActive(false);
+                _loginPannel.SetActive(false);
+                _profilePannel.SetActive(true);
+            });
+        }
+
+        public void ClickedPipes(Button button)
+        {
+            AnimateAndSwitch(button, () =>
             {
-                StartCoroutine(UpdateAndCheckServer(nick, password));
-            }
+                _titlePanel.SetActive(false);
+                _choosegamescreen.SetActive(false);
+                _levelPanelPipes.SetActive(true);
+                _levelTitleImage.color = CurrentColor;
+                LevelOpened?.Invoke();
+            });
+        }
+
+        public void ClickedDailyChallenge(Button button)
+        {
+            AnimateAndSwitch(button, () =>
+            {
+                GameManager.Instance.GoToDailyChallenge();
+            });
+
+
+        }
+
+        public void ClickedLeaderboard(Button button)
+        {
+            AnimateAndSwitch(button, () =>
+            {
+
+
+                _titlePanel.SetActive(false);
+                _choosegamescreen.SetActive(false);
+                _levelPanelPipes.SetActive(false);
+
+                string nick = PlayerPrefs.GetString("Nick", "");
+                string password = PlayerPrefs.GetString("Password", "");
+
+                if (string.IsNullOrEmpty(nick) || string.IsNullOrEmpty(password))
+                {
+                    _leaderboardPannel.SetActive(false);
+                    AthorisationEnable();
+                }
+                else
+                {
+                    StartCoroutine(UpdateAndCheckServer(nick, password));
+                }
+            });
         }
 
         private IEnumerator UpdateAndCheckServer(string nick, string password)
@@ -234,6 +319,7 @@ namespace Connect.Core
 
         public void AthorisationEnable()
         {
+
             _titlePanel.SetActive(false);
             _choosegamescreen.SetActive(false);
             _levelPanelPipes.SetActive(false);
@@ -242,14 +328,18 @@ namespace Connect.Core
             _AuthorithationPannel.SetActive(true);
         }
 
-        public void Registration()
+        public void Registration(Button button)
         {
-            _titlePanel.SetActive(false);
-            _choosegamescreen.SetActive(false);
-            _levelPanelPipes.SetActive(false);
-            _leaderboardPannel.SetActive(false);
-            _registerPannel.SetActive(true);
-            _AuthorithationPannel.SetActive(false);
+            AnimateAndSwitch(button, () =>
+            {
+
+                _titlePanel.SetActive(false);
+                _choosegamescreen.SetActive(false);
+                _levelPanelPipes.SetActive(false);
+                _leaderboardPannel.SetActive(false);
+                _registerPannel.SetActive(true);
+                _AuthorithationPannel.SetActive(false);
+            });
         }
 
         public void Authorisation()
@@ -257,15 +347,19 @@ namespace Connect.Core
             _AuthorithationPannel.SetActive(true);
         }
 
-        public void ClickForgetPassword()
+        public void ClickForgetPassword(Button button)
         {
-            _titlePanel.SetActive(false);
-            _choosegamescreen.SetActive(false);
-            _levelPanelPipes.SetActive(false);
-            _leaderboardPannel.SetActive(false);
-            _registerPannel.SetActive(false);
-            _passwordchangepannelunnokwn.SetActive(true);
-            ChangePasswordUnKnown(); 
+            AnimateAndSwitch(button, () =>
+            {
+                _titlePanel.SetActive(false);
+                _choosegamescreen.SetActive(false);
+                _levelPanelPipes.SetActive(false);
+                _leaderboardPannel.SetActive(false);
+                _registerPannel.SetActive(false);
+                _passwordchangepannelunnokwn.SetActive(true);
+                ChangePasswordUnKnown();
+            });
+
         }
 
         public void ClickChangePassword()
@@ -346,12 +440,12 @@ namespace Connect.Core
                         PlayerPrefs.Save();
 
                         Debug.Log("Data was saved: " + nick + ", " + password + ", " + email);
-                        ClickedLeaderboard();
                         yield return StartCoroutine(Login(nick, password));
                     }
                     else
                     {
                         Debug.Log("Error registration: " + response);
+                        ErrorRegistration.text = response;
                     }
                 }
                 else
@@ -361,9 +455,13 @@ namespace Connect.Core
             }
         }
 
-        public void CallLogin()
+        public void CallLogin(Button button)
         {
-            StartCoroutine(Login(nickfieldlogin.text, passwordfieldlogin.text));
+            AnimateAndSwitch(button, () =>
+            {
+                StartCoroutine(Login(nickfieldlogin.text, passwordfieldlogin.text));
+            });
+
         }
 
         public IEnumerator Login(string nick, string password)
@@ -442,7 +540,6 @@ namespace Connect.Core
                                 else
                                 {
                                     SaveLoginData(loginData);
-                                    ClickedLeaderboard();
                                 }
                             }
                             else
@@ -488,7 +585,6 @@ namespace Connect.Core
             }
             SaveLoginData(loginData);
             _syncPanel.SetActive(false);
-            ClickedLeaderboard();
         }
 
         private void UpdateFromDb(LoginResponse loginData)
@@ -515,7 +611,6 @@ namespace Connect.Core
 
             SaveLoginData(loginData);
             _syncPanel.SetActive(false);
-            ClickedLeaderboard();
         }
 
         private void SaveLoginData(LoginResponse loginData)
@@ -603,7 +698,6 @@ namespace Connect.Core
 
                                 SaveLoginData(loginData);
 
-                                // Синхронизируем GameManager
                                 if (GameManager.Instance != null)
                                 {
                                     GameManager.Instance.CurrentLevelConnect = loginData.connectLevels;
@@ -652,19 +746,22 @@ namespace Connect.Core
             }
         }
 
-        public void ClickLogout()
+        public void ClickLogout(Button button)
         {
-            DBManager.LoggedOut();
-            _titlePanel.SetActive(false);
-            _levelPanelConnect.SetActive(false);
-            _levelPanelColorsort.SetActive(false);
-            _levelPanelPipes.SetActive(false);
-            _choosegamescreen.SetActive(false);
-            _leaderboardPannel.SetActive(false);
-            _AuthorithationPannel.SetActive(false);
-            _registerPannel.SetActive(false);
-            _loginPannel.SetActive(false);
-            _registerPannel.SetActive(true);
+            AnimateAndSwitch(button, () =>
+            {
+                DBManager.LoggedOut();
+                _titlePanel.SetActive(false);
+                _levelPanelConnect.SetActive(false);
+                _levelPanelColorsort.SetActive(false);
+                _levelPanelPipes.SetActive(false);
+                _choosegamescreen.SetActive(false);
+                _leaderboardPannel.SetActive(false);
+                _AuthorithationPannel.SetActive(false);
+                _registerPannel.SetActive(false);
+                _loginPannel.SetActive(false);
+                _registerPannel.SetActive(true);
+            });
         }
 
         private void DisplayLeaderboard(LeaderboardEntry[] entries)
@@ -774,7 +871,11 @@ namespace Connect.Core
                 return;
             }
             Debug.Log($"SendResetCode: Starting reset code request for email: {_emailResetField.text}");
-            StartCoroutine(SendResetCodeCoroutine(_emailResetField.text));
+            AnimateAndSwitch(_sendCodeButton, () =>
+            {
+
+                StartCoroutine(SendResetCodeCoroutine(_emailResetField.text));
+            });
         }
 
         private IEnumerator SendResetCodeCoroutine(string email)
@@ -815,7 +916,7 @@ namespace Connect.Core
                         if (resetResponse.status == "0")
                         {
                             Debug.Log("SendResetCodeCoroutine: Reset code sent successfully, disabling Send button");
-                            _sendCodeButton.interactable = false; // Отключаем кнопку после успешной отправки
+                            _sendCodeButton.interactable = false; 
                         }
                         else
                         {
@@ -838,14 +939,20 @@ namespace Connect.Core
 
         private void ConfirmPasswordReset()
         {
-            if (string.IsNullOrEmpty(_emailResetField.text) ||
+            AnimateAndSwitch(_confirmResetButton, () =>
+            {
+
+                if (string.IsNullOrEmpty(_emailResetField.text) ||
                 string.IsNullOrEmpty(_resetCodeField.text) ||
                 string.IsNullOrEmpty(_newPasswordField.text))
-            {
-                _resetMessageText.text = "Please fill all fields";
-                return;
-            }
-            StartCoroutine(ResetPasswordCoroutine(_emailResetField.text, _resetCodeField.text, _newPasswordField.text));
+                {
+                    _resetMessageText.text = "Please fill all fields";
+                    return;
+                }
+
+
+                StartCoroutine(ResetPasswordCoroutine(_emailResetField.text, _resetCodeField.text, _newPasswordField.text));
+            });
         }
 
         private IEnumerator ResetPasswordCoroutine(string email, string code, string newPassword)
@@ -890,7 +997,6 @@ namespace Connect.Core
                             Debug.Log("ResetPasswordCoroutine: Password updated successfully, saving new password and redirecting to login");
                             PlayerPrefs.SetString("Password", newPassword);
                             PlayerPrefs.Save();
-                            ClickLogin();
                         }
                         else
                         {
@@ -910,7 +1016,38 @@ namespace Connect.Core
                 }
             }
         }
+        #endregion
 
+
+        #region Animations
+
+        public void Animate(GameObject target, System.Action onComplete, float duration = 1f)
+        {
+
+            if (playStartTween != null && playStartTween.IsActive())
+            {
+                playStartTween.Kill();
+            }
+
+            playStartTween = target.transform
+            .DOScale(1.1f, 0.1f)
+            .SetEase(Ease.Linear)
+            .SetLoops(2, LoopType.Yoyo).OnComplete(() => onComplete?.Invoke());
+
+            playStartTween.Play();
+        }
+        
+        private void AnimateAndSwitch(Button button, System.Action switchAction)
+        {
+            if (button != null)
+            {
+                Animate(button.gameObject, switchAction);
+            }
+            else {
+                Debug.LogError("Button is null");
+                switchAction?.Invoke();
+            }
+        }
 
         #endregion
         #endregion
