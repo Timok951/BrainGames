@@ -1,8 +1,12 @@
 using Connect.Common;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
 
 namespace Connect.Core
 {
@@ -18,6 +22,8 @@ namespace Connect.Core
         [SerializeField] private GameObject _backButton;
 
 
+        private Tween playStartTween;
+        private Tween playNextTween;
 
         private bool hasGameFinished;
         private Pipe[,] pipes;
@@ -206,21 +212,59 @@ namespace Connect.Core
 
 
         #region BUTTON_FUNCTIONS
-        public void ClickedBack()
+        public void ClickedBack(UnityEngine.UI.Button button)
         {
-            GameManager.Instance.GoToMainMenu();
+            AnimateAndSwitch(button, () =>
+            {
+                GameManager.Instance.GoToMainMenu();
+            });
         }
 
-        public void ClickedRestart()
+        public void ClickedRestart(Button button)
         {
-            GameManager.Instance.GoToGameplayPipes();
+            AnimateAndSwitch(button, () =>
+            {
+                GameManager.Instance.GoToGameplayPipes();
+            });
         }
 
-        public void ClickedNextLevel()
+        public void ClickedNextLevel(UnityEngine.UI.Button button)
         {
-            if (!hasGameFinished) return;
+            AnimateAndSwitch(button, () =>
+            {
+                if (!hasGameFinished) return;
 
             GameManager.Instance.GoToGameplayPipes();
+        });
+        }
+
+        public void Animate(GameObject target, System.Action onComplete, float duration = 1f)
+        {
+
+            if (playStartTween != null && playStartTween.IsActive())
+            {
+                playStartTween.Kill();
+            }
+
+            playStartTween = target.transform
+            .DOScale(1.1f, 0.1f)
+            .SetEase(Ease.Linear)
+            .SetLoops(2, LoopType.Yoyo).OnComplete(() => onComplete?.Invoke());
+
+            playStartTween.Play();
+        }
+
+        private void AnimateAndSwitch(Button button, System.Action switchAction)
+        {
+            if (button != null)
+            {
+                Animate(button.gameObject, switchAction);
+            }
+            else
+            {
+                Debug.LogError("Button is null");
+                switchAction?.Invoke();
+            }
         }
         #endregion
     }

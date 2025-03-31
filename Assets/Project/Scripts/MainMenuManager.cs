@@ -59,6 +59,9 @@ namespace Connect.Core
         [SerializeField] private Button _confirmResetButton;
         [SerializeField] private TMP_Text _resetMessageText;
 
+        [SerializeField] private TMP_Text _loginerrortext;
+
+
         [SerializeField] public TMP_Text ErrorRegistration;
 
         #endregion
@@ -485,6 +488,7 @@ namespace Connect.Core
                     string response = www.downloadHandler.text;
                     Debug.Log("Login response: " + response);
 
+
                     if (string.IsNullOrEmpty(response))
                     {
                         Debug.LogError("Empty response from server");
@@ -544,11 +548,16 @@ namespace Connect.Core
                                 else
                                 {
                                     SaveLoginData(loginData);
+                                    ClickedLeaderboard(registerbutton);
+
                                 }
+
                             }
                             else
                             {
                                 Debug.Log("Login failed: " + response);
+                                _loginerrortext.text = "Login Failed" + response;
+
                             }
                         }
                         catch (System.Exception e)
@@ -558,6 +567,8 @@ namespace Connect.Core
                     }
                     else
                     {
+                        _loginerrortext.text = "Login Failed" + response;
+
                         Debug.Log("Login failed: " + response);
                     }
                 }
@@ -755,7 +766,7 @@ namespace Connect.Core
             AnimateAndSwitch(button, () =>
             {
                 DBManager.LoggedOut();
-                _titlePanel.SetActive(false);
+                _titlePanel.SetActive(true);
                 _levelPanelConnect.SetActive(false);
                 _levelPanelColorsort.SetActive(false);
                 _levelPanelPipes.SetActive(false);
@@ -765,6 +776,7 @@ namespace Connect.Core
                 _registerPannel.SetActive(false);
                 _loginPannel.SetActive(false);
                 _registerPannel.SetActive(true);
+                _leaderboardPannel.SetActive(true);
             });
         }
 
@@ -789,11 +801,15 @@ namespace Connect.Core
             for (int i = 0; i < entries.Length; i++)
             {
                 GameObject row = Instantiate(_leaderboardRowPrefab, _leaderboardContent);
-                TMP_Text[] texts = row.GetComponentsInChildren<TMP_Text>();
+                row.SetActive(true);
+                TMP_Text[] texts = row.GetComponentsInChildren<TMP_Text>(true);
                 if (texts.Length >= 2)
                 {
+                    texts[0].gameObject.SetActive(true); 
+                    texts[1].gameObject.SetActive(true); 
                     texts[0].text = $"{i + 1}. {entries[i].nick}";
                     texts[1].text = entries[i].totalScore.ToString();
+                    Debug.Log($"Set text: {texts[0].text} | {texts[1].text}");
                 }
             }
         }

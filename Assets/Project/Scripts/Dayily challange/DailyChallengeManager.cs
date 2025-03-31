@@ -1,10 +1,13 @@
 using Connect.Common;
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 namespace Connect.Core
 {
@@ -13,10 +16,13 @@ namespace Connect.Core
         #region variables
         public static DailyChallengeManager Instance;
         [SerializeField] private TMP_Text _timerText;
-        [SerializeField] private TMP_Text _modeText;
         [SerializeField] private TMP_Text _winText;
 
         [SerializeField] private GameObject _challengeUI;
+
+
+        private Tween playStartTween;
+        private Tween playNextTween;
 
         private float _timer;
         private bool _isTimerRunning;
@@ -67,7 +73,6 @@ namespace Connect.Core
             }
 
             if (_timerText == null) Debug.LogError("_timerText is not assigned!");
-            if (_modeText == null) Debug.LogError("_modeText is not assigned!");
             if (_winText == null) Debug.LogError("_winText is not assigned!");
 
         }
@@ -100,15 +105,10 @@ namespace Connect.Core
                         break;
                 }
                 SceneManager.LoadScene(_modSequence[_CurrentModeIndex], LoadSceneMode.Additive);
-                UpdateModeText();
             }
         }
 
-        private void UpdateModeText()
-        {
-            _modeText.text = $"Mode {_CurrentModeIndex +1}/3: {_modSequence[_CurrentModeIndex].Replace("GameplayScene", "")}";
 
-        }
         #endregion
 
         #region Update Methods
@@ -132,7 +132,6 @@ namespace Connect.Core
             if (_CurrentModeIndex < _modSequence.Count)
             {
                 LoadCurrentMode();
-                UpdateModeText();
             }
             else
             {
@@ -204,15 +203,48 @@ namespace Connect.Core
         #endregion
 
         #region BUTTON_FUNCTIONS
-        public void ClickedBack()
+        public void ClickedBack(UnityEngine.UI.Button button)
         {
-            if (!_hasChallengeFinished)
+
+            AnimateAndSwitch(button, () =>
             {
-                _isTimerRunning = false;
-                SceneManager.UnloadSceneAsync(_modSequence[_CurrentModeIndex]);
-            }
-            GameManager.Instance.GoToMainMenu();
+                if (!_hasChallengeFinished)
+                {
+                    _isTimerRunning = false;
+                    SceneManager.UnloadSceneAsync(_modSequence[_CurrentModeIndex]);
+                }
+                GameManager.Instance.GoToMainMenu();
+            });
         }
         #endregion
+
+        public void Animate(GameObject target, System.Action onComplete, float duration = 1f)
+        {
+
+            if (playStartTween != null && playStartTween.IsActive())
+            {
+                playStartTween.Kill();
+            }
+
+            playStartTween = target.transform
+            .DOScale(1.1f, 0.1f)
+            .SetEase(Ease.Linear)
+            .SetLoops(2, LoopType.Yoyo).OnComplete(() => onComplete?.Invoke());
+
+            playStartTween.Play();
+        }
+
+        private void AnimateAndSwitch(UnityEngine.UI.Button button, System.Action switchAction)
+        {
+            if (button != null)
+            {
+                Animate(button.gameObject, switchAction);
+            }
+            else
+            {
+                Debug.LogError("Button is null");
+                switchAction?.Invoke();
+            }
+        }
     }
 }

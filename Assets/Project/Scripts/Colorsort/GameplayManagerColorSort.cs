@@ -7,11 +7,16 @@ using TMPro;
 using Connect.Common;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEditor.UI;
+using UnityEngine.UI;
+using Button = UnityEngine.UI.Button;
 
 namespace Connect.Core
 {
     public class GameplayManagerColorSort : MonoBehaviour
     {
+
+
         #region StartVariables
         public static GameplayManagerColorSort Instance;
         public static int Rows;
@@ -60,6 +65,9 @@ namespace Connect.Core
         public float offsetY;
         private bool _isDailyChallengeMode;
 
+
+        private Tween playStartTween;
+        private Tween playNextTween;
         #region START_METHODS
         private void Awake()
         {
@@ -348,23 +356,63 @@ namespace Connect.Core
 
 
         #region BUTTON_FUNCTIONS
-        public void ClickedBack()
+        public void ClickedBack(Button button)
         {
-            GameManager.Instance.GoToMainMenu();
+            AnimateAndSwitch(button, () =>
+            {
+                GameManager.Instance.GoToMainMenu();
+            });
         }
 
-        public void ClickedRestart()
+        public void ClickedRestart(Button button)
         {
-            GameManager.Instance.GoToGameplayColorSort();
+            AnimateAndSwitch(button, () =>
+            {
+                GameManager.Instance.GoToGameplayColorSort();
+            });
         }
 
-        public void ClickedNextLevel()
+        public void ClickedNextLevel(Button button)
         {
             if (!hasGameFinished) return;
 
-            GameManager.Instance.GoToGameplayColorSort();
+            AnimateAndSwitch(button, () =>
+            {
+                GameManager.Instance.GoToGameplayColorSort();
+            });
+        }
+
+        public void Animate(GameObject target, System.Action onComplete, float duration = 1f)
+        {
+
+            if (playStartTween != null && playStartTween.IsActive())
+            {
+                playStartTween.Kill();
+            }
+
+            playStartTween = target.transform
+            .DOScale(1.1f, 0.1f)
+            .SetEase(Ease.Linear)
+            .SetLoops(2, LoopType.Yoyo).OnComplete(() => onComplete?.Invoke());
+
+            playStartTween.Play();
+        }
+
+        private void AnimateAndSwitch(Button button, System.Action switchAction)
+        {
+            if (button != null)
+            {
+                Animate(button.gameObject, switchAction);
+            }
+            else
+            {
+                Debug.LogError("Button is null");
+                switchAction?.Invoke();
+            }
         }
         #endregion
+
+
     }
 
 }
