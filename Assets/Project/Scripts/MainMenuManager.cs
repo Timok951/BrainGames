@@ -548,6 +548,7 @@ namespace Connect.Core
                                 else
                                 {
                                     SaveLoginData(loginData);
+                                    _loginPannel.gameObject.SetActive(false);
                                     ClickedLeaderboard(registerbutton);
 
                                 }
@@ -775,8 +776,8 @@ namespace Connect.Core
                 _AuthorithationPannel.SetActive(false);
                 _registerPannel.SetActive(false);
                 _loginPannel.SetActive(false);
-                _registerPannel.SetActive(true);
-                _leaderboardPannel.SetActive(true);
+                _registerPannel.SetActive(false);
+                _leaderboardPannel.SetActive(false);
             });
         }
 

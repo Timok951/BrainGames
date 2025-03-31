@@ -74,12 +74,22 @@ namespace Connect.Core
 
             if (_timerText == null) Debug.LogError("_timerText is not assigned!");
             if (_winText == null) Debug.LogError("_winText is not assigned!");
+            Debug.Log("Daily challenge awake");
 
         }
         private void Start()
         {
-            //ResetChallenge();
-            StartChallenge();
+            ResetChallenge();
+            if (IschallengeAvailable())
+            {
+                StartChallenge();
+            }
+            else
+            {
+                Debug.Log("Daily Challenge is not available today. Returning to Main Menu.");
+                
+                GameManager.Instance.GoToMainMenu();
+            }
         }
 
         private void StartChallenge()
@@ -160,6 +170,9 @@ namespace Connect.Core
             _winText.gameObject.SetActive(true); 
             _winText.text = $"Challenge Completed!\nTime: {Mathf.Floor(_timer / 60):00}:{Mathf.Floor(_timer % 60):00}\nScore: {dailyScore}";
             PlayerPrefs.SetString(LastDailyChallengeDateKey, DateTime.Now.ToString("yyyy-MM-dd"));
+            PlayerPrefs.Save();
+            Invoke(nameof(ReturnToMainMenu), 2f);
+
         }
 
         private int CalculateDailyScore(float timeTaken)
@@ -171,6 +184,7 @@ namespace Connect.Core
 
         private void ReturnToMainMenu()
         {
+            Debug.Log(LastDailyChallengeDateKey + DateTime.Now.ToString("yyyy-MM-dd"));
             GameManager.Instance.GoToMainMenu();
         }
         #endregion
@@ -179,14 +193,32 @@ namespace Connect.Core
         private bool IschallengeAvailable()
         {
             string lastDateStr = PlayerPrefs.GetString(LastDailyChallengeDateKey, "");
-            if(string.IsNullOrEmpty(lastDateStr))
+
+
+            if (string.IsNullOrEmpty(lastDateStr))
             {
+                Debug.Log("No previous challenge date found. Challenge is available.");
                 return true;
             }
-            DateTime lastDate = DateTime.ParseExact(lastDateStr, "yyy-MM-dd", null);
-            DateTime today = DateTime.Now.Date;
 
-            return today > lastDate;
+            try
+            {
+                DateTime lastDate = DateTime.ParseExact(lastDateStr, "yyyy-MM-dd", null);
+                DateTime today = DateTime.Now.Date;
+                Debug.Log($"Last challenge date: {lastDate}, Today: {today}");
+                return today > lastDate;
+            }
+            catch (FormatException e)
+            {
+                Debug.LogError($"Failed to parse date '{lastDateStr}': {e.Message}. Resetting date.");
+                PlayerPrefs.DeleteKey(LastDailyChallengeDateKey);
+                PlayerPrefs.Save();
+                return true;
+            }
+
+
+
+
         }
 
         #endregion

@@ -79,14 +79,12 @@ namespace Connect.Core {
 
             float boardScaleFactor = 1.1f;
 
-            var board = Instantiate(_boardPrefab,
-                new Vector3(BoardSize / 2f, BoardSize / 2f, 0f),
-                Quaternion.identity);
+            var board = Instantiate(_boardPrefab, Vector3.zero, Quaternion.identity);
 
             board.size = new Vector2(BoardSize, BoardSize);
             //boardoffset
-            float startX = (BoardSize - totalCellSize * currentLevelSize) / 2f + totalCellSize / 2f;
-            float startY = (BoardSize - totalCellSize * currentLevelSize) / 2f + totalCellSize / 2f;
+            float startX = -BoardSize  / 2f + totalCellSize / 2f;
+            float startY = -BoardSize / 2f + totalCellSize / 2f;
 
             //spawning cells
             for (int i = 0; i < currentLevelSize; i++)
@@ -103,10 +101,36 @@ namespace Connect.Core {
             Camera.main.orthographicSize = (BoardSize * boardScaleFactor) / 2f + 1f;
             Camera.main.transform.position = new Vector3(BoardSize / 2f, BoardSize / 2f, -10f);
 
-            _clickHighlight.size = new Vector2(currentLevelSize / 4f, currentLevelSize / 4f);
+            _clickHighlight.size = new Vector2(totalCellSize, totalCellSize);
             _clickHighlight.transform.position = Vector3.zero;
             _clickHighlight.gameObject.SetActive(false);
+            AdjustCameraToFitBoard(currentLevelSize);
 
+        }
+
+        private void AdjustCameraToFitBoard(int currentLevelSize)
+        {
+            float totalCellSize = _cellSize + _cellSpacing;
+            float boardWidth = currentLevelSize * totalCellSize;
+            float boardHeight = currentLevelSize * totalCellSize;
+
+            float screenAspect = (float)Screen.width / Screen.height;
+            float boardAspect = boardWidth / boardHeight; 
+
+            float orthoSize;
+            float padding = 1f; 
+            if (screenAspect > boardAspect)
+            {
+                orthoSize = (boardHeight / 2f) + padding;
+            }
+            else
+            {
+                orthoSize = (boardWidth / (2f * screenAspect)) + padding / screenAspect;
+            }
+
+            Camera.main.orthographicSize = orthoSize;
+
+            Camera.main.transform.position = new Vector3(0f, 0f, -10f);
         }
 
 
@@ -131,11 +155,14 @@ namespace Connect.Core {
             Vector3 spawnPos;
 
             //Spawning nodes for evry cell
+
+            float startX = -BoardSize / 2f + totalCellSize / 2f;
+            float startY = -BoardSize / 2f + totalCellSize / 2f;
             for (int i = 0; i < currentLevelSize; i++)
             {
                 for (int j = 0; j < currentLevelSize; j++)
                 {
-                    spawnPos = new Vector3(i * totalCellSize + totalCellSize / 2f, j * totalCellSize + totalCellSize / 2f, 0f);
+                    spawnPos = new Vector3(startX + i * totalCellSize, startY+ j * totalCellSize, 0f);
                     spawnedNode = Instantiate(_nodePrefab, spawnPos, Quaternion.identity);
                     spawnedNode.transform.localScale = Vector3.one * _cellSize;
 
@@ -272,7 +299,8 @@ namespace Connect.Core {
 
         private bool IsWithinBoardBounds(Vector2Int position)
         {
-            return position.x >= 0 && position.x < BoardSize && position.y >= 0 && position.y < BoardSize;
+            int currentLevelSize = Mathf.Min(GameManager.Instance.CurrentLevelConnect + 4, levelmaxsize);
+            return position.x >= 0 && position.x < currentLevelSize && position.y >= 0 && position.y < currentLevelSize;
         }
         #endregion
 

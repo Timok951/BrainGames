@@ -114,6 +114,8 @@ namespace Connect.Core
                 if (_winText.gameObject != null) _winText.gameObject.SetActive(false);
                 if (_levelText.gameObject != null) _levelText.gameObject.SetActive(false);
                 if (_movesText.gameObject != null) _movesText.gameObject.SetActive(false);
+                if (_bestText.gameObject != null) _movesText.gameObject.SetActive(false);
+
 
             }
         }
