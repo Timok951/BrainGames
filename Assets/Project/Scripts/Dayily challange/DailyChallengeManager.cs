@@ -172,6 +172,7 @@ namespace Connect.Core
             PlayerPrefs.SetString(LastDailyChallengeDateKey, DateTime.Now.ToString("yyyy-MM-dd"));
             PlayerPrefs.Save();
             Invoke(nameof(ReturnToMainMenu), 2f);
+            Debug.Log("game has finished");
 
         }
 
@@ -244,8 +245,11 @@ namespace Connect.Core
                 {
                     _isTimerRunning = false;
                     SceneManager.UnloadSceneAsync(_modSequence[_CurrentModeIndex]);
+                    CompleteChallenge();
                 }
+                ReturnToMainMenu();
                 GameManager.Instance.GoToMainMenu();
+
             });
         }
         #endregion
