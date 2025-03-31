@@ -37,6 +37,7 @@ namespace Connect.Core
         #region START_METHODS
         private void Awake()
         {
+
             _winText.gameObject.SetActive(false);
             Instance = this;
             _currentLevelData = GameManager.Instance.GetLevelPipes();

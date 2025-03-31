@@ -14,17 +14,16 @@ namespace Connect.Core
         #region START_METHOD
         private void Awake()
         {
-            if (Instance == null)
-            {
-                Instance = this;
-                Init();
-                DontDestroyOnLoad(gameObject);
-                return;
-            }
-            else
+            if (Instance != null && Instance != this)
             {
                 Destroy(gameObject);
+                Debug.Log("Gameobject was destroyed");
+                return;
             }
+
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            Init();
         }
 
 
@@ -34,6 +33,7 @@ namespace Connect.Core
             CurrentLevelColorsort = PlayerPrefs.GetInt("ColorsortLevels", 1);
             CurrentLevelPipes = PlayerPrefs.GetInt("PipesLevels", 1);
 
+           
             DBManager.levelscore = PlayerPrefs.GetInt("LevelScore", 0);
 
             LevelsConnect = new Dictionary<string, LevelData>();
