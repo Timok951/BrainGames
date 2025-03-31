@@ -124,6 +124,10 @@ namespace Connect.Core
                 _AuthorithationPannel.SetActive(false);
                 _levelPanelConnect.SetActive(false);
                 _choosegamescreen.SetActive(false);
+                _loginPannel.SetActive(false);
+                _passwordchangepannelunnokwn.SetActive(false);
+                _leaderboardPannel.SetActive(false) ;
+                _levelPanelColorsort.SetActive(false);
 
                 _titlePanel.SetActive(true);
 
