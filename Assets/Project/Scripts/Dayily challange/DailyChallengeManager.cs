@@ -168,6 +168,7 @@ namespace Connect.Core
                 }
             }
             _winText.gameObject.SetActive(true); 
+
             _winText.text = $"Challenge Completed!\nTime: {Mathf.Floor(_timer / 60):00}:{Mathf.Floor(_timer % 60):00}\nScore: {dailyScore}";
             PlayerPrefs.SetString(LastDailyChallengeDateKey, DateTime.Now.ToString("yyyy-MM-dd"));
             PlayerPrefs.Save();
@@ -245,10 +246,12 @@ namespace Connect.Core
                 {
                     _isTimerRunning = false;
                     SceneManager.UnloadSceneAsync(_modSequence[_CurrentModeIndex]);
-                    CompleteChallenge();
+
                 }
-                ReturnToMainMenu();
-                GameManager.Instance.GoToMainMenu();
+                PlayerPrefs.SetString(LastDailyChallengeDateKey, DateTime.Now.ToString("yyyy-MM-dd"));
+                PlayerPrefs.Save();
+                Invoke(nameof(ReturnToMainMenu), 2f);
+                Debug.Log("game has finished");
 
             });
         }

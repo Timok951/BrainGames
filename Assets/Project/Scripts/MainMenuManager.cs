@@ -81,6 +81,7 @@ namespace Connect.Core
             _passwordchangepannel.SetActive(false);
             _passwordchangepannelunnokwn.SetActive(false);
             _AuthorithationPannel.SetActive(false);
+            
         }
         #endregion
 
