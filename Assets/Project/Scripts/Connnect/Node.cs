@@ -4,6 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+///<summary>
+///Node for spawning in connect level
+/// </summary>
 namespace Connect.Core
 {
     public class Node : MonoBehaviour

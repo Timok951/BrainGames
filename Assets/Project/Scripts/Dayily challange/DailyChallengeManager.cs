@@ -10,7 +10,11 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 namespace Connect.Core
-{
+{ ///<summary> 
+  ///Class for daily challenge and base logic
+  ///</summary>
+
+
     public class DailyChallengeManager : MonoBehaviour
     {
         #region variables
@@ -43,7 +47,7 @@ namespace Connect.Core
             "GameplayConnect"
         };
 
-        private const int MAX_DAILY_SCORE = 5000; 
+        private const int MAX_DAILY_SCORE = 500; 
         private const float MAX_TIME = 180f;
 
         private const string LastDailyChallengeDateKey = "LastDailyChallengeDate";
@@ -53,6 +57,7 @@ namespace Connect.Core
         #region START_METHODS
         private void Awake()
         {
+            ResetChallenge();
             Instance = this;
             _winText.gameObject.SetActive(false);
             _hasChallengeFinished = false;
@@ -79,7 +84,6 @@ namespace Connect.Core
         }
         private void Start()
         {
-            ResetChallenge();
             if (IschallengeAvailable())
             {
                 StartChallenge();
@@ -250,7 +254,7 @@ namespace Connect.Core
                 }
                 PlayerPrefs.SetString(LastDailyChallengeDateKey, DateTime.Now.ToString("yyyy-MM-dd"));
                 PlayerPrefs.Save();
-                Invoke(nameof(ReturnToMainMenu), 2f);
+                Invoke(nameof(ReturnToMainMenu), 10f);
                 Debug.Log("game has finished");
 
             });

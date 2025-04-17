@@ -1,3 +1,4 @@
+using Assets.Project.Scripts;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,10 +8,18 @@ using UnityEngine.Events;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using Newtonsoft.Json;
 using Button = UnityEngine.UI.Button;
+using Assets.Project.Scripts.Database;
+using System.Linq;
 
 namespace Connect.Core
 {
+    /*<summary>
+     * Class for working with main menu, also contains methods to work with database
+     * <summary> */
+
+
     public class MainMenuManager : MonoBehaviour
     {
         #region START_VARIABLES
@@ -26,8 +35,7 @@ namespace Connect.Core
         [SerializeField] private GameObject _profilePannel;
         [SerializeField] private GameObject _passwordchangepannel;
         [SerializeField] private GameObject _passwordchangepannelunnokwn;
-        private Tween playStartTween;
-        private Tween playNextTween;
+
 
         [SerializeField] private GameObject _syncPanel;
         [SerializeField] private TMP_Text _syncMessage;
@@ -60,28 +68,44 @@ namespace Connect.Core
         [SerializeField] private TMP_Text _resetMessageText;
 
         [SerializeField] private TMP_Text _loginerrortext;
+        [SerializeField] private TMP_Text _registererrortext;
+        [SerializeField] private TMP_Text _yourdatatext;
 
 
-        [SerializeField] public TMP_Text ErrorRegistration;
+
 
         #endregion
 
         #region START_REGION
+        AnimationDotWeen AnimationDotWeen = new AnimationDotWeen();
 
         //Awakening
         private void Awake()
         {
+
             Instance = this;
-            _titlePanel.SetActive(true);
+            MainMenuShow();
+            
+        }
+
+        private void MainMenuShow()
+        {
+            _titlePanel.SetActive(false);
             _levelPanelConnect.SetActive(false);
             _levelPanelPipes.SetActive(false);
             _choosegamescreen.SetActive(false);
             _leaderboardPannel.SetActive(false);
             _registerPannel.SetActive(false);
-            _passwordchangepannel.SetActive(false);
             _passwordchangepannelunnokwn.SetActive(false);
             _AuthorithationPannel.SetActive(false);
-            
+            _levelPanelConnect.SetActive(false);
+            _choosegamescreen.SetActive(false);
+            _loginPannel.SetActive(false);
+            _passwordchangepannelunnokwn.SetActive(false);
+            _leaderboardPannel.SetActive(false);
+            _levelPanelColorsort.SetActive(false);
+
+            _titlePanel.SetActive(true);
         }
         #endregion
 
@@ -96,51 +120,34 @@ namespace Connect.Core
         //Click playing button
         public void ClickedPlay(Button button)
         {
-            AnimateAndSwitch(button, () =>
+
+            Debug.Log($"ClickedPlay called. Button: {(button != null ? button.name : "null")}");
+            Debug.Log($"_titlePanel: {(_titlePanel != null ? _titlePanel.name : "null")}");
+            Debug.Log($"_choosegamescreen: {(_choosegamescreen != null ? _choosegamescreen.name : "null")}");
+            AnimationDotWeen.AnimateAndSwitch(button, () =>
             {
                 _titlePanel.SetActive(false);
-                _levelPanelConnect.SetActive(false);
-                _levelPanelPipes.SetActive(false);
-                _choosegamescreen.SetActive(false);
-                _leaderboardPannel.SetActive(false);
-                _registerPannel.SetActive(false);
-                _passwordchangepannel.SetActive(false);
-                _passwordchangepannelunnokwn.SetActive(false);
-                _AuthorithationPannel.SetActive(false);
 
                 _choosegamescreen.SetActive(true);
             });
 
         }
 
+        //Click back to title
         public void ClickedBackToTitle(Button button)
         {
-            AnimateAndSwitch(button, () =>
+            AnimationDotWeen.AnimateAndSwitch(button, () =>
             {
-                _titlePanel.SetActive(false);
-                _levelPanelConnect.SetActive(false);
-                _levelPanelPipes.SetActive(false);
-                _choosegamescreen.SetActive(false);
-                _leaderboardPannel.SetActive(false);
-                _registerPannel.SetActive(false);
-                _passwordchangepannel.SetActive(false);
-                _passwordchangepannelunnokwn.SetActive(false);
-                _AuthorithationPannel.SetActive(false);
-                _levelPanelConnect.SetActive(false);
-                _choosegamescreen.SetActive(false);
-                _loginPannel.SetActive(false);
-                _passwordchangepannelunnokwn.SetActive(false);
-                _leaderboardPannel.SetActive(false) ;
-                _levelPanelColorsort.SetActive(false);
 
-                _titlePanel.SetActive(true);
+                MainMenuShow();
 
             });
         }
 
+        //Click to gamemodes
         public void ClickedBackToGamemodes(Button button)
         {
-            AnimateAndSwitch(button, () =>
+            AnimationDotWeen.AnimateAndSwitch(button, () =>
             {
                 _titlePanel.SetActive(false);
                 _levelPanelConnect.SetActive(false);
@@ -158,17 +165,19 @@ namespace Connect.Core
             });
         }
 
+        //Click QuitGame
         public void QuitGame(Button button)
         {
-            AnimateAndSwitch(button, () =>
+            AnimationDotWeen.AnimateAndSwitch(button, () =>
             {
                 Application.Quit();
             });
         }
 
+        //Game Connect
         public void ClickedConnect(Button button)
         {
-            AnimateAndSwitch(button, () =>
+            AnimationDotWeen.AnimateAndSwitch(button, () =>
             {
                 _titlePanel.SetActive(false);
                 _choosegamescreen.SetActive(false);
@@ -179,10 +188,11 @@ namespace Connect.Core
 
         }
 
+        //Game colorsort
         public void ClickedColorSort(Button button)
         {
 
-            AnimateAndSwitch(button, () =>
+            AnimationDotWeen.AnimateAndSwitch(button, () =>
             {
                 _titlePanel.SetActive(false);
                 _choosegamescreen.SetActive(false);
@@ -193,9 +203,10 @@ namespace Connect.Core
 
         }
 
+        //Login Button
         public void ClickLogin(Button button)
         {
-            AnimateAndSwitch(button, () =>
+            AnimationDotWeen.AnimateAndSwitch(button, () =>
             {
                 _titlePanel.SetActive(false);
                 _choosegamescreen.SetActive(false);
@@ -207,19 +218,9 @@ namespace Connect.Core
 
         }
 
-        private void ClickPasswordChange()
-        {
-            _titlePanel.SetActive(false);
-            _levelPanelConnect.SetActive(false);
-            _levelPanelColorsort.SetActive(false);
-            _levelPanelPipes.SetActive(false);
-            _choosegamescreen.SetActive(false);
-            _leaderboardPannel.SetActive(false);
-            _AuthorithationPannel.SetActive(false);
-            _registerPannel.SetActive(false);
-            _loginPannel.SetActive(false);
-        }
 
+
+        //Password Forgot
         private void ClickForgotPassword()
         {
             _titlePanel.SetActive(false);
@@ -234,9 +235,10 @@ namespace Connect.Core
             _passwordchangepannelunnokwn.SetActive(false);
         }
 
+        //Profile Click
         public void CLickProfile(Button button)
         {
-            AnimateAndSwitch(button, () =>
+            AnimationDotWeen.AnimateAndSwitch(button, () =>
             {
                 _titlePanel.SetActive(false);
                 _levelPanelConnect.SetActive(false);
@@ -251,9 +253,10 @@ namespace Connect.Core
             });
         }
 
+        //Pipes game
         public void ClickedPipes(Button button)
         {
-            AnimateAndSwitch(button, () =>
+            AnimationDotWeen.AnimateAndSwitch(button, () =>
             {
                 _titlePanel.SetActive(false);
                 _choosegamescreen.SetActive(false);
@@ -263,9 +266,10 @@ namespace Connect.Core
             });
         }
 
+        //Daily Challenge start
         public void ClickedDailyChallenge(Button button)
         {
-            AnimateAndSwitch(button, () =>
+            AnimationDotWeen.AnimateAndSwitch(button, () =>
             {
                 GameManager.Instance.GoToDailyChallenge();
             });
@@ -273,9 +277,10 @@ namespace Connect.Core
 
         }
 
+        //Leaderboard show
         public void ClickedLeaderboard(Button button)
         {
-            AnimateAndSwitch(button, () =>
+            AnimationDotWeen.AnimateAndSwitch(button, () =>
             {
 
 
@@ -298,6 +303,7 @@ namespace Connect.Core
             });
         }
 
+        //Update server data
         private IEnumerator UpdateAndCheckServer(string nick, string password)
         {
             if (GameManager.Instance != null)
@@ -325,6 +331,8 @@ namespace Connect.Core
             StartCoroutine(FetchLeaderboard()); 
         }
 
+
+        //Authorise pannel show
         public void AthorisationEnable()
         {
 
@@ -336,9 +344,10 @@ namespace Connect.Core
             _AuthorithationPannel.SetActive(true);
         }
 
+        //Registration Show
         public void Registration(Button button)
         {
-            AnimateAndSwitch(button, () =>
+            AnimationDotWeen.AnimateAndSwitch(button, () =>
             {
 
                 _titlePanel.SetActive(false);
@@ -350,14 +359,16 @@ namespace Connect.Core
             });
         }
 
+        //Athorisation button click
         public void Authorisation()
         {
             _AuthorithationPannel.SetActive(true);
         }
 
+        //Forget password forget
         public void ClickForgetPassword(Button button)
         {
-            AnimateAndSwitch(button, () =>
+            AnimationDotWeen.AnimateAndSwitch(button, () =>
             {
                 _titlePanel.SetActive(false);
                 _choosegamescreen.SetActive(false);
@@ -370,6 +381,7 @@ namespace Connect.Core
 
         }
 
+        //Click Change Password
         public void ClickChangePassword()
         {
             _titlePanel.SetActive(false);
@@ -382,46 +394,35 @@ namespace Connect.Core
         #endregion
 
         #region DATABASE_WORK
-        [System.Serializable]
-        private class LoginResponse
-        {
-            public string status;
-            public string nick;
-            public string email;
-            public int infinityscore;
-            public int colorsortLevels;
-            public int levelscore;
-            public int connectLevels;
-            public int pipesLevels;
-        }
 
-        [System.Serializable]
-        private class LeaderboardEntry
-        {
-            public string nick;
-            public int totalScore;
-        }
-
-        [System.Serializable]
-        private class LeaderboardResponse
-        {
-            public string status;
-            public LeaderboardEntry[] leaderboard;
-        }
-
-
-        [System.Serializable]
-        private class ResetResponse
-        {
-            public string status;
-            public string message;
-        }
-
+        //Registration called
         public void CallRegister()
         {
             StartCoroutine(Register(nickfield.text, passwordfield.text, emailfield.text));
         }
 
+        //Clearplayerprefs
+        private void ClearLevelPrefs()
+        {
+            PlayerPrefs.DeleteKey("LevelScore");
+            PlayerPrefs.DeleteKey("InfinityScore");
+            PlayerPrefs.DeleteKey("ColorsortLevels");
+            PlayerPrefs.DeleteKey("ConnectLevels");
+            PlayerPrefs.DeleteKey("PipesLevels");
+
+
+            for (int i = 1; i <= 100; i++)
+            {
+                PlayerPrefs.DeleteKey("Level" + i + "Connect");
+                PlayerPrefs.DeleteKey("Level" + i + "Colorsort");
+                PlayerPrefs.DeleteKey("Level" + i + "Pipes");
+            }
+
+            PlayerPrefs.Save();
+            Debug.Log("Cleared all level-related PlayerPrefs");
+        }
+
+        //Register method 
         IEnumerator Register(string nick, string password, string email)
         {
             string url = "http://93.81.252.217/unity/register.php";
@@ -429,6 +430,8 @@ namespace Connect.Core
             form.AddField("nick", nick);
             form.AddField("password", password);
             form.AddField("email", email);
+            ClearLevelPrefs();
+
 
             using (UnityWebRequest www = UnityWebRequest.Post(url, form))
             {
@@ -445,15 +448,26 @@ namespace Connect.Core
                         PlayerPrefs.SetString("Nick", nick);
                         PlayerPrefs.SetString("Password", password);
                         PlayerPrefs.SetString("Email", email);
+
+                        PlayerPrefs.SetInt("LevelScore", 1);
+                        DBManager.levelscore = 1;
+
+                        PlayerPrefs.SetInt("InfinityScore", 0);
+                        PlayerPrefs.SetInt("ColorsortLevels", 0);
+                        PlayerPrefs.SetInt("ConnectLevels", 0);
+                        PlayerPrefs.SetInt("PipesLevels", 0);
+
                         PlayerPrefs.Save();
+
 
                         Debug.Log("Data was saved: " + nick + ", " + password + ", " + email);
                         yield return StartCoroutine(Login(nick, password));
+                        _registerPannel.gameObject.SetActive(false);
                     }
                     else
                     {
                         Debug.Log("Error registration: " + response);
-                        ErrorRegistration.text = response;
+                        _registererrortext.text = response;
                     }
                 }
                 else
@@ -463,15 +477,16 @@ namespace Connect.Core
             }
         }
 
+        //Login called
         public void CallLogin(Button button)
         {
-            AnimateAndSwitch(button, () =>
+            AnimationDotWeen.AnimateAndSwitch(button, () =>
             {
                 StartCoroutine(Login(nickfieldlogin.text, passwordfieldlogin.text));
             });
-
         }
 
+        //Login method
         public IEnumerator Login(string nick, string password)
         {
             string url = "http://93.81.252.217/unity/login.php";
@@ -489,7 +504,6 @@ namespace Connect.Core
                     string response = www.downloadHandler.text;
                     Debug.Log("Login response: " + response);
 
-
                     if (string.IsNullOrEmpty(response))
                     {
                         Debug.LogError("Empty response from server");
@@ -500,49 +514,56 @@ namespace Connect.Core
                     {
                         try
                         {
-                            LoginResponse loginData = JsonUtility.FromJson<LoginResponse>(response);
-                            if (loginData.status == "0")
+                            LoginResponse loginData = JsonConvert.DeserializeObject<LoginResponse>(response);
+                            if (loginData == null)
                             {
-                                DBManager.nick = loginData.nick;
-                                DBManager.email = loginData.email;
-                                DBManager.infinityscore = loginData.infinityscore;
-                                DBManager.colorsortLevels = loginData.colorsortLevels;
-                                DBManager.connectLevels = loginData.connectLevels;
-                                DBManager.pipesLevels = loginData.pipesLevels;
-                                DBManager.levelscore = loginData.levelscore;
+                                Debug.LogError("Deserialization returned null");
+                                _loginerrortext.text = "Error processing response";
+                                yield break;
+                            }
 
-                                PlayerPrefs.SetString("Nick", loginData.nick);
+                            if (loginData.Status == "0")
+                            {
+                                DBManager.nick = loginData.Nick;
+                                DBManager.email = loginData.Email;
+                                DBManager.infinityscore = loginData.InfinityScore;
+                                DBManager.colorsortLevels = loginData.ColorsortLevels;
+                                DBManager.connectLevels = loginData.ConnectLevels;
+                                DBManager.pipesLevels = loginData.PipesLevels;
+                                DBManager.levelscore = loginData.LevelScore;
+
+                                PlayerPrefs.SetString("Nick", loginData.Nick);
                                 PlayerPrefs.SetString("Password", password);
-                                PlayerPrefs.SetString("Email", loginData.email);
-                                PlayerPrefs.SetInt("InfinityScore", loginData.infinityscore);
-                                PlayerPrefs.SetInt("LevelScore", loginData.levelscore);
-                                PlayerPrefs.SetInt("ColorsortLevels", loginData.colorsortLevels);
-                                PlayerPrefs.SetInt("ConnectLevels", loginData.connectLevels);
-                                PlayerPrefs.SetInt("PipesLevels", loginData.pipesLevels);
+                                PlayerPrefs.SetString("Email", loginData.Email);
+                                PlayerPrefs.SetInt("InfinityScore", loginData.InfinityScore);
+                                PlayerPrefs.SetInt("LevelScore", loginData.LevelScore);
+                                PlayerPrefs.SetInt("ColorsortLevels", loginData.ColorsortLevels);
+                                PlayerPrefs.SetInt("ConnectLevels", loginData.ConnectLevels);
+                                PlayerPrefs.SetInt("PipesLevels", loginData.PipesLevels);
 
-                                for (int i = 1; i <= loginData.connectLevels; i++)
+                                for (int i = 1; i <= loginData.ConnectLevels; i++)
                                     PlayerPrefs.SetInt("Level" + i + "Connect", 1);
-                                for (int i = 1; i <= loginData.colorsortLevels; i++)
+                                for (int i = 1; i <= loginData.ColorsortLevels; i++)
                                     PlayerPrefs.SetInt("Level" + i + "Colorsort", 1);
-                                for (int i = 1; i <= loginData.pipesLevels; i++)
+                                for (int i = 1; i <= loginData.PipesLevels; i++)
                                     PlayerPrefs.SetInt("Level" + i + "Pipes", 1);
 
                                 PlayerPrefs.Save();
 
                                 if (GameManager.Instance != null)
                                 {
-                                    GameManager.Instance.CurrentLevelConnect = loginData.connectLevels;
-                                    GameManager.Instance.CurrentLevelColorsort = loginData.colorsortLevels;
-                                    GameManager.Instance.CurrentLevelPipes = loginData.pipesLevels;
+                                    GameManager.Instance.CurrentLevelConnect = loginData.ConnectLevels;
+                                    GameManager.Instance.CurrentLevelColorsort = loginData.ColorsortLevels;
+                                    GameManager.Instance.CurrentLevelPipes = loginData.PipesLevels;
                                 }
 
                                 int localColorsortLevels = PlayerPrefs.GetInt("ColorsortLevels", 0);
                                 int localConnectLevels = PlayerPrefs.GetInt("ConnectLevels", 0);
                                 int localPipesLevels = PlayerPrefs.GetInt("PipesLevels", 0);
 
-                                if (localColorsortLevels != loginData.colorsortLevels ||
-                                    localConnectLevels != loginData.connectLevels ||
-                                    localPipesLevels != loginData.pipesLevels)
+                                if (localColorsortLevels != loginData.ColorsortLevels ||
+                                    localConnectLevels != loginData.ConnectLevels ||
+                                    localPipesLevels != loginData.PipesLevels)
                                 {
                                     ShowSyncPanel(loginData, localColorsortLevels, localConnectLevels, localPipesLevels);
                                 }
@@ -551,26 +572,24 @@ namespace Connect.Core
                                     SaveLoginData(loginData);
                                     _loginPannel.gameObject.SetActive(false);
                                     ClickedLeaderboard(registerbutton);
-
+                                    _yourdatatext.text = "Your login" + loginData.Nick + " Your score in score in infinity mode " + loginData.InfinityScore + " Your score in levels " + loginData.LevelScore;
                                 }
-
                             }
                             else
                             {
                                 Debug.Log("Login failed: " + response);
-                                _loginerrortext.text = "Login Failed" + response;
-
+                                _loginerrortext.text = "Login Failed: " + loginData.Status;
                             }
                         }
-                        catch (System.Exception e)
+                        catch (JsonException e)
                         {
-                            Debug.LogError("JSON parse error: " + e.Message);
+                            Debug.LogError($"JSON parse error: {e.Message}. Raw response: {response}");
+                            _loginerrortext.text = "Error processing response";
                         }
                     }
                     else
                     {
-                        _loginerrortext.text = "Login Failed" + response;
-
+                        _loginerrortext.text = "Login Failed: " + response;
                         Debug.Log("Login failed: " + response);
                     }
                 }
@@ -581,6 +600,7 @@ namespace Connect.Core
             }
         }
 
+        //Keep local data
         private void KeepLocalData(LoginResponse loginData)
         {
             DBManager.colorsortLevels = PlayerPrefs.GetInt("ColorsortLevels", 0);
@@ -604,41 +624,42 @@ namespace Connect.Core
             _syncPanel.SetActive(false);
         }
 
+        //Upadating from database 
         private void UpdateFromDb(LoginResponse loginData)
         {
-            DBManager.colorsortLevels = loginData.colorsortLevels;
-            DBManager.connectLevels = loginData.connectLevels;
-            DBManager.pipesLevels = loginData.pipesLevels;
-            DBManager.levelscore = loginData.levelscore;
-            DBManager.infinityscore = loginData.infinityscore;
+            DBManager.colorsortLevels = loginData.ColorsortLevels;
+            DBManager.connectLevels = loginData.ConnectLevels;
+            DBManager.pipesLevels = loginData.PipesLevels;
+            DBManager.levelscore = loginData.LevelScore;
+            DBManager.infinityscore = loginData.InfinityScore;
 
-            PlayerPrefs.SetInt("ColorsortLevels", loginData.colorsortLevels);
-            PlayerPrefs.SetInt("ConnectLevels", loginData.connectLevels);
-            PlayerPrefs.SetInt("PipesLevels", loginData.pipesLevels);
-            PlayerPrefs.SetInt("LevelScore", loginData.levelscore);
-            PlayerPrefs.SetInt("InfinityScore", loginData.infinityscore);
+            PlayerPrefs.SetInt("ColorsortLevels", loginData.ColorsortLevels);
+            PlayerPrefs.SetInt("ConnectLevels", loginData.ConnectLevels);
+            PlayerPrefs.SetInt("PipesLevels", loginData.PipesLevels);
+            PlayerPrefs.SetInt("LevelScore", loginData.LevelScore);
+            PlayerPrefs.SetInt("InfinityScore", loginData.InfinityScore);
             PlayerPrefs.Save();
 
             if (GameManager.Instance != null)
             {
-                GameManager.Instance.CurrentLevelConnect = loginData.connectLevels;
-                GameManager.Instance.CurrentLevelColorsort = loginData.colorsortLevels;
-                GameManager.Instance.CurrentLevelPipes = loginData.pipesLevels;
+                GameManager.Instance.CurrentLevelConnect = loginData.ConnectLevels;
+                GameManager.Instance.CurrentLevelColorsort = loginData.ColorsortLevels;
+                GameManager.Instance.CurrentLevelPipes = loginData.PipesLevels;
             }
 
             SaveLoginData(loginData);
             _syncPanel.SetActive(false);
         }
-
+        //Login data save
         private void SaveLoginData(LoginResponse loginData)
         {
-            PlayerPrefs.SetString("Nick", loginData.nick);
-            PlayerPrefs.SetString("Email", loginData.email);
-            PlayerPrefs.SetInt("InfinityScore", loginData.infinityscore);
-            PlayerPrefs.SetInt("LevelScore", loginData.levelscore);
-            PlayerPrefs.SetInt("ColorsortLevels", loginData.colorsortLevels);
-            PlayerPrefs.SetInt("ConnectLevels", loginData.connectLevels);
-            PlayerPrefs.SetInt("PipesLevels", loginData.pipesLevels);
+            PlayerPrefs.SetString("Nick", loginData.Nick);
+            PlayerPrefs.SetString("Email", loginData.Email);
+            PlayerPrefs.SetInt("InfinityScore", loginData.InfinityScore);
+            PlayerPrefs.SetInt("LevelScore", loginData.LevelScore);
+            PlayerPrefs.SetInt("ColorsortLevels", loginData.ColorsortLevels);
+            PlayerPrefs.SetInt("ConnectLevels", loginData.ConnectLevels);
+            PlayerPrefs.SetInt("PipesLevels", loginData.PipesLevels);
             PlayerPrefs.Save();
         }
 
@@ -646,9 +667,9 @@ namespace Connect.Core
         {
             _syncPanel.SetActive(true);
             _syncMessage.text = $"Data mismatch detected!\n" +
-                                $"Local: Colorsort={localColorsort}, Connect={localConnect}, Pipes={localPipes}\n" +
-                                $"Server: Colorsort={loginData.colorsortLevels}, Connect={loginData.connectLevels}, Pipes={loginData.pipesLevels}\n" +
-                                $"Choose an option:";
+                               $"Local: Colorsort={localColorsort}, Connect={localConnect}, Pipes={localPipes}\n" +
+                               $"Server: Colorsort={loginData.ColorsortLevels}, Connect={loginData.ConnectLevels}, Pipes={loginData.PipesLevels}\n" +
+                               $"Choose an option:";
 
             _keepLocalButton.onClick.RemoveAllListeners();
             _keepLocalButton.onClick.AddListener(() => KeepLocalData(loginData));
@@ -656,6 +677,7 @@ namespace Connect.Core
             _updateFromDbButton.onClick.AddListener(() => UpdateFromDb(loginData));
         }
 
+        //Bypass certificate to connect to database
         private class BypassCertificate : CertificateHandler
         {
             protected override bool ValidateCertificate(byte[] certificateData)
@@ -663,17 +685,58 @@ namespace Connect.Core
                 return true;
             }
         }
-
+        
+        //Verify inputs on Regster pannel
         public void VerifyInputs()
         {
             registerbutton.interactable = (nickfield.text.Length >= 2 && passwordfield.text.Length > 2 && emailfield.text.Contains('@'));
+            if (passwordfield.text.Length < 2 ) {
+
+                _registererrortext.text = "your password must be more than two characters";
+            }
+            if (!emailfield.text.Contains('@'))
+            {
+                _registererrortext.text = "Your email must be valid";
+            }
         }
 
+        //Verifying inputs for changing password email send
+        public void VerifyInputsforChangepassword()
+        {
+            _sendCodeButton.interactable = (_emailResetField.text.Contains('@'));
+
+            if (!_emailResetField.text.Contains('@')) {
+
+                _resetMessageText.text = "Input valid Email";
+            }
+
+        }
+        
+        //Verifying imputs for changepassword button
+        public void VerivyInputsfroChangepasswordbutton()
+        {
+            _confirmResetButton.interactable = (_resetCodeField.text.Length > 2 && _newPasswordField.text.Length > 2);
+
+            if(_sendCodeButton.interactable == false)
+            {
+                if (_resetCodeField.text.Length < 2)
+                {
+                    _resetMessageText.text = "Input full code in password field";
+                }
+                if (_newPasswordField.text.Length > 2)
+                {
+                    _resetMessageText.text = "Your password must be more than 2 characters";
+                }
+            } 
+
+        }
+
+        //Verify inputs on login Pannel
         public void VerifyInputsLogin()
         {
             LoginButton.interactable = (nickfieldlogin.text.Length >= 2 && passwordfieldlogin.text.Length > 2);
         }
-
+        //Checking server data
         private IEnumerator CheckServerData(string nick, string password)
         {
             string url = "http://93.81.252.217/unity/login.php";
@@ -702,33 +765,40 @@ namespace Connect.Core
                     {
                         try
                         {
-                            LoginResponse loginData = JsonUtility.FromJson<LoginResponse>(response);
-                            if (loginData.status == "0")
+                            LoginResponse loginData = JsonConvert.DeserializeObject<LoginResponse>(response);
+                            if (loginData == null)
                             {
-                                DBManager.nick = loginData.nick;
-                                DBManager.email = loginData.email;
-                                DBManager.infinityscore = loginData.infinityscore;
-                                DBManager.colorsortLevels = loginData.colorsortLevels;
-                                DBManager.levelscore = loginData.levelscore;
-                                DBManager.connectLevels = loginData.connectLevels;
-                                DBManager.pipesLevels = loginData.pipesLevels;
+                                Debug.LogError("Deserialization returned null");
+                                AthorisationEnable();
+                                yield break;
+                            }
+
+                            if (loginData.Status == "0")
+                            {
+                                DBManager.nick = loginData.Nick;
+                                DBManager.email = loginData.Email;
+                                DBManager.infinityscore = loginData.InfinityScore;
+                                DBManager.colorsortLevels = loginData.ColorsortLevels;
+                                DBManager.levelscore = loginData.LevelScore;
+                                DBManager.connectLevels = loginData.ConnectLevels;
+                                DBManager.pipesLevels = loginData.PipesLevels;
 
                                 SaveLoginData(loginData);
 
                                 if (GameManager.Instance != null)
                                 {
-                                    GameManager.Instance.CurrentLevelConnect = loginData.connectLevels;
-                                    GameManager.Instance.CurrentLevelColorsort = loginData.colorsortLevels;
-                                    GameManager.Instance.CurrentLevelPipes = loginData.pipesLevels;
+                                    GameManager.Instance.CurrentLevelConnect = loginData.ConnectLevels;
+                                    GameManager.Instance.CurrentLevelColorsort = loginData.ColorsortLevels;
+                                    GameManager.Instance.CurrentLevelPipes = loginData.PipesLevels;
                                 }
 
                                 int localColorsortLevels = PlayerPrefs.GetInt("ColorsortLevels", 0);
                                 int localConnectLevels = PlayerPrefs.GetInt("ConnectLevels", 0);
                                 int localPipesLevels = PlayerPrefs.GetInt("PipesLevels", 0);
 
-                                if (localColorsortLevels != loginData.colorsortLevels ||
-                                    localConnectLevels != loginData.connectLevels ||
-                                    localPipesLevels != loginData.pipesLevels)
+                                if (localColorsortLevels != loginData.ColorsortLevels ||
+                                    localConnectLevels != loginData.ConnectLevels ||
+                                    localPipesLevels != loginData.PipesLevels)
                                 {
                                     ShowSyncPanel(loginData, localColorsortLevels, localConnectLevels, localPipesLevels);
                                 }
@@ -743,9 +813,9 @@ namespace Connect.Core
                                 AthorisationEnable();
                             }
                         }
-                        catch (System.Exception e)
+                        catch (JsonException e)
                         {
-                            Debug.LogError("JSON parse error in CheckServerData: " + e.Message + " | Raw response: " + response);
+                            Debug.LogError($"JSON parse error in CheckServerData: {e.Message}. Raw response: {response}");
                             AthorisationEnable();
                         }
                     }
@@ -762,10 +832,10 @@ namespace Connect.Core
                 }
             }
         }
-
+        //Lobout click
         public void ClickLogout(Button button)
         {
-            AnimateAndSwitch(button, () =>
+            AnimationDotWeen.AnimateAndSwitch(button, () =>
             {
                 DBManager.LoggedOut();
                 _titlePanel.SetActive(true);
@@ -781,7 +851,7 @@ namespace Connect.Core
                 _leaderboardPannel.SetActive(false);
             });
         }
-
+        //Display leaderboard
         private void DisplayLeaderboard(LeaderboardEntry[] entries)
         {
             if (_leaderboardContent == null)
@@ -807,15 +877,15 @@ namespace Connect.Core
                 TMP_Text[] texts = row.GetComponentsInChildren<TMP_Text>(true);
                 if (texts.Length >= 2)
                 {
-                    texts[0].gameObject.SetActive(true); 
-                    texts[1].gameObject.SetActive(true); 
-                    texts[0].text = $"{i + 1}. {entries[i].nick}";
-                    texts[1].text = entries[i].totalScore.ToString();
+                    texts[0].gameObject.SetActive(true);
+                    texts[1].gameObject.SetActive(true);
+                    texts[0].text = $"{i + 1}. {entries[i].Nick}";
+                    texts[1].text = entries[i].TotalScore.ToString();
                     Debug.Log($"Set text: {texts[0].text} | {texts[1].text}");
                 }
             }
         }
-
+        //Get leaderboard
         private IEnumerator FetchLeaderboard()
         {
             string url = "http://93.81.252.217/unity/get_leaderboard.php";
@@ -831,19 +901,27 @@ namespace Connect.Core
 
                     try
                     {
-                        LeaderboardResponse leaderboardData = JsonUtility.FromJson<LeaderboardResponse>(response);
-                        if (leaderboardData.status == "0")
+                        LeaderboardResponse leaderboardData = JsonConvert.DeserializeObject<LeaderboardResponse>(response);
+                        if (leaderboardData == null)
                         {
-                            DisplayLeaderboard(leaderboardData.leaderboard);
+                            Debug.LogError("Deserialization returned null");
+                             yield break;
+                        }
+
+                        if (leaderboardData.Status == "0")
+                        {
+                            DisplayLeaderboard(leaderboardData.Leaderboard);
+                            _yourdatatext.text = "Nick " + DBManager.nick + " score in levels:" + DBManager.levelscore;
+
                         }
                         else
                         {
                             Debug.LogError("Leaderboard fetch failed: " + response);
                         }
                     }
-                    catch (System.Exception e)
+                    catch (JsonException e)
                     {
-                        Debug.LogError("JSON parse error: " + e.Message + " | Raw response: " + response);
+                        Debug.LogError($"JSON parse error: {e.Message}. Raw response: {response}");
                     }
                 }
                 else
@@ -852,26 +930,15 @@ namespace Connect.Core
                 }
             }
         }
-
-
+        //Change password if we do not know it
         public void ChangePasswordUnKnown()
         {
+            _loginPannel.SetActive(false);
             Debug.Log("ChangePasswordUnKnown: Initializing password reset panel");
             if (_emailResetField != null) _emailResetField.text = "";
             if (_resetCodeField != null) _resetCodeField.text = "";
             if (_newPasswordField != null) _newPasswordField.text = "";
             if (_resetMessageText != null) _resetMessageText.text = "";
-
-            if (_sendCodeButton != null)
-            {
-                Debug.Log("ChangePasswordUnKnown: Binding SendCodeButton");
-                _sendCodeButton.onClick.RemoveAllListeners();
-                _sendCodeButton.onClick.AddListener(SendResetCode);
-            }
-            else
-            {
-                Debug.LogError("ChangePasswordUnKnown: _sendCodeButton is null");
-            }
 
             if (_confirmResetButton != null)
             {
@@ -883,9 +950,14 @@ namespace Connect.Core
             {
                 Debug.LogError("ChangePasswordUnKnown: _confirmResetButton is null");
             }
+            _confirmResetButton.interactable = false;
+            _sendCodeButton.interactable = false ;
+
+
         }
 
-        private void SendResetCode()
+        //Clicked send reset code
+        public void SendResetCode( )
         {
             if (string.IsNullOrEmpty(_emailResetField.text))
             {
@@ -893,13 +965,17 @@ namespace Connect.Core
                 return;
             }
             Debug.Log($"SendResetCode: Starting reset code request for email: {_emailResetField.text}");
-            AnimateAndSwitch(_sendCodeButton, () =>
-            {
 
+
+            AnimationDotWeen.AnimateAndSwitch(_sendCodeButton, () =>
+            {
                 StartCoroutine(SendResetCodeCoroutine(_emailResetField.text));
             });
+
         }
 
+
+        //Send reset code
         private IEnumerator SendResetCodeCoroutine(string email)
         {
             string url = "http://93.81.252.217/unity/send_reset_code.php";
@@ -931,23 +1007,28 @@ namespace Connect.Core
 
                     try
                     {
-                        var resetResponse = JsonUtility.FromJson<ResetResponse>(response);
-                        Debug.Log($"SendResetCodeCoroutine: Parsed response - Status: {resetResponse.status}, Message: {resetResponse.message}");
+                        ResetResponse resetResponse = JsonConvert.DeserializeObject<ResetResponse>(response);
+                        if (resetResponse == null)
+                        {
+                            Debug.LogError("Deserialization returned null");
+                            _resetMessageText.text = "Error processing response";
+                            yield break;
+                        }
 
-                        _resetMessageText.text = resetResponse.message;
-                        if (resetResponse.status == "0")
+                        _resetMessageText.text = resetResponse.Message;
+                        if (resetResponse.Status == "0")
                         {
                             Debug.Log("SendResetCodeCoroutine: Reset code sent successfully, disabling Send button");
-                            _sendCodeButton.interactable = false; 
+                            _sendCodeButton.interactable = false;
                         }
                         else
                         {
-                            Debug.LogWarning($"SendResetCodeCoroutine: Server reported failure - {resetResponse.message}");
+                            Debug.LogWarning($"SendResetCodeCoroutine: Server reported failure - {resetResponse.Message}");
                         }
                     }
-                    catch (System.Exception e)
+                    catch (JsonException e)
                     {
-                        Debug.LogError($"SendResetCodeCoroutine: JSON parse error: {e.Message} | Raw response: {response}");
+                        Debug.LogError($"SendResetCodeCoroutine: JSON parse error: {e.Message}. Raw response: {response}");
                         _resetMessageText.text = "Error processing response";
                     }
                 }
@@ -958,25 +1039,23 @@ namespace Connect.Core
                 }
             }
         }
-
+        //Password reset conferm click
         private void ConfirmPasswordReset()
         {
-            AnimateAndSwitch(_confirmResetButton, () =>
+            AnimationDotWeen.AnimateAndSwitch(_confirmResetButton, () =>
             {
-
                 if (string.IsNullOrEmpty(_emailResetField.text) ||
-                string.IsNullOrEmpty(_resetCodeField.text) ||
-                string.IsNullOrEmpty(_newPasswordField.text))
+                    string.IsNullOrEmpty(_resetCodeField.text) ||
+                    string.IsNullOrEmpty(_newPasswordField.text))
                 {
                     _resetMessageText.text = "Please fill all fields";
                     return;
                 }
 
-
                 StartCoroutine(ResetPasswordCoroutine(_emailResetField.text, _resetCodeField.text, _newPasswordField.text));
             });
         }
-
+        //Reset passwordCoroutine
         private IEnumerator ResetPasswordCoroutine(string email, string code, string newPassword)
         {
             string url = "http://93.81.252.217/unity/reset_password.php";
@@ -1010,11 +1089,16 @@ namespace Connect.Core
 
                     try
                     {
-                        var resetResponse = JsonUtility.FromJson<ResetResponse>(response);
-                        Debug.Log($"ResetPasswordCoroutine: Parsed response - Status: {resetResponse.status}, Message: {resetResponse.message}");
+                        ResetResponse resetResponse = JsonConvert.DeserializeObject<ResetResponse>(response);
+                        if (resetResponse == null)
+                        {
+                            Debug.LogError("Deserialization returned null");
+                            _resetMessageText.text = "Error processing response";
+                            yield break;
+                        }
 
-                        _resetMessageText.text = resetResponse.message;
-                        if (resetResponse.status == "0")
+                        _resetMessageText.text = resetResponse.Message;
+                        if (resetResponse.Status == "0")
                         {
                             Debug.Log("ResetPasswordCoroutine: Password updated successfully, saving new password and redirecting to login");
                             PlayerPrefs.SetString("Password", newPassword);
@@ -1022,12 +1106,12 @@ namespace Connect.Core
                         }
                         else
                         {
-                            Debug.LogWarning($"ResetPasswordCoroutine: Server reported failure - {resetResponse.message}");
+                            Debug.LogWarning($"ResetPasswordCoroutine: Server reported failure - {resetResponse.Message}");
                         }
                     }
-                    catch (System.Exception e)
+                    catch (JsonException e)
                     {
-                        Debug.LogError($"ResetPasswordCoroutine: JSON parse error: {e.Message} | Raw response: {response}");
+                        Debug.LogError($"ResetPasswordCoroutine: JSON parse error: {e.Message}. Raw response: {response}");
                         _resetMessageText.text = "Error processing response";
                     }
                 }
@@ -1038,40 +1122,11 @@ namespace Connect.Core
                 }
             }
         }
-        #endregion
-
-
-        #region Animations
-
-        public void Animate(GameObject target, System.Action onComplete, float duration = 1f)
-        {
-
-            if (playStartTween != null && playStartTween.IsActive())
-            {
-                playStartTween.Kill();
-            }
-
-            playStartTween = target.transform
-            .DOScale(1.1f, 0.1f)
-            .SetEase(Ease.Linear)
-            .SetLoops(2, LoopType.Yoyo).OnComplete(() => onComplete?.Invoke());
-
-            playStartTween.Play();
-        }
-        
-        private void AnimateAndSwitch(Button button, System.Action switchAction)
-        {
-            if (button != null)
-            {
-                Animate(button.gameObject, switchAction);
-            }
-            else {
-                Debug.LogError("Button is null");
-                switchAction?.Invoke();
-            }
-        }
 
         #endregion
+
+
+
         #endregion
     }
 }

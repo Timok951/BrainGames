@@ -8,13 +8,14 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
 
-namespace Connect.Core {
+namespace Connect.Core
+{
+    /// <summary>
+    /// Code for spawning board and connecting dots to add logic for winning
+    /// </summary>
+
     public class GameplayManager : MonoBehaviour
     {
-        #region startMethods
-
-
-
         #region StartVariables
         public static GameplayManager Instance;
 
@@ -36,7 +37,7 @@ namespace Connect.Core {
 
         private bool _isDailyChallengeMode;
 
-        //Initializing
+        // Initializing
         private void Awake()
         {
             Instance = this;
@@ -52,7 +53,6 @@ namespace Connect.Core {
 
             _isDailyChallengeMode = DailyChallengeManager.Instance != null;
 
-
             if (_isDailyChallengeMode)
             {
                 if (_nextLevelButton != null) _nextLevelButton.SetActive(false);
@@ -61,13 +61,9 @@ namespace Connect.Core {
 
                 if (_winText.gameObject != null) _winText.gameObject.SetActive(false);
                 if (_titleText.gameObject != null) _titleText.gameObject.SetActive(false);
-
             }
         }
         #endregion
-
-        #endregion
-
 
         #region BOARD_SPAWN
         [SerializeField] private SpriteRenderer _boardPrefab, _bgcellPrefab;
@@ -79,33 +75,54 @@ namespace Connect.Core {
 
             float boardScaleFactor = 1.1f;
 
-            var board = Instantiate(_boardPrefab, Vector3.zero, Quaternion.identity);
-
-            board.size = new Vector2(BoardSize, BoardSize);
-            //boardoffset
-            float startX = -BoardSize  / 2f + totalCellSize / 2f;
-            float startY = -BoardSize / 2f + totalCellSize / 2f;
-
-            //spawning cells
-            for (int i = 0; i < currentLevelSize; i++)
+            if (_boardPrefab == null)
             {
-                for (int j = 0; j < currentLevelSize; j++)
-                {
-                    Instantiate(_bgcellPrefab,
-                        new Vector3(startX + i * totalCellSize, startY + j * totalCellSize, 0f),
-                        Quaternion.identity);
-                }
+                Debug.LogError("_boardPrefab is null!");
+                return;
             }
 
-            //moving camera to fully show the level
+            var board = Instantiate(_boardPrefab, Vector3.zero, Quaternion.identity);
+            board.size = new Vector2(BoardSize, BoardSize);
+            board.transform.localScale = Vector3.zero;
+
+            if (board != null && board.gameObject != null)
+            {
+                playStartTween = board.transform.DOScale(Vector3.one, 0.5f)
+                    .SetEase(Ease.OutBack)
+                    .OnComplete(() =>
+                    {
+                        if (_bgcellPrefab == null)
+                        {
+                            Debug.LogError("_bgcellPrefab is null!");
+                            return;
+                        }
+                        float startX = -BoardSize / 2f + totalCellSize / 2f;
+                        float startY = -BoardSize / 2f + totalCellSize / 2f;
+
+                        for (int i = 0; i < currentLevelSize; i++)
+                        {
+                            for (int j = 0; j < currentLevelSize; j++)
+                            {
+                                Instantiate(_bgcellPrefab,
+                                    new Vector3(startX + i * totalCellSize, startY + j * totalCellSize, 0f),
+                                    Quaternion.identity);
+                            }
+                        }
+                    });
+                playStartTween.Play();
+            }
+
             Camera.main.orthographicSize = (BoardSize * boardScaleFactor) / 2f + 1f;
             Camera.main.transform.position = new Vector3(BoardSize / 2f, BoardSize / 2f, -10f);
 
-            _clickHighlight.size = new Vector2(totalCellSize, totalCellSize);
-            _clickHighlight.transform.position = Vector3.zero;
-            _clickHighlight.gameObject.SetActive(false);
-            AdjustCameraToFitBoard(currentLevelSize);
+            if (_clickHighlight != null)
+            {
+                _clickHighlight.size = new Vector2(totalCellSize, totalCellSize);
+                _clickHighlight.transform.position = Vector3.zero;
+                _clickHighlight.gameObject.SetActive(false);
+            }
 
+            AdjustCameraToFitBoard(currentLevelSize);
         }
 
         private void AdjustCameraToFitBoard(int currentLevelSize)
@@ -115,10 +132,10 @@ namespace Connect.Core {
             float boardHeight = currentLevelSize * totalCellSize;
 
             float screenAspect = (float)Screen.width / Screen.height;
-            float boardAspect = boardWidth / boardHeight; 
+            float boardAspect = boardWidth / boardHeight;
 
             float orthoSize;
-            float padding = 1f; 
+            float padding = 1f;
             if (screenAspect > boardAspect)
             {
                 orthoSize = (boardHeight / 2f) + padding;
@@ -132,8 +149,6 @@ namespace Connect.Core {
 
             Camera.main.transform.position = new Vector3(0f, 0f, -10f);
         }
-
-
         #endregion
 
         #region NODE_SPAWN
@@ -142,9 +157,8 @@ namespace Connect.Core {
         private List<Node> _nodes;
         public Dictionary<Vector2Int, Node> _nodeGrid;
 
-
         public Dictionary<Vector2Int, Node> Nodes;
-        //Spawning nodes
+        // Spawning nodes
         private void SpawnNodes()
         {
             _nodes = new List<Node>();
@@ -154,15 +168,13 @@ namespace Connect.Core {
             Node spawnedNode;
             Vector3 spawnPos;
 
-            //Spawning nodes for evry cell
-
             float startX = -BoardSize / 2f + totalCellSize / 2f;
             float startY = -BoardSize / 2f + totalCellSize / 2f;
             for (int i = 0; i < currentLevelSize; i++)
             {
                 for (int j = 0; j < currentLevelSize; j++)
                 {
-                    spawnPos = new Vector3(startX + i * totalCellSize, startY+ j * totalCellSize, 0f);
+                    spawnPos = new Vector3(startX + i * totalCellSize, startY + j * totalCellSize, 0f);
                     spawnedNode = Instantiate(_nodePrefab, spawnPos, Quaternion.identity);
                     spawnedNode.transform.localScale = Vector3.one * _cellSize;
 
@@ -182,7 +194,6 @@ namespace Connect.Core {
                     _nodeGrid.Add(new Vector2Int(i, j), spawnedNode);
                     spawnedNode.gameObject.name = i.ToString() + j.ToString();
                     spawnedNode.Pos2D = new Vector2Int(i, j);
-
                 }
             }
             List<Vector2Int> offsetPos = new List<Vector2Int>()
@@ -198,9 +209,9 @@ namespace Connect.Core {
                     }
                 }
             }
-
         }
-        //Getting color for hilghlight
+
+        // Getting color for highlight
         public Color GetHighLightColor(int colorId)
         {
             Color result = NodeColors[colorId];
@@ -208,11 +219,9 @@ namespace Connect.Core {
             return result;
         }
 
-
-
         public List<Color> NodeColors;
 
-        //Getting color ID
+        // Getting color ID
         public int GetColorId(int i, int j)
         {
             List<Edge> edges = CurrentLevelData.Edges;
@@ -227,10 +236,10 @@ namespace Connect.Core {
             Debug.Log($"Checking color for Node ({i},{j}), Total Edges: {edges.Count}");
             return -1;
         }
-
         #endregion
+
         #region Update_Methods
-        //Drawingedges
+        // Drawing edges
         private Node startNode;
 
         private void Update()
@@ -243,7 +252,8 @@ namespace Connect.Core {
                 return;
             }
             if (Input.GetMouseButton(0))
-            {   //Drawing connect with color
+            {
+                // Drawing connect with color
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
                 RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
@@ -284,17 +294,12 @@ namespace Connect.Core {
                 return;
             }
 
-
             if (Input.GetMouseButtonUp(0))
             {
-                //Highlight 
-
+                // Highlight
                 startNode = null;
                 _clickHighlight.gameObject.SetActive(false);
-
-
             }
-
         }
 
         private bool IsWithinBoardBounds(Vector2Int position)
@@ -304,8 +309,8 @@ namespace Connect.Core {
         }
         #endregion
 
-        #region WIN_CONDITION 
-        //Win condition
+        #region WIN_CONDITION
+        // Win condition
         private void CheckWin()
         {
             if (CurrentLevelData == null || CurrentLevelData.Edges == null || CurrentLevelData.Edges.Count == 0)
@@ -315,39 +320,29 @@ namespace Connect.Core {
             }
 
             bool IsWinning = true;
-            //Specifies pairs of nodes that must be connected to win
             foreach (var edge in CurrentLevelData.Edges)
             {
                 Vector2Int startPos = edge.StartPoint;
                 Vector2Int endPos = edge.EndPoint;
-                //if Dictionary has these nodes
                 if (!_nodeGrid.ContainsKey(startPos) || !_nodeGrid.ContainsKey(endPos))
                 {
                     Debug.LogError($"Edge nodes not found: Start {startPos}, End {endPos}");
                     return;
                 }
-                //Getting end node and start node
+
                 Node startNode = _nodeGrid[startPos];
                 Node endNode = _nodeGrid[endPos];
 
-                //Checking conditions for startnode
                 bool startConnected = startNode.IsEndNode && startNode.ConnectedNodes.Count == 1;
-                //Checking conditions for endNode
                 bool endConnected = endNode.IsEndNode && endNode.ConnectedNodes.Count == 1;
-                //Checking connections between two nodes
                 bool areConnected = AreNodesConnected(startNode, endNode);
 
                 Debug.Log($"Edge {startPos} -> {endPos}: StartConnected = {startConnected}, EndConnected = {endConnected}, AreConnected = {areConnected}");
-                //Updating winnig flag
                 IsWinning &= startConnected && endConnected && areConnected;
                 if (!IsWinning)
                 {
                     Debug.Log($"Win condition failed for edge {startPos} -> {endPos}");
                     return;
-                }
-                if (DailyChallengeManager.Instance != null)
-                {
-                    DailyChallengeManager.Instance.OnModeCompleted();
                 }
             }
 
@@ -365,16 +360,17 @@ namespace Connect.Core {
                 DailyChallengeManager.Instance.OnModeCompleted();
             }
         }
-        //Recursively checks if a path exists between two nodes via their ConnectedNodes
+
+        // Recursively checks if a path exists between two nodes via their ConnectedNodes
         private bool AreNodesConnected(Node start, Node end, HashSet<Node> visited = null)
         {
-            //It keeps track of already visited nodes to avoid infinite loops in case of looped connections.
+            // It keeps track of already visited nodes to avoid infinite loops in case of looped connections.
             if (visited == null) visited = new HashSet<Node>();
             if (start == end) return true;
             if (visited.Contains(start)) return false;
 
             visited.Add(start);
-            //checking neighbour nodes
+            // Checking neighbour nodes
             foreach (var node in start.ConnectedNodes)
             {
                 if (AreNodesConnected(node, end, visited))
@@ -390,11 +386,9 @@ namespace Connect.Core {
         public void ClickedBack(Button button)
         {
             AnimateAndSwitch(button, () =>
-        {
-            GameManager.Instance.GoToMainMenu();
-
-        });
-
+            {
+                GameManager.Instance.GoToMainMenu();
+            });
         }
 
         public void ClickedRestart(Button button)
@@ -402,35 +396,32 @@ namespace Connect.Core {
             AnimateAndSwitch(button, () =>
             {
                 GameManager.Instance.GoToGameplayConnect();
-
             });
-
         }
 
         public void ClickedNextLevel(Button button)
         {
+            if (!hasGameFinished) return;
 
             AnimateAndSwitch(button, () =>
             {
-                if (!hasGameFinished) return;
+                GameManager.Instance.GoToGameplayConnect();
             });
-           
-            GameManager.Instance.GoToGameplayConnect();
         }
 
         #region ANIMATIONS
         public void Animate(GameObject target, System.Action onComplete, float duration = 1f)
         {
-
             if (playStartTween != null && playStartTween.IsActive())
             {
                 playStartTween.Kill();
             }
 
             playStartTween = target.transform
-            .DOScale(1.1f, 0.1f)
-            .SetEase(Ease.Linear)
-            .SetLoops(2, LoopType.Yoyo).OnComplete(() => onComplete?.Invoke());
+                .DOScale(1.1f, 0.1f)
+                .SetEase(Ease.Linear)
+                .SetLoops(2, LoopType.Yoyo)
+                .OnComplete(() => onComplete?.Invoke());
 
             playStartTween.Play();
         }
@@ -448,8 +439,6 @@ namespace Connect.Core {
             }
         }
         #endregion
-
         #endregion
-
     }
 }

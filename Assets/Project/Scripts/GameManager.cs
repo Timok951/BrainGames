@@ -4,13 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using Newtonsoft.Json; 
+using Assets.Project.Scripts.Database; 
 
 namespace Connect.Core
 {
+
+    /*<summarry> 
+     * Class for working with levels, unlocking them
+     <sumarry>*/
     public class GameManager : MonoBehaviour
     {
-
         public static GameManager Instance;
+
         #region START_METHOD
         private void Awake()
         {
@@ -26,32 +32,51 @@ namespace Connect.Core
             Init();
         }
 
-
         private void Init()
         {
             CurrentLevelConnect = PlayerPrefs.GetInt("ConnectLevels", 1);
             CurrentLevelColorsort = PlayerPrefs.GetInt("ColorsortLevels", 1);
             CurrentLevelPipes = PlayerPrefs.GetInt("PipesLevels", 1);
 
-           
-            DBManager.levelscore = PlayerPrefs.GetInt("LevelScore", 0);
+
 
             LevelsConnect = new Dictionary<string, LevelData>();
-            foreach (var item in _allLevelsconnect.Levels)
+            if (_allLevelsconnect != null && _allLevelsconnect.Levels != null)
             {
-                LevelsConnect[item.LevelName] = item;
+                foreach (var item in _allLevelsconnect.Levels)
+                {
+                    LevelsConnect[item.LevelName] = item;
+                }
+            }
+            else
+            {
+                Debug.LogError("_allLevelsconnect or its Levels is null");
             }
 
             LevelsColorSort = new Dictionary<string, LevelColorSort>();
-            foreach (var item in _allLevelscolorsort.Levels)
+            if (_allLevelscolorsort != null && _allLevelscolorsort.Levels != null)
             {
-                LevelsColorSort[item.LevelName] = item;
+                foreach (var item in _allLevelscolorsort.Levels)
+                {
+                    LevelsColorSort[item.LevelName] = item;
+                }
+            }
+            else
+            {
+                Debug.LogError("_allLevelscolorsort or its Levels is null");
             }
 
             LevelsPipes = new Dictionary<string, LevelDataPipe>();
-            foreach (var item in _allLevelspipes.LevelsPipes)
+            if (_allLevelspipes != null && _allLevelspipes.LevelsPipes != null)
             {
-                LevelsPipes[item.LevelName] = item;
+                foreach (var item in _allLevelspipes.LevelsPipes)
+                {
+                    LevelsPipes[item.LevelName] = item;
+                }
+            }
+            else
+            {
+                Debug.LogError("_allLevelspipes or its LevelsPipes is null");
             }
 
             if (DBManager.LoggedIn && !string.IsNullOrEmpty(PlayerPrefs.GetString("Nick", "")))
@@ -67,7 +92,20 @@ namespace Connect.Core
 
             if (!string.IsNullOrEmpty(nick) && !string.IsNullOrEmpty(password))
             {
+                Debug.Log($"SyncWithServerOnStart: Attempting login with nick={nick}");
                 yield return StartCoroutine(MainMenuManager.Instance.Login(nick, password));
+                if (DBManager.LoggedIn)
+                {
+                    Debug.Log("SyncWithServerOnStart: Login successful, data synced");
+                }
+                else
+                {
+                    Debug.LogWarning("SyncWithServerOnStart: Login failed");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("SyncWithServerOnStart: Nick or password is empty");
             }
         }
         #endregion
@@ -79,7 +117,6 @@ namespace Connect.Core
         [HideInInspector] public int CurrentLevelConnect;
         [HideInInspector] public int CurrentLevelColorsort;
         [HideInInspector] public int CurrentLevelPipes;
-
 
         public bool IsLevelUnlockedConnect(int level)
         {
@@ -121,6 +158,12 @@ namespace Connect.Core
 
         public void UnlockLevelConnect()
         {
+            if (CurrentLevelConnect >= LevelsConnect.Count)
+            {
+                Debug.LogWarning("UnlockLevelConnect: Max level reached");
+                return;
+            }
+
             CurrentLevelConnect++;
             string levelName = "Level" + CurrentLevelConnect.ToString();
             PlayerPrefs.SetInt(levelName + levelNameConnect, 1);
@@ -131,6 +174,8 @@ namespace Connect.Core
             PlayerPrefs.SetInt("LevelScore", DBManager.levelscore);
             PlayerPrefs.Save();
 
+            Debug.Log($"Unlocked level: {levelName + levelNameConnect}, LevelScore: {DBManager.levelscore}");
+
             if (DBManager.LoggedIn)
             {
                 StartCoroutine(UpdateServerData());
@@ -139,6 +184,12 @@ namespace Connect.Core
 
         public void UnlockLevelColorsort()
         {
+            if (CurrentLevelColorsort >= LevelsColorSort.Count)
+            {
+                Debug.LogWarning("UnlockLevelColorsort: Max level reached");
+                return;
+            }
+
             CurrentLevelColorsort++;
             string levelName = "Level" + CurrentLevelColorsort.ToString();
             PlayerPrefs.SetInt(levelName + levelNameColosort, 1);
@@ -158,6 +209,12 @@ namespace Connect.Core
 
         public void UnlockLevelPipes()
         {
+            if (CurrentLevelPipes >= LevelsPipes.Count)
+            {
+                Debug.LogWarning("UnlockLevelPipes: Max level reached");
+                return;
+            }
+
             Debug.Log($"Before unlocking: CurrentLevelPipes = {CurrentLevelPipes}");
             CurrentLevelPipes++;
             string levelName = "Level" + CurrentLevelPipes.ToString();
@@ -178,79 +235,103 @@ namespace Connect.Core
 
         public IEnumerator UpdateServerData()
         {
-string url = "http://93.81.252.217/unity/update_score_and_levels.php";
-    WWWForm form = new WWWForm();
-    form.AddField("nick", DBManager.nick);
-    form.AddField("levelscore", DBManager.levelscore);
-    form.AddField("colorsortLevels", DBManager.colorsortLevels);
-    form.AddField("connectLevels", DBManager.connectLevels);
-    form.AddField("pipesLevels", DBManager.pipesLevels);
-    form.AddField("infinityscore", DBManager.infinityscore);
+            string url = "http://93.81.252.217/unity/update_score_and_levels.php";
+            WWWForm form = new WWWForm();
+            form.AddField("nick", DBManager.nick ?? "");
+            form.AddField("levelscore", DBManager.levelscore);
+            form.AddField("colorsortLevels", DBManager.colorsortLevels);
+            form.AddField("connectLevels", DBManager.connectLevels);
+            form.AddField("pipesLevels", DBManager.pipesLevels);
+            form.AddField("infinityscore", DBManager.infinityscore);
 
-    Debug.Log($"Sending to server: nick={DBManager.nick}, levelscore={DBManager.levelscore}, " +
-              $"colorsortLevels={DBManager.colorsortLevels}, connectLevels={DBManager.connectLevels}, " +
-              $"pipesLevels={DBManager.pipesLevels}, infinityscore={DBManager.infinityscore}");
+            Debug.Log($"Sending to server: nick={DBManager.nick ?? "null"}, levelscore={DBManager.levelscore}, " +
+                      $"colorsortLevels={DBManager.colorsortLevels}, connectLevels={DBManager.connectLevels}, " +
+                      $"pipesLevels={DBManager.pipesLevels}, infinityscore={DBManager.infinityscore}");
 
-    using (UnityWebRequest www = UnityWebRequest.Post(url, form))
-    {
-        www.certificateHandler = new BypassCertificate();
-        yield return www.SendWebRequest();
+            using (UnityWebRequest www = UnityWebRequest.Post(url, form))
+            {
+                www.certificateHandler = new BypassCertificate();
+                yield return www.SendWebRequest();
 
-        if (www.result == UnityWebRequest.Result.Success)
-        {
-            Debug.Log("Server updated: " + www.downloadHandler.text);
-        }
-        else
-        {
-            Debug.LogError("Error updating server: " + www.error);
-        }
-    }
+                if (www.result == UnityWebRequest.Result.Success)
+                {
+                    string response = www.downloadHandler.text;
+                    Debug.Log($"UpdateServerData: Response received: {response}");
+
+                    if (string.IsNullOrEmpty(response))
+                    {
+                        Debug.LogError("UpdateServerData: Server returned empty response");
+                        yield break;
+                    }
+
+                    try
+                    {
+                        UpdateResponse updateResponse = JsonConvert.DeserializeObject<UpdateResponse>(response);
+                        if (updateResponse == null)
+                        {
+                            Debug.LogError("UpdateServerData: Deserialization returned null");
+                            yield break;
+                        }
+
+                        Debug.Log($"UpdateServerData: Status: {updateResponse.Status}, Message: {updateResponse.Message}");
+
+                        if (updateResponse.Status == "0")
+                        {
+                            Debug.Log("UpdateServerData: Server data updated successfully");
+                        }
+                        else
+                        {
+                            Debug.LogWarning($"UpdateServerData: Server reported failure - {updateResponse.Message}");
+                        }
+                    }
+                    catch (JsonException e)
+                    {
+                        Debug.LogError($"UpdateServerData: JSON parse error: {e.Message}. Raw response: {response}");
+                    }
+                }
+                else
+                {
+                    Debug.LogError($"UpdateServerData: Connection error: {www.error}");
+                }
+            }
         }
 
         private class BypassCertificate : CertificateHandler
         {
             protected override bool ValidateCertificate(byte[] certificateData)
             {
-                return true; 
+                return true;
             }
         }
         #endregion
 
         #region LEVEL_DATA
-        [SerializeField]
-        private LevelData DefaultLevel;
+        [SerializeField] private LevelData DefaultLevel;
+        [SerializeField] private LevelColorSort DefaultLevelColorSort;
+        [SerializeField] private LevelDataPipe DefaultLevelPipe;
 
-        [SerializeField]
-        private LevelColorSort DefaultLevelColorSort;
-
-        [SerializeField]
-        private LevelDataPipe DefaultLevelPipe;
-
-        [SerializeField]
-        private LevelList _allLevelsconnect;
-
-        [SerializeField]
-        private AllLevelsPipes _allLevelspipes;
-
-        [SerializeField]
-        private AllLevelsColorSort _allLevelscolorsort;
+        [SerializeField] private LevelList _allLevelsconnect;
+        [SerializeField] private AllLevelsPipes _allLevelspipes;
+        [SerializeField] private AllLevelsColorSort _allLevelscolorsort;
 
         private Dictionary<string, LevelData> LevelsConnect;
-
         private Dictionary<string, LevelColorSort> LevelsColorSort;
-
         private Dictionary<string, LevelDataPipe> LevelsPipes;
-
-
 
         public LevelData GetLevelConnect()
         {
             string levelName = "Level" + CurrentLevelConnect.ToString();
-            if(LevelsConnect.ContainsKey(levelName))
+            if (LevelsConnect.ContainsKey(levelName))
             {
                 return LevelsConnect[levelName];
             }
-            return DefaultLevel;
+            if (DefaultLevel != null)
+            {
+                Debug.LogWarning($"Level {levelName} not found, returning DefaultLevel");
+                return DefaultLevel;
+            }
+            Debug.LogError($"Level {levelName} not found and DefaultLevel is null");
+            return null;
         }
 
         public LevelColorSort GetLevelColorSort()
@@ -260,7 +341,13 @@ string url = "http://93.81.252.217/unity/update_score_and_levels.php";
             {
                 return LevelsColorSort[levelName];
             }
-            return DefaultLevelColorSort;
+            if (DefaultLevelColorSort != null)
+            {
+                Debug.LogWarning($"Level {levelName} not found, returning DefaultLevelColorSort");
+                return DefaultLevelColorSort;
+            }
+            Debug.LogError($"Level {levelName} not found and DefaultLevelColorSort is null");
+            return null;
         }
 
         public LevelDataPipe GetLevelPipes()
@@ -270,14 +357,19 @@ string url = "http://93.81.252.217/unity/update_score_and_levels.php";
             {
                 return LevelsPipes[levelName];
             }
-            return DefaultLevelPipe;
+            if (DefaultLevelPipe != null)
+            {
+                Debug.LogWarning($"Level {levelName} not found, returning DefaultLevelPipe");
+                return DefaultLevelPipe;
+            }
+            Debug.LogError($"Level {levelName} not found and DefaultLevelPipe is null");
+            return null;
         }
         #endregion
 
-        //Getting random levels
         public int GetRandomLevelIndexConnect()
         {
-            int maxLevel = LevelsConnect.Count; 
+            int maxLevel = LevelsConnect.Count;
             return Random.Range(1, maxLevel + 1);
         }
 
@@ -299,8 +391,6 @@ string url = "http://93.81.252.217/unity/update_score_and_levels.php";
         private const string GameplayColorsort = "GameplayColorsort";
         private const string GameplayPipes = "PipesGameplay";
 
-
-
         public void GoToMainMenu()
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(MainMenu);
@@ -308,39 +398,22 @@ string url = "http://93.81.252.217/unity/update_score_and_levels.php";
 
         public void GoToGameplayConnect()
         {
-
             UnityEngine.SceneManagement.SceneManager.LoadScene(Gameplay);
-
         }
 
         public void GoToGameplayColorSort()
         {
-
             UnityEngine.SceneManagement.SceneManager.LoadScene(GameplayColorsort);
-
         }
 
         public void GoToGameplayPipes()
         {
-
             UnityEngine.SceneManagement.SceneManager.LoadScene(GameplayPipes);
-
         }
 
         public void GoToDailyChallenge()
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("DailyChallengeScene");
-        }
-
-
-        #endregion
-
-
-        #region UPDATE_METHODS
-        void ResetLevels()
-        {
-            PlayerPrefs.DeleteAll();
-            Debug.Log("All levels reset");
         }
         #endregion
     }

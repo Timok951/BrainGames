@@ -10,7 +10,9 @@ using Button = UnityEngine.UI.Button;
 
 namespace Connect.Core
 {
-
+    /// <summary>
+    /// Gameplaymanager for connect pipes
+    /// </summary>
     public class GameplayManagerPipes : MonoBehaviour
     {
 
@@ -60,31 +62,49 @@ namespace Connect.Core
             _titleText.text = "Level " + GameManager.Instance.CurrentLevelPipes.ToString();
             pipes = new Pipe[_currentLevelData.Row, _currentLevelData.Col];
             startPipes = new List<Pipe>();
+
             for (int i = 0; i < _currentLevelData.Row; i++)
             {
                 for (int j = 0; j < _currentLevelData.Col; j++)
                 {
-                    Vector2 spawnpos = new Vector2(j + 0.5f, i + 0.5f);
-
+                    Vector2 targetPos = new Vector2(j + 0.5f, i + 0.5f);
                     Pipe tempPipe = Instantiate(_cellPrefab);
-                    tempPipe.transform.position = spawnpos;
+                    tempPipe.transform.position = targetPos + Vector2.down * 2f; 
+                    tempPipe.transform.localScale = Vector3.zero;
+
+           
+                    tempPipe.transform
+                        .DOMove(targetPos, 0.3f)
+                        .SetEase(Ease.OutQuad)
+                        .SetDelay((i + j) * 0.02f); 
+
+                    tempPipe.transform
+                        .DOScale(Vector3.one, 0.3f)
+                        .SetEase(Ease.OutBack)
+                        .SetDelay((i + j) * 0.02f);
+
                     tempPipe.Init(_currentLevelData.Data[i * _currentLevelData.Col + j]);
-                    pipes[i,j] = tempPipe;
+                    pipes[i, j] = tempPipe;
+
                     if (tempPipe.PipeType == 1)
                     {
                         startPipes.Add(tempPipe);
                     }
                 }
             }
+
             Camera.main.orthographicSize = Mathf.Max(_currentLevelData.Row, _currentLevelData.Col);
             Vector3 cameraPos = Camera.main.transform.position;
             cameraPos.x = _currentLevelData.Col * 0.5f;
             cameraPos.y = _currentLevelData.Row * 0.5f;
             Camera.main.transform.position = cameraPos;
+
             Debug.Log($"Start pipes count: {startPipes.Count}");
+
             CheckFill();
             CheckWin();
         }
+
         #endregion
 
         #region UPDATE_METHODS

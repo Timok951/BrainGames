@@ -7,6 +7,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Connect.Core{
+
+    /// <summary>
+    /// Class that controls connect button levels
+    /// </summary>
     public class LevelButtonConnect : MonoBehaviour
     {
 
@@ -33,7 +37,7 @@ namespace Connect.Core{
             MainMenuManager.Instance.LevelOpened -= LevelOpened;
         }
 
-        //Checking is level was ulcoked
+        //Checking is level was uòlcoked
         private void LevelOpened()
         {
             string gameObjectName = gameObject.name;

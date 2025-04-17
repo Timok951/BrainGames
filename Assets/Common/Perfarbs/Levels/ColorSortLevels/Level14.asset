@@ -14,17 +14,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelName: Level14
   BackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  TopLeftColor: {r: 0.43529412, g: 0.43529412, b: 0.9411765, a: 1}
-  TopRightColor: {r: 0.4392157, g: 0.3019608, b: 0.2784314, a: 1}
-  BottomLeftColor: {r: 0.32941177, g: 0.2784314, b: 0.4392157, a: 1}
-  BottomRightColor: {r: 0.6862745, g: 0.9411765, b: 0.12156863, a: 1}
-  Row: 8
-  Col: 8
+  TopLeftColor: {r: 0.3427884, g: 1, b: 0.18396229, a: 1}
+  TopRightColor: {r: 1, g: 0.2841469, b: 0.15566039, a: 1}
+  BottomLeftColor: {r: 0.1462264, g: 0.4370042, b: 1, a: 1}
+  BottomRightColor: {r: 1, g: 0.7019608, b: 0.015686275, a: 1}
+  Row: 5
+  Col: 5
   LockedCells:
-  - {x: 0, y: 0}
+  - {x: 1, y: 0}
+  - {x: 0, y: 2}
   - {x: 1, y: 1}
-  - {x: 0, y: 1}
-  - {x: 0, y: 7}
-  - {x: 0, y: 6}
-  - {x: 1, y: 7}
-  - {x: 7, y: 0}
+  - {x: 0, y: 2}
+  - {x: 2, y: 1}
+  - {x: 2, y: 0}
+  - {x: 2, y: 2}
+  - {x: 0, y: 2}
+  - {x: 1, y: 2}
+  - {x: 3, y: 3}
+  - {x: 3, y: 2}
+  - {x: 3, y: 1}
+  - {x: 1, y: 3}
+  - {x: 3, y: 2}
+  - {x: 4, y: 4}
+  - {x: 4, y: 3}
+  - {x: 4, y: 2}
+  - {x: 4, y: 1}
+  - {x: 3, y: 4}
+  - {x: 2, y: 4}

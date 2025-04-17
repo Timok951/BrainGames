@@ -13,6 +13,12 @@ using Button = UnityEngine.UI.Button;
 
 namespace Connect.Core
 {
+    /// <summary>
+    /// Gameplaymanager for colorsort game
+    /// Including animations
+    ///  And checkwinconditions
+    /// </summary>
+
     public class GameplayManagerColorSort : MonoBehaviour
     {
 
@@ -28,12 +34,11 @@ namespace Connect.Core
 
 
         [SerializeField] private TMP_Text _movesText;
-        [SerializeField] private TMP_Text _bestText;
         [SerializeField] private Transform _gridParent;
         [SerializeField] private Transform _nextButton;
         [SerializeField] private Transform _restartButton;
         [SerializeField] private Transform _backButton;
-
+        [SerializeField] private Transform _playButtonTransform;
         [SerializeField] private Cell _cellPrefab;
 
 
@@ -64,10 +69,14 @@ namespace Connect.Core
         public float offsetX;
         public float offsetY;
         private bool _isDailyChallengeMode;
-
+        private bool hasGameStarted;
 
         private Tween playStartTween;
         private Tween playNextTween;
+
+
+
+
         #region START_METHODS
         private void Awake()
         {
@@ -76,6 +85,10 @@ namespace Connect.Core
             hasGameFinished = false;
             _winText.gameObject.SetActive(false);
 
+
+        }
+        private void Start()
+        {
             _currentLevelData = GameManager.Instance.GetLevelColorSort();
 
             if (_currentLevelData == null)
@@ -87,14 +100,14 @@ namespace Connect.Core
             Rows = _currentLevelData.Row;
             Cols = _currentLevelData.Col;
 
-            _levelText.text = "Level"+ " " + GameManager.Instance.CurrentLevelColorsort.ToString();
+            DOTween.defaultAutoPlay = AutoPlay.None;
+
+            _levelText.text = "Level" + " " + GameManager.Instance.CurrentLevelColorsort.ToString();
             _movesText.text = "Moves " + moveNum.ToString();
-            _bestText.text = bestNum.ToString();
             moveNum = 0;
             bestNum = PlayerPrefs.GetInt("Best" + _currentLevelData.ToString(), 0);
             DOTween.defaultAutoPlay = AutoPlay.None;
             SpawnCells();
-            StartCoroutine(WaitForInitialAnimation());
             for (int i = 0; i < Rows; i++)
             {
                 for (int j = 0; j < Cols; j++)
@@ -114,10 +127,60 @@ namespace Connect.Core
                 if (_winText.gameObject != null) _winText.gameObject.SetActive(false);
                 if (_levelText.gameObject != null) _levelText.gameObject.SetActive(false);
                 if (_movesText.gameObject != null) _movesText.gameObject.SetActive(false);
-                if (_bestText.gameObject != null) _movesText.gameObject.SetActive(false);
 
 
             }
+        }
+
+
+        public void ClickedPlayButton()
+        {
+
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Rows; j++)
+                {
+                    if (cells[i, j].IsStartTweenPlaying) return;
+                }
+            }
+
+            playStartTween.Kill();
+            playStartTween = null;
+
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Cols; j++)
+                {
+                    if (_currentLevelData.LockedCells.Contains(new Vector2Int(i, j)))
+                    {
+                        continue;
+                    }
+
+                    int swapX, swapY;
+                    do
+                    {
+                        swapX = Random.Range(0, Rows);
+                        swapY = Random.Range(0, Cols);
+                    } while (_currentLevelData.LockedCells.Contains(new Vector2Int(swapX, swapY)));
+                    Cell temp = cells[i, j];
+                    cells[i, j] = cells[swapX, swapY];
+                    Vector2Int swappedPostion = cells[swapX, swapY].Position;
+                    cells[i, j].Position = temp.Position;
+                    cells[swapX, swapY] = temp;
+                    temp.Position = swappedPostion;
+                }
+            }
+
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Cols; j++)
+                {
+                    cells[i, j].AnimateStartPosition(offsetX, offsetY);
+                }
+            }
+
+            hasGameStarted = true;
+            _playButtonTransform.gameObject.SetActive(false);
         }
 
         private IEnumerator WaitForInitialAnimation()
@@ -213,7 +276,8 @@ namespace Connect.Core
         #region UPDATE_METHODS
         private void Update()
         {
-            if (hasGameFinished) return;
+            if (hasGameFinished || !hasGameStarted) return;
+
 
             if (!canStartClicking)
             {

@@ -7,6 +7,10 @@ using static PlasticPipe.PlasticProtocol.Client.ConnectionCreator.PlasticProtoSo
 
 namespace Connect.Core
 {
+    /// <summary>
+    /// Locked sprite for colorsort level
+    /// </summary>
+
     public class Cell : MonoBehaviour
     {
         #region START_VARIABLES
