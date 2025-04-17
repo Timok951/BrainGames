@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
@@ -70,6 +71,13 @@ namespace Connect.Core
                 if (_titleText.gameObject != null) _titleText.gameObject.SetActive(false);
             }
 
+            var levelLocalized = new LocalizedString("Gameplay", "Level");
+            levelLocalized.Arguments = new object[] { GameManager.Instance.CurrentLevelPipes };
+            levelLocalized.StringChanged += (value) => _titleText.text = value;
+
+
+            levelLocalized.RefreshString();
+
         }
 
         private void SpawnLevel()
@@ -132,6 +140,13 @@ namespace Connect.Core
         #region UPDATE_METHODS
         private void Update()
         {
+            var levelLocalized = new LocalizedString("Gameplay", "Level");
+            levelLocalized.Arguments = new object[] { GameManager.Instance.CurrentLevelConnect };
+            levelLocalized.StringChanged += (value) => _titleText.text = value;
+
+
+            levelLocalized.RefreshString();
+
             if (hasGameFinished) return;
 
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

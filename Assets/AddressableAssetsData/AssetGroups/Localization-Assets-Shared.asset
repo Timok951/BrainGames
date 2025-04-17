@@ -22,13 +22,53 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 475e5170f9adbe547b9fde8099f61be3
+    m_Address: Assets/LocalizationSettings/Tables/LevelsNamesTable Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5b5aa1196501d0543864642c37bb5b4e
+    m_Address: Assets/LocalizationSettings/Tables/New Table Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9bb2d28d7fdabf547bb6f7d243503c18
+    m_Address: Assets/LocalizationSettings/Tables/RegisterTable Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ae04abbf56815b7409f8b575484e422d
     m_Address: Assets/LocalizationSettings/Locales/Gamemodes Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b0fab6436f7494b49baef739a455be5d
+    m_Address: Assets/LocalizationSettings/Tables/LoginTable Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cbcbe2e1293087d4f8cf4309907689dc
     m_Address: Assets/LocalizationSettings/Tables/GameTable Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d48694494d66d8841becb144ff2ea0f1
+    m_Address: Assets/LocalizationSettings/Tables/Gameplay Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: de110aeade8f7394781652f8e0deca14
+    m_Address: Assets/LocalizationSettings/Tables/LeaderboardPannel Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eaac6ac0cbf90d94fb300d471ec3ec6d
+    m_Address: Assets/LocalizationSettings/Tables/AutorisationTable Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f8834dc4ea2614e4f91d1322627a2d81
+    m_Address: Assets/LocalizationSettings/Tables/PasswordPannel Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

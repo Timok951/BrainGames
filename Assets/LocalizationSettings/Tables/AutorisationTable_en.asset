@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: AutorisationTable_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: eaac6ac0cbf90d94fb300d471ec3ec6d, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 8760823808
+    m_Localized: REGISTER OR LOG IN INTO YOUR ACCOUNT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 158094823424
+    m_Localized: Login
+    m_Metadata:
+      m_Items: []
+  - m_Id: 228764651520
+    m_Localized: Register
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

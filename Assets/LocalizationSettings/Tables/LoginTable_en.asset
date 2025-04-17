@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: LoginTable_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: b0fab6436f7494b49baef739a455be5d, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 11461955584
+    m_Localized: LOG IN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28914454528
+    m_Localized: Login
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43149922304
+    m_Localized: Password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 60828913664
+    m_Localized: ' Log in'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73600569344
+    m_Localized: Forgot password
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

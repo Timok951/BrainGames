@@ -17,8 +17,56 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: ee54e061f8ab24348b320676ae7ab491
   m_SerializeEntries:
+  - m_GUID: 25b10d9c23176a541b382ce440e74547
+    m_Address: LoginTable_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 30ec5f63d604a6d4f9eeb746b4b5a6c7
+    m_Address: New Table_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3f315b7d1c246e94a8acfdf1eb99ddfe
+    m_Address: LeaderboardPannel_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5cf00a0c6c8a42a4582552ba8bdce5b2
+    m_Address: RegisterTable_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 82cc526541520ed489fe4034e3bff9bc
+    m_Address: PasswordPannel_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ae6c3bf97f636c44fb49cce9523ac1c8
+    m_Address: Gameplay_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b1ecfe10247e19740ab18999baed2090
+    m_Address: AutorisationTable_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b3039cc4bf7bb2a45bda7d5f0da9b6e3
     m_Address: StringMainMenuTable_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ba8aee368f0a9e743a9c45868b007d3e
+    m_Address: LevelsNamesTable_ru
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ru

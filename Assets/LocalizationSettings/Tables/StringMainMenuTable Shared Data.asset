@@ -31,6 +31,46 @@ MonoBehaviour:
     m_Key: title
     m_Metadata:
       m_Items: []
+  - m_Id: 138039513812992
+    m_Key: YourData
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138106874335232
+    m_Key: SyncMessage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138167037431808
+    m_Key: LoginError
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138213770366976
+    m_Key: RegisterError
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138248029442048
+    m_Key: ResetMessage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138286881280000
+    m_Key: PasswordTooShort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138330409766912
+    m_Key: InvalidEmail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138372008873984
+    m_Key: FillAllFields
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138403713617920
+    m_Key: EmptyEmail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138438614421504
+    m_Key: InvalidResetCode
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

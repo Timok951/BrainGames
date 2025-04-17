@@ -34,6 +34,47 @@ MonoBehaviour:
     m_Localized: BRAINGAMES
     m_Metadata:
       m_Items: []
+  - m_Id: 138039513812992
+    m_Localized: 'Nick {0} score in levels: {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138106874335232
+    m_Localized: 'Data mismatch detected!\nLocal: Colorsort={0}, Connect={1}, Pipes={2}\nServer:
+      Colorsort={3}, Connect={4}, Pipes={5}\nChoose an option:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138167037431808
+    m_Localized: 'Login Failed: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138213770366976
+    m_Localized: '{0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138248029442048
+    m_Localized: '{0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138286881280000
+    m_Localized: Your password must be more than two characters
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138330409766912
+    m_Localized: Your email must be valid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138372008873984
+    m_Localized: Please fill all fields
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138403713617920
+    m_Localized: Please enter your email
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138438614421504
+    m_Localized: Input full code in password field
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

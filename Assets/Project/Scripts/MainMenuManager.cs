@@ -7,19 +7,17 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 using Newtonsoft.Json;
-using Button = UnityEngine.UI.Button;
 using Assets.Project.Scripts.Database;
 using System.Linq;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 namespace Connect.Core
 {
-    /*<summary>
-     * Class for working with main menu, also contains methods to work with database
-     * <summary> */
-
-
+    /// <summary>
+    /// Class for working with main menu, also contains methods to work with database
+    /// </summary>
     public class MainMenuManager : MonoBehaviour
     {
         #region START_VARIABLES
@@ -36,12 +34,10 @@ namespace Connect.Core
         [SerializeField] private GameObject _passwordchangepannel;
         [SerializeField] private GameObject _passwordchangepannelunnokwn;
 
-
         [SerializeField] private GameObject _syncPanel;
         [SerializeField] private TMP_Text _syncMessage;
         [SerializeField] private Button _keepLocalButton;
         [SerializeField] private Button _updateFromDbButton;
-
 
         public TMP_InputField nickfieldlogin;
         public TMP_InputField passwordfieldlogin;
@@ -56,9 +52,8 @@ namespace Connect.Core
         [SerializeField] private GameObject _leaderboardPannel;
         [SerializeField] private GameObject _choosegamescreen;
 
-        [SerializeField] private Transform _leaderboardContent; 
+        [SerializeField] private Transform _leaderboardContent;
         [SerializeField] private GameObject _leaderboardRowPrefab;
-
 
         [SerializeField] private TMP_InputField _emailResetField;
         [SerializeField] private Button _sendCodeButton;
@@ -71,18 +66,40 @@ namespace Connect.Core
         [SerializeField] private TMP_Text _registererrortext;
         [SerializeField] private TMP_Text _yourdatatext;
 
+        [SerializeField] private int localeIdrus;
+        [SerializeField] private int localeIdus;
+        #endregion
 
+        #region LOCALE_SELECTOR
+        [SerializeField] private Button enbut;
+        [SerializeField] private Button rubtn;
+        private bool active = false;
 
+        IEnumerator SetLocale(int _localeID)
+        {
+            yield return LocalizationSettings.InitializationOperation;
+            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[_localeID];
+            PlayerPrefs.SetInt("SelectedLocaleID", _localeID);
+            PlayerPrefs.Save();
+        }
 
+        public void CliclkChangeLocale(int localeID, Button button)
+        {
+            if (active) return;
+            active = true;
+            AnimationDotWeen.AnimateAndSwitch(button, () =>
+            {
+                StartCoroutine(SetLocale(localeID));
+                active = false;
+            });
+        }
         #endregion
 
         #region START_REGION
         AnimationDotWeen AnimationDotWeen = new AnimationDotWeen();
 
-        //Awakening
         private void Awake()
         {
-
             Instance = this;
             MainMenuShow();
 
@@ -95,6 +112,12 @@ namespace Connect.Core
             SetupInputField(_resetCodeField, TouchScreenKeyboardType.NumberPad);
             SetupInputField(_newPasswordField, TouchScreenKeyboardType.Default, true);
 
+            enbut.onClick.AddListener(() => CliclkChangeLocale(localeIdus, enbut));
+            rubtn.onClick.AddListener(() => CliclkChangeLocale(localeIdrus, rubtn));
+
+            // Восстановление сохраненного языка
+            int savedLocaleID = PlayerPrefs.GetInt("SelectedLocaleID", localeIdus);
+            StartCoroutine(SetLocale(savedLocaleID));
         }
 
         private void MainMenuShow()
@@ -107,11 +130,7 @@ namespace Connect.Core
             _registerPannel.SetActive(false);
             _passwordchangepannelunnokwn.SetActive(false);
             _AuthorithationPannel.SetActive(false);
-            _levelPanelConnect.SetActive(false);
-            _choosegamescreen.SetActive(false);
             _loginPannel.SetActive(false);
-            _passwordchangepannelunnokwn.SetActive(false);
-            _leaderboardPannel.SetActive(false);
             _levelPanelColorsort.SetActive(false);
 
             _titlePanel.SetActive(true);
@@ -126,34 +145,24 @@ namespace Connect.Core
         [SerializeField] private TMP_Text _levelTitleText;
         [SerializeField] private UnityEngine.UI.Image _levelTitleImage;
 
-        //Click playing button
         public void ClickedPlay(Button button)
         {
-
             Debug.Log($"ClickedPlay called. Button: {(button != null ? button.name : "null")}");
-            Debug.Log($"_titlePanel: {(_titlePanel != null ? _titlePanel.name : "null")}");
-            Debug.Log($"_choosegamescreen: {(_choosegamescreen != null ? _choosegamescreen.name : "null")}");
             AnimationDotWeen.AnimateAndSwitch(button, () =>
             {
                 _titlePanel.SetActive(false);
-
                 _choosegamescreen.SetActive(true);
             });
-
         }
 
-        //Click back to title
         public void ClickedBackToTitle(Button button)
         {
             AnimationDotWeen.AnimateAndSwitch(button, () =>
             {
-
                 MainMenuShow();
-
             });
         }
 
-        //Click to gamemodes
         public void ClickedBackToGamemodes(Button button)
         {
             AnimationDotWeen.AnimateAndSwitch(button, () =>
@@ -167,14 +176,11 @@ namespace Connect.Core
                 _passwordchangepannel.SetActive(false);
                 _passwordchangepannelunnokwn.SetActive(false);
                 _AuthorithationPannel.SetActive(false);
-                _levelPanelConnect.SetActive(false);
-                _choosegamescreen.SetActive(false);
 
                 _choosegamescreen.SetActive(true);
             });
         }
 
-        //Click QuitGame
         public void QuitGame(Button button)
         {
             AnimationDotWeen.AnimateAndSwitch(button, () =>
@@ -183,7 +189,6 @@ namespace Connect.Core
             });
         }
 
-        //Game Connect
         public void ClickedConnect(Button button)
         {
             AnimationDotWeen.AnimateAndSwitch(button, () =>
@@ -194,13 +199,10 @@ namespace Connect.Core
                 _levelTitleImage.color = CurrentColor;
                 LevelOpened?.Invoke();
             });
-
         }
 
-        //Game colorsort
         public void ClickedColorSort(Button button)
         {
-
             AnimationDotWeen.AnimateAndSwitch(button, () =>
             {
                 _titlePanel.SetActive(false);
@@ -209,10 +211,8 @@ namespace Connect.Core
                 _levelTitleImage.color = CurrentColor;
                 LevelOpened?.Invoke();
             });
-
         }
 
-        //Login Button
         public void ClickLogin(Button button)
         {
             AnimationDotWeen.AnimateAndSwitch(button, () =>
@@ -224,12 +224,8 @@ namespace Connect.Core
                 _AuthorithationPannel.SetActive(false);
                 _loginPannel.SetActive(true);
             });
-
         }
 
-
-
-        //Password Forgot
         private void ClickForgotPassword()
         {
             _titlePanel.SetActive(false);
@@ -241,10 +237,10 @@ namespace Connect.Core
             _AuthorithationPannel.SetActive(false);
             _registerPannel.SetActive(false);
             _loginPannel.SetActive(false);
-            _passwordchangepannelunnokwn.SetActive(false);
+            _passwordchangepannelunnokwn.SetActive(true);
+            ChangePasswordUnKnown();
         }
 
-        //Profile Click
         public void CLickProfile(Button button)
         {
             AnimationDotWeen.AnimateAndSwitch(button, () =>
@@ -262,7 +258,6 @@ namespace Connect.Core
             });
         }
 
-        //Pipes game
         public void ClickedPipes(Button button)
         {
             AnimationDotWeen.AnimateAndSwitch(button, () =>
@@ -275,24 +270,18 @@ namespace Connect.Core
             });
         }
 
-        //Daily Challenge start
         public void ClickedDailyChallenge(Button button)
         {
             AnimationDotWeen.AnimateAndSwitch(button, () =>
             {
                 GameManager.Instance.GoToDailyChallenge();
             });
-
-
         }
 
-        //Leaderboard show
         public void ClickedLeaderboard(Button button)
         {
             AnimationDotWeen.AnimateAndSwitch(button, () =>
             {
-
-
                 _titlePanel.SetActive(false);
                 _choosegamescreen.SetActive(false);
                 _levelPanelPipes.SetActive(false);
@@ -312,7 +301,6 @@ namespace Connect.Core
             });
         }
 
-        //Update server data
         private IEnumerator UpdateAndCheckServer(string nick, string password)
         {
             if (GameManager.Instance != null)
@@ -336,15 +324,12 @@ namespace Connect.Core
                 }
             }
             yield return StartCoroutine(CheckServerData(nick, password));
-            _leaderboardPannel.SetActive(true); 
-            StartCoroutine(FetchLeaderboard()); 
+            _leaderboardPannel.SetActive(true);
+            StartCoroutine(FetchLeaderboard());
         }
 
-
-        //Authorise pannel show
         public void AthorisationEnable()
         {
-
             _titlePanel.SetActive(false);
             _choosegamescreen.SetActive(false);
             _levelPanelPipes.SetActive(false);
@@ -353,12 +338,10 @@ namespace Connect.Core
             _AuthorithationPannel.SetActive(true);
         }
 
-        //Registration Show
         public void Registration(Button button)
         {
             AnimationDotWeen.AnimateAndSwitch(button, () =>
             {
-
                 _titlePanel.SetActive(false);
                 _choosegamescreen.SetActive(false);
                 _levelPanelPipes.SetActive(false);
@@ -368,13 +351,11 @@ namespace Connect.Core
             });
         }
 
-        //Athorisation button click
         public void Authorisation()
         {
             _AuthorithationPannel.SetActive(true);
         }
 
-        //Forget password forget
         public void ClickForgetPassword(Button button)
         {
             AnimationDotWeen.AnimateAndSwitch(button, () =>
@@ -387,10 +368,8 @@ namespace Connect.Core
                 _passwordchangepannelunnokwn.SetActive(true);
                 ChangePasswordUnKnown();
             });
-
         }
 
-        //Click Change Password
         public void ClickChangePassword()
         {
             _titlePanel.SetActive(false);
@@ -403,14 +382,11 @@ namespace Connect.Core
         #endregion
 
         #region DATABASE_WORK
-
-        //Registration called
         public void CallRegister()
         {
             StartCoroutine(Register(nickfield.text, passwordfield.text, emailfield.text));
         }
 
-        //Clearplayerprefs
         private void ClearLevelPrefs()
         {
             PlayerPrefs.DeleteKey("LevelScore");
@@ -418,7 +394,6 @@ namespace Connect.Core
             PlayerPrefs.DeleteKey("ColorsortLevels");
             PlayerPrefs.DeleteKey("ConnectLevels");
             PlayerPrefs.DeleteKey("PipesLevels");
-
 
             for (int i = 1; i <= 100; i++)
             {
@@ -431,7 +406,6 @@ namespace Connect.Core
             Debug.Log("Cleared all level-related PlayerPrefs");
         }
 
-        //Register method 
         IEnumerator Register(string nick, string password, string email)
         {
             string url = "http://93.81.252.217/unity/register.php";
@@ -440,7 +414,6 @@ namespace Connect.Core
             form.AddField("password", password);
             form.AddField("email", email);
             ClearLevelPrefs();
-
 
             using (UnityWebRequest www = UnityWebRequest.Post(url, form))
             {
@@ -468,7 +441,6 @@ namespace Connect.Core
 
                         PlayerPrefs.Save();
 
-
                         Debug.Log("Data was saved: " + nick + ", " + password + ", " + email);
                         yield return StartCoroutine(Login(nick, password));
                         _registerPannel.gameObject.SetActive(false);
@@ -476,17 +448,17 @@ namespace Connect.Core
                     else
                     {
                         Debug.Log("Error registration: " + response);
-                        _registererrortext.text = response;
+                        _registererrortext.text = new LocalizedString("StringMainMenuTable", "RegisterError") { Arguments = new object[] { response } }.GetLocalizedString();
                     }
                 }
                 else
                 {
                     Debug.LogError("Connect error: " + www.error);
+                    _registererrortext.text = new LocalizedString("StringMainMenuTable", "RegisterError") { Arguments = new object[] { www.error } }.GetLocalizedString();
                 }
             }
         }
 
-        //Login called
         public void CallLogin(Button button)
         {
             AnimationDotWeen.AnimateAndSwitch(button, () =>
@@ -495,7 +467,6 @@ namespace Connect.Core
             });
         }
 
-        //Login method
         public IEnumerator Login(string nick, string password)
         {
             string url = "http://93.81.252.217/unity/login.php";
@@ -516,6 +487,7 @@ namespace Connect.Core
                     if (string.IsNullOrEmpty(response))
                     {
                         Debug.LogError("Empty response from server");
+                        _loginerrortext.text = new LocalizedString("StringMainMenuTable", "LoginError") { Arguments = new object[] { "Empty response from server" } }.GetLocalizedString();
                         yield break;
                     }
 
@@ -527,7 +499,7 @@ namespace Connect.Core
                             if (loginData == null)
                             {
                                 Debug.LogError("Deserialization returned null");
-                                _loginerrortext.text = "Error processing response";
+                                _loginerrortext.text = new LocalizedString("StringMainMenuTable", "LoginError") { Arguments = new object[] { "Error processing response" } }.GetLocalizedString();
                                 yield break;
                             }
 
@@ -581,35 +553,35 @@ namespace Connect.Core
                                     SaveLoginData(loginData);
                                     _loginPannel.gameObject.SetActive(false);
                                     ClickedLeaderboard(registerbutton);
-                                    _yourdatatext.text = "Your login" + loginData.Nick + " Your score in score in infinity mode " + loginData.InfinityScore + " Your score in levels " + loginData.LevelScore;
+                                    _yourdatatext.text = new LocalizedString("StringMainMenuTable", "YourData") { Arguments = new object[] { loginData.Nick, loginData.LevelScore } }.GetLocalizedString();
                                 }
                             }
                             else
                             {
                                 Debug.Log("Login failed: " + response);
-                                _loginerrortext.text = "Login Failed: " + loginData.Status;
+                                _loginerrortext.text = new LocalizedString("StringMainMenuTable", "LoginError") { Arguments = new object[] { loginData.Status } }.GetLocalizedString();
                             }
                         }
                         catch (JsonException e)
                         {
                             Debug.LogError($"JSON parse error: {e.Message}. Raw response: {response}");
-                            _loginerrortext.text = "Error processing response";
+                            _loginerrortext.text = new LocalizedString("StringMainMenuTable", "LoginError") { Arguments = new object[] { "Error processing response" } }.GetLocalizedString();
                         }
                     }
                     else
                     {
-                        _loginerrortext.text = "Login Failed: " + response;
+                        _loginerrortext.text = new LocalizedString("StringMainMenuTable", "LoginError") { Arguments = new object[] { response } }.GetLocalizedString();
                         Debug.Log("Login failed: " + response);
                     }
                 }
                 else
                 {
                     Debug.LogError("Connect error: " + www.error);
+                    _loginerrortext.text = new LocalizedString("StringMainMenuTable", "LoginError") { Arguments = new object[] { www.error } }.GetLocalizedString();
                 }
             }
         }
 
-        //Keep local data
         private void KeepLocalData(LoginResponse loginData)
         {
             DBManager.colorsortLevels = PlayerPrefs.GetInt("ColorsortLevels", 0);
@@ -631,9 +603,9 @@ namespace Connect.Core
             }
             SaveLoginData(loginData);
             _syncPanel.SetActive(false);
+            _yourdatatext.text = new LocalizedString("StringMainMenuTable", "YourData") { Arguments = new object[] { loginData.Nick, DBManager.levelscore } }.GetLocalizedString();
         }
 
-        //Upadating from database 
         private void UpdateFromDb(LoginResponse loginData)
         {
             DBManager.colorsortLevels = loginData.ColorsortLevels;
@@ -658,8 +630,9 @@ namespace Connect.Core
 
             SaveLoginData(loginData);
             _syncPanel.SetActive(false);
+            _yourdatatext.text = new LocalizedString("StringMainMenuTable", "YourData") { Arguments = new object[] { loginData.Nick, loginData.LevelScore } }.GetLocalizedString();
         }
-        //Login data save
+
         private void SaveLoginData(LoginResponse loginData)
         {
             PlayerPrefs.SetString("Nick", loginData.Nick);
@@ -675,10 +648,10 @@ namespace Connect.Core
         private void ShowSyncPanel(LoginResponse loginData, int localColorsort, int localConnect, int localPipes)
         {
             _syncPanel.SetActive(true);
-            _syncMessage.text = $"Data mismatch detected!\n" +
-                               $"Local: Colorsort={localColorsort}, Connect={localConnect}, Pipes={localPipes}\n" +
-                               $"Server: Colorsort={loginData.ColorsortLevels}, Connect={loginData.ConnectLevels}, Pipes={loginData.PipesLevels}\n" +
-                               $"Choose an option:";
+            _syncMessage.text = new LocalizedString("StringMainMenuTable", "SyncMessage")
+            {
+                Arguments = new object[] { localColorsort, localConnect, localPipes, loginData.ColorsortLevels, loginData.ConnectLevels, loginData.PipesLevels }
+            }.GetLocalizedString();
 
             _keepLocalButton.onClick.RemoveAllListeners();
             _keepLocalButton.onClick.AddListener(() => KeepLocalData(loginData));
@@ -686,7 +659,6 @@ namespace Connect.Core
             _updateFromDbButton.onClick.AddListener(() => UpdateFromDb(loginData));
         }
 
-        //Bypass certificate to connect to database
         private class BypassCertificate : CertificateHandler
         {
             protected override bool ValidateCertificate(byte[] certificateData)
@@ -709,7 +681,6 @@ namespace Connect.Core
             inputField.onSelect.AddListener((text) =>
             {
                 Debug.Log($"InputField {inputField.name} selected");
-
                 if (Application.isMobilePlatform)
                 {
                     var keyboard = TouchScreenKeyboard.Open("", keyboardType, true, false, isPassword);
@@ -719,60 +690,66 @@ namespace Connect.Core
                 {
                     Debug.LogWarning("Not a mobile platform, skipping TouchScreenKeyboard.Open");
                 }
-
             });
         }
-            //Verify inputs on Regster pannel
-            public void VerifyInputs()
+
+        public void VerifyInputs()
         {
             registerbutton.interactable = (nickfield.text.Length >= 2 && passwordfield.text.Length > 2 && emailfield.text.Contains('@'));
-            if (passwordfield.text.Length < 2 ) {
-
-                _registererrortext.text = "your password must be more than two characters";
-            }
-            if (!emailfield.text.Contains('@'))
+            if (passwordfield.text.Length < 2)
             {
-                _registererrortext.text = "Your email must be valid";
+                _registererrortext.text = new LocalizedString("StringMainMenuTable", "PasswordTooShort").GetLocalizedString();
+            }
+            else if (!emailfield.text.Contains('@'))
+            {
+                _registererrortext.text = new LocalizedString("StringMainMenuTable", "InvalidEmail").GetLocalizedString();
+            }
+            else
+            {
+                _registererrortext.text = "";
             }
         }
 
-        //Verifying inputs for changing password email send
         public void VerifyInputsforChangepassword()
         {
             _sendCodeButton.interactable = (_emailResetField.text.Contains('@'));
 
-            if (!_emailResetField.text.Contains('@')) {
-
-                _resetMessageText.text = "Input valid Email";
+            if (!_emailResetField.text.Contains('@'))
+            {
+                _resetMessageText.text = new LocalizedString("StringMainMenuTable", "InvalidEmail").GetLocalizedString();
             }
-
+            else
+            {
+                _resetMessageText.text = "";
+            }
         }
-        
-        //Verifying imputs for changepassword button
+
         public void VerivyInputsfroChangepasswordbutton()
         {
             _confirmResetButton.interactable = (_resetCodeField.text.Length > 2 && _newPasswordField.text.Length > 2);
 
-            if(_sendCodeButton.interactable == false)
+            if (!_sendCodeButton.interactable)
             {
                 if (_resetCodeField.text.Length < 2)
                 {
-                    _resetMessageText.text = "Input full code in password field";
+                    _resetMessageText.text = new LocalizedString("StringMainMenuTable", "InvalidResetCode").GetLocalizedString();
                 }
-                if (_newPasswordField.text.Length > 2)
+                else if (_newPasswordField.text.Length < 2)
                 {
-                    _resetMessageText.text = "Your password must be more than 2 characters";
+                    _resetMessageText.text = new LocalizedString("StringMainMenuTable", "PasswordTooShort").GetLocalizedString();
                 }
-            } 
-
+                else
+                {
+                    _resetMessageText.text = "";
+                }
+            }
         }
 
-        //Verify inputs on login Pannel
         public void VerifyInputsLogin()
         {
             LoginButton.interactable = (nickfieldlogin.text.Length >= 2 && passwordfieldlogin.text.Length > 2);
         }
-        //Checking server data
+
         private IEnumerator CheckServerData(string nick, string password)
         {
             string url = "http://93.81.252.217/unity/login.php";
@@ -794,6 +771,7 @@ namespace Connect.Core
                     {
                         Debug.LogError("Empty response from server");
                         AthorisationEnable();
+                        _loginerrortext.text = new LocalizedString("StringMainMenuTable", "LoginError") { Arguments = new object[] { "Empty response from server" } }.GetLocalizedString();
                         yield break;
                     }
 
@@ -806,6 +784,7 @@ namespace Connect.Core
                             {
                                 Debug.LogError("Deserialization returned null");
                                 AthorisationEnable();
+                                _loginerrortext.text = new LocalizedString("StringMainMenuTable", "LoginError") { Arguments = new object[] { "Error processing response" } }.GetLocalizedString();
                                 yield break;
                             }
 
@@ -841,53 +820,48 @@ namespace Connect.Core
                                 else
                                 {
                                     _leaderboardPannel.SetActive(true);
+                                    _yourdatatext.text = new LocalizedString("StringMainMenuTable", "YourData") { Arguments = new object[] { loginData.Nick, loginData.LevelScore } }.GetLocalizedString();
                                 }
                             }
                             else
                             {
                                 Debug.Log("Server check failed: " + response);
                                 AthorisationEnable();
+                                _loginerrortext.text = new LocalizedString("StringMainMenuTable", "LoginError") { Arguments = new object[] { response } }.GetLocalizedString();
                             }
                         }
                         catch (JsonException e)
                         {
                             Debug.LogError($"JSON parse error in CheckServerData: {e.Message}. Raw response: {response}");
                             AthorisationEnable();
+                            _loginerrortext.text = new LocalizedString("StringMainMenuTable", "LoginError") { Arguments = new object[] { "Error processing response" } }.GetLocalizedString();
                         }
                     }
                     else
                     {
                         Debug.Log("Server check failed (not JSON): " + response);
                         AthorisationEnable();
+                        _loginerrortext.text = new LocalizedString("StringMainMenuTable", "LoginError") { Arguments = new object[] { response } }.GetLocalizedString();
                     }
                 }
                 else
                 {
                     Debug.LogError("Connect error: " + www.error);
                     AthorisationEnable();
+                    _loginerrortext.text = new LocalizedString("StringMainMenuTable", "LoginError") { Arguments = new object[] { www.error } }.GetLocalizedString();
                 }
             }
         }
-        //Lobout click
+
         public void ClickLogout(Button button)
         {
             AnimationDotWeen.AnimateAndSwitch(button, () =>
             {
                 DBManager.LoggedOut();
-                _titlePanel.SetActive(true);
-                _levelPanelConnect.SetActive(false);
-                _levelPanelColorsort.SetActive(false);
-                _levelPanelPipes.SetActive(false);
-                _choosegamescreen.SetActive(false);
-                _leaderboardPannel.SetActive(false);
-                _AuthorithationPannel.SetActive(false);
-                _registerPannel.SetActive(false);
-                _loginPannel.SetActive(false);
-                _registerPannel.SetActive(false);
-                _leaderboardPannel.SetActive(false);
+                MainMenuShow();
             });
         }
-        //Display leaderboard
+
         private void DisplayLeaderboard(LeaderboardEntry[] entries)
         {
             if (_leaderboardContent == null)
@@ -921,7 +895,7 @@ namespace Connect.Core
                 }
             }
         }
-        //Get leaderboard
+
         private IEnumerator FetchLeaderboard()
         {
             string url = "http://93.81.252.217/unity/get_leaderboard.php";
@@ -941,14 +915,13 @@ namespace Connect.Core
                         if (leaderboardData == null)
                         {
                             Debug.LogError("Deserialization returned null");
-                             yield break;
+                            yield break;
                         }
 
                         if (leaderboardData.Status == "0")
                         {
                             DisplayLeaderboard(leaderboardData.Leaderboard);
-                            _yourdatatext.text = "Nick " + DBManager.nick + " score in levels:" + DBManager.levelscore;
-
+                            _yourdatatext.text = new LocalizedString("StringMainMenuTable", "YourData") { Arguments = new object[] { DBManager.nick, DBManager.levelscore } }.GetLocalizedString();
                         }
                         else
                         {
@@ -966,7 +939,7 @@ namespace Connect.Core
                 }
             }
         }
-        //Change password if we do not know it
+
         public void ChangePasswordUnKnown()
         {
             _loginPannel.SetActive(false);
@@ -987,31 +960,24 @@ namespace Connect.Core
                 Debug.LogError("ChangePasswordUnKnown: _confirmResetButton is null");
             }
             _confirmResetButton.interactable = false;
-            _sendCodeButton.interactable = false ;
-
-
+            _sendCodeButton.interactable = false;
         }
 
-        //Clicked send reset code
-        public void SendResetCode( )
+        public void SendResetCode()
         {
             if (string.IsNullOrEmpty(_emailResetField.text))
             {
-                _resetMessageText.text = "Please enter your email";
+                _resetMessageText.text = new LocalizedString("StringMainMenuTable", "EmptyEmail").GetLocalizedString();
                 return;
             }
             Debug.Log($"SendResetCode: Starting reset code request for email: {_emailResetField.text}");
-
 
             AnimationDotWeen.AnimateAndSwitch(_sendCodeButton, () =>
             {
                 StartCoroutine(SendResetCodeCoroutine(_emailResetField.text));
             });
-
         }
 
-
-        //Send reset code
         private IEnumerator SendResetCodeCoroutine(string email)
         {
             string url = "http://93.81.252.217/unity/send_reset_code.php";
@@ -1037,7 +1003,7 @@ namespace Connect.Core
                     if (string.IsNullOrEmpty(response))
                     {
                         Debug.LogError("SendResetCodeCoroutine: Server returned empty response");
-                        _resetMessageText.text = "Server returned empty response";
+                        _resetMessageText.text = new LocalizedString("StringMainMenuTable", "ResetMessage") { Arguments = new object[] { "Server returned empty response" } }.GetLocalizedString();
                         yield break;
                     }
 
@@ -1047,11 +1013,11 @@ namespace Connect.Core
                         if (resetResponse == null)
                         {
                             Debug.LogError("Deserialization returned null");
-                            _resetMessageText.text = "Error processing response";
+                            _resetMessageText.text = new LocalizedString("StringMainMenuTable", "ResetMessage") { Arguments = new object[] { "Error processing response" } }.GetLocalizedString();
                             yield break;
                         }
 
-                        _resetMessageText.text = resetResponse.Message;
+                        _resetMessageText.text = new LocalizedString("StringMainMenuTable", "ResetMessage") { Arguments = new object[] { resetResponse.Message } }.GetLocalizedString();
                         if (resetResponse.Status == "0")
                         {
                             Debug.Log("SendResetCodeCoroutine: Reset code sent successfully, disabling Send button");
@@ -1065,17 +1031,17 @@ namespace Connect.Core
                     catch (JsonException e)
                     {
                         Debug.LogError($"SendResetCodeCoroutine: JSON parse error: {e.Message}. Raw response: {response}");
-                        _resetMessageText.text = "Error processing response";
+                        _resetMessageText.text = new LocalizedString("StringMainMenuTable", "ResetMessage") { Arguments = new object[] { "Error processing response" } }.GetLocalizedString();
                     }
                 }
                 else
                 {
                     Debug.LogError($"SendResetCodeCoroutine: Connection error: {www.error}");
-                    _resetMessageText.text = "Connection error";
+                    _resetMessageText.text = new LocalizedString("StringMainMenuTable", "ResetMessage") { Arguments = new object[] { "Connection error" } }.GetLocalizedString();
                 }
             }
         }
-        //Password reset conferm click
+
         private void ConfirmPasswordReset()
         {
             AnimationDotWeen.AnimateAndSwitch(_confirmResetButton, () =>
@@ -1084,14 +1050,14 @@ namespace Connect.Core
                     string.IsNullOrEmpty(_resetCodeField.text) ||
                     string.IsNullOrEmpty(_newPasswordField.text))
                 {
-                    _resetMessageText.text = "Please fill all fields";
+                    _resetMessageText.text = new LocalizedString("StringMainMenuTable", "FillAllFields").GetLocalizedString();
                     return;
                 }
 
                 StartCoroutine(ResetPasswordCoroutine(_emailResetField.text, _resetCodeField.text, _newPasswordField.text));
             });
         }
-        //Reset passwordCoroutine
+
         private IEnumerator ResetPasswordCoroutine(string email, string code, string newPassword)
         {
             string url = "http://93.81.252.217/unity/reset_password.php";
@@ -1119,7 +1085,7 @@ namespace Connect.Core
                     if (string.IsNullOrEmpty(response))
                     {
                         Debug.LogError("ResetPasswordCoroutine: Server returned empty response");
-                        _resetMessageText.text = "Server returned empty response";
+                        _resetMessageText.text = new LocalizedString("StringMainMenuTable", "ResetMessage") { Arguments = new object[] { "Server returned empty response" } }.GetLocalizedString();
                         yield break;
                     }
 
@@ -1129,11 +1095,11 @@ namespace Connect.Core
                         if (resetResponse == null)
                         {
                             Debug.LogError("Deserialization returned null");
-                            _resetMessageText.text = "Error processing response";
+                            _resetMessageText.text = new LocalizedString("StringMainMenuTable", "ResetMessage") { Arguments = new object[] { "Error processing response" } }.GetLocalizedString();
                             yield break;
                         }
 
-                        _resetMessageText.text = resetResponse.Message;
+                        _resetMessageText.text = new LocalizedString("StringMainMenuTable", "ResetMessage") { Arguments = new object[] { resetResponse.Message } }.GetLocalizedString();
                         if (resetResponse.Status == "0")
                         {
                             Debug.Log("ResetPasswordCoroutine: Password updated successfully, saving new password and redirecting to login");
@@ -1148,21 +1114,18 @@ namespace Connect.Core
                     catch (JsonException e)
                     {
                         Debug.LogError($"ResetPasswordCoroutine: JSON parse error: {e.Message}. Raw response: {response}");
-                        _resetMessageText.text = "Error processing response";
+                        _resetMessageText.text = new LocalizedString("StringMainMenuTable", "ResetMessage") { Arguments = new object[] { "Error processing response" } }.GetLocalizedString();
                     }
                 }
                 else
                 {
                     Debug.LogError($"ResetPasswordCoroutine: Connection error: {www.error}");
-                    _resetMessageText.text = "Connection error";
+                    _resetMessageText.text = new LocalizedString("StringMainMenuTable", "ResetMessage") { Arguments = new object[] { "Connection error" } }.GetLocalizedString();
                 }
             }
         }
-
         #endregion
-
-
-
         #endregion
     }
 }
+

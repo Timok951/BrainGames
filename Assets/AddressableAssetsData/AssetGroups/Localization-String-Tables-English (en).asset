@@ -23,6 +23,24 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 33743548789a8874ba99e32e078dba21
+    m_Address: PasswordPannel_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 43972d8541753b544ad11f4ccb86b6b0
+    m_Address: AutorisationTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 456c2c4c9e1e9454c969df806def300f
+    m_Address: LevelsNamesTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 70e0911ab927c464dae1d6714922cf91
     m_Address: Gamemodes_en
     m_ReadOnly: 1
@@ -31,6 +49,36 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a9f30d78da8013044a7c216122a85eed
     m_Address: GameTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b3def9a6b47720b43aaf75337eccd21b
+    m_Address: RegisterTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5fbfe0deac0e3f458d9925bcd1f175d
+    m_Address: New Table_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: deebb262d53e7f84397470f2331a168f
+    m_Address: LoginTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e732f3eed1aff784eb853738f6b23798
+    m_Address: Gameplay_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee2f306408e5cdc4f8c917dea8d76790
+    m_Address: LeaderboardPannel_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en

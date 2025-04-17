@@ -10,6 +10,7 @@ using UnityEngine.UIElements;
 using UnityEditor.UI;
 using UnityEngine.UI;
 using Button = UnityEngine.UI.Button;
+using UnityEngine.Localization;
 
 namespace Connect.Core
 {
@@ -106,6 +107,8 @@ namespace Connect.Core
 
             _levelText.text = "Level" + " " + GameManager.Instance.CurrentLevelColorsort.ToString();
             _movesText.text = "Moves " + moveNum.ToString();
+
+
             moveNum = 0;
             bestNum = PlayerPrefs.GetInt("Best" + _currentLevelData.ToString(), 0);
             DOTween.defaultAutoPlay = AutoPlay.None;
@@ -132,6 +135,17 @@ namespace Connect.Core
 
 
             }
+
+            var levelLocalized = new LocalizedString("Gameplay", "Level");
+            levelLocalized.Arguments = new object[] { GameManager.Instance.CurrentLevelColorsort };
+            levelLocalized.StringChanged += (value) => _levelText.text = value;
+
+            var movesLocalized = new LocalizedString("Gameplay", "Moves");
+            movesLocalized.Arguments = new object[] { moveNum };
+            movesLocalized.StringChanged += (value) => _movesText.text = value;
+
+            levelLocalized.RefreshString();
+            movesLocalized.RefreshString();
         }
 
 
@@ -278,8 +292,19 @@ namespace Connect.Core
         #region UPDATE_METHODS
         private void Update()
         {
+
             if (hasGameFinished || !hasGameStarted) return;
 
+            var levelLocalized = new LocalizedString("Gameplay", "Level");
+            levelLocalized.Arguments = new object[] { GameManager.Instance.CurrentLevelColorsort };
+            levelLocalized.StringChanged += (value) => _levelText.text = value;
+
+            var movesLocalized = new LocalizedString("Gameplay", "Moves");
+            movesLocalized.Arguments = new object[] { moveNum };
+            movesLocalized.StringChanged += (value) => _movesText.text = value;
+
+            levelLocalized.RefreshString();
+            movesLocalized.RefreshString();
 
             if (!canStartClicking)
             {
@@ -407,6 +432,16 @@ namespace Connect.Core
             {
 
             }
+            var levelLocalized = new LocalizedString("Gameplay", "Level");
+            levelLocalized.Arguments = new object[] { GameManager.Instance.CurrentLevelColorsort };
+            levelLocalized.StringChanged += (value) => _levelText.text = value;
+
+            var movesLocalized = new LocalizedString("Gameplay", "Moves");
+            movesLocalized.Arguments = new object[] { moveNum };
+            movesLocalized.StringChanged += (value) => _movesText.text = value;
+
+            levelLocalized.RefreshString();
+            movesLocalized.RefreshString();
 
             PlayerPrefs.SetInt("Best" + _currentLevelData, bestNum);
 
