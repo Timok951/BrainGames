@@ -20,4 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Project/Scenes/DailyChallengeScene.unity
     guid: 89bdc2e7d893b224e8741ba7582f8d58
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 09a805b8e85bd9349be5772c44009edd, type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: 0735e2dd92b874f4bb0e39cd8849b9b8, type: 2}

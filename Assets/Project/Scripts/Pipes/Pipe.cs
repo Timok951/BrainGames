@@ -1,3 +1,4 @@
+using DG.Tweening;
 using JetBrains.Annotations;
 using log4net.Util;
 using System;
@@ -33,6 +34,7 @@ namespace Connect.Core
         #region START_VARIABLES
         internal void Init(int pipe)
         {
+            DOTween.Init(true, true, LogBehaviour.ErrorsOnly);
             //Pipes will be two number value we need extract rotation and pipetype
             PipeType = pipe % 10;
             currentPipe = Instantiate(_pipePrefabs[PipeType], transform);
@@ -83,23 +85,30 @@ namespace Connect.Core
 
             }
 
+
         }
         #endregion
         #region UPDATE_FUNCTIONS
         public void UpdateInput()
         {
-
-            if (PipeType == 0 ||  PipeType == 1 || PipeType == 2)
+            if (PipeType == 0 || PipeType == 1 || PipeType == 2)
             {
                 return;
             }
 
-            //MaxRotation will be walue 3
+            // Increasing rotation
             rotation = (rotation + 1) % (maxRotation + 1);
-            //Increasing rotation value by 1
-            currentPipe.transform.eulerAngles = new Vector3(0,0, rotation * rotatinMultiplier);
 
-            
+            // Calculating ange
+            float targetAngle = rotation * rotatinMultiplier;
+
+            // stop animations
+            currentPipe.transform.DOKill();
+
+            // Animating rotation
+            currentPipe.transform
+                .DORotate(new Vector3(0, 0, targetAngle), 0.2f, RotateMode.Fast)
+                .SetEase(Ease.OutQuad);
         }
 
         //Updating filled pipe

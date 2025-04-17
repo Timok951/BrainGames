@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: GameTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: GameTable
+  m_TableCollectionNameGuidString: cbcbe2e1293087d4f8cf4309907689dc
+  m_Entries:
+  - m_Id: 63593345024
+    m_Key: connectkey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19750285312
+    m_Key: dailytraingkey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 170900418560
+    m_Key: colorsortkey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 202026348544
+    m_Key: pipeskey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1055751761920
+    m_Key: titilegamechose
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 7812490107105837091
+  references:
+    version: 2
+    RefIds:
+    - rid: 7812490107105837091
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1744891283043

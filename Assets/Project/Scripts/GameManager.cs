@@ -10,9 +10,9 @@ using Assets.Project.Scripts.Database;
 namespace Connect.Core
 {
 
-    /*<summarry> 
-     * Class for working with levels, unlocking them
-     <sumarry>*/
+    ///<summarry> 
+     ///Class for working with levels, unlocking them
+     ///<sumarry>
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
@@ -394,6 +394,7 @@ namespace Connect.Core
         public void GoToMainMenu()
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(MainMenu);
+
         }
 
         public void GoToGameplayConnect()

@@ -80,6 +80,7 @@ namespace Connect.Core
         #region START_METHODS
         private void Awake()
         {
+
             Debug.Log("Awake started");
             Instance = this;
             hasGameFinished = false;
@@ -89,6 +90,7 @@ namespace Connect.Core
         }
         private void Start()
         {
+
             _currentLevelData = GameManager.Instance.GetLevelColorSort();
 
             if (_currentLevelData == null)

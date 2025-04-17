@@ -85,7 +85,16 @@ namespace Connect.Core
 
             Instance = this;
             MainMenuShow();
-            
+
+            SetupInputField(nickfield, TouchScreenKeyboardType.Default);
+            SetupInputField(passwordfield, TouchScreenKeyboardType.Default, true);
+            SetupInputField(emailfield, TouchScreenKeyboardType.EmailAddress);
+            SetupInputField(nickfieldlogin, TouchScreenKeyboardType.Default);
+            SetupInputField(passwordfieldlogin, TouchScreenKeyboardType.Default, true);
+            SetupInputField(_emailResetField, TouchScreenKeyboardType.EmailAddress);
+            SetupInputField(_resetCodeField, TouchScreenKeyboardType.NumberPad);
+            SetupInputField(_newPasswordField, TouchScreenKeyboardType.Default, true);
+
         }
 
         private void MainMenuShow()
@@ -685,9 +694,36 @@ namespace Connect.Core
                 return true;
             }
         }
-        
-        //Verify inputs on Regster pannel
-        public void VerifyInputs()
+
+        private void SetupInputField(TMP_InputField inputField, TouchScreenKeyboardType keyboardType, bool isPassword = false)
+        {
+            if (inputField == null)
+            {
+                Debug.LogError("InputField is null");
+                return;
+            }
+
+            inputField.keyboardType = keyboardType;
+            inputField.shouldHideMobileInput = false;
+
+            inputField.onSelect.AddListener((text) =>
+            {
+                Debug.Log($"InputField {inputField.name} selected");
+
+                if (Application.isMobilePlatform)
+                {
+                    var keyboard = TouchScreenKeyboard.Open("", keyboardType, true, false, isPassword);
+                    Debug.Log($"Keyboard opened: {keyboard != null}, status: {(keyboard != null ? keyboard.status : "null")}");
+                }
+                else
+                {
+                    Debug.LogWarning("Not a mobile platform, skipping TouchScreenKeyboard.Open");
+                }
+
+            });
+        }
+            //Verify inputs on Regster pannel
+            public void VerifyInputs()
         {
             registerbutton.interactable = (nickfield.text.Length >= 2 && passwordfield.text.Length > 2 && emailfield.text.Contains('@'));
             if (passwordfield.text.Length < 2 ) {
