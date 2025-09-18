@@ -1,0 +1,35 @@
+@startuml
+class DistinguishedName {
+    + Country : string <<get>> <<set>>
+    + Organization : string <<get>> <<set>>
+    + OrganizationalUnit : string <<get>> <<set>>
+    + Dnq : string <<get>> <<set>>
+    + State : string <<get>> <<set>>
+    + CommonName : string <<get>> <<set>>
+    + SerialNumber : string <<get>> <<set>>
+    + DistinguishedName(n:Asn1Node)
+    + Equals(n2:DistinguishedName) : bool
+    + <<override>> ToString() : string
+}
+class X509Cert {
+    + SerialNumber : string <<get>>
+    + SelfSigned : bool <<get>>
+    + X509Cert(n:Asn1Node)
+    + X509Cert(data:byte[])
+    + CheckCertTime(time:DateTime) : bool
+    + CheckSignature(signer:X509Cert) : bool
+    + CheckSignatureSha256(signer:X509Cert) : bool
+}
+class InvalidTimeFormat {
+}
+class InvalidX509Data {
+}
+X509Cert --> "ValidAfter" DateTime
+X509Cert --> "ValidBefore" DateTime
+X509Cert --> "PubKey" RSAKey
+X509Cert --> "Subject" DistinguishedName
+X509Cert --> "Issuer" DistinguishedName
+X509Cert --> "Signature" Asn1Node
+IAPSecurityException <|-- InvalidTimeFormat
+IAPSecurityException <|-- InvalidX509Data
+@enduml

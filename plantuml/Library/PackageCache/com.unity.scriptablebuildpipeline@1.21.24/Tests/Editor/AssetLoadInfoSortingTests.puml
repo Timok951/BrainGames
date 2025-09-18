@@ -1,0 +1,16 @@
+@startuml
+class AssetLoadInfoSortingTests {
+    + OneTimeSetUp() : void
+    + OneTimeTearDown() : void
+    + AssetLoadInfo_SortsByGuid() : void
+    + AssetLoadInfo_SortsByGuid_PreSorted() : void
+    + AssetLoadInfo_SortsByIncludedObjects() : void
+    + AssetLoadInfo_SortsByIncludedObjects_PreSorted() : void
+    + AssetLoadInfo_SortsByIncludedObjects_SortsNullIncludedObjects() : void
+    + AssetLoadInfo_SortsByIncludedObjects_SortsNullIncludedObjects_PreSorted() : void
+    + AssetLoadInfo_SortsByAddress() : void
+    + AssetLoadInfo_SortsByAddress_PreSorted() : void
+    + AssetLoadInfo_SortsByAddress_SortsNullAdress() : void
+    + AssetLoadInfo_SortsByAddress_SortsNullAdress_PreSorted() : void
+}
+@enduml

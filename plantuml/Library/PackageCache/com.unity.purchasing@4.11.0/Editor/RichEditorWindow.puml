@@ -1,0 +1,5 @@
+@startuml
+class RichEditorWindow {
+}
+EditorWindow <|-- RichEditorWindow
+@enduml

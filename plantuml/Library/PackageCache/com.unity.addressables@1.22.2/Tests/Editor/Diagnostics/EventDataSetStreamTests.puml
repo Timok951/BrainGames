@@ -1,0 +1,13 @@
+@startuml
+class EventDataSetStreamTests {
+    + EventDataSetStream_AddSample_SimpleAdd() : void
+    + EventDataSetStream_AddSample_OutOfOrderFrameFails() : void
+    + EventDataSetStream_AddSample_ReplaceValueOnDuplicateAdd() : void
+    + EventDataSetStream_GetValue_ReturnsZeroOnInvalidFrame() : void
+    + EventDataSetStream_GetValue_ReturnsCorrectValueOnMultipleCalls() : void
+    + EventDataSetStream_GetValue_ReturnsLastValueOnTooLargeFrame() : void
+    + EventDataSetStream_HasDataAfterFrame_ReturnsFalseOnNoSamples() : void
+    + EventDataSetStream_HasDataAfterFrame_ReturnsFalseOnLastSampleEmptyData() : void
+    + EventDataSetSTream_HasDataAfterFrame_ReturnsTrueOnLastSampleNonZero() : void
+}
+@enduml

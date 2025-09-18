@@ -1,0 +1,5 @@
+@startuml
+interface IVivox {
+}
+IServiceComponent <|-- IVivox
+@enduml

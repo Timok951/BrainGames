@@ -1,0 +1,8 @@
+@startuml
+class LevelList {
+}
+class "List`1"<T> {
+}
+ScriptableObject <|-- LevelList
+LevelList --> "Levels<LevelData>" "List`1"
+@enduml

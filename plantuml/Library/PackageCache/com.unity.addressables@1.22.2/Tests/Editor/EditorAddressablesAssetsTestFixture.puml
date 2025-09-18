@@ -1,0 +1,6 @@
+@startuml
+class EditorAddressableAssetsTestFixture {
+    + Setup() : void
+    + Teardown() : void
+}
+@enduml

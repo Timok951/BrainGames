@@ -1,0 +1,5 @@
+@startuml
+class ResourceProfilerWindow {
+}
+EventViewerWindow <|-- ResourceProfilerWindow
+@enduml

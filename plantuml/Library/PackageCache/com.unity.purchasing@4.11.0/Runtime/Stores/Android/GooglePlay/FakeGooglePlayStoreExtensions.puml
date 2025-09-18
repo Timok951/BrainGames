@@ -1,0 +1,13 @@
+@startuml
+class FakeGooglePlayStoreExtensions {
+    + UpgradeDowngradeSubscription(oldSku:string, newSku:string) : void
+    + UpgradeDowngradeSubscription(oldSku:string, newSku:string, desiredProrationMode:int) : void
+    + UpgradeDowngradeSubscription(oldSku:string, newSku:string, desiredProrationMode:GooglePlayProrationMode) : void
+    + RestoreTransactions(callback:Action<bool>) : void
+    + RestoreTransactions(callback:Action<bool, string>) : void
+    + ConfirmSubscriptionPriceChange(productId:string, callback:Action<bool>) : void
+    + IsPurchasedProductDeferred(product:Product) : bool
+    + GetPurchaseState(product:Product) : GooglePurchaseState
+}
+IGooglePlayStoreExtensions <|-- FakeGooglePlayStoreExtensions
+@enduml

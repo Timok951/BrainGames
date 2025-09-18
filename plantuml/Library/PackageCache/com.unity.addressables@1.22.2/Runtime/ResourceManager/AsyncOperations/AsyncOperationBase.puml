@@ -1,0 +1,21 @@
+@startuml
+interface ICachable {
+}
+interface IAsyncOperation {
+}
+abstract class "AsyncOperationBase`1"<TObject> {
+    + <<virtual>> GetDependencies(dependencies:List<AsyncOperationHandle>) : void
+    + Result : TObject <<get>> <<set>>
+    + IsRunning : bool <<get>> <<internal set>>
+    + WaitForCompletion() : void
+    + <<override>> ToString() : string
+    + Complete(result:TObject, success:bool, errorMsg:string) : void
+    + Complete(result:TObject, success:bool, errorMsg:string, releaseDependenciesOnFailure:bool) : void
+    + Complete(result:TObject, success:bool, exception:Exception, releaseDependenciesOnFailure:bool) : void
+}
+class "Action`1"<T> {
+}
+class "DelegateList`1"<T> {
+}
+IAsyncOperation <|-- "AsyncOperationBase`1"
+@enduml

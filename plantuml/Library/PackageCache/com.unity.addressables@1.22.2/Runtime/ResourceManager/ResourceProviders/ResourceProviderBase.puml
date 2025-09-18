@@ -1,0 +1,26 @@
+@startuml
+abstract class ResourceProviderBase {
+    + <<virtual>> ProviderId : string <<get>>
+    + <<virtual>> Initialize(id:string, data:string) : bool
+    + <<virtual>> CanProvide(t:Type, location:IResourceLocation) : bool
+    + <<override>> ToString() : string
+    + <<virtual>> Release(location:IResourceLocation, obj:object) : void
+    + <<virtual>> GetDefaultType(location:IResourceLocation) : Type
+    + {abstract} Provide(provideHandle:ProvideHandle) : void
+    + <<virtual>> InitializeAsync(rm:ResourceManager, id:string, data:string) : AsyncOperationHandle<bool>
+}
+class ProviderLoadRequestOptions {
+    + Copy() : ProviderLoadRequestOptions
+    + IgnoreFailures : bool <<get>> <<set>>
+    + WebRequestTimeout : int <<get>> <<set>>
+}
+class BaseInitAsyncOp {
+    + Init(callback:Func<bool>) : void
+}
+class "AsyncOperationBase`1"<T> {
+}
+IResourceProvider <|-- ResourceProviderBase
+IInitializableObject <|-- ResourceProviderBase
+ResourceProviderBase +-- BaseInitAsyncOp
+"AsyncOperationBase`1" "<bool>" <|-- BaseInitAsyncOp
+@enduml

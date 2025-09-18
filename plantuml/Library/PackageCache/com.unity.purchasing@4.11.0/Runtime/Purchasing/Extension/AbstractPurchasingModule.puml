@@ -1,0 +1,7 @@
+@startuml
+abstract class AbstractPurchasingModule {
+    + Configure(binder:IPurchasingBinder) : void
+    + {abstract} Configure() : void
+}
+IPurchasingModule <|-- AbstractPurchasingModule
+@enduml

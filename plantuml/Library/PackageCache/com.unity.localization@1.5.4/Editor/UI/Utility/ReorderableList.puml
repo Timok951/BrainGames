@@ -1,0 +1,44 @@
+@startuml
+class ReorderableList {
+    + {static} <<readonly>> UssClassName : string = "reorderable-list"
+    + {static} <<readonly>> EmptyUssClassName : string
+    + {static} <<readonly>> ItemUssClassName : string
+    + {static} <<readonly>> ItemContainerUssClassName : string
+    + {static} <<readonly>> ItemHandleUssClassName : string
+    + {static} <<readonly>> ItemHandleDraggerUssClassName : string
+    + {static} <<readonly>> SelectedItemUssClassName : string
+    + Count : int <<get>>
+    + Selected : int <<get>> <<set>>
+    + DisplayRemoveButton : bool <<get>> <<set>>
+    + HeaderTitle : string <<get>> <<set>>
+    + HeaderTooltip : string <<get>> <<set>>
+    + DisplayAddButton : bool <<get>> <<set>>
+    + DisplayHeader : bool <<get>> <<set>>
+    + DisplayFooter : bool <<get>> <<set>>
+    + Draggable : bool <<get>> <<set>> = true
+    + IsNestedList : bool <<get>> <<set>>
+    + ReorderableList(listProperty:SerializedProperty)
+    + ReorderableList(list:IList)
+    + RefreshList() : void
+    + Select(index:int) : void
+}
+class ListItem {
+    + ListItem(draggable:bool)
+    + SetSelected(selected:bool) : void
+}
+VisualElement <|-- ReorderableList
+ReorderableList --> "ListProperty" SerializedProperty
+ReorderableList --> "List" IList
+ReorderableList --> "HeaderIcon" Texture
+ReorderableList --> "RefreshListCallback" RefreshListCallbackDelegate
+ReorderableList --> "CreateHeaderContentsCallback" CreateHeaderContentsCallbackDelegate
+ReorderableList --> "CreateItemCallback" CreateItemCallbackDelegate
+ReorderableList --> "CreateEmptyCallback" CreateEmptyListItemCallbackDelegate
+ReorderableList --> "AddCallback" AddItemCallbackDelegate
+ReorderableList --> "RemoveCallback" RemoveItemCallbackDelegate
+ReorderableList --> "ReorderCallback" ReorderCallbackDelegate
+ReorderableList +-- ListItem
+VisualElement <|-- ListItem
+ListItem --> "Handle" VisualElement
+ListItem --> "Container" VisualElement
+@enduml

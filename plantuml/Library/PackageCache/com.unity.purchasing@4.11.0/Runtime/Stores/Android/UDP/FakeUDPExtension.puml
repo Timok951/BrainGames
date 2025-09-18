@@ -1,0 +1,10 @@
+@startuml
+class FakeUDPExtension {
+    + GetUserInfo() : object
+    + GetLastInitializationError() : string
+    + GetLastPurchaseError() : string
+    + EnableDebugLog(enable:bool) : void
+    + RegisterPurchaseDeferredListener(action:Action<Product>) : void
+}
+IUDPExtensions <|-- FakeUDPExtension
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+class BuiltinSceneCacheTests {
+    + OneTimeSetUp() : void
+    + OneTimeTearDown() : void
+    + Setup() : void
+    + CanAccessSceneData() : void
+    + WhenScenesChange_CallbackInvoked() : void
+    + WhenSceneOrderChanges_GetSceneIndexCacheUpdates() : void
+}
+@enduml

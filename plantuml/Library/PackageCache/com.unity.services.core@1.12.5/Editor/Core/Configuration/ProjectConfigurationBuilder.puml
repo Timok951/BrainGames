@@ -1,0 +1,7 @@
+@startuml
+class ProjectConfigurationBuilder {
+    + {static} CreateBuilderWithAllProvidersInProject() : ProjectConfigurationBuilder
+    + ProjectConfigurationBuilder(orderedConfigProviders:IEnumerable<IConfigurationProvider>)
+    + BuildConfiguration() : SerializableProjectConfiguration
+}
+@enduml

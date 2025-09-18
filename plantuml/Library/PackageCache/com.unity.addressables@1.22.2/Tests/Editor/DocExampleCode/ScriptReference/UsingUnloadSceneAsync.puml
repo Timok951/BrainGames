@@ -1,0 +1,11 @@
+@startuml
+class UsingUnloadScene {
+}
+class SceneGatewayManager {
+    + sceneKey : string
+    + EnterBoundary() : void
+    + EnterScene() : IEnumerator<AsyncOperationHandle<SceneInstance>>
+    + ExitBoundary(cleanupCallback:Action) : void
+}
+UsingUnloadScene +-- SceneGatewayManager
+@enduml

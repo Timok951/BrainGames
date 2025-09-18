@@ -1,0 +1,5 @@
+@startuml
+class LocalizeStringEventEditor {
+    + <<override>> OnInspectorGUI() : void
+}
+@enduml

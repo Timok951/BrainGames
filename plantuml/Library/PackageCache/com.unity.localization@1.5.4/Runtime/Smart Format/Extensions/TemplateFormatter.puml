@@ -1,0 +1,18 @@
+@startuml
+class TemplateFormatter {
+    + TemplateFormatter()
+    + <<override>> TryEvaluateFormat(formattingInfo:IFormattingInfo) : bool
+    + Register(templateName:string, template:string) : void
+    + Remove(templateName:string) : bool
+    + <<override>> OnAfterDeserialize() : void
+    + Clear() : void
+}
+class Template {
+    + name : string
+    + text : string
+}
+FormatterBase <|-- TemplateFormatter
+TemplateFormatter --> "Formatter" SmartFormatter
+TemplateFormatter +-- Template
+Template --> "Format" Format
+@enduml

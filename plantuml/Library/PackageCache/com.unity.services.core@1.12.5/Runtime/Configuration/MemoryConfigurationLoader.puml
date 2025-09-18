@@ -1,0 +1,6 @@
+@startuml
+class MemoryConfigurationLoader {
+}
+IConfigurationLoader <|-- MemoryConfigurationLoader
+MemoryConfigurationLoader --> "Config" SerializableProjectConfiguration
+@enduml

@@ -1,0 +1,6 @@
+@startuml
+class ProgressBarReporter {
+    + ReportTaskSummaryInConsole : bool <<get>> <<set>> = true
+}
+TaskTimerReporter <|-- ProgressBarReporter
+@enduml

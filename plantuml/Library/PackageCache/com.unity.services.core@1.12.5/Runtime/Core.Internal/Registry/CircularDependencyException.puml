@@ -1,0 +1,7 @@
+@startuml
+class CircularDependencyException {
+    + CircularDependencyException()
+    + CircularDependencyException(message:string)
+}
+ServicesInitializationException <|-- CircularDependencyException
+@enduml

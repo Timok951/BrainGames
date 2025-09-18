@@ -1,0 +1,11 @@
+@startuml
+class GraphLayerBase {
+    + Stream : int <<get>>
+    + GraphLayerBase(stream:int, name:string, description:string, color:Color)
+    + LayerName : string <<get>>
+    + Description : string <<get>>
+    + <<virtual>> Draw(dataSet:EventDataSet, rect:Rect, startFrame:int, frameCount:int, inspectFrame:int, expanded:bool, material:Material, maxValue:int) : void
+}
+IGraphLayer <|-- GraphLayerBase
+GraphLayerBase --> "GraphColor" Color
+@enduml

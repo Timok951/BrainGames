@@ -1,0 +1,7 @@
+@startuml
+class SerializedTypeDrawer {
+    + <<override>> OnGUI(position:Rect, property:SerializedProperty, label:GUIContent) : void
+    + OnGUIMultiple(position:Rect, property:SerializedProperty, label:GUIContent, showMixed:bool) : void
+}
+PropertyDrawer <|-- SerializedTypeDrawer
+@enduml

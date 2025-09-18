@@ -1,0 +1,5 @@
+@startuml
+interface IProgressTracker {
+}
+IContextObject <|-- IProgressTracker
+@enduml

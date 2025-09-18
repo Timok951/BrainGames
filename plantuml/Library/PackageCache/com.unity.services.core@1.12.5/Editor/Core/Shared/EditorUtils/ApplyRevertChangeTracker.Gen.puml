@@ -1,0 +1,11 @@
+@startuml
+class "ApplyRevertChangeTracker`1"<T> {
+    + ApplyRevertChangeTracker(editorTarget:SerializedObject)
+    + IsDirty() : bool
+    + Apply() : void
+    + Reset() : void
+}
+class "ICopyable`1"<T> {
+}
+"ApplyRevertChangeTracker`1" --> "SerializedObject" SerializedObject
+@enduml

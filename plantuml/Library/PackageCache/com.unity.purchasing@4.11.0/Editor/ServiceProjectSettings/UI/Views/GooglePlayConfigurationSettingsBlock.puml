@@ -1,0 +1,6 @@
+@startuml
+class GooglePlayConfigurationSettingsBlock {
+    + GetUIBlockElement() : VisualElement
+}
+IPurchasingSettingsUIBlock <|-- GooglePlayConfigurationSettingsBlock
+@enduml

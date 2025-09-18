@@ -1,0 +1,5 @@
+@startuml
+interface IEnvironmentProvider {
+}
+INotifyPropertyChanged <|-- IEnvironmentProvider
+@enduml

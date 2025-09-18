@@ -1,0 +1,15 @@
+@startuml
+class CheckBundleDupeDependencyTests {
+    + CheckDupeCanFixIssues() : void
+    + CheckDupeNoIssuesIfValid() : void
+    + UniqueAssetBundleBuild_IsCreatedWithCorrectData() : void
+    + RefreshBuild_ReturnsSuccess() : void
+    + BuildImplicitDuplicatedAssetsSet_BuildCorrectImplicitAssets() : void
+    + CalculateDuplicates_DoesNotIncludeSameBundleReferencedMultipleTimes() : void
+    + CalculateInputDefinitions_CalculatesAllInputDefintions() : void
+    + CalculateDuplicates_ReturnsCorrectCheckDupeResultList() : void
+    + DupeGroupHasContentUpdateSchema() : void
+    + CheckForDuplicateDependencies_WorksWithNoAddressableAssets() : void
+}
+AddressableAssetTestBase <|-- CheckBundleDupeDependencyTests
+@enduml

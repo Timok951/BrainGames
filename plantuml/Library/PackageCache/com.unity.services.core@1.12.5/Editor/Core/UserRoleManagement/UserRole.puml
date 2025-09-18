@@ -1,0 +1,8 @@
+@startuml
+enum UserRole {
+    Unknown,
+    User,
+    Manager,
+    Owner,
+}
+@enduml

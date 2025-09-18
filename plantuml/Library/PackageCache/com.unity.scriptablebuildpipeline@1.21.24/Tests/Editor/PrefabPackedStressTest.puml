@@ -1,0 +1,9 @@
+@startuml
+class PrefabPackedStressTest {
+    + SerializationIndexFromObjectIdentifier_Lfid_CollisionFreeStressTest(packingMethod:IDeterministicIdentifiers, useV2Hasher:bool, seed:int, headerSize:int) : void
+    + SerializationIndexFromObjectIdentifier_GUID_CollisionFreeStressTest(packingMethod:IDeterministicIdentifiers, useV2Hasher:bool, seed:int, headerSize:int) : void
+    + SerializationIndexFromObjectIdentifier_BatchingQualityStressTest_Large(packingMethod:IDeterministicIdentifiers, useV2Hasher:bool, seed:int, headerSize:int) : void
+    + SerializationIndexFromObjectIdentifier_BatchingQualityStressTest_Small(packingMethod:IDeterministicIdentifiers, useV2Hasher:bool, seed:int, headerSize:int) : void
+    + CreateWriteCommand_ThrowsBuildException_OnCollision() : void
+}
+@enduml

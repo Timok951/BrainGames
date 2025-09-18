@@ -1,0 +1,23 @@
+@startuml
+class CacheInitialization {
+    + Initialize(id:string, dataStr:string) : bool
+    + <<virtual>> InitializeAsync(rm:ResourceManager, id:string, data:string) : AsyncOperationHandle<bool>
+}
+class CacheInitializationData {
+    + CompressionEnabled : bool <<get>> <<set>>
+    + CacheDirectoryOverride : string <<get>> <<set>>
+    + ExpirationDelay : int <<get>> <<set>>
+    + LimitCacheSize : bool <<get>> <<set>>
+    + MaximumCacheSize : long <<get>> <<set>>
+}
+class CacheInitOp {
+    + Init(callback:Func<bool>) : void
+    + Update(unscaledDeltaTime:float) : void
+}
+class "AsyncOperationBase`1"<T> {
+}
+IInitializableObject <|-- CacheInitialization
+CacheInitialization +-- CacheInitOp
+"AsyncOperationBase`1" "<bool>" <|-- CacheInitOp
+IUpdateReceiver <|-- CacheInitOp
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+class ActionScheduler {
+    + ActionScheduler()
+    + ActionScheduler(timeProvider:ITimeProvider)
+    + ScheduledActionsCount : int <<get>>
+    + ScheduleAction(action:Action, delaySeconds:double) : long
+    + CancelAction(actionId:long) : void
+    + JoinPlayerLoopSystem() : void
+    + QuitPlayerLoopSystem() : void
+}
+IActionScheduler <|-- ActionScheduler
+@enduml

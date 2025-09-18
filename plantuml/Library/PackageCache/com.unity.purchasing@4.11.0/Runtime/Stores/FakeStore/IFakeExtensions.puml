@@ -1,0 +1,5 @@
+@startuml
+interface IFakeExtensions {
+}
+IStoreExtension <|-- IFakeExtensions
+@enduml

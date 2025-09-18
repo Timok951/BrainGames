@@ -1,0 +1,14 @@
+@startuml
+class TaskReporter <<static>> {
+    + {static} CreateDefaultReporter() : ITaskReporter
+}
+abstract class TaskTimerReporter {
+    + CurrentProgress : float <<get>>
+    + Started : bool <<get>>
+    + <<virtual>> Start(title:string, description:string) : void
+    + ReportProgress(description:string, progress:float) : void
+    + Completed(message:string) : void
+    + Fail(message:string) : void
+}
+ITaskReporter <|-- TaskTimerReporter
+@enduml

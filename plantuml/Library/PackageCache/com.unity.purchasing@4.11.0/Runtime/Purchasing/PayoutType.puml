@@ -1,0 +1,8 @@
+@startuml
+enum PayoutType {
+    Other,
+    Currency,
+    Item,
+    Resource,
+}
+@enduml

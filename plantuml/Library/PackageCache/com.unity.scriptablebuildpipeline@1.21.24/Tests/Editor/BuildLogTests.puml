@@ -1,0 +1,11 @@
+@startuml
+class BuildLogTests {
+    + WhenBeginAndEndScope_DurationIsCorrect() : void
+    + WhenAddMessage_EntryIsCreated() : void
+    + WhenMessageAddedWithScope_EntryIsCreated() : void
+    + WhenScopeIsThreaded_AndThreadAddsNode_NodeEnteredInThreadedScope() : void
+    + WhenBeginAndEndScopeOnThread_StartAndEndTimeAreWithinMainThreadScope() : void
+    + WhenConvertingToTraceEventFormat_BackslashesAreEscaped() : void
+    + WhenConvertingToTraceEventFormat_MetaDataIsAdded() : void
+}
+@enduml

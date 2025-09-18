@@ -1,0 +1,7 @@
+@startuml
+class EnvironmentsClient {
+    + EnvironmentsClient(projectId:string, client:IDefaultApiClient)
+    + <<async>> GetEnvironments() : Task<List<EnvironmentInfo>>
+    + <<async>> GetEnvironment(environmentId:string) : Task<EnvironmentInfo>
+}
+@enduml

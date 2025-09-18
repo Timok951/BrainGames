@@ -1,0 +1,17 @@
+@startuml
+class ProfileGroupTypeTests {
+    + CreateEmptyProfileGroupType_Returns_InvalidProfileGroupType() : void
+    + CreatePrefixedProfileGroupType_Returns_InvalidProfileGroupType() : void
+    + CreateValidProfileGroupType_Returns_ValidProfileGroupType() : void
+    + GetPathValuesBySuffix_Returns_ExpectedPathValues() : void
+    + GetName_Returns_ExpectedVariableName() : void
+    + AddVariableToGroupType_AddsVariable() : void
+    + AddDuplicateVariableToGroupType_FailsToAddVariable() : void
+    + AddOrUpdateVariableToGroupType_AddsVariable() : void
+    + AddOrUpdateVariableToGroupType_UpdatesVariable() : void
+    + RemoveVariable_Returns_ExpectedAction() : void
+    + RemoveNonExistentVariable_Returns_ExpectedAction() : void
+    + DoesContainVariable_Returns_True() : void
+    + DoesContainVariable_Returns_False() : void
+}
+@enduml

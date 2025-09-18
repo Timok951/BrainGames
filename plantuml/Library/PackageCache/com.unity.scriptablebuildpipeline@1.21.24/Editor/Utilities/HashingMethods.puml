@@ -1,0 +1,25 @@
+@startuml
+struct RawHash {
+    + ToBytes() : byte[]
+    + ToHash128() : Hash128
+    + ToGUID() : GUID
+    + <<override>> ToString() : string
+    + Equals(other:RawHash) : bool
+    + <<override>> Equals(obj:object) : bool
+    + <<override>> GetHashCode() : int
+}
+class HashingMethods <<static>> {
+    + {static} CalculateStream(stream:Stream) : RawHash
+    + {static} CalculateStream(stream:Stream) : RawHash
+    + {static} Calculate(obj:object) : RawHash
+    + {static} Calculate(objects:object[]) : RawHash
+    + {static} Calculate(hash1:Hash128, hash2:Hash128) : RawHash
+    + {static} Calculate(obj:object) : RawHash
+    + {static} Calculate(objects:object[]) : RawHash
+    + {static} CalculateFile(filePath:string) : RawHash
+    + {static} CalculateFile(filePath:string) : RawHash
+}
+class "IEquatable`1"<T> {
+}
+"IEquatable`1" "<RawHash>" <|-- RawHash
+@enduml

@@ -1,0 +1,6 @@
+@startuml
+class BuildScriptVirtualTests {
+    + VirtualModeScript_CannotBuildPlayerContent() : void
+}
+AddressableAssetTestBase <|-- BuildScriptVirtualTests
+@enduml

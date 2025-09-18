@@ -1,0 +1,10 @@
+@startuml
+class SerializedTableReference {
+    + HasMultipleDifferentValues : bool <<get>>
+    + SetReference(collection:LocalizationTableCollection) : void
+    + SerializedTableReference(property:SerializedProperty)
+}
+SerializedTableReference --> "Property" SerializedProperty
+SerializedTableReference --> "TableNameProperty" SerializedProperty
+SerializedTableReference --> "Reference" TableReference
+@enduml

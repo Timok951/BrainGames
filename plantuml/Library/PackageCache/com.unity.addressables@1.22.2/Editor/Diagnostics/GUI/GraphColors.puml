@@ -1,0 +1,4 @@
+@startuml
+class GraphColors <<static>> {
+}
+@enduml

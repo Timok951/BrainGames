@@ -1,0 +1,8 @@
+@startuml
+enum XmlLinkedPreserve {
+    All= default,
+    Nothing,
+    Fields,
+    Methods,
+}
+@enduml

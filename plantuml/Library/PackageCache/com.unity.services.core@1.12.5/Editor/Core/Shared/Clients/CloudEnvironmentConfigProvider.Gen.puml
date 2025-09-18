@@ -1,0 +1,7 @@
+@startuml
+class CloudEnvironmentConfigProvider <<static>> {
+    + <<const>> StagingEnvironment : string = "staging"
+    + {static} GetCloudEnvironment() : string
+    + {static} IsStaging() : bool
+}
+@enduml

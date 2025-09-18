@@ -1,0 +1,9 @@
+@startuml
+class LocalizedAssetTable {
+    + LocalizedAssetTable()
+    + LocalizedAssetTable(tableReference:TableReference)
+}
+class "LocalizedTable`2"<T1,T2> {
+}
+"LocalizedTable`2" "<AssetTable,AssetTableEntry>" <|-- LocalizedAssetTable
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+class AsyncOperation {
+    + IsDone : bool <<get>> <<protected set>>
+    + SetInProgress() : void
+    + Succeed() : void
+    + Fail(reason:Exception) : void
+    + Cancel() : void
+}
+class "AsyncOperation`1"<T> {
+    + IsDone : bool <<get>> <<protected set>>
+    + Result : T <<get>> <<protected set>>
+    + SetInProgress() : void
+    + Succeed(result:T) : void
+    + Fail(reason:Exception) : void
+    + Cancel() : void
+}
+class "Action`1"<T> {
+}
+class "IAsyncOperation`1"<T> {
+}
+IAsyncOperation <|-- AsyncOperation
+AsyncOperation --> "Status" AsyncOperationStatus
+AsyncOperation --> "Exception" Exception
+"IAsyncOperation`1" "<T>" <|-- "AsyncOperation`1"
+"AsyncOperation`1" --> "Status" AsyncOperationStatus
+"AsyncOperation`1" --> "Exception" Exception
+@enduml

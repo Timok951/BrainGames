@@ -1,0 +1,7 @@
+@startuml
+class BuildPreprocessor {
+    + callbackOrder : int <<get>>
+    + OnPreprocessBuild(report:BuildReport) : void
+}
+IPreprocessBuildWithReport <|-- BuildPreprocessor
+@enduml

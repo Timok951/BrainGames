@@ -1,0 +1,4 @@
+@startuml
+class GenericEditorMenuItemClickEventSenderHelpers <<static>> {
+}
+@enduml

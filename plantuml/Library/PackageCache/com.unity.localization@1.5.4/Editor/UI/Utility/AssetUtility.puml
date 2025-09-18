@@ -1,0 +1,8 @@
+@startuml
+class AssetUtility <<static>> {
+    + {static} GetPathFromAddress(address:string) : string
+    + {static} LoadAssetFromAddress(address:string, type:Type) : Object
+    + {static} IsBuiltInResource(asset:Object) : bool
+    + {static} IsBuiltInResource(resPath:string) : bool
+}
+@enduml

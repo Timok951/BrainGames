@@ -1,0 +1,13 @@
+@startuml
+class StringOutput {
+    + StringOutput()
+    + StringOutput(capacity:int)
+    + StringOutput(output:StringBuilder)
+    + SetCapacity(capacity:int) : void
+    + Write(text:string, formattingInfo:IFormattingInfo) : void
+    + Write(text:string, startIndex:int, length:int, formattingInfo:IFormattingInfo) : void
+    + Clear() : void
+    + <<override>> ToString() : string
+}
+IOutput <|-- StringOutput
+@enduml

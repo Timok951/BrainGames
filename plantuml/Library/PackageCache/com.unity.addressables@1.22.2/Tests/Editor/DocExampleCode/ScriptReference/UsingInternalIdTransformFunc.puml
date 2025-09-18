@@ -1,0 +1,8 @@
+@startuml
+class UsingInternalIdTransformFunc {
+}
+class "Func`2"<T1,T2> {
+}
+UsingInternalIdTransformFunc --> "InternalIdTransformFunc<IResourceLocation,string>" "Func`2"
+UsingInternalIdTransformFunc --> "asset" AssetReferenceGameObject
+@enduml

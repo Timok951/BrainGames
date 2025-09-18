@@ -1,0 +1,217 @@
+@startuml
+class JsonSerialization <<static>> {
+    + {static} Serialize(obj:T) : byte[]
+    + {static} SerializeToString(obj:T) : string
+}
+class DefaultApiBaseRequest {
+    + AddParamsToQueryParams(queryParams:List<string>, key:string, value:string) : List<string>
+    + AddParamsToQueryParams(queryParams:List<string>, key:string, values:List<string>, style:string, explode:bool) : List<string>
+    + AddParamsToQueryParams(queryParams:List<string>, modelVars:Dictionary<string, string>) : List<string>
+    + AddParamsToQueryParams(queryParams:List<string>, key:string, value:T) : List<string>
+    + GetPathParamString(pathParam:List<string>) : string
+    + ConstructBody(stream:System.IO.Stream) : byte[]
+    + ConstructBody(s:string) : byte[]
+    + ConstructBody(o:object) : byte[]
+    + GenerateAcceptHeader(accepts:string[]) : string
+    + GenerateContentTypeHeader(contentTypes:string[]) : string
+    + GenerateMultipartFormFileSection(paramName:string, stream:System.IO.FileStream, contentType:string) : IMultipartFormSection
+    + GenerateMultipartFormFileSection(paramName:string, stream:System.IO.Stream, contentType:string) : IMultipartFormSection
+}
+class ApiUnityV1OrganizationsOrganizationIdProjectsProjectIdArchiveDeleteRequest {
+    + ApiUnityV1OrganizationsOrganizationIdProjectsProjectIdArchiveDeleteRequest(organizationId:System.Guid, projectId:System.Guid)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class ApiUnityV1OrganizationsOrganizationIdProjectsProjectIdArchivePutRequest {
+    + ApiUnityV1OrganizationsOrganizationIdProjectsProjectIdArchivePutRequest(organizationId:System.Guid, projectId:System.Guid)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class UnityCreateAddressRequest {
+    + UnityCreateAddressRequest(organizationId:System.Guid, unityCreateAddressRequestParameter:Unity.Services.Core.Environments.Client.Models.UnityCreateAddressRequest)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class UnityCreateEnvironmentRequest {
+    + ProjectId : string <<get>>
+    + UnityCreateEnvironmentRequest(projectId:string, unityCreateEnvironmentRequestParameter:Unity.Services.Core.Environments.Client.Models.UnityCreateEnvironmentRequest)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class UnityCreateFavoriteProjectRequest {
+    + UnityCreateFavoriteProjectRequest(userId:System.Guid, projectId:System.Guid)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class UnityCreateOrganizationRequest {
+    + UnityCreateOrganizationRequest(unityCreateOrganizationRequestParameter:Unity.Services.Core.Environments.Client.Models.UnityCreateOrganizationRequest)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class UnityCreateProjectRequest {
+    + UnityCreateProjectRequest(organizationId:System.Guid, unityCreateProjectRequestParameter:Unity.Services.Core.Environments.Client.Models.UnityCreateProjectRequest)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class UnityDeleteEnvironmentRequest {
+    + ProjectId : string <<get>>
+    + EnvironmentId : string <<get>>
+    + UnityDeleteEnvironmentRequest(projectId:string, environmentId:string)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class UnityDeleteFavoriteProjectRequest {
+    + UnityDeleteFavoriteProjectRequest(userId:System.Guid, projectId:System.Guid)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class UnityGetEnvironmentRequest {
+    + ProjectId : string <<get>>
+    + EnvironmentId : string <<get>>
+    + UnityGetEnvironmentRequest(projectId:string, environmentId:string)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class UnityGetEnvironmentsRequest {
+    + ProjectId : string <<get>>
+    + Archived : bool? <<get>>
+    + UnityGetEnvironmentsRequest(projectId:string, archived:bool?)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class UnityGetOrganizationRequest {
+    + UnityGetOrganizationRequest(organizationId:System.Guid)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class UnityGetOrganizationMembersRequest {
+    + Limit : int? <<get>>
+    + Offset : int? <<get>>
+    + Sort : string <<get>>
+    + Order : string <<get>>
+    + Search : string <<get>>
+    + UnityGetOrganizationMembersRequest(organizationId:System.Guid, limit:int?, offset:int?, sort:string, order:string, search:string, roles:List<string>)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class UnityGetProjectV1Request {
+    + UnityGetProjectV1Request(projectId:System.Guid)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class UnityGetUserGuestProjectsRequest {
+    + Search : string <<get>>
+    + Sort : string <<get>>
+    + Order : string <<get>>
+    + Limit : int? <<get>>
+    + Offset : int? <<get>>
+    + UnityGetUserGuestProjectsRequest(userId:System.Guid, search:string, sort:string, order:string, limit:int?, offset:int?)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class UnityGetUserOrganizationsRequest {
+    + UnityGetUserOrganizationsRequest(userId:System.Guid)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class UnityGetUserPermissionsRequest {
+    + ResourceType : string <<get>>
+    + UnityGetUserPermissionsRequest(userId:System.Guid, resourceType:string, resourceId:System.Guid)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class UnityListFavoriteProjectsRequest {
+    + UserId : int <<get>>
+    + UnityListFavoriteProjectsRequest(userId:int)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class UnityListOrganizationFavoriteProjectsRequest {
+    + UnityListOrganizationFavoriteProjectsRequest(userId:System.Guid, organizationId:System.Guid)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class UnityListProjectsRequest {
+    + Archived : bool? <<get>>
+    + Search : string <<get>>
+    + Sort : string <<get>>
+    + Order : string <<get>>
+    + Limit : int? <<get>>
+    + Offset : int? <<get>>
+    + UnityListProjectsRequest(organizationId:System.Guid, archived:bool?, search:string, sort:string, order:string, limit:int?, offset:int?)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class UnityPatchProjectV1Request {
+    + UnityPatchProjectV1Request(projectId:System.Guid, unityPatchProjectV1RequestParameter:Unity.Services.Core.Environments.Client.Models.UnityPatchProjectV1Request)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class UnityTransferProjectRequest {
+    + UnityTransferProjectRequest(organizationId:System.Guid, projectId:System.Guid, unityTransferProjectRequestParameter:Unity.Services.Core.Environments.Client.Models.UnityTransferProjectRequest)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class UnityUpdateOrganizationRequest {
+    + UnityUpdateOrganizationRequest(organizationId:System.Guid, unityUpdateOrganizationRequestParameter:Unity.Services.Core.Environments.Client.Models.UnityUpdateOrganizationRequest)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : byte[]
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class UnityUploadIconV1Request {
+    + ProjectId : string <<get>>
+    + UnityUploadIconV1Request(projectId:string, file:System.IO.Stream)
+    + ConstructUrl(requestBasePath:string) : string
+    + ConstructBody() : List<IMultipartFormSection>
+    + ConstructHeaders(operationConfiguration:Configuration) : Dictionary<string, string>
+}
+class "List`1"<T> {
+}
+DefaultApiBaseRequest <|-- ApiUnityV1OrganizationsOrganizationIdProjectsProjectIdArchiveDeleteRequest
+DefaultApiBaseRequest <|-- ApiUnityV1OrganizationsOrganizationIdProjectsProjectIdArchivePutRequest
+DefaultApiBaseRequest <|-- UnityCreateAddressRequest
+DefaultApiBaseRequest <|-- UnityCreateEnvironmentRequest
+DefaultApiBaseRequest <|-- UnityCreateFavoriteProjectRequest
+DefaultApiBaseRequest <|-- UnityCreateOrganizationRequest
+DefaultApiBaseRequest <|-- UnityCreateProjectRequest
+DefaultApiBaseRequest <|-- UnityDeleteEnvironmentRequest
+DefaultApiBaseRequest <|-- UnityDeleteFavoriteProjectRequest
+DefaultApiBaseRequest <|-- UnityGetEnvironmentRequest
+DefaultApiBaseRequest <|-- UnityGetEnvironmentsRequest
+DefaultApiBaseRequest <|-- UnityGetOrganizationRequest
+DefaultApiBaseRequest <|-- UnityGetOrganizationMembersRequest
+UnityGetOrganizationMembersRequest --> "Roles<string>" "List`1"
+DefaultApiBaseRequest <|-- UnityGetProjectV1Request
+DefaultApiBaseRequest <|-- UnityGetUserGuestProjectsRequest
+DefaultApiBaseRequest <|-- UnityGetUserOrganizationsRequest
+DefaultApiBaseRequest <|-- UnityGetUserPermissionsRequest
+DefaultApiBaseRequest <|-- UnityListFavoriteProjectsRequest
+DefaultApiBaseRequest <|-- UnityListOrganizationFavoriteProjectsRequest
+DefaultApiBaseRequest <|-- UnityListProjectsRequest
+DefaultApiBaseRequest <|-- UnityPatchProjectV1Request
+DefaultApiBaseRequest <|-- UnityTransferProjectRequest
+DefaultApiBaseRequest <|-- UnityUpdateOrganizationRequest
+DefaultApiBaseRequest <|-- UnityUploadIconV1Request
+@enduml

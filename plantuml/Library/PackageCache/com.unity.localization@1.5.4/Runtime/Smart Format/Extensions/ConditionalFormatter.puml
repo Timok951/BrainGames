@@ -1,0 +1,9 @@
+@startuml
+class ConditionalFormatter {
+    + ConditionalFormatter()
+    + <<override>> TryEvaluateFormat(formattingInfo:IFormattingInfo) : bool
+    + WriteAllLiterals(formattingInfo:IFormattingInfo) : void
+}
+FormatterBase <|-- ConditionalFormatter
+IFormatterLiteralExtractor <|-- ConditionalFormatter
+@enduml

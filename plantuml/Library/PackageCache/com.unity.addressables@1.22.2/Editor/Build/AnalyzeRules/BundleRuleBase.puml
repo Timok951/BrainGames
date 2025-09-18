@@ -1,0 +1,15 @@
+@startuml
+class BundleRuleBase {
+    + <<override>> ClearAnalysis() : void
+    + <<override>> CanFix : bool <<get>>
+    + <<override>> RefreshAnalysis(settings:AddressableAssetSettings) : List<AnalyzeResult>
+    + <<override>> FixIssues(settings:AddressableAssetSettings) : void
+}
+struct ResultData {
+    + ResourcePath : string
+    + AssetBundleName : string
+    + AssetPath : string
+}
+AnalyzeRule <|-- BundleRuleBase
+BundleRuleBase +-- ResultData
+@enduml

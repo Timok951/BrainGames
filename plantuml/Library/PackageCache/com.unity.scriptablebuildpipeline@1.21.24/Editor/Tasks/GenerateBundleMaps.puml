@@ -1,0 +1,7 @@
+@startuml
+class GenerateBundleMaps {
+    + Version : int <<get>>
+    + Run() : ReturnCode
+}
+IBuildTask <|-- GenerateBundleMaps
+@enduml

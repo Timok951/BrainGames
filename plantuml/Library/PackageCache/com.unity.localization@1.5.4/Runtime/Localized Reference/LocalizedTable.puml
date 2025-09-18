@@ -1,0 +1,15 @@
+@startuml
+abstract class "LocalizedTable`2"<TTable,TEntry> <<partial>> {
+    + IsEmpty : bool <<get>>
+    + LocalizedTable()
+    + GetTableAsync() : AsyncOperationHandle<TTable>
+    + GetTable() : TTable
+    + <<override>> ToString() : string
+}
+class "DetailedLocalizationTable`1"<T> {
+}
+class "AsyncOperationHandle`1"<T> {
+}
+"LocalizedTable`2" --> "CurrentLoadingOperationHandle<TTable>" "AsyncOperationHandle`1"
+"LocalizedTable`2" --> "TableReference" TableReference
+@enduml

@@ -1,0 +1,9 @@
+@startuml
+class "GenericAssetTableTreeViewItem`1"<T1> {
+    + Key : string <<get>> <<set>>
+    + KeyId : long <<get>>
+    + <<virtual>> Initialize(collection:LocalizationTableCollection, startIdx:int, sortedTables:List<LocalizationTable>) : void
+    + <<virtual>> OnDeleteKey() : void
+}
+TreeViewItem <|-- "GenericAssetTableTreeViewItem`1"
+@enduml

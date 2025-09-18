@@ -1,0 +1,11 @@
+@startuml
+interface IAnalyticsContainer {
+}
+class AnalyticsContainer {
+    + Initialize(service:AnalyticsServiceInstance) : void
+    + Enable() : void
+    + Disable() : void
+}
+MonoBehaviour <|-- AnalyticsContainer
+IAnalyticsContainer <|-- AnalyticsContainer
+@enduml

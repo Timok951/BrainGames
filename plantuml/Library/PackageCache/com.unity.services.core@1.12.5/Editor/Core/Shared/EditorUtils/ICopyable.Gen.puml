@@ -1,0 +1,4 @@
+@startuml
+interface "ICopyable`1"<in T> {
+}
+@enduml

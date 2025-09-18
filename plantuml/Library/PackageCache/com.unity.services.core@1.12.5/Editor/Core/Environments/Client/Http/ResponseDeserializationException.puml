@@ -1,0 +1,11 @@
+@startuml
+class ResponseDeserializationException {
+    + ResponseDeserializationException()
+    + ResponseDeserializationException(message:string)
+    + ResponseDeserializationException(httpClientResponse:HttpClientResponse)
+    + ResponseDeserializationException(httpClientResponse:HttpClientResponse, message:string)
+    + ResponseDeserializationException(httpClientResponse:HttpClientResponse, inner:Exception, message:string)
+}
+Exception <|-- ResponseDeserializationException
+ResponseDeserializationException --> "response" HttpClientResponse
+@enduml

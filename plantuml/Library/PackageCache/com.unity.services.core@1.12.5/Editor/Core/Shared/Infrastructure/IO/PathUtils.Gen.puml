@@ -1,0 +1,7 @@
+@startuml
+class PathUtils <<static>> {
+    + {static} Join(args:string[]) : string
+    + {static} GetRelativePath(relativeTo:string, path:string) : string
+    + {static} GetFileNameWithoutSubExtension(path:string) : string
+}
+@enduml

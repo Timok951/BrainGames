@@ -1,0 +1,7 @@
+@startuml
+class AnalyticsServiceInstance <<partial>> {
+    + CustomData(eventName:string) : void
+    + CustomData(eventName:string, eventParams:IDictionary<string, object>) : void
+    + CustomData(eventName:string, eventParams:IDictionary<string, object>, eventVersion:Int32?, includeCommonParams:bool, includePlayerIds:bool, callingMethodIdentifier:string) : void
+}
+@enduml

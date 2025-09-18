@@ -1,0 +1,12 @@
+@startuml
+class AddressableAssetInspectorGUI <<static>> {
+}
+class TargetInfo {
+    + Guid : string
+    + Path : string
+    + IsMainAsset : bool
+    + Address : string <<get>>
+}
+AddressableAssetInspectorGUI +-- TargetInfo
+TargetInfo --> "MainAssetEntry" AddressableAssetEntry
+@enduml

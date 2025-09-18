@@ -1,0 +1,13 @@
+@startuml
+class CurrentApp {
+    + GetUnfulfilledConsumablesAsync() : IAsyncOperation<IReadOnlyList<UnfulfilledConsumable>>
+    + LoadListingInformationAsync() : IAsyncOperation<ListingInformation>
+    + ReportConsumableFulfillmentAsync(productId:string, transactionId:Guid) : IAsyncOperation<FulfillmentResult>
+    + RequestProductPurchaseAsync(productId:string) : IAsyncOperation<PurchaseResults>
+    + RequestProductReceiptAsync(productId:string) : IAsyncOperation<string>
+    + RequestAppReceiptAsync() : IAsyncOperation<string>
+    + BuildMockProducts(products:List<WinProductDescription>) : void
+}
+ICurrentApp <|-- CurrentApp
+CurrentApp --> "LicenseInformation" LicenseInformation
+@enduml

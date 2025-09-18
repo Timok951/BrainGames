@@ -1,0 +1,11 @@
+@startuml
+class Scope <<sealed>> {
+    + Strict : bool <<get>>
+    + Scope(strict:bool)
+    + Dispose() : void
+}
+class "List`1"<T> {
+}
+"List`1" "<IDisposable>" <|-- Scope
+IDisposable <|-- Scope
+@enduml

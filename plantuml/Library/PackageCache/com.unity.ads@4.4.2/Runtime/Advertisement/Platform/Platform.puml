@@ -1,0 +1,22 @@
+@startuml
+class Platform {
+    + IsInitialized : bool <<get>>
+    + IsShowing : bool <<get>>
+    + Version : string <<get>>
+    + DebugMode : bool <<get>> <<set>>
+    + Platform(nativePlatform:INativePlatform, banner:IBanner, unityLifecycleManager:IUnityLifecycleManager)
+    + Initialize(gameId:string, testMode:bool, initializationListener:IUnityAdsInitializationListener) : void
+    + Load(placementId:string) : void
+    + Load(placementId:string, loadListener:IUnityAdsLoadListener) : void
+    + Show(placementId:string, showOptions:ShowOptions, showListener:IUnityAdsShowListener) : void
+    + SetMetaData(metaData:MetaData) : void
+    + OnUnityAdsShowFailure(placementId:string, error:UnityAdsShowError, message:string) : void
+    + OnUnityAdsShowStart(placementId:string) : void
+    + OnUnityAdsShowClick(placementId:string) : void
+    + OnUnityAdsShowComplete(placementId:string, completionState:UnityAdsShowCompletionState) : void
+}
+IPlatform <|-- Platform
+Platform --> "Banner" IBanner
+Platform --> "UnityLifecycleManager" IUnityLifecycleManager
+Platform --> "NativePlatform" INativePlatform
+@enduml

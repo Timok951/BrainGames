@@ -1,0 +1,9 @@
+@startuml
+abstract class AbstractStore {
+    + {abstract} Initialize(callback:IStoreCallback) : void
+    + {abstract} RetrieveProducts(products:ReadOnlyCollection<ProductDefinition>) : void
+    + {abstract} Purchase(product:ProductDefinition, developerPayload:string) : void
+    + {abstract} FinishTransaction(product:ProductDefinition, transactionId:string) : void
+}
+IStore <|-- AbstractStore
+@enduml

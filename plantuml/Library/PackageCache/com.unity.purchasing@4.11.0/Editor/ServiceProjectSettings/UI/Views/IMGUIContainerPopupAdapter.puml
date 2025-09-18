@@ -1,0 +1,9 @@
+@startuml
+class IMGUIContainerPopupAdapter {
+    + index : int
+}
+class "Action`1"<T> {
+}
+IMGUIContainerPopupAdapter --> "popupValueChangedAction<string>" "Action`1"
+IMGUIContainerPopupAdapter --> "container" IMGUIContainer
+@enduml

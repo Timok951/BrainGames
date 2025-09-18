@@ -1,0 +1,11 @@
+@startuml
+class CheckSceneDupeDependencies {
+    + <<override>> ruleName : string <<get>>
+    + <<override>> CanFix : bool <<get>>
+    + <<override>> FixIssues(settings:AddressableAssetSettings) : void
+    + <<override>> RefreshAnalysis(settings:AddressableAssetSettings) : List<AnalyzeResult>
+}
+class RegisterCheckSceneDupeDependencies {
+}
+BundleRuleBase <|-- CheckSceneDupeDependencies
+@enduml

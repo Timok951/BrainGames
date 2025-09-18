@@ -1,0 +1,12 @@
+@startuml
+class EventDataPlayerSessionCollectionTests {
+    + EventDataPlayerSessionCollection_RecordEvent_ReturnsFalseOnNullEventHandler() : void
+    + EventDataPlayerSessionCollection_GetPlayerSession_ProperlyCreatesWhenCreateIsTrue() : void
+    + EventDataPlayerSessionCollection_GetPlayerSession_ReturnsNullOnNoIdMatch() : void
+    + EventDataPlayerSessionCollection_GetSessionByIndex_ReturnsNullOnInvalidInput() : void
+    + EventDataPlayerSessionCollection_GetSessionIndexById_SimpleCase() : void
+    + EventDataPlayerSessionCollection_GetSessionIndexById_NullCase() : void
+    + EventDataPlayerSessionCollection_RemoveSession_SimpleCase() : void
+    + EventDataPlayerSessionCollection_TestPlayerConnection() : void
+}
+@enduml

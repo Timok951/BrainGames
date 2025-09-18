@@ -1,0 +1,5 @@
+@startuml
+class UsingDownloadDependenciesAsync {
+    + UsingDownloadDependenciesAsyncSample() : void
+}
+@enduml

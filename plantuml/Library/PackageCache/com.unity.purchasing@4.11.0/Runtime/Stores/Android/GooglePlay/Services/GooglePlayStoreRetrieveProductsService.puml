@@ -1,0 +1,9 @@
+@startuml
+class GooglePlayStoreRetrieveProductsService {
+    + SetStoreCallback(storeCallback:IStoreCallback?) : void
+    + RetrieveProducts(products:ReadOnlyCollection<ProductDefinition>, wantPurchases:bool) : void
+    + ResumeConnection() : void
+    + HasInitiallyRetrievedProducts() : bool
+}
+IGooglePlayStoreRetrieveProductsService <|-- GooglePlayStoreRetrieveProductsService
+@enduml

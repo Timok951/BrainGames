@@ -1,0 +1,19 @@
+@startuml
+struct AssetResultData {
+}
+interface IBuildResults {
+}
+interface IBundleBuildResults {
+}
+class "List`1"<T> {
+}
+class "Dictionary`2"<T1,T2> {
+}
+AssetResultData --> "Guid" GUID
+AssetResultData --> "Hash" Hash128
+AssetResultData --> "IncludedObjects<ObjectIdentifier>" "List`1"
+AssetResultData --> "ReferencedObjects<ObjectIdentifier>" "List`1"
+AssetResultData --> "ObjectTypes<ObjectIdentifier,Type[]>" "Dictionary`2"
+IContextObject <|-- IBuildResults
+IBuildResults <|-- IBundleBuildResults
+@enduml

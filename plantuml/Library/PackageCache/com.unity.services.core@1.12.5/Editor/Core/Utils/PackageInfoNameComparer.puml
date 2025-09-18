@@ -1,0 +1,9 @@
+@startuml
+class PackageInfoNameComparer {
+    + Equals(x:PackageInfo, y:PackageInfo) : bool
+    + GetHashCode(obj:PackageInfo) : int
+}
+class "IEqualityComparer`1"<T> {
+}
+"IEqualityComparer`1" "<PackageInfo>" <|-- PackageInfoNameComparer
+@enduml

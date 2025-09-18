@@ -1,0 +1,6 @@
+@startuml
+class ProjectStateRequest {
+    + GetProjectState() : ProjectState
+}
+IProjectStateRequest <|-- ProjectStateRequest
+@enduml

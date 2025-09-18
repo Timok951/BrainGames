@@ -1,0 +1,7 @@
+@startuml
+class Sync <<static>> {
+    + {static} RunNextUpdateOnMain(action:Action, file:string, caller:string, line:int) : void
+    + {static} SafeAsync(action:Func<Task>, success:Action<Task>) : Task
+    + {static} SafeAsync(action:Func<Task<T>>, success:Action<Task<T>>) : Task
+}
+@enduml

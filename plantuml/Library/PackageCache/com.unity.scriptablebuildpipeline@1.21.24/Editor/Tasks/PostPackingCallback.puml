@@ -1,0 +1,7 @@
+@startuml
+class PostPackingCallback {
+    + Version : int <<get>>
+    + Run() : ReturnCode
+}
+IBuildTask <|-- PostPackingCallback
+@enduml

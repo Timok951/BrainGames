@@ -1,0 +1,81 @@
+@startuml
+class AssetReferenceDrawerTestsFixture {
+    + OneTimeTearDown() : void
+    + SetUpForSubassetPerformanceTests(numAtlasObjects:int, numReferences:int, selectedId:int) : void
+    + SetupForSetAssetsPerformanceTests(numReferences:int) : void
+    + SetObjectForPerformanceTests() : void
+    + SetMainAssetsForPerformanceTests() : void
+    + GetNameForAssetForPerformanceTests() : void
+    + GetSubAssetsListForPerformanceTests() : void
+    + GetSelectedSubassetIndexForPerformanceTests() : void
+    + CheckTargetObjectsSubassetsAreDifferentForPerformanceTests() : void
+}
+class AssetReferenceDrawerTests {
+    + CanRestrictLabel() : void
+    + CanRestrictMultipleLabels() : void
+    + AssetReferenceDrawer_GatherFilters_CanRestrictInSingleNestedClass() : void
+    + AssetReferenceDrawer_GatherFilters_CanRestrictInDoubleNestedClass() : void
+    + AssetReferenceDrawer_ValidateAsset_CanValidateAssetWithRestrictionsFromPath() : void
+    + AssetReferenceDrawer_ValidateAsset_CanValidateAssetWithoutRestrictionsFromPath() : void
+    + AssetReferenceDrawer_IsAssetPathInAddressableDirectory_PathInAddressableFolder() : void
+    + AssetReferenceDrawer_IsAssetPathInAddressableDirectory_PathNotInAddressableFolder() : void
+    + AssetReferenceDrawer_IsAssetPathInAddressableDirectory_PathEmptyString() : void
+    + AssetReferenceDrawer_IsAssetPathInAddressableDirectory_PathPointToNonexistentAsset() : void
+    + AssetReferenceDrawer_SelectionChanged_CanSelectSameNameAssetsInDifferentGroups() : void
+    + AssetReferenceDrawer_HandleDragAndDrop_CanRecognizeNonAddressableInAddressableFolder() : void
+    + AssetReferenceDrawer_SetObject_CanSetObject() : void
+    + AssetReferenceDrawer_SetObject_CanSetSpriteObject() : void
+    + SetObject_WhenTargetIsSubAsset_IsSetAsSubObject() : void
+    + AssetReferenceDrawer_SetObject_CanSetToNull() : void
+    + AssetReference_WhenCachedGUIDIsNotEqualToAssetGUID_CachedAssetIsNull() : void
+}
+class TestObjectWithRef {
+}
+class TestObjectWithRestrictedRef {
+}
+class TestObjectWithRestrictedRefByMultipleLabels {
+}
+class TestObjectWithRestrictedRefInNestedClass {
+}
+class TestSubObjectsSpriteAtlas {
+}
+class TestSubObjectsSpriteAtlasList {
+}
+class TestAssetReferenceDrawer {
+}
+class TestAssetReference {
+}
+class TwoLevelNestedClass {
+}
+class NestedClass {
+}
+class TestAssetReferencePopup {
+}
+class TestSelectionTree {
+}
+AddressableAssetTestBase <|-- AssetReferenceDrawerTestsFixture
+AssetReferenceDrawerTestsFixture <|-- AssetReferenceDrawerTests
+AssetReferenceDrawerTestsFixture +-- TestObjectWithRef
+TestObject <|-- TestObjectWithRef
+TestObjectWithRef o-> "Reference" AssetReference
+AssetReferenceDrawerTestsFixture +-- TestObjectWithRestrictedRef
+TestObject <|-- TestObjectWithRestrictedRef
+AssetReferenceDrawerTestsFixture +-- TestObjectWithRestrictedRefByMultipleLabels
+TestObject <|-- TestObjectWithRestrictedRefByMultipleLabels
+AssetReferenceDrawerTestsFixture +-- TestObjectWithRestrictedRefInNestedClass
+TestObject <|-- TestObjectWithRestrictedRefInNestedClass
+AssetReferenceDrawerTestsFixture +-- TestSubObjectsSpriteAtlas
+TestObject <|-- TestSubObjectsSpriteAtlas
+TestSubObjectsSpriteAtlas --> "testSpriteReference" AssetReferenceSprite
+AssetReferenceDrawerTestsFixture +-- TestSubObjectsSpriteAtlasList
+TestObject <|-- TestSubObjectsSpriteAtlasList
+AssetReferenceDrawerTestsFixture +-- TestAssetReferenceDrawer
+AssetReferenceDrawer <|-- TestAssetReferenceDrawer
+AssetReferenceDrawerTestsFixture +-- TestAssetReference
+AssetReference <|-- TestAssetReference
+TestObjectWithRestrictedRefInNestedClass +-- TwoLevelNestedClass
+TestObjectWithRestrictedRefInNestedClass +-- NestedClass
+TestAssetReferenceDrawer +-- TestAssetReferencePopup
+AssetReferencePopup <|-- TestAssetReferencePopup
+TestAssetReferencePopup +-- TestSelectionTree
+@enduml

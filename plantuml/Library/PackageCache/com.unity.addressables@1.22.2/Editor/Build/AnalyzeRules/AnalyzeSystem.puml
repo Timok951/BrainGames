@@ -1,0 +1,7 @@
+@startuml
+class AnalyzeSystem <<static>> {
+    + {static} RegisterNewRule() : void
+    + {static} SerializeData(path:string) : void
+    + {static} DeserializeData(path:string) : void
+}
+@enduml

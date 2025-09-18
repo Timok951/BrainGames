@@ -1,0 +1,5 @@
+@startuml
+class LazyLoadExtendedExtensionMethods <<static>> {
+    + {static} GetInstanceId(lazy:LazyLoadReference<T>) : int
+}
+@enduml

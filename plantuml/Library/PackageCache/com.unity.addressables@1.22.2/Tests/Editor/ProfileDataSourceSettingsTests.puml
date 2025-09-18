@@ -1,0 +1,12 @@
+@startuml
+class ProfileDataSourceSettingsTest {
+    + Init() : void
+    + Cleanup() : void
+    + CreateSettings_Returns_NotNull() : void
+    + CreateDefaultGroups_Returns_DefaultGroups() : void
+    + ValidFindGroupType_Returns_ValidGroup() : void
+    + InvalidFindGroupType_Returns_ArgumentException() : void
+    + NonExistentGroupFindGroupType_Returns_Null() : void
+    + GetGroupTypesByPrefix_Returns_ValidList() : void
+}
+@enduml

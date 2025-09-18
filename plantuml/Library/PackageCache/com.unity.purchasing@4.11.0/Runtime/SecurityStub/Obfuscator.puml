@@ -1,0 +1,5 @@
+@startuml
+class Obfuscator <<static>> {
+    + {static} DeObfuscate(data:byte[], order:int[], key:int) : byte[]
+}
+@enduml

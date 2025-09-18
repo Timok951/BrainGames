@@ -1,0 +1,10 @@
+@startuml
+enum XliffVersion {
+    V12,
+    V20,
+}
+class XliffDocument <<static>> {
+    + {static} Create(version:XliffVersion) : IXliffDocument
+    + {static} Parse(stream:Stream) : IXliffDocument
+}
+@enduml

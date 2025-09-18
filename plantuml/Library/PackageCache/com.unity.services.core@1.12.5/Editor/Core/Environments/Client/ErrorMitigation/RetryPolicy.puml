@@ -1,0 +1,22 @@
+@startuml
+class RetryPolicyProvider {
+    + ForOperation(operation:Func<int, Task<T>>) : IRetryPolicy<T>
+    + ForOperation(operation:Func<Task<T>>) : IRetryPolicy<T>
+}
+class "RetryPolicy`1"<T> {
+    + WithJitterMagnitude(magnitude:float) : IRetryPolicy<T>
+    + WithDelayScale(scale:float) : IRetryPolicy<T>
+    + WithMaxDelayTime(time:float) : IRetryPolicy<T>
+    + {static} ForOperation(operation:Func<int, Task<T>>) : RetryPolicy<T>
+    + {static} ForOperation(operation:Func<Task<T>>) : RetryPolicy<T>
+    + WithRetryCondition(shouldRetry:Func<T, Task<bool>>) : IRetryPolicy<T>
+    + UptoMaximumRetries(amount:uint) : IRetryPolicy<T>
+    + HandleException() : IRetryPolicy<T>
+    + HandleException(condition:Func<TException, bool>) : IRetryPolicy<T>
+    + <<async>> RunAsync(retryPolicyConfig:RetryPolicyConfig) : Task<T>
+}
+class "IRetryPolicy`1"<T> {
+}
+IRetryPolicyProvider <|-- RetryPolicyProvider
+"IRetryPolicy`1" "<T>" <|-- "RetryPolicy`1"
+@enduml

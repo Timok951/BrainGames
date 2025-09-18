@@ -1,0 +1,9 @@
+@startuml
+class GoogleCachedQuerySkuDetailsService {
+    + GetCachedQueriedSkus() : IEnumerable<AndroidJavaObject>
+    + GetCachedQueriedSkus(products:IEnumerable<ProductDefinition>) : IEnumerable<AndroidJavaObject>
+    + Contains(products:ProductDefinition) : bool
+    + AddCachedQueriedSkus(queriedSkus:IEnumerable<AndroidJavaObject>) : void
+}
+IGoogleCachedQuerySkuDetailsService <|-- GoogleCachedQuerySkuDetailsService
+@enduml

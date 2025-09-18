@@ -1,0 +1,21 @@
+@startuml
+class AddressableAssetTree {
+}
+class AddressablesFileEnumeration {
+    + {static} EnumerateAddressableFolder(path:string, settings:AddressableAssetSettings, recurseAll:bool, logger:IBuildLogger) : List<string>
+}
+class TreeNode {
+    + IsFolder : bool <<get>> <<set>>
+}
+class AddressablesFileEnumerationScope {
+    + Dispose() : void
+}
+class AddressablesFileEnumerationCache {
+    + Dispose() : void
+}
+AddressableAssetTree +-- TreeNode
+AddressablesFileEnumeration +-- AddressablesFileEnumerationScope
+IDisposable <|-- AddressablesFileEnumerationScope
+AddressablesFileEnumeration +-- AddressablesFileEnumerationCache
+IDisposable <|-- AddressablesFileEnumerationCache
+@enduml

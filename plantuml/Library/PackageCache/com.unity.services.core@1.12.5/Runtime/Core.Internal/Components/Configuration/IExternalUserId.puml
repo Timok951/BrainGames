@@ -1,0 +1,5 @@
+@startuml
+interface IExternalUserId {
+}
+IServiceComponent <|-- IExternalUserId
+@enduml

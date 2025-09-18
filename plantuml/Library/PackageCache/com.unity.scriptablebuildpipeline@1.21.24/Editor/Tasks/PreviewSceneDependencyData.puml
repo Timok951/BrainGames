@@ -1,0 +1,7 @@
+@startuml
+class PreviewSceneDependencyData {
+    + Version : int <<get>>
+    + Run() : ReturnCode
+}
+IBuildTask <|-- PreviewSceneDependencyData
+@enduml

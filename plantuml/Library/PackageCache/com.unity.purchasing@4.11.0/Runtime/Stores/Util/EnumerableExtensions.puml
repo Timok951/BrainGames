@@ -1,0 +1,6 @@
+@startuml
+class EnumerableExtensions <<static>> {
+    + {static} NonNull(enumerable:IEnumerable<T>) : IEnumerable<T>
+    + {static} IgnoreExceptions(enumerable:IEnumerable<T>, onException:Action<TException>) : IEnumerable<T>
+}
+@enduml

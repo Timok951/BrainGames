@@ -1,0 +1,7 @@
+@startuml
+class IAPButtonEditor {
+    + OnEnable() : void
+    + <<override>> OnInspectorGUI() : void
+}
+AbstractIAPButtonEditor <|-- IAPButtonEditor
+@enduml

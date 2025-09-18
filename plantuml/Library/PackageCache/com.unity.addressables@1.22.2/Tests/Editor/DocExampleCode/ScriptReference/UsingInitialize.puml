@@ -1,0 +1,5 @@
+@startuml
+class UsingInitialize {
+    + {static} Initialize() : AsyncOperationHandle<IResourceLocator>
+}
+@enduml

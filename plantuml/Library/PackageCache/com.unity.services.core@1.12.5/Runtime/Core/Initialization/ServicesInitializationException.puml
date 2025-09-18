@@ -1,0 +1,8 @@
+@startuml
+class ServicesInitializationException {
+    + ServicesInitializationException()
+    + ServicesInitializationException(message:string)
+    + ServicesInitializationException(message:string, innerException:Exception)
+}
+Exception <|-- ServicesInitializationException
+@enduml

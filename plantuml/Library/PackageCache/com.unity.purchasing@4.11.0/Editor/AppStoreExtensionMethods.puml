@@ -1,0 +1,7 @@
+@startuml
+class AppStoreExtensionMethods <<static>> {
+    + {static} ToDisplayName(value:AppStore) : string
+    + {static} ToAppStoreFromDisplayName(value:string) : AppStore
+    + {static} IsAndroid(value:AppStore) : bool
+}
+@enduml

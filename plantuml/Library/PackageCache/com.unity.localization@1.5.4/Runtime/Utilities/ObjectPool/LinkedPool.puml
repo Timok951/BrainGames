@@ -1,0 +1,18 @@
+@startuml
+class "LinkedPool`1"<T> {
+    + LinkedPool(createFunc:Func<T>, actionOnGet:Action<T>, actionOnRelease:Action<T>, actionOnDestroy:Action<T>, collectionCheck:bool, maxSize:int)
+    + CountInactive : int <<get>>
+    + Get() : T
+    + Get(v:T) : PooledObject<T>
+    + Release(item:T) : void
+    + Clear() : void
+    + Dispose() : void
+}
+class "IObjectPool`1"<T> {
+}
+class LinkedPoolItem {
+}
+IDisposable <|-- "LinkedPool`1"
+"IObjectPool`1" "<T>" <|-- "LinkedPool`1"
+"LinkedPool`1" +-- LinkedPoolItem
+@enduml

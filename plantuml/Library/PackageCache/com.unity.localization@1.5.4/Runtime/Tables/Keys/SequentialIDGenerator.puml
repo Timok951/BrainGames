@@ -1,0 +1,9 @@
+@startuml
+class SequentialIDGenerator {
+    + NextAvailableId : long <<get>>
+    + SequentialIDGenerator()
+    + SequentialIDGenerator(startingId:long)
+    + GetNextKey() : long
+}
+IKeyGenerator <|-- SequentialIDGenerator
+@enduml

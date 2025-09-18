@@ -1,0 +1,8 @@
+@startuml
+class BuildProfiler {
+    + BuildProfiler(count:int)
+    + Start(index:int, name:string) : void
+    + Stop(index:int) : void
+    + Print() : void
+}
+@enduml

@@ -1,0 +1,34 @@
+@startuml
+interface "ICcdFolder`1"<T> {
+}
+class CcdBuildDataFolder {
+    + Name : string
+    + Location : string
+    + GetChildren(startDirectory:DirectoryInfo) : void
+}
+class CcdEnvironmentFolder {
+    + Name : string
+    + Location : string
+    + GetChildren(startDirectory:DirectoryInfo) : void
+}
+class CcdBucketFolder {
+    + Name : string
+    + Location : string
+    + GetChildren(startDirectory:DirectoryInfo) : void
+}
+class CcdBadgeFolder {
+    + Name : string
+    + Location : string
+    + GetChildren(startDirectory:DirectoryInfo) : void
+}
+class "List`1"<T> {
+}
+"ICcdFolder`1" "<CcdEnvironmentFolder>" <|-- CcdBuildDataFolder
+CcdBuildDataFolder o-> "Environments<CcdEnvironmentFolder>" "List`1"
+"ICcdFolder`1" "<CcdBucketFolder>" <|-- CcdEnvironmentFolder
+CcdEnvironmentFolder o-> "Buckets<CcdBucketFolder>" "List`1"
+"ICcdFolder`1" "<CcdBadgeFolder>" <|-- CcdBucketFolder
+CcdBucketFolder o-> "Badges<CcdBadgeFolder>" "List`1"
+"ICcdFolder`1" "<FileInfo>" <|-- CcdBadgeFolder
+CcdBadgeFolder o-> "Files<FileInfo>" "List`1"
+@enduml

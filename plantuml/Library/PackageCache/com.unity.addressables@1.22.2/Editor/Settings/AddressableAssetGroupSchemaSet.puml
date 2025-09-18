@@ -1,0 +1,16 @@
+@startuml
+class AddressableAssetGroupSchemaSet {
+    + AddSchema(schema:AddressableAssetGroupSchema, pathFunc:Func<Type, string>) : AddressableAssetGroupSchema
+    + AddSchema(type:Type, pathFunc:Func<Type, string>) : AddressableAssetGroupSchema
+    + RemoveSchema(type:Type) : bool
+    + GetSchema(type:Type) : AddressableAssetGroupSchema
+    + ClearSchemas(deleteAssets:bool) : void
+    + OnBeforeSerialize() : void
+    + OnAfterDeserialize() : void
+}
+class "List`1"<T> {
+}
+ISerializationCallbackReceiver <|-- AddressableAssetGroupSchemaSet
+AddressableAssetGroupSchemaSet --> "Schemas<AddressableAssetGroupSchema>" "List`1"
+AddressableAssetGroupSchemaSet --> "Types<Type>" "List`1"
+@enduml

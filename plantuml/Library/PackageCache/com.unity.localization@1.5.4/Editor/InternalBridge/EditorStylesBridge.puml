@@ -1,0 +1,5 @@
+@startuml
+class EditorStylesBridge <<static>> {
+}
+EditorStylesBridge --> "PaneOptions" GUIStyle
+@enduml

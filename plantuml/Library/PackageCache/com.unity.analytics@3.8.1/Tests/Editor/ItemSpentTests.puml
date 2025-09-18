@@ -1,0 +1,13 @@
+@startuml
+class AnalyticsEventTests <<partial>> {
+    + ItemSpent_CurrencyTypeTest(currencyType:AcquisitionType) : void
+    + ItemSpent_ContextTest(context:string) : void
+    + ItemSpent_AmountTest(amount:float) : void
+    + ItemSpent_ItemIdTest(itemId:string) : void
+    + ItemSpent_BalanceTest(balance:float) : void
+    + ItemSpent_ItemTypeTest(itemType:string) : void
+    + ItemSpent_LevelTest(level:string) : void
+    + ItemSpent_TransactionIdTest(transactionId:string) : void
+    + ItemSpent_CustomDataTest() : void
+}
+@enduml

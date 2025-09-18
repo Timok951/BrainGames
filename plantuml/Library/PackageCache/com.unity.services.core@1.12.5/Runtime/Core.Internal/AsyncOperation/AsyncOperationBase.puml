@@ -1,0 +1,33 @@
+@startuml
+abstract class AsyncOperationBase {
+    + <<override>> keepWaiting : bool <<get>>
+    + {abstract} IsCompleted : bool <<get>>
+    + IsDone : bool <<get>>
+    + {abstract} GetResult() : void
+    + {abstract} GetAwaiter() : AsyncOperationBase
+    + <<virtual>> OnCompleted(continuation:Action) : void
+}
+abstract class "AsyncOperationBase`1"<T> {
+    + <<override>> keepWaiting : bool <<get>>
+    + {abstract} IsCompleted : bool <<get>>
+    + IsDone : bool <<get>>
+    + {abstract} Result : T <<get>>
+    + {abstract} GetResult() : T
+    + {abstract} GetAwaiter() : AsyncOperationBase<T>
+    + <<virtual>> OnCompleted(continuation:Action) : void
+}
+class "Action`1"<T> {
+}
+class "IAsyncOperation`1"<T> {
+}
+CustomYieldInstruction <|-- AsyncOperationBase
+IAsyncOperation <|-- AsyncOperationBase
+INotifyCompletion <|-- AsyncOperationBase
+AsyncOperationBase --> "Status" AsyncOperationStatus
+AsyncOperationBase --> "Exception" Exception
+CustomYieldInstruction <|-- "AsyncOperationBase`1"
+"IAsyncOperation`1" "<T>" <|-- "AsyncOperationBase`1"
+INotifyCompletion <|-- "AsyncOperationBase`1"
+"AsyncOperationBase`1" --> "Status" AsyncOperationStatus
+"AsyncOperationBase`1" --> "Exception" Exception
+@enduml

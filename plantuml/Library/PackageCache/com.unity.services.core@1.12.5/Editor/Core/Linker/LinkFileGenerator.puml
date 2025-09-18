@@ -1,0 +1,6 @@
+@startuml
+class LinkFileGenerator {
+    + LinkFileGenerator()
+}
+IUnityLinkerProcessor <|-- LinkFileGenerator
+@enduml

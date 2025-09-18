@@ -1,0 +1,10 @@
+@startuml
+interface IQosResults {
+}
+struct QosResult {
+    + Region : string
+    + AverageLatencyMs : int
+    + PacketLossPercent : float
+}
+IServiceComponent <|-- IQosResults
+@enduml

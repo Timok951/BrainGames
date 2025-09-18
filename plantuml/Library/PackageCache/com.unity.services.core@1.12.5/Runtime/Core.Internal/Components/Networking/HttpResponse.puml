@@ -1,0 +1,21 @@
+@startuml
+class HttpResponse {
+    + StatusCode : long
+    + ErrorMessage : string
+    + IsHttpError : bool
+    + IsNetworkError : bool
+    + SetRequest(request:HttpRequest) : HttpResponse
+    + SetRequest(request:ReadOnlyHttpRequest) : HttpResponse
+    + SetHeader(key:string, value:string) : HttpResponse
+    + SetHeaders(headers:Dictionary<string, string>) : HttpResponse
+    + SetData(data:byte[]) : HttpResponse
+    + SetStatusCode(statusCode:long) : HttpResponse
+    + SetErrorMessage(errorMessage:string) : HttpResponse
+    + SetIsHttpError(isHttpError:bool) : HttpResponse
+    + SetIsNetworkError(isNetworkError:bool) : HttpResponse
+}
+class "Dictionary`2"<T1,T2> {
+}
+HttpResponse --> "Request" ReadOnlyHttpRequest
+HttpResponse --> "Headers<string,string>" "Dictionary`2"
+@enduml

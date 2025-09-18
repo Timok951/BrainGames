@@ -1,0 +1,8 @@
+@startuml
+class GooglePurchaseUpdatedListener {
+    + SetGoogleQueryPurchaseService(googleFetchPurchases:IGoogleQueryPurchasesService) : void
+    + onPurchasesUpdated(billingResult:AndroidJavaObject, javaPurchasesList:AndroidJavaObject) : void
+}
+AndroidJavaProxy <|-- GooglePurchaseUpdatedListener
+IGooglePurchaseUpdatedListener <|-- GooglePurchaseUpdatedListener
+@enduml

@@ -1,0 +1,5 @@
+@startuml
+class GoogleAcknowledgePurchaseListener {
+}
+AndroidJavaProxy <|-- GoogleAcknowledgePurchaseListener
+@enduml

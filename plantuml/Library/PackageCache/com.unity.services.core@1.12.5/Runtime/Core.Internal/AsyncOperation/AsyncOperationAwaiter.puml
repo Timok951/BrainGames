@@ -1,0 +1,20 @@
+@startuml
+struct AsyncOperationAwaiter {
+    + AsyncOperationAwaiter(asyncOperation:IAsyncOperation)
+    + OnCompleted(continuation:Action) : void
+    + UnsafeOnCompleted(continuation:Action) : void
+    + IsCompleted : bool <<get>>
+    + GetResult() : void
+}
+struct "AsyncOperationAwaiter`1"<T> {
+    + AsyncOperationAwaiter(asyncOperation:IAsyncOperation<T>)
+    + OnCompleted(continuation:Action) : void
+    + UnsafeOnCompleted(continuation:Action) : void
+    + IsCompleted : bool <<get>>
+    + GetResult() : T
+}
+class "IAsyncOperationAwaiter`1"<T> {
+}
+IAsyncOperationAwaiter <|-- AsyncOperationAwaiter
+"IAsyncOperationAwaiter`1" "<T>" <|-- "AsyncOperationAwaiter`1"
+@enduml

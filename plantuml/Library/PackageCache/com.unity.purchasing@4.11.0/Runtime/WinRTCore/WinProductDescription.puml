@@ -1,0 +1,14 @@
+@startuml
+class WinProductDescription {
+    + platformSpecificID : string <<get>>
+    + price : string <<get>>
+    + title : string <<get>>
+    + description : string <<get>>
+    + ISOCurrencyCode : string <<get>>
+    + priceDecimal : decimal <<get>>
+    + receipt : string <<get>>
+    + transactionID : string <<get>>
+    + consumable : bool <<get>>
+    + WinProductDescription(id:string, price:string, title:string, description:string, isoCode:string, priceD:decimal, receipt:string, transactionId:string, consumable:bool)
+}
+@enduml

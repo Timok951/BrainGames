@@ -1,0 +1,16 @@
+@startuml
+class LinkXMLGeneratorTests {
+    + OnTearDown() : void
+    + {static} ReadLinkXML(linkFile:string, assemblyCount:int, typeCount:int) : string
+    + {static} AssertTypePreserved(input:string, t:Type) : void
+    + {static} AssertTypeWithAttributePreserved(input:string, fullName:string) : void
+    + {static} AssertAssemblyPreserved(input:string, a:Assembly) : void
+    + {static} AssertAssemblyFullName(input:string, assemblyName:string) : void
+    + CreateDefault_Converts_ExpectedUnityEditorTypes() : void
+    + CreateDefault_DoesNotConvert_UnexpectedUnityEditorTypes() : void
+    + LinkXML_Preserves_MultipleTypes_FromMultipleAssemblies() : void
+    + LinkXML_Preserves_Assemblies() : void
+    + LinkXML_Preserves_SerializeClasses() : void
+    + LinkXML_Is_Sorted() : void
+}
+@enduml

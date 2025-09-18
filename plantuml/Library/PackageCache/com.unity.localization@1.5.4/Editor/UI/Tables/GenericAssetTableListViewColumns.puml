@@ -1,0 +1,40 @@
+@startuml
+class "GenericAssetTableListViewMultiColumnHeader`2"<T1,T2> {
+    + GenericAssetTableListViewMultiColumnHeader(state:MultiColumnHeaderState, _:GenericAssetTableListView<T1, T2>, collection:LocalizationTableCollection)
+}
+class VisibleColumn {
+    + defaultVisibility : bool <<get>> <<set>> = true
+    + Visible : bool <<get>> <<set>>
+}
+class "TableColumn`1"<T1> {
+    + Table : T1 <<get>> <<set>>
+    + Selected : bool <<get>> <<set>>
+    + TableColumn(collection:LocalizationTableCollection, table:LocalizationTable, locale:Locale)
+    + <<override>> ToString() : string
+}
+class KeyColumn {
+    + KeyColumn(sharedData:SharedTableData)
+    + <<override>> ToString() : string
+}
+class KeyIdColumn {
+    + KeyIdColumn(sharedData:SharedTableData)
+    + <<override>> ToString() : string
+}
+class MissingTableColumn {
+    + {static} Visible : bool <<get>> <<set>>
+    + MissingTableColumn(locale:Locale)
+    + <<override>> ToString() : string
+}
+class "GenericAssetTableTreeViewItem`1"<T> {
+}
+MultiColumnHeaderBridge <|-- "GenericAssetTableListViewMultiColumnHeader`2"
+VisibleColumn <|-- "TableColumn`1"
+"TableColumn`1" --> "SerializedObjectTable" SerializedObject
+"TableColumn`1" --> "SerializedObjectSharedTableData" SerializedObject
+"TableColumn`1" --> "TableLocale" Locale
+VisibleColumn <|-- KeyColumn
+KeyColumn --> "SharedData" SharedTableData
+VisibleColumn <|-- KeyIdColumn
+KeyIdColumn --> "Keys" SharedTableData
+MissingTableColumn --> "TableLocale" Locale
+@enduml

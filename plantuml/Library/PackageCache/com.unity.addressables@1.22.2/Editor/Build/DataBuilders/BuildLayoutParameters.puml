@@ -1,0 +1,15 @@
+@startuml
+interface IBuildLayoutParameters {
+}
+class BuildLayoutParameters {
+    + BuildLayoutParameters(bundleNameRemap:Dictionary<string, string>)
+    + BuildLayoutParameters(bundleNameRemap:Dictionary<string, string>, contentCatalogData:ContentCatalogData)
+    + BuildResultHash : string <<get>>
+    + CatalogHash : string <<get>>
+}
+class "Dictionary`2"<T1,T2> {
+}
+IContextObject <|-- IBuildLayoutParameters
+IBuildLayoutParameters <|-- BuildLayoutParameters
+BuildLayoutParameters --> "BundleNameRemap<string,string>" "Dictionary`2"
+@enduml

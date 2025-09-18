@@ -1,0 +1,15 @@
+@startuml
+class ReflectionExtentions <<static>> {
+    + {static} SetFileName(file:ResourceFile, filename:string) : void
+    + {static} SetFileAlias(file:ResourceFile, fileAlias:string) : void
+    + {static} SetSerializedFile(file:ResourceFile, serializedFile:bool) : void
+    + {static} SetHeader(osi:ObjectSerializedInfo, serializedLocation:SerializedLocation) : void
+    + {static} SetFileName(serializedLocation:SerializedLocation, filename:string) : void
+    + {static} SetOffset(serializedLocation:SerializedLocation, offset:ulong) : void
+    + {static} SetObjectIdentifier(obj:ObjectIdentifier, guid:GUID, localIdentifierInFile:long, fileType:FileType, filePath:string) : void
+    + {static} SetGuid(obj:ObjectIdentifier, guid:GUID) : void
+    + {static} SetLocalIdentifierInFile(obj:ObjectIdentifier, localIdentifierInFile:long) : void
+    + {static} SetFileType(obj:ObjectIdentifier, fileType:FileType) : void
+    + {static} SetFilePath(obj:ObjectIdentifier, filePath:string) : void
+}
+@enduml

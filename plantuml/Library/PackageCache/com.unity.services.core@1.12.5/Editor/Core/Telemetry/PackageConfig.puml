@@ -1,0 +1,10 @@
+@startuml
+struct PackageConfig {
+    + Name : string
+    + Version : string
+    + PackageConfig(packageInfo:PackageInfo, initializerTypes:IEnumerable<Type>)
+}
+class "List`1"<T> {
+}
+PackageConfig --> "InitializerNames<string>" "List`1"
+@enduml

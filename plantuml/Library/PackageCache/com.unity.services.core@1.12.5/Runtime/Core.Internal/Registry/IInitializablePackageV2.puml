@@ -1,0 +1,5 @@
+@startuml
+interface IInitializablePackageV2 {
+}
+IInitializablePackage <|-- IInitializablePackageV2
+@enduml

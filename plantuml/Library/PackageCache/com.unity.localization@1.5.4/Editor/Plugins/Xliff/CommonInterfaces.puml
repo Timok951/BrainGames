@@ -1,0 +1,30 @@
+@startuml
+interface IXliffDocument {
+}
+enum NoteType {
+    General,
+    Source,
+    Target,
+}
+interface INote {
+}
+interface INoteCollection {
+}
+interface IFile {
+}
+interface ITranslationUnit {
+}
+interface ITranslationUnitCollection {
+}
+interface IGroup {
+}
+interface IGroupCollection {
+}
+IGroupCollection <|-- IFile
+ITranslationUnitCollection <|-- IFile
+INoteCollection <|-- IFile
+INoteCollection <|-- ITranslationUnit
+IGroupCollection <|-- IGroup
+INoteCollection <|-- IGroup
+ITranslationUnitCollection <|-- IGroup
+@enduml

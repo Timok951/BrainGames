@@ -1,0 +1,6 @@
+@startuml
+class MissingComponent {
+}
+IServiceComponent <|-- MissingComponent
+MissingComponent --> "IntendedType" Type
+@enduml

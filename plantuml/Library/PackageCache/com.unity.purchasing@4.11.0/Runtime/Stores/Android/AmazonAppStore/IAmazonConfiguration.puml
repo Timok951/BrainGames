@@ -1,0 +1,5 @@
+@startuml
+interface IAmazonConfiguration {
+}
+IStoreConfiguration <|-- IAmazonConfiguration
+@enduml

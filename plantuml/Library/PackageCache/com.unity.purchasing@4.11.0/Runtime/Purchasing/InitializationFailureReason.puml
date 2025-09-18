@@ -1,0 +1,7 @@
+@startuml
+enum InitializationFailureReason {
+    PurchasingUnavailable,
+    NoProductsAvailable,
+    AppNotKnown,
+}
+@enduml

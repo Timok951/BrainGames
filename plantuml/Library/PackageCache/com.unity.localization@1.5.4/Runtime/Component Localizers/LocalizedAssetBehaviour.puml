@@ -1,0 +1,14 @@
+@startuml
+abstract class "LocalizedAssetBehaviour`2"<TObject,TReference> {
+    + AssetReference : TReference <<get>> <<set>>
+}
+class "LocalizedAssetEvent`3"<TObject,TReference,TEvent> {
+    + OnUpdateAsset : TEvent <<get>> <<set>>
+}
+class "LocalizedAsset`1"<T> {
+}
+class "UnityEvent`1"<T> {
+}
+LocalizedMonoBehaviour <|-- "LocalizedAssetBehaviour`2"
+"LocalizedAssetBehaviour`2" "<TObject,TReference>" <|-- "LocalizedAssetEvent`3"
+@enduml

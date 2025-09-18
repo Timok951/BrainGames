@@ -1,0 +1,7 @@
+@startuml
+class DictionarySource {
+    + DictionarySource(formatter:SmartFormatter)
+    + TryEvaluateSelector(selectorInfo:ISelectorInfo) : bool
+}
+ISource <|-- DictionarySource
+@enduml

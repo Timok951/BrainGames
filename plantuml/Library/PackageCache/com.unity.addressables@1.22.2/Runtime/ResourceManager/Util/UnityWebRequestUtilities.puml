@@ -1,0 +1,15 @@
+@startuml
+class UnityWebRequestUtilities {
+    + {static} RequestHasErrors(webReq:UnityWebRequest, result:UnityWebRequestResult) : bool
+    + {static} IsAssetBundleDownloaded(op:UnityWebRequestAsyncOperation) : bool
+}
+class UnityWebRequestResult {
+    + UnityWebRequestResult(request:UnityWebRequest)
+    + <<override>> ToString() : string
+    + Error : string <<get>> <<set>>
+    + ResponseCode : long <<get>>
+    + Method : string <<get>>
+    + Url : string <<get>>
+    + ShouldRetryDownloadError() : bool
+}
+@enduml

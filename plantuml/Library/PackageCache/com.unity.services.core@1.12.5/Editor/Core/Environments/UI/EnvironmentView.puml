@@ -1,0 +1,13 @@
+@startuml
+class EnvironmentView {
+    + EnvironmentView()
+    + Bind(environmentService:IEnvironmentsApi) : void
+}
+class UxmlFactory <<new>> {
+}
+class "UxmlFactory`1"<T> {
+}
+VisualElement <|-- EnvironmentView
+EnvironmentView +-- UxmlFactory
+"UxmlFactory`1" "<EnvironmentView>" <|-- UxmlFactory
+@enduml

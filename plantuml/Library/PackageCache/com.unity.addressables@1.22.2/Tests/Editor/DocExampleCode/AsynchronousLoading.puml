@@ -1,0 +1,5 @@
+@startuml
+class AsynchronousLoading {
+}
+MonoBehaviour <|-- AsynchronousLoading
+@enduml

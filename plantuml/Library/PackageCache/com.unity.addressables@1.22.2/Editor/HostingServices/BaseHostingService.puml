@@ -1,0 +1,21 @@
+@startuml
+abstract class BaseHostingService {
+    + {abstract} IsHostingServiceRunning : bool <<get>>
+    + {abstract} StartHostingService() : void
+    + {abstract} StopHostingService() : void
+    + {abstract} OnGUI() : void
+    + <<virtual>> DescriptiveName : string <<get>> <<set>>
+    + <<virtual>> InstanceId : int <<get>> <<set>>
+    + <<virtual>> EvaluateProfileString(key:string) : string
+    + <<virtual>> OnBeforeSerialize(dataStore:KeyDataStore) : void
+    + <<virtual>> OnAfterDeserialize(dataStore:KeyDataStore) : void
+}
+class "List`1"<T> {
+}
+class "Dictionary`2"<T1,T2> {
+}
+IHostingService <|-- BaseHostingService
+BaseHostingService --> "HostingServiceContentRoots<string>" "List`1"
+BaseHostingService --> "ProfileVariables<string,string>" "Dictionary`2"
+BaseHostingService --> "Logger" ILogger
+@enduml

@@ -1,0 +1,52 @@
+@startuml
+class ProductCatalogEditor {
+    + <<const>> ProductCatalogEditorMenuPath : string
+    + {static} ShowWindow() : void
+    + SetCatalogValidationResults(catalogResults:ExporterValidationResults, itemResults:List<ExporterValidationResults>) : void
+    + {static} Export(storeName:string, folder:string, eraseExport:bool) : bool
+    + GetAuthCode(response:T) : void
+}
+class ProductCatalogItemEditor {
+    + udpSyncErrorMsg : string = ""
+    + ProductCatalogItemEditor()
+    + ProductCatalogItemEditor(description:ProductCatalogItem)
+    + OnGUI() : void
+    + SetValidationResults(results:ExporterValidationResults) : void
+    + SetIDDuplicateError(isDuplicate:bool) : void
+    + SetIDInvalidError(isValid:bool) : void
+    + SetShouldBeMarked(marked:bool) : void
+}
+class ProductCatalogExportWindow {
+    + <<const>> kWidth : float = 200f
+    + ProductCatalogExportWindow(editor_:ProductCatalogEditor)
+    + <<override>> GetWindowSize() : Vector2
+    + <<override>> OnGUI(rect:Rect) : void
+}
+class ExporterValidationResults {
+    + Valid : bool <<get>>
+}
+interface IProductCatalogExporter {
+}
+class CompatibleGUI <<static>> {
+    + {static} parsedVersion : bool = false
+    + {static} Foldout(foldout:bool, text:string, toggleOnLabelClick:bool, style:GUIStyle) : bool
+    + {static} FoldoutHelper(foldout:bool, text:string, toggleOnLabelClick:bool, style:GUIStyle) : bool
+}
+class "List`1"<T> {
+}
+class "Dictionary`2"<T1,T2> {
+}
+EditorWindow <|-- ProductCatalogEditor
+ProductCatalogEditor --> "Catalog" ProductCatalog
+ProductCatalogEditor +-- ProductCatalogItemEditor
+ProductCatalogItemEditor --> "Item" ProductCatalogItem
+ProductCatalogItemEditor o-> "udpItemSyncing" Boolean
+ProductCatalogEditor +-- ProductCatalogExportWindow
+PopupWindowContent <|-- ProductCatalogExportWindow
+ProductCatalogEditor +-- ExporterValidationResults
+ExporterValidationResults o-> "errors<string>" "List`1"
+ExporterValidationResults o-> "warnings<string>" "List`1"
+ExporterValidationResults o-> "fieldErrors<string,string>" "Dictionary`2"
+ProductCatalogEditor +-- IProductCatalogExporter
+ProductCatalogEditor +-- CompatibleGUI
+@enduml

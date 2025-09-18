@@ -1,0 +1,27 @@
+@startuml
+abstract class InitializationObjectsAsyncTests {
+    + InitializationObjects_CompletesWhenNoObjectsPresent() : IEnumerator
+    + InitializationObjects_CompletesSyncWhenNoObjectsPresent() : void
+    + InitializationObjects_OperationRegistersForCallbacks() : void
+    + InitializationAsync_HandlesEmptyData() : IEnumerator
+    + InitializationObjectsOperation_DoesNotThrow_WhenRuntimeDataOpFails() : IEnumerator
+    + CacheInitializationObject_FullySetsCachingData() : IEnumerator
+}
+class FakeInitializationObject {
+    + Initialize(id:string, data:string) : bool
+    + InitializeAsync(rm:ResourceManager, id:string, data:string) : AsyncOperationHandle<bool>
+}
+class FakeAsyncOp {
+}
+class InitializationObjects_PackedMode {
+}
+class "AsyncOperationBase`1"<T> {
+}
+AddressablesTestFixture <|-- InitializationObjectsAsyncTests
+InitializationObjectsAsyncTests +-- FakeInitializationObject
+IInitializableObject <|-- FakeInitializationObject
+InitializationObjectsAsyncTests +-- FakeAsyncOp
+"AsyncOperationBase`1" "<bool>" <|-- FakeAsyncOp
+InitializationObjectsAsyncTests +-- InitializationObjects_PackedMode
+InitializationObjectsAsyncTests <|-- InitializationObjects_PackedMode
+@enduml

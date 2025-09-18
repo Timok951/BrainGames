@@ -1,0 +1,7 @@
+@startuml
+class AnalyticsServiceInstance <<partial>> {
+    + <<async>> CheckForRequiredConsents() : Task<List<string>>
+    + ProvideOptInConsent(identifier:string, consent:bool) : void
+    + OptOut() : void
+}
+@enduml

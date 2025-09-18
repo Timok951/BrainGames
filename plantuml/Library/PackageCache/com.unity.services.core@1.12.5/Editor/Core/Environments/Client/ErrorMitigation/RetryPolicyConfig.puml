@@ -1,0 +1,11 @@
+@startuml
+class RetryPolicyConfig {
+    + MaxRetries : uint <<get>> <<set>> = 4
+    + JitterMagnitude : float <<get>> <<set>>
+    + DelayScale : float <<get>> <<set>>
+    + MaxDelayTime : float <<get>> <<set>>
+    + HandleException() : void
+    + HandleException(condition:Func<TException, bool>) : void
+    + IsHandledException(e:Exception) : bool
+}
+@enduml

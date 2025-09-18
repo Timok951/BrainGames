@@ -1,0 +1,5 @@
+@startuml
+class LeaderboardResponse {
+    + Status : string <<get>> <<set>>
+}
+@enduml

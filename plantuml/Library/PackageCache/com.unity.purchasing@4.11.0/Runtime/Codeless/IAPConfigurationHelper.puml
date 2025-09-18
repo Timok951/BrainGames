@@ -1,0 +1,5 @@
+@startuml
+class IAPConfigurationHelper <<static>> {
+    + {static} PopulateConfigurationBuilder(builder:ConfigurationBuilder, catalog:ProductCatalog) : void
+}
+@enduml

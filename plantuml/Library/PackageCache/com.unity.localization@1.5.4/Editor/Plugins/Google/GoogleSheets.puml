@@ -1,0 +1,18 @@
+@startuml
+class GoogleSheets {
+    + SpreadSheetId : string <<get>> <<set>>
+    + GoogleSheets(provider:IGoogleSheetsService)
+    + {static} OpenSheetInBrowser(spreadSheetId:string) : void
+    + {static} OpenSheetInBrowser(spreadSheetId:string, sheetId:int) : void
+    + CreateSpreadsheet(spreadSheetTitle:string, sheetTitle:string, newSheetProperties:NewSheetProperties, reporter:ITaskReporter) : (string spreadSheetId, int sheetId)
+    + AddSheet(title:string, newSheetProperties:NewSheetProperties) : int
+    + GetSheets() : List<(string name, int id)>
+    + GetColumnTitles(sheetId:int) : IList<string>
+    + <<async>> GetRowCountAsync(sheetId:int) : Task<int>
+    + GetRowCount(sheetId:int) : int
+    + <<async>> PushStringTableCollectionAsync(sheetId:int, collection:StringTableCollection, columnMapping:IList<SheetColumn>, reporter:ITaskReporter) : Task
+    + PushStringTableCollection(sheetId:int, collection:StringTableCollection, columnMapping:IList<SheetColumn>, reporter:ITaskReporter) : void
+    + PullIntoStringTableCollection(sheetId:int, collection:StringTableCollection, columnMapping:IList<SheetColumn>, removeMissingEntries:bool, reporter:ITaskReporter, createUndo:bool) : void
+}
+GoogleSheets --> "SheetsService" IGoogleSheetsService
+@enduml

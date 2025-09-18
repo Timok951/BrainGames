@@ -1,0 +1,6 @@
+@startuml
+class GraphLayerLabel {
+    + <<override>> Draw(dataSet:EventDataSet, rect:Rect, startFrame:int, frameCount:int, inspectFrame:int, expanded:bool, material:Material, maxValue:int) : void
+}
+GraphLayerBase <|-- GraphLayerLabel
+@enduml

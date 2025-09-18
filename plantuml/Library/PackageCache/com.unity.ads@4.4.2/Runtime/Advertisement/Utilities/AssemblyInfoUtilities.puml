@@ -1,0 +1,5 @@
+@startuml
+class AssemblyInfoUtilities <<static>> {
+    + {static} GetCurrentAssemblyInfoVersion() : string
+}
+@enduml

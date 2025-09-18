@@ -1,0 +1,12 @@
+@startuml
+class AddressablesTestUtility <<static>> {
+    + {static} GetPackagePath() : string
+    + {static} TearDown(testType:string, pathFormat:string, suffix:string) : void
+    + {static} GetPrefabLabel(suffix:string) : string
+    + {static} GetPrefabAlternatingLabel(suffix:string, index:int) : string
+    + {static} GetPrefabUniqueLabel(suffix:string, index:int) : string
+    + <<const>> kPrefabCount : int = 10
+    + <<const>> kMaxWebRequestCount : int = 5
+    + {static} Setup(testType:string, pathFormat:string, suffix:string, useUnityWebRequestForLocalBundles:bool) : void
+}
+@enduml

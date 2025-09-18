@@ -1,0 +1,10 @@
+@startuml
+class GameplayManagerPipes {
+    + ClickedBack(button:UnityEngine.UI.Button) : void
+    + ClickedRestart(button:Button) : void
+    + ClickedNextLevel(button:UnityEngine.UI.Button) : void
+    + Animate(target:GameObject, onComplete:System.Action, duration:float) : void
+}
+MonoBehaviour <|-- GameplayManagerPipes
+GameplayManagerPipes --> "Instance" GameplayManagerPipes
+@enduml

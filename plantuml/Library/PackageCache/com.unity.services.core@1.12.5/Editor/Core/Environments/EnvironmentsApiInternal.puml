@@ -1,0 +1,16 @@
+@startuml
+class EnvironmentsApiInternal {
+    + ActiveEnvironmentName : string <<get>>
+    +  <<event>> PropertyChanged : PropertyChangedEventHandler 
+    + RefreshAsync() : Task
+    + SetActiveEnvironment(environmentInfo:EnvironmentInfo) : void
+    + SetActiveEnvironment(environmentName:string) : void
+    + SetActiveEnvironment(environmentGuid:Guid) : void
+    + ValidateEnvironmentAsync() : Task<ValidationResult>
+}
+class "IReadOnlyCollection`1"<T> {
+}
+IEnvironmentsApi <|-- EnvironmentsApiInternal
+EnvironmentsApiInternal --> "Environments<EnvironmentInfo>" "IReadOnlyCollection`1"
+EnvironmentsApiInternal --> "ActiveEnvironmentId" Guid
+@enduml

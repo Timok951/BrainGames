@@ -1,0 +1,44 @@
+@startuml
+class ArchiveAndCompressBundles {
+    + Version : int <<get>>
+    + Run() : ReturnCode
+}
+class ArchiveWorkItem {
+    + Index : int
+    + BundleName : string
+    + OutputFilePath : string
+    + CachedArtifactPath : string
+}
+struct TaskInput {
+    + TempOutputFolder : string
+    + Threaded : bool
+    + StripUnityVersion : bool
+}
+struct TaskOutput {
+}
+class "List`1"<T> {
+}
+class "Dictionary`2"<T1,T2> {
+}
+class "Func`2"<T1,T2> {
+}
+IBuildTask <|-- ArchiveAndCompressBundles
+ArchiveAndCompressBundles +-- ArchiveWorkItem
+ArchiveWorkItem --> "ResourceFiles<ResourceFile>" "List`1"
+ArchiveWorkItem --> "Compression" BuildCompression
+ArchiveWorkItem --> "ResultDetails" BundleDetails
+ArchiveWorkItem o-> "SeriliazedFileMetaDatas<SerializedFileMetaData>" "List`1"
+ArchiveAndCompressBundles +-- TaskInput
+TaskInput --> "InternalFilenameToWriteResults<string,WriteResult>" "Dictionary`2"
+TaskInput --> "InternalFilenameToWriteMetaData<string,SerializedFileMetaData>" "Dictionary`2"
+TaskInput --> "InternalFilenameToBundleName<string,string>" "Dictionary`2"
+TaskInput --> "GetCompressionForIdentifier<string,BuildCompression>" "Func`2"
+TaskInput --> "GetOutputFilePathForIdentifier<string,string>" "Func`2"
+TaskInput --> "BuildCache" IBuildCache
+TaskInput --> "AssetToFilesDependencies<GUID,List<string>>" "Dictionary`2"
+TaskInput --> "ProgressTracker" IProgressTracker
+TaskInput --> "OutCachedBundles<string>" "List`1"
+TaskInput --> "Log" IBuildLogger
+ArchiveAndCompressBundles +-- TaskOutput
+TaskOutput --> "BundleDetails<string,BundleDetails>" "Dictionary`2"
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+abstract class CsvColumns {
+    + {abstract} WriteBegin(collection:StringTableCollection, csvWriter:CsvWriter) : void
+    + <<virtual>> WriteEnd(collection:StringTableCollection) : void
+    + {abstract} ReadBegin(collection:StringTableCollection, csvReader:CsvReader) : void
+    + <<virtual>> ReadEnd(collection:StringTableCollection) : void
+    + {abstract} WriteRow(keyEntry:SharedTableData.SharedTableEntry, tableEntries:IList<StringTableEntry>, writer:CsvWriter) : void
+    + {abstract} ReadRow(keyEntry:SharedTableData.SharedTableEntry, reader:CsvReader) : void
+}
+@enduml

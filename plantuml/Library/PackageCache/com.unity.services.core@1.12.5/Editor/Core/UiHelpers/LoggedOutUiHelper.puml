@@ -1,0 +1,9 @@
+@startuml
+class LoggedOutUiHelper <<static>> {
+    + {static} AddLoggedOutUI(loggedOutContainer:VisualElement) : void
+}
+class UiClass <<static>> {
+    + <<const>> Button : string = "submit-button"
+}
+LoggedOutUiHelper +-- UiClass
+@enduml

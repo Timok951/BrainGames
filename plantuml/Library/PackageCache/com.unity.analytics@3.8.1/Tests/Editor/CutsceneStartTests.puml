@@ -1,0 +1,6 @@
+@startuml
+class AnalyticsEventTests <<partial>> {
+    + CutsceneStart_CutsceneNameTest(name:string) : void
+    + CutsceneStart_CustomDataTest() : void
+}
+@enduml

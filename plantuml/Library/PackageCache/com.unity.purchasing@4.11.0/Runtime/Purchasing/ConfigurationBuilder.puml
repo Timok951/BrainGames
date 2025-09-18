@@ -1,0 +1,24 @@
+@startuml
+class IDs {
+    + Add(id:string, stores:string[]) : void
+    + Add(id:string, stores:object[]) : void
+    + GetEnumerator() : IEnumerator<KeyValuePair<string, string>>
+}
+class ConfigurationBuilder {
+    + useCatalogProvider : bool <<get>> <<set>>
+    + logUnavailableProducts : bool <<get>> <<set>> = true
+    + Configure() : T
+    + {static} Instance(first:IPurchasingModule, rest:IPurchasingModule[]) : ConfigurationBuilder
+    + AddProduct(id:string, type:ProductType) : ConfigurationBuilder
+    + AddProduct(id:string, type:ProductType, storeIDs:IDs) : ConfigurationBuilder
+    + AddProduct(id:string, type:ProductType, storeIDs:IDs, payout:PayoutDefinition) : ConfigurationBuilder
+    + AddProduct(id:string, type:ProductType, storeIDs:IDs, payouts:IEnumerable<PayoutDefinition>) : ConfigurationBuilder
+    + AddProducts(products:IEnumerable<ProductDefinition>) : ConfigurationBuilder
+}
+class "IEnumerable`1"<T> {
+}
+class "HashSet`1"<T> {
+}
+"IEnumerable`1" "<KeyValuePair<string, string>>" <|-- IDs
+ConfigurationBuilder o-> "products<ProductDefinition>" "HashSet`1"
+@enduml

@@ -1,0 +1,42 @@
+@startuml
+class BuildCache {
+    + BuildCache()
+    + BuildCache(host:string, port:int)
+    + Dispose() : void
+    + GetCacheEntry(asset:GUID, version:int) : CacheEntry
+    + GetCacheEntry(path:string, version:int) : CacheEntry
+    + GetCacheEntry(objectID:ObjectIdentifier, version:int) : CacheEntry
+    + GetCacheEntry(type:Type, version:int) : CacheEntry
+    + HasAssetOrDependencyChanged(info:CachedInfo) : bool
+    + GetCachedInfoFile(entry:CacheEntry) : string
+    + GetCachedArtifactsDirectory(entry:CacheEntry) : string
+    + LoadCachedData(entries:IList<CacheEntry>, cachedInfos:IList<CachedInfo>) : void
+    + SaveCachedData(infos:IList<CachedInfo>) : void
+    + {static} PurgeCache(prompt:bool) : void
+    + {static} PruneCache() : void
+    + {static} PruneCache_Background(maximumCacheSize:long) : void
+}
+class USerializeCustom_BuildUsageTagSet {
+}
+class FileOperations {
+    + FileOperations(size:int)
+}
+struct FileOperation {
+    + file : string
+}
+struct CacheFolder {
+    + Length : long <<get>> <<set>>
+    + Delete() : void
+}
+IBuildCache <|-- BuildCache
+IDisposable <|-- BuildCache
+BuildCache +-- USerializeCustom_BuildUsageTagSet
+ICustomSerializer <|-- USerializeCustom_BuildUsageTagSet
+BuildCache +-- FileOperations
+FileOperations --> "waitLock" Semaphore
+BuildCache +-- FileOperation
+FileOperation --> "bytes" MemoryStream
+BuildCache +-- CacheFolder
+CacheFolder --> "directory" DirectoryInfo
+CacheFolder --> "LastAccessTimeUtc" DateTime
+@enduml

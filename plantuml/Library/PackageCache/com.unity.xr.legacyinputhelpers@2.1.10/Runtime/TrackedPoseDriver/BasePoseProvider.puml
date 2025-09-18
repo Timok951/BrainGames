@@ -1,0 +1,7 @@
+@startuml
+abstract class BasePoseProvider {
+    + <<virtual>> GetPoseFromProvider(output:Pose) : PoseDataFlags
+    + <<virtual>> TryGetPoseFromProvider(output:Pose) : bool
+}
+MonoBehaviour <|-- BasePoseProvider
+@enduml

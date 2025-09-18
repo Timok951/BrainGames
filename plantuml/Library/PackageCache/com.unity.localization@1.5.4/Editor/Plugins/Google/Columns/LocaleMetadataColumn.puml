@@ -1,0 +1,14 @@
+@startuml
+abstract class "LocaleMetadataColumn`1"<TMetadata> {
+    + <<override>> PushBegin(collection:StringTableCollection) : void
+    + {abstract} PushMetadata(metadata:TMetadata, value:string, note:string) : void
+    + <<override>> PushCellData(keyEntry:SharedTableData.SharedTableEntry, tableEntries:IList<StringTableEntry>, value:string, note:string) : void
+    + <<override>> PushEnd() : void
+    + <<override>> PullBegin(collection:StringTableCollection) : void
+    + {abstract} PullMetadata(entry:StringTableEntry, metadata:TMetadata, cellValue:string, cellNote:string) : void
+    + <<override>> PullCellData(keyEntry:SharedTableData.SharedTableEntry, cellValue:string, cellNote:string) : void
+    + <<override>> PullEnd() : void
+}
+SheetColumn <|-- "LocaleMetadataColumn`1"
+"LocaleMetadataColumn`1" --> "LocaleIdentifier" LocaleIdentifier
+@enduml

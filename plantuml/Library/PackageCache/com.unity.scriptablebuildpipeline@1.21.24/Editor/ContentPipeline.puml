@@ -1,0 +1,9 @@
+@startuml
+class ContentPipeline <<static>> {
+    + <<const>> kTempBuildPath : string = "Temp/ContentBuildData"
+    + <<const>> kScriptBuildPath : string = "Library/PlayerScriptAssemblies"
+    + {static} BuildAssetBundles(parameters:IBundleBuildParameters, content:IBundleBuildContent, result:IBundleBuildResults) : ReturnCode
+    + {static} BuildAssetBundles(parameters:IBundleBuildParameters, content:IBundleBuildContent, result:IBundleBuildResults, taskList:IList<IBuildTask>, contextObjects:IContextObject[]) : ReturnCode
+}
+ContentPipeline o-> "BuildCallbacks" BuildCallbacks
+@enduml

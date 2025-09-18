@@ -1,0 +1,22 @@
+@startuml
+class PlatformOverridePropertyData {
+}
+class PlatformOverridePropertyDrawer {
+    + <<override>> CreatePropertyData(property:SerializedProperty) : PlatformOverridePropertyData
+    + <<override>> OnGUI(data:PlatformOverridePropertyData, position:Rect, property:SerializedProperty, label:GUIContent) : void
+    + <<override>> GetPropertyHeight(data:PlatformOverridePropertyData, property:SerializedProperty, label:GUIContent) : float
+}
+class "PropertyDrawerExtended`1"<T> {
+}
+class Styles {
+}
+PropertyDrawerExtendedData <|-- PlatformOverridePropertyData
+PlatformOverridePropertyData --> "m_PlatformOverridesProperty" SerializedProperty
+PlatformOverridePropertyData --> "m_PlatformOverridesList" ReorderableList
+"PropertyDrawerExtended`1" "<PlatformOverridePropertyData>" <|-- PlatformOverridePropertyDrawer
+PlatformOverridePropertyDrawer +-- Styles
+Styles o-> "entry" GUIContent
+Styles o-> "none" GUIContent
+Styles o-> "reference" GUIContent
+Styles o-> "tableCollection" GUIContent
+@enduml

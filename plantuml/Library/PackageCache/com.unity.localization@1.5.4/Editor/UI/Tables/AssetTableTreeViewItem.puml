@@ -1,0 +1,14 @@
+@startuml
+class AssetTableTreeViewItem {
+    + <<override>> displayName : string <<get>> <<set>>
+    + <<override>> Initialize(collection:LocalizationTableCollection, startIdx:int, sortedTables:List<LocalizationTable>) : void
+    + RefreshFields() : void
+    + GetTableAsset(colIdx:int) : Object
+    + SetAsset(asset:Object, colIdx:int) : void
+    + <<override>> OnDeleteKey() : void
+}
+class "GenericAssetTableTreeViewItem`1"<T> {
+}
+"GenericAssetTableTreeViewItem`1" "<AssetTable>" <|-- AssetTableTreeViewItem
+AssetTableTreeViewItem --> "AssetType" Type
+@enduml

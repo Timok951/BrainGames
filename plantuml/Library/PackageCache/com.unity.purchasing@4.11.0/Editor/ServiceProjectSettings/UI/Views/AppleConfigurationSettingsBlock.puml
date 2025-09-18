@@ -1,0 +1,6 @@
+@startuml
+class AppleConfigurationSettingsBlock {
+    + GetUIBlockElement() : VisualElement
+}
+IPurchasingSettingsUIBlock <|-- AppleConfigurationSettingsBlock
+@enduml

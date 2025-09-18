@@ -1,0 +1,7 @@
+@startuml
+class SkAdNetworkFileExtension <<static>> {
+    + <<const>> XML : string = "xml"
+    + <<const>> JSON : string = "json"
+    + <<const>> NONE : string = ""
+}
+@enduml

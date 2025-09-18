@@ -1,0 +1,7 @@
+@startuml
+class Asn1Util {
+    + {static} BytePrecision(value:ulong) : int
+    + {static} DERLengthEncode(xdata:Stream, length:ulong) : int
+    + {static} DerLengthDecode(bt:Stream) : long
+}
+@enduml

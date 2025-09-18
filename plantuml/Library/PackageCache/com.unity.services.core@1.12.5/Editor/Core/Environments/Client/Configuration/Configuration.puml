@@ -1,0 +1,12 @@
+@startuml
+class Configuration {
+    + BasePath : string
+    + RequestTimeout : int?
+    + NumberOfRetries : int?
+    + Configuration(basePath:string, requestTimeout:int?, numRetries:int?, headers:IDictionary<string, string>)
+    + {static} MergeConfigurations(a:Configuration, b:Configuration) : Configuration
+}
+class "IDictionary`2"<T1,T2> {
+}
+Configuration --> "Headers<string,string>" "IDictionary`2"
+@enduml

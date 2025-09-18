@@ -1,0 +1,8 @@
+@startuml
+class StoreConfiguration {
+    + StoreConfiguration(store:AppStore)
+    + {static} Serialize(store:StoreConfiguration) : string
+    + {static} Deserialize(json:string) : StoreConfiguration
+}
+StoreConfiguration --> "androidStore" AppStore
+@enduml

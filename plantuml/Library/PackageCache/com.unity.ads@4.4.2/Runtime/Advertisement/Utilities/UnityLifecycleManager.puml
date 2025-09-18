@@ -1,0 +1,10 @@
+@startuml
+class UnityLifecycleManager {
+    + UnityLifecycleManager()
+    + StartCoroutine(enumerator:IEnumerator) : Coroutine
+    + Post(action:Action) : void
+    + Dispose() : void
+    + SetOnApplicationQuitCallback(callback:UnityAction) : void
+}
+IUnityLifecycleManager <|-- UnityLifecycleManager
+@enduml

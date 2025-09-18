@@ -1,0 +1,8 @@
+@startuml
+class SmartFormatterLiteralCharacterExtractor {
+    + SmartFormatterLiteralCharacterExtractor(parent:SmartFormatter)
+    + ExtractLiteralsCharacters(value:string) : IEnumerable<char>
+    + <<override>> Format(formattingInfo:FormattingInfo) : void
+}
+SmartFormatter <|-- SmartFormatterLiteralCharacterExtractor
+@enduml

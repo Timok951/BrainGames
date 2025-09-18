@@ -1,0 +1,6 @@
+@startuml
+class AppleProductMetadata {
+    + isFamilyShareable : bool <<get>>
+}
+ProductMetadata <|-- AppleProductMetadata
+@enduml

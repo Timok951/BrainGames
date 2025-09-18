@@ -1,0 +1,24 @@
+@startuml
+class ProjectBindRedirectUiConstants <<static>> {
+}
+class UxmlPath <<static>> {
+    + <<const>> Popup : string = "Packages/com.unity.services.core/Editor/Core/ProjectBindRedirect/UXML/ProjectBindRedirectPopup.uxml"
+    + <<const>> ProjectSettings : string = "Packages/com.unity.services.core/Editor/Core/ProjectBindRedirect/UXML/ProjectBindRedirectProjectSettings.uxml"
+    + <<const>> Content : string = "Packages/com.unity.services.core/Editor/Core/ProjectBindRedirect/UXML/ProjectBindRedirectContent.uxml"
+}
+class UxmlClassNames <<static>> {
+    + <<const>> ContentContainer : string = "content-container"
+    + <<const>> CancelButton : string = "cancel-button"
+    + <<const>> ConfirmationButton : string = "confirmation-button"
+    + <<const>> ProjectRedirectButton : string = "project-redirect-button"
+}
+class UssPath <<static>> {
+    + <<const>> Popup : string = "Packages/com.unity.services.core/Editor/Core/ProjectBindRedirect/USS/ProjectBindRedirectPopupCommon.uss"
+    + <<const>> PopupLight : string = "Packages/com.unity.services.core/Editor/Core/ProjectBindRedirect/USS/ProjectBindRedirectPopupLight.uss"
+    + <<const>> PopupDark : string = "Packages/com.unity.services.core/Editor/Core/ProjectBindRedirect/USS/ProjectBindRedirectPopupDark.uss"
+    + <<const>> ProjectSettings : string = "Packages/com.unity.services.core/Editor/Core/ProjectBindRedirect/USS/ProjectBindRedirectProjectSettings.uss"
+}
+ProjectBindRedirectUiConstants +-- UxmlPath
+ProjectBindRedirectUiConstants +-- UxmlClassNames
+ProjectBindRedirectUiConstants +-- UssPath
+@enduml

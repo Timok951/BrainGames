@@ -1,0 +1,16 @@
+@startuml
+class AddressablesBuildMenuNewBuild {
+    + <<virtual>> BuildMenuPath : string <<get>>
+    + <<virtual>> SelectableBuildScript : bool <<get>>
+    + <<virtual>> Order : int <<get>>
+    + <<virtual>> OnPrebuild(input:AddressablesDataBuilderInput) : bool
+    + <<virtual>> OnPostbuild(input:AddressablesDataBuilderInput, result:AddressablesPlayerBuildResult) : bool
+}
+class AddressablesBuildMenuUpdateAPreviousBuild {
+    + <<virtual>> BuildMenuPath : string <<get>>
+    + <<virtual>> SelectableBuildScript : bool <<get>>
+    + <<virtual>> Order : int <<get>>
+    + <<virtual>> OnPrebuild(input:AddressablesDataBuilderInput) : bool
+    + <<virtual>> OnPostbuild(input:AddressablesDataBuilderInput, result:AddressablesPlayerBuildResult) : bool
+}
+@enduml

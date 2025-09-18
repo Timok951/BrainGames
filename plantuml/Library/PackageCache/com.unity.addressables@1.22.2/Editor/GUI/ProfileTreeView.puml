@@ -1,0 +1,11 @@
+@startuml
+class ProfileTreeView {
+    + lastClickedProfile : int <<get>> <<set>>
+    + {static} CreateHeader() : MultiColumnHeader
+    + GetRow(i:int) : Rect
+}
+class "List`1"<T> {
+}
+TreeView <|-- ProfileTreeView
+ProfileTreeView --> "Names<string>" "List`1"
+@enduml

@@ -1,0 +1,6 @@
+@startuml
+class LiteralText {
+    + <<override>> ToString() : string
+}
+FormatItem <|-- LiteralText
+@enduml

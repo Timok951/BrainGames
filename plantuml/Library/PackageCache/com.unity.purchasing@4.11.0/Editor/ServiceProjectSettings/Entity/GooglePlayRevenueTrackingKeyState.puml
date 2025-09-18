@@ -1,0 +1,10 @@
+@startuml
+enum GooglePlayRevenueTrackingKeyState {
+    Verified,
+    InvalidFormat,
+    UnauthorizedUser,
+    ServerError,
+    CantFetch,
+    NoKey,
+}
+@enduml

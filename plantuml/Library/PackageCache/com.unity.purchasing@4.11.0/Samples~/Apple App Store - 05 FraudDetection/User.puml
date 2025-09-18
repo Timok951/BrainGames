@@ -1,0 +1,5 @@
+@startuml
+class User {
+    + Username : string
+}
+@enduml

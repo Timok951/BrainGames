@@ -1,0 +1,6 @@
+@startuml
+class PackageInitializationInfo {
+    + InitializationTimeInSeconds : double
+}
+PackageInitializationInfo --> "PackageType" Type
+@enduml

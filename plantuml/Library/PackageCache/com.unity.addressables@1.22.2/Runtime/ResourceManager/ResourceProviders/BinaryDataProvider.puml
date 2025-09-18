@@ -1,0 +1,12 @@
+@startuml
+class BinaryDataProvider {
+    + IgnoreFailures : bool <<get>> <<set>>
+    + <<virtual>> Convert(type:Type, data:byte[]) : object
+    + <<override>> Provide(provideHandle:ProvideHandle) : void
+}
+class InternalOp {
+    + Start(provideHandle:ProvideHandle, rawProvider:BinaryDataProvider) : void
+}
+ResourceProviderBase <|-- BinaryDataProvider
+BinaryDataProvider +-- InternalOp
+@enduml

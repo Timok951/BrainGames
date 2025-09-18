@@ -1,0 +1,16 @@
+@startuml
+enum AppStore {
+    NotSpecified,
+    GooglePlay,
+    AmazonAppStore,
+    UDP,
+    MacAppStore,
+    AppleAppStore,
+    WinRT,
+    fake,
+}
+enum AppStoreMeta {
+    AndroidStoreStart= AppStore.GooglePlay,
+    AndroidStoreEnd= AppStore.UDP,
+}
+@enduml

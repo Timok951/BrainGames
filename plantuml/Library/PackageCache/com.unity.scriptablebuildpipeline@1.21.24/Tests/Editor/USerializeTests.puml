@@ -1,0 +1,61 @@
+@startuml
+class USerializeTests {
+    + TestBoolSerializes(testValue:bool) : void
+    + TestInt32Serializes(testValue:int) : void
+    + TestUInt32Serializes(testValue:uint) : void
+    + TestInt64Serializes(testValue:long) : void
+    + TestUInt64Serializes(testValue:ulong) : void
+    + TestSerializingUnsupportedPrimitiveTypeThrows() : void
+    + TestSerializingUnsupportedArrayPrimitiveTypeThrows() : void
+    + TestSerializingUnsupportedArrayRankThrows() : void
+    + TestWriteReadStringIndices(stringIndex:int, expectedSizeBytes:int) : void
+    + TestHash128Serializes(hashPart1:ulong, hashPart2:ulong) : void
+    + TestGUIDSerializes(guidString:string) : void
+    + {static} TestStringsSerialize_TestCases() : IEnumerable<string>
+    + TestStringsSerialize(testValue:string) : void
+    + {static} TestStringArraysSerialize_TestCases() : IEnumerable<string[]>
+    + TestStringArraysSerialize(stringArray:string[]) : void
+    + TestStringIndicesLargerThan15bit() : void
+    + TestByteArraysSerialize(testValue:byte[]) : void
+    + TestULongArraysSerialize(testValue:ulong[]) : void
+    + {static} TestTypeArraysSerialize_TestCases() : IEnumerable<Type[]>
+    + TestTypeArraysSerialize(testValue:Type[]) : void
+    + TestLinearStructsSerialize(scalar:int) : void
+    + TestLinearClassSerializes() : void
+    + TestClientObjectVersionPropertyReturnedCorrectly() : void
+    + TestCachedInfoSerialises() : void
+}
+class "PrimitiveValue`1"<ValueType> {
+    + Equals(other:PrimitiveValue<ValueType>) : bool
+    + <<override>> Equals(obj:object) : bool
+    + <<override>> GetHashCode() : int
+}
+class "PrimitiveArray`1"<ValueType> {
+    + Equals(other:PrimitiveArray<ValueType>) : bool
+    + <<override>> Equals(obj:object) : bool
+    + <<override>> GetHashCode() : int
+}
+struct LinearStruct {
+    + Equals(other:LinearStruct) : bool
+    + <<override>> GetHashCode() : int
+}
+class LinearClass {
+    + LinearClass()
+    + Equals(other:LinearClass) : bool
+    + <<override>> Equals(obj:object) : bool
+    + <<override>> GetHashCode() : int
+}
+class ClassWithUnsupportedPrimitiveArrayType {
+}
+class "IEquatable`1"<T> {
+}
+USerializeTests +-- "PrimitiveValue`1"
+"IEquatable`1" "<PrimitiveValue<ValueType>>" <|-- "PrimitiveValue`1"
+USerializeTests +-- "PrimitiveArray`1"
+"IEquatable`1" "<PrimitiveArray<ValueType>>" <|-- "PrimitiveArray`1"
+USerializeTests +-- LinearStruct
+"IEquatable`1" "<LinearStruct>" <|-- LinearStruct
+USerializeTests +-- LinearClass
+"IEquatable`1" "<LinearClass>" <|-- LinearClass
+USerializeTests +-- ClassWithUnsupportedPrimitiveArrayType
+@enduml

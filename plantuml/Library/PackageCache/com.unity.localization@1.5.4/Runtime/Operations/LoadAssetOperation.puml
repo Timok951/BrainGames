@@ -1,0 +1,13 @@
+@startuml
+class "LoadAssetOperation`1"<TObject> {
+    + LoadAssetOperation()
+    + Init(loadTableEntryOperation:AsyncOperationHandle<LocalizedAssetDatabase.TableEntryResult>, autoRelease:bool) : void
+    + CompleteAndRelease(result:TObject, success:bool, errorMsg:string) : void
+}
+class "WaitForCurrentOperationAsyncOperationBase`1"<T> {
+}
+class "ObjectPool`1"<T> {
+}
+"WaitForCurrentOperationAsyncOperationBase`1" "<TObject>" <|-- "LoadAssetOperation`1"
+"LoadAssetOperation`1" o-> "Pool<LoadAssetOperation<TObject>>" "ObjectPool`1"
+@enduml

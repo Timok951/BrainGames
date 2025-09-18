@@ -1,0 +1,11 @@
+@startuml
+class ListFormatter {
+    + ListFormatter(formatter:SmartFormatter)
+    + TryEvaluateSelector(selectorInfo:ISelectorInfo) : bool
+    + <<override>> TryEvaluateFormat(formattingInfo:IFormattingInfo) : bool
+    + WriteAllLiterals(formattingInfo:IFormattingInfo) : void
+}
+FormatterBase <|-- ListFormatter
+ISource <|-- ListFormatter
+IFormatterLiteralExtractor <|-- ListFormatter
+@enduml

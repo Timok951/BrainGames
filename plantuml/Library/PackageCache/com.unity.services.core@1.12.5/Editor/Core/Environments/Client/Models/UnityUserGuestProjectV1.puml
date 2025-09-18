@@ -1,0 +1,10 @@
+@startuml
+class UnityUserGuestProjectV1 {
+    + UnityUserGuestProjectV1(id:System.Guid, genesisId:string, name:string, iconUrl:string, defaultEnvironmentId:System.Guid, organizationId:System.Guid, organizationGenesisId:string, organizationName:string)
+    + GenesisId : string <<get>>
+    + Name : string <<get>>
+    + IconUrl : string <<get>>
+    + OrganizationGenesisId : string <<get>>
+    + OrganizationName : string <<get>>
+}
+@enduml

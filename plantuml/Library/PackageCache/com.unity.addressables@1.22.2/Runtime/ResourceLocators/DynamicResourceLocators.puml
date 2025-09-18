@@ -1,0 +1,12 @@
+@startuml
+class DynamicResourceLocator {
+    + LocatorId : string <<get>>
+    + DynamicResourceLocator(addr:AddressablesImpl)
+    + Locate(key:object, type:Type, locations:IList<IResourceLocation>) : bool
+}
+class "IEnumerable`1"<T> {
+}
+IResourceLocator <|-- DynamicResourceLocator
+DynamicResourceLocator --> "Keys<object>" "IEnumerable`1"
+DynamicResourceLocator --> "AllLocations<IResourceLocation>" "IEnumerable`1"
+@enduml

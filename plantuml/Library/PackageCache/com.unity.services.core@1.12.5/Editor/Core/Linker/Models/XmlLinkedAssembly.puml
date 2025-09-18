@@ -1,0 +1,12 @@
+@startuml
+class XmlLinkedAssembly {
+    + FullName : string <<get>> <<set>>
+    + IgnoreIfMissing : bool? <<get>> <<set>>
+    + IgnoreIfUnreferenced : bool? <<get>> <<set>>
+    + WindowsRuntime : bool? <<get>> <<set>>
+}
+class "List`1"<T> {
+}
+XmlLinkedAssembly --> "Preserve" XmlLinkedPreserve
+XmlLinkedAssembly --> "Types<XmlLinkedType>" "List`1"
+@enduml

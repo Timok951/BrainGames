@@ -1,0 +1,37 @@
+@startuml
+class Format {
+    + ReleaseToPool() : void
+    + HasNested : bool <<get>> <<set>>
+    + Substring(startIndex:int) : Format
+    + Substring(startIndex:int, length:int) : Format
+    + IndexOf(search:char) : int
+    + IndexOf(search:char, startIndex:int) : int
+    + Split(search:char) : IList<Format>
+    + Split(search:char, maxCount:int) : IList<Format>
+    + GetLiteralText() : string
+    + <<override>> ToString() : string
+}
+class "List`1"<T> {
+}
+class SplitList {
+    + Init(format:Format, splits:List<int>) : void
+    + CopyTo(array:Format[], arrayIndex:int) : void
+    + Count : int <<get>>
+    + IsReadOnly : bool <<get>>
+    + IndexOf(item:Format) : int
+    + Insert(index:int, item:Format) : void
+    + RemoveAt(index:int) : void
+    + Add(item:Format) : void
+    + Clear() : void
+    + Contains(item:Format) : bool
+    + Remove(item:Format) : bool
+    + GetEnumerator() : IEnumerator<Format>
+}
+class "IList`1"<T> {
+}
+FormatItem <|-- Format
+Format --> "parent" Placeholder
+Format o-> "Items<FormatItem>" "List`1"
+Format +-- SplitList
+"IList`1" "<Format>" <|-- SplitList
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+enum AndroidStore {
+    GooglePlay,
+    AmazonAppStore,
+    UDP,
+    NotSpecified,
+}
+enum AndroidStoreMeta {
+    AndroidStoreStart= AndroidStore.GooglePlay,
+    AndroidStoreEnd= AndroidStore.UDP,
+}
+@enduml

@@ -1,0 +1,6 @@
+@startuml
+class GoogleQueryPurchasesService {
+    + <<async>> QueryPurchases() : Task<List<IGooglePurchase>>
+}
+IGoogleQueryPurchasesService <|-- GoogleQueryPurchasesService
+@enduml

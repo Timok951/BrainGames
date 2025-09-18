@@ -1,0 +1,35 @@
+@startuml
+class Expander {
+    + MinimumStringLength : int <<get>> <<set>>
+    + Expander()
+    + Expander(paddingCharacter:char)
+    + Expander(start:char, end:char)
+    + AddCharacterRange(start:char, end:char) : void
+    + SetConstantExpansion(expansion:float) : void
+    + AddExpansionRule(minCharacters:int, maxCharacters:int, expansion:float) : void
+    + Transform(message:Message) : void
+}
+enum InsertLocation {
+    Start,
+    End,
+    Both,
+}
+struct ExpansionRule {
+    + MinCharacters : int <<get>> <<set>>
+    + MaxCharacters : int <<get>> <<set>>
+    + ExpansionAmount : float <<get>> <<set>>
+    + ExpansionRule(minCharacters:int, maxCharacters:int, expansion:float)
+    + CompareTo(other:ExpansionRule) : int
+}
+class "List`1"<T> {
+}
+class "IComparable`1"<T> {
+}
+IPseudoLocalizationMethod <|-- Expander
+Expander --> "ExpansionRules<ExpansionRule>" "List`1"
+Expander --> "Location" InsertLocation
+Expander --> "PaddingCharacters<char>" "List`1"
+Expander +-- InsertLocation
+Expander +-- ExpansionRule
+"IComparable`1" "<ExpansionRule>" <|-- ExpansionRule
+@enduml

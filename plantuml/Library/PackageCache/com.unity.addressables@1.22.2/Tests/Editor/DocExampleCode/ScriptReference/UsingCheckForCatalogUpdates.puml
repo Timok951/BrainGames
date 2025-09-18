@@ -1,0 +1,6 @@
+@startuml
+class UsingCheckForCatalogUpdates {
+    + {static} CheckForCatalogUpdates(autoReleaseHandle:bool) : AsyncOperationHandle<List<string>>
+    + UsingCheckForCatalogUpdatesSample() : void
+}
+@enduml

@@ -1,0 +1,8 @@
+@startuml
+class AssetTypeMetadata {
+    + <<override>> OnBeforeSerialize() : void
+    + <<override>> OnAfterDeserialize() : void
+}
+SharedTableCollectionMetadata <|-- AssetTypeMetadata
+AssetTypeMetadata --> "Type" Type
+@enduml

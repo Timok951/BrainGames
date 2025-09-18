@@ -1,0 +1,31 @@
+@startuml
+class StoreNotSupportedException {
+    + StoreNotSupportedException(message:string)
+}
+class InvalidBundleIdException {
+}
+class InvalidReceiptDataException {
+}
+class MissingStoreSecretException {
+    + MissingStoreSecretException(message:string)
+}
+class InvalidPublicKeyException {
+    + InvalidPublicKeyException(message:string)
+}
+class GenericValidationException {
+    + GenericValidationException(message:string)
+}
+class CrossPlatformValidator {
+    + CrossPlatformValidator(googlePublicKey:byte[], appleRootCert:byte[], appBundleId:string)
+    + CrossPlatformValidator(googlePublicKey:byte[], appleRootCert:byte[], unityChannelPublicKey_not_used:byte[], appBundleId:string)
+    + CrossPlatformValidator(googlePublicKey:byte[], appleRootCert:byte[], googleBundleId:string, appleBundleId:string)
+    + CrossPlatformValidator(googlePublicKey:byte[], appleRootCert:byte[], unityChannelPublicKey_not_used:byte[], googleBundleId:string, appleBundleId:string, xiaomiBundleId_not_used:string)
+    + Validate(unityIAPReceipt:string) : IPurchaseReceipt[]
+}
+IAPSecurityException <|-- StoreNotSupportedException
+IAPSecurityException <|-- InvalidBundleIdException
+IAPSecurityException <|-- InvalidReceiptDataException
+IAPSecurityException <|-- MissingStoreSecretException
+IAPSecurityException <|-- InvalidPublicKeyException
+IAPSecurityException <|-- GenericValidationException
+@enduml

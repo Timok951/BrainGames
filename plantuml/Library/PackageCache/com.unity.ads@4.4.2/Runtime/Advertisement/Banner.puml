@@ -1,0 +1,18 @@
+@startuml
+class Banner {
+    + IsLoaded : bool <<get>>
+    + ShowAfterLoad : bool <<get>> <<set>>
+    + Banner(nativeBanner:INativeBanner, unityLifecycleManager:IUnityLifecycleManager)
+    + Load(placementId:string, loadOptions:BannerLoadOptions) : void
+    + Show(placementId:string, showOptions:BannerOptions) : void
+    + Hide(destroy:bool) : void
+    + SetPosition(position:BannerPosition) : void
+    + UnityAdsBannerDidShow(placementId:string, bannerOptions:BannerOptions) : void
+    + UnityAdsBannerDidHide(placementId:string, bannerOptions:BannerOptions) : void
+    + UnityAdsBannerClick(placementId:string, bannerOptions:BannerOptions) : void
+    + UnityAdsBannerDidLoad(placementId:string, bannerOptions:BannerLoadOptions) : void
+    + UnityAdsBannerDidError(message:string, bannerOptions:BannerLoadOptions) : void
+}
+IBanner <|-- Banner
+Banner --> "UnityLifecycleManager" IUnityLifecycleManager
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+class GlobalVariableGroupList {
+    + GlobalVariableGroupList(listProperty:SerializedProperty, managedType:Type)
+}
+class "Func`2"<T1,T2> {
+}
+ReorderableList <|-- GlobalVariableGroupList
+GlobalVariableGroupList --> "AddType" Type
+GlobalVariableGroupList --> "CreateInstance<Type,object>" "Func`2"
+@enduml

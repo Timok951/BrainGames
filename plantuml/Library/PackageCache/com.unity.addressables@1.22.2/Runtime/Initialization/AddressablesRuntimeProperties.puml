@@ -1,0 +1,9 @@
+@startuml
+class AddressablesRuntimeProperties <<static>> {
+    + {static} SetPropertyValue(name:string, val:string) : void
+    + {static} ClearCachedPropertyValues() : void
+    + {static} EvaluateProperty(name:string) : string
+    + {static} EvaluateString(input:string) : string
+    + {static} EvaluateString(inputString:string, startDelimiter:char, endDelimiter:char, varFunc:Func<string, string>) : string
+}
+@enduml

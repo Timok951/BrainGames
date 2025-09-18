@@ -1,0 +1,9 @@
+@startuml
+class UnityWebRequestClient {
+    + GetBaseUrlFor(serviceId:string) : string
+    + GetDefaultOptionsFor(serviceId:string) : HttpOptions
+    + CreateRequestForService(serviceId:string, resourcePath:string) : HttpRequest
+    + Send(request:HttpRequest) : IAsyncOperation<ReadOnlyHttpResponse>
+}
+IHttpClient <|-- UnityWebRequestClient
+@enduml

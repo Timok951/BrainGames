@@ -1,0 +1,5 @@
+@startuml
+class ServicesCreationException <<sealed>> {
+}
+Exception <|-- ServicesCreationException
+@enduml

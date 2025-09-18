@@ -1,0 +1,24 @@
+@startuml
+abstract class LocalizationTable {
+    + TableCollectionName : string <<get>>
+    + GetMetadata() : TObject
+    + GetMetadatas(foundItems:IList<TObject>) : void
+    + GetMetadatas() : IList<TObject>
+    + AddMetadata(md:IMetadata) : void
+    + RemoveMetadata(md:IMetadata) : bool
+    + Contains(md:IMetadata) : bool
+    + {abstract} CreateEmpty(entryReference:TableEntryReference) : void
+    + <<override>> ToString() : string
+    + CompareTo(other:LocalizationTable) : int
+}
+class "IComparable`1"<T> {
+}
+class "IList`1"<T> {
+}
+ScriptableObject <|-- LocalizationTable
+IMetadataCollection <|-- LocalizationTable
+"IComparable`1" "<LocalizationTable>" <|-- LocalizationTable
+LocalizationTable --> "LocaleIdentifier" LocaleIdentifier
+LocalizationTable --> "SharedData" SharedTableData
+LocalizationTable --> "MetadataEntries<IMetadata>" "IList`1"
+@enduml

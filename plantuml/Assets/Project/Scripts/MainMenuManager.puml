@@ -1,0 +1,46 @@
+@startuml
+class MainMenuManager {
+    + CliclkChangeLocale(localeID:int, button:Button) : void
+    + ClickedPlay(button:Button) : void
+    + ClickedBackToTitle(button:Button) : void
+    + ClickedBackToGamemodes(button:Button) : void
+    + QuitGame(button:Button) : void
+    + ClickedConnect(button:Button) : void
+    + ClickedColorSort(button:Button) : void
+    + ClickLogin(button:Button) : void
+    + CLickProfile(button:Button) : void
+    + ClickedPipes(button:Button) : void
+    + ClickedDailyChallenge(button:Button) : void
+    + ClickedLeaderboard(button:Button) : void
+    + AthorisationEnable() : void
+    + Registration(button:Button) : void
+    + Authorisation() : void
+    + ClickForgetPassword(button:Button) : void
+    + ClickChangePassword() : void
+    + CallRegister() : void
+    + CallLogin(button:Button) : void
+    + Login(nick:string, password:string) : IEnumerator
+    + VerifyInputs() : void
+    + VerifyInputsforChangepassword() : void
+    + VerivyInputsfroChangepasswordbutton() : void
+    + VerifyInputsLogin() : void
+    + ClickLogout(button:Button) : void
+    + ChangePasswordUnKnown() : void
+    + SendResetCode() : void
+}
+class BypassCertificate {
+}
+MonoBehaviour <|-- MainMenuManager
+MainMenuManager --> "Instance" MainMenuManager
+MainMenuManager --> "nickfieldlogin" TMP_InputField
+MainMenuManager --> "passwordfieldlogin" TMP_InputField
+MainMenuManager --> "nickfield" TMP_InputField
+MainMenuManager --> "passwordfield" TMP_InputField
+MainMenuManager --> "emailfield" TMP_InputField
+MainMenuManager --> "registerbutton" Button
+MainMenuManager --> "LoginButton" Button
+MainMenuManager --> "LevelOpened" UnityAction
+MainMenuManager --> "CurrentColor" Color
+MainMenuManager +-- BypassCertificate
+CertificateHandler <|-- BypassCertificate
+@enduml

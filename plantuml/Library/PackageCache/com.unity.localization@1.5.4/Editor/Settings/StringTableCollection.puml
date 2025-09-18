@@ -1,0 +1,14 @@
+@startuml
+class StringTableCollection {
+    + GenerateCharacterSet(localeIdentifiers:LocaleIdentifier[]) : string
+    + GetRowEnumerator() : IEnumerable<Row<StringTableEntry>>
+    + GetRowEnumeratorUnsorted() : IEnumerable<Row<StringTableEntry>>
+    + {static} GetRowEnumerator(tables:StringTable[]) : IEnumerable<Row<StringTableEntry>>
+    + <<override>> RemoveEntry(entryReference:TableEntryReference) : void
+    + <<override>> ClearAllEntries() : void
+}
+class "ReadOnlyCollection`1"<T> {
+}
+LocalizationTableCollection <|-- StringTableCollection
+StringTableCollection --> "StringTables<StringTable>" "ReadOnlyCollection`1"
+@enduml

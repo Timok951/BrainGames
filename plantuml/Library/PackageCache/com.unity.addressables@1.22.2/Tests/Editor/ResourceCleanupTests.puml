@@ -1,0 +1,7 @@
+@startuml
+class ResourceCleanupTests {
+    + CleanupEventCollector() : void
+    + CleanupDelayedActionManager() : void
+}
+AddressableAssetTestBase <|-- ResourceCleanupTests
+@enduml

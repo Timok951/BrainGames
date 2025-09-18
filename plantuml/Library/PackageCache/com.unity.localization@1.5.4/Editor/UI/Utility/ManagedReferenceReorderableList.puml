@@ -1,0 +1,10 @@
+@startuml
+class ManagedReferenceReorderableList {
+    + ManagedReferenceReorderableList(listProperty:SerializedProperty, managedType:Type)
+}
+class "Func`2"<T1,T2> {
+}
+ReorderableList <|-- ManagedReferenceReorderableList
+ManagedReferenceReorderableList --> "AddType" Type
+ManagedReferenceReorderableList --> "CreateInstance<Type,object>" "Func`2"
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+enum ReturnCode {
+    Success= 0,
+    SuccessCached= 1,
+    SuccessNotRun= 2,
+    Error= -1,
+    Exception= -2,
+    Canceled= -3,
+    UnsavedChanges= -4,
+    MissingRequiredObjects= -5,
+}
+@enduml

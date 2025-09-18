@@ -1,0 +1,8 @@
+@startuml
+enum PreloadBehavior {
+    NoPreloading,
+    PreloadSelectedLocale,
+    PreloadSelectedLocaleAndFallbacks,
+    PreloadAllLocales,
+}
+@enduml

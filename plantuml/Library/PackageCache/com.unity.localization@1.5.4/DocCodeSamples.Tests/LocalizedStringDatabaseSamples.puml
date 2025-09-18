@@ -1,0 +1,20 @@
+@startuml
+class PreloadingSample {
+}
+class ReleaseSample {
+}
+class GetLocalizedStringExamples {
+    + GetLocalizedStringAsyncExample1() : void
+    + GetLocalizedStringAsyncExample2() : void
+    + GetLocalizedStringAsyncWithArgumentExample() : void
+    + GetLocalizedStringAsyncWithSmartArgumentExample() : void
+    + GetLocalizedStringNoFallbackExample() : void
+    + GetLocalizedStringAsyncWaitForCompletion() : void
+    + GetLocalizedStringExample() : void
+    + SubscribeToTranslationNotFound() : void
+    + GetAllTablesExampleAsync() : IEnumerator
+    + GetAllTablesExample() : void
+}
+MonoBehaviour <|-- PreloadingSample
+MonoBehaviour <|-- ReleaseSample
+@enduml

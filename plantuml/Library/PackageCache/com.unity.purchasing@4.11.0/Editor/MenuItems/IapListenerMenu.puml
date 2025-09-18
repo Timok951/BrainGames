@@ -1,0 +1,6 @@
+@startuml
+class IAPListenerMenu <<static>> {
+    + {static} GameObjectCreateUnityIAPListener() : void
+    + {static} CreateUnityIAPListener() : void
+}
+@enduml

@@ -1,0 +1,8 @@
+@startuml
+class SkAdNetworkRemoteSource {
+    + Path : string <<get>>
+    + SkAdNetworkRemoteSource(path:string)
+    + Open() : Stream
+}
+ISkAdNetworkSource <|-- SkAdNetworkRemoteSource
+@enduml

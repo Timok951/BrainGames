@@ -1,0 +1,7 @@
+@startuml
+class StandardEventServiceComponent {
+    + StandardEventServiceComponent(configuration:IProjectConfiguration, analyticsService:IUnstructuredEventRecorder)
+    + Record(eventName:string, eventParameters:IDictionary<string, object>, eventVersion:int, packageName:string) : void
+}
+IAnalyticsStandardEventComponent <|-- StandardEventServiceComponent
+@enduml

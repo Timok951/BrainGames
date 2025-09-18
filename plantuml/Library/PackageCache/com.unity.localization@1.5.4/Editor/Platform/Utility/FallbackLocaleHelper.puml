@@ -1,0 +1,5 @@
+@startuml
+class FallbackLocaleHelper {
+    + {static} GetLocaleFallback(locale:Locale) : Locale
+}
+@enduml

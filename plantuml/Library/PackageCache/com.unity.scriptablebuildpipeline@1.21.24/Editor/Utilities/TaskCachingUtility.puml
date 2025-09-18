@@ -1,0 +1,16 @@
+@startuml
+class TaskCachingUtility <<static>> {
+    + {static} RunCachedOperation(cache:IBuildCache, log:IBuildLogger, tracker:IProgressTracker, workItems:List<WorkItem<T>>, cbs:IRunCachedCallbacks<T>) : ReturnCode
+}
+class "WorkItem`1"<T> {
+    + Context : T
+    + Index : int
+    + StatusText : string
+    + WorkItem(context:T, statusText:string)
+}
+interface "IRunCachedCallbacks`1"<T> {
+}
+TaskCachingUtility +-- "WorkItem`1"
+"WorkItem`1" --> "entry" CacheEntry
+TaskCachingUtility +-- "IRunCachedCallbacks`1"
+@enduml

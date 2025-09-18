@@ -1,0 +1,12 @@
+@startuml
+class GenerateBundleCommands {
+    + Version : int <<get>>
+    + Run() : ReturnCode
+}
+struct SortObject {
+    + sortIndex : int
+}
+IBuildTask <|-- GenerateBundleCommands
+GenerateBundleCommands +-- SortObject
+SortObject --> "objectId" ObjectIdentifier
+@enduml

@@ -1,0 +1,54 @@
+@startuml
+class AssetReferenceDrawer {
+    + newGuid : string
+    + newGuidPropertyPath : string
+    + ValidateAsset(path:string) : bool
+    + <<override>> OnGUI(position:Rect, property:SerializedProperty, label:GUIContent) : void
+}
+class SubassetPopup {
+    + Initialize(selIndex:int, objNames:string[], subAssets:List<Object>, property:SerializedProperty, drawer:AssetReferenceDrawer, mouseLocation:Vector2) : void
+    + UpdateSubAssets() : void
+}
+class AssetReferencePopup {
+    + Initialize(drawer:AssetReferenceDrawer, guid:string, nonAddressedAsset:string, openedByEnterKey:bool, mouseLocation:Vector2) : void
+}
+class SerializedPropertyExtensions <<static>> {
+    + {static} GetActualObjectForSerializedProperty(property:SerializedProperty, field:FieldInfo, label:string) : T
+}
+class AssetReferenceSurrogateAttribute {
+    + AssetReferenceSurrogateAttribute(type:Type)
+}
+class AssetReferenceUIRestrictionSurrogate {
+    + <<virtual>> Init(initData:AssetReferenceUIRestriction) : void
+    + <<override>> ValidateAsset(obj:Object) : bool
+}
+class AssetReferenceUILabelRestrictionSurrogate {
+    + <<override>> Init(initData:AssetReferenceUIRestriction) : void
+    + <<override>> ValidateAsset(obj:Object) : bool
+    + <<override>> ValidateAsset(path:string) : bool
+    + <<override>> ToString() : string
+}
+class AssetReferenceUtility {
+    + {static} GetSurrogate(targetType:Type) : Type
+}
+class AssetRefTreeViewItem <<sealed>> {
+    + AssetPath : string
+    + Guid : string <<get>>
+    + AssetRefTreeViewItem(id:int, depth:int, displayName:string, path:string)
+}
+class AssetReferenceTreeView {
+    + AssetReferenceTreeView(state:TreeViewState, drawer:AssetReferenceDrawer, popup:AssetReferencePopup, guid:string, nonAddressedAsset:string)
+    + <<override>> OnGUI(rect:Rect) : void
+}
+PropertyDrawer <|-- AssetReferenceDrawer
+EditorWindow <|-- SubassetPopup
+EditorWindow <|-- AssetReferencePopup
+Attribute <|-- AssetReferenceSurrogateAttribute
+AssetReferenceSurrogateAttribute --> "TargetType" Type
+AssetReferenceUIRestriction <|-- AssetReferenceUIRestrictionSurrogate
+AssetReferenceUIRestrictionSurrogate <|-- AssetReferenceUILabelRestrictionSurrogate
+AssetReferencePopup +-- AssetRefTreeViewItem
+TreeViewItem <|-- AssetRefTreeViewItem
+AssetReferencePopup +-- AssetReferenceTreeView
+TreeView <|-- AssetReferenceTreeView
+@enduml

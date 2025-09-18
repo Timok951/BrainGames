@@ -1,0 +1,33 @@
+@startuml
+class AddressableAssetEntryTreeView {
+    + AddressableAssetEntryTreeView(state:TreeViewState, mchs:MultiColumnHeaderState, ed:AddressableAssetsSettingsGroupEditor)
+    + <<override>> OnGUI(rect:Rect) : void
+    + {static} CreateDefaultMultiColumnHeaderState() : MultiColumnHeaderState
+}
+class AssetEntryTreeViewItem {
+    + folderPath : string
+    + isRenaming : bool
+    + checkedForChildren : bool = true
+    + AssetEntryTreeViewItem(e:AddressableAssetEntry, d:int)
+    + AssetEntryTreeViewItem(g:AddressableAssetGroup, d:int)
+    + AssetEntryTreeViewItem(folder:string, d:int, id:int)
+    + IsGroup : bool <<get>>
+    + <<override>> displayName : string <<get>> <<set>>
+}
+class MyExtensionMethods <<static>> {
+    + {static} Order(items:IEnumerable<T>, selector:Func<T, string>, ascending:bool) : IEnumerable<T>
+}
+enum ColumnId {
+    Notification,
+    Id,
+    Type,
+    Path,
+    Labels,
+}
+TreeView <|-- AddressableAssetEntryTreeView
+TreeViewItem <|-- AssetEntryTreeViewItem
+AssetEntryTreeViewItem --> "entry" AddressableAssetEntry
+AssetEntryTreeViewItem --> "group" AddressableAssetGroup
+AssetEntryTreeViewItem --> "assetIcon" Texture2D
+AddressableAssetEntryTreeView +-- ColumnId
+@enduml

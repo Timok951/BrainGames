@@ -1,0 +1,12 @@
+@startuml
+class LegacyResourcesProvider {
+    + <<override>> Provide(pi:ProvideHandle) : void
+    + <<override>> Release(location:IResourceLocation, asset:object) : void
+}
+class InternalOp {
+    + Start(provideHandle:ProvideHandle) : void
+    + PercentComplete() : float
+}
+ResourceProviderBase <|-- LegacyResourcesProvider
+LegacyResourcesProvider +-- InternalOp
+@enduml

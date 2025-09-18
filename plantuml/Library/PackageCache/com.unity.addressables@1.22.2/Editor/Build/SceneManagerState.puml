@@ -1,0 +1,13 @@
+@startuml
+class SceneManagerState {
+    + {static} Record(path:string) : void
+    + {static} AddScenesForPlayMode(playModeScenes:List<EditorBuildSettingsScene>) : void
+    + {static} Restore(path:string, restoreSceneManagerSetup:bool) : void
+}
+class SceneState {
+}
+class EbsSceneState {
+}
+SceneManagerState +-- SceneState
+SceneManagerState +-- EbsSceneState
+@enduml

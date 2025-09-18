@@ -1,0 +1,31 @@
+@startuml
+enum EntryOverrideType {
+    None,
+    Table,
+    Entry,
+    TableAndEntry,
+}
+interface IEntryOverride {
+}
+class PlatformOverride {
+    + AddPlatformTableOverride(platform:RuntimePlatform, table:TableReference) : void
+    + AddPlatformEntryOverride(platform:RuntimePlatform, entry:TableEntryReference) : void
+    + AddPlatformOverride(platform:RuntimePlatform, table:TableReference, entry:TableEntryReference, entryOverrideType:EntryOverrideType) : void
+    + RemovePlatformOverride(platform:RuntimePlatform) : bool
+    + GetOverride(tableReference:TableReference, tableEntryReference:TableEntryReference) : EntryOverrideType
+    + GetOverride(tableReference:TableReference, tableEntryReference:TableEntryReference, platform:RuntimePlatform) : EntryOverrideType
+    + OnBeforeSerialize() : void
+    + OnAfterDeserialize() : void
+}
+class PlatformOverrideData {
+    + <<override>> ToString() : string
+}
+IMetadata <|-- IEntryOverride
+IEntryOverride <|-- PlatformOverride
+ISerializationCallbackReceiver <|-- PlatformOverride
+PlatformOverride +-- PlatformOverrideData
+PlatformOverrideData --> "platform" RuntimePlatform
+PlatformOverrideData --> "entryOverrideType" EntryOverrideType
+PlatformOverrideData --> "tableReference" TableReference
+PlatformOverrideData --> "tableEntryReference" TableEntryReference
+@enduml

@@ -1,0 +1,5 @@
+@startuml
+class WindowsStore {
+    + <<const>> Name : string = "WinRT"
+}
+@enduml

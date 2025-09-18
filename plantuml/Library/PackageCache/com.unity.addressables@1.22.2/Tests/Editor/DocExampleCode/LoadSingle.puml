@@ -1,0 +1,7 @@
+@startuml
+class LoadAddress {
+    + key : string
+    + Start() : IEnumerator
+}
+MonoBehaviour <|-- LoadAddress
+@enduml

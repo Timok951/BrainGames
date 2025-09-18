@@ -1,0 +1,5 @@
+@startuml
+class ProjectBindRedirectContentUI <<static>> {
+    + {static} Load(parent:VisualElement) : void
+}
+@enduml

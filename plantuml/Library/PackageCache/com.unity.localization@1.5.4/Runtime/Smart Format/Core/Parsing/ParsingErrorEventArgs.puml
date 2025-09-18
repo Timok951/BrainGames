@@ -1,0 +1,7 @@
+@startuml
+class ParsingErrorEventArgs {
+    + ThrowsException : bool <<get>> <<internal set>>
+}
+EventArgs <|-- ParsingErrorEventArgs
+ParsingErrorEventArgs --> "Errors" ParsingErrors
+@enduml

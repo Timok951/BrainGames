@@ -1,0 +1,12 @@
+@startuml
+class DiagnosticInfo {
+    + DisplayName : string
+    + ObjectId : int
+    + CreateEvent(category:string, eventType:ResourceManager.DiagnosticEventType, frame:int, val:int) : DiagnosticEvent
+}
+class ResourceManagerDiagnostics {
+    + ResourceManagerDiagnostics(resourceManager:ResourceManager)
+    + Dispose() : void
+}
+IDisposable <|-- ResourceManagerDiagnostics
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+abstract class LegacyResourceTests {
+    + CanLoadFromResources_TextureSprite() : IEnumerator
+    + CanLoadFromResources_ByGuid() : IEnumerator
+    + WhenLoadingSpecificTypes_ObjectOfSpecifiedTypeIsReturned() : IEnumerator
+    + CanLoadFromResources_ObjectWithPath() : IEnumerator
+    + CanLoadFromResources_AtlasedSprite() : IEnumerator
+}
+class LegacyResourceTests_PackedMode {
+}
+AddressablesTestFixture <|-- LegacyResourceTests
+LegacyResourceTests <|-- LegacyResourceTests_PackedMode
+@enduml

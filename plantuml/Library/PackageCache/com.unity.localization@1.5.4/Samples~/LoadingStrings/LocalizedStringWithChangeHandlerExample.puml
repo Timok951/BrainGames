@@ -1,0 +1,6 @@
+@startuml
+class LocalizedStringWithChangeHandlerExample {
+}
+MonoBehaviour <|-- LocalizedStringWithChangeHandlerExample
+LocalizedStringWithChangeHandlerExample o-> "stringRef" LocalizedString
+@enduml

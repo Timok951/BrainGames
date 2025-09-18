@@ -1,0 +1,19 @@
+@startuml
+class JsonExportExample {
+    + {static} PopulateImportMenu(collection:LocalizationTableCollection, menu:DropdownMenu) : void
+    + {static} PopulateEntryMenu(collection:LocalizationTableCollection, table:LocalizationTable, id:long, menu:GenericMenu) : void
+    + {static} PopulateExportMenu(collection:LocalizationTableCollection, menu:DropdownMenu) : void
+}
+class JsonStringTableEntry {
+    + key : string
+    + value : string
+}
+class JsonStructure {
+    + locale : string
+}
+class "List`1"<T> {
+}
+JsonExportExample +-- JsonStringTableEntry
+JsonExportExample +-- JsonStructure
+JsonStructure o-> "entries<JsonStringTableEntry>" "List`1"
+@enduml

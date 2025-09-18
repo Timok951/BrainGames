@@ -1,0 +1,7 @@
+@startuml
+class AnalyticsEventTests <<partial>> {
+    + FirstInteraction_NoArgsTest() : void
+    + FirstInteraction_ActionIdTest(actionId:string) : void
+    + FirstInteraction_CustomDataTest() : void
+}
+@enduml

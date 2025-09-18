@@ -1,0 +1,7 @@
+@startuml
+class ProjectConfigurationBuildInjectorWithReport {
+    + {static} RemoveConfigFromProject() : void
+}
+IPreprocessBuildWithReport <|-- ProjectConfigurationBuildInjectorWithReport
+IPostprocessBuildWithReport <|-- ProjectConfigurationBuildInjectorWithReport
+@enduml

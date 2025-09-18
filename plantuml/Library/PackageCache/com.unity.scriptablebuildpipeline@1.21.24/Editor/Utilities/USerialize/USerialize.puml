@@ -1,0 +1,25 @@
+@startuml
+enum DataType {
+    Byte,
+    Bool,
+    Int,
+    UInt,
+    Long,
+    ULong,
+    String,
+    Class,
+    Struct,
+    Enum,
+    Array,
+    List,
+    Custom,
+    Type,
+    Guid,
+    Hash128,
+    Invalid,
+}
+interface ICustomSerializer {
+}
+class USerialize <<static>> {
+}
+@enduml

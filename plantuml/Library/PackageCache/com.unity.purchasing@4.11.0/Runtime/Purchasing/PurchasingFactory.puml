@@ -1,0 +1,16 @@
+@startuml
+class PurchasingFactory {
+    + PurchasingFactory(first:IPurchasingModule, remainingModules:IPurchasingModule[])
+    + storeName : string <<get>>
+    + RegisterStore(name:string, s:IStore) : void
+    + RegisterExtension(instance:T) : void
+    + RegisterConfiguration(instance:T) : void
+    + GetConfig() : T
+    + GetExtension() : T
+    + SetCatalogProvider(provider:ICatalogProvider) : void
+    + SetCatalogProviderFunction(func:Action<Action<HashSet<ProductDefinition>>>) : void
+}
+IPurchasingBinder <|-- PurchasingFactory
+IExtensionProvider <|-- PurchasingFactory
+PurchasingFactory --> "service" IStore
+@enduml

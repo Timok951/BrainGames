@@ -1,0 +1,23 @@
+@startuml
+class EditorGameServiceAnalyticsSender {
+    + SendProjectSettingsGoToDashboardEvent(package:string) : void
+    + SendProjectBindPopupCloseActionEvent(package:string) : void
+    + SendClickedSignUpLinkActionEvent(package:string) : void
+    + SendProjectBindPopupOpenProjectSettingsEvent(package:string) : void
+    + SendProjectBindPopupDisplayedEvent(package:string) : void
+}
+class AnalyticsComponent <<static>> {
+    + <<const>> ProjectSettings : string = "Project Settings"
+    + <<const>> ProjectBindPopup : string = "Project Bind Popup"
+}
+class AnalyticsAction <<static>> {
+    + <<const>> GoToDashboard : string = "Go to Dashboard"
+    + <<const>> OpenProjectSettings : string = "Open Project Settings"
+    + <<const>> CloseProjectBindPopup : string = "Close Project Bind Popup"
+    + <<const>> ProjectBindPopupDisplayed : string = "Project Bind Popup Displayed"
+    + <<const>> ClickedSignUpLink : string = "Clicked Signup Link"
+}
+IEditorGameServiceAnalyticsSender <|-- EditorGameServiceAnalyticsSender
+EditorGameServiceAnalyticsSender +-- AnalyticsComponent
+EditorGameServiceAnalyticsSender +-- AnalyticsAction
+@enduml

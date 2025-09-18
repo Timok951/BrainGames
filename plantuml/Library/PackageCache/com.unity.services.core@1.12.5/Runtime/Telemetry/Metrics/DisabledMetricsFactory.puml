@@ -1,0 +1,5 @@
+@startuml
+class DisabledMetricsFactory {
+}
+IMetricsFactory <|-- DisabledMetricsFactory
+@enduml

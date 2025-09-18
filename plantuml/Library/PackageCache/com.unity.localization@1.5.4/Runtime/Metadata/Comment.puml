@@ -1,0 +1,7 @@
+@startuml
+class Comment {
+    + CommentText : string <<get>> <<set>>
+    + <<override>> ToString() : string
+}
+IMetadata <|-- Comment
+@enduml

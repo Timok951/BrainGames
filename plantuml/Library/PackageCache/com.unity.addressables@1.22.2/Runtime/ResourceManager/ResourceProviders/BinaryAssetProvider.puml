@@ -1,0 +1,6 @@
+@startuml
+class "BinaryAssetProvider`1"<TAdapter> {
+    + <<override>> Convert(type:Type, data:byte[]) : object
+}
+BinaryDataProvider <|-- "BinaryAssetProvider`1"
+@enduml

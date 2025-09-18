@@ -1,0 +1,6 @@
+@startuml
+class ResourcesTestUtility <<static>> {
+    + {static} GetResourcesEntryCount(settings:AddressableAssetSettings, recurseAll:bool, filter:Func<AddressableAssetEntry, bool>) : int
+    + {static} GetResourcesEntries(settings:AddressableAssetSettings, recurseAll:bool, filter:Func<AddressableAssetEntry, bool>) : List<AddressableAssetEntry>
+}
+@enduml

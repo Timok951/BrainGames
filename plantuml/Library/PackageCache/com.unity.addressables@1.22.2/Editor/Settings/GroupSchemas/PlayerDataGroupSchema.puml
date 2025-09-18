@@ -1,0 +1,8 @@
+@startuml
+class PlayerDataGroupSchema {
+    + IncludeResourcesFolders : bool <<get>> <<set>>
+    + IncludeBuildSettingsScenes : bool <<get>> <<set>>
+    + <<override>> OnGUIMultiple(otherSchemas:List<AddressableAssetGroupSchema>) : void
+}
+AddressableAssetGroupSchema <|-- PlayerDataGroupSchema
+@enduml

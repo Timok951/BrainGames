@@ -1,0 +1,7 @@
+@startuml
+class StreamingAssetsConfigurationLoader {
+    + StreamingAssetsConfigurationLoader(serializer:IJsonSerializer)
+    + <<async>> GetConfigAsync() : Task<SerializableProjectConfiguration>
+}
+IConfigurationLoader <|-- StreamingAssetsConfigurationLoader
+@enduml

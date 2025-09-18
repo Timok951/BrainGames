@@ -1,0 +1,8 @@
+@startuml
+class IoUtils <<static>> {
+    + <<const>> packageDefaultPath : string = "Packages/com.unity.services.core/Editor/Core"
+    + {static} TryDeleteAssetFile(path:string) : bool
+    + {static} TryDeleteAssetFolder(path:string) : void
+    + {static} TryDeleteStreamAssetsFolder() : void
+}
+@enduml

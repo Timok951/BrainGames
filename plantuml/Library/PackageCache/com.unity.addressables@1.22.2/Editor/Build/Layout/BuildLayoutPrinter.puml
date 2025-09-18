@@ -1,0 +1,24 @@
+@startuml
+class BuildLayoutPrinter {
+    {static} + GetFriendlySize(byteSize:ulong) : string
+}
+class TabWriter {
+    + TabWriter(writer:StreamWriter)
+    + IndentScope(text:string) : IDisposable
+    + WriteLine(line:string) : void
+}
+class AttrBuilder {
+    + Add(k:string, v:string) : void
+    + AddSize(k:string, size:ulong) : void
+    + <<override>> ToString() : string
+}
+class TabWriterIdentScope {
+    + TabWriterIdentScope(writer:TabWriter)
+    + Dispose() : void
+}
+BuildLayoutPrinter +-- TabWriter
+TabWriter --> "Writer" StreamWriter
+BuildLayoutPrinter +-- AttrBuilder
+TabWriter +-- TabWriterIdentScope
+IDisposable <|-- TabWriterIdentScope
+@enduml

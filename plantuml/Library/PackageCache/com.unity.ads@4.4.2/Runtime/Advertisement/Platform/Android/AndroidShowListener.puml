@@ -1,0 +1,10 @@
+@startuml
+class AndroidShowListener {
+    + AndroidShowListener(platform:IPlatform, showListener:IUnityAdsShowListener)
+    + onUnityAdsShowFailure(placementId:string, error:AndroidJavaObject, message:string) : void
+    + onUnityAdsShowStart(placementId:string) : void
+    + onUnityAdsShowClick(placementId:string) : void
+    + onUnityAdsShowComplete(placementId:string, state:AndroidJavaObject) : void
+}
+AndroidJavaProxy <|-- AndroidShowListener
+@enduml

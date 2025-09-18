@@ -1,0 +1,7 @@
+@startuml
+class RebuildSpriteAtlasCache {
+    + Version : int <<get>>
+    + Run() : ReturnCode
+}
+IBuildTask <|-- RebuildSpriteAtlasCache
+@enduml

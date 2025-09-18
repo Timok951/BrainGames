@@ -1,0 +1,9 @@
+@startuml
+class AddressableAssetsBundleBuildParametersTests {
+    + WhenNonRecursiveBuildingSet_BuildParametersHaveCorrectValue() : void
+    + WhenCompressionSetForGroups_GetCompressionForIdentifier_ReturnsExpectedCompression() : void
+    + StripUnityVersion_SetsBuildFlagCorrectly(stripUnityVersion:bool) : void
+    + WhenDisableVisibleSubAssetRepresentationsSet_BuildParametersHaveCorrectValue(disableVisibleSubAssetRepresentations:bool) : void
+}
+AddressableAssetTestBase <|-- AddressableAssetsBundleBuildParametersTests
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+class TreeViewPopupWindow {
+    + Width : float <<get>> <<set>>
+    + TreeViewPopupWindow(contents:TreeView)
+    + <<override>> OnGUI(rect:Rect) : void
+    + <<override>> GetWindowSize() : Vector2
+    + <<override>> OnOpen() : void
+    + ForceClose() : void
+}
+PopupWindowContent <|-- TreeViewPopupWindow
+@enduml

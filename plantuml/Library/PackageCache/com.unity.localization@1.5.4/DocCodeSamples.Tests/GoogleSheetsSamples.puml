@@ -1,0 +1,45 @@
+@startuml
+class SetupExtensionSample <<static>> {
+    + {static} AddAndConfigureExtension(command:MenuCommand) : void
+}
+class MyCustomDataMetadata {
+    + someValue : string
+    + someNoteValue : string
+}
+class MyCustomColumn {
+    + <<override>> PullMetadata(entry:StringTableEntry, metadata:MyCustomDataMetadata, cellValue:string, cellNote:string) : void
+    + <<override>> PushHeader(collection:StringTableCollection, header:string, headerNote:string) : void
+    + <<override>> PushMetadata(metadata:MyCustomDataMetadata, value:string, note:string) : void
+}
+class SmartStringColumn {
+    + <<override>> PullMetadata(entry:StringTableEntry, metadata:SmartFormatTag, cellValue:string, cellNote:string) : void
+    + <<override>> PushHeader(collection:StringTableCollection, header:string, headerNote:string) : void
+    + <<override>> PushMetadata(metadata:SmartFormatTag, value:string, note:string) : void
+}
+class GlobalSmartStringColumn {
+    + <<override>> PullBegin(collection:StringTableCollection) : void
+    + <<override>> PullCellData(keyEntry:SharedTableData.SharedTableEntry, cellValue:string, cellNote:string) : void
+    + <<override>> PushBegin(collection:StringTableCollection) : void
+    + <<override>> PushCellData(keyEntry:SharedTableData.SharedTableEntry, tableEntries:IList<StringTableEntry>, value:string, note:string) : void
+    + <<override>> PushHeader(collection:StringTableCollection, header:string, headerNote:string) : void
+}
+class GoogleSheetsExamples {
+    + {static} PushEnglish() : void
+    + {static} PullEnglish() : void
+    + {static} PushProjectLocales() : void
+    + {static} PullProjectLocales() : void
+    + {static} PushWithExtension() : void
+    + {static} PullWithExtension() : void
+    + {static} PushAllExtensions() : void
+    + {static} PullAllExtensions() : void
+}
+class "LocaleMetadataColumn`1"<T> {
+}
+IMetadata <|-- MyCustomDataMetadata
+"LocaleMetadataColumn`1" "<MyCustomDataMetadata>" <|-- MyCustomColumn
+MyCustomColumn --> "PushFields" PushFields
+"LocaleMetadataColumn`1" "<SmartFormatTag>" <|-- SmartStringColumn
+SmartStringColumn --> "PushFields" PushFields
+SheetColumn <|-- GlobalSmartStringColumn
+GlobalSmartStringColumn --> "PushFields" PushFields
+@enduml

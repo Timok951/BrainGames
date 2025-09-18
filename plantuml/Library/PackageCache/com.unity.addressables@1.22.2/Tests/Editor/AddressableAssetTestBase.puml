@@ -1,0 +1,6 @@
+@startuml
+abstract class AddressableAssetTestBase {
+    + Init() : void
+    + Cleanup() : void
+}
+@enduml

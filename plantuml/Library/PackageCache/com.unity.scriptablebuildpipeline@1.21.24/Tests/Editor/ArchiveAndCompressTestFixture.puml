@@ -1,0 +1,9 @@
+@startuml
+class ArchiveAndCompressTestFixture {
+    + OneTimeSetup() : void
+    + OneTimeTeardown() : void
+    + Setup() : void
+    + Teardown() : void
+    + {static} GetUniqueFilename(desiredFilename:string) : string
+}
+@enduml

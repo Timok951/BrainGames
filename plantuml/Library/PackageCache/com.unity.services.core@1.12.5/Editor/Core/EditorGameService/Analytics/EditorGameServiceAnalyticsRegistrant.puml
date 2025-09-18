@@ -1,0 +1,6 @@
+@startuml
+class EditorGameServiceAnalyticsRegistrant {
+    + <<async>> RegisterEditorAnalyticsEventAsync() : Task<AnalyticsResult>
+}
+IEditorAnalyticsEventRegistrant <|-- EditorGameServiceAnalyticsRegistrant
+@enduml

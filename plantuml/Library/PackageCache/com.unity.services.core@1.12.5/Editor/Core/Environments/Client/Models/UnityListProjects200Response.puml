@@ -1,0 +1,11 @@
+@startuml
+class UnityListProjects200Response {
+    + UnityListProjects200Response(total:int, offset:int, limit:int, results:List<UnityProjectV1>)
+    + Total : int <<get>>
+    + Offset : int <<get>>
+    + Limit : int <<get>>
+}
+class "List`1"<T> {
+}
+UnityListProjects200Response --> "Results<UnityProjectV1>" "List`1"
+@enduml

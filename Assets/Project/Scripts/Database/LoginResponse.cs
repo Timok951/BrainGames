@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Assets.Project.Scripts.Database
 {
+
+    ///<summary>
+    ///User data server response
+    /// </summary>
     internal class LoginResponse
     {
         public string Status { get; set; }

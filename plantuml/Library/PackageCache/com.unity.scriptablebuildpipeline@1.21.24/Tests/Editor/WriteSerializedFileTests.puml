@@ -1,0 +1,59 @@
+@startuml
+class WriteSerializedFileTests {
+    + Setup() : void
+    + Teardown() : void
+    + WhenInputsChanges_OnlyChangedDependenciesTriggersRebuild(shouldRebuild:bool, postFirstBuildAction:Action<WriteSerializedFileTests>) : void
+    + WhenFileHasSerializedObjects_AndSlimMode_OnlyFirstObjectInWriteResults(slimEnabled:bool) : void
+    + WhenResourceFileIsNotASerializedFile_ContentHashIsFullFileHash() : void
+    + WhenResourceFileIsASerializedFile_ContentHashBeginsAtFirstObject() : void
+    + WhenWriteResultsContainsMultipleSerializedFiles_ContentHashBeginsAtFirstObjectOfEachFile() : void
+    + Run_CallsWriteOnOperationAndOutputsWriteResult() : void
+    + Run_WithoutCache_Succeeds() : void
+}
+class TestBuildParameters {
+    + <<override>> UseCache : bool <<get>> <<set>>
+    + <<override>> TempOutputFolder : string <<get>> <<set>>
+    + <<override>> NonRecursiveDependencies : bool <<get>> <<set>>
+    + <<override>> GetContentBuildSettings() : BuildSettings
+}
+class TestDependencyData {
+}
+class TestWriteData {
+}
+class TestBuildResults {
+}
+class TestWriteOperation {
+    + OutputSerializedFile : bool = false
+    + WriteBundle : bool = false
+    + SetDebugHash(hash:uint) : void
+    + GetHash128(log:IBuildLogger) : Hash128
+    + GetHash128() : Hash128
+    + Write(outputFolder:string, settings:BuildSettings, globalUsage:BuildUsageTagGlobal) : WriteResult
+}
+class "Dictionary`2"<T1,T2> {
+}
+class "List`1"<T> {
+}
+WriteSerializedFileTests --> "RebuildTestCases" IEnumerable
+WriteSerializedFileTests +-- TestBuildParameters
+TestBundleBuildParameters <|-- TestBuildParameters
+WriteSerializedFileTests +-- TestDependencyData
+TestDependencyDataBase <|-- TestDependencyData
+TestDependencyData o-> "TestSceneInfo<GUID,SceneDependencyInfo>" "Dictionary`2"
+TestDependencyData --> "SceneInfo<GUID,SceneDependencyInfo>" "Dictionary`2"
+TestDependencyData --> "GlobalUsage" BuildUsageTagGlobal
+WriteSerializedFileTests +-- TestWriteData
+TestWriteDataBase <|-- TestWriteData
+TestWriteData --> "WriteOperations<IWriteOperation>" "List`1"
+WriteSerializedFileTests +-- TestBuildResults
+TestBuildResultsBase <|-- TestBuildResults
+TestBuildResults --> "WriteResults<string,WriteResult>" "Dictionary`2"
+TestBuildResults --> "WriteResultsMetaData<string,SerializedFileMetaData>" "Dictionary`2"
+WriteSerializedFileTests +-- TestWriteOperation
+IWriteOperation <|-- TestWriteOperation
+TestWriteOperation --> "TestCommand" WriteCommand
+TestWriteOperation --> "Command" WriteCommand
+TestWriteOperation --> "UsageSet" BuildUsageTagSet
+TestWriteOperation --> "ReferenceMap" BuildReferenceMap
+TestWriteOperation --> "DependencyHash" Hash128
+@enduml

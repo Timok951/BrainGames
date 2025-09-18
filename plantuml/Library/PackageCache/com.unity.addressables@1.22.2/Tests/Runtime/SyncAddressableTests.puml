@@ -1,0 +1,48 @@
+@startuml
+abstract class SyncAddressableTests {
+    + SyncAddressableLoad_CompletesWithValidKey() : void
+    + SyncAddressableLoad_CompletesWithValidKeyWhenLoadedFromResources() : void
+    + SyncAddressableLoadAssets_CompletesWithValidKey() : void
+    + SyncAddressables_DoesntHang_WhenCallingMultiple_BackToBack() : void
+    + ProviderOperation_WaitForCompletion_AfterOpComplete_DoesntHang() : void
+    + SyncAddressableLoadAssets_CompletesWithInvalidKey() : void
+    + SyncAddressableLoad_CompletesWithInvalidKey() : void
+    + CheckForCatalogUpdates_CompletesSynchronously() : void
+    + CheckForCatalogUpdates_CompletesSynchronously_WhenAutoReleaseHandle() : void
+    + UpdateCatalogs_CompletesSynchronously() : void
+    + GetDownloadSizeAsync_CompletesSynchronously() : void
+    + DownloadDependencies_CompletesSynchronously() : void
+    + ClearDependencyCache_CompletesSynchronously() : void
+    + InstantiateSync_CompletesSuccessfully_WithValidKey() : void
+    + InstantiateMultipleObjectsSync_CompletesSuccessfully_WithValidKey() : void
+    + InstantiateSync_CompletesSuccessfully_WithInvalidKey() : void
+    + RequestingResourceLocation_CompletesSynchronously() : void
+    + RequestingResourceLocations_CompletesSynchronously() : void
+    + LoadContentCatalogSynchronously_SuccessfullyCompletes_WithValidPath() : void
+    + LoadContentCatalogSynchronously_SuccessfullyCompletes_WithInvalidPath() : void
+    + InstanceOperation_WithFailedBundleLoad_CompletesSync() : void
+    + InstantiateSync_InvalidKeyExceptionCorrectlyThrown() : void
+    + InstanceOperation_WithSuccessfulBundleLoad_CompletesSync() : void
+    + CleanBundleCache_CompletesSynchronously(forceSingleThreading:bool) : void
+}
+abstract class SyncAddressablesWithSceneTests {
+    + LoadingScene_Synchronously_ActivateOnLoadDisabled_Completes() : IEnumerator
+    + LoadingScene_Synchronously_ActivateOnLoad_CompletesAsynchronously() : IEnumerator
+    + UnloadingScene_Synchronously_WhenAutoReleasingHandle_LogsWarning() : IEnumerator
+    + UnloadingScene_Synchronously_LogsWarning() : IEnumerator
+}
+class SyncAddressableTests_PackedMode_UnityWebRequestTests {
+}
+abstract class SyncAddressableTests_UnityWebRequestTests {
+    + DownloadDependencies_CompletesSynchronously_WhenAutoReleased() : void
+}
+class FailedAssetBundleResource {
+    + GetAssetBundle() : AssetBundle
+}
+AddressablesTestFixture <|-- SyncAddressableTests
+SyncAddressableTests <|-- SyncAddressablesWithSceneTests
+SyncAddressableTests_UnityWebRequestTests <|-- SyncAddressableTests_PackedMode_UnityWebRequestTests
+SyncAddressableTests <|-- SyncAddressableTests_UnityWebRequestTests
+SyncAddressableTests +-- FailedAssetBundleResource
+IAssetBundleResource <|-- FailedAssetBundleResource
+@enduml

@@ -1,0 +1,6 @@
+@startuml
+class LoggerExtensions <<static>> {
+    + {static} LogIAPWarning(logger:ILogger, message:string) : void
+    + {static} LogIAPError(logger:ILogger, message:string) : void
+}
+@enduml

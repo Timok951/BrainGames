@@ -1,0 +1,23 @@
+@startuml
+class BuildWriteData {
+    + BuildWriteData()
+}
+class BundleWriteData {
+    + BundleWriteData()
+}
+class "Dictionary`2"<T1,T2> {
+}
+class "List`1"<T> {
+}
+IWriteData <|-- BuildWriteData
+BuildWriteData --> "AssetToFiles<GUID,List<string>>" "Dictionary`2"
+BuildWriteData --> "FileToObjects<string,List<ObjectIdentifier>>" "Dictionary`2"
+BuildWriteData --> "WriteOperations<IWriteOperation>" "List`1"
+IBundleWriteData <|-- BundleWriteData
+BundleWriteData --> "AssetToFiles<GUID,List<string>>" "Dictionary`2"
+BundleWriteData --> "FileToObjects<string,List<ObjectIdentifier>>" "Dictionary`2"
+BundleWriteData --> "FileToBundle<string,string>" "Dictionary`2"
+BundleWriteData --> "FileToUsageSet<string,BuildUsageTagSet>" "Dictionary`2"
+BundleWriteData --> "FileToReferenceMap<string,BuildReferenceMap>" "Dictionary`2"
+BundleWriteData --> "WriteOperations<IWriteOperation>" "List`1"
+@enduml

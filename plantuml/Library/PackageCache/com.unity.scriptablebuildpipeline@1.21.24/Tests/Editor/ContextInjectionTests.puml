@@ -1,0 +1,43 @@
+@startuml
+class ContextInjectionTests {
+    + CanInjectAndExtractWithStructs() : void
+    + CanInjectAndExtractWithClasses() : void
+    + CanInjectIBuildContextAsInOnly() : void
+}
+interface IInjectionContext {
+}
+class InjectionClass {
+    + State : int <<get>> <<set>>
+}
+struct InjectionStruct {
+    + State : int <<get>> <<set>>
+}
+struct TaskStruct {
+    + Version : int <<get>>
+    + NewState : int <<get>>
+    + TaskStruct(newState:int)
+    + Run() : ReturnCode
+}
+class TaskClass {
+    + Version : int <<get>>
+    + NewState : int <<get>>
+    + TaskClass(newState:int)
+    + Run() : ReturnCode
+}
+class TaskContext {
+    + Version : int <<get>>
+    + Run() : ReturnCode
+}
+ContextInjectionTests +-- IInjectionContext
+IContextObject <|-- IInjectionContext
+ContextInjectionTests +-- InjectionClass
+IInjectionContext <|-- InjectionClass
+ContextInjectionTests +-- InjectionStruct
+IInjectionContext <|-- InjectionStruct
+ContextInjectionTests +-- TaskStruct
+IBuildTask <|-- TaskStruct
+ContextInjectionTests +-- TaskClass
+IBuildTask <|-- TaskClass
+ContextInjectionTests +-- TaskContext
+IBuildTask <|-- TaskContext
+@enduml

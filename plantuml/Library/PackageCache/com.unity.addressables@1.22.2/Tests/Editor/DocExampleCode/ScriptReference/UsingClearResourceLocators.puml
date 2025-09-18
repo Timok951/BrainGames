@@ -1,0 +1,5 @@
+@startuml
+class UsingClearResourceLocators {
+    + UsingClearResourceLocatorsSample() : void
+}
+@enduml

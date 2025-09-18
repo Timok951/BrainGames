@@ -1,0 +1,9 @@
+@startuml
+class PersistentVariablePropertyDrawer {
+    + <<override>> CreatePropertyGUI(property:SerializedProperty) : VisualElement
+    + <<override>> OnGUI(position:Rect, property:SerializedProperty, label:GUIContent) : void
+}
+class "Variable`1"<T> {
+}
+PropertyDrawer <|-- PersistentVariablePropertyDrawer
+@enduml

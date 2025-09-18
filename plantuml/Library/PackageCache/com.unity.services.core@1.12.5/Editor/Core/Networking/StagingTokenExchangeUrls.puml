@@ -1,0 +1,6 @@
+@startuml
+class StagingTokenExchangeUrls {
+    + ServicesGatewayTokenExchangeUrl : string <<get>>
+}
+ITokenExchangeUrls <|-- StagingTokenExchangeUrls
+@enduml

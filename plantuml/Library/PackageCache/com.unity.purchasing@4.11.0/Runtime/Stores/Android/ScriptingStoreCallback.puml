@@ -1,0 +1,14 @@
+@startuml
+class ScriptingStoreCallback {
+    + ScriptingStoreCallback(forwardTo:IStoreCallback, util:IUtil)
+    + OnSetupFailed(reason:InitializationFailureReason) : void
+    + OnSetupFailed(reason:InitializationFailureReason, message:string?) : void
+    + OnProductsRetrieved(products:List<ProductDescription>) : void
+    + OnPurchaseSucceeded(id:string, receipt:string?, transactionID:string) : void
+    + OnAllPurchasesRetrieved(purchasedProducts:List<Product>) : void
+    + OnPurchaseFailed(desc:PurchaseFailureDescription) : void
+    + useTransactionLog : bool <<get>> <<set>>
+}
+IStoreCallback <|-- ScriptingStoreCallback
+ScriptingStoreCallback --> "products" ProductCollection
+@enduml

@@ -1,0 +1,6 @@
+@startuml
+class SkuDetailsResponseListener {
+    + onSkuDetailsResponse(billingResult:AndroidJavaObject, skuDetails:AndroidJavaObject?) : void
+}
+AndroidJavaProxy <|-- SkuDetailsResponseListener
+@enduml

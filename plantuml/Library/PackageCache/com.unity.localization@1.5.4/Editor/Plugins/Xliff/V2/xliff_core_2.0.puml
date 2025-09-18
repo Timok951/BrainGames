@@ -1,0 +1,222 @@
+@startuml
+class xliff <<partial>> {
+    + version : string <<get>> <<set>>
+    + srcLang : string <<get>> <<set>>
+    + trgLang : string <<get>> <<set>>
+    + space : string <<get>> <<set>>
+}
+class file <<partial>> {
+}
++ id : string <<get>> <<set>>
++ original : string <<get>> <<set>>
++ space : string <<get>> <<set>>
+class skeleton <<partial>> {
+    + href : string <<get>> <<set>>
+}
+class note <<partial>> {
+    + note()
+    + id : string <<get>> <<set>>
+    + appliesToSpecified : bool <<get>> <<set>>
+    + category : string <<get>> <<set>>
+    + priority : string <<get>> <<set>>
+}
+enum appliesTo {
+    source,
+    target,
+}
+class group <<partial>> {
+    + id : string <<get>> <<set>>
+    + name : string <<get>> <<set>>
+    + canResegmentSpecified : bool <<get>> <<set>>
+    + translateSpecified : bool <<get>> <<set>>
+    + srcDirSpecified : bool <<get>> <<set>>
+    + trgDirSpecified : bool <<get>> <<set>>
+    + type : string <<get>> <<set>>
+    + space : string <<get>> <<set>>
+}
+class unit <<partial>> {
+    + id : string <<get>> <<set>>
+    + name : string <<get>> <<set>>
+    + canResegmentSpecified : bool <<get>> <<set>>
+    + translateSpecified : bool <<get>> <<set>>
+    + srcDirSpecified : bool <<get>> <<set>>
+    + trgDirSpecified : bool <<get>> <<set>>
+    + space : string <<get>> <<set>>
+    + type : string <<get>> <<set>>
+}
+class data <<partial>> {
+    + data()
+    + id : string <<get>> <<set>>
+    + space : string <<get>> <<set>>
+}
+class cp <<partial>> {
+}
+enum dirValue {
+    ltr,
+    rtl,
+    auto,
+}
+class ignorable <<partial>> {
+    + id : string <<get>> <<set>>
+}
+class source <<partial>> {
+    + lang : string <<get>> <<set>>
+    + space : string <<get>> <<set>>
+}
+class ec <<partial>> {
+    + ec()
+    + copyOf : string <<get>> <<set>>
+    + dataRef : string <<get>> <<set>>
+    + dirSpecified : bool <<get>> <<set>>
+    + disp : string <<get>> <<set>>
+    + equiv : string <<get>> <<set>>
+    + id : string <<get>> <<set>>
+    + startRef : string <<get>> <<set>>
+    + subFlows : string <<get>> <<set>>
+    + subType : string <<get>> <<set>>
+    + typeSpecified : bool <<get>> <<set>>
+}
+enum yesNo {
+    yes,
+    no,
+}
+enum yesNoFirstNo {
+    yes,
+    firstNo,
+    no,
+}
+enum attrType_type {
+    fmt,
+    ui,
+    quote,
+    link,
+    image,
+    other,
+}
+class em <<partial>> {
+    + startRef : string <<get>> <<set>>
+}
+class mrk <<partial>> {
+    + id : string <<get>> <<set>>
+    + translateSpecified : bool <<get>> <<set>>
+    + type : string <<get>> <<set>>
+    + @ref : string <<get>> <<set>>
+    + value : string <<get>> <<set>>
+}
+class pc <<partial>> {
+    + pc()
+    + canOverlapSpecified : bool <<get>> <<set>>
+    + copyOf : string <<get>> <<set>>
+    + dispEnd : string <<get>> <<set>>
+    + dispStart : string <<get>> <<set>>
+    + equivEnd : string <<get>> <<set>>
+    + equivStart : string <<get>> <<set>>
+    + id : string <<get>> <<set>>
+    + dataRefEnd : string <<get>> <<set>>
+    + dataRefStart : string <<get>> <<set>>
+    + subFlowsEnd : string <<get>> <<set>>
+    + subFlowsStart : string <<get>> <<set>>
+    + subType : string <<get>> <<set>>
+    + typeSpecified : bool <<get>> <<set>>
+    + dirSpecified : bool <<get>> <<set>>
+}
+class ph <<partial>> {
+    + ph()
+    + copyOf : string <<get>> <<set>>
+    + disp : string <<get>> <<set>>
+    + equiv : string <<get>> <<set>>
+    + id : string <<get>> <<set>>
+    + dataRef : string <<get>> <<set>>
+    + subFlows : string <<get>> <<set>>
+    + subType : string <<get>> <<set>>
+    + typeSpecified : bool <<get>> <<set>>
+}
+class sc <<partial>> {
+    + sc()
+    + copyOf : string <<get>> <<set>>
+    + dataRef : string <<get>> <<set>>
+    + dirSpecified : bool <<get>> <<set>>
+    + disp : string <<get>> <<set>>
+    + equiv : string <<get>> <<set>>
+    + id : string <<get>> <<set>>
+    + subFlows : string <<get>> <<set>>
+    + subType : string <<get>> <<set>>
+    + typeSpecified : bool <<get>> <<set>>
+}
+class sm <<partial>> {
+    + id : string <<get>> <<set>>
+    + translateSpecified : bool <<get>> <<set>>
+    + type : string <<get>> <<set>>
+    + @ref : string <<get>> <<set>>
+    + value : string <<get>> <<set>>
+}
+class target <<partial>> {
+    + lang : string <<get>> <<set>>
+    + space : string <<get>> <<set>>
+    + order : string <<get>> <<set>>
+}
+class segment <<partial>> {
+    + segment()
+    + id : string <<get>> <<set>>
+    + canResegmentSpecified : bool <<get>> <<set>>
+    + subState : string <<get>> <<set>>
+}
+enum stateType {
+    initial,
+    translated,
+    reviewed,
+    final,
+}
+class notes <<partial>> {
+}
+class originalData <<partial>> {
+}
+class "List`1"<T> {
+}
+xliff --> "file<file>" "List`1"
+note --> "appliesTo" appliesTo
+group --> "notes<note>" "List`1"
+group --> "Items<object>" "List`1"
+group --> "canResegment" yesNo
+group --> "translate" yesNo
+group --> "srcDir" dirValue
+group --> "trgDir" dirValue
+unit --> "notes<note>" "List`1"
+unit --> "canResegment" yesNo
+unit --> "translate" yesNo
+unit --> "srcDir" dirValue
+unit --> "trgDir" dirValue
+data --> "dir" dirValue
+ignorable --> "source" source
+ignorable --> "target" target
+ec --> "canCopy" yesNo
+ec --> "canDelete" yesNo
+ec --> "canOverlap" yesNo
+ec --> "canReorder" yesNoFirstNo
+ec --> "dir" dirValue
+ec --> "isolated" yesNo
+ec --> "type" attrType_type
+mrk --> "translate" yesNo
+pc --> "canCopy" yesNo
+pc --> "canDelete" yesNo
+pc --> "canOverlap" yesNo
+pc --> "canReorder" yesNoFirstNo
+pc --> "type" attrType_type
+pc --> "dir" dirValue
+ph --> "canCopy" yesNo
+ph --> "canDelete" yesNo
+ph --> "canReorder" yesNoFirstNo
+ph --> "type" attrType_type
+sc --> "canCopy" yesNo
+sc --> "canDelete" yesNo
+sc --> "canOverlap" yesNo
+sc --> "canReorder" yesNoFirstNo
+sc --> "dir" dirValue
+sc --> "isolated" yesNo
+sc --> "type" attrType_type
+sm --> "translate" yesNo
+segment --> "source" source
+segment --> "target" target
+segment --> "canResegment" yesNo
+segment --> "state" stateType
+@enduml

@@ -1,0 +1,5 @@
+@startuml
+class UIFakeStoreDropdown {
+    + DoPopup(windowID:int) : void
+}
+@enduml

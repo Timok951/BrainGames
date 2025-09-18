@@ -1,0 +1,9 @@
+@startuml
+class MetricsFactory {
+    + Create(packageName:string) : IMetrics
+}
+class "IReadOnlyDictionary`2"<T1,T2> {
+}
+IMetricsFactory <|-- MetricsFactory
+MetricsFactory o-> "CommonTags<string,string>" "IReadOnlyDictionary`2"
+@enduml

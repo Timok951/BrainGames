@@ -1,0 +1,30 @@
+@startuml
+class FormattingInfo {
+    + Init(formatDetails:FormatDetails, format:Format, currentValue:object) : void
+    + Init(parent:FormattingInfo, formatDetails:FormatDetails, format:Format, currentValue:object) : void
+    + Init(parent:FormattingInfo, formatDetails:FormatDetails, placeholder:Placeholder, currentValue:object) : void
+    + ReleaseToPool() : void
+    + CurrentValue : object <<get>> <<set>>
+    + Alignment : int <<get>>
+    + FormatterOptions : string <<get>>
+    + Write(text:string) : void
+    + Write(text:string, startIndex:int, length:int) : void
+    + Write(format:Format, value:object) : void
+    + FormattingException(issue:string, problemItem:FormatItem, startIndex:int) : FormattingException
+    + SelectorText : string <<get>>
+    + SelectorIndex : int <<get>>
+    + SelectorOperator : string <<get>>
+    + Result : object <<get>> <<set>>
+    + CreateChild(placeholder:Placeholder) : FormattingInfo
+}
+class "List`1"<T> {
+}
+IFormattingInfo <|-- FormattingInfo
+ISelectorInfo <|-- FormattingInfo
+FormattingInfo --> "Parent" FormattingInfo
+FormattingInfo --> "Selector" Selector
+FormattingInfo --> "FormatDetails" FormatDetails
+FormattingInfo --> "Placeholder" Placeholder
+FormattingInfo --> "Format" Format
+FormattingInfo o-> "Children<FormattingInfo>" "List`1"
+@enduml

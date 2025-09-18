@@ -1,0 +1,5 @@
+@startuml
+class AnalyticsServiceInstance <<partial>> {
+    + TransactionFailed(parameters:TransactionFailedParameters) : void
+}
+@enduml

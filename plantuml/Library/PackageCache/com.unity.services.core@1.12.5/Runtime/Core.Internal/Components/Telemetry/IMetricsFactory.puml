@@ -1,0 +1,5 @@
+@startuml
+interface IMetricsFactory {
+}
+IServiceComponent <|-- IMetricsFactory
+@enduml

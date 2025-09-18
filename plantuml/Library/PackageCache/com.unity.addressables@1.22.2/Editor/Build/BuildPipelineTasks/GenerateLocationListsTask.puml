@@ -1,0 +1,43 @@
+@startuml
+class GenerateLocationListsTask {
+    + Version : int <<get>>
+    + Run() : ReturnCode
+    + {static} ProcessInput(input:Input) : Output
+    + {static} Run(aaBuildContext:IAddressableAssetsBuildContext, writeData:IBundleWriteData) : ReturnCode
+}
+struct Input {
+}
+struct Output {
+}
+class BundleEntry {
+    + BundleName : string
+}
+class "Dictionary`2"<T1,T2> {
+}
+class "List`1"<T> {
+}
+class "HashSet`1"<T> {
+}
+IBuildTask <|-- GenerateLocationListsTask
+GenerateLocationListsTask +-- Input
+Input --> "FileToBundle<string,string>" "Dictionary`2"
+Input --> "AssetToFiles<GUID,List<string>>" "Dictionary`2"
+Input --> "AssetToAssetInfo<GUID,AssetLoadInfo>" "Dictionary`2"
+Input --> "Logger" IBuildLogger
+Input --> "Settings" AddressableAssetSettings
+Input --> "BundleToAssetGroup<string,string>" "Dictionary`2"
+Input --> "AddressableAssetEntries<AddressableAssetEntry>" "List`1"
+Input --> "Target" BuildTarget
+GenerateLocationListsTask +-- Output
+Output --> "Locations<ContentCatalogDataEntry>" "List`1"
+Output --> "AssetGroupToBundles<AddressableAssetGroup,List<string>>" "Dictionary`2"
+Output --> "ProviderTypes<Type>" "HashSet`1"
+Output --> "BundleToImmediateBundleDependencies<string,List<string>>" "Dictionary`2"
+Output --> "BundleToExpandedBundleDependencies<string,List<string>>" "Dictionary`2"
+GenerateLocationListsTask +-- BundleEntry
+BundleEntry o-> "Dependencies<BundleEntry>" "HashSet`1"
+BundleEntry --> "ExpandedDependencies<BundleEntry>" "HashSet`1"
+BundleEntry o-> "Assets<GUID>" "List`1"
+BundleEntry --> "Group" AddressableAssetGroup
+BundleEntry o-> "AssetInternalIds<string>" "HashSet`1"
+@enduml

@@ -1,0 +1,6 @@
+@startuml
+class JsonAssetProvider {
+    + <<override>> Convert(type:Type, text:string) : object
+}
+TextDataProvider <|-- JsonAssetProvider
+@enduml

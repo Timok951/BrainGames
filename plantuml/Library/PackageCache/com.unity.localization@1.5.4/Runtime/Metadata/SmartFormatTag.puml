@@ -1,0 +1,5 @@
+@startuml
+class SmartFormatTag {
+}
+SharedTableEntryMetadata <|-- SmartFormatTag
+@enduml

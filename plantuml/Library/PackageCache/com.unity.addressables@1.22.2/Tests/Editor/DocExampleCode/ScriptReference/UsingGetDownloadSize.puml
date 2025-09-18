@@ -1,0 +1,5 @@
+@startuml
+class UsingGetDownloadSize {
+    + {static} GetDownloadSize(key:object) : AsyncOperationHandle<long>
+}
+@enduml

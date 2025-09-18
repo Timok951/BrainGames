@@ -1,0 +1,17 @@
+@startuml
+class EnvironmentService <<sealed>> {
+    +  <<event>> PropertyChanged : PropertyChangedEventHandler 
+    + EnvironmentService(environmentFetcher:IEnvironmentFetcher, environmentProvider:IEnvironmentProvider, environmentAnalytics:IEnvironmentAnalytics)
+    + RefreshAsync() : Task
+    + SetActiveEnvironment(environmentInfo:EnvironmentInfo) : void
+    + SetActiveEnvironment(environmentName:string) : void
+    + SetActiveEnvironment(environmentGuid:Guid) : void
+    + Dispose() : void
+}
+class "IReadOnlyCollection`1"<T> {
+}
+IEnvironmentService <|-- EnvironmentService
+IDisposable <|-- EnvironmentService
+EnvironmentService --> "Environments<EnvironmentInfo>" "IReadOnlyCollection`1"
+EnvironmentService --> "ActiveEnvironmentId" Guid
+@enduml

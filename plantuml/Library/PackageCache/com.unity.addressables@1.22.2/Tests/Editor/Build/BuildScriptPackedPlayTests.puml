@@ -1,0 +1,8 @@
+@startuml
+class BuildScriptPackedPlayTests {
+    + PackedPlayModeScript_CannotBuildPlayerContent() : void
+    + PackedPlayModeScript_AppendsBuildLog_ForNonStandaloneBuildTarget() : void
+    + PackedPlayModeScript_AppendsBuildLog_ForInvalidBuildTarget() : void
+}
+AddressableAssetTestBase <|-- BuildScriptPackedPlayTests
+@enduml

@@ -1,0 +1,4 @@
+@startuml
+class QualitySettingsApi <<static>> {
+}
+@enduml

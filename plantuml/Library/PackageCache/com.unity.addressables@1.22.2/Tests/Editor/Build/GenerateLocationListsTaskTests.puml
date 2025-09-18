@@ -1,0 +1,15 @@
+@startuml
+class GenerateLocationListsTaskTests {
+    + WhenAssetLoadsFromBundle_ProviderTypesIncludesBundledAssetProvider() : void
+    + WhenIncludeGUIDInCatalog_SetFalse_GUIDSNotIncluded() : void
+    + CollectsGuidMapping_WhenCatalogKeysNotIncluded() : void
+    + WhenIncludeAddressOptionChanged_LocationsKeysAreSetCorrectly() : void
+    + WhenIncludeLabelsOptionChanged_LocationsKeysAreSetCorrectly() : void
+    + WhenGroupCreatesMultipleBundles_AllBundlesInAssetGroupToBundlesMap() : void
+    + WhenAssetHasDependencyOnBundle_AssetLocationIncludesRecursiveBundleDependencies() : void
+    + WhenBuildTargetIsWindowsOrXBox_BackSlashUsedInLoadPath(id:string, target:BuildTarget, expected:string) : void
+    + WhenPathIsRemote_WithTrailingSlash_PathIsNotMalformed(id:string, target:BuildTarget) : void
+    + WhenPathIsRemote_WithoutTrailingSlash_PathIsNotMalformed(id:string, target:BuildTarget) : void
+}
+AddressableBuildTaskTestBase <|-- GenerateLocationListsTaskTests
+@enduml

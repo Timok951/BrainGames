@@ -1,0 +1,44 @@
+@startuml
+class ObjectDependencyInfo {
+}
+class CalculateAssetDependencyHooks {
+    + <<virtual>> LoadAllAssetRepresentationsAtPath(assetPath:string) : UnityEngine.Object[]
+}
+class CalculateAssetDependencyData {
+    + Version : int <<get>>
+    + Run() : ReturnCode
+}
+class "List`1"<T> {
+}
+struct TaskInput {
+    + NonRecursiveDependencies : bool
+}
+struct AssetOutput {
+}
+struct TaskOutput {
+    + CachedAssetCount : int
+}
+ObjectDependencyInfo --> "Object" ObjectIdentifier
+ObjectDependencyInfo o-> "Dependencies<ObjectIdentifier>" "List`1"
+IBuildTask <|-- CalculateAssetDependencyData
+CalculateAssetDependencyData +-- TaskInput
+TaskInput --> "BuildCache" IBuildCache
+TaskInput --> "Target" BuildTarget
+TaskInput --> "TypeDB" TypeDB
+TaskInput --> "Assets<GUID>" "List`1"
+TaskInput --> "ProgressTracker" IProgressTracker
+TaskInput --> "GlobalUsage" BuildUsageTagGlobal
+TaskInput --> "DependencyUsageCache" BuildUsageCache
+TaskInput --> "EngineHooks" CalculateAssetDependencyHooks
+TaskInput --> "Logger" IBuildLogger
+CalculateAssetDependencyData +-- AssetOutput
+AssetOutput --> "asset" GUID
+AssetOutput --> "Hash" Hash128
+AssetOutput --> "assetInfo" AssetLoadInfo
+AssetOutput --> "objectDependencyInfo<ObjectDependencyInfo>" "List`1"
+AssetOutput --> "usageTags" BuildUsageTagSet
+AssetOutput --> "spriteData" SpriteImporterData
+AssetOutput --> "extendedData" ExtendedAssetData
+AssetOutput --> "objectTypes<ObjectTypes>" "List`1"
+CalculateAssetDependencyData +-- TaskOutput
+@enduml

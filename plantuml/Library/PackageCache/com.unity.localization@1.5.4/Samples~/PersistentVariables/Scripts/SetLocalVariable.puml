@@ -1,0 +1,7 @@
+@startuml
+class SetLocalVariable {
+    + SetNestedStringEntry(variableAndEntry:string) : void
+}
+MonoBehaviour <|-- SetLocalVariable
+SetLocalVariable --> "localizedString" LocalizeStringEvent
+@enduml

@@ -1,0 +1,82 @@
+@startuml
+class BundledAssetGroupSchema {
+    + IncludeAddressInCatalog : bool <<get>> <<set>>
+    + IncludeGUIDInCatalog : bool <<get>> <<set>>
+    + IncludeLabelsInCatalog : bool <<get>> <<set>>
+    + <<virtual>> GetBuildCompressionForBundle(bundleId:string) : BuildCompression
+    + IncludeInBuild : bool <<get>> <<set>>
+    + ForceUniqueProvider : bool <<get>> <<set>>
+    + UseAssetBundleCache : bool <<get>> <<set>>
+    + UseAssetBundleCrc : bool <<get>> <<set>>
+    + UseAssetBundleCrcForCachedBundles : bool <<get>> <<set>>
+    + UseUnityWebRequestForLocalBundles : bool <<get>> <<set>>
+    + Timeout : int <<get>> <<set>>
+    + ChunkedTransfer : bool <<get>> <<set>>
+    + RedirectLimit : int <<get>> <<set>>
+    + RetryCount : int <<get>> <<set>>
+    + HostingServicesContentRoot : string <<get>>
+    + OnBeforeSerialize() : void
+    + OnAfterDeserialize() : void
+    + GetAssetCachedProviderId() : string
+    + GetBundleCachedProviderId() : string
+    + <<override>> ShowAllProperties() : void
+    + <<override>> OnGUI() : void
+    + <<override>> OnGUIMultiple(otherSchemas:List<AddressableAssetGroupSchema>) : void
+}
+enum BundlePackingMode {
+    PackTogether,
+    PackSeparately,
+    PackTogetherByLabel,
+}
+enum BundleInternalIdMode {
+    GroupGuid,
+    GroupGuidProjectIdHash,
+    GroupGuidProjectIdEntriesHash,
+}
+enum BundleCompressionMode {
+    Uncompressed,
+    LZ4,
+    LZMA,
+}
+enum AssetNamingMode {
+    FullPath,
+    Filename,
+    GUID,
+    Dynamic,
+}
+enum CacheClearBehavior {
+    ClearWhenSpaceIsNeededInCache,
+    ClearWhenWhenNewVersionLoaded,
+}
+enum BundleNamingStyle {
+    AppendHash,
+    NoHash,
+    OnlyHash,
+    FileNameHash,
+}
+class BundleNamingStylePropertyDrawer {
+    + <<override>> OnGUI(position:Rect, property:SerializedProperty, label:GUIContent) : void
+}
+AddressableAssetGroupSchema <|-- BundledAssetGroupSchema
+IHostingServiceConfigurationProvider <|-- BundledAssetGroupSchema
+ISerializationCallbackReceiver <|-- BundledAssetGroupSchema
+BundledAssetGroupSchema --> "InternalBundleIdMode" BundleInternalIdMode
+BundledAssetGroupSchema --> "Compression" BundleCompressionMode
+BundledAssetGroupSchema --> "InternalIdNamingMode" AssetNamingMode
+BundledAssetGroupSchema --> "AssetBundledCacheClearBehavior" CacheClearBehavior
+BundledAssetGroupSchema --> "BundledAssetProviderType" SerializedType
+BundledAssetGroupSchema --> "BuildPath" ProfileValueReference
+BundledAssetGroupSchema --> "LoadPath" ProfileValueReference
+BundledAssetGroupSchema --> "BundleMode" BundlePackingMode
+BundledAssetGroupSchema --> "AssetBundleProviderType" SerializedType
+BundledAssetGroupSchema --> "BundleNaming" BundleNamingStyle
+BundledAssetGroupSchema --> "AssetLoadMode" AssetLoadMode
+BundledAssetGroupSchema +-- BundlePackingMode
+BundledAssetGroupSchema +-- BundleInternalIdMode
+BundledAssetGroupSchema +-- BundleCompressionMode
+BundledAssetGroupSchema +-- AssetNamingMode
+BundledAssetGroupSchema +-- CacheClearBehavior
+BundledAssetGroupSchema +-- BundleNamingStyle
+BundledAssetGroupSchema +-- BundleNamingStylePropertyDrawer
+PropertyDrawer <|-- BundleNamingStylePropertyDrawer
+@enduml

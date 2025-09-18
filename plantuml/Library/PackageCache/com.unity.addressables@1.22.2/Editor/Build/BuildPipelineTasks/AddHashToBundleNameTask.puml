@@ -1,0 +1,7 @@
+@startuml
+class AddHashToBundleNameTask {
+    + Version : int <<get>>
+    + Run() : ReturnCode
+}
+IBuildTask <|-- AddHashToBundleNameTask
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+class UnityGetOrganizationMembers200Response {
+    + UnityGetOrganizationMembers200Response(offset:int, limit:int, total:int, results:List<UnityOrganizationMemberV1>)
+    + Offset : int <<get>>
+    + Limit : int <<get>>
+    + Total : int <<get>>
+}
+class "List`1"<T> {
+}
+UnityGetOrganizationMembers200Response --> "Results<UnityOrganizationMemberV1>" "List`1"
+@enduml

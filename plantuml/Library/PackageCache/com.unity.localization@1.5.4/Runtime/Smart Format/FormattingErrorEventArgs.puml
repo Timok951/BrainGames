@@ -1,0 +1,8 @@
+@startuml
+class FormattingErrorEventArgs {
+    + Placeholder : string <<get>> <<internal set>>
+    + ErrorIndex : int <<get>> <<internal set>>
+    + IgnoreError : bool <<get>> <<internal set>>
+}
+EventArgs <|-- FormattingErrorEventArgs
+@enduml

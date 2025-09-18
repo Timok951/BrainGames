@@ -1,0 +1,16 @@
+@startuml
+class UnityEventGameObject {
+}
+class UnityEventSprite {
+}
+class UnityEventString {
+}
+class UnityEventTexture {
+}
+class "UnityEvent`1"<T> {
+}
+"UnityEvent`1" "<GameObject>" <|-- UnityEventGameObject
+"UnityEvent`1" "<Sprite>" <|-- UnityEventSprite
+"UnityEvent`1" "<string>" <|-- UnityEventString
+"UnityEvent`1" "<Texture>" <|-- UnityEventTexture
+@enduml

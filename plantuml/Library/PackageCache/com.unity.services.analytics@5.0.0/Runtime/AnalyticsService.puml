@@ -1,0 +1,5 @@
+@startuml
+class AnalyticsService <<static>> {
+}
+AnalyticsService --> "Instance" IAnalyticsService
+@enduml

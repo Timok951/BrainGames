@@ -1,0 +1,9 @@
+@startuml
+class BuildSpriteData {
+    + BuildSpriteData()
+}
+class "Dictionary`2"<T1,T2> {
+}
+IBuildSpriteData <|-- BuildSpriteData
+BuildSpriteData --> "ImporterData<GUID,SpriteImporterData>" "Dictionary`2"
+@enduml

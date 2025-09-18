@@ -1,0 +1,9 @@
+@startuml
+class CellTasks <<static>> {
+    + {static} GetCellsFromLayers(layers:List<Layer>, cells:List<Cell>) : void
+    + {static} GetAllCellsPerFrame(layers:List<Layer>) : Dictionary<int, List<Cell>>
+    + {static} MergeCells(cellsPerFrame:Dictionary<int, List<Cell>>, cellName:string) : List<Cell>
+    + {static} CollectDataFromCells(cells:IReadOnlyList<Cell>, cellBuffers:List<NativeArray<Color32>>, cellSize:List<int2>) : void
+    + {static} FlipCellBuffers(imageBuffers:List<NativeArray<Color32>>, cellSize:IReadOnlyList<int2>) : void
+}
+@enduml

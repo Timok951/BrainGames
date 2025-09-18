@@ -1,0 +1,7 @@
+@startuml
+class SceneStateCleanup {
+    + SceneStateCleanup()
+    + Dispose() : void
+}
+IDisposable <|-- SceneStateCleanup
+@enduml

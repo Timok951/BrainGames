@@ -1,0 +1,13 @@
+@startuml
+class FormatCache {
+}
+class "Dictionary`2"<T1,T2> {
+}
+class "List`1"<T> {
+}
+FormatCache --> "Format" Format
+FormatCache o-> "CachedObjects<string,object>" "Dictionary`2"
+FormatCache --> "Table" LocalizationTable
+FormatCache --> "LocalVariables" IVariableGroup
+FormatCache o-> "VariableTriggers<IVariableValueChanged>" "List`1"
+@enduml

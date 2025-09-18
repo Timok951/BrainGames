@@ -1,0 +1,8 @@
+@startuml
+class GoogleLastKnownProductService {
+    + LastKnownOldProductId : string? <<get>> <<set>>
+    + LastKnownProductId : string? <<get>> <<set>>
+}
+IGoogleLastKnownProductService <|-- GoogleLastKnownProductService
+GoogleLastKnownProductService o-> "LastKnownProrationMode" GooglePlayProrationMode
+@enduml

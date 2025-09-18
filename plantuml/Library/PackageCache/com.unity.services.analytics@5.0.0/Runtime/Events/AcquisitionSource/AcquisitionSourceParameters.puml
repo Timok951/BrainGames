@@ -1,0 +1,13 @@
+@startuml
+class AcquisitionSourceParameters {
+    + Channel : string
+    + CampaignId : string
+    + CreativeId : string
+    + CampaignName : string
+    + Provider : string
+    + Cost : float?
+    + CostCurrency : string
+    + Network : string
+    + CampaignType : string
+}
+@enduml

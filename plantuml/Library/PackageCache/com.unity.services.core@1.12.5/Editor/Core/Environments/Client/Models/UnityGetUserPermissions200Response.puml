@@ -1,0 +1,9 @@
+@startuml
+class UnityGetUserPermissions200Response {
+    + UnityGetUserPermissions200Response(permissions:List<string>, resourceType:string, resourceId:System.Guid, userId:System.Guid)
+    + ResourceType : string <<get>>
+}
+class "List`1"<T> {
+}
+UnityGetUserPermissions200Response --> "Permissions<string>" "List`1"
+@enduml

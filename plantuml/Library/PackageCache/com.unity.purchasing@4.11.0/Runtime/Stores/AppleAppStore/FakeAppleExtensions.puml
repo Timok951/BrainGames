@@ -1,0 +1,21 @@
+@startuml
+class FakeAppleExtensions {
+    + RefreshAppReceipt(successCallback:Action<string>, errorCallback:Action<string>) : void
+    + RefreshAppReceipt(successCallback:Action<string>, errorCallback:Action) : void
+    + RestoreTransactions(callback:Action<bool>?) : void
+    + RestoreTransactions(callback:Action<bool, string?>?) : void
+    + RegisterPurchaseDeferredListener(callback:Action<Product>) : void
+    + simulateAskToBuy : bool <<get>> <<set>>
+    + FetchStorePromotionOrder(successCallback:Action<List<Product>>, errorCallback:Action) : void
+    + SetStorePromotionOrder(products:List<Product>) : void
+    + FetchStorePromotionVisibility(product:Product, successCallback:Action<string, AppleStorePromotionVisibility>, errorCallback:Action) : void
+    + SetStorePromotionVisibility(product:Product, visible:AppleStorePromotionVisibility) : void
+    + SetApplicationUsername(applicationUsername:string) : void
+    + GetTransactionReceiptForProduct(product:Product) : string
+    + ContinuePromotionalPurchases() : void
+    + GetIntroductoryPriceDictionary() : Dictionary<string, string>
+    + GetProductDetails() : Dictionary<string, string>
+    + PresentCodeRedemptionSheet() : void
+}
+IAppleExtensions <|-- FakeAppleExtensions
+@enduml

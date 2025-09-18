@@ -1,0 +1,14 @@
+@startuml
+class GenericEditorClickMenuItemEvent {
+    + <<virtual>> GetSignature() : EditorAnalyticsDataSignature
+    + CreateEventParams(platformName:string, packageKey:string) : object
+}
+struct GenericEditorClickMenuItemParams {
+    + action : string
+    + source : string
+    + component : string
+    + platform : string
+}
+IEditorAnalyticsEvent <|-- GenericEditorClickMenuItemEvent
+GenericEditorClickMenuItemEvent +-- GenericEditorClickMenuItemParams
+@enduml

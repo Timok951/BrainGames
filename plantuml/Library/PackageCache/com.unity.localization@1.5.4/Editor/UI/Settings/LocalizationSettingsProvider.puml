@@ -1,0 +1,12 @@
+@startuml
+class LocalizationSettingsProvider {
+    + LocalizationSettingsProvider()
+    + <<override>> OnActivate(searchContext:string, rootElement:VisualElement) : void
+}
+class Texts {
+}
+AssetSettingsProvider <|-- LocalizationSettingsProvider
+LocalizationSettingsProvider +-- Texts
+Texts o-> "noSettingsMsg" GUIContent
+Texts o-> "activeSettings" GUIContent
+@enduml

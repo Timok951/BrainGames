@@ -1,0 +1,9 @@
+@startuml
+class LocalizationBuildPlayer {
+    + callbackOrder : int <<get>>
+    + OnPreprocessBuild(report:BuildReport) : void
+    + OnPostprocessBuild(report:BuildReport) : void
+}
+IPreprocessBuildWithReport <|-- LocalizationBuildPlayer
+IPostprocessBuildWithReport <|-- LocalizationBuildPlayer
+@enduml

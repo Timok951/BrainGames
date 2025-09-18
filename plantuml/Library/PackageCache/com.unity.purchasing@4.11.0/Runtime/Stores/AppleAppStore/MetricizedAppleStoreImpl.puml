@@ -1,0 +1,16 @@
+@startuml
+class MetricizedAppleStoreImpl {
+    + MetricizedAppleStoreImpl(util:IUtil, telemetryDiagnostics:ITelemetryDiagnostics, telemetryMetricsService:ITelemetryMetricsService)
+    + <<override>> FetchStorePromotionOrder(successCallback:Action<List<Product>>, errorCallback:Action) : void
+    + <<override>> FetchStorePromotionVisibility(product:Product, successCallback:Action<string, AppleStorePromotionVisibility>, errorCallback:Action) : void
+    + <<override>> SetStorePromotionOrder(products:List<Product>) : void
+    + <<override>> RestoreTransactions(callback:Action<bool>?) : void
+    + <<override>> RestoreTransactions(callback:Action<bool, string?>?) : void
+    + <<override>> RefreshAppReceipt(successCallback:Action<string>, errorCallback:Action<string>) : void
+    + <<override>> ContinuePromotionalPurchases() : void
+    + <<override>> PresentCodeRedemptionSheet() : void
+    + <<override>> RetrieveProducts(products:ReadOnlyCollection<ProductDefinition>) : void
+    + <<override>> Purchase(product:ProductDefinition, developerPayload:string) : void
+}
+AppleStoreImpl <|-- MetricizedAppleStoreImpl
+@enduml

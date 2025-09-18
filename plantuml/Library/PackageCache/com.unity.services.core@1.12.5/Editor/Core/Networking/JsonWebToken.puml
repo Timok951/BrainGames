@@ -1,0 +1,8 @@
+@startuml
+struct JsonWebToken {
+    + JsonWebToken(exp:long)
+    + <<override>> ToString() : string
+    + {static} Decode(token:string) : JsonWebToken
+}
+JsonWebToken --> "Expiration" DateTime
+@enduml

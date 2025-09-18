@@ -1,0 +1,8 @@
+@startuml
+class Selector {
+    + <<override>> Clear() : void
+    + SelectorIndex : int <<get>> <<internal set>>
+    + Operator : string <<get>>
+}
+FormatItem <|-- Selector
+@enduml

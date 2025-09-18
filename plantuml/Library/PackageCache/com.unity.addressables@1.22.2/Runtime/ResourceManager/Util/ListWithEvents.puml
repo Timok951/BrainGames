@@ -1,0 +1,20 @@
+@startuml
+class "ListWithEvents`1"<T> {
+    +  <<event>> OnElementAdded : Action<T> 
+    +  <<event>> OnElementRemoved : Action<T> 
+    + Count : int <<get>>
+    + IsReadOnly : bool <<get>>
+    + Add(item:T) : void
+    + Clear() : void
+    + Contains(item:T) : bool
+    + CopyTo(array:T[], arrayIndex:int) : void
+    + GetEnumerator() : IEnumerator<T>
+    + IndexOf(item:T) : int
+    + Insert(index:int, item:T) : void
+    + Remove(item:T) : bool
+    + RemoveAt(index:int) : void
+}
+class "IList`1"<T> {
+}
+"IList`1" "<T>" <|-- "ListWithEvents`1"
+@enduml

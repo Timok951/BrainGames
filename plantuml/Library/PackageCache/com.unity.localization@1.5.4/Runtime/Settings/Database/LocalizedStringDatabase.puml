@@ -1,0 +1,19 @@
+@startuml
+class LocalizedStringDatabase {
+    +  <<event>> TranslationNotFound : MissingTranslation 
+    + NoTranslationFoundMessage : string <<get>> <<set>>
+    + GetLocalizedStringAsync(tableEntryReference:TableEntryReference, locale:Locale, fallbackBehavior:FallbackBehavior, arguments:object[]) : AsyncOperationHandle<string>
+    + GetLocalizedString(tableEntryReference:TableEntryReference, locale:Locale, fallbackBehavior:FallbackBehavior, arguments:object[]) : string
+    + GetLocalizedStringAsync(tableEntryReference:TableEntryReference, arguments:IList<object>, locale:Locale, fallbackBehavior:FallbackBehavior) : AsyncOperationHandle<string>
+    + GetLocalizedString(tableEntryReference:TableEntryReference, arguments:IList<object>, locale:Locale, fallbackBehavior:FallbackBehavior) : string
+    + <<virtual>> GetLocalizedStringAsync(tableReference:TableReference, tableEntryReference:TableEntryReference, locale:Locale, fallbackBehavior:FallbackBehavior, arguments:object[]) : AsyncOperationHandle<string>
+    + <<virtual>> GetLocalizedString(tableReference:TableReference, tableEntryReference:TableEntryReference, locale:Locale, fallbackBehavior:FallbackBehavior, arguments:object[]) : string
+    + <<virtual>> GetLocalizedStringAsync(tableReference:TableReference, tableEntryReference:TableEntryReference, arguments:IList<object>, locale:Locale, fallbackBehavior:FallbackBehavior, localVariables:IVariableGroup) : AsyncOperationHandle<string>
+    + <<virtual>> GetLocalizedString(tableReference:TableReference, tableEntryReference:TableEntryReference, arguments:IList<object>, locale:Locale, fallbackBehavior:FallbackBehavior) : string
+}
+class "LocalizedDatabase`2"<T1,T2> {
+}
+"LocalizedDatabase`2" "<StringTable,StringTableEntry>" <|-- LocalizedStringDatabase
+LocalizedStringDatabase --> "MissingTranslationState" MissingTranslationBehavior
+LocalizedStringDatabase --> "SmartFormatter" SmartFormatter
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+class Oid {
+    + GetOidName(inOidStr:string) : string
+    + Encode(oidStr:string) : byte[]
+    + Decode(data:byte[]) : string
+    + <<virtual>> Encode(bt:Stream, oidStr:string) : void
+    + <<virtual>> Decode(bt:Stream) : string
+    + Oid()
+}
+@enduml

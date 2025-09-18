@@ -1,0 +1,11 @@
+@startuml
+class UnityUserOrganizationsV1 {
+    + UnityUserOrganizationsV1(id:System.Guid, genesisId:string, name:string, email:string, organizations:List<UnityUserOrganizationsV1OrganizationsInner>)
+    + GenesisId : string <<get>>
+    + Name : string <<get>>
+    + Email : string <<get>>
+}
+class "List`1"<T> {
+}
+UnityUserOrganizationsV1 --> "Organizations<UnityUserOrganizationsV1OrganizationsInner>" "List`1"
+@enduml

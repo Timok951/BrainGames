@@ -1,0 +1,6 @@
+@startuml
+class Ua2CoreInitializeCallback {
+    + <<async>> Initialize(registry:CoreRegistry) : Task
+}
+IInitializablePackage <|-- Ua2CoreInitializeCallback
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+class PayoutDefinition {
+    + typeString : string <<get>>
+    + <<const>> MaxSubtypeLength : int = 64
+    + subtype : string <<get>>
+    + quantity : double <<get>>
+    + <<const>> MaxDataLength : int = 1024
+    + data : string <<get>>
+    + PayoutDefinition()
+    + PayoutDefinition(typeString:string, subtype:string, quantity:double)
+    + PayoutDefinition(typeString:string, subtype:string, quantity:double, data:string)
+    + PayoutDefinition(subtype:string, quantity:double)
+    + PayoutDefinition(subtype:string, quantity:double, data:string)
+    + PayoutDefinition(type:PayoutType, subtype:string, quantity:double)
+    + PayoutDefinition(type:PayoutType, subtype:string, quantity:double, data:string)
+}
+PayoutDefinition --> "type" PayoutType
+@enduml

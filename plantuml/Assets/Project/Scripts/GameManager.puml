@@ -1,0 +1,34 @@
+@startuml
+class GameManager {
+    + CurrentLevelConnect : int
+    + CurrentLevelColorsort : int
+    + CurrentLevelPipes : int
+    + IsLevelUnlockedConnect(level:int) : bool
+    + IsLevelUnlockedColorsort(level:int) : bool
+    + IsLevelUnlockedPipes(level:int) : bool
+    + SetCurrentLevelConnect(levelIndex:int) : void
+    + SetCurrentLevelColorSort(levelIndex:int) : void
+    + SetCurrentLevelPipes(levelIndex:int) : void
+    + UnlockLevelConnect() : void
+    + UnlockLevelColorsort() : void
+    + UnlockLevelPipes() : void
+    + UpdateServerData() : IEnumerator
+    + GetLevelConnect() : LevelData
+    + GetLevelColorSort() : LevelColorSort
+    + GetLevelPipes() : LevelDataPipe
+    + GetRandomLevelIndexConnect() : int
+    + GetRandomLevelIndexColorSort() : int
+    + GetRandomLevelIndexPipes() : int
+    + GoToMainMenu() : void
+    + GoToGameplayConnect() : void
+    + GoToGameplayColorSort() : void
+    + GoToGameplayPipes() : void
+    + GoToDailyChallenge() : void
+}
+class BypassCertificate {
+}
+MonoBehaviour <|-- GameManager
+GameManager --> "Instance" GameManager
+GameManager +-- BypassCertificate
+CertificateHandler <|-- BypassCertificate
+@enduml

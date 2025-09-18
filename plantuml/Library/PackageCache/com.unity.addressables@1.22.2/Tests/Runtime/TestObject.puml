@@ -1,0 +1,6 @@
+@startuml
+class TestObject {
+    {static} + Create(name:string) : TestObject
+}
+ScriptableObject <|-- TestObject
+@enduml

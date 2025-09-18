@@ -1,0 +1,11 @@
+@startuml
+class TableCreatorWindow {
+    + {static} ShowWindow() : void
+}
+class LocaleLabel {
+}
+EditorWindow <|-- TableCreatorWindow
+TableCreatorWindow +-- LocaleLabel
+Label <|-- LocaleLabel
+LocaleLabel --> "boundLocale" Locale
+@enduml

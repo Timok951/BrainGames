@@ -1,0 +1,12 @@
+@startuml
+class SearchFiltersTests {
+    + FilterString_GetsCorrectFiltersForShortHand() : void
+    + FilterString_FiltersClear() : void
+    + FilterString_IsValid() : void
+    + FilterString_CorrectNonFilters() : void
+    + FilterString_GetsCorrectFiltersForLongHand() : void
+    + NumericQuery_Equal() : void
+    + NumericQuery_LessThan() : void
+    + NumericQuery_GreaterThan() : void
+}
+@enduml

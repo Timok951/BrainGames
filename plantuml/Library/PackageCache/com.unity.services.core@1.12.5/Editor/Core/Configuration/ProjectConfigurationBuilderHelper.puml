@@ -1,0 +1,6 @@
+@startuml
+class ProjectConfigurationBuilderHelper <<static>> {
+    + {static} RuntimeConfigFullPath : string <<get>>
+    + {static} GenerateConfigFileInProject(builder:ProjectConfigurationBuilder, serializer:IJsonSerializer) : void
+}
+@enduml

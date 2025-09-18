@@ -1,0 +1,18 @@
+@startuml
+interface IContextObject {
+}
+interface IScriptsCallback {
+}
+interface IDependencyCallback {
+}
+interface IPackingCallback {
+}
+interface IWritingCallback {
+}
+interface IBuildContext {
+}
+IContextObject <|-- IScriptsCallback
+IContextObject <|-- IDependencyCallback
+IContextObject <|-- IPackingCallback
+IContextObject <|-- IWritingCallback
+@enduml

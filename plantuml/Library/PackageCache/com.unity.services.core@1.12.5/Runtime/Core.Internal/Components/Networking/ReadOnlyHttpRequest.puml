@@ -1,0 +1,10 @@
+@startuml
+struct ReadOnlyHttpRequest {
+    + ReadOnlyHttpRequest(request:HttpRequest)
+    + Method : string <<get>>
+    + Url : string <<get>>
+}
+class "IReadOnlyDictionary`2"<T1,T2> {
+}
+ReadOnlyHttpRequest --> "Headers<string,string>" "IReadOnlyDictionary`2"
+@enduml

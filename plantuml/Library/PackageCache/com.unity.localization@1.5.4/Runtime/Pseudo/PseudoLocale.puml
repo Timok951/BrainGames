@@ -1,0 +1,11 @@
+@startuml
+class PseudoLocale {
+    + {static} CreatePseudoLocale() : PseudoLocale
+    + <<virtual>> GetPseudoString(input:string) : string
+    + <<override>> ToString() : string
+}
+class "List`1"<T> {
+}
+Locale <|-- PseudoLocale
+PseudoLocale --> "Methods<IPseudoLocalizationMethod>" "List`1"
+@enduml

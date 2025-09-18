@@ -1,0 +1,41 @@
+@startuml
+class TimeSpanUtility <<static>> {
+    + {static} ToTimeString(FromTime:TimeSpan, options:TimeSpanFormatOptions, timeTextInfo:TimeTextInfo) : string
+    + {static} Round(fromTime:TimeSpan, intervalTicks:long) : TimeSpan
+}
+enum TimeSpanFormatOptions {
+    InheritDefaults= 0x0,
+    Abbreviate= 0x1,
+    AbbreviateOff= 0x2,
+    LessThan= 0x4,
+    LessThanOff= 0x8,
+    TruncateShortest= 0x10,
+    TruncateAuto= 0x20,
+    TruncateFill= 0x40,
+    TruncateFull= 0x80,
+    RangeMilliSeconds= 0x100,
+    RangeSeconds= 0x200,
+    RangeMinutes= 0x400,
+    RangeHours= 0x800,
+    RangeDays= 0x1000,
+    RangeWeeks= 0x2000,
+}
+class TimeSpanFormatOptionsConverter <<static>> {
+    + {static} Merge(left:TimeSpanFormatOptions, right:TimeSpanFormatOptions) : TimeSpanFormatOptions
+    + {static} Mask(timeSpanFormatOptions:TimeSpanFormatOptions, mask:TimeSpanFormatOptions) : TimeSpanFormatOptions
+    + {static} AllFlags(timeSpanFormatOptions:TimeSpanFormatOptions) : IEnumerable<TimeSpanFormatOptions>
+    + {static} Parse(formatOptionsString:string) : TimeSpanFormatOptions
+}
+class TimeTextInfo {
+    + TimeTextInfo(pluralRule:PluralRules.PluralRuleDelegate, week:string[], day:string[], hour:string[], minute:string[], second:string[], millisecond:string[], w:string[], d:string[], h:string[], m:string[], s:string[], ms:string[], lessThan:string)
+    + TimeTextInfo(week:string, day:string, hour:string, minute:string, second:string, millisecond:string, lessThan:string)
+    + GetLessThanText(minimumValue:string) : string
+    + <<virtual>> GetUnitText(unit:TimeSpanFormatOptions, value:int, abbr:bool) : string
+}
+class CommonLanguagesTimeTextInfo <<static>> {
+    + {static} GetTimeTextInfo(twoLetterIsoLanguageName:string) : TimeTextInfo
+}
+TimeSpanUtility --> "DefaultFormatOptions" TimeSpanFormatOptions
+TimeSpanUtility --> "AbsoluteDefaults" TimeSpanFormatOptions
+CommonLanguagesTimeTextInfo --> "English" TimeTextInfo
+@enduml

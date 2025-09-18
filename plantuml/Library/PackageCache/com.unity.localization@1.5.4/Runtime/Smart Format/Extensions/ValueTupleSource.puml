@@ -1,0 +1,7 @@
+@startuml
+class ValueTupleSource {
+    + ValueTupleSource(formatter:SmartFormatter)
+    + TryEvaluateSelector(selectorInfo:ISelectorInfo) : bool
+}
+ISource <|-- ValueTupleSource
+@enduml

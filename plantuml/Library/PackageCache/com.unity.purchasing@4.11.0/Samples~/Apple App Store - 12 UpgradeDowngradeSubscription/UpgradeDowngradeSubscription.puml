@@ -1,0 +1,18 @@
+@startuml
+class UpgradeDowngradeSubscription {
+    + normalSubscriptionId : string = "com.mycompany.mygame.my_normal_pass_subscription"
+    + vipSubscriptionId : string = "com.mycompany.mygame.my_vip_pass_subscription"
+    + OnInitialized(controller:IStoreController, extensions:IExtensionProvider) : void
+    + BuyNormalSubscription() : void
+    + BuyVipSubscription() : void
+    + ProcessPurchase(args:PurchaseEventArgs) : PurchaseProcessingResult
+    + OnInitializeFailed(error:InitializationFailureReason) : void
+    + OnInitializeFailed(error:InitializationFailureReason, message:string) : void
+    + OnPurchaseFailed(product:Product, failureReason:PurchaseFailureReason) : void
+    + OnPurchaseFailed(product:Product, failureDescription:PurchaseFailureDescription) : void
+}
+MonoBehaviour <|-- UpgradeDowngradeSubscription
+IDetailedStoreListener <|-- UpgradeDowngradeSubscription
+UpgradeDowngradeSubscription --> "currentSubscriptionText" Text
+UpgradeDowngradeSubscription --> "deferredSubscriptionChangeText" Text
+@enduml

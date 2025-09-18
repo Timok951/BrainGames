@@ -1,0 +1,10 @@
+@startuml
+class IsolatedJsonConvert <<static>> {
+    + {static} SerializeObject(value:object) : string
+    + {static} SerializeObject(value:object, settings:JsonSerializerSettings) : string
+    + {static} SerializeObject(value:object, type:Type, settings:JsonSerializerSettings) : string
+    + {static} DeserializeObject(value:string, type:Type) : object
+    + {static} DeserializeObject(value:string, settings:JsonSerializerSettings) : T
+    + {static} DeserializeObject(value:string, type:Type, settings:JsonSerializerSettings) : object
+}
+@enduml

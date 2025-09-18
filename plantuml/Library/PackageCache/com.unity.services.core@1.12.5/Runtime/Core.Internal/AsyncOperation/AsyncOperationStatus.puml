@@ -1,0 +1,9 @@
+@startuml
+enum AsyncOperationStatus {
+    None,
+    InProgress,
+    Succeeded,
+    Failed,
+    Cancelled,
+}
+@enduml

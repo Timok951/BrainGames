@@ -1,0 +1,10 @@
+@startuml
+class BillingClientStateListener {
+    + RegisterOnConnected(onConnected:Action) : void
+    + RegisterOnDisconnected(onDisconnected:Action<GoogleBillingResponseCode>) : void
+    + onBillingSetupFinished(billingResult:AndroidJavaObject) : void
+    + onBillingServiceDisconnected() : void
+}
+AndroidJavaProxy <|-- BillingClientStateListener
+IBillingClientStateListener <|-- BillingClientStateListener
+@enduml

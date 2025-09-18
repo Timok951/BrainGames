@@ -1,0 +1,7 @@
+@startuml
+class NativeStoreProvider {
+    + GetAndroidStore(callback:IUnityCallback, store:AppStore, binder:IPurchasingBinder, util:IUtil) : INativeStore
+    + GetStorekit(callback:IUnityCallback) : INativeAppleStore
+}
+INativeStoreProvider <|-- NativeStoreProvider
+@enduml

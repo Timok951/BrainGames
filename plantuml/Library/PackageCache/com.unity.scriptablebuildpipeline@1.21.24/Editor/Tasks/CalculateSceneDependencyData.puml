@@ -1,0 +1,7 @@
+@startuml
+class CalculateSceneDependencyData {
+    + Version : int <<get>>
+    + Run() : ReturnCode
+}
+IBuildTask <|-- CalculateSceneDependencyData
+@enduml

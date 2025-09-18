@@ -1,0 +1,7 @@
+@startuml
+class LocalizeTextureEvent {
+}
+class "LocalizedAssetEvent`3"<T1,T2,T3> {
+}
+"LocalizedAssetEvent`3" "<Texture,LocalizedTexture,UnityEventTexture>" <|-- LocalizeTextureEvent
+@enduml

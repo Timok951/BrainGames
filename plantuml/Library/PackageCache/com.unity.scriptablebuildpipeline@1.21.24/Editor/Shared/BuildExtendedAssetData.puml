@@ -1,0 +1,9 @@
+@startuml
+class BuildExtendedAssetData {
+    + BuildExtendedAssetData()
+}
+class "Dictionary`2"<T1,T2> {
+}
+IBuildExtendedAssetData <|-- BuildExtendedAssetData
+BuildExtendedAssetData --> "ExtendedData<GUID,ExtendedAssetData>" "Dictionary`2"
+@enduml

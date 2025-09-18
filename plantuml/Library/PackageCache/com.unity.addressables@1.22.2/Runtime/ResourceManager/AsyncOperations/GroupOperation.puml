@@ -1,0 +1,18 @@
+@startuml
+class GroupOperation {
+    + GroupOperation()
+    + <<override>> GetDependencies(deps:List<AsyncOperationHandle>) : void
+    + Init(operations:List<AsyncOperationHandle>, releaseDependenciesOnFailure:bool, allowFailedDependencies:bool) : void
+    + Init(operations:List<AsyncOperationHandle>, settings:GroupOperationSettings) : void
+}
+class "AsyncOperationBase`1"<T> {
+}
+enum GroupOperationSettings {
+    None= 0,
+    ReleaseDependenciesOnFailure= 1,
+    AllowFailedDependencies= 2,
+}
+"AsyncOperationBase`1" "<IList<AsyncOperationHandle>>" <|-- GroupOperation
+ICachable <|-- GroupOperation
+GroupOperation +-- GroupOperationSettings
+@enduml

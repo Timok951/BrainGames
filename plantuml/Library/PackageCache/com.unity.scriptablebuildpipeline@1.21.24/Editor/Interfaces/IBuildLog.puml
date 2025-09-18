@@ -1,0 +1,33 @@
+@startuml
+enum LogLevel {
+    Error,
+    Warning,
+    Info,
+    Verbose,
+}
+interface IBuildLogger {
+}
+enum DeferredEventType {
+    Begin,
+    End,
+    Info,
+}
+struct DeferredEvent {
+    + Time : double
+    + Name : string
+    + Context : string
+}
+interface IDeferredBuildLogger {
+}
+struct ScopedBuildStep {
+}
+class BuildLoggerExternsions <<static>> {
+    + {static} AddEntrySafe(log:IBuildLogger, level:LogLevel, msg:string) : void
+    + {static} ScopedStep(log:IBuildLogger, level:LogLevel, stepName:string, multiThreaded:bool) : ScopedBuildStep
+    + {static} ScopedStep(log:IBuildLogger, level:LogLevel, stepName:string, context:string) : ScopedBuildStep
+}
+IContextObject <|-- IBuildLogger
+DeferredEvent --> "Level" LogLevel
+DeferredEvent --> "Type" DeferredEventType
+IDisposable <|-- ScopedBuildStep
+@enduml

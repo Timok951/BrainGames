@@ -1,0 +1,12 @@
+@startuml
+class ProductDescription {
+    + ProductDescription(id:string, metadata:ProductMetadata, receipt:string, transactionId:string)
+    + ProductDescription(id:string, metadata:ProductMetadata, receipt:string, transactionId:string, type:ProductType)
+    + ProductDescription(id:string, metadata:ProductMetadata)
+    + storeSpecificId : string <<get>>
+    + receipt : string <<get>>
+    + transactionId : string <<get>> <<set>>
+}
+ProductDescription --> "type" ProductType
+ProductDescription --> "metadata" ProductMetadata
+@enduml

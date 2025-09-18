@@ -1,0 +1,8 @@
+@startuml
+class Csv <<static>> {
+    + {static} Export(writer:TextWriter, collection:StringTableCollection, reporter:ITaskReporter) : void
+    + {static} Export(writer:TextWriter, collection:StringTableCollection, columnMappings:IList<CsvColumns>, reporter:ITaskReporter) : void
+    + {static} ImportInto(reader:TextReader, collection:StringTableCollection, createUndo:bool, reporter:ITaskReporter, removeMissingEntries:bool) : void
+    + {static} ImportInto(reader:TextReader, collection:StringTableCollection, columnMappings:IList<CsvColumns>, createUndo:bool, reporter:ITaskReporter, removeMissingEntries:bool) : void
+}
+@enduml

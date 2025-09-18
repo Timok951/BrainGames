@@ -1,0 +1,4 @@
+@startuml
+class PurchasingServiceAnalyticsRegistrar <<static>> {
+}
+@enduml

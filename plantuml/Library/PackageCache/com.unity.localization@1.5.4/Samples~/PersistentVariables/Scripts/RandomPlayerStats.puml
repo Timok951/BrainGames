@@ -1,0 +1,6 @@
+@startuml
+class RandomPlayerStats {
+    + RandomStats() : void
+}
+MonoBehaviour <|-- RandomPlayerStats
+@enduml

@@ -1,0 +1,5 @@
+@startuml
+class StoreCallbackExtensionMethods <<static>> {
+    + {static} FindProductById(storeCallback:IStoreCallback, sku:string) : Product
+}
+@enduml

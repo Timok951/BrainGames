@@ -1,0 +1,5 @@
+@startuml
+class GetAppleProductMetadataExtension <<static>> {
+    + {static} GetAppleProductMetadata(productMetadata:ProductMetadata) : AppleProductMetadata
+}
+@enduml

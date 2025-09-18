@@ -1,0 +1,8 @@
+@startuml
+class IapTelemetryException {
+    + IapTelemetryException()
+    + IapTelemetryException(message:string)
+    + IapTelemetryException(message:string, innerException:Exception)
+}
+Exception <|-- IapTelemetryException
+@enduml

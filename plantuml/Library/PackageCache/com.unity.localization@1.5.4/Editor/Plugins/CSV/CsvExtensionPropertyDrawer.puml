@@ -1,0 +1,29 @@
+@startuml
+class CsvExtensionPropertyDrawerData {
+}
+class CsvExtensionPropertyDrawer {
+    + <<override>> CreatePropertyData(property:SerializedProperty) : CsvExtensionPropertyDrawerData
+    + <<override>> GetPropertyHeight(data:CsvExtensionPropertyDrawerData, property:SerializedProperty, label:GUIContent) : float
+    + <<override>> OnGUI(data:CsvExtensionPropertyDrawerData, position:Rect, property:SerializedProperty, label:GUIContent) : void
+}
+class "PropertyDrawerExtended`1"<T> {
+}
+class Styles {
+}
+PropertyDrawerExtendedData <|-- CsvExtensionPropertyDrawerData
+CsvExtensionPropertyDrawerData --> "m_Columns" SerializedProperty
+CsvExtensionPropertyDrawerData --> "m_ConnectedFile" SerializedProperty
+CsvExtensionPropertyDrawerData --> "m_ColumnsList" ReorderableListExtended
+"PropertyDrawerExtended`1" "<CsvExtensionPropertyDrawerData>" <|-- CsvExtensionPropertyDrawer
+CsvExtensionPropertyDrawer +-- Styles
+Styles o-> "addDefaultColumns" GUIContent
+Styles o-> "addDefaultColumnsWithComments" GUIContent
+Styles o-> "header" GUIContent
+Styles o-> "save" GUIContent
+Styles o-> "open" GUIContent
+Styles o-> "openMerge" GUIContent
+Styles o-> "import" GUIContent
+Styles o-> "importMerge" GUIContent
+Styles o-> "export" GUIContent
+Styles o-> "show" GUIContent
+@enduml

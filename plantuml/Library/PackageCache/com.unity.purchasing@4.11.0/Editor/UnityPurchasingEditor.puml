@@ -1,0 +1,6 @@
+@startuml
+class UnityPurchasingEditor <<static>> {
+    + {static} TargetAndroidStore(target:AppStore) : void
+    + {static} FindPaths(filename:string) : string[]
+}
+@enduml

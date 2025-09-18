@@ -1,0 +1,5 @@
+@startuml
+interface IProjectConfiguration {
+}
+IServiceComponent <|-- IProjectConfiguration
+@enduml

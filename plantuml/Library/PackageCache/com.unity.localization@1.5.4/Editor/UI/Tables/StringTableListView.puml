@@ -1,0 +1,8 @@
+@startuml
+class StringTableListView {
+    + StringTableListView(tableCollection:LocalizationTableCollection)
+}
+class "GenericAssetTableListView`2"<T1,T2> {
+}
+"GenericAssetTableListView`2" "<StringTable,StringTableTreeViewItem>" <|-- StringTableListView
+@enduml

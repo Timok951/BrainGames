@@ -1,0 +1,9 @@
+@startuml
+class TextWriterOutput {
+    + TextWriterOutput(output:TextWriter)
+    + Write(text:string, formattingInfo:IFormattingInfo) : void
+    + Write(text:string, startIndex:int, length:int, formattingInfo:IFormattingInfo) : void
+}
+IOutput <|-- TextWriterOutput
+TextWriterOutput --> "Output" TextWriter
+@enduml

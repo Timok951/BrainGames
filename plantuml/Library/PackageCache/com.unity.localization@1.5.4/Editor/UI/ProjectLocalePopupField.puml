@@ -1,0 +1,17 @@
+@startuml
+class ProjectLocalePopupField <<partial>> {
+    + ProjectLocalePopupField()
+}
+class "PopupField`1"<T> {
+}
+class UxmlFactory <<new>> {
+}
+class UxmlTraits <<new>> {
+}
+class "UxmlFactory`2"<T1,T2> {
+}
+"PopupField`1" "<Locale>" <|-- ProjectLocalePopupField
+ProjectLocalePopupField +-- UxmlFactory
+"UxmlFactory`2" "<ProjectLocalePopupField,UxmlTraits>" <|-- UxmlFactory
+ProjectLocalePopupField +-- UxmlTraits
+@enduml

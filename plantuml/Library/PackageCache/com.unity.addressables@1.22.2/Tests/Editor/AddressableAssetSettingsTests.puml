@@ -1,0 +1,125 @@
+@startuml
+class AddressableAssetSettingsTests {
+    + SetupEntries(entries:List<AddressableAssetEntry>, numEntries:int) : void
+    + SettingsCache_FindsEntry() : void
+    + Hash128AppendExtensionTests() : void
+    + SettingsCache_CacheClearedOnSettingsChanged() : void
+    + GetDefaultGroupDoesNotThrowNullExceptionWhenGroupsNull() : void
+    + HasDefaultInitialGroups() : void
+    + HasDefaultVersionOverride() : void
+    + AddRemovelabel() : void
+    + RenameLabel_KeepsIndexTheSame_ForNewTableEntry() : void
+    + RenameLabel_UpdatesLabelList_WithCorrectLabels() : void
+    + RenameLabel_UpdatesAssetEntries_ThatContainUsesOfTheOldLabels() : void
+    + GetLabels_ShouldReturnCopy() : void
+    + WhenLabelNameHasSquareBrackets_AddingNewLabel_ThrowsError() : void
+    + AddRemoveUnusedLabels() : void
+    + AddRemoveGroup() : void
+    + RemoveMissingGroupsReferences_CheckGroupCount() : void
+    + CanCreateAssetReference() : void
+    + CreateUpdateNewEntry() : void
+    + CreateOrMoveEntries_CreatesNewEntries() : void
+    + CreateOrMoveEntries_MovesEntriesThatAlreadyExist() : void
+    + CreateOrMoveEntries_Creates_AndMovesExistingEntries_InMixedLists() : void
+    + CannotCreateOrMoveWithoutGuid() : void
+    + FindAssetEntry() : void
+    + FindAssetEntry_IncludeImplicitIsTrue_ReturnsImplicitEntries() : void
+    + AddressablesClearCachedData_DoesNotThrowError() : void
+    + AddressablesCleanCachedData_ClearsData() : void
+    + AddressablesCleanAllCachedData_ClearsAllData() : void
+    + DeletingAsset_DoesNotDeleteGroupWithSimilarName() : void
+    + Settings_WhenActivePlayerDataBuilderIndexSetWithSameValue_DoesNotDirtyAsset() : void
+    + Settings_WhenActivePlayerDataBuilderIndexSetWithDifferentValue_DoesDirtyAsset() : void
+    + AddressableAssetSettings_OnPostprocessAllAssets_AddDeleteGroupTriggersSettingsSave() : void
+    + AddressableAssetSettings_OnPostprocessAllAssets_DeleteAssetToNullNotTriggerSettingsSave() : void
+    + AddressableAssetSettings_OnPostprocessAllAssets_ChangeImportedAssetsDoesNotTriggerSettingsSave() : void
+    + AddressableAssetSettings_OnPostprocessAllAssets_MovedGroupNotTriggerSettingsSave() : void
+    + AddressableAssetSettings_OnPostprocessAllAssets_MovedAssetToResourcesNotTriggerSettingsSave() : void
+    + AddressableAssetSettings_ActivePlayerDataBuilderIndex_CanGetActivePlayModeDataBuilderIndex() : void
+    + AddressableAssetSettings_ActivePlayerDataBuilderIndex_CanSetActivePlayModeDataBuilderIndex() : void
+    + AddressableAssetSettings_RemoveSchemaTemplate_CannotRemoveGroupSchemaTemplate() : void
+    + AddressableAssetSettings_GetGroupTemplateObject_CanGetGroupTemplateObject() : void
+    + AddressableAssetSettings_AddGroupTemplateObject_CanAddGroupTemplateObject() : void
+    + AddressableAssetSettings_SetGroupTemplateObjectAtIndex_CanSetGroupTemplateObject() : void
+    + AddressableAssetSettings_AddGroupTemplateObject_CannotAddInvalidGroupTemplateObject() : void
+    + AddressableAssetSettings_CreateAndAddGroupTemplate_CannotAddInvalidGroupTemplateObject() : void
+    + AddressableAssetSettings_SetGroupTemplateObjectAtIndex_CannotSetInvalidGroupTemplateObject() : void
+    + AddressableAssetSettings_RemoveGroupTemplateObject_CannotRemoveNonExistentGroupTemplateObject() : void
+    + AddressableAssetSettings_GetGroupTemplateObject_CannotGetNonExistentGroupTemplateObject() : void
+    + AddressableAssetSettings_GetGroupTemplateObject_CannotGetFromEmptyGroupTemplateObjectList() : void
+    + AddressableAssetSettings_AddDataBuilder_CanAddDataBuilder() : void
+    + AddressableAssetSettings_RemoveDataBuilder_CanRemoveDataBuilder() : void
+    + AddressableAssetSettings_SetDataBuilder_CanSetDataBuilder() : void
+    + AddressableAssetSettings_AddDataBuilder_CannotAddInvalidDataBuilders() : void
+    + AddressableAssetSettings_SetDataBuilderAtIndex_CannotSetInvalidDataBuilders() : void
+    + AddressableAssetSettings_GetDataBuilder_CannotGetNonExistentDataBuilder() : void
+    + AddressableAssetSettings_RemoveDataBuilder_CannotRemoveNonExistentDataBuilder() : void
+    + AddressableAssetSettings_GetDataBuilder_CannotGetDataBuilderFromEmpty() : void
+    + AddressableAssetSettings_AddInitializationObject_CanAddInitializationObject() : void
+    + AddressableAssetSettings_SetInitializationObject_CanSetInitializationObject() : void
+    + AddressableAssetSettings_RemoveInitializationObject_CanRemoveInitializationObject() : void
+    + AddressableAssetSettings_AddInitializationObject_CannotAddInvalidInitializationObject() : void
+    + AddressableAssetSettings_SetInitializationObjectAtIndex_CannotSetInvalidInitializationObject() : void
+    + AddressableAssetSettings_GetInitializationObject_CannotGetInvalidInitializationObject() : void
+    + AddressableAssetSettings_RemoveInitializationObject_CannotRemoveNonExistentInitializationObject() : void
+    + AddressableAssetSettings_GetInitializationObject_CannotGetNonExistentInitializationObject() : void
+    + AddressableAssetSettings_GetInitializationObject_CannotGetInitializationObjectFromEmptyList() : void
+    + AddressableAssetSettings_MoveAssetsFromResources_CanMoveAssetsFromResources() : void
+    + AddressableAssetSettings_MoveAssetsFromResources_AddressRespectFolderHierarchy() : void
+    + AddressableAssetSettings_MoveAssetsFromResources_CannotMoveNullOrInvalidAsset() : void
+    + AddressableAssetSettings_SetMaxConcurrentWebRequests_CanSet() : void
+    + AddressableAssetSettings_SetMaxConcurrentWebRequestsWithValueOutsideOfBounds_IsClamped() : void
+    + AddressableAssetSettings_SetLabelValueForEntries_CanSet(numEntries:int) : void
+    + AddressableAssetSettings_RemoveLabel_RemoveLabelShouldRemoveDeletedLabelFromEntries(numEntries:int, numLabels:int) : void
+    + AddressableAssetSettings_HashChanges_WhenGroupIsAdded() : void
+    + AddressableAssetSettings_HashChanges_WhenBuildSettingsChange() : void
+    + AddressableAssetSettings_HashChanges_HandleNullGroups() : void
+    + CustomEntryCommand_WhenRegistered_InvokeIsCalled() : void
+    + CustomEntryCommand_WhenCommandThrows_InvokeDoesNotThrow() : void
+    + CustomEntryCommand_WhenCommandHasNullEntries_ReturnsFalseAndLogsError() : void
+    + CustomEntryCommand_WhenCommandDoesNotExist_ReturnsFalseAndLogsError() : void
+    + CustomEntryCommand_RegisterWithValidIdAndFunc_Succeeds() : void
+    + CustomEntryCommand_UnregisterWithInvalidIdParameters_Fails() : void
+    + CustomEntryCommand_RegisterWithInvalidParameters_Fails() : void
+    + CustomGroupCommand_WhenRegistered_InvokeIsCalled() : void
+    + CustomGroupCommand_RegisterWithValidIdAndFunc_Succeeds() : void
+    + CustomGroupCommand_UnregisterWithInvalidIdParameters_Fails() : void
+    + CustomGroupCommand_RegisterWithInvalidParameters_Fails() : void
+    + CustomGroupCommand_WhenCommandThrows_InvokeDoesNotThrow() : void
+    + CustomGroupCommand_WhenCommandHasNullGroups_ReturnsFalseAndLogsError() : void
+    + CustomGroupCommand_WhenCommandDoesNotExist_ReturnsFalseAndLogsError() : void
+    + AssetGroupSchemaTemplate_CreateTemplate() : void
+    + NullifyBundleFileIds_SetsBundleFileIdsToNull() : void
+    + ReloadSettings_ClearVersionOverride() : void
+}
+class InitializeScriptable {
+    + Name : string <<get>>
+    + CreateObjectInitializationData() : ObjectInitializationData
+}
+class GroupTemplateTestObj {
+    + Name : string <<get>>
+    + Description : string <<get>>
+}
+class InitializationObejctTest {
+    + Name : string <<get>>
+    + CreateObjectInitializationData() : ObjectInitializationData
+}
+class DataBuilderTest {
+    + Name : string <<get>> <<set>>
+    + CacheCleared : bool = false
+    + CanBuildData() : bool
+    + BuildData(builderInput:AddressablesDataBuilderInput) : TResult
+    + ClearCachedData() : void
+    + Description : string <<get>>
+}
+AddressableAssetTestBase <|-- AddressableAssetSettingsTests
+AddressableAssetSettingsTests +-- InitializeScriptable
+ScriptableObject <|-- InitializeScriptable
+IObjectInitializationDataProvider <|-- InitializeScriptable
+AddressableAssetSettingsTests +-- GroupTemplateTestObj
+IGroupTemplate <|-- GroupTemplateTestObj
+AddressableAssetSettingsTests +-- InitializationObejctTest
+IObjectInitializationDataProvider <|-- InitializationObejctTest
+AddressableAssetSettingsTests +-- DataBuilderTest
+IDataBuilder <|-- DataBuilderTest
+@enduml

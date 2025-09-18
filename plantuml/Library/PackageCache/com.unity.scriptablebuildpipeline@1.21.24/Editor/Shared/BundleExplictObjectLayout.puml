@@ -1,0 +1,9 @@
+@startuml
+class BundleExplictObjectLayout {
+    + BundleExplictObjectLayout()
+}
+class "Dictionary`2"<T1,T2> {
+}
+IBundleExplictObjectLayout <|-- BundleExplictObjectLayout
+BundleExplictObjectLayout --> "ExplicitObjectLocation<ObjectIdentifier,string>" "Dictionary`2"
+@enduml

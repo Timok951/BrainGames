@@ -1,0 +1,32 @@
+@startuml
+class Json <<static>> {
+    + {static} Deserialize(json:string) : object
+    + {static} Serialize(obj:object) : string
+}
+class Parser <<sealed>> {
+    + {static} IsWordBreak(c:char) : bool
+    + {static} Parse(jsonString:string) : object
+    + Dispose() : void
+}
+class Serializer <<sealed>> {
+    + {static} Serialize(obj:object) : string
+}
+enum TOKEN {
+    NONE,
+    CURLY_OPEN,
+    CURLY_CLOSE,
+    SQUARED_OPEN,
+    SQUARED_CLOSE,
+    COLON,
+    COMMA,
+    STRING,
+    NUMBER,
+    TRUE,
+    FALSE,
+    NULL,
+}
+Json +-- Parser
+IDisposable <|-- Parser
+Json +-- Serializer
+Parser +-- TOKEN
+@enduml

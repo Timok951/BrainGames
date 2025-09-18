@@ -1,0 +1,10 @@
+@startuml
+class DeSerializer {
+}
+class FieldData {
+}
+class TypeData {
+}
+DeSerializer +-- FieldData
+DeSerializer +-- TypeData
+@enduml

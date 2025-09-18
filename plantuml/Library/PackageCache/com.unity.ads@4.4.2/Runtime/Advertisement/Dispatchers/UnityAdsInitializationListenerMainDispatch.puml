@@ -1,0 +1,8 @@
+@startuml
+class UnityAdsInitializationListenerMainDispatch {
+    + UnityAdsInitializationListenerMainDispatch(initializationListener:IUnityAdsInitializationListener, lifecycleManager:IUnityLifecycleManager)
+    + OnInitializationComplete() : void
+    + OnInitializationFailed(error:UnityAdsInitializationError, message:string) : void
+}
+IUnityAdsInitializationListener <|-- UnityAdsInitializationListenerMainDispatch
+@enduml

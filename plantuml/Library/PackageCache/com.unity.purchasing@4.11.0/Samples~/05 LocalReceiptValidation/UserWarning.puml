@@ -1,0 +1,8 @@
+@startuml
+class UserWarning {
+    + Clear() : void
+    + WarnInvalidStore(currentAppStore:AppStore) : void
+}
+MonoBehaviour <|-- UserWarning
+UserWarning --> "warningText" Text
+@enduml

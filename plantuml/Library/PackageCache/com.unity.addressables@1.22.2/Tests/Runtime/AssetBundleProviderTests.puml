@@ -1,0 +1,21 @@
+@startuml
+abstract class AssetBundleProviderTests {
+    + Setup() : void
+    + WhenUWRExceedsMaxLimit_UWRAreQueued() : IEnumerator
+    + WhenUWRExceedsMaxLimit_CompletesSynchronously() : IEnumerator
+    + WhenUWRIsUsed_CompletesSynchronously() : void
+    + WhenAssetBundleIsLocal_AndForceUWRIsEnabled_UWRIsUsed() : IEnumerator
+    + WhenAssetBundleIsComplete_ReturnImmediately() : IEnumerator
+    + WhenWebRequestOverrideIsSet_CallbackIsCalled_AssetBundleProvider() : IEnumerator
+    + WhenWebRequestFails_RetriesCorrectAmount_AssetBundleProvider() : IEnumerator
+    + AssetBundleLoadPathsCorrectForGetLoadInfo(internalId:string, expectedPath:string, isLocal:bool, useUnityWebRequestForLocalBundles:bool, applicablePlatforms:RuntimePlatform[]) : void
+    + CreateWebRequestReturnsCorrectlySpacedUrlPerPlatform(inputUrl:string, expectedUrl:string) : void
+    + LoadBundleAsync_WithUnfinishedUnload_WaitsForUnloadAndCompletes() : IEnumerator
+    + LoadBundleSync_WithUnfinishedUnload_WaitsForUnloadAndCompletes() : IEnumerator
+    + UnityWebRequestResult_ShouldRetryReturnsExpected(error:string, expected:bool) : void
+}
+class AssetBundleProviderTests_PackedMode {
+}
+AddressablesTestFixture <|-- AssetBundleProviderTests
+AssetBundleProviderTests <|-- AssetBundleProviderTests_PackedMode
+@enduml

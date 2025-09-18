@@ -1,0 +1,25 @@
+@startuml
+abstract class DiagnosticEventCollectorIntegrationTests {
+}
+class DiagnosticEventCollectorTests {
+    + RegisterEventHandler_ReturnsTrueOnNonexistentSingletonAndCreateEqualsTrue() : void
+    + RegisterEventHandler_ReturnsFalseOnNonexistentSingletonAndCreateEqualsFalse() : void
+    + RegisterEventHandler_ReturnsFalseOnUnregisterOnNonexistentHandler() : void
+    + RegisterEventHandler_ProperlyRegistersHandlerOnRegisterCreate() : void
+    + RegisterEventHandler_ProperlyRegistersHandlerOnRegisterTrue() : void
+    + RegisterEventHandler_TwoRegisterEmptyRemoval() : void
+    + HandleUnhandledEvents_EventsHandledInProperOrder() : void
+    + HandleUnhandledEvents_LargeNumberOfUnhandledEvents() : void
+    + HandleUnhandledEvents_UnaffectedByIncorrectEventOrder() : void
+}
+class DiagnosticEventCollectorIntegrationTestsPostProfilerEventsIsTrue {
+    + WhenPostProfilerEventsIsTrue_DiagnosticEventsCollectorIsCreated() : void
+}
+class DiagnosticEventCollectorIntegrationTestsPostProfilerEventsIsFalse {
+    + WhenPostProfilerEventsIsFalse_DiagnosticEventsCollectorIsNotCreated() : void
+}
+AddressablesTestFixture <|-- DiagnosticEventCollectorIntegrationTests
+DiagnosticEventCollectorIntegrationTests <|-- DiagnosticEventCollectorTests
+DiagnosticEventCollectorIntegrationTests <|-- DiagnosticEventCollectorIntegrationTestsPostProfilerEventsIsTrue
+DiagnosticEventCollectorIntegrationTests <|-- DiagnosticEventCollectorIntegrationTestsPostProfilerEventsIsFalse
+@enduml

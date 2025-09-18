@@ -1,0 +1,44 @@
+@startuml
+class CalculateSceneDependencyTests {
+    + Setup() : void
+    + Cleanup() : void
+    + CalculateSceneDependencyData_DependencyHashTests(modifyPrefab:bool, assertType:Action<object, object>) : void
+    + CalculateSceneDependencyData_DependencyHash_IsZeroWhenNotUsingCashing() : void
+    + CalcualteSceneDependencyData_ReturnsNonEmptyUsage_ForNonRecursiveDependencies() : void
+}
+class TestParams {
+    + <<override>> UseCache : bool <<get>> <<set>>
+    + <<override>> NonRecursiveDependencies : bool <<get>> <<set>>
+    + <<override>> TempOutputFolder : string <<get>>
+    + <<override>> GetContentBuildSettings() : BuildSettings
+}
+class TestContent {
+}
+class TestDependencyData {
+}
+class "List`1"<T> {
+}
+class "Dictionary`2"<T1,T2> {
+}
+CalculateSceneDependencyTests +-- TestParams
+TestBuildParametersBase <|-- TestParams
+TestParams --> "Target" BuildTarget
+TestParams --> "Group" BuildTargetGroup
+TestParams --> "ScriptInfo" TypeDB
+TestParams --> "ContentBuildFlags" ContentBuildFlags
+CalculateSceneDependencyTests +-- TestContent
+TestBundleBuildContent <|-- TestContent
+TestContent o-> "TestScenes<GUID>" "List`1"
+TestContent o-> "TestAssets<GUID>" "List`1"
+TestContent --> "Scenes<GUID>" "List`1"
+TestContent --> "Assets<GUID>" "List`1"
+CalculateSceneDependencyTests +-- TestDependencyData
+TestDependencyDataBase <|-- TestDependencyData
+TestDependencyData o-> "TestSceneInfo<GUID,SceneDependencyInfo>" "Dictionary`2"
+TestDependencyData o-> "TestSceneUsage<GUID,BuildUsageTagSet>" "Dictionary`2"
+TestDependencyData o-> "TestDependencyHash<GUID,Hash128>" "Dictionary`2"
+TestDependencyData --> "DependencyUsageCache" BuildUsageCache
+TestDependencyData --> "SceneInfo<GUID,SceneDependencyInfo>" "Dictionary`2"
+TestDependencyData --> "SceneUsage<GUID,BuildUsageTagSet>" "Dictionary`2"
+TestDependencyData --> "DependencyHash<GUID,Hash128>" "Dictionary`2"
+@enduml

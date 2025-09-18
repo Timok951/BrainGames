@@ -1,0 +1,7 @@
+@startuml
+class PurchaseFailedEventArgs {
+    + message : string <<get>>
+}
+PurchaseFailedEventArgs --> "purchasedProduct" Product
+PurchaseFailedEventArgs --> "reason" PurchaseFailureReason
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+enum FakeStoreUIMode {
+    Default,
+    StandardUser,
+    DeveloperUser,
+}
+class FakeStore {
+    + <<const>> Name : string = "fake"
+    + purchaseCalled : bool
+    + restoreCalled : bool
+    + unavailableProductId : string <<get>> <<set>>
+    + <<override>> Initialize(biller:IStoreCallback) : void
+    + RetrieveProducts(json:string) : void
+    + StoreRetrieveProducts(productDefinitions:ReadOnlyCollection<ProductDefinition>) : void
+    + Purchase(productJSON:string, developerPayload:string) : void
+    + RestoreTransactions(callback:Action<bool, string>) : void
+    + FinishTransaction(productJSON:string, transactionID:string) : void
+    + <<override>> FinishTransaction(product:ProductDefinition, transactionId:string) : void
+    + RegisterPurchaseForRestore(productId:string) : void
+}
+enum DialogType {
+    Purchase,
+    RetrieveProducts,
+}
+JSONStore <|-- FakeStore
+IFakeExtensions <|-- FakeStore
+INativeStore <|-- FakeStore
+FakeStore o-> "UIMode" FakeStoreUIMode
+FakeStore +-- DialogType
+@enduml

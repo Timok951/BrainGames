@@ -1,0 +1,16 @@
+@startuml
+class UsingInstantiateAsync {
+    + {static} InstantiateAsync(location:IResourceLocation, parent:Transform, instantiateInWorldSpace:bool, trackHandle:bool) : AsyncOperationHandle<GameObject>
+    + {static} InstantiateAsync(location:IResourceLocation, position:Vector3, rotation:Quaternion, parent:Transform, trackHandle:bool) : AsyncOperationHandle<GameObject>
+    + {static} InstantiateAsync(location:IResourceLocation, instantiateParameters:InstantiationParameters, trackHandle:bool) : AsyncOperationHandle<GameObject>
+    + {static} InstantiateAsync(key:object, parent:Transform, instantiateInWorldSpace:bool, trackHandle:bool) : AsyncOperationHandle<GameObject>
+    + {static} InstantiateAsync(key:object, position:Vector3, rotation:Quaternion, parent:Transform, trackHandle:bool) : AsyncOperationHandle<GameObject>
+    + {static} InstantiateAsync(key:object, instantiateParameters:InstantiationParameters, trackHandle:bool) : AsyncOperationHandle<GameObject>
+}
+UsingInstantiateAsync --> "assetRefLocation" AssetReferenceGameObject
+UsingInstantiateAsync --> "parentTransformLocation" Transform
+UsingInstantiateAsync --> "assetRefTracked" AssetReferenceGameObject
+UsingInstantiateAsync --> "parentTransformTracked" Transform
+UsingInstantiateAsync --> "assetRefUntracked" AssetReferenceGameObject
+UsingInstantiateAsync --> "parentTransformUntracked" Transform
+@enduml

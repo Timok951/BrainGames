@@ -1,0 +1,30 @@
+@startuml
+class DelayedActionManagerTests {
+    + DelayedActionManagerInvokeSameFrame() : IEnumerator
+    + DelayedActionManagerInvokeDelayed() : IEnumerator
+    + DelayedActionManagerInvokeWithParameters() : IEnumerator
+}
+class LinkedListNodeCacheTests {
+    + WhenRefTypeAndCacheNotEmpty_AddRemove_DoesNotAlloc() : void
+    + WhenValueTypeAndCacheNotEmpty_AddRemove_DoesNotAlloc() : void
+    + Release_ResetsValue() : void
+}
+class DelegateListTests {
+    + WhenDelegateRemoved_DelegateIsNotInvoked() : void
+    + WhenAddInsideInvoke_NewDelegatesAreCalled() : void
+    + WhenCleared_DelegateIsNotInvoked() : void
+    + DuringInvoke_CanRemoveNextDelegate() : void
+    + DelegateNoGCWithRefType() : void
+    + DelegateNoGCWithValueType() : void
+    + ResourceManagerConfigExtractKeyAndSubKey_WhenPassedKey_ReturnsExpectedValue(key:object, expectedReturn:bool, expectedMainKey:string, expectedSubKey:string) : void
+    + CanIdentifyMultiThreadedPlatforms(platform:RuntimePlatform, usesMultiThreading:bool) : void
+}
+class DamTest {
+    + methodInvoked : bool
+    + frameInvoked : int
+    + timeInvoked : float
+    + Method() : void
+    + MethodWithParams(p1:int, p2:string, p3:bool, p4:float) : void
+}
+DelayedActionManagerTests +-- DamTest
+@enduml

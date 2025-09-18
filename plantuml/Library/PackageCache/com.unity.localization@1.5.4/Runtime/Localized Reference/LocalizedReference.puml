@@ -1,0 +1,15 @@
+@startuml
+abstract class LocalizedReference <<partial>> {
+    + <<virtual>> WaitForCompletion : bool <<get>> <<set>>
+    + IsEmpty : bool <<get>>
+    + SetReference(table:TableReference, entry:TableEntryReference) : void
+    + <<override>> ToString() : string
+    + <<virtual>> OnBeforeSerialize() : void
+    + <<virtual>> OnAfterDeserialize() : void
+}
+ISerializationCallbackReceiver <|-- LocalizedReference
+LocalizedReference --> "TableReference" TableReference
+LocalizedReference --> "TableEntryReference" TableEntryReference
+LocalizedReference --> "FallbackState" FallbackBehavior
+LocalizedReference --> "LocaleOverride" Locale
+@enduml

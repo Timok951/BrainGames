@@ -1,0 +1,11 @@
+@startuml
+class StoreListenerProxy {
+    + StoreListenerProxy(forwardTo:IStoreListener, analytics:IAnalyticsClient, extensions:IExtensionProvider)
+    + OnInitialized(controller:IStoreController) : void
+    + OnInitializeFailed(error:InitializationFailureReason, message:string?) : void
+    + ProcessPurchase(e:PurchaseEventArgs) : PurchaseProcessingResult
+    + OnPurchaseFailed(i:Product, p:PurchaseFailureDescription) : void
+    + SendTransactionEvent(product:Product) : void
+}
+IInternalStoreListener <|-- StoreListenerProxy
+@enduml

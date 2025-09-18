@@ -1,0 +1,7 @@
+@startuml
+class EditorGameServiceRegistry <<sealed>> {
+    + GetEditorGameService() : IEditorGameService
+}
+IEditorGameServiceRegistry <|-- EditorGameServiceRegistry
+EditorGameServiceRegistry o-> "Instance" EditorGameServiceRegistry
+@enduml

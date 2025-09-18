@@ -1,0 +1,11 @@
+@startuml
+class SystemTime <<static>> {
+    + {static} SetDateTime(dateTimeNow:DateTime) : void
+    + {static} SetDateTimeOffset(dateTimeOffset:DateTimeOffset) : void
+    + {static} ResetDateTime() : void
+}
+class "Func`1"<T> {
+}
+SystemTime o-> "Now<DateTime>" "Func`1"
+SystemTime o-> "OffsetNow<DateTimeOffset>" "Func`1"
+@enduml

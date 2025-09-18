@@ -1,0 +1,6 @@
+@startuml
+class ExternalUserIdProperty {
+    +  <<event>> UserIdChanged : Action<string> 
+    + UserId : string <<get>> <<set>>
+}
+@enduml

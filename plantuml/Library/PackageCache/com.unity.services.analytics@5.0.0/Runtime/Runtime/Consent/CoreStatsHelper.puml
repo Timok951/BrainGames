@@ -1,0 +1,8 @@
+@startuml
+interface ICoreStatsHelper {
+}
+class CoreStatsHelper {
+    + SetCoreStatsConsent(userProvidedConsent:bool) : void
+}
+ICoreStatsHelper <|-- CoreStatsHelper
+@enduml

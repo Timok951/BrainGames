@@ -1,0 +1,9 @@
+@startuml
+class EnvironmentConfigProvider {
+    + callbackOrder : int <<get>>
+    + EnvironmentConfigProvider()
+    + EnvironmentConfigProvider(fileSystem:IFileSystem)
+    + OnBuildingConfiguration(builder:ConfigurationBuilder) : void
+}
+IConfigurationProvider <|-- EnvironmentConfigProvider
+@enduml

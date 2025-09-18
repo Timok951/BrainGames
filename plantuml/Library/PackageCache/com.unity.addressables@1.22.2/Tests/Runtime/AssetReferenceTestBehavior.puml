@@ -1,0 +1,13 @@
+@startuml
+class AssetReferenceTestBehavior {
+    + AssetReferenceAddress : string
+}
+MonoBehaviour <|-- AssetReferenceTestBehavior
+AssetReferenceTestBehavior --> "Reference" AssetReference
+AssetReferenceTestBehavior --> "InValidAssetReference" AssetReference
+AssetReferenceTestBehavior --> "ReferenceWithSubObject" AssetReference
+AssetReferenceTestBehavior --> "ReferenceWithMultiTypedSubObject" AssetReference
+AssetReferenceTestBehavior --> "ReferenceWithMultiTypedSubObjectSubReference" AssetReference
+AssetReferenceTestBehavior --> "LabelReference" AssetLabelReference
+AssetReferenceTestBehavior --> "InvalidLabelReference" AssetLabelReference
+@enduml

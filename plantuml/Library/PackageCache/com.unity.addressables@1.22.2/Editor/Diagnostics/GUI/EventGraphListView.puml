@@ -1,0 +1,16 @@
+@startuml
+class EventGraphListView {
+    + DrawGraphs(rect:Rect, data:EventDataPlayerSession, inspectFrame:int) : void
+    + DefineGraph(name:string, maxValueStream:int, layers:IGraphLayer[]) : void
+    + {static} CreateDefaultHeaderState() : MultiColumnHeaderState
+}
+class DataStreamEntry {
+    + DataStreamEntry(dataSet:EventDataSet, depth:int)
+}
+TreeView <|-- EventGraphListView
+EventGraphListView --> "GraphRect" Rect
+EventGraphListView +-- DataStreamEntry
+TreeViewItem <|-- DataStreamEntry
+DataStreamEntry --> "Content" GUIContent
+DataStreamEntry --> "Entry" EventDataSet
+@enduml

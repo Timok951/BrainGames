@@ -1,0 +1,8 @@
+@startuml
+class ExternalUserId {
+    + UserId : string <<get>>
+}
+class "Action`1"<T> {
+}
+IExternalUserId <|-- ExternalUserId
+@enduml

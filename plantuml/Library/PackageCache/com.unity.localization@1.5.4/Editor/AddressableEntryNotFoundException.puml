@@ -1,0 +1,6 @@
+@startuml
+class AddressableEntryNotFoundException {
+    + AddressableEntryNotFoundException(target:UnityEngine.Object)
+}
+Exception <|-- AddressableEntryNotFoundException
+@enduml

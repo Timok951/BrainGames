@@ -1,0 +1,6 @@
+@startuml
+enum GoogleRetrieveProductsFailureReason {
+    BillingServiceDisconnected,
+    BillingServiceUnavailable,
+}
+@enduml

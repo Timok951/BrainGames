@@ -1,0 +1,10 @@
+@startuml
+class UnityServicesInternal {
+    + UnityServicesInternal(registry:CoreRegistry, coreMetrics:CoreMetrics, coreDiagnostics:CoreDiagnostics)
+    + <<async>> InitializeAsync(options:InitializationOptions) : Task
+    + GetService() : T
+}
+IUnityServices <|-- UnityServicesInternal
+UnityServicesInternal --> "State" ServicesInitializationState
+UnityServicesInternal --> "Options" InitializationOptions
+@enduml

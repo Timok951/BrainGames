@@ -1,0 +1,13 @@
+@startuml
+struct ReturnValue {
+    + SourceValue : object <<get>> <<set>>
+    + GetSourceValue(_:ISelectorInfo) : object
+}
+class WeaponDamageGroup {
+    + GetSourceValue(_:ISelectorInfo) : object
+    + TryGetValue(key:string, value:IVariable) : bool
+}
+IVariable <|-- ReturnValue
+IVariableGroup <|-- WeaponDamageGroup
+IVariable <|-- WeaponDamageGroup
+@enduml

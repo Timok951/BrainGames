@@ -1,0 +1,5 @@
+@startuml
+class ConfigurationTests {
+    + TestValidConfiguration(json:string, enabled:bool, defaultPlacement:string, placementKey:string, placementValue:bool) : void
+}
+@enduml

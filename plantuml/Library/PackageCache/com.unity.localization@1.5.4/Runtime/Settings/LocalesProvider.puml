@@ -1,0 +1,19 @@
+@startuml
+class LocalesProvider {
+    + GetLocale(id:LocaleIdentifier) : Locale
+    + GetLocale(code:string) : Locale
+    + GetLocale(systemLanguage:SystemLanguage) : Locale
+    + AddLocale(locale:Locale) : void
+    + RemoveLocale(locale:Locale) : bool
+    + FindFallbackLocale(localeIdentifier:LocaleIdentifier) : Locale
+    + ResetState() : void
+}
+class "List`1"<T> {
+}
+ILocalesProvider <|-- LocalesProvider
+IPreloadRequired <|-- LocalesProvider
+IReset <|-- LocalesProvider
+IDisposable <|-- LocalesProvider
+LocalesProvider --> "Locales<Locale>" "List`1"
+LocalesProvider --> "PreloadOperation" AsyncOperationHandle
+@enduml

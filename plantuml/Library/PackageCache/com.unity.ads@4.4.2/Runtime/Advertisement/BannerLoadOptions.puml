@@ -1,0 +1,6 @@
+@startuml
+class BannerLoadOptions {
+}
+BannerLoadOptions --> "loadCallback" LoadCallback
+BannerLoadOptions --> "errorCallback" ErrorCallback
+@enduml

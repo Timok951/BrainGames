@@ -1,0 +1,37 @@
+@startuml
+class IAPButton {
+    + productId : string = ""
+    + consumePurchase : bool = true
+    + OnPurchaseFailed(product:Product, reason:PurchaseFailureReason) : void
+    + ProcessPurchase(e:PurchaseEventArgs) : PurchaseProcessingResult
+}
+enum ButtonType {
+    Purchase,
+    Restore,
+}
+class OnPurchaseCompletedEvent {
+}
+class OnPurchaseFailedEvent {
+}
+class OnTransactionsRestoredEvent {
+}
+class "UnityEvent`1"<T> {
+}
+class "UnityEvent`2"<T1,T2> {
+}
+BaseIAPButton <|-- IAPButton
+IAPButton o-> "buttonType" ButtonType
+IAPButton o-> "onTransactionsRestored" OnTransactionsRestoredEvent
+IAPButton o-> "onPurchaseComplete" OnPurchaseCompletedEvent
+IAPButton o-> "onPurchaseFailed" OnPurchaseFailedEvent
+IAPButton --> "titleText" Text
+IAPButton --> "descriptionText" Text
+IAPButton --> "priceText" Text
+IAPButton +-- ButtonType
+IAPButton +-- OnPurchaseCompletedEvent
+"UnityEvent`1" "<Product>" <|-- OnPurchaseCompletedEvent
+IAPButton +-- OnPurchaseFailedEvent
+"UnityEvent`2" "<Product,PurchaseFailureReason>" <|-- OnPurchaseFailedEvent
+IAPButton +-- OnTransactionsRestoredEvent
+"UnityEvent`2" "<bool,string>" <|-- OnTransactionsRestoredEvent
+@enduml

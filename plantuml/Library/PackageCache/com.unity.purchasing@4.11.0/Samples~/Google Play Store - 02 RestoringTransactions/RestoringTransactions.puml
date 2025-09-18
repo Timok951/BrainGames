@@ -1,0 +1,17 @@
+@startuml
+class RestoringTransactions {
+    + noAdsProductId : string = "com.mycompany.mygame.no_ads"
+    + OnInitialized(controller:IStoreController, extensions:IExtensionProvider) : void
+    + Restore() : void
+    + BuyNoAds() : void
+    + ProcessPurchase(args:PurchaseEventArgs) : PurchaseProcessingResult
+    + OnInitializeFailed(error:InitializationFailureReason) : void
+    + OnInitializeFailed(error:InitializationFailureReason, message:string) : void
+    + OnPurchaseFailed(product:Product, failureReason:PurchaseFailureReason) : void
+    + OnPurchaseFailed(product:Product, failureDescription:PurchaseFailureDescription) : void
+}
+MonoBehaviour <|-- RestoringTransactions
+IDetailedStoreListener <|-- RestoringTransactions
+RestoringTransactions --> "hasNoAdsText" Text
+RestoringTransactions --> "restoreStatusText" Text
+@enduml

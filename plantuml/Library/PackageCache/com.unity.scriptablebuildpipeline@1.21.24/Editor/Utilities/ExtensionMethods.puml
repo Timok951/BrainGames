@@ -1,0 +1,13 @@
+@startuml
+struct ObjectTypes {
+    + ObjectTypes(objectID:ObjectIdentifier, types:Type[])
+}
+class ExtensionMethods <<static>> {
+    + {static} IsNullOrEmpty(collection:ICollection<T>) : bool
+    + {static} GetOrAdd(dictionary:IDictionary<TKey, TValue>, key:TKey, value:TValue) : void
+    + {static} Swap(list:IList<T>, first:int, second:int) : void
+    + {static} GatherSerializedObjectCacheEntries(command:WriteCommand, cacheEntries:HashSet<CacheEntry>) : void
+    + {static} ExtractCommonCacheData(cache:IBuildCache, includedObjects:IEnumerable<ObjectIdentifier>, referencedObjects:IEnumerable<ObjectIdentifier>, uniqueTypes:HashSet<Type>, objectTypes:List<ObjectTypes>, dependencies:HashSet<CacheEntry>) : void
+}
+ObjectTypes --> "ObjectID" ObjectIdentifier
+@enduml

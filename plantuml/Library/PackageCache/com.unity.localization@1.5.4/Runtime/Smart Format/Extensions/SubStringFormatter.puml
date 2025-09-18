@@ -1,0 +1,16 @@
+@startuml
+class SubStringFormatter {
+    + SubStringFormatter()
+    + ParameterDelimiter : char <<get>> <<set>>
+    + NullDisplayString : string <<get>> <<set>>
+    + <<override>> TryEvaluateFormat(formattingInfo:IFormattingInfo) : bool
+}
+enum SubStringOutOfRangeBehavior {
+    ReturnEmptyString,
+    ReturnStartIndexToEndOfString,
+    ThrowException,
+}
+FormatterBase <|-- SubStringFormatter
+SubStringFormatter --> "OutOfRangeBehavior" SubStringOutOfRangeBehavior
+SubStringFormatter +-- SubStringOutOfRangeBehavior
+@enduml

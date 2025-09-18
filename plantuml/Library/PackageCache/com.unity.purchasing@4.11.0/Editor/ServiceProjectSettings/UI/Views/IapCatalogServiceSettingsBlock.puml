@@ -1,0 +1,6 @@
+@startuml
+class IapCatalogServiceSettingsBlock {
+    + GetUIBlockElement() : VisualElement
+}
+IPurchasingSettingsUIBlock <|-- IapCatalogServiceSettingsBlock
+@enduml

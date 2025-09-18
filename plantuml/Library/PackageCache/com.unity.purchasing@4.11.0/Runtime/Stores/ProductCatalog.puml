@@ -1,0 +1,127 @@
+@startuml
+class Price {
+    + value : decimal
+    + OnBeforeSerialize() : void
+    + OnAfterDeserialize() : void
+}
+class StoreID {
+    + store : string
+    + id : string
+    + StoreID(store_:string, id_:string)
+}
+enum TranslationLocale {
+    zh_TW,
+    cs_CZ,
+    da_DK,
+    nl_NL,
+    en_US,
+    fr_FR,
+    fi_FI,
+    de_DE,
+    iw_IL,
+    hi_IN,
+    it_IT,
+    ja_JP,
+    ko_KR,
+    no_NO,
+    pl_PL,
+    pt_PT,
+    ru_RU,
+    es_ES,
+    sv_SE,
+    zh_CN,
+    en_AU,
+    en_CA,
+    en_GB,
+    fr_CA,
+    el_GR,
+    id_ID,
+    ms_MY,
+    pt_BR,
+    es_MX,
+    th_TH,
+    tr_TR,
+    vi_VN,
+}
+class LocaleExtensions <<static>> {
+    + {static} GetLabelsWithSupportedPlatforms() : string[]
+    + {static} SupportedOnApple(locale:TranslationLocale) : bool
+    + {static} SupportedOnGoogle(locale:TranslationLocale) : bool
+}
+class LocalizedProductDescription {
+    + Clone() : LocalizedProductDescription
+    + Title : string <<get>> <<set>>
+    + Description : string <<get>> <<set>>
+}
+class ProductCatalogPayout {
+    + typeString : string <<get>>
+    + <<const>> MaxSubtypeLength : int = 64
+    + subtype : string <<get>> <<set>>
+    + quantity : double <<get>> <<set>>
+    + <<const>> MaxDataLength : int = 1024
+    + data : string <<get>> <<set>>
+}
+class ProductCatalogItem {
+    + id : string
+    + screenshotPath : string
+    + applePriceTier : int = 0
+    + pricingTemplateID : string
+    + AddPayout() : void
+    + RemovePayout(payout:ProductCatalogPayout) : void
+    + Clone() : ProductCatalogItem
+    + SetStoreID(aStore:string, aId:string) : void
+    + GetStoreID(store:string) : string
+    + SetStoreIDs(storeIds:ICollection<StoreID>) : void
+    + GetDescription(locale:TranslationLocale) : LocalizedProductDescription
+    + GetOrCreateDescription(locale:TranslationLocale) : LocalizedProductDescription
+    + AddDescription(locale:TranslationLocale) : LocalizedProductDescription
+    + RemoveDescription(locale:TranslationLocale) : void
+    + HasAvailableLocale : bool <<get>>
+}
+class ProductCatalog {
+    + appleSKU : string
+    + appleTeamID : string
+    + enableCodelessAutoInitialization : bool = true
+    + enableUnityGamingServicesAutoInitialization : bool
+    + {static} Initialize(productCatalogImpl:IProductCatalogImpl) : void
+    + Add(item:ProductCatalogItem) : void
+    + Remove(item:ProductCatalogItem) : void
+    + IsEmpty() : bool
+    + <<const>> kCatalogPath : string = "Assets/Resources/IAPProductCatalog.json"
+    + <<const>> kPrevCatalogPath : string = "Assets/Plugins/UnityPurchasing/Resources/IAPProductCatalog.json"
+    + {static} Serialize(catalog:ProductCatalog) : string
+    + {static} Deserialize(catalogJSON:string) : ProductCatalog
+    + {static} FromTextAsset(asset:TextAsset) : ProductCatalog
+    + {static} LoadDefaultCatalog() : ProductCatalog
+}
+interface IProductCatalogImpl {
+}
+class ProductCatalogImpl {
+    + LoadDefaultCatalog() : ProductCatalog
+}
+enum ProductCatalogPayoutType {
+    Other,
+    Currency,
+    Item,
+    Resource,
+}
+class "IList`1"<T> {
+}
+class "ICollection`1"<T> {
+}
+ISerializationCallbackReceiver <|-- Price
+LocalizedProductDescription o-> "googleLocale" TranslationLocale
+ProductCatalogPayout --> "type" ProductCatalogPayoutType
+ProductCatalogItem --> "type" ProductType
+ProductCatalogItem o-> "defaultDescription" LocalizedProductDescription
+ProductCatalogItem o-> "googlePrice" Price
+ProductCatalogItem o-> "udpPrice" Price
+ProductCatalogItem --> "Payouts<ProductCatalogPayout>" "IList`1"
+ProductCatalogItem --> "allStoreIDs<StoreID>" "ICollection`1"
+ProductCatalogItem --> "NextAvailableLocale" TranslationLocale
+ProductCatalogItem --> "translatedDescriptions<LocalizedProductDescription>" "ICollection`1"
+ProductCatalog --> "allProducts<ProductCatalogItem>" "ICollection`1"
+ProductCatalog --> "allValidProducts<ProductCatalogItem>" "ICollection`1"
+IProductCatalogImpl <|-- ProductCatalogImpl
+ProductCatalogPayout +-- ProductCatalogPayoutType
+@enduml

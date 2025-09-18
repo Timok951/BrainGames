@@ -1,0 +1,9 @@
+@startuml
+class AnalyticsEventTests <<partial>> {
+    + AdSkip_RewardedTest(rewarded:bool) : void
+    + AdSkip_NetworkStringTest(network:string) : void
+    + AdSkip_NetworkEnumTest(network:AdvertisingNetwork) : void
+    + AdSkip_PlacementIdTest(placementId:string) : void
+    + AdSkip_CustomDataTest() : void
+}
+@enduml

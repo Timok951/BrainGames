@@ -1,0 +1,80 @@
+@startuml
+class ResourceManagerTests {
+    + OneTimeSetup() : void
+    + OneTimeTeardown() : void
+    + Setup() : void
+    + TearDown() : void
+    + WhenIUpdateReceiverAdded_CallbackIsInvoked() : void
+    + Reentering_UpdateMethod_ThrowsException() : void
+    + WhenMultipleIUpdateReceivers_AddedToResourceManager_MonoBehaviorCallbackHooksDelegateList_DoesNotGrow() : void
+    + WhenIUpdateReceiverRemovesSelfDuringCallback_ListIsMaintained() : void
+    + WhenOperationReturnsValueType_NoGCAllocs() : void
+    + WhenProviderImplementsIReceiverUpdate_UpdateIsCalledWhileInProviderList() : void
+    + ReleaseInstance_BeforeDependencyCompletes_InstantiatesAndReleasesAfterDependencyCompletes() : void
+    + ProvideInstance_CanProvide() : void
+    + ProvideResource_WhenRemote_ExceptionHandlerReceivesExceptionWithWebRequestError() : IEnumerator
+    + SubclassesOfAssetBundleProvider_UseIdCacheKey_ForAsyncOperations() : void
+    + AssetBundleProvider_UseIdCacheKey_ForAsyncOperations() : void
+    + JsonProvider_DoesNotUseIdCacheKey_ForAsyncOperations() : void
+    + BundledAssetProvider_DoesNotUseIdCacheKey_ForAsyncOperations() : void
+    + WebRequestQueue_BeginsWithAbortedOperation() : void
+}
+class TestUpdateReceiver {
+    + invoked : bool = false
+    + Update(unscaledDeltaTime:float) : void
+}
+class RMTestOp {
+    + CompletedEventTriggeredCount : int = 0
+}
+class RMTestUpdateReceiver {
+    + UpdateCount : int = 0
+    + Update(unscaledDeltaTime:float) : void
+}
+class TestUpdateReceiverThatRemovesSelfDuringUpdate {
+    + removeSelf : bool
+    + updateCount : int = 0
+    + Update(unscaledDeltaTime:float) : void
+}
+class IntOperation {
+}
+class MockInstanceProvider {
+    + ProvideInstance(rm:ResourceManager, prefabHandle:AsyncOperationHandle<GameObject>, instantiateParameters:InstantiationParameters) : GameObject
+    + ReleaseInstance(rm:ResourceManager, instance:GameObject) : void
+}
+class GameObjectProvider {
+    + ProviderId : string <<get>>
+    + CanProvide(t:Type, location:IResourceLocation) : bool
+    + GetDefaultType(location:IResourceLocation) : Type
+    + Initialize(id:string, data:string) : bool
+    + Provide(provideHandle:ProvideHandle) : void
+    + Release(location:IResourceLocation, asset:object) : void
+}
+class AssetBundleProviderDerived {
+}
+class "AsyncOperationBase`1"<T> {
+}
+class "Func`4"<T1,T2,T3,T4> {
+}
+class "Action`2"<T1,T2> {
+}
+ResourceManagerTests +-- TestUpdateReceiver
+IUpdateReceiver <|-- TestUpdateReceiver
+ResourceManagerTests +-- RMTestOp
+"AsyncOperationBase`1" "<object>" <|-- RMTestOp
+ResourceManagerTests +-- RMTestUpdateReceiver
+IUpdateReceiver <|-- RMTestUpdateReceiver
+ResourceManagerTests +-- TestUpdateReceiverThatRemovesSelfDuringUpdate
+IUpdateReceiver <|-- TestUpdateReceiverThatRemovesSelfDuringUpdate
+TestUpdateReceiverThatRemovesSelfDuringUpdate --> "rm" ResourceManager
+ResourceManagerTests +-- IntOperation
+"AsyncOperationBase`1" "<int>" <|-- IntOperation
+ResourceManagerTests +-- MockInstanceProvider
+IInstanceProvider <|-- MockInstanceProvider
+MockInstanceProvider --> "ProvideInstanceCallback<ResourceManager,AsyncOperationHandle<GameObject>,InstantiationParameters,GameObject>" "Func`4"
+MockInstanceProvider --> "ReleaseInstanceCallback<ResourceManager,GameObject>" "Action`2"
+ResourceManagerTests +-- GameObjectProvider
+IResourceProvider <|-- GameObjectProvider
+GameObjectProvider --> "BehaviourFlags" ProviderBehaviourFlags
+ResourceManagerTests +-- AssetBundleProviderDerived
+AssetBundleProvider <|-- AssetBundleProviderDerived
+@enduml

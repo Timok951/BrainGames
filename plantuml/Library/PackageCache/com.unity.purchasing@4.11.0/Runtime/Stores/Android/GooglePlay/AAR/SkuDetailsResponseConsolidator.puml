@@ -1,0 +1,6 @@
+@startuml
+class SkuDetailsResponseConsolidator {
+    + Consolidate(billingResult:IGoogleBillingResult, skuDetails:IEnumerable<AndroidJavaObject>) : void
+}
+ISkuDetailsResponseConsolidator <|-- SkuDetailsResponseConsolidator
+@enduml

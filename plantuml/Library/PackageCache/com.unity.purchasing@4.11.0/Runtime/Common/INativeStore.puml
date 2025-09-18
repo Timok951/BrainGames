@@ -1,0 +1,4 @@
+@startuml
+interface INativeStore {
+}
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+class AppleReceipt {
+    + bundleID : string <<get>> <<internal set>>
+    + appVersion : string <<get>> <<internal set>>
+    + originalApplicationVersion : string <<get>> <<internal set>>
+}
+class AppleInAppPurchaseReceipt {
+    + quantity : int <<get>> <<internal set>>
+    + productID : string <<get>> <<internal set>>
+    + transactionID : string <<get>> <<internal set>>
+    + originalTransactionIdentifier : string <<get>> <<internal set>>
+    + isFreeTrial : int <<get>> <<internal set>>
+    + productType : int <<get>> <<internal set>>
+    + isIntroductoryPricePeriod : int <<get>> <<internal set>>
+}
+AppleReceipt --> "expirationDate" DateTime
+AppleReceipt --> "receiptCreationDate" DateTime
+IPurchaseReceipt <|-- AppleInAppPurchaseReceipt
+AppleInAppPurchaseReceipt --> "purchaseDate" DateTime
+AppleInAppPurchaseReceipt --> "originalPurchaseDate" DateTime
+AppleInAppPurchaseReceipt --> "subscriptionExpirationDate" DateTime
+AppleInAppPurchaseReceipt --> "cancellationDate" DateTime
+@enduml

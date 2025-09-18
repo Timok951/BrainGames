@@ -1,0 +1,9 @@
+@startuml
+class BuildScriptPackedPlayMode {
+    + <<override>> Name : string <<get>>
+    + <<override>> ClearCachedData() : void
+    + <<override>> IsDataBuilt() : bool
+    + <<override>> CanBuildData() : bool
+}
+BuildScriptBase <|-- BuildScriptPackedPlayMode
+@enduml

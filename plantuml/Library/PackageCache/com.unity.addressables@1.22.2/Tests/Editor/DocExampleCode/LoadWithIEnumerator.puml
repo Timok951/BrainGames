@@ -1,0 +1,7 @@
+@startuml
+class LoadWithIEnumerator {
+    + address : string
+    + Start() : IEnumerator
+}
+MonoBehaviour <|-- LoadWithIEnumerator
+@enduml

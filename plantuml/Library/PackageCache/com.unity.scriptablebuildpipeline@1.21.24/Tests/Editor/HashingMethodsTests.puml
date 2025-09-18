@@ -1,0 +1,56 @@
+@startuml
+class HashingMethodsTests {
+    + CsMD4_Calcualte_FileNames_IdenticalTo_CppMD4() : void
+    + CsMD4_Calcualte_FileIDs_IdenticalTo_CppMD4() : void
+    + HashingMethods_Has128x2Fast_SameAsGeneric() : void
+    + HashingMethods_Hash128RawBytes_SameAsGeneric(hashFunc:IHasher) : void
+    + HashingMethods_GuidRawBytes_SameAsGeneric(hashFunc:IHasher) : void
+    + {static} TestCases() : IEnumerable<IHasher>
+    + HashingMethods_ProducesValidHashFor_Array(hashFunc:IHasher) : void
+    + HashingMethods_ProducesValidHashFor_List(hashFunc:IHasher) : void
+    + HashingMethods_ProducesValidHashFor_HashSet(hashFunc:IHasher) : void
+    + HashingMethods_ProducesValidHashFor_Dictionary(hashFunc:IHasher) : void
+    + HashingMethods_ProducesValidHashFor_OffsetStreams(hashFunc:IHasher) : void
+    + HashingMethods_ProducesValidHashFor_UnicodeStrings(hashFunc:IHasher) : void
+    + HashingMethods_ProducesValidHashFor_IdenticalCalculateCalls(hashFunc:IHasher) : void
+}
+struct Hash128Proxy {
+    + m_Value0 : uint
+    + m_Value1 : uint
+    + m_Value2 : uint
+    + m_Value3 : uint
+}
+struct GUIDProxy {
+    + m_Value0 : uint
+    + m_Value1 : uint
+    + m_Value2 : uint
+    + m_Value3 : uint
+}
+interface IHasher {
+}
+class "HashTester`1"<T> {
+    + HashType() : Type
+    + Calculate(obj:object) : RawHash
+    + Calculate(objects:object[]) : RawHash
+    + CalculateStream(stream:Stream) : RawHash
+    + <<override>> ToString() : string
+}
+enum TestIndex {
+    Array,
+    List,
+    HashSet,
+    Dictionary,
+    Offset,
+    Unicode,
+    Identical,
+}
+class "Dictionary`2"<T1,T2> {
+}
+HashingMethodsTests o-> "TestResults<Type,string[]>" "Dictionary`2"
+HashingMethodsTests +-- Hash128Proxy
+HashingMethodsTests +-- GUIDProxy
+HashingMethodsTests +-- IHasher
+HashingMethodsTests +-- "HashTester`1"
+IHasher <|-- "HashTester`1"
+HashingMethodsTests +-- TestIndex
+@enduml

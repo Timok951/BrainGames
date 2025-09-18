@@ -1,0 +1,7 @@
+@startuml
+class SwitchToBuildPlatform {
+    + Version : int <<get>>
+    + Run() : ReturnCode
+}
+IBuildTask <|-- SwitchToBuildPlatform
+@enduml

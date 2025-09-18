@@ -1,0 +1,18 @@
+@startuml
+class AppleXMLProductCatalogExporter {
+    + DisplayName : string <<get>>
+    + DefaultFileName : string <<get>>
+    + FileExtension : string <<get>>
+    + StoreName : string <<get>>
+    + MandatoryExportFolder : string <<get>>
+    + SaveCompletePackage : bool <<get>>
+    + Export(catalog:ProductCatalog) : string
+    + Validate(catalog:ProductCatalog) : ExporterValidationResults
+    + Validate(item:ProductCatalogItem) : ExporterValidationResults
+    + NormalizeToType(catalog:ProductCatalog) : ProductCatalog
+    + {static} GetMD5Hash(fileInfo:FileInfo) : string
+}
+class "List`1"<T> {
+}
+AppleXMLProductCatalogExporter --> "FilesToCopy<string>" "List`1"
+@enduml

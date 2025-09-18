@@ -1,0 +1,10 @@
+@startuml
+class TableEntryData {
+    + Id : long <<get>> <<set>>
+    + Localized : string <<get>> <<set>>
+    + TableEntryData()
+    + TableEntryData(id:long)
+    + TableEntryData(id:long, localized:string)
+}
+TableEntryData --> "Metadata" MetadataCollection
+@enduml

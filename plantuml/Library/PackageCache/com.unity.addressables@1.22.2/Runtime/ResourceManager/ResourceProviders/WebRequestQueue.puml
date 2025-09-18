@@ -1,0 +1,16 @@
+@startuml
+class WebRequestQueueOperation {
+    + IsDone : bool <<get>>
+    + WebRequestQueueOperation(request:UnityWebRequest)
+}
+class WebRequestQueue <<static>> {
+    + {static} SetMaxConcurrentRequests(maxRequests:int) : void
+    + {static} QueueRequest(request:UnityWebRequest) : WebRequestQueueOperation
+    + {static} WaitForRequestToBeActive(request:WebRequestQueueOperation, millisecondsTimeout:int) : void
+}
+class "Action`1"<T> {
+}
+WebRequestQueueOperation --> "Result" UnityWebRequestAsyncOperation
+WebRequestQueueOperation --> "OnComplete<UnityWebRequestAsyncOperation>" "Action`1"
+WebRequestQueueOperation --> "WebRequest" UnityWebRequest
+@enduml

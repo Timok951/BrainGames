@@ -1,0 +1,31 @@
+@startuml
+abstract class MessageFragment {
+    + Length : int <<get>>
+    + CreateTextFragment(start:int, end:int) : WritableMessageFragment
+    + CreateReadonlyTextFragment(start:int, end:int) : ReadOnlyMessageFragment
+    + <<override>> ToString() : string
+}
+class WritableMessageFragment {
+    + Text : string <<get>> <<set>>
+}
+class ReadOnlyMessageFragment {
+    + Text : string <<get>>
+}
+class Message {
+    + Original : string <<get>>
+    + Length : int <<get>>
+    + CreateTextFragment(original:string, start:int, end:int) : WritableMessageFragment
+    + CreateTextFragment(original:string) : WritableMessageFragment
+    + CreateReadonlyTextFragment(original:string, start:int, end:int) : ReadOnlyMessageFragment
+    + CreateReadonlyTextFragment(original:string) : ReadOnlyMessageFragment
+    + ReplaceFragment(original:MessageFragment, replacement:MessageFragment) : void
+    + ReleaseFragment(fragment:MessageFragment) : void
+    + <<override>> ToString() : string
+}
+class "List`1"<T> {
+}
+MessageFragment --> "@Message" Message
+MessageFragment <|-- WritableMessageFragment
+MessageFragment <|-- ReadOnlyMessageFragment
+Message o-> "Fragments<MessageFragment>" "List`1"
+@enduml

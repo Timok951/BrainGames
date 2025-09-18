@@ -1,0 +1,8 @@
+@startuml
+class LocalizedAssetTableListView {
+    + LocalizedAssetTableListView(tableCollection:AssetTableCollection)
+}
+class "GenericAssetTableListView`2"<T1,T2> {
+}
+"GenericAssetTableListView`2" "<AssetTable,AssetTableTreeViewItem>" <|-- LocalizedAssetTableListView
+@enduml

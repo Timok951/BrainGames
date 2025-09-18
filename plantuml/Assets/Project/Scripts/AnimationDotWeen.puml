@@ -1,0 +1,6 @@
+@startuml
+class AnimationDotWeen {
+    + Animate(target:GameObject, onComplete:System.Action, duration:float) : void
+    + AnimateAndSwitch(button:Button, switchAction:System.Action) : void
+}
+@enduml

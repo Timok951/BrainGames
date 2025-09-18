@@ -1,0 +1,5 @@
+@startuml
+class UsingReleaseInstance {
+    + UsingReleaseInstanceSample() : void
+}
+@enduml

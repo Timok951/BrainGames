@@ -1,0 +1,22 @@
+@startuml
+class PurchasingManager {
+    + useTransactionLog : bool <<get>> <<set>>
+    + InitiatePurchase(product:Product) : void
+    + InitiatePurchase(productId:string?) : void
+    + InitiatePurchase(product:Product?, developerPayload:string) : void
+    + InitiatePurchase(purchasableId:string?, developerPayload:string) : void
+    + ConfirmPendingPurchase(product:Product) : void
+    + OnPurchaseSucceeded(id:string, receipt:string?, transactionId:string) : void
+    + OnAllPurchasesRetrieved(purchasedProducts:List<Product>) : void
+    + OnSetupFailed(reason:InitializationFailureReason) : void
+    + OnSetupFailed(reason:InitializationFailureReason, message:string?) : void
+    + OnPurchaseFailed(description:PurchaseFailureDescription) : void
+    + OnProductsRetrieved(products:List<ProductDescription>) : void
+    + FetchAdditionalProducts(additionalProducts:HashSet<ProductDefinition>, successCallback:Action, failCallback:Action<InitializationFailureReason>) : void
+    + FetchAdditionalProducts(additionalProducts:HashSet<ProductDefinition>, successCallback:Action, failCallback:Action<InitializationFailureReason, string?>) : void
+    + Initialize(listener:IInternalStoreListener, products:HashSet<ProductDefinition>) : void
+}
+IStoreCallback <|-- PurchasingManager
+IStoreController <|-- PurchasingManager
+PurchasingManager o-> "products" ProductCollection
+@enduml

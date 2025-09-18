@@ -1,0 +1,17 @@
+@startuml
+class MyContextObjectClass {
+}
+interface ITestInterfaceWithContextDerivation {
+}
+class TestITestInterfaceWithContextDerivationImplementation {
+}
+class BuildContextTests {
+    + Setup() : void
+    + SetContextObject_WhenTypeDoesNotExist_AddsContextObject() : void
+    + SetContextObject_WhenTypeHasInterfaceAssignableToContextObject_InterfaceAndObjectTypeUsedAsKey() : void
+    + GetContextObject_WhenTypeDoesNotExist_Throws() : void
+}
+IContextObject <|-- MyContextObjectClass
+IContextObject <|-- ITestInterfaceWithContextDerivation
+ITestInterfaceWithContextDerivation <|-- TestITestInterfaceWithContextDerivationImplementation
+@enduml

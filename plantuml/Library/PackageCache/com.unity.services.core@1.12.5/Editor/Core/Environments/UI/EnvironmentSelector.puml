@@ -1,0 +1,13 @@
+@startuml
+class EnvironmentSelector {
+    + EnvironmentSelector(environmentService:IEnvironmentService)
+}
+class UxmlNames <<static>> {
+    + <<const>> ContainerDropdown : string = "Dropdown Section"
+    + <<const>> ContainerFetching : string = "Fetching Environments Section"
+    + <<const>> ContainerManageEnvironments : string = "Manage Environments Container"
+    + <<const>> ContainerWarning : string = "Default Environment Section"
+}
+VisualElement <|-- EnvironmentSelector
+EnvironmentSelector +-- UxmlNames
+@enduml

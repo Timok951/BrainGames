@@ -1,0 +1,5 @@
+@startuml
+class ChangeKeyGeneratorExample {
+    + ChangeKeyGenerator() : void
+}
+@enduml

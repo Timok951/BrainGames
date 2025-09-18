@@ -1,0 +1,13 @@
+@startuml
+interface IEditorBuildCallbacks {
+}
+class BuildInterfacesWrapper {
+    + BuildInterfacesWrapper()
+    + Dispose() : void
+    + InitializeCallbacks() : void
+    + CleanupCallbacks() : void
+}
+IContextObject <|-- IEditorBuildCallbacks
+IDisposable <|-- BuildInterfacesWrapper
+IEditorBuildCallbacks <|-- BuildInterfacesWrapper
+@enduml

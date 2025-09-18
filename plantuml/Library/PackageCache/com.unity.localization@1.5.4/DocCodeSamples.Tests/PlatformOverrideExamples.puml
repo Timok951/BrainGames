@@ -1,0 +1,12 @@
+@startuml
+class PlatformOverrideExamples {
+    + SetupTableOverrideInEditor() : void
+    + SetupEntryOverrideInEditor() : void
+}
+class DayOverride {
+    + GetOverride(tableReference:TableReference, tableEntryReference:TableEntryReference) : EntryOverrideType
+}
+IEntryOverride <|-- DayOverride
+DayOverride o-> "myOverride" LocalizedString
+DayOverride o-> "day" DayOfWeek
+@enduml

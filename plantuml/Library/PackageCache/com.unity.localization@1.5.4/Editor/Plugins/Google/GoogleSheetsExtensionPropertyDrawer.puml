@@ -1,0 +1,44 @@
+@startuml
+class GoogleSheetsExtensionPropertyDrawerData {
+    + m_NewSheetName : string
+    + UsingApiKey : bool <<get>>
+}
+class GoogleSheetsExtensionPropertyDrawer {
+    + <<override>> CreatePropertyData(property:SerializedProperty) : GoogleSheetsExtensionPropertyDrawerData
+    + <<override>> OnGUI(data:GoogleSheetsExtensionPropertyDrawerData, position:Rect, property:SerializedProperty, label:GUIContent) : void
+    + <<override>> GetPropertyHeight(data:GoogleSheetsExtensionPropertyDrawerData, property:SerializedProperty, label:GUIContent) : float
+}
+class "PropertyDrawerExtended`1"<T> {
+}
+class Styles {
+}
+PropertyDrawerExtendedData <|-- GoogleSheetsExtensionPropertyDrawerData
+GoogleSheetsExtensionPropertyDrawerData --> "m_Collection" SerializedProperty
+GoogleSheetsExtensionPropertyDrawerData --> "m_SheetsServiceProvider" SerializedProperty
+GoogleSheetsExtensionPropertyDrawerData --> "m_SpreadSheetId" SerializedProperty
+GoogleSheetsExtensionPropertyDrawerData --> "m_SheetId" SerializedProperty
+GoogleSheetsExtensionPropertyDrawerData --> "m_Columns" SerializedProperty
+GoogleSheetsExtensionPropertyDrawerData --> "m_RemoveMissingPulledKeys" SerializedProperty
+GoogleSheetsExtensionPropertyDrawerData --> "columnsList" ReorderableListExtended
+GoogleSheetsExtensionPropertyDrawerData --> "pushTask" Task
+GoogleSheetsExtensionPropertyDrawerData --> "Provider" SheetsServiceProvider
+"PropertyDrawerExtended`1" "<GoogleSheetsExtensionPropertyDrawerData>" <|-- GoogleSheetsExtensionPropertyDrawer
+GoogleSheetsExtensionPropertyDrawer +-- Styles
+Styles o-> "addDefaultColumns" GUIContent
+Styles o-> "addLocalesInSheet" GUIContent
+Styles o-> "addSheet" GUIContent
+Styles o-> "createNewSpredsheet" GUIContent
+Styles o-> "extractColumns" GUIContent
+Styles o-> "header" GUIContent
+Styles o-> "newSheetName" GUIContent
+Styles o-> "noSheetsFound" GUIContent
+Styles o-> "mappedColumns" GUIContent
+Styles o-> "openSpreadsheet" GUIContent
+Styles o-> "push" GUIContent
+Styles o-> "pull" GUIContent
+Styles o-> "pushSelected" GUIContent
+Styles o-> "pullSelected" GUIContent
+Styles o-> "selectSheet" GUIContent
+Styles o-> "sheetId" GUIContent
+Styles o-> "spreadSheetId" GUIContent
+@enduml

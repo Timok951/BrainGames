@@ -1,0 +1,7 @@
+@startuml
+abstract class MultiColumnHeaderBridge {
+    + MultiColumnHeaderBridge(state:MultiColumnHeaderState)
+    + {static} DrawDivider(dividerRect:Rect) : void
+}
+MultiColumnHeader <|-- MultiColumnHeaderBridge
+@enduml

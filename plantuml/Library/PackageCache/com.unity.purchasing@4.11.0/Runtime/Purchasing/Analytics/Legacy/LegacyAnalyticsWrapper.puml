@@ -1,0 +1,9 @@
+@startuml
+class LegacyAnalyticsWrapper {
+    + SendTransactionEvent(product:Product) : void
+    + SendTransactionFailedEvent(product:Product, description:PurchaseFailureDescription) : void
+    + OnUpdatedCoreServicesEnvironment(currentEnvironment:string) : void
+}
+IAnalyticsAdapter <|-- LegacyAnalyticsWrapper
+ICoreServicesEnvironmentObserver <|-- LegacyAnalyticsWrapper
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+enum UnityAdsShowCompletionState {
+    SKIPPED,
+    COMPLETED,
+    UNKNOWN,
+}
+@enduml

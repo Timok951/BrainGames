@@ -1,0 +1,20 @@
+@startuml
+enum ProviderBehaviourFlags {
+    None= 0,
+    CanProvideWithFailedDependencies= 1,
+}
+struct ProvideHandle {
+    + DependencyCount : int <<get>>
+    + GetDependency(index:int) : TDepObject
+    + GetDependencies(list:IList<object>) : void
+    + SetProgressCallback(callback:Func<float>) : void
+    + SetDownloadProgressCallbacks(callback:Func<DownloadStatus>) : void
+    + SetWaitForCompletionCallback(callback:Func<bool>) : void
+    + Complete(result:T, status:bool, exception:Exception) : void
+}
+interface IResourceProvider {
+}
+ProvideHandle --> "ResourceManager" ResourceManager
+ProvideHandle --> "Type" Type
+ProvideHandle --> "Location" IResourceLocation
+@enduml

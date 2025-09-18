@@ -1,0 +1,36 @@
+@startuml
+class ResourceManagerException {
+    + ResourceManagerException()
+    + ResourceManagerException(message:string)
+    + ResourceManagerException(message:string, innerException:Exception)
+    + <<override>> ToString() : string
+}
+class UnknownResourceProviderException {
+    + UnknownResourceProviderException(location:IResourceLocation)
+    + UnknownResourceProviderException()
+    + UnknownResourceProviderException(message:string)
+    + UnknownResourceProviderException(message:string, innerException:Exception)
+    + <<override>> Message : string <<get>>
+    + <<override>> ToString() : string
+}
+class OperationException {
+    + OperationException(message:string, innerException:Exception)
+    + <<override>> ToString() : string
+}
+class ProviderException {
+    + ProviderException(message:string, location:IResourceLocation, innerException:Exception)
+}
+class RemoteProviderException {
+    + RemoteProviderException(message:string, location:IResourceLocation, uwrResult:UnityWebRequestResult, innerException:Exception)
+    + <<override>> Message : string <<get>>
+    + <<override>> ToString() : string
+}
+Exception <|-- ResourceManagerException
+ResourceManagerException <|-- UnknownResourceProviderException
+UnknownResourceProviderException --> "Location" IResourceLocation
+Exception <|-- OperationException
+OperationException <|-- ProviderException
+ProviderException --> "Location" IResourceLocation
+ProviderException <|-- RemoteProviderException
+RemoteProviderException --> "WebRequestResult" UnityWebRequestResult
+@enduml

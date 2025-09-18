@@ -1,0 +1,7 @@
+@startuml
+class PrefabPackedIdentifiers {
+    + <<virtual>> GenerateInternalFileName(name:string) : string
+    + <<virtual>> SerializationIndexFromObjectIdentifier(objectID:ObjectIdentifier) : long
+}
+IDeterministicIdentifiers <|-- PrefabPackedIdentifiers
+@enduml

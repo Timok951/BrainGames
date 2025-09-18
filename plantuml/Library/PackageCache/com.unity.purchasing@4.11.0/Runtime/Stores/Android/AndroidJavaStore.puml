@@ -1,0 +1,9 @@
+@startuml
+class AndroidJavaStore {
+    + AndroidJavaStore(store:AndroidJavaObject)
+    + RetrieveProducts(json:string) : void
+    + <<virtual>> Purchase(productJSON:string, developerPayload:string) : void
+    + <<virtual>> FinishTransaction(productJSON:string, transactionID:string) : void
+}
+INativeStore <|-- AndroidJavaStore
+@enduml

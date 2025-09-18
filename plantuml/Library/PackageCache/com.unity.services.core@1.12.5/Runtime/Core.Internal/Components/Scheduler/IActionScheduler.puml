@@ -1,0 +1,5 @@
+@startuml
+interface IActionScheduler {
+}
+IServiceComponent <|-- IActionScheduler
+@enduml

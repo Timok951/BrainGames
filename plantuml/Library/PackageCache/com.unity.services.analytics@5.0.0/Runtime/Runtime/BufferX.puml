@@ -1,0 +1,37 @@
+@startuml
+interface IBufferSystemCalls {
+}
+interface IBufferIds {
+}
+class BufferSystemCalls {
+    + GenerateGuid() : string
+    + Now() : DateTime
+}
+class BufferX {
+    + Length : int <<get>>
+    + BufferX(eventIdGenerator:IBufferSystemCalls, diskCache:IDiskCache)
+    + InjectIds(ids:IBufferIds) : void
+    + PushStartEvent(name:string, datetime:DateTime, eventVersion:long?, addPlayerIdsToEventBody:bool) : void
+    + PushEndEvent() : void
+    + PushObjectStart(name:string) : void
+    + PushObjectEnd() : void
+    + PushArrayStart(name:string) : void
+    + PushArrayEnd() : void
+    + PushDouble(val:double, name:string) : void
+    + PushFloat(val:float, name:string) : void
+    + PushString(value:string, name:string) : void
+    + PushInt64(val:long, name:string) : void
+    + PushInt(val:int, name:string) : void
+    + PushBool(val:bool, name:string) : void
+    + PushTimestamp(val:DateTime, name:string) : void
+    + PushEvent(evt:Event) : void
+    + Serialize() : byte[]
+    + ClearBuffer() : void
+    + ClearBuffer(upTo:long) : void
+    + FlushToDisk() : void
+    + ClearDiskCache() : void
+    + LoadFromDisk() : void
+}
+IBufferSystemCalls <|-- BufferSystemCalls
+IBuffer <|-- BufferX
+@enduml

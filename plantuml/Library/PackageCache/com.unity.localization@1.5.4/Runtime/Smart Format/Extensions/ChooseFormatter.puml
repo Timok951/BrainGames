@@ -1,0 +1,10 @@
+@startuml
+class ChooseFormatter {
+    + SplitChar : char <<get>> <<set>>
+    + ChooseFormatter()
+    + <<override>> TryEvaluateFormat(formattingInfo:IFormattingInfo) : bool
+    + WriteAllLiterals(formattingInfo:IFormattingInfo) : void
+}
+FormatterBase <|-- ChooseFormatter
+IFormatterLiteralExtractor <|-- ChooseFormatter
+@enduml

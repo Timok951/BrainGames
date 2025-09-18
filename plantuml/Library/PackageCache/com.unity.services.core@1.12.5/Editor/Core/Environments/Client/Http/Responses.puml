@@ -1,0 +1,14 @@
+@startuml
+class Response {
+    + Status : long <<get>> <<set>>
+    + Response(httpResponse:HttpClientResponse)
+}
+class "Response`1"<T> {
+    + Result : T <<get>>
+    + Response(httpResponse:HttpClientResponse, result:T)
+}
+class "Dictionary`2"<T1,T2> {
+}
+Response --> "Headers<string,string>" "Dictionary`2"
+Response <|-- "Response`1"
+@enduml

@@ -1,0 +1,5 @@
+@startuml
+class Locale <<static>> {
+    + {static} AnalyticsRegionLanguageCode() : string
+}
+@enduml

@@ -1,0 +1,9 @@
+@startuml
+class DiagnosticsFactory {
+    + Create(packageName:string) : IDiagnostics
+}
+class "IReadOnlyDictionary`2"<T1,T2> {
+}
+IDiagnosticsFactory <|-- DiagnosticsFactory
+DiagnosticsFactory o-> "CommonTags<string,string>" "IReadOnlyDictionary`2"
+@enduml

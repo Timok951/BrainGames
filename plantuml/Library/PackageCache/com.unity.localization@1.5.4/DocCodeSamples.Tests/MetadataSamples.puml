@@ -1,0 +1,29 @@
+@startuml
+class Continent {
+    + continentName : string
+    + areaMillionKm2 : float
+    + populationSizeInBillions : float
+}
+class RegionInfo {
+    + population : int
+    + capitalCity : string
+    + description : string
+}
+class TranslationStatus {
+}
+class LocaleIcon {
+}
+enum TranslationState {
+    Initial,
+    Translated,
+    Reviewed,
+    Final,
+}
+IMetadata <|-- Continent
+IMetadata <|-- RegionInfo
+IMetadata <|-- TranslationStatus
+TranslationStatus o-> "translationStatus" TranslationState
+IMetadata <|-- LocaleIcon
+LocaleIcon --> "icon" Texture
+TranslationStatus +-- TranslationState
+@enduml

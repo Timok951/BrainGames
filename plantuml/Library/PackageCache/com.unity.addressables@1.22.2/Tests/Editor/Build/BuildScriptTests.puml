@@ -1,0 +1,41 @@
+@startuml
+class BuildScriptTests {
+    + BuildScriptBase_FailsCanBuildData() : void
+    + BuildScript_DoesNotBuildWrongDataType() : void
+    + GetNameWithHashNaming_ReturnsNoChangeIfNoHash() : void
+    + GetNameWithHashNaming_CanAppendHash() : void
+    + GetNameWithHashNaming_CanReplaceFileNameWithHash() : void
+    + GetNameWithHashNaming_CanReplaceFileNameWithFileNameHash() : void
+    + BuildScriptBaseWriteBuildLog_WhenDirectoryDoesNotExist_DirectoryCreated() : void
+    + Building_CreatesPerformanceReportWithMetaData() : void
+    + Build_WithInvalidAssetInResourcesFolder_Succeeds() : void
+    + Build_GroupWithPlayerDataGroupSchemaAndBundledAssetGroupSchema_LogsError() : void
+    + WhenBundleLocalCatalogEnabled_BuildScriptPacked_DoesNotCreatePerformanceLogReport() : void
+    + Build_WithDeletedAsset_Succeeds() : void
+    + WhenAddressHasSquareBrackets_AndContentCatalogsAreCreated_BuildFails() : void
+    + WhenFileTypeIsInvalid_AndContentCatalogsAreCreated_BuildFails() : void
+    + WhenFileTypeIsInvalid_AndContentCatalogsAreCreated_IgnoreUnsupportedFilesInBuildIsSet_BuildSucceedWithWarning() : void
+    + WhenLoadPathUsesHttp_AndInsecureHttpNotAllowed_BuildLogsWarning() : void
+    + WhenLoadPathUsesHttp_AndInsecureHttpAllowed_BuildSucceeds() : void
+}
+class StreamingAssetTests {
+    + Setup() : void
+    + TearDown() : void
+    + ClearCachedData_CleansStreamingAssetFolder() : void
+    + Folder_WithSubAssets_GetsBundleFileIdAssigned_DuringBuild() : void
+    + Folder_WithNoSubAssets_DoesNotThrowErrorDuringBuild() : void
+    + Folder_DoesNotAssignBundleFileId_ForDynamicallyCreatedSubEntries() : void
+    + CopiedStreamingAssetAreCorrectlyDeleted_DirectoriesWithoutImport() : void
+    + CopiedStreamingAssetAreCorrectlyDeleted_MetaFilesWithImport() : void
+    + CopiedStreamingAssetAreCorrectlyDeleted_WithExistingFiles() : void
+}
+class BuildScriptTestClass {
+    + <<override>> Name : string <<get>>
+    + <<override>> CanBuildData() : bool
+}
+AddressableAssetTestBase <|-- BuildScriptTests
+BuildScriptTests +-- StreamingAssetTests
+AddressableAssetTestBase <|-- StreamingAssetTests
+BuildScriptTests +-- BuildScriptTestClass
+BuildScriptBase <|-- BuildScriptTestClass
+@enduml

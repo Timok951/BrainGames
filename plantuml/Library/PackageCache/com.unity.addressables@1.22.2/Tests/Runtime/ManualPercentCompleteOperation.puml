@@ -1,0 +1,12 @@
+@startuml
+class ManualPercentCompleteOperation {
+    + ManualPercentCompleteOperation(percentComplete:float)
+    + ManualPercentCompleteOperation(status:DownloadStatus)
+    + ManualPercentCompleteOperation(percentComplete:float, status:DownloadStatus)
+    + m_PercentComplete : float
+}
+class "AsyncOperationBase`1"<T> {
+}
+"AsyncOperationBase`1" "<GameObject>" <|-- ManualPercentCompleteOperation
+ManualPercentCompleteOperation --> "m_DownloadStatus" DownloadStatus
+@enduml

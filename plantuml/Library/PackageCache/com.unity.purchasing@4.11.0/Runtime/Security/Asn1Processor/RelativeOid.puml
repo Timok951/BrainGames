@@ -1,0 +1,8 @@
+@startuml
+class RelativeOid {
+    + RelativeOid()
+    + <<override>> Encode(bt:Stream, oidStr:string) : void
+    + <<override>> Decode(bt:Stream) : string
+}
+Oid <|-- RelativeOid
+@enduml

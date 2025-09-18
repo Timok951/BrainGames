@@ -1,0 +1,8 @@
+@startuml
+class BuildScriptPackedIntegrationTests {
+    + Setup() : void
+    + TearDown() : void
+    + IncrementalBuild_WhenBundleTimestampUnchanged_DoesNotCopy() : void
+    + IncrementalBuild_WhenBundleTimestampChanges_CopiesNewFile() : void
+}
+@enduml

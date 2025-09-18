@@ -1,0 +1,14 @@
+@startuml
+class DBManager <<static>> {
+    + {static} nick : string
+    + {static} email : string
+    + {static} levelscore : int
+    + {static} infinityscore : int
+    + {static} colorsortLevels : int
+    + {static} connectLevels : int
+    + {static} pipesLevels : int
+    + {static} LoggedIn : bool <<get>>
+    + {static} LoggedOut() : void
+    + {static} InitializeFromPrefs() : void
+}
+@enduml

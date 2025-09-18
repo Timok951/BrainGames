@@ -1,0 +1,7 @@
+@startuml
+class UnityPatchProjectV1Request {
+    + UnityPatchProjectV1Request(name:string, iconUrl:string)
+    + Name : string <<get>>
+    + IconUrl : string <<get>>
+}
+@enduml

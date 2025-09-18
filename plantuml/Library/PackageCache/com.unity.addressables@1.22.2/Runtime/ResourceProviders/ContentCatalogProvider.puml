@@ -1,0 +1,30 @@
+@startuml
+class ContentCatalogProvider {
+    + DisableCatalogUpdateOnStart : bool = false
+    + IsLocalCatalogInBundle : bool = false
+    + ContentCatalogProvider(resourceManagerInstance:ResourceManager)
+    + <<override>> Release(location:IResourceLocation, obj:object) : void
+    + <<override>> Provide(providerInterface:ProvideHandle) : void
+}
+enum DependencyHashIndex {
+    Remote= 0,
+    Cache,
+    Count,
+}
+class InternalOp {
+    + Start(providerInterface:ProvideHandle, disableCatalogUpdateOnStart:bool, isLocalCatalogInBundle:bool) : void
+    + Release() : void
+}
+class BundledCatalog {
+    +  <<event>> OnLoaded : Action<ContentCatalogData> 
+    + OpInProgress : bool <<get>>
+    + OpIsSuccess : bool <<get>>
+    + BundledCatalog(bundlePath:string, webRequestTimeout:int)
+    + LoadCatalogFromBundleAsync() : void
+    + WaitForCompletion() : bool
+}
+ResourceProviderBase <|-- ContentCatalogProvider
+ContentCatalogProvider +-- DependencyHashIndex
+ContentCatalogProvider +-- InternalOp
+InternalOp +-- BundledCatalog
+@enduml

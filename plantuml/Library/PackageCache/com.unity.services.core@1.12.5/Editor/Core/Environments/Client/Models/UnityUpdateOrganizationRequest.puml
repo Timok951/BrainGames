@@ -1,0 +1,36 @@
+@startuml
+class UnityUpdateOrganizationRequest {
+    + UnityUpdateOrganizationRequest(name:string, industryType:IndustryTypeOptions)
+    + Name : string <<get>>
+}
+enum IndustryTypeOptions {
+    Architecture= 1,
+    Aerospace= 2,
+    Automotive= 3,
+    Construction= 4,
+    ConsumerElectronics= 5,
+    ConsumerPackagedGoods= 6,
+    DrugsPharmaceuticals= 7,
+    Education= 8,
+    Engineering= 9,
+    Entertainment= 10,
+    Gambling= 11,
+    Gaming= 12,
+    Government= 13,
+    IndustrialMachinery= 14,
+    Manufacturing= 15,
+    OilGas= 16,
+    Retail= 17,
+    Student= 18,
+    Telecom= 19,
+    Transportation= 20,
+    Other= 21,
+    Games= 22,
+    MediaEntertainment= 23,
+    ArchitectureEngineeringConstruction= 24,
+    AutoTransportationManufacturing= 25,
+    PlatformPartner= 26,
+}
+UnityUpdateOrganizationRequest --> "IndustryType" IndustryTypeOptions
+UnityUpdateOrganizationRequest +-- IndustryTypeOptions
+@enduml

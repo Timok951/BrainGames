@@ -1,0 +1,9 @@
+@startuml
+class SpriteImporterData {
+    + PackedSprite : bool <<get>> <<set>>
+}
+interface IBuildSpriteData {
+}
+SpriteImporterData --> "SourceTexture" ObjectIdentifier
+IContextObject <|-- IBuildSpriteData
+@enduml

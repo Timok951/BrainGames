@@ -1,0 +1,10 @@
+@startuml
+class Pipe {
+    + IsFilled : bool
+    + PipeType : int
+    + UpdateInput() : void
+    + UpdateFilled() : void
+    + ConnectedPipes() : List<Pipe>
+}
+MonoBehaviour <|-- Pipe
+@enduml

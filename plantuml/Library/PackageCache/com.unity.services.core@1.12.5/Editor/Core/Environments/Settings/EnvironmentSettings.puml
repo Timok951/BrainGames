@@ -1,0 +1,7 @@
+@startuml
+class EnvironmentSettings {
+    + EnvironmentName : string
+    + EnvironmentSettings()
+    + EnvironmentSettings(environmentName:string)
+}
+@enduml

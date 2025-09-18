@@ -1,0 +1,11 @@
+@startuml
+class TestUtility {
+    + {static} InstantiatePrefab(prefab:GameObject, name:string) : GameObject
+    + {static} BakeNavMeshAsync(surface:NavMeshSurface, defaultArea:int) : IEnumerator
+    + {static} EliminateFromScene(go:GameObject, keepDeactivated:bool) : void
+}
+enum RunMode {
+    EditMode,
+    PlayMode,
+}
+@enduml

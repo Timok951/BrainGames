@@ -1,0 +1,9 @@
+@startuml
+interface "IReadOnlyObservable`1"<out T> {
+}
+class "IReadOnlyList`1"<T> {
+}
+"IReadOnlyList`1" "<T>" <|-- "IReadOnlyObservable`1"
+INotifyCollectionChanged <|-- "IReadOnlyObservable`1"
+IDisposable <|-- "IReadOnlyObservable`1"
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+class GenerateLinkXml {
+    + Version : int <<get>>
+    + Run() : ReturnCode
+}
+IBuildTask <|-- GenerateLinkXml
+@enduml

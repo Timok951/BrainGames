@@ -1,0 +1,7 @@
+@startuml
+class FakeTransactionHistoryExtensions {
+    + GetLastPurchaseFailureDescription() : PurchaseFailureDescription
+    + GetLastStoreSpecificPurchaseErrorCode() : StoreSpecificPurchaseErrorCode
+}
+ITransactionHistoryExtensions <|-- FakeTransactionHistoryExtensions
+@enduml

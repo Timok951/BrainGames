@@ -1,0 +1,50 @@
+@startuml
+class DownloadOnlyLocation {
+    + DownloadOnlyLocation(location:IResourceLocation)
+}
+enum AssetLoadMode {
+    RequestedAssetAndDependencies= 0,
+    AllPackedAssetsAndDependencies,
+}
+interface IAssetBundleResource {
+}
+class AssetBundleRequestOptions {
+    + Hash : string <<get>> <<set>>
+    + Crc : uint <<get>> <<set>>
+    + Timeout : int <<get>> <<set>>
+    + ChunkedTransfer : bool <<get>> <<set>>
+    + RedirectLimit : int <<get>> <<set>>
+    + RetryCount : int <<get>> <<set>>
+    + BundleName : string <<get>> <<set>>
+    + BundleSize : long <<get>> <<set>>
+    + UseCrcForCachedBundle : bool <<get>> <<set>>
+    + UseUnityWebRequestForLocalBundles : bool <<get>> <<set>>
+    + ClearOtherCachedVersionsWhenLoaded : bool <<get>> <<set>>
+    + <<virtual>> ComputeSize(location:IResourceLocation, resourceManager:ResourceManager) : long
+}
+class AssetBundleResource {
+    + GetAssetPreloadRequest() : AssetBundleRequest
+    + GetAssetBundle() : AssetBundle
+    + Start(provideHandle:ProvideHandle) : void
+    + {static} GetLoadInfo(handle:ProvideHandle, loadType:LoadType, path:string) : void
+    + Update(unscaledDeltaTime:float) : void
+    + Unload() : void
+}
+class AssetBundleProvider {
+    + <<override>> Provide(providerInterface:ProvideHandle) : void
+    + <<override>> GetDefaultType(location:IResourceLocation) : Type
+    + <<override>> Release(location:IResourceLocation, asset:object) : void
+}
+enum LoadType {
+    None,
+    Local,
+    Web,
+}
+LocationWrapper <|-- DownloadOnlyLocation
+ILocationSizeData <|-- AssetBundleRequestOptions
+AssetBundleRequestOptions --> "AssetLoadMode" AssetLoadMode
+IAssetBundleResource <|-- AssetBundleResource
+IUpdateReceiver <|-- AssetBundleResource
+ResourceProviderBase <|-- AssetBundleProvider
+AssetBundleResource +-- LoadType
+@enduml

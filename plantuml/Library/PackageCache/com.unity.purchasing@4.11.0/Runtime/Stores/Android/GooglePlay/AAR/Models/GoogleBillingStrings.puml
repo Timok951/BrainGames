@@ -1,0 +1,4 @@
+@startuml
+class GoogleBillingStrings <<static>> {
+}
+@enduml

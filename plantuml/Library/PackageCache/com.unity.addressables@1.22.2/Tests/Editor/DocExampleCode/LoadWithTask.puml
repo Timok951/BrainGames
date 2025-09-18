@@ -1,0 +1,11 @@
+@startuml
+class LoadWithTask {
+    + <<async>> Start() : void
+}
+class LoadSequence {
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- LoadWithTask
+LoadWithTask o-> "keys<string>" "List`1"
+@enduml

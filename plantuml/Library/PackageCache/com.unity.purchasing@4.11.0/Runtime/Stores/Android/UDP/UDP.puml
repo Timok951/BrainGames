@@ -1,0 +1,5 @@
+@startuml
+class UDP {
+    + {static} Name : string <<get>>
+}
+@enduml

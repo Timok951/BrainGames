@@ -1,0 +1,5 @@
+@startuml
+class LevelButtonConnect {
+}
+MonoBehaviour <|-- LevelButtonConnect
+@enduml

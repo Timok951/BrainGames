@@ -1,0 +1,65 @@
+@startuml
+interface IInitializableObject {
+}
+interface IObjectInitializationDataProvider {
+}
+interface IAllocationStrategy {
+}
+class DefaultAllocationStrategy {
+    + New(type:Type, typeHash:int) : object
+    + Release(typeHash:int, obj:object) : void
+}
+class LRUCacheAllocationStrategy {
+    + LRUCacheAllocationStrategy(poolMaxSize:int, poolCapacity:int, poolCacheMaxSize:int, initialPoolCacheCapacity:int)
+    + New(type:Type, typeHash:int) : object
+    + Release(typeHash:int, obj:object) : void
+}
+class SerializedTypeRestrictionAttribute {
+}
+class "LinkedListNodeCache`1"<T> {
+    + Acquire(val:T) : LinkedListNode<T>
+    + Release(node:LinkedListNode<T>) : void
+}
+class "GlobalLinkedListNodeCache`1"<T> <<static>> {
+    + {static} CacheExists : bool <<get>>
+    + {static} SetCacheSize(length:int) : void
+    + {static} Acquire(val:T) : LinkedListNode<T>
+    + {static} Release(node:LinkedListNode<T>) : void
+}
+struct SerializedType {
+    + AssemblyName : string <<get>>
+    + ClassName : string <<get>>
+    + <<override>> ToString() : string
+    + ValueChanged : bool <<get>> <<set>>
+}
+struct ObjectInitializationData {
+    + Id : string <<get>>
+    + Data : string <<get>>
+    + <<override>> ToString() : string
+    + CreateInstance(idOverride:string) : TObject
+    + GetAsyncInitHandle(rm:ResourceManager, idOverride:string) : AsyncOperationHandle
+}
+class ResourceManagerConfig <<static>> {
+    + {static} ExtractKeyAndSubKey(keyObj:object, mainKey:string, subKey:string) : bool
+    + {static} IsPathRemote(path:string) : bool
+    + {static} StripQueryParameters(path:string) : string
+    + {static} ShouldPathUseWebRequest(path:string) : bool
+    + {static} CreateArrayResult(type:Type, allAssets:Object[]) : Array
+    + {static} CreateArrayResult(allAssets:Object[]) : TObject
+    + {static} CreateListResult(type:Type, allAssets:Object[]) : IList
+    + {static} CreateListResult(allAssets:Object[]) : TObject
+    + {static} IsInstance() : bool
+}
+enum BundleSource {
+    None= 0,
+    Local= 1,
+    Cache= 2,
+    Download= 4,
+}
+IAllocationStrategy <|-- DefaultAllocationStrategy
+IAllocationStrategy <|-- LRUCacheAllocationStrategy
+Attribute <|-- SerializedTypeRestrictionAttribute
+SerializedTypeRestrictionAttribute --> "type" Type
+SerializedType --> "Value" Type
+ObjectInitializationData --> "ObjectType" SerializedType
+@enduml

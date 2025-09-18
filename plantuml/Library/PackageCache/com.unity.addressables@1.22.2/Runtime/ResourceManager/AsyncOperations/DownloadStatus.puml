@@ -1,0 +1,8 @@
+@startuml
+struct DownloadStatus {
+    + TotalBytes : long
+    + DownloadedBytes : long
+    + IsDone : bool
+    + Percent : float <<get>>
+}
+@enduml

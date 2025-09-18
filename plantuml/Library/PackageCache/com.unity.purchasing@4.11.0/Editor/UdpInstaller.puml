@@ -1,0 +1,10 @@
+@startuml
+class UdpInstaller {
+}
+class UdpInstallInstructionsWindow {
+}
+class UdpDeprecatedDisclaimerWindow {
+}
+RichEditorWindow <|-- UdpInstallInstructionsWindow
+RichEditorWindow <|-- UdpDeprecatedDisclaimerWindow
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+enum AddressablesPlatform {
+    Unknown,
+    Windows,
+    OSX,
+    Linux,
+    PS4,
+    Switch,
+    XboxOne,
+    WebGL,
+    iOS,
+    Android,
+    WindowsUniversal,
+}
+class PlatformMappingService {
+    + {static} GetPlatform() : AddressablesPlatform
+    + {static} GetPlatformPathSubFolder() : string
+}
+@enduml

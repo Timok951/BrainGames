@@ -1,0 +1,6 @@
+@startuml
+class GooglePurchasesResponseListener {
+    + onQueryPurchasesResponse(billingResult:AndroidJavaObject, purchases:AndroidJavaObject) : void
+}
+AndroidJavaProxy <|-- GooglePurchasesResponseListener
+@enduml

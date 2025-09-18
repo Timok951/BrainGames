@@ -1,0 +1,9 @@
+@startuml
+class AssetLabelReference {
+    + labelString : string <<get>> <<set>>
+    + RuntimeKey : object <<get>>
+    + RuntimeKeyIsValid() : bool
+    + <<override>> GetHashCode() : int
+}
+IKeyEvaluator <|-- AssetLabelReference
+@enduml

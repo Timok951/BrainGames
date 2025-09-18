@@ -1,0 +1,5 @@
+@startuml
+class JsonSerialization {
+    + TestTokenStruct_JsonUtility() : void
+}
+@enduml

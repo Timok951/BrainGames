@@ -1,0 +1,24 @@
+@startuml
+class LocaleGeneratorListView {
+    + SelectedCount : int <<get>> <<set>>
+    + LocaleGeneratorListView()
+    + SelectLocales(enable:bool) : void
+    + GetSelectedLocales() : List<LocaleIdentifier>
+}
+class LocaleTreeViewItem {
+    + inProject : bool
+    + enabled : bool
+}
+enum Column {
+    Name,
+    Code,
+}
+class "List`1"<T> {
+}
+TreeView <|-- LocaleGeneratorListView
+LocaleGeneratorListView --> "Items<LocaleIdentifier>" "List`1"
+LocaleGeneratorListView +-- LocaleTreeViewItem
+TreeViewItem <|-- LocaleTreeViewItem
+LocaleTreeViewItem --> "identifier" LocaleIdentifier
+LocaleGeneratorListView +-- Column
+@enduml

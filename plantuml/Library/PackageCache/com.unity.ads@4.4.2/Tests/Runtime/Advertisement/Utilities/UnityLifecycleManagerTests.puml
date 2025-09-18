@@ -1,0 +1,20 @@
+@startuml
+class UnityLifecycleManagerTests {
+    + Setup() : void
+    + TearDown() : void
+    + TestReferenceCount() : void
+    + GameObjectExists() : void
+    + GameObjectDestroyed() : void
+    + CheckGameObject() : void
+    + OnlyOwnerShouldDestroyObject() : void
+    + GameObjectExistsWithNoComponent() : IEnumerator
+    + KeepsObjectWhenNewSceneLoaded() : IEnumerator
+    + CoroutineExecutorRunsCoroutines() : IEnumerator
+    + CoroutineExecutorRunsCoroutinesAfterBeingDestroyed() : IEnumerator
+    + CoroutineExecutorCanRunAction() : IEnumerator
+    + CoroutineExecutorRunsActionsAfterBeingDestroyed() : IEnumerator
+    + JungleRunnerRegression() : IEnumerator
+    + JungleRunnerRegression_Post() : IEnumerator
+    + SetOnApplicationQuitCallback() : IEnumerator
+}
+@enduml

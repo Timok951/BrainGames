@@ -1,0 +1,17 @@
+@startuml
+class GoogleBillingClient {
+    + SetObfuscationAccountId(obfuscationAccountId:string) : void
+    + SetObfuscationProfileId(obfuscationProfileId:string) : void
+    + StartConnection(billingClientStateListener:IBillingClientStateListener) : void
+    + EndConnection() : void
+    + IsReady() : bool
+    + GetConnectionState() : GoogleBillingConnectionState
+    + QueryPurchasesAsync(skuType:string, onQueryPurchasesResponse:Action<IGoogleBillingResult, IEnumerable<AndroidJavaObject>>) : void
+    + QuerySkuDetailsAsync(skus:List<string>, type:string, onSkuDetailsResponseAction:Action<IGoogleBillingResult, List<AndroidJavaObject>>) : void
+    + LaunchBillingFlow(sku:AndroidJavaObject, oldPurchaseToken:string, prorationMode:GooglePlayProrationMode?) : AndroidJavaObject
+    + ConsumeAsync(purchaseToken:string, onConsume:Action<IGoogleBillingResult>) : void
+    + AcknowledgePurchase(purchaseToken:string, onAcknowledge:Action<IGoogleBillingResult>) : void
+    + LaunchPriceChangeConfirmationFlow(skuDetails:AndroidJavaObject, listener:GooglePriceChangeConfirmationListener) : void
+}
+IGoogleBillingClient <|-- GoogleBillingClient
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+class LoadWithLocation {
+}
+class LoadLocations {
+}
+class "Dictionary`2"<T1,T2> {
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- LoadWithLocation
+LoadWithLocation --> "operationDictionary<string,AsyncOperationHandle<GameObject>>" "Dictionary`2"
+LoadWithLocation --> "keys<string>" "List`1"
+LoadWithLocation --> "Ready" UnityEvent
+@enduml

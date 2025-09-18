@@ -1,0 +1,42 @@
+@startuml
+class AddressableAssetUtility <<static>> {
+    + {static} Append(thisHash:Hash128, val:string) : void
+    + {static} Append(thisHash:Hash128, val:int) : void
+    + {static} Append(thisHash:Hash128, vals:Hash128[]) : void
+    + {static} Append(thisHash:Hash128, val:T) : void
+    + {static} GetTypes() : List<Type>
+    + {static} GetTypes(rootType:Type) : List<Type>
+    + {static} GenerateDocsURL(page:string) : string
+}
+class TypeManager {
+    + {static} GetManagerTypes(rootType:Type) : List<Type>
+}
+class "TypeManager`1"<T> {
+}
+struct PackageData {
+    + version : string
+}
+class "SortedDelegate`4"<T1,T2,T3,T4> {
+    + Unregister(toUnregister:Delegate) : void
+    + Register(toRegister:Delegate, order:int) : void
+    + Invoke(arg1:T1, arg2:T2, arg3:T3, arg4:T4) : void
+    + TryInvokeOrDelayToReady(arg1:T1, arg2:T2, arg3:T3, arg4:T4) : void
+    + <<override>> Equals(obj:object) : bool
+    + <<override>> GetHashCode() : int
+}
+class "List`1"<T> {
+}
+struct QueuedValues {
+}
+AddressableAssetUtility +-- TypeManager
+AddressableAssetUtility +-- "TypeManager`1"
+TypeManager <|-- "TypeManager`1"
+"TypeManager`1" --> "Types<Type>" "List`1"
+AddressableAssetUtility +-- PackageData
+AddressableAssetUtility +-- "SortedDelegate`4"
+"SortedDelegate`4" +-- QueuedValues
+QueuedValues --> "arg1" T1
+QueuedValues --> "arg2" T2
+QueuedValues --> "arg3" T3
+QueuedValues --> "arg4" T4
+@enduml

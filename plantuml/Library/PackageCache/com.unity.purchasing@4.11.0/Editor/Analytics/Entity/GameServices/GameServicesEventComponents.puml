@@ -1,0 +1,4 @@
+@startuml
+class GameServicesEventComponents <<static>> {
+}
+@enduml

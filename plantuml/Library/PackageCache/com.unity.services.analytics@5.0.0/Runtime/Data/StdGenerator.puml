@@ -1,0 +1,25 @@
+@startuml
+interface IDataGenerator {
+}
+class DataGenerator {
+    + SetBuffer(buffer:IBuffer) : void
+    + SdkStartup(datetime:DateTime, commonParams:StdCommonParams, callingMethodIdentifier:string) : void
+    + GameRunning(datetime:DateTime, commonParams:StdCommonParams, callingMethodIdentifier:string) : void
+    + NewPlayer(datetime:DateTime, commonParams:StdCommonParams, callingMethodIdentifier:string, deviceModel:string) : void
+    + GameStarted(datetime:DateTime, commonParams:StdCommonParams, callingMethodIdentifier:string, idLocalProject:string, osVersion:string, isTiny:bool, debugDevice:bool, userLocale:string) : void
+    + GameEnded(datetime:DateTime, commonParams:StdCommonParams, callingMethodIdentifier:string, quitState:SessionEndState) : void
+    + AdImpression(datetime:DateTime, commonParams:StdCommonParams, callingMethodIdentifier:string, adImpressionParameters:AdImpressionParameters) : void
+    + AcquisitionSource(datetime:DateTime, commonParams:StdCommonParams, callingMethodIdentifier:string, acquisitionSourceParameters:AcquisitionSourceParameters) : void
+    + Transaction(datetime:DateTime, commonParams:StdCommonParams, callingMethodIdentifier:string, transactionParameters:TransactionParameters) : void
+    + TransactionFailed(datetime:DateTime, commonParams:StdCommonParams, callingMethodIdentifier:string, parameters:TransactionFailedParameters) : void
+    + ClientDevice(datetime:DateTime, commonParams:StdCommonParams, callingMethodIdentifier:string, cpuType:string, gpuType:string, cpuCores:Int64, ramTotal:Int64, screenWidth:Int64, screenHeight:Int64, screenDPI:Int64) : void
+}
+enum SessionEndState {
+    PAUSED,
+    KILLEDINBACKGROUND,
+    KILLEDINFOREGROUND,
+    QUIT,
+}
+IDataGenerator <|-- DataGenerator
+DataGenerator +-- SessionEndState
+@enduml

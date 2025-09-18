@@ -1,0 +1,6 @@
+@startuml
+class CustomTestSchemaSubClass {
+    + customField2 : string = null
+}
+CustomTestSchema <|-- CustomTestSchemaSubClass
+@enduml

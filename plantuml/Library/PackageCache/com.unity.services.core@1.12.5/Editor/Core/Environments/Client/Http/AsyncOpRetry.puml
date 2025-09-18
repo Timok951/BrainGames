@@ -1,0 +1,11 @@
+@startuml
+class AsyncOpRetry <<static>> {
+    + {static} FromCreateAsync(op:Func<int, T>) : AsyncOpRetry<T>
+}
+class "AsyncOpRetry`1"<T> {
+    + {static} FromCreateAsync(op:Func<int, T>) : AsyncOpRetry<T>
+    + WithRetryCondition(shouldRetry:Func<T, bool>) : AsyncOpRetry<T>
+    + WhenComplete(onComplete:Action<T>) : AsyncOpRetry<T>
+    + Run() : IEnumerator
+}
+@enduml

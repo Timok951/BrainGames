@@ -1,0 +1,16 @@
+@startuml
+class AddressablesDataBuilderInput {
+    + PlayerVersion : string <<get>> <<set>>
+    + ProfilerEventsEnabled : bool <<get>>
+    + PathSuffix : string
+    + RuntimeSettingsFilename : string = "settings.json"
+    + RuntimeCatalogFilename : string = "catalog.json"
+    + AddressablesDataBuilderInput(settings:AddressableAssetSettings)
+    + AddressablesDataBuilderInput(settings:AddressableAssetSettings, playerBuildVersion:string)
+}
+AddressablesDataBuilderInput --> "AddressableSettings" AddressableAssetSettings
+AddressablesDataBuilderInput --> "TargetGroup" BuildTargetGroup
+AddressablesDataBuilderInput --> "Target" BuildTarget
+AddressablesDataBuilderInput --> "Registry" FileRegistry
+AddressablesDataBuilderInput --> "PreviousContentState" AddressablesContentState
+@enduml

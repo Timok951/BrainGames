@@ -1,0 +1,6 @@
+@startuml
+enum PurchaseProcessingResult {
+    Complete,
+    Pending,
+}
+@enduml

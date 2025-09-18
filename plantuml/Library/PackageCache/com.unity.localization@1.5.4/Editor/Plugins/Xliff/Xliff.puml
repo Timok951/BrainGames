@@ -1,0 +1,27 @@
+@startuml
+class Xliff <<static>> {
+    + {static} Export(source:LocaleIdentifier, directory:string, name:string, version:XliffVersion, collections:ICollection<StringTableCollection>, reporter:ITaskReporter) : void
+    + {static} Export(sourceLanguage:StringTable, directory:string, version:XliffVersion, tables:ICollection<StringTable>, reporter:ITaskReporter) : void
+    + {static} CreateDocument(source:LocaleIdentifier, target:LocaleIdentifier, version:XliffVersion) : IXliffDocument
+    + {static} AddTableToDocument(document:IXliffDocument, source:StringTable, target:StringTable) : void
+    + {static} ImportDirectory(directory:string, importOptions:ImportOptions, reporter:ITaskReporter) : void
+    + {static} ImportFile(file:string, importOptions:ImportOptions, reporter:ITaskReporter) : void
+    + {static} ImportDocument(document:IXliffDocument, importOptions:ImportOptions, reporter:ITaskReporter) : void
+    + {static} ImportFileIntoCollection(collection:StringTableCollection, file:string, importOptions:ImportOptions, reporter:ITaskReporter) : void
+    + {static} ImportFileIntoTable(file:string, target:StringTable, importNotesBehavior:ImportNotesBehavior, reporter:ITaskReporter) : void
+    + {static} ImportDocumentIntoTable(document:IXliffDocument, target:StringTable, importNotesBehavior:ImportNotesBehavior, reporter:ITaskReporter) : void
+}
+enum ImportNotesBehavior {
+    Ignore,
+    Replace,
+    Merge,
+}
+class ImportOptions {
+    + UpdateSourceTable : bool <<get>> <<set>> = true
+    + UpdateTargetTable : bool <<get>> <<set>> = true
+    + NewCollectionDirectory : string <<get>> <<set>>
+}
+Xliff +-- ImportNotesBehavior
+Xliff +-- ImportOptions
+ImportOptions o-> "ImportNotes" ImportNotesBehavior
+@enduml

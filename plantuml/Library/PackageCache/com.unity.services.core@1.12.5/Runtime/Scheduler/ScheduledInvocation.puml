@@ -1,0 +1,7 @@
+@startuml
+class ScheduledInvocation {
+    + ActionId : long
+}
+ScheduledInvocation --> "Action" Action
+ScheduledInvocation --> "InvocationTime" DateTime
+@enduml

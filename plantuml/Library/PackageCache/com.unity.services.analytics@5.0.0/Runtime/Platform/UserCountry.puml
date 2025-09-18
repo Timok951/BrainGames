@@ -1,0 +1,5 @@
+@startuml
+class UserCountry <<static>> {
+    + {static} Name() : string
+}
+@enduml

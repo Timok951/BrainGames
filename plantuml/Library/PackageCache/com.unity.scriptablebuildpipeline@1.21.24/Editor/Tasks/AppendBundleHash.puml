@@ -1,0 +1,7 @@
+@startuml
+class AppendBundleHash {
+    + Version : int <<get>>
+    + Run() : ReturnCode
+}
+IBuildTask <|-- AppendBundleHash
+@enduml

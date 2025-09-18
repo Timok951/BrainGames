@@ -1,0 +1,5 @@
+@startuml
+interface IHttpClient {
+}
+IServiceComponent <|-- IHttpClient
+@enduml

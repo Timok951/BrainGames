@@ -1,0 +1,95 @@
+@startuml
+class AddressablesImpl {
+    + CatalogRequestsTimeout : int <<get>> <<set>>
+    + AddressablesImpl(alloc:IAllocationStrategy)
+    + StreamingAssetsSubFolder : string <<get>>
+    + BuildPath : string <<get>>
+    + PlayerBuildDataPath : string <<get>>
+    + RuntimePath : string <<get>>
+    + Log(msg:string) : void
+    + LogFormat(format:string, args:object[]) : void
+    + LogWarning(msg:string) : void
+    + LogWarningFormat(format:string, args:object[]) : void
+    + LogError(msg:string) : void
+    + LogException(op:AsyncOperationHandle, ex:Exception) : void
+    + LogException(ex:Exception) : void
+    + LogErrorFormat(format:string, args:object[]) : void
+    + ResolveInternalId(id:string) : string
+    + AddResourceLocator(loc:IResourceLocator, localCatalogHash:string, remoteCatalogLocation:IResourceLocation) : void
+    + RemoveResourceLocator(loc:IResourceLocator) : void
+    + ClearResourceLocators() : void
+    + InitializeAsync(runtimeDataPath:string, providerSuffix:string, autoReleaseHandle:bool) : AsyncOperationHandle<IResourceLocator>
+    + InitializeAsync() : AsyncOperationHandle<IResourceLocator>
+    + InitializeAsync(autoReleaseHandle:bool) : AsyncOperationHandle<IResourceLocator>
+    + CreateCatalogLocationWithHashDependencies(catalogLocation:IResourceLocation) : ResourceLocationBase
+    + CreateCatalogLocationWithHashDependencies(catalogLocation:string) : ResourceLocationBase
+    + CreateCatalogLocationWithHashDependencies(catalogPath:string, hashFilePath:string) : ResourceLocationBase
+    + LoadContentCatalogAsync(catalogPath:string, autoReleaseHandle:bool, providerSuffix:string) : AsyncOperationHandle<IResourceLocator>
+    + LoadAssetAsync(location:IResourceLocation) : AsyncOperationHandle<TObject>
+    + LoadAssetAsync(key:object) : AsyncOperationHandle<TObject>
+    + LoadResourceLocationsWithChain(dep:AsyncOperationHandle, keys:IEnumerable, mode:Addressables.MergeMode, type:Type) : AsyncOperationHandle<IList<IResourceLocation>>
+    + LoadResourceLocationsAsync(keys:IEnumerable, mode:Addressables.MergeMode, type:Type) : AsyncOperationHandle<IList<IResourceLocation>>
+    + LoadResourceLocationsWithChain(dep:AsyncOperationHandle, key:object, type:Type) : AsyncOperationHandle<IList<IResourceLocation>>
+    + LoadResourceLocationsAsync(key:object, type:Type) : AsyncOperationHandle<IList<IResourceLocation>>
+    + LoadAssetsAsync(locations:IList<IResourceLocation>, callback:Action<TObject>, releaseDependenciesOnFailure:bool) : AsyncOperationHandle<IList<TObject>>
+    + LoadAssetsAsync(keys:IEnumerable, callback:Action<TObject>, mode:Addressables.MergeMode, releaseDependenciesOnFailure:bool) : AsyncOperationHandle<IList<TObject>>
+    + LoadAssetsAsync(key:object, callback:Action<TObject>, releaseDependenciesOnFailure:bool) : AsyncOperationHandle<IList<TObject>>
+    + Release(obj:TObject) : void
+    + Release(handle:AsyncOperationHandle<TObject>) : void
+    + Release(handle:AsyncOperationHandle) : void
+    + GetDownloadSizeAsync(key:object) : AsyncOperationHandle<long>
+    + GetDownloadSizeAsync(keys:IEnumerable) : AsyncOperationHandle<long>
+    + DownloadDependenciesAsync(key:object, autoReleaseHandle:bool) : AsyncOperationHandle
+    + DownloadDependenciesAsync(locations:IList<IResourceLocation>, autoReleaseHandle:bool) : AsyncOperationHandle
+    + DownloadDependenciesAsync(keys:IEnumerable, mode:Addressables.MergeMode, autoReleaseHandle:bool) : AsyncOperationHandle
+    + ClearDependencyCacheAsync(key:object, autoReleaseHandle:bool) : AsyncOperationHandle<bool>
+    + ClearDependencyCacheAsync(locations:IList<IResourceLocation>, autoReleaseHandle:bool) : AsyncOperationHandle<bool>
+    + ClearDependencyCacheAsync(keys:IEnumerable, autoReleaseHandle:bool) : AsyncOperationHandle<bool>
+    + InstantiateAsync(location:IResourceLocation, parent:Transform, instantiateInWorldSpace:bool, trackHandle:bool) : AsyncOperationHandle<GameObject>
+    + InstantiateAsync(location:IResourceLocation, position:Vector3, rotation:Quaternion, parent:Transform, trackHandle:bool) : AsyncOperationHandle<GameObject>
+    + InstantiateAsync(key:object, parent:Transform, instantiateInWorldSpace:bool, trackHandle:bool) : AsyncOperationHandle<GameObject>
+    + InstantiateAsync(key:object, position:Vector3, rotation:Quaternion, parent:Transform, trackHandle:bool) : AsyncOperationHandle<GameObject>
+    + InstantiateAsync(key:object, instantiateParameters:InstantiationParameters, trackHandle:bool) : AsyncOperationHandle<GameObject>
+    + InstantiateAsync(location:IResourceLocation, instantiateParameters:InstantiationParameters, trackHandle:bool) : AsyncOperationHandle<GameObject>
+    + ReleaseInstance(instance:GameObject) : bool
+    + LoadSceneAsync(key:object) : AsyncOperationHandle<SceneInstance>
+    + LoadSceneAsync(key:object, loadSceneParameters:LoadSceneParameters, activateOnLoad:bool, priority:int, trackHandle:bool) : AsyncOperationHandle<SceneInstance>
+    + LoadSceneAsync(location:IResourceLocation) : AsyncOperationHandle<SceneInstance>
+    + LoadSceneAsync(location:IResourceLocation, loadMode:LoadSceneMode, activateOnLoad:bool, priority:int, trackHandle:bool) : AsyncOperationHandle<SceneInstance>
+    + LoadSceneAsync(location:IResourceLocation, loadSceneParameters:LoadSceneParameters, activateOnLoad:bool, priority:int, trackHandle:bool) : AsyncOperationHandle<SceneInstance>
+    + UnloadSceneAsync(scene:SceneInstance, unloadOptions:UnloadSceneOptions, autoReleaseHandle:bool) : AsyncOperationHandle<SceneInstance>
+    + UnloadSceneAsync(handle:AsyncOperationHandle, unloadOptions:UnloadSceneOptions, autoReleaseHandle:bool) : AsyncOperationHandle<SceneInstance>
+    + UnloadSceneAsync(handle:AsyncOperationHandle<SceneInstance>, unloadOptions:UnloadSceneOptions, autoReleaseHandle:bool) : AsyncOperationHandle<SceneInstance>
+    + GetLocatorInfo(c:string) : ResourceLocatorInfo
+    + Equals(x:IResourceLocation, y:IResourceLocation) : bool
+    + GetHashCode(loc:IResourceLocation) : int
+}
+class "IEqualityComparer`1"<T> {
+}
+class "Func`2"<T1,T2> {
+}
+class "Action`1"<T> {
+}
+class "IEnumerable`1"<T> {
+}
+class LoadResourceLocationKeyOp {
+    + Init(aa:AddressablesImpl, t:Type, keys:object) : void
+}
+class LoadResourceLocationKeysOp {
+    + Init(aa:AddressablesImpl, t:Type, key:IEnumerable, mergeMode:Addressables.MergeMode) : void
+}
+class "AsyncOperationBase`1"<T> {
+}
+"IEqualityComparer`1" "<IResourceLocation>" <|-- AddressablesImpl
+AddressablesImpl --> "InstanceProvider" IInstanceProvider
+AddressablesImpl --> "SceneProvider" ISceneProvider
+AddressablesImpl --> "ResourceManager" ResourceManager
+AddressablesImpl --> "InternalIdTransformFunc<IResourceLocation,string>" "Func`2"
+AddressablesImpl --> "WebRequestOverride<UnityWebRequest>" "Action`1"
+AddressablesImpl --> "ChainOperation" AsyncOperationHandle
+AddressablesImpl --> "ResourceLocators<IResourceLocator>" "IEnumerable`1"
+AddressablesImpl +-- LoadResourceLocationKeyOp
+"AsyncOperationBase`1" "<IList<IResourceLocation>>" <|-- LoadResourceLocationKeyOp
+AddressablesImpl +-- LoadResourceLocationKeysOp
+"AsyncOperationBase`1" "<IList<IResourceLocation>>" <|-- LoadResourceLocationKeysOp
+@enduml

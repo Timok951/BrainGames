@@ -1,0 +1,26 @@
+@startuml
+abstract class "LocalizedTablePropertyDrawer`1"<TCollection> {
+    + LocalizedTablePropertyDrawer()
+    + Dispose() : void
+    + <<override>> CreatePropertyData(property:SerializedProperty) : LocalizedTablePropertyDrawerPropertyData
+    + <<override>> OnGUI(data:LocalizedTablePropertyDrawerPropertyData, position:Rect, property:SerializedProperty, label:GUIContent) : void
+    + <<override>> GetPropertyHeight(data:LocalizedTablePropertyDrawerPropertyData, property:SerializedProperty, label:GUIContent) : float
+}
+class "PropertyDrawerExtended`1"<T> {
+}
+class LocalizedTablePropertyDrawerPropertyData {
+    + warningMessageHeight : float
+    + collectionSet : bool = false
+}
+"PropertyDrawerExtended`1" "<LocalizedTablePropertyDrawer<TCollection>.LocalizedTablePropertyDrawerPropertyData>" <|-- "LocalizedTablePropertyDrawer`1"
+IDisposable <|-- "LocalizedTablePropertyDrawer`1"
+"LocalizedTablePropertyDrawer`1" +-- LocalizedTablePropertyDrawerPropertyData
+PropertyDrawerExtendedData <|-- LocalizedTablePropertyDrawerPropertyData
+LocalizedTablePropertyDrawerPropertyData --> "serializedObject" SerializedObject
+LocalizedTablePropertyDrawerPropertyData --> "tableReference" SerializedTableReference
+LocalizedTablePropertyDrawerPropertyData --> "assetType" Type
+LocalizedTablePropertyDrawerPropertyData --> "warningMessage" GUIContent
+LocalizedTablePropertyDrawerPropertyData --> "deferredCollection" TCollection
+LocalizedTablePropertyDrawerPropertyData --> "SelectedTableCollection" TCollection
+LocalizedTablePropertyDrawerPropertyData --> "FieldLabel" GUIContent
+@enduml

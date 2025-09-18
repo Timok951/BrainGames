@@ -1,0 +1,10 @@
+@startuml
+struct FoldoutSessionStateValue {
+    + FoldoutSessionStateValue(key:string)
+    + IsActive : bool <<get>> <<set>>
+}
+class AddressablesGUIUtility {
+    + {static} FoldoutWithHelp(isActive:bool, content:GUIContent, helpAction:Action) : bool
+    + {static} BeginFoldoutHeaderGroupWithHelp(isActive:bool, content:GUIContent, helpAction:Action, indent:int, menuAction:Action<Rect>) : bool
+}
+@enduml

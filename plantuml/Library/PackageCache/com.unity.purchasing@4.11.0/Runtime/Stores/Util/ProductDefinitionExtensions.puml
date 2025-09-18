@@ -1,0 +1,4 @@
+@startuml
+class ProductDefinitionExtensions <<static>> {
+}
+@enduml

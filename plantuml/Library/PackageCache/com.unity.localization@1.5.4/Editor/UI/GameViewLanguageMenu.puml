@@ -1,0 +1,11 @@
+@startuml
+class GameViewLanguageMenu {
+    + GameViewLanguageMenu()
+    + {static} Show() : void
+    + {static} Hide() : void
+    + <<override>> SetValueWithoutNotify(newValue:Locale) : void
+}
+class "PopupField`1"<T> {
+}
+"PopupField`1" "<Locale>" <|-- GameViewLanguageMenu
+@enduml

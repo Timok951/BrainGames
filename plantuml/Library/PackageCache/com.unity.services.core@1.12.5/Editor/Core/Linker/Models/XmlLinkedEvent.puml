@@ -1,0 +1,5 @@
+@startuml
+class XmlLinkedEvent {
+}
+XmlLinkedMember <|-- XmlLinkedEvent
+@enduml

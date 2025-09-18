@@ -1,0 +1,21 @@
+@startuml
+class JSONStore {
+    + JSONStore()
+    + SetNativeStore(native:INativeStore) : void
+    + <<override>> Initialize(callback:IStoreCallback) : void
+    + <<override>> RetrieveProducts(products:ReadOnlyCollection<ProductDefinition>) : void
+    + <<override>> Purchase(product:ProductDefinition, developerPayload:string) : void
+    + <<override>> FinishTransaction(product:ProductDefinition, transactionId:string) : void
+    + OnSetupFailed(reason:string) : void
+    + <<virtual>> OnProductsRetrieved(json:string) : void
+    + <<virtual>> OnPurchaseSucceeded(id:string, receipt:string, transactionID:string) : void
+    + OnPurchaseFailed(json:string) : void
+    + OnPurchaseFailed(failure:PurchaseFailureDescription, json:string) : void
+    + GetLastPurchaseFailureDescription() : PurchaseFailureDescription
+    + GetLastStoreSpecificPurchaseErrorCode() : StoreSpecificPurchaseErrorCode
+}
+AbstractStore <|-- JSONStore
+IUnityCallback <|-- JSONStore
+IStoreInternal <|-- JSONStore
+ITransactionHistoryExtensions <|-- JSONStore
+@enduml

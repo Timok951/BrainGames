@@ -1,0 +1,48 @@
+@startuml
+class "Variable`1"<T> <<partial>> {
+    +  <<event>> ValueChanged : Action<IVariable> 
+    + Value : T <<get>> <<set>>
+    + GetSourceValue(_:ISelectorInfo) : object
+    + <<override>> ToString() : string
+}
+class BoolVariable <<partial>> {
+}
+class SByteVariable <<partial>> {
+}
+class ByteVariable <<partial>> {
+}
+class ShortVariable <<partial>> {
+}
+class UShortVariable <<partial>> {
+}
+class IntVariable <<partial>> {
+}
+class UIntVariable <<partial>> {
+}
+class LongVariable <<partial>> {
+}
+class ULongVariable <<partial>> {
+}
+class StringVariable <<partial>> {
+}
+class FloatVariable <<partial>> {
+}
+class DoubleVariable <<partial>> {
+}
+class ObjectVariable <<partial>> {
+}
+IVariableValueChanged <|-- "Variable`1"
+"Variable`1" "<bool>" <|-- BoolVariable
+"Variable`1" "<sbyte>" <|-- SByteVariable
+"Variable`1" "<byte>" <|-- ByteVariable
+"Variable`1" "<short>" <|-- ShortVariable
+"Variable`1" "<ushort>" <|-- UShortVariable
+"Variable`1" "<int>" <|-- IntVariable
+"Variable`1" "<uint>" <|-- UIntVariable
+"Variable`1" "<long>" <|-- LongVariable
+"Variable`1" "<ulong>" <|-- ULongVariable
+"Variable`1" "<string>" <|-- StringVariable
+"Variable`1" "<float>" <|-- FloatVariable
+"Variable`1" "<double>" <|-- DoubleVariable
+"Variable`1" "<Object>" <|-- ObjectVariable
+@enduml

@@ -1,0 +1,8 @@
+@startuml
+class AnalyticsEventTests <<partial>> {
+    + StoreItemClick_StoreTypeTest(storeType:StoreType) : void
+    + StoreItemClick_ItemIdTest(itemId:string) : void
+    + StoreItemClick_ItemId_ItemNameTest(itemId:string, itemName:string) : void
+    + StoreItemClick_CustomDataTest() : void
+}
+@enduml

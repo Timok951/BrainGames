@@ -1,0 +1,11 @@
+@startuml
+class PreloadAssetTableMetadata {
+}
+enum PreloadBehaviour {
+    NoPreload,
+    PreloadAll,
+}
+IMetadata <|-- PreloadAssetTableMetadata
+PreloadAssetTableMetadata --> "Behaviour" PreloadBehaviour
+PreloadAssetTableMetadata +-- PreloadBehaviour
+@enduml

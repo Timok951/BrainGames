@@ -1,0 +1,9 @@
+@startuml
+class RandomValueSource {
+    + min : int = 1
+    + max : int = 5
+    + selector : string = "random"
+    + TryEvaluateSelector(selectorInfo:ISelectorInfo) : bool
+}
+ISource <|-- RandomValueSource
+@enduml

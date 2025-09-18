@@ -1,0 +1,6 @@
+@startuml
+class AnalyticsEventTests <<partial>> {
+    + TutorialSkip_TutorialIdTest(tutorialId:string) : void
+    + TutorialSkip_CustomDataTest() : void
+}
+@enduml

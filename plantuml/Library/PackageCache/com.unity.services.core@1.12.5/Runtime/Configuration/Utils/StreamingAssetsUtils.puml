@@ -1,0 +1,5 @@
+@startuml
+class StreamingAssetsUtils <<static>> {
+    + {static} GetFileTextFromStreamingAssetsAsync(path:string) : Task<string>
+}
+@enduml

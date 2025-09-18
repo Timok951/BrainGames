@@ -1,0 +1,27 @@
+@startuml
+class ContentCatalogProviderTests {
+    + ContentCatalogProviderTests()
+    + DetermineIdToLoad_IfLocalCatalogsOnly_ReturnsMainId() : void
+    + DetermineIdToLoad_IfNoDependencies_ReturnsMainId() : void
+    + DetermineIdToLoad_IfTooFewDependencies_ReturnsMainId() : void
+    + DetermineIdToLoad_IfTooManyDependencies_ReturnsMainId() : void
+    + DetermineIdToLoad_IfOfflineAndNoCache_ReturnsMainId() : void
+    + DetermineIdToLoad_IfOfflineAndHasCache_ReturnsCacheId() : void
+    + DetermineIdToLoad_IfOnlineMatchesCache_ReturnsCacheId() : void
+    + DetermineIdToLoad_IfDisableContentCatalogUpdateTrue_ForcesLocalId() : void
+    + DetermineIdToLoad_IfDisableContentCatalogUpdateTrue_ForcesCachedIdWhenLocalHashExists() : void
+    + DetermineIdToLoad_SetsLocalHash_WhenDisableContentCatalogIsTrue_AndNoLocalHashExists() : void
+    + DetermineIdToLoad_IfOnlineMismatchesCache_ReturnsRemoteId() : void
+    + BundledCatalog_LoadCatalogFromBundle_InvalidBundlePath_ShouldThrow(path:string, exceptionType:Type) : void
+    + BundledCatalog_LoadCatalogFromBundle_InvalidBundleFileFormat_ShouldFail() : IEnumerator
+    + BundledCatalog_WhenCatalogIsLocal_LoadCatalogFromBundle_ShouldLoadCatalogAndUnloadResources() : IEnumerator
+    + BundledCatalog_WhenCatalogIsRemote_LoadCatalogFromBundle_ShouldLoadCatalogAndUnloadResources() : IEnumerator
+    + BundledCatalog_WhenRemoteCatalogDoesNotExist_LoadCatalogFromBundle_LogsErrorAndOpFails() : IEnumerator
+    + BundledCatalog_LoadCatalogFromBundle_WhenCalledMultipleTimes_OpNotCompleted_FirstShouldSucceedAndOthersShouldFail() : IEnumerator
+    + BundledCatalog_LoadCatalogFromBundle_WhenCalledMultipleTimes_OpCompleted_AllShouldSucceed() : IEnumerator
+    + ContentCatalogProvider_InternalOp_LoadCatalog_InvalidId_Throws() : void
+    + BundledCatalog_WhenRequestingRemoteCatalog_CanLoadCatalogFromBundle_ReturnsExpectedResult(internalId:string, result:bool) : void
+    + BundledCatalog_WhenRequestingLocalCatalog_CanLoadCatalogFromBundle_ReturnsTrue() : void
+}
+AddressablesTestFixture <|-- ContentCatalogProviderTests
+@enduml

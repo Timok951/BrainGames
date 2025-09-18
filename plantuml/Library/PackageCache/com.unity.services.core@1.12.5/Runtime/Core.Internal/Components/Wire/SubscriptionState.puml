@@ -1,0 +1,9 @@
+@startuml
+enum SubscriptionState {
+    Unsubscribed,
+    Synced,
+    Unsynced,
+    Error,
+    Subscribing,
+}
+@enduml

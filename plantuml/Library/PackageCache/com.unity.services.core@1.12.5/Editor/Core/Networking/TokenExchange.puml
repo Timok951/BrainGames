@@ -1,0 +1,18 @@
+@startuml
+class TokenExchangeRequest {
+    + TokenExchangeRequest(token:string)
+    + TokenExchangeRequest()
+    + Token : string
+}
+class TokenExchangeResponse {
+    + Token : string
+}
+class TokenExchangeRequestError {
+    + Status : int
+    + Title : string
+    + RequestId : string
+    + Detail : string
+}
+class TokenExchange {
+}
+@enduml

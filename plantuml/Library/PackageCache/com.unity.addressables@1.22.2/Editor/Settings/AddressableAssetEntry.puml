@@ -1,0 +1,46 @@
+@startuml
+interface IReferenceEntryData {
+}
+struct ImplicitAssetEntry {
+    + AssetPath : string <<get>> <<set>>
+    + address : string <<get>> <<set>>
+    + IsInResources : bool <<get>> <<set>>
+}
+class AddressableAssetEntry {
+    + FlaggedDuringContentUpdateRestriction : bool = false
+    + IsFolder : bool <<get>> <<set>>
+    + BundleFileId : string <<get>> <<set>>
+    + guid : string <<get>>
+    + address : string <<get>> <<set>>
+    + SetAddress(addr:string, postEvent:bool) : void
+    + ReadOnly : bool <<get>> <<set>>
+    + IsInResources : bool <<get>> <<set>>
+    + IsInSceneList : bool <<get>> <<set>>
+    + IsSubAsset : bool <<get>> <<set>>
+    + IsScene : bool <<get>>
+    + SetLabel(label:string, enable:bool, force:bool, postEvent:bool) : bool
+    + CreateKeyList() : List<object>
+    + AssetPath : string <<get>>
+    + GetAssetLoadPath(isBundled:bool) : string
+    + GetAssetLoadPath(isBundled:bool, otherLoadPaths:HashSet<string>) : string
+    + GatherAllAssets(assets:List<AddressableAssetEntry>, includeSelf:bool, recurseAll:bool, includeSubObjects:bool, entryFilter:Func<AddressableAssetEntry, bool>) : void
+    + OnBeforeSerialize() : void
+    + OnAfterDeserialize() : void
+    + <<override>> ToString() : string
+    + CreateCatalogEntries(entries:List<ContentCatalogDataEntry>, isBundled:bool, providerType:string, dependencies:IEnumerable<object>, extraData:object, providerTypes:HashSet<Type>) : void
+    + CreateCatalogEntries(entries:List<ContentCatalogDataEntry>, isBundled:bool, providerType:string, dependencies:IEnumerable<object>, extraData:object, depInfo:Dictionary<GUID, AssetLoadInfo>, providerTypes:HashSet<Type>, includeAddress:bool, includeGUID:bool, includeLabels:bool, assetsInBundle:HashSet<string>) : void
+}
+class "HashSet`1"<T> {
+}
+class "List`1"<T> {
+}
+IReferenceEntryData <|-- ImplicitAssetEntry
+ImplicitAssetEntry --> "labels<string>" "HashSet`1"
+ISerializationCallbackReceiver <|-- AddressableAssetEntry
+IReferenceEntryData <|-- AddressableAssetEntry
+AddressableAssetEntry o-> "SubAssets<AddressableAssetEntry>" "List`1"
+AddressableAssetEntry --> "parentGroup" AddressableAssetGroup
+AddressableAssetEntry --> "ParentEntry" AddressableAssetEntry
+AddressableAssetEntry --> "labels<string>" "HashSet`1"
+AddressableAssetEntry --> "MainAssetType" Type
+@enduml

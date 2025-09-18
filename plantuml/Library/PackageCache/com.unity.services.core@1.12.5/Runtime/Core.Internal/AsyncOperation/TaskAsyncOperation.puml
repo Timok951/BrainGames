@@ -1,0 +1,26 @@
+@startuml
+class TaskAsyncOperation {
+    + <<override>> IsCompleted : bool <<get>>
+    + <<override>> GetResult() : void
+    + <<override>> GetAwaiter() : AsyncOperationBase
+    + TaskAsyncOperation(task:Task)
+    + {static} Run(action:Action) : TaskAsyncOperation
+}
+class "TaskAsyncOperation`1"<T> {
+    + <<override>> IsCompleted : bool <<get>>
+    + <<override>> Result : T <<get>>
+    + <<override>> GetResult() : T
+    + <<override>> GetAwaiter() : AsyncOperationBase<T>
+    + TaskAsyncOperation(task:Task<T>)
+    + {static} Run(func:Func<T>) : TaskAsyncOperation<T>
+}
+class "AsyncOperationBase`1"<T> {
+}
+AsyncOperationBase <|-- TaskAsyncOperation
+INotifyCompletion <|-- TaskAsyncOperation
+TaskAsyncOperation --> "Status" AsyncOperationStatus
+TaskAsyncOperation --> "Exception" Exception
+"AsyncOperationBase`1" "<T>" <|-- "TaskAsyncOperation`1"
+"TaskAsyncOperation`1" --> "Status" AsyncOperationStatus
+"TaskAsyncOperation`1" --> "Exception" Exception
+@enduml

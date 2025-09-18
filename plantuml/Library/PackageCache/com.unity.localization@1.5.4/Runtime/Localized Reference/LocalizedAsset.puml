@@ -1,0 +1,52 @@
+@startuml
+class LocalizedGameObject <<partial>> {
+}
+class LocalizedMesh <<partial>> {
+}
+class LocalizedMaterial <<partial>> {
+}
+class LocalizedObject <<partial>> {
+}
+class LocalizedSprite <<partial>> {
+}
+class LocalizedTexture <<partial>> {
+}
+class LocalizedFont <<partial>> {
+}
+abstract class LocalizedAssetBase <<partial>> {
+    + {abstract} LoadAssetAsObjectAsync() : AsyncOperationHandle<Object>
+    + {abstract} LoadAssetAsync() : AsyncOperationHandle<TObject>
+}
+class "LocalizedAsset`1"<TObject> <<partial>> {
+    + <<override>> WaitForCompletion : bool <<set>>
+    + HasChangeHandler : bool <<get>>
+    + LocalizedAsset()
+    + LoadAssetAsync() : AsyncOperationHandle<TObject>
+    + <<override>> LoadAssetAsync() : AsyncOperationHandle<T>
+    + <<override>> LoadAssetAsObjectAsync() : AsyncOperationHandle<Object>
+    + LoadAsset() : TObject
+}
+class "AsyncOperationHandle`1"<T> {
+}
+class ConvertToObjectOperation {
+    + Init(operation:AsyncOperationHandle<TObject>) : void
+}
+class "WaitForCurrentOperationAsyncOperationBase`1"<T> {
+}
+class "ObjectPool`1"<T> {
+}
+"LocalizedAsset`1" "<GameObject>" <|-- LocalizedGameObject
+"LocalizedAsset`1" "<Mesh>" <|-- LocalizedMesh
+"LocalizedAsset`1" "<Material>" <|-- LocalizedMaterial
+"LocalizedAsset`1" "<Object>" <|-- LocalizedObject
+"LocalizedAsset`1" "<Sprite>" <|-- LocalizedSprite
+"LocalizedAsset`1" "<Texture>" <|-- LocalizedTexture
+"LocalizedAsset`1" "<Font>" <|-- LocalizedFont
+LocalizedReference <|-- LocalizedAssetBase
+LocalizedAssetBase <|-- "LocalizedAsset`1"
+IDisposable <|-- "LocalizedAsset`1"
+"LocalizedAsset`1" --> "CurrentLoadingOperationHandle<TObject>" "AsyncOperationHandle`1"
+"LocalizedAsset`1" +-- ConvertToObjectOperation
+"WaitForCurrentOperationAsyncOperationBase`1" "<Object>" <|-- ConvertToObjectOperation
+ConvertToObjectOperation o-> "Pool<ConvertToObjectOperation>" "ObjectPool`1"
+@enduml

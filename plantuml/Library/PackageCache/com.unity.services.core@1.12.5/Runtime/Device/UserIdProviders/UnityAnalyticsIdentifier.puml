@@ -1,0 +1,6 @@
+@startuml
+class UnityAnalyticsIdentifier {
+    + UserId : string <<get>> <<set>>
+}
+IUserIdentifierProvider <|-- UnityAnalyticsIdentifier
+@enduml

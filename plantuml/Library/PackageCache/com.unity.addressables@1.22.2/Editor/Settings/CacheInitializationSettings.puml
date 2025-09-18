@@ -1,0 +1,9 @@
+@startuml
+class CacheInitializationSettings {
+    + Name : string <<get>>
+    + CreateObjectInitializationData() : ObjectInitializationData
+}
+ScriptableObject <|-- CacheInitializationSettings
+IObjectInitializationDataProvider <|-- CacheInitializationSettings
+CacheInitializationSettings --> "Data" CacheInitializationData
+@enduml

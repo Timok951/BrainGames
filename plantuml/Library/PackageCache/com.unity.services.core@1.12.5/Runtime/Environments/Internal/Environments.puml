@@ -1,0 +1,6 @@
+@startuml
+class Environments {
+    + Current : string <<get>> <<internal set>>
+}
+IEnvironments <|-- Environments
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+class TupleExtensions <<static>> {
+    + {static} IsValueTuple(obj:object) : bool
+    + {static} IsValueTupleType(type:Type) : bool
+    + {static} GetValueTupleItemObjects(tuple:object) : IEnumerable<object>
+    + {static} GetValueTupleItemTypes(tupleType:Type) : IEnumerable<Type>
+    + {static} GetValueTupleItemFields(tupleType:Type) : List<FieldInfo>
+    + {static} GetValueTupleItemObjectsFlattened(tuple:object) : IEnumerable<object>
+}
+@enduml

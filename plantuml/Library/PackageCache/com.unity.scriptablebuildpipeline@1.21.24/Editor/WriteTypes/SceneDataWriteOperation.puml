@@ -1,0 +1,15 @@
+@startuml
+class SceneDataWriteOperation {
+    + Scene : string <<get>> <<set>>
+    + ProcessedScene : string <<get>> <<set>>
+    + Write(outputFolder:string, settings:BuildSettings, globalUsage:BuildUsageTagGlobal) : WriteResult
+    + GetHash128(log:IBuildLogger) : Hash128
+    + GetHash128() : Hash128
+}
+IWriteOperation <|-- SceneDataWriteOperation
+SceneDataWriteOperation --> "Command" WriteCommand
+SceneDataWriteOperation --> "UsageSet" BuildUsageTagSet
+SceneDataWriteOperation --> "ReferenceMap" BuildReferenceMap
+SceneDataWriteOperation --> "DependencyHash" Hash128
+SceneDataWriteOperation --> "PreloadInfo" PreloadInfo
+@enduml

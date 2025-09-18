@@ -1,0 +1,10 @@
+@startuml
+class CustomTableProvider {
+    + customTableCollectionName : string = "My Custom Table"
+    + ProvideTableAsync(tableCollectionName:string, locale:Locale) : AsyncOperationHandle<TTable>
+}
+class AssignCustomTableProviderExample <<static>> {
+    + {static} AssignTableProvider() : void
+}
+ITableProvider <|-- CustomTableProvider
+@enduml

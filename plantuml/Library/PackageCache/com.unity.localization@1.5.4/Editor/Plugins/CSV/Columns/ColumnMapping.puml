@@ -1,0 +1,6 @@
+@startuml
+class ColumnMapping <<static>> {
+    + {static} CreateDefaultMapping(includeComments:bool) : List<CsvColumns>
+    + {static} AddLocaleMappings(cells:IList<CsvColumns>, includeComments:bool) : void
+}
+@enduml

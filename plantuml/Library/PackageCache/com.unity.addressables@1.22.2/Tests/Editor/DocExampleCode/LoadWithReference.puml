@@ -1,0 +1,6 @@
+@startuml
+class LoadWithReference {
+}
+MonoBehaviour <|-- LoadWithReference
+LoadWithReference --> "reference" AssetReference
+@enduml

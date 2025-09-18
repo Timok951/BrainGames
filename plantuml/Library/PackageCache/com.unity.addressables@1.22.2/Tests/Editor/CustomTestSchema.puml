@@ -1,0 +1,6 @@
+@startuml
+class CustomTestSchema {
+    + customField : string = null
+}
+AddressableAssetGroupSchema <|-- CustomTestSchema
+@enduml

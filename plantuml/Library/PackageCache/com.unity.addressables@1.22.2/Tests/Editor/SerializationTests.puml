@@ -1,0 +1,12 @@
+@startuml
+class SerializationTests {
+    + groupGuid : string = "422b6705-092c-4699-b57b-abfe7a6245d0"
+    + <<new>> Init() : void
+    + Setup() : void
+    + TestAssetGroupSerialization() : void
+    + TestAssetGroupTemplateSerialization() : void
+    + TestProfileDataSourceSettingsSerialization() : void
+    + TestAddressableAssetSettingsSerialization() : void
+}
+AddressableAssetTestBase <|-- SerializationTests
+@enduml

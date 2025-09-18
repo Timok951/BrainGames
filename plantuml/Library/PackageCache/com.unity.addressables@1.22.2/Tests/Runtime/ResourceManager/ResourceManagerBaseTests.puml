@@ -1,0 +1,37 @@
+@startuml
+abstract class ResourceManagerBaseTests {
+    + Cleanup() : void
+    + OneTimeSetup() : void
+    + SetUp() : void
+    + TearDown() : void
+    + CanProvideWithCallback() : IEnumerator
+    + CanProvideWithYield() : IEnumerator
+    + CanGetOperationFromCache() : IEnumerator
+    + CanProvideMultipleResources() : IEnumerator
+    + AsyncOperationHandle_Await_BlocksUntilCompletion() : IEnumerator
+    + WhenAsyncOperationIsDone_TaskIsCompleted() : IEnumerator
+    + WhenAsyncOperationIsDone_TasksAndCallbackIsCompleted() : IEnumerator
+}
+class AsyncComponent {
+    + done : bool = false
+}
+class AsyncAwaitMultipleComponent {
+    + done : bool = false
+    + addCompletedCallback : bool
+    + callbackDone : bool = false
+}
+class "AsyncOperationHandle`1"<T> {
+}
+ResourceManagerBaseTests +-- AsyncComponent
+MonoBehaviour <|-- AsyncComponent
+AsyncComponent --> "resourceManager" ResourceManager
+AsyncComponent --> "location" IResourceLocation
+AsyncComponent --> "result" GameObject
+AsyncComponent --> "operation<GameObject>" "AsyncOperationHandle`1"
+ResourceManagerBaseTests +-- AsyncAwaitMultipleComponent
+MonoBehaviour <|-- AsyncAwaitMultipleComponent
+AsyncAwaitMultipleComponent --> "resourceManager" ResourceManager
+AsyncAwaitMultipleComponent --> "location" IResourceLocation
+AsyncAwaitMultipleComponent --> "result" GameObject
+AsyncAwaitMultipleComponent --> "operation<GameObject>" "AsyncOperationHandle`1"
+@enduml

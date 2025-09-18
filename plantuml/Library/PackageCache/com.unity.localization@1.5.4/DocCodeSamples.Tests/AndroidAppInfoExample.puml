@@ -1,0 +1,6 @@
+@startuml
+class AndroidAppInfoExample {
+    + {static} ConfigureAppInfo() : void
+    + {static} ConfigureIconInfo() : void
+}
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+class AnalyzeRule {
+    + <<virtual>> CanFix : bool <<get>> <<set>>
+    + <<const>> kDelimiter : char = ':'
+    + <<virtual>> ruleName : string <<get>>
+    + <<virtual>> RefreshAnalysis(settings:AddressableAssetSettings) : List<AnalyzeResult>
+    + <<virtual>> FixIssues(settings:AddressableAssetSettings) : void
+    + <<virtual>> ClearAnalysis() : void
+}
+struct CustomContextMenu {
+    + MenuName : string
+    + MenuEnabled : bool
+    + ToggledOn : bool
+    + CustomContextMenu(name:string, action:Action, enabled:bool, toggledOn:bool)
+}
+class AnalyzeResult {
+    + resultName : string <<get>> <<set>>
+}
+AnalyzeRule +-- CustomContextMenu
+CustomContextMenu --> "MenuAction" Action
+AnalyzeRule +-- AnalyzeResult
+AnalyzeResult --> "severity" MessageType
+@enduml

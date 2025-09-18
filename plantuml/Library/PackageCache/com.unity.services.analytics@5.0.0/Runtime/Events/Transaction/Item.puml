@@ -1,0 +1,7 @@
+@startuml
+struct Item {
+    + ItemName : string
+    + ItemType : string
+}
+Item --> "ItemAmount" Int64
+@enduml

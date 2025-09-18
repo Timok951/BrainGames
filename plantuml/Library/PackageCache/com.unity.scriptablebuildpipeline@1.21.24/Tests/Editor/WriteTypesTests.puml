@@ -1,0 +1,11 @@
+@startuml
+class WriteTypesTests {
+    + OneTimeSetUp() : void
+    + OnetimeTearDown() : void
+    + SetUp() : void
+    + TearDown() : void
+    + Changing_SceneCallbackVersionHash_ChangesHashesOf_SceneWriteOperations() : void
+    + Changing_ShaderCallbackVersionHash_ChangesHashesOf_AllWriteOperations() : void
+    + Unchanged_CallbackVersionHashes_DoNotChangeHashesOf_AllWriteOperations() : void
+}
+@enduml

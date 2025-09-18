@@ -1,0 +1,7 @@
+@startuml
+class InvalidJwtException {
+    + ErrorCode : int <<get>>
+    + Token : string <<get>>
+}
+Exception <|-- InvalidJwtException
+@enduml

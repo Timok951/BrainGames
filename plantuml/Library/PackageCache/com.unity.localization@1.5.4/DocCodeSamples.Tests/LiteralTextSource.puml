@@ -1,0 +1,6 @@
+@startuml
+class LiteralTextSource {
+    + TryEvaluateSelector(selectorInfo:ISelectorInfo) : bool
+}
+ISource <|-- LiteralTextSource
+@enduml

@@ -1,0 +1,8 @@
+@startuml
+enum ErrorAction {
+    ThrowError,
+    OutputErrorInResult,
+    Ignore,
+    MaintainTokens,
+}
+@enduml

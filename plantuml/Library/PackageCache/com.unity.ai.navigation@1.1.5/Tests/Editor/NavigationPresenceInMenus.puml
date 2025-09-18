@@ -1,0 +1,7 @@
+@startuml
+class NavigationPresenceInMenus {
+    + OneTimeSetUp() : void
+    + MenuIsEnabled(menuPath:string) : void
+    + OneTimeTearDown() : void
+}
+@enduml

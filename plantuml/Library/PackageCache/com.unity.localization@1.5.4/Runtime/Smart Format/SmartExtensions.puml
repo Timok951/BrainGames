@@ -1,0 +1,10 @@
+@startuml
+class SmartExtensions <<static>> {
+    + {static} AppendSmart(sb:StringBuilder, format:string, args:object[]) : void
+    + {static} AppendLineSmart(sb:StringBuilder, format:string, args:object[]) : void
+    + {static} WriteSmart(writer:TextWriter, format:string, args:object[]) : void
+    + {static} WriteLineSmart(writer:TextWriter, format:string, args:object[]) : void
+    + {static} FormatSmart(format:string, args:object[]) : string
+    + {static} FormatSmart(format:string, cache:FormatCache, args:object[]) : string
+}
+@enduml

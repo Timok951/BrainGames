@@ -1,0 +1,12 @@
+@startuml
+class TextDataProvider {
+    + IgnoreFailures : bool <<get>> <<set>>
+    + <<virtual>> Convert(type:Type, text:string) : object
+    + <<override>> Provide(provideHandle:ProvideHandle) : void
+}
+class InternalOp {
+    + Start(provideHandle:ProvideHandle, rawProvider:TextDataProvider) : void
+}
+ResourceProviderBase <|-- TextDataProvider
+TextDataProvider +-- InternalOp
+@enduml

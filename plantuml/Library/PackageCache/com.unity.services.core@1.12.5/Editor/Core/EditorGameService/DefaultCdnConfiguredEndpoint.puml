@@ -1,0 +1,10 @@
+@startuml
+class DefaultCdnConfiguredEndpoint {
+}
+class DefaultCdnEndpointConfiguration {
+    + Core : string <<get>>
+}
+class "CdnConfiguredEndpoint`1"<T> {
+}
+"CdnConfiguredEndpoint`1" "<DefaultCdnEndpointConfiguration>" <|-- DefaultCdnConfiguredEndpoint
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+class ThreadHelper <<static>> {
+    + {static} MainThreadId : int <<get>>
+    + {static} Init() : void
+}
+ThreadHelper --> "SynchronizationContext" SynchronizationContext
+@enduml

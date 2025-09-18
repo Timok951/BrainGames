@@ -1,0 +1,7 @@
+@startuml
+class UserWarningAppleAppStore {
+    + UpdateWarningText() : void
+}
+MonoBehaviour <|-- UserWarningAppleAppStore
+UserWarningAppleAppStore --> "warningText" Text
+@enduml

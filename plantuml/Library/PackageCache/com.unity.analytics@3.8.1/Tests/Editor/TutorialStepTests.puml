@@ -1,0 +1,7 @@
+@startuml
+class AnalyticsEventTests <<partial>> {
+    + TutorialStep_StepIndexTest(stepIndex:int) : void
+    + TutorialStep_TutorialIdTest(tutorialId:string) : void
+    + TutorialStep_CustomDataTest() : void
+}
+@enduml

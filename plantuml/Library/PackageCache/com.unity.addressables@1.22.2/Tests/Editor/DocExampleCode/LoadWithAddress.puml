@@ -1,0 +1,6 @@
+@startuml
+class LoadWithAddress {
+    + address : string
+}
+MonoBehaviour <|-- LoadWithAddress
+@enduml

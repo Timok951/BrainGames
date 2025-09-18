@@ -1,0 +1,11 @@
+@startuml
+class ThreadingManager <<static>> {
+}
+enum ThreadQueues {
+    SaveQueue,
+    UploadQueue,
+    PruneQueue,
+    TotalQueues,
+}
+ThreadingManager +-- ThreadQueues
+@enduml

@@ -1,0 +1,9 @@
+@startuml
+class PrefabSpawnerSample {
+    + DelayBetweenSpawns : float = 2.0f
+    + DealyBeforeDestroying : float = 1.0f
+    + NumberOfPrefabsToSpawn : int = 1
+}
+MonoBehaviour <|-- PrefabSpawnerSample
+PrefabSpawnerSample --> "SpawnablePrefab" AssetReference
+@enduml

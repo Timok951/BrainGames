@@ -1,0 +1,10 @@
+@startuml
+class ProfileValueReferenceTests {
+    + IsValueValid() : void
+    + CanSetValueByName() : void
+    + CanSetValueById() : void
+    + CallbackInvokedWhenValueChanged() : void
+    + CallbackNotInvokedWhenValueNotChanged() : void
+}
+AddressableAssetTestBase <|-- ProfileValueReferenceTests
+@enduml

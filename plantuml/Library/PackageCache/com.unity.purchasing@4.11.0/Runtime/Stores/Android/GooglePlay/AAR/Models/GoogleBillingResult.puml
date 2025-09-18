@@ -1,0 +1,7 @@
+@startuml
+class GoogleBillingResult {
+    + debugMessage : string <<get>>
+}
+IGoogleBillingResult <|-- GoogleBillingResult
+GoogleBillingResult --> "responseCode" GoogleBillingResponseCode
+@enduml

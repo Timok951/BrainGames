@@ -1,0 +1,10 @@
+@startuml
+class LocalizeStringEvent {
+    + RefreshString() : void
+    + SetTable(tableReference:string) : void
+    + SetEntry(entryName:string) : void
+}
+LocalizedMonoBehaviour <|-- LocalizeStringEvent
+LocalizeStringEvent --> "StringReference" LocalizedString
+LocalizeStringEvent --> "OnUpdateString" UnityEventString
+@enduml

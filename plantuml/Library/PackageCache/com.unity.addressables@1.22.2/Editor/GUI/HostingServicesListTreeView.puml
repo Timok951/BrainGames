@@ -1,0 +1,11 @@
+@startuml
+class HostingServicesListTreeView {
+    + {static} CreateHeader() : MultiColumnHeader
+    + HostingServicesListTreeView(treeViewState:TreeViewState, manager:HostingServicesManager, window:HostingServicesWindow, header:MultiColumnHeader)
+    + SelectRow(index:int) : void
+}
+class "List`1"<T> {
+}
+TreeView <|-- HostingServicesListTreeView
+HostingServicesListTreeView --> "Names<string>" "List`1"
+@enduml

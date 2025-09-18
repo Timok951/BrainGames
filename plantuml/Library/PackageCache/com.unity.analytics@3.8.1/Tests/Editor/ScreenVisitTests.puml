@@ -1,0 +1,7 @@
+@startuml
+class AnalyticsEventTests <<partial>> {
+    + ScreenVisit_ScreenNameStringTest(screenName:string) : void
+    + ScreenVisit_ScreenNameEnumTest(screenName:ScreenName) : void
+    + ScreenVisit_CustomDataTest() : void
+}
+@enduml

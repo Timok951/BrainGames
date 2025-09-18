@@ -1,0 +1,5 @@
+@startuml
+interface IGooglePlayStoreExtensions {
+}
+IStoreExtension <|-- IGooglePlayStoreExtensions
+@enduml

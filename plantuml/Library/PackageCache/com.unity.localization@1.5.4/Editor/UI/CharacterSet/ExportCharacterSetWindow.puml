@@ -1,0 +1,7 @@
+@startuml
+class ExportCharacterSetWindow {
+    + {static} ShowWindow() : ExportCharacterSetWindow
+}
+EditorWindow <|-- ExportCharacterSetWindow
+ExportCharacterSetWindow --> "SelectedTables" ProjectCollectionsTableSelector
+@enduml

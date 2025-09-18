@@ -1,0 +1,6 @@
+@startuml
+class GlobalInitialization <<static>> {
+    + {static} InitializeGlobalState() : void
+    + {static} ShutdownGlobalState() : void
+}
+@enduml

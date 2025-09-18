@@ -1,0 +1,19 @@
+@startuml
+enum GooglePurchaseState {
+    Purchased= 0,
+    Cancelled= 1,
+    Refunded= 2,
+    Deferred= 4,
+}
+class GooglePlayReceipt {
+    + productID : string <<get>>
+    + orderID : string <<get>>
+    + transactionID : string <<get>>
+    + packageName : string <<get>>
+    + purchaseToken : string <<get>>
+    + GooglePlayReceipt(productID:string, orderID:string, packageName:string, purchaseToken:string, purchaseTime:DateTime, purchaseState:GooglePurchaseState)
+}
+IPurchaseReceipt <|-- GooglePlayReceipt
+GooglePlayReceipt --> "purchaseDate" DateTime
+GooglePlayReceipt --> "purchaseState" GooglePurchaseState
+@enduml

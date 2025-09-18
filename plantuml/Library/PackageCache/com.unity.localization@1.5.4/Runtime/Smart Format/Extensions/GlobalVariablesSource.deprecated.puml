@@ -1,0 +1,6 @@
+@startuml
+class GlobalVariablesSource {
+    + GlobalVariablesSource(formatter:SmartFormatter)
+}
+PersistentVariablesSource <|-- GlobalVariablesSource
+@enduml

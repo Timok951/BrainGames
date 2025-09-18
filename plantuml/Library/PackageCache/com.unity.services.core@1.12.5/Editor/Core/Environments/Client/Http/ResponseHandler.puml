@@ -1,0 +1,8 @@
+@startuml
+class ResponseHandler <<static>> {
+    + {static} TryDeserializeResponse(response:HttpClientResponse) : T
+    + {static} TryDeserializeResponse(response:HttpClientResponse, type:Type) : object
+    + {static} HandleAsyncResponse(response:HttpClientResponse, statusCodeToTypeMap:Dictionary<string, Type>) : void
+    + {static} HandleAsyncResponse(response:HttpClientResponse, statusCodeToTypeMap:Dictionary<string, Type>) : T
+}
+@enduml

@@ -1,0 +1,4 @@
+@startuml
+class UIResourceUtils <<static>> {
+}
+@enduml

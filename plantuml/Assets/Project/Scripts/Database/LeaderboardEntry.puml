@@ -1,0 +1,6 @@
+@startuml
+class LeaderboardEntry {
+    + Nick : string <<get>> <<set>>
+    + TotalScore : int <<get>> <<set>>
+}
+@enduml

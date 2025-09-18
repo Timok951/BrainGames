@@ -1,0 +1,34 @@
+@startuml
+interface IAnalyticsServiceSystemCalls {
+}
+class AnalyticsServiceSystemCalls {
+}
+interface IUnstructuredEventRecorder {
+}
+class AnalyticsServiceInstance <<partial>> {
+    + PrivacyUrl : string <<get>>
+    + SessionID : string <<get>>
+    + UserId : string <<get>>
+    + InstallId : string <<get>>
+    + PlayerId : string <<get>>
+    + SessionId : string <<get>>
+    + StartDataCollection() : void
+    + StopDataCollection() : void
+    + GetAnalyticsUserID() : string
+    + Flush() : void
+    + RequestDataDeletion() : void
+    + RecordInternalEvent(eventToRecord:Event) : void
+    + <<async>> SetAnalyticsEnabled(enabled:bool) : Task
+}
+enum ConsentFlow {
+    Neither,
+    Old,
+    New,
+}
+IAnalyticsServiceSystemCalls <|-- AnalyticsServiceSystemCalls
+AnalyticsServiceSystemCalls --> "UtcNow" DateTime
+IAnalyticsService <|-- AnalyticsServiceInstance
+IUnstructuredEventRecorder <|-- AnalyticsServiceInstance
+IBufferIds <|-- AnalyticsServiceInstance
+AnalyticsServiceInstance +-- ConsentFlow
+@enduml

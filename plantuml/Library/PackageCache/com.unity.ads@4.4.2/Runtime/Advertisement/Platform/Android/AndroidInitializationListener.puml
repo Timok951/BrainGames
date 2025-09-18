@@ -1,0 +1,8 @@
+@startuml
+class AndroidInitializationListener {
+    + AndroidInitializationListener(initializationListener:IUnityAdsInitializationListener)
+    + onInitializationComplete() : void
+    + onInitializationFailed(error:AndroidJavaObject, message:string) : void
+}
+AndroidJavaProxy <|-- AndroidInitializationListener
+@enduml

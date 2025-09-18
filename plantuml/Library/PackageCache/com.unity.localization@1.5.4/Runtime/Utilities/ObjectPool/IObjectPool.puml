@@ -1,0 +1,4 @@
+@startuml
+interface "IObjectPool`1"<T> {
+}
+@enduml

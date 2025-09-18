@@ -1,0 +1,11 @@
+@startuml
+class "EditorGameServiceRemoteConfiguration`1"<T> {
+    + EditorGameServiceRemoteConfiguration(configUrl:string)
+    + GetConfiguration(onGetConfigurationCompleted:Action<T>) : void
+    + ClearCache() : void
+}
+class "CdnConfiguredEndpoint`1"<T> {
+    + CdnConfiguredEndpoint()
+}
+"EditorGameServiceRemoteConfiguration`1" "<T>" <|-- "CdnConfiguredEndpoint`1"
+@enduml

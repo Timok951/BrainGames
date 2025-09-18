@@ -1,0 +1,8 @@
+@startuml
+class UIFakeStore {
+    + UIFakeStore()
+    + UIFakeStore(util:IUtil)
+    + IsShowingDialog() : bool
+}
+FakeStore <|-- UIFakeStore
+@enduml

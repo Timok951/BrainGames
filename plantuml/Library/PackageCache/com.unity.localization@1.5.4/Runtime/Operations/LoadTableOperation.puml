@@ -1,0 +1,18 @@
+@startuml
+class "LoadTableOperation`2"<TTable,TEntry> {
+    + LoadTableOperation()
+    + Init(database:LocalizedDatabase<TTable, TEntry>, tableReference:TableReference, locale:Locale) : void
+    + <<override>> ToString() : string
+}
+class "WaitForCurrentOperationAsyncOperationBase`1"<T> {
+}
+class "DetailedLocalizationTable`1"<T> {
+}
+class "ObjectPool`1"<T> {
+}
+class "Action`1"<T> {
+}
+"WaitForCurrentOperationAsyncOperationBase`1" "<TTable>" <|-- "LoadTableOperation`2"
+"LoadTableOperation`2" o-> "Pool<LoadTableOperation<TTable, TEntry>>" "ObjectPool`1"
+"LoadTableOperation`2" --> "RegisterTableOperation<AsyncOperationHandle<TTable>>" "Action`1"
+@enduml

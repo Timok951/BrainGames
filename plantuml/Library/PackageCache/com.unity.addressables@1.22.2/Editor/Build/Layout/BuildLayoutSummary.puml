@@ -1,0 +1,19 @@
+@startuml
+struct AssetSummary {
+    + Count : int
+    + SizeInBytes : ulong
+}
+struct BundleSummary {
+    + Count : int
+    + TotalUncompressedSize : ulong
+    + TotalCompressedSize : ulong
+}
+class BuildLayoutSummary {
+    + {static} GetSummary(layout:BuildLayout) : BuildLayoutSummary
+}
+class "List`1"<T> {
+}
+AssetSummary --> "AssetType" AssetType
+BuildLayoutSummary o-> "BundleSummary" BundleSummary
+BuildLayoutSummary o-> "AssetSummaries<AssetSummary>" "List`1"
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+class AnalyticsEventTests <<partial>> {
+    + IAPTransaction_ContextTest(context:string) : void
+    + IAPTransaction_PriceTest(price:float) : void
+    + IAPTransaction_ItemIdTest(itemId:string) : void
+    + IAPTransaction_ItemTypeTest(itemType:string) : void
+    + IAPTransaction_LevelTest(level:string) : void
+    + IAPTransaction_TransactionIdTest(transactionId:string) : void
+    + IAPTransaction_CustomDataTest() : void
+}
+@enduml

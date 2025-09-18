@@ -1,0 +1,7 @@
+@startuml
+class EnvironmentAnalytics {
+    + EnvironmentAnalytics(analyticsSender:IAnalyticsSender)
+    + SendEnvironmentChangedEvent(environmentGuid:string) : AnalyticsResult
+}
+IEnvironmentAnalytics <|-- EnvironmentAnalytics
+@enduml

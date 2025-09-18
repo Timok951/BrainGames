@@ -1,0 +1,8 @@
+@startuml
+class StringTableCollectionExtensionAttribute {
+}
+class AssetTableCollectionExtensionAttribute {
+}
+Attribute <|-- StringTableCollectionExtensionAttribute
+Attribute <|-- AssetTableCollectionExtensionAttribute
+@enduml

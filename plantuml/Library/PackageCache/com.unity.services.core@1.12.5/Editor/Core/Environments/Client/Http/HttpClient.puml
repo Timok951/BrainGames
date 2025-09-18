@@ -1,0 +1,8 @@
+@startuml
+class HttpClient {
+    + HttpClient()
+    + <<async>> MakeRequestAsync(method:string, url:string, body:byte[], headers:Dictionary<string, string>, requestTimeout:int) : Task<HttpClientResponse>
+    + <<async>> MakeRequestAsync(method:string, url:string, body:List<IMultipartFormSection>, headers:Dictionary<string, string>, requestTimeout:int, boundary:string) : Task<HttpClientResponse>
+}
+IHttpClient <|-- HttpClient
+@enduml

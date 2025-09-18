@@ -1,0 +1,14 @@
+@startuml
+class UnsupportedPlatform <<sealed>> {
+    + SetupPlatform(platform:IPlatform) : void
+    + Initialize(gameId:string, testMode:bool, initializationListener:IUnityAdsInitializationListener) : void
+    + Load(placementId:string, loadListener:IUnityAdsLoadListener) : void
+    + Show(placementId:string, showListener:IUnityAdsShowListener) : void
+    + SetMetaData(metaData:MetaData) : void
+    + GetDebugMode() : bool
+    + SetDebugMode(debugMode:bool) : void
+    + GetVersion() : string
+    + IsInitialized() : bool
+}
+INativePlatform <|-- UnsupportedPlatform
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+class GatewayTokens {
+    + <<async>> GetGatewayTokenAsync(genesisToken:string) : Task<string>
+    + {static} ClearCache() : void
+}
+struct CachedTokens {
+    + GatewayToken : string
+    + GenesisToken : string
+}
+IGatewayTokens <|-- GatewayTokens
+GatewayTokens +-- CachedTokens
+@enduml

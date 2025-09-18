@@ -1,0 +1,7 @@
+@startuml
+class DependencyTreeSortFailedException {
+    + DependencyTreeSortFailedException(tree:DependencyTree, target:ICollection<int>)
+    + DependencyTreeSortFailedException(tree:DependencyTree, target:ICollection<int>, inner:Exception)
+}
+Exception <|-- DependencyTreeSortFailedException
+@enduml

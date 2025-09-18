@@ -1,0 +1,10 @@
+@startuml
+class CsvExtension {
+    + File : string <<get>> <<set>>
+    + <<override>> Initialize() : void
+}
+class "List`1"<T> {
+}
+CollectionExtension <|-- CsvExtension
+CsvExtension --> "Columns<CsvColumns>" "List`1"
+@enduml

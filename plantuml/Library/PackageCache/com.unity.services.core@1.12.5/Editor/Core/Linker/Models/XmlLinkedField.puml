@@ -1,0 +1,5 @@
+@startuml
+class XmlLinkedField {
+}
+XmlLinkedMember <|-- XmlLinkedField
+@enduml

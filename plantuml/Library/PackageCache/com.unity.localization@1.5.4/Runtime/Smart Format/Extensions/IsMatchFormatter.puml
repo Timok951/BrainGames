@@ -1,0 +1,10 @@
+@startuml
+class IsMatchFormatter {
+    + IsMatchFormatter()
+    + <<override>> TryEvaluateFormat(formattingInfo:IFormattingInfo) : bool
+    + WriteAllLiterals(formattingInfo:IFormattingInfo) : void
+}
+FormatterBase <|-- IsMatchFormatter
+IFormatterLiteralExtractor <|-- IsMatchFormatter
+IsMatchFormatter --> "RegexOptions" RegexOptions
+@enduml

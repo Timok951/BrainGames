@@ -1,0 +1,30 @@
+@startuml
+class DeclaringReferences {
+}
+class AssetReferenceMaterial {
+    + AssetReferenceMaterial(guid:string)
+}
+class UseExamples {
+}
+class "AssetReferenceT`1"<T> {
+}
+class AssetReferenceMaterial {
+    + AssetReferenceMaterial(guid:string)
+}
+MonoBehaviour <|-- DeclaringReferences
+DeclaringReferences --> "reference" AssetReference
+DeclaringReferences --> "gameObjectReference" AssetReferenceGameObject
+DeclaringReferences --> "spriteReference" AssetReferenceSprite
+DeclaringReferences --> "atlasSpriteReference" AssetReferenceAtlasedSprite
+DeclaringReferences --> "textureReference" AssetReferenceTexture
+DeclaringReferences --> "texture2DReference" AssetReferenceTexture2D
+DeclaringReferences --> "texture3DReference" AssetReferenceTexture3D
+DeclaringReferences --> "labelRestrictedReference" AssetReference
+DeclaringReferences --> "typedReference<AudioClip>" "AssetReferenceT`1"
+DeclaringReferences --> "materialReference" AssetReferenceMaterial
+"AssetReferenceT`1" "<Material>" <|-- AssetReferenceMaterial
+UseExamples --> "materialReference" AssetReferenceMaterial
+UseExamples --> "labelRestrictedReference" AssetReference
+DeclaringReferences +-- AssetReferenceMaterial
+"AssetReferenceT`1" "<Material>" <|-- AssetReferenceMaterial
+@enduml

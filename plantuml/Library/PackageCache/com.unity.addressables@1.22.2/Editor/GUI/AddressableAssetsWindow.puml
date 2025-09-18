@@ -1,0 +1,11 @@
+@startuml
+class AddressableAssetsWindow {
+    + {static} GetWindowPosition() : Vector2
+    + OnEnable() : void
+    + OnDisable() : void
+    + OnGUI() : void
+    + AddItemsToMenu(menu:GenericMenu) : void
+}
+EditorWindow <|-- AddressableAssetsWindow
+IHasCustomMenu <|-- AddressableAssetsWindow
+@enduml

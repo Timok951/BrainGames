@@ -1,0 +1,24 @@
+@startuml
+class AssetTableEntry {
+    + Address : string <<get>> <<set>>
+    + Guid : string <<get>> <<set>>
+    + SubAssetName : string <<get>>
+    + IsEmpty : bool <<get>>
+    + IsSubAsset : bool <<get>>
+    + RemoveFromTable() : void
+    + SetAssetOverride(asset:T) : void
+}
+class AssetTable {
+    + GetAssetAsync(entryReference:TableEntryReference) : AsyncOperationHandle<TObject>
+    + ReleaseAssets() : void
+    + ReleaseAsset(entry:AssetTableEntry) : void
+    + ReleaseAsset(entry:TableEntryReference) : void
+    + <<override>> CreateTableEntry() : AssetTableEntry
+}
+class "DetailedLocalizationTable`1"<T> {
+}
+TableEntry <|-- AssetTableEntry
+"DetailedLocalizationTable`1" "<AssetTableEntry>" <|-- AssetTable
+IPreloadRequired <|-- AssetTable
+AssetTable --> "PreloadOperation" AsyncOperationHandle
+@enduml

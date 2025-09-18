@@ -1,0 +1,7 @@
+@startuml
+class InstanceProvider {
+    + ProvideInstance(resourceManager:ResourceManager, prefabHandle:AsyncOperationHandle<GameObject>, instantiateParameters:InstantiationParameters) : GameObject
+    + ReleaseInstance(resourceManager:ResourceManager, instance:GameObject) : void
+}
+IInstanceProvider <|-- InstanceProvider
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+class AssetReferenceUIRestriction {
+    + <<virtual>> ValidateAsset(obj:Object) : bool
+    + <<virtual>> ValidateAsset(path:string) : bool
+}
+class AssetReferenceUILabelRestriction <<sealed>> {
+    + m_CachedToString : string
+    + AssetReferenceUILabelRestriction(allowedLabels:string[])
+    + <<override>> ValidateAsset(obj:Object) : bool
+    + <<override>> ValidateAsset(path:string) : bool
+    + <<override>> ToString() : string
+}
+Attribute <|-- AssetReferenceUIRestriction
+AssetReferenceUIRestriction <|-- AssetReferenceUILabelRestriction
+@enduml

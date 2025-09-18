@@ -1,0 +1,12 @@
+@startuml
+abstract class "GenericAssetTableListView`2"<T1,T2> {
+    + Dispose() : void
+    + <<virtual>> Initialize() : void
+    + <<override>> OnGUI(rect:Rect) : void
+}
+class "GenericAssetTableTreeViewItem`1"<T> {
+}
+TreeView <|-- "GenericAssetTableListView`2"
+IDisposable <|-- "GenericAssetTableListView`2"
+"GenericAssetTableListView`2" --> "TableCollection" LocalizationTableCollection
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+class ProfileGroupType {
+}
+class GroupTypeVariable {
+}
+ProfileGroupType +-- GroupTypeVariable
+@enduml

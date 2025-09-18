@@ -1,0 +1,8 @@
+@startuml
+class AddressableAssetGroupSchemaTemplate {
+    + DisplayName : string <<get>>
+    + Description : string <<get>>
+    + GetTypes() : Type[]
+    + {static} Create(name:string, descr:string, types:Type[]) : AddressableAssetGroupSchemaTemplate
+}
+@enduml

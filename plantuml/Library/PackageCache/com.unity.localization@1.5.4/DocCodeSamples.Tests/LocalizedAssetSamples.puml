@@ -1,0 +1,27 @@
+@startuml
+class MyScriptableObject {
+    + someStringValue : string
+}
+class LocalizedMyScriptableObject {
+}
+class Example {
+}
+class UpdateAssetTableExample {
+}
+class OverrideAllAssetTables {
+}
+class "LocalizedAsset`1"<T> {
+}
+ScriptableObject <|-- MyScriptableObject
+"LocalizedAsset`1" "<MyScriptableObject>" <|-- LocalizedMyScriptableObject
+MonoBehaviour <|-- Example
+Example --> "localizedScriptableObject" LocalizedMyScriptableObject
+MonoBehaviour <|-- UpdateAssetTableExample
+UpdateAssetTableExample o-> "myAssetTable" LocalizedAssetTable
+UpdateAssetTableExample --> "englishTexture" Texture
+UpdateAssetTableExample --> "frenchTexture" Texture
+MonoBehaviour <|-- OverrideAllAssetTables
+OverrideAllAssetTables o-> "myAssetTable" LocalizedAssetTable
+OverrideAllAssetTables --> "englishTexture" Texture
+OverrideAllAssetTables --> "frenchTexture" Texture
+@enduml

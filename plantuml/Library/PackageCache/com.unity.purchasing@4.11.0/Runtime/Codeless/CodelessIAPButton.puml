@@ -1,0 +1,35 @@
+@startuml
+class CodelessIAPButton {
+    + productId : string
+    + consumePurchase : bool = true
+    + OnPurchaseFailed(product:Product, failureDescription:PurchaseFailureDescription) : void
+    + ProcessPurchase(args:PurchaseEventArgs) : PurchaseProcessingResult
+}
+class OnProductFetchedEvent {
+}
+class OnPurchaseCompletedEvent {
+}
+class OnPurchaseFailedEvent {
+}
+class OnTransactionsRestoredEvent {
+}
+class "UnityEvent`1"<T> {
+}
+class "UnityEvent`2"<T1,T2> {
+}
+BaseIAPButton <|-- CodelessIAPButton
+CodelessIAPButton o-> "buttonType" CodelessButtonType
+CodelessIAPButton --> "onTransactionsRestored" OnTransactionsRestoredEvent
+CodelessIAPButton --> "onPurchaseComplete" OnPurchaseCompletedEvent
+CodelessIAPButton --> "onPurchaseFailed" OnPurchaseFailedEvent
+CodelessIAPButton --> "onProductFetched" OnProductFetchedEvent
+CodelessIAPButton --> "button" Button
+CodelessIAPButton +-- OnProductFetchedEvent
+"UnityEvent`1" "<Product>" <|-- OnProductFetchedEvent
+CodelessIAPButton +-- OnPurchaseCompletedEvent
+"UnityEvent`1" "<Product>" <|-- OnPurchaseCompletedEvent
+CodelessIAPButton +-- OnPurchaseFailedEvent
+"UnityEvent`2" "<Product,PurchaseFailureDescription>" <|-- OnPurchaseFailedEvent
+CodelessIAPButton +-- OnTransactionsRestoredEvent
+"UnityEvent`2" "<bool,string>" <|-- OnTransactionsRestoredEvent
+@enduml

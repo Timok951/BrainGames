@@ -1,0 +1,6 @@
+@startuml
+class Apples {
+    + appleCount : int = 1
+}
+MonoBehaviour <|-- Apples
+@enduml

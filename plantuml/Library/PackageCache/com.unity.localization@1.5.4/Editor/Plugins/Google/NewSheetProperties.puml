@@ -1,0 +1,9 @@
+@startuml
+class NewSheetProperties {
+    + HighlightDuplicateKeys : bool <<get>> <<set>>
+    + FreezeTitleRowAndKeyColumn : bool <<get>> <<set>>
+}
+NewSheetProperties --> "HeaderForegroundColor" Color
+NewSheetProperties --> "HeaderBackgroundColor" Color
+NewSheetProperties --> "DuplicateKeyColor" Color
+@enduml

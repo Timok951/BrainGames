@@ -1,0 +1,8 @@
+@startuml
+class PluralRules <<static>> {
+    + {static} GetPluralRule(twoLetterIsoLanguageName:string) : PluralRuleDelegate
+}
+class "Dictionary`2"<T1,T2> {
+}
+PluralRules o-> "IsoLangToDelegate<string,PluralRuleDelegate>" "Dictionary`2"
+@enduml

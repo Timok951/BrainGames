@@ -1,0 +1,6 @@
+@startuml
+class CustomEventSample <<static>> {
+    + {static} RecordCustomEventWithNoParameters() : void
+    + {static} RecordCustomEventWithParameters() : void
+}
+@enduml

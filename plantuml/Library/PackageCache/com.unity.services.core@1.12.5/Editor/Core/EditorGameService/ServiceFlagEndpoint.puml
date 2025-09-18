@@ -1,0 +1,12 @@
+@startuml
+class ServiceFlagEndpoint {
+}
+class ServiceFlagEndpointConfiguration {
+    + Core : string <<get>>
+    + BuildServiceFlagUrl(projectId:string) : string
+    + BuildPayload(serviceFlagName:string, status:bool) : string
+}
+class "CdnConfiguredEndpoint`1"<T> {
+}
+"CdnConfiguredEndpoint`1" "<ServiceFlagEndpointConfiguration>" <|-- ServiceFlagEndpoint
+@enduml

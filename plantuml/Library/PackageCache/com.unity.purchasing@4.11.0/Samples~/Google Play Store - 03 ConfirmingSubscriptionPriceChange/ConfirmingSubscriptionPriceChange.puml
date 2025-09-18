@@ -1,0 +1,16 @@
+@startuml
+class ConfirmingSubscriptionPriceChange {
+    + subscriptionProductId : string = "com.mycompany.mygame.my_vip_pass_subscription"
+    + OnInitialized(controller:IStoreController, extensions:IExtensionProvider) : void
+    + ConfirmPriceChange() : void
+    + BuySubscription() : void
+    + ProcessPurchase(args:PurchaseEventArgs) : PurchaseProcessingResult
+    + OnInitializeFailed(error:InitializationFailureReason) : void
+    + OnInitializeFailed(error:InitializationFailureReason, message:string) : void
+    + OnPurchaseFailed(product:Product, failureReason:PurchaseFailureReason) : void
+    + OnPurchaseFailed(product:Product, failureDescription:PurchaseFailureDescription) : void
+}
+MonoBehaviour <|-- ConfirmingSubscriptionPriceChange
+IDetailedStoreListener <|-- ConfirmingSubscriptionPriceChange
+ConfirmingSubscriptionPriceChange --> "isSubscribedText" Text
+@enduml

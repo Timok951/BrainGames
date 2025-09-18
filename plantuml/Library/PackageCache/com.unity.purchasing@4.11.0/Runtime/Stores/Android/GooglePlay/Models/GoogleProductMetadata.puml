@@ -1,0 +1,11 @@
+@startuml
+class GoogleProductMetadata {
+    + originalJson : string <<get>> <<internal set>>
+    + subscriptionPeriod : string <<get>> <<internal set>>
+    + freeTrialPeriod : string <<get>> <<internal set>>
+    + introductoryPrice : string <<get>> <<internal set>>
+    + introductoryPricePeriod : string <<get>> <<internal set>>
+    + introductoryPriceCycles : int <<get>> <<internal set>>
+}
+ProductMetadata <|-- GoogleProductMetadata
+@enduml

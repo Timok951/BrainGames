@@ -1,0 +1,8 @@
+@startuml
+class MetricizedJsonStore {
+    + MetricizedJsonStore(telemetryMetricsService:ITelemetryMetricsService)
+    + <<override>> RetrieveProducts(products:ReadOnlyCollection<ProductDefinition>) : void
+    + <<override>> Purchase(product:ProductDefinition, developerPayload:string) : void
+}
+JSONStore <|-- MetricizedJsonStore
+@enduml

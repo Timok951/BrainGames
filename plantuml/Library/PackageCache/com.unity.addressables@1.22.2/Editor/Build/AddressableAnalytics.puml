@@ -1,0 +1,120 @@
+@startuml
+class AddressableAnalytics <<static>> {
+}
+struct BuildData {
+    + IsUsingCCD : bool
+    + IsContentUpdateBuild : bool
+    + DebugBuildLayoutEnabled : bool
+    + AutoOpenBuildReportEnabled : bool
+    + BuildAndRelease : bool
+    + IsPlayModeBuild : bool
+    + BuildScript : int
+    + NumberOfAddressableAssets : int
+    + NumberOfLabels : int
+    + NumberOfAssetBundles : int
+    + NumberOfGroups : int
+    + NumberOfGroupsUsingLZ4 : int
+    + NumberOfGroupsUsingLZMA : int
+    + NumberOfGroupsUncompressed : int
+    + NumberOfGroupsPackedTogether : int
+    + NumberOfGroupsPackedTogetherByLabel : int
+    + NumberOfGroupsPackedSeparately : int
+    + MaxNumberOfAddressableAssetsInAGroup : int
+    + MinNumberOfAddressableAssetsInAGroup : int
+    + BuildTarget : int
+    + NumberOfGroupsUsingEditorHosted : int
+    + NumberOfGroupsUsingBuiltIn : int
+    + NumberOfGroupsUsingCCD : int
+    + NumberOfGroupsUsingRemoteCustomPaths : int
+    + NumberOfGroupsUsingLocalCustomPaths : int
+    + NumberOfAssetsInEditorHostedPaths : int
+    + NumberOfAssetsInBuiltInPaths : int
+    + NumberOfAssetsInCCDPaths : int
+    + NumberOfAssetsInRemoteCustomPaths : int
+    + NumberOfAssetsInLocalCustomPaths : int
+    + IsIncrementalBuild : int
+    + ErrorCode : int
+    + TotalBuildTime : double
+}
+struct UsageData {
+    + UsageEventType : int
+    + IsUsingCCD : bool
+    + AutoRunRestrictionsOption : int
+}
+enum UsageEventType {
+    OpenGroupsWindow= 0,
+    OpenProfilesWindow= 1,
+    OpenEventViewerWindow= 2,
+    OpenAnalyzeWindow= 3,
+    OpenHostingWindow= 4,
+    RunBundleLayoutPreviewRule= 5,
+    RunCheckBundleDupeDependenciesRule= 6,
+    RunCheckResourcesDupeDependenciesRule= 7,
+    RunCheckSceneDupeDependenciesRule= 8,
+    InstallCCDManagementPackage= 9,
+    ContentUpdateCancelled= 10,
+    ContentUpdateHasChangesInUpdateRestrictionWindow= 11,
+    ContentUpdateContinuesWithoutChanges= 12,
+    RunContentUpdateBuild= 13,
+    CannotLocateBinFile= 14,
+    BuildFailedDueToModifiedStaticEntries= 15,
+    BuildInterruptedDueToStaticModifiedEntriesInUpdate= 16,
+    OpenBuildReportManually= 17,
+    BuildReportSelectedExploreTab= 18,
+    BuildReportSelectedPotentialIssuesTab= 19,
+    BuildReportSelectedSummaryTab= 20,
+    BuildReportViewByAssetBundle= 21,
+    BuildReportViewByAssets= 22,
+    BuildReportViewByLabels= 23,
+    BuildReportViewByGroup= 24,
+    BuildReportViewByDuplicatedAssets= 25,
+    BuildReportImportedManually= 26,
+    BuildReportOpenRefsTo= 27,
+    BuildReportOpenRefsBy= 28,
+    BuildReportDrillDownRefsTo= 29,
+    BuildReportDrillDownRefsBy= 30,
+    BuildReportDetailsSelectInGroup= 31,
+    BuildReportDetailsSelectInEditor= 32,
+    BuildReportDetailsSelectInBundle= 33,
+    BuildReportDetailsClose= 34,
+    BuildReportDetailsOpen= 35,
+    ProfileModuleViewCreated= 36,
+}
+enum BuildScriptType {
+    PackedMode= 0,
+    PackedPlayMode= 1,
+    FastMode= 2,
+    VirtualMode= 3,
+    CustomBuildScript= 4,
+}
+enum PathType {
+    BuiltIn= 0,
+    EditorHosted= 1,
+    CCD= 2,
+    Custom= 3,
+    Automatic= 4,
+}
+enum BuildType {
+    Inconclusive= -1,
+    CleanBuild= 0,
+    IncrementalBuild= 1,
+}
+enum ErrorType {
+    NoError= 0,
+    GenericError= 1,
+}
+enum AnalyticsContentUpdateRestriction {
+    NotApplicable= -1,
+    ListUpdatedAssetsWithRestrictions= 0,
+    FailBuild= 1,
+    Disabled= 2,
+}
+AddressableAnalytics +-- BuildData
+AddressableAnalytics +-- UsageData
+AddressableAnalytics +-- UsageEventType
+AddressableAnalytics +-- BuildScriptType
+AddressableAnalytics +-- PathType
+AddressableAnalytics +-- BuildType
+AddressableAnalytics +-- ErrorType
+AddressableAnalytics +-- AnalyticsContentUpdateRestriction
+@enduml

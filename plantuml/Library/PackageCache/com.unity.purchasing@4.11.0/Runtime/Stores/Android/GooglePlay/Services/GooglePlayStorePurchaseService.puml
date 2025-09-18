@@ -1,0 +1,6 @@
+@startuml
+class GooglePlayStorePurchaseService {
+    + Purchase(product:ProductDefinition) : void
+}
+IGooglePlayStorePurchaseService <|-- GooglePlayStorePurchaseService
+@enduml

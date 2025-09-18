@@ -1,0 +1,9 @@
+@startuml
+class LocalizationBehaviour {
+    + {static} ReleaseNextFrame(handle:AsyncOperationHandle) : void
+    + {static} ForceRelease() : void
+}
+class "ComponentSingleton`1"<T> {
+}
+"ComponentSingleton`1" "<LocalizationBehaviour>" <|-- LocalizationBehaviour
+@enduml

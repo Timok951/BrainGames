@@ -1,0 +1,5 @@
+@startuml
+interface ICloudProjectId {
+}
+IServiceComponent <|-- ICloudProjectId
+@enduml

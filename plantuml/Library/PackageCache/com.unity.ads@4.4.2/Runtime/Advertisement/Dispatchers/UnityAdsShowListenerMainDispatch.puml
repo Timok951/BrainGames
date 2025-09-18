@@ -1,0 +1,10 @@
+@startuml
+class UnityAdsShowListenerMainDispatch {
+    + UnityAdsShowListenerMainDispatch(showListener:IUnityAdsShowListener, lifecycleManager:IUnityLifecycleManager)
+    + OnUnityAdsShowFailure(placementId:string, error:UnityAdsShowError, message:string) : void
+    + OnUnityAdsShowStart(placementId:string) : void
+    + OnUnityAdsShowClick(placementId:string) : void
+    + OnUnityAdsShowComplete(placementId:string, showCompletionState:UnityAdsShowCompletionState) : void
+}
+IUnityAdsShowListener <|-- UnityAdsShowListenerMainDispatch
+@enduml

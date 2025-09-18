@@ -1,0 +1,8 @@
+@startuml
+interface IAsyncOperation {
+}
+interface "IAsyncOperation`1"<out T> {
+}
+IEnumerator <|-- IAsyncOperation
+IEnumerator <|-- "IAsyncOperation`1"
+@enduml

@@ -1,0 +1,6 @@
+@startuml
+class ConstructorNotFoundException {
+    + ConstructorNotFoundException(type:Type)
+}
+Exception <|-- ConstructorNotFoundException
+@enduml

@@ -1,0 +1,5 @@
+@startuml
+interface IAmazonExtensions {
+}
+IStoreExtension <|-- IAmazonExtensions
+@enduml

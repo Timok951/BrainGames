@@ -1,0 +1,5 @@
+@startuml
+class UsingInstantiate {
+    + UsingInstantiateSample() : void
+}
+@enduml

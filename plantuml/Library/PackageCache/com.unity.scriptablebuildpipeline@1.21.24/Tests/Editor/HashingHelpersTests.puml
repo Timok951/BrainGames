@@ -1,0 +1,46 @@
+@startuml
+class HashingHelpersTests {
+    + {static} CompareLayout(expected:Type, actual:Type) : void
+    + {static} PreloadInfo_WhenValueChanges_HashesChange() : void
+    + {static} SerializationInfo_WhenValueChanges_HashesChange() : void
+    + {static} AssetBundleInfo_WhenValueChanges_HashesChange() : void
+    + {static} AssetLoadInfo_WhenValueChanges_HashesChange() : void
+    + {static} WriteCommand_WhenValueChanges_HashesChange() : void
+}
+class AssertExpectedLayout {
+    + AssertExpectedLayout(compareType:Type)
+}
+class ExpectedPreloadInfo {
+}
+class ExpectedAssetBundleInfo {
+    + bundleName : string <<get>> <<set>>
+}
+class ExpectedWriteCommand {
+    + fileName : string <<get>> <<set>>
+    + internalName : string <<get>> <<set>>
+}
+class ExpectedSerializationInfo {
+    + serializationIndex : long <<get>> <<set>>
+}
+class ExpectedObjectIdentifier {
+    + localIdentifierInFile : long <<get>>
+    + filePath : string <<get>>
+}
+class "List`1"<T> {
+}
+HashingHelpersTests --> "CustomHashTypes" IEnumerable
+HashingHelpersTests +-- AssertExpectedLayout
+Attribute <|-- AssertExpectedLayout
+AssertExpectedLayout --> "CompareType" Type
+HashingHelpersTests +-- ExpectedPreloadInfo
+ExpectedPreloadInfo --> "preloadObjects<ObjectIdentifier>" "List`1"
+HashingHelpersTests +-- ExpectedAssetBundleInfo
+ExpectedAssetBundleInfo --> "bundleAssets<AssetLoadInfo>" "List`1"
+HashingHelpersTests +-- ExpectedWriteCommand
+ExpectedWriteCommand --> "serializeObjects<SerializationInfo>" "List`1"
+HashingHelpersTests +-- ExpectedSerializationInfo
+ExpectedSerializationInfo --> "serializationObject" ObjectIdentifier
+HashingHelpersTests +-- ExpectedObjectIdentifier
+ExpectedObjectIdentifier --> "guid" GUID
+ExpectedObjectIdentifier --> "fileType" FileType
+@enduml

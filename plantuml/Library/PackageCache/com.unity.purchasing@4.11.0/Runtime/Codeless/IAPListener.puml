@@ -1,0 +1,34 @@
+@startuml
+class IAPListener {
+    + consumePurchase : bool = true
+    + dontDestroyOnLoad : bool = true
+    + ProcessPurchase(e:PurchaseEventArgs) : PurchaseProcessingResult
+    + OnPurchaseFailed(product:Product, reason:PurchaseFailureReason) : void
+    + OnPurchaseFailed(product:Product, description:PurchaseFailureDescription) : void
+}
+class OnProductsFetchedEvent {
+}
+class OnPurchaseCompletedEvent {
+}
+class OnPurchaseFailedEvent {
+}
+class OnPurchaseDetailedFailedEvent {
+}
+class "UnityEvent`1"<T> {
+}
+class "UnityEvent`2"<T1,T2> {
+}
+MonoBehaviour <|-- IAPListener
+IAPListener --> "onProductsFetched" OnProductsFetchedEvent
+IAPListener --> "onPurchaseComplete" OnPurchaseCompletedEvent
+IAPListener --> "onPurchaseFailed" OnPurchaseFailedEvent
+IAPListener --> "onPurchaseDetailedFailedEvent" OnPurchaseDetailedFailedEvent
+IAPListener +-- OnProductsFetchedEvent
+"UnityEvent`1" "<ProductCollection>" <|-- OnProductsFetchedEvent
+IAPListener +-- OnPurchaseCompletedEvent
+"UnityEvent`1" "<Product>" <|-- OnPurchaseCompletedEvent
+IAPListener +-- OnPurchaseFailedEvent
+"UnityEvent`2" "<Product,PurchaseFailureReason>" <|-- OnPurchaseFailedEvent
+IAPListener +-- OnPurchaseDetailedFailedEvent
+"UnityEvent`2" "<Product,PurchaseFailureDescription>" <|-- OnPurchaseDetailedFailedEvent
+@enduml

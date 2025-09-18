@@ -1,0 +1,6 @@
+@startuml
+class Mirror {
+    + Transform(message:Message) : void
+}
+IPseudoLocalizationMethod <|-- Mirror
+@enduml

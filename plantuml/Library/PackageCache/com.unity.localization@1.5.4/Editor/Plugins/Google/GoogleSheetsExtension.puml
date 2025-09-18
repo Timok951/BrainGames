@@ -1,0 +1,12 @@
+@startuml
+class GoogleSheetsExtension {
+    + SpreadsheetId : string <<get>> <<set>>
+    + SheetId : int <<get>> <<set>>
+    + RemoveMissingPulledKeys : bool <<get>> <<set>>
+}
+class "List`1"<T> {
+}
+CollectionExtension <|-- GoogleSheetsExtension
+GoogleSheetsExtension --> "Columns<SheetColumn>" "List`1"
+GoogleSheetsExtension --> "SheetsServiceProvider" SheetsServiceProvider
+@enduml

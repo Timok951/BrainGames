@@ -1,0 +1,23 @@
+@startuml
+abstract class SharedTableCollectionMetadata {
+    + IsEmpty : bool <<get>>
+    + Contains(keyId:long) : bool
+    + Contains(keyId:long, code:string) : bool
+    + AddEntry(keyId:long, code:string) : void
+    + RemoveEntry(keyId:long, code:string) : void
+    + <<virtual>> OnBeforeSerialize() : void
+    + <<virtual>> OnAfterDeserialize() : void
+}
+class Item {
+    + KeyId : long <<get>> <<set>>
+}
+class "Dictionary`2"<T1,T2> {
+}
+class "List`1"<T> {
+}
+IMetadata <|-- SharedTableCollectionMetadata
+ISerializationCallbackReceiver <|-- SharedTableCollectionMetadata
+SharedTableCollectionMetadata o-> "EntriesLookup<long,HashSet<string>>" "Dictionary`2"
+SharedTableCollectionMetadata +-- Item
+Item --> "Tables<string>" "List`1"
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+class MockProvider {
+    + _ProviderId : string = "MockProvider"
+    + UpdateCount : int = 0
+    + ProviderId : string <<get>>
+    + Update(unscaledDeltaTime:float) : void
+    + Release(location:IResourceLocation, asset:object) : void
+    + Provide(provideHandle:ProvideHandle) : void
+    + GetDefaultType(location:IResourceLocation) : Type
+    + CanProvide(t:Type, location:IResourceLocation) : bool
+}
+class "List`1"<T> {
+}
+class "Action`1"<T> {
+}
+class "Func`3"<T1,T2,T3> {
+}
+IResourceProvider <|-- MockProvider
+IUpdateReceiver <|-- MockProvider
+MockProvider o-> "_BehaviourFlags" ProviderBehaviourFlags
+MockProvider o-> "ReleaseLog<KeyValuePair<IResourceLocation, object>>" "List`1"
+MockProvider o-> "ProvideLog<IResourceLocation>" "List`1"
+MockProvider --> "BehaviourFlags" ProviderBehaviourFlags
+MockProvider --> "ProvideCallback<ProvideHandle>" "Action`1"
+MockProvider o-> "DefaultType" Type
+MockProvider o-> "CanProvideCallback<Type,IResourceLocation,bool>" "Func`3"
+@enduml

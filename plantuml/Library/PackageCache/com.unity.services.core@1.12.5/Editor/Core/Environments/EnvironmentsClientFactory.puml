@@ -1,0 +1,8 @@
+@startuml
+class EnvironmentsClientFactory {
+    + EnvironmentsClientFactory(accessTokens:IAccessTokens)
+    + <<async>> FetchEnvironments() : Task<List<EnvironmentInfo>>
+    + <<async>> FetchEnvironment(environmentId:string) : Task<EnvironmentInfo?>
+}
+IEnvironmentFetcher <|-- EnvironmentsClientFactory
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+class UnsupportedBanner {
+    + IsLoaded : bool <<get>>
+    + SetupBanner(banner:IBanner) : void
+    + Load(placementId:string, loadOptions:BannerLoadOptions) : void
+    + Show(placementId:string, showOptions:BannerOptions) : void
+    + Hide(destroy:bool) : void
+    + SetPosition(position:BannerPosition) : void
+}
+INativeBanner <|-- UnsupportedBanner
+@enduml

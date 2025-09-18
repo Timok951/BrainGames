@@ -1,0 +1,12 @@
+@startuml
+class InitializationOperation {
+    + InitializationOperation()
+    + Init(settings:LocalizationSettings) : void
+}
+class "WaitForCurrentOperationAsyncOperationBase`1"<T> {
+}
+class "ObjectPool`1"<T> {
+}
+"WaitForCurrentOperationAsyncOperationBase`1" "<LocalizationSettings>" <|-- InitializationOperation
+InitializationOperation o-> "Pool<InitializationOperation>" "ObjectPool`1"
+@enduml

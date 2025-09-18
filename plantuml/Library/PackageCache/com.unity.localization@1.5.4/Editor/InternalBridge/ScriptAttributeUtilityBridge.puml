@@ -1,0 +1,6 @@
+@startuml
+class ScriptAttributeUtilityBridge <<static>> <<partial>> {
+    + {static} GetFieldInfoAndStaticTypeFromProperty(property:SerializedProperty, type:Type) : FieldInfo
+    + {static} GetTypeFromManagedReferenceFullTypeName(managedReferenceFullTypename:string, managedReferenceInstanceType:Type) : bool
+}
+@enduml

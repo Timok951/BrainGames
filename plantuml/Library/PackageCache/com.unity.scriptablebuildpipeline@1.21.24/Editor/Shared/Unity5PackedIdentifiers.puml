@@ -1,0 +1,7 @@
+@startuml
+class Unity5PackedIdentifiers {
+    + <<virtual>> GenerateInternalFileName(name:string) : string
+    + <<virtual>> SerializationIndexFromObjectIdentifier(objectID:ObjectIdentifier) : long
+}
+IDeterministicIdentifiers <|-- Unity5PackedIdentifiers
+@enduml

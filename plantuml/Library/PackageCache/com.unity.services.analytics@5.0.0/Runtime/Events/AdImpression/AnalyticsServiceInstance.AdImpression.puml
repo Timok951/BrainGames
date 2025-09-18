@@ -1,0 +1,5 @@
+@startuml
+class AnalyticsServiceInstance <<partial>> {
+    + AdImpression(adImpressionParameters:AdImpressionParameters) : void
+}
+@enduml

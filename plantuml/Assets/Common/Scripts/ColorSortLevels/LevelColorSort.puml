@@ -1,0 +1,16 @@
+@startuml
+class LevelColorSort {
+    + LevelName : string
+    + Row : int
+    + Col : int
+}
+class "List`1"<T> {
+}
+ScriptableObject <|-- LevelColorSort
+LevelColorSort --> "BackgroundColor" Color
+LevelColorSort --> "TopLeftColor" Color
+LevelColorSort --> "TopRightColor" Color
+LevelColorSort --> "BottomLeftColor" Color
+LevelColorSort --> "BottomRightColor" Color
+LevelColorSort --> "LockedCells<Vector2Int>" "List`1"
+@enduml

@@ -1,0 +1,6 @@
+@startuml
+class UsingInstanceProvider {
+}
+UsingInstanceProvider --> "InstanceProvider" IInstanceProvider
+UsingInstanceProvider --> "asset" AssetReferenceGameObject
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+class TextDataProviderStub {
+    + TextDataProviderStub(fakeRemoteFolder:string, textDataProvider:TextDataProvider)
+    + <<override>> ProviderId : string <<get>>
+    + <<override>> Provide(provideHandle:ProvideHandle) : void
+}
+class JsonAssetProviderStub {
+    + JsonAssetProviderStub(fakeRemoteFolder:string, jsonAssetProvider:JsonAssetProvider)
+}
+class InternalOpStub {
+    + InternalOpStub(fakeRemoteFolder:string)
+}
+TextDataProvider <|-- TextDataProviderStub
+TextDataProviderStub <|-- JsonAssetProviderStub
+TextDataProviderStub +-- InternalOpStub
+@enduml

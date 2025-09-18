@@ -1,0 +1,30 @@
+@startuml
+class NavMeshSurfaceInPrefabTests {
+    + OneTimeSetup() : void
+    + OneTimeTearDown() : void
+    + SetupNewPrefabWithNavMesh() : IEnumerator
+    + TearDownAndReturnToMainStage() : IEnumerator
+    + NavMeshSurfacePrefab_WhenOpenedInPrefabMode_DoesNotActivateItsNavMesh(runMode:RunMode) : IEnumerator
+    + NavMeshSurfacePrefab_AfterBakingInPrefabMode_DoesNotActivateItsNavMesh(runMode:RunMode) : IEnumerator
+    + NavMeshSurfacePrefab_AfterBakingInPrefabMode_LeavesMainSceneUntouched(runMode:RunMode) : IEnumerator
+    + NavMeshSurfacePrefab_WhenInstantiated_ReferencesTheSameNavMeshData(runMode:RunMode) : IEnumerator
+    + NavMeshSurfacePrefab_WhenInstantiatedAndCleared_InstanceHasEmptyNavMeshData(runMode:RunMode) : IEnumerator
+    + NavMeshSurfacePrefab_WhenBakesNewNavMesh_UpdatesTheInstance(runMode:RunMode) : IEnumerator
+    + NavMeshSurfacePrefab_WhenInstanceRebaked_HasDifferentNavMeshData(runMode:RunMode) : IEnumerator
+    + NavMeshSurfacePrefab_WhenInstanceCleared_InstanceHasEmptyNavMeshData() : IEnumerator
+    + NavMeshSurfacePrefab_WhenInstanceCleared_PrefabKeepsNavMeshData() : IEnumerator
+    + NavMeshSurfacePrefab_WhenRebakedButInstanceModified_DoesNotChangeDataReferencedByInstance(runMode:RunMode) : IEnumerator
+    + NavMeshSurfacePrefab_WhenRebakedButNotSaved_RevertsToTheInitialNavMeshData() : IEnumerator
+    + NavMeshSurfacePrefab_WhenRebakedButNotSaved_TheRebakedAssetNoLongerExists() : IEnumerator
+    + NavMeshSurfacePrefab_WhenRebaked_TheOldAssetExistsUntilSavingAndNotAfter() : IEnumerator
+    + NavMeshSurfacePrefab_WhenRebakedAndAutoSaved_InstanceHasTheNewNavMeshData() : IEnumerator
+    + NavMeshSurfacePrefab_AfterModifiedInstanceAppliedBack_TheOldAssetNoLongerExists() : IEnumerator
+    + NavMeshSurfacePrefab_AfterModifiedInstanceAppliedBack_UpdatedAccordingToInstance() : IEnumerator
+    + NavMeshSurfacePrefab_AfterClearedInstanceAppliedBack_HasEmptyData() : IEnumerator
+    + NavMeshSurfacePrefab_WhenInstanceRevertsBack_InstanceIsLikePrefab() : IEnumerator
+    + NavMeshSurfacePrefab_WhenInstanceRevertsBack_TheInstanceAssetNoLongerExists() : IEnumerator
+    + NavMeshSurfacePrefab_WhenDeleted_InstancesMakeCopiesOfData(runMode:RunMode) : IEnumerator
+    + NavMeshSurfacePrefab_WhenBakingInPrefabModeScene_CollectsOnlyPrefabModeSceneObjects(runMode:RunMode) : IEnumerator
+    + {static} HasNavMeshAtPosition(pos:Vector3, areaMask:int, agentTypeId:int, range:float) : bool
+}
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+class KeyDataStoreTests {
+    + Serialize(val:T) : void
+    + SerializePodType() : void
+    + SerializeComplexType() : void
+}
+class CustomTestClass1 {
+    + name : string
+    + intValue : int
+    + floatValue : float
+}
+class CustomTestClass2 {
+    + name : string
+    + intValue : int
+    + floatValue : float
+}
+enum TestEnumX {
+    EnumValue1,
+    EnumValue2,
+}
+class "List`1"<T> {
+}
+KeyDataStoreTests +-- CustomTestClass1
+KeyDataStoreTests +-- CustomTestClass2
+CustomTestClass2 --> "objectValue" CustomTestClass1
+CustomTestClass2 --> "listValue<CustomTestClass1>" "List`1"
+KeyDataStoreTests +-- TestEnumX
+@enduml

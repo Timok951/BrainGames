@@ -1,0 +1,5 @@
+@startuml
+class EnvironmentsConstants <<static>> {
+    + {static} <<readonly>> SettingsLocation : string
+}
+@enduml

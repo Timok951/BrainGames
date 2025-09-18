@@ -1,0 +1,6 @@
+@startuml
+class IapCoreInitializeCallback {
+    + Initialize(registry:CoreRegistry) : Task
+}
+IInitializablePackage <|-- IapCoreInitializeCallback
+@enduml

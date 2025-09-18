@@ -1,0 +1,6 @@
+@startuml
+class DrivenPropertyManagerInternalBridge {
+    + {static} IsDriven(target:Object, propertyPath:string) : bool
+    + {static} IsDriving(driver:Object, target:Object, propertyPath:string) : bool
+}
+@enduml

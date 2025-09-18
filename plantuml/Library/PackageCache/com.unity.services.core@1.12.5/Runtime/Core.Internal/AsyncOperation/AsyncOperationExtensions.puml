@@ -1,0 +1,8 @@
+@startuml
+class AsyncOperationExtensions <<static>> {
+    + {static} GetAwaiter(self:IAsyncOperation) : AsyncOperationAwaiter
+    + {static} AsTask(self:IAsyncOperation) : Task
+    + {static} GetAwaiter(self:IAsyncOperation<T>) : AsyncOperationAwaiter<T>
+    + {static} AsTask(self:IAsyncOperation<T>) : Task<T>
+}
+@enduml

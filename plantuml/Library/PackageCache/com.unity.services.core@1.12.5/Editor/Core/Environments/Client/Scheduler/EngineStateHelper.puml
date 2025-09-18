@@ -1,0 +1,6 @@
+@startuml
+class EngineStateHelper <<static>> {
+    + {static} IsPlaying : bool
+    + {static} Init() : void
+}
+@enduml

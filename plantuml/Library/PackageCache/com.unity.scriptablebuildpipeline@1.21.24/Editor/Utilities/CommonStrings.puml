@@ -1,0 +1,9 @@
+@startuml
+class CommonStrings <<static>> {
+    + <<const>> UnityEditorResourcePath : string = "library/unity editor resources"
+    + <<const>> UnityDefaultResourcePath : string = "library/unity default resources"
+    + <<const>> UnityBuiltInExtraPath : string = "resources/unity_builtin_extra"
+    + <<const>> AssetBundleNameFormat : string = "archive:/{0&#125;/{0&#125;"
+    + <<const>> SceneBundleNameFormat : string = "archive:/{0&#125;/{1&#125;.sharedAssets"
+}
+@enduml

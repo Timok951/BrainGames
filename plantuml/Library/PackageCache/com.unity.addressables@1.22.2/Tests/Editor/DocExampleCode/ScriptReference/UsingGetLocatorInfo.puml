@@ -1,0 +1,6 @@
+@startuml
+class UsingGetLocatorInfo {
+    + {static} GetLocatorInfo(locatorId:string) : ResourceLocatorInfo
+    + {static} GetLocatorInfo(locator:IResourceLocator) : ResourceLocatorInfo
+}
+@enduml

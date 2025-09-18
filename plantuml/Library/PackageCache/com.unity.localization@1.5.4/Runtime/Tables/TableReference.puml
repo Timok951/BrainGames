@@ -1,0 +1,44 @@
+@startuml
+struct TableReference {
+    + TableCollectionName : string <<get>>
+    + <<override>> ToString() : string
+    + <<override>> Equals(obj:object) : bool
+    + <<override>> GetHashCode() : int
+    + Equals(other:TableReference) : bool
+    + OnBeforeSerialize() : void
+    + OnAfterDeserialize() : void
+}
+struct TableEntryReference {
+    + KeyId : long <<get>>
+    + Key : string <<get>>
+    + ResolveKeyName(sharedData:SharedTableData) : string
+    + <<override>> ToString() : string
+    + ToString(tableReference:TableReference) : string
+    + <<override>> Equals(obj:object) : bool
+    + Equals(other:TableEntryReference) : bool
+    + <<override>> GetHashCode() : int
+    + OnBeforeSerialize() : void
+    + OnAfterDeserialize() : void
+}
+class "IEquatable`1"<T> {
+}
+enum Type {
+    Empty,
+    Guid,
+    Name,
+}
+enum Type {
+    Empty,
+    Name,
+    Id,
+}
+ISerializationCallbackReceiver <|-- TableReference
+"IEquatable`1" "<TableReference>" <|-- TableReference
+TableReference --> "ReferenceType" Type
+TableReference --> "TableCollectionNameGuid" Guid
+ISerializationCallbackReceiver <|-- TableEntryReference
+"IEquatable`1" "<TableEntryReference>" <|-- TableEntryReference
+TableEntryReference --> "ReferenceType" Type
+TableReference +-- Type
+TableEntryReference +-- Type
+@enduml

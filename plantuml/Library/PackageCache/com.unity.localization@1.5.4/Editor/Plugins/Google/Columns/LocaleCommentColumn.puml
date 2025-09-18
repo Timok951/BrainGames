@@ -1,0 +1,11 @@
+@startuml
+class LocaleCommentColumn {
+    + <<override>> PushHeader(collection:StringTableCollection, header:string, headerNote:string) : void
+    + <<override>> PushMetadata(metadata:Comment, value:string, note:string) : void
+    + <<override>> PullMetadata(entry:StringTableEntry, metadata:Comment, cellValue:string, cellNote:string) : void
+}
+class "LocaleMetadataColumn`1"<T> {
+}
+"LocaleMetadataColumn`1" "<Comment>" <|-- LocaleCommentColumn
+LocaleCommentColumn --> "PushFields" PushFields
+@enduml

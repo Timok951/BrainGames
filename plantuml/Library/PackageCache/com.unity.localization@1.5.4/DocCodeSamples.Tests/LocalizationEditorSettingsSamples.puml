@@ -1,0 +1,17 @@
+@startuml
+class LocalizationEditorSettingsSamples <<static>> {
+    + {static} CreateAndAddLocale() : void
+    + {static} RemoveLocale() : void
+    + {static} GetLocales() : void
+    + {static} GetLocale() : void
+    + {static} PrintStringTableCollectionContents() : void
+    + {static} UpdateCollection() : void
+    + {static} PrintAssetTableCollectionContents() : void
+    + {static} AddAssetToCollection(asset:Texture) : void
+    + {static} CreateStringTableCollection1() : void
+    + {static} CreateStringTableCollection2() : void
+    + {static} SetPreloadFlag() : void
+    + {static} GetPreloadFlag() : void
+    + {static} AddMissingTables() : void
+}
+@enduml

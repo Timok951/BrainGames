@@ -1,0 +1,7 @@
+@startuml
+class BannerBundle {
+    + bannerPlacementId : string <<get>>
+    + BannerBundle(bannerPlacementId:string, bannerView:AndroidJavaObject)
+}
+BannerBundle --> "bannerView" AndroidJavaObject
+@enduml

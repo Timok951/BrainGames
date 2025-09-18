@@ -1,0 +1,17 @@
+@startuml
+class LocalizeStringEventExample {
+    + tableName : string = "My String Table Collection"
+    + keyName : string = "My Text 2"
+    + keyId : long = 123
+}
+class CharacterData {
+    + name : string
+    + surname : string
+    + age : int
+}
+MonoBehaviour <|-- LocalizeStringEventExample
+LocalizeStringEventExample o-> "characterInfo" CharacterData
+LocalizeStringEventExample --> "localizedStringEvent" LocalizeStringEvent
+LocalizeStringEventExample o-> "localizedString" LocalizedString
+LocalizeStringEventExample +-- CharacterData
+@enduml

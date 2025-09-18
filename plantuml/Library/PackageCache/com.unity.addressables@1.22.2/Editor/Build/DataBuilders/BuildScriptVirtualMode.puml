@@ -1,0 +1,9 @@
+@startuml
+class BuildScriptVirtualMode {
+    + <<override>> Name : string <<get>>
+    + <<override>> CanBuildData() : bool
+    + <<override>> ClearCachedData() : void
+    + <<override>> IsDataBuilt() : bool
+}
+BuildScriptBase <|-- BuildScriptVirtualMode
+@enduml

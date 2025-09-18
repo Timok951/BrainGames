@@ -1,0 +1,5 @@
+@startuml
+class EditorPlatformMappingServiceTests {
+    + EditorPlatformMappingService_EqualsDesiredAddressablesPlatform(platform:BuildTarget, desiredPlatform:AddressablesPlatform) : void
+}
+@enduml

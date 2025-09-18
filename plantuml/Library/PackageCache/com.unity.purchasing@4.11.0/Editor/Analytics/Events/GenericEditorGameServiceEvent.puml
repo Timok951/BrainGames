@@ -1,0 +1,13 @@
+@startuml
+class GenericEditorGameServiceEvent {
+    + GetSignature() : EditorAnalyticsDataSignature
+    + CreateEventParams(platformName:string, packageKey:string) : object
+}
+struct GenericEditorGameServiceEventParams {
+    + action : string
+    + component : string
+    + package : string
+}
+IEditorAnalyticsEvent <|-- GenericEditorGameServiceEvent
+GenericEditorGameServiceEvent +-- GenericEditorGameServiceEventParams
+@enduml

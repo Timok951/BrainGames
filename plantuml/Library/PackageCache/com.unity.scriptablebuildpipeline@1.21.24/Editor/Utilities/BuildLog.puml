@@ -1,0 +1,39 @@
+@startuml
+class BuildLog {
+    + BuildLog()
+    + BeginBuildStep(level:LogLevel, stepName:string, multiThreaded:bool) : void
+    + EndBuildStep() : void
+    + AddEntry(level:LogLevel, msg:string) : void
+    + AddMetaData(key:string, value:string) : void
+    + FormatForTraceEventProfiler() : string
+}
+struct LogEntry {
+    + ThreadId : int <<get>> <<set>>
+    + Time : double <<get>> <<set>>
+    + Message : string <<get>> <<set>>
+}
+class LogStep {
+    + Name : string <<get>> <<set>>
+    + DurationMS : double <<get>>
+    + ThreadId : int <<get>> <<set>>
+    + StartTime : double <<get>> <<set>>
+    + HasChildren : bool <<get>>
+    + HasEntries : bool <<get>>
+}
+class CultureScope {
+    + CultureScope()
+    + Dispose() : void
+}
+class "List`1"<T> {
+}
+IBuildLogger <|-- BuildLog
+IDeferredBuildLogger <|-- BuildLog
+BuildLog +-- LogEntry
+LogEntry --> "Level" LogLevel
+BuildLog +-- LogStep
+LogStep --> "Level" LogLevel
+LogStep --> "Children<LogStep>" "List`1"
+LogStep --> "Entries<LogEntry>" "List`1"
+BuildLog +-- CultureScope
+IDisposable <|-- CultureScope
+@enduml

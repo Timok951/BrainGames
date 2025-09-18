@@ -1,0 +1,13 @@
+@startuml
+struct ReadOnlyHttpResponse {
+    + ReadOnlyHttpResponse(response:HttpResponse)
+    + StatusCode : long <<get>>
+    + ErrorMessage : string <<get>>
+    + IsHttpError : bool <<get>>
+    + IsNetworkError : bool <<get>>
+}
+class "IReadOnlyDictionary`2"<T1,T2> {
+}
+ReadOnlyHttpResponse --> "Request" ReadOnlyHttpRequest
+ReadOnlyHttpResponse --> "Headers<string,string>" "IReadOnlyDictionary`2"
+@enduml

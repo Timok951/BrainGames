@@ -1,0 +1,5 @@
+@startuml
+class TypicalCharacterSets <<static>> {
+    + {static} GetTypicalCharactersForLanguage(language:SystemLanguage) : char[]
+}
+@enduml

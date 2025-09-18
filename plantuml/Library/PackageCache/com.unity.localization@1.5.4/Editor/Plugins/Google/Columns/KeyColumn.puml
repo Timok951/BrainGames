@@ -1,0 +1,14 @@
+@startuml
+class KeyColumn {
+    + <<const>> ColumnHeader : string = "Key"
+    + <<override>> PushBegin(collection:StringTableCollection) : void
+    + <<override>> PushHeader(collection:StringTableCollection, header:string, headerNote:string) : void
+    + <<override>> PushCellData(keyEntry:SharedTableData.SharedTableEntry, tableEntries:IList<StringTableEntry>, value:string, note:string) : void
+    + <<override>> PullBegin(collection:StringTableCollection) : void
+    + <<override>> PullCellData(keyEntry:SharedTableData.SharedTableEntry, cellValue:string, cellNote:string) : void
+    + PullKey(cellValue:string, cellNote:string) : SharedTableData.SharedTableEntry
+}
+SheetColumn <|-- KeyColumn
+IPullKeyColumn <|-- KeyColumn
+KeyColumn --> "PushFields" PushFields
+@enduml

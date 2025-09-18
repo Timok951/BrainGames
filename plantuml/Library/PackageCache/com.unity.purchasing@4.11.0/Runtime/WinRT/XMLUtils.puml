@@ -1,0 +1,10 @@
+@startuml
+class XMLUtils {
+    + {static} ParseProducts(appReceipt:string) : IEnumerable<TransactionInfo>
+}
+class TransactionInfo {
+    + productId : string
+    + transactionId : string
+}
+XMLUtils +-- TransactionInfo
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+enum UnityAdsLoadError {
+    INITIALIZE_FAILED,
+    INTERNAL_ERROR,
+    INVALID_ARGUMENT,
+    NO_FILL,
+    TIMEOUT,
+    UNKNOWN,
+}
+@enduml

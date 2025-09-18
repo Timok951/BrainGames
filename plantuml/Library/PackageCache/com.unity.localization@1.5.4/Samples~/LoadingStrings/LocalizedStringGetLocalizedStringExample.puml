@@ -1,0 +1,6 @@
+@startuml
+class LocalizedStringGetLocalizedStringExample {
+}
+MonoBehaviour <|-- LocalizedStringGetLocalizedStringExample
+LocalizedStringGetLocalizedStringExample o-> "stringRef" LocalizedString
+@enduml

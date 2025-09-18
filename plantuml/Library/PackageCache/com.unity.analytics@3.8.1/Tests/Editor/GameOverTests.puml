@@ -1,0 +1,9 @@
+@startuml
+class AnalyticsEventTests <<partial>> {
+    + GameOver_NoArgsTest() : void
+    + GameOver_LevelIndexTest(levelIndex:int) : void
+    + GameOver_LevelNameTest(levelName:string) : void
+    + GameOver_LevelIndex_LevelNameTest(levelIndex:int, levelName:string) : void
+    + GameOver_CustomDataTest() : void
+}
+@enduml

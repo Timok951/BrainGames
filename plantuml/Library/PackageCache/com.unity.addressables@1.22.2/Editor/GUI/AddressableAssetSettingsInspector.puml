@@ -1,0 +1,7 @@
+@startuml
+class AddressableAssetSettingsInspector {
+    + <<override>> RequiresConstantRepaint() : bool
+    + <<override>> OnInspectorGUI() : void
+}
+Editor <|-- AddressableAssetSettingsInspector
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+class BundledAssetProvider {
+    + <<override>> Provide(provideHandle:ProvideHandle) : void
+}
+class InternalOp {
+    + Start(provideHandle:ProvideHandle) : void
+    + ProgressCallback() : float
+}
+ResourceProviderBase <|-- BundledAssetProvider
+BundledAssetProvider +-- InternalOp
+@enduml

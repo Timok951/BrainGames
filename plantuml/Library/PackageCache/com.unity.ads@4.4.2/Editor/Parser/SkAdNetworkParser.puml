@@ -1,0 +1,6 @@
+@startuml
+class SkAdNetworkParser <<static>> {
+    + {static} GetParser(parserType:string) : ISkAdNetworkParser
+    + {static} GetAllParsers() : IEnumerable<ISkAdNetworkParser>
+}
+@enduml

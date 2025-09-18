@@ -1,0 +1,52 @@
+@startuml
+abstract class DynamicContentUpdateTests {
+    + CheckForUpdates_Returns_EmptyList_When_HashesMatch() : IEnumerator
+    + CheckForUpdates_Returns_NonEmptyList_When_HashesDontMatch() : IEnumerator
+    + CheckForUpdates_Initializes_Addressables() : IEnumerator
+    + CheckForUpdates_Returns_OnlyModifiedResults() : IEnumerator
+    + UpdateContent_UpdatesCatalogs_Returns_ListOfLocators() : IEnumerator
+    + UpdateContent_UpdatesCatalogs_Returns_ListOfLocators_WhenCheckForUpdateIsNotCalled() : IEnumerator
+    + UpdateContent_UpdatesCatalogs_WhenAutoCleanCacheEnabled_RemovesNonReferencedBundlesFromCache() : IEnumerator
+    + UpdateContent_UpdatesCatalogs_WhenAutoCleanCacheDisabled_NoBundlesRemovedFromCache() : IEnumerator
+    + UpdateContent_UpdatesCatalogs_WhenAutoCleanCacheEnabled_AndCachingDisabled_ReturnsException() : IEnumerator
+    + UpdateContent_UpdatesCatalogs_ThrowsCorrectError_DuringNonSuccessState(opState:AsyncOperationStatus, expectedMessage:string) : void
+    + ProcessDependentOpResults_FailsWithErrorMessageOnInternalError() : void
+    + ProcessDependentOpResults_SucceedsOnNoErrorMessage() : void
+    + ProcessDependentOpResults_ReturnsFailureOnOneErrorMessage() : void
+    + ProcessDependentOpResults_FailsWithMultipleErrorMessageOnMultipleFailures() : void
+}
+class DynamicContentUpdateTests_Packed {
+    + <<override>> RuntimeSetup() : IEnumerator
+}
+class TestLocator {
+    + LocatorId : string <<get>> <<set>>
+    + TestLocator(id:string, locs:ResourceLocationBase[])
+    + Locate(key:object, type:Type, locations:IList<IResourceLocation>) : bool
+}
+class TestHashProvider {
+    + TestHashProvider(id:string, hash:string)
+    + <<override>> Provide(provideHandle:ProvideHandle) : void
+}
+class TestCatalogProvider {
+    + TestCatalogProvider(locatorId:string)
+    + <<override>> Provide(provideHandle:ProvideHandle) : void
+}
+class ExceptionTestOperation {
+}
+class "IEnumerable`1"<T> {
+}
+class "AsyncOperationBase`1"<T> {
+}
+AddressablesTestFixture <|-- DynamicContentUpdateTests
+DynamicContentUpdateTests <|-- DynamicContentUpdateTests_Packed
+DynamicContentUpdateTests +-- TestLocator
+IResourceLocator <|-- TestLocator
+TestLocator --> "Keys<object>" "IEnumerable`1"
+TestLocator --> "AllLocations<IResourceLocation>" "IEnumerable`1"
+DynamicContentUpdateTests +-- TestHashProvider
+ResourceProviderBase <|-- TestHashProvider
+DynamicContentUpdateTests +-- TestCatalogProvider
+ResourceProviderBase <|-- TestCatalogProvider
+DynamicContentUpdateTests +-- ExceptionTestOperation
+"AsyncOperationBase`1" "<string>" <|-- ExceptionTestOperation
+@enduml

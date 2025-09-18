@@ -1,0 +1,8 @@
+@startuml
+class LocalizationAssetPostProcessor {
+}
+class LocalizationAssetModificationProcessor {
+}
+AssetPostprocessor <|-- LocalizationAssetPostProcessor
+AssetModificationProcessor <|-- LocalizationAssetModificationProcessor
+@enduml

@@ -1,0 +1,5 @@
+@startuml
+class InstantiateReference {
+}
+MonoBehaviour <|-- InstantiateReference
+@enduml

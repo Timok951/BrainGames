@@ -1,0 +1,7 @@
+@startuml
+class DefaultSource {
+    + DefaultSource(formatter:SmartFormatter)
+    + TryEvaluateSelector(selectorInfo:ISelectorInfo) : bool
+}
+ISource <|-- DefaultSource
+@enduml

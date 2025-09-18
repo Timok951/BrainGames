@@ -1,0 +1,63 @@
+@startuml
+class TrackedPoseDriverDataDescription {
+}
+enum PoseDataFlags {
+    NoData= 0,
+    Position= 1 << 0,
+    Rotation= 1 << 1,
+}
+class PoseDataSource <<static>> {
+    + {static} TryGetDataFromSource(poseSource:TrackedPoseDriver.TrackedPose, resultPose:Pose) : bool
+    + {static} GetDataFromSource(poseSource:TrackedPoseDriver.TrackedPose, resultPose:Pose) : PoseDataFlags
+}
+class TrackedPoseDriver {
+    + SetPoseSource(deviceType:DeviceType, pose:TrackedPose) : bool
+    + UseRelativeTransform : bool <<get>> <<set>>
+}
+struct PoseData {
+}
+enum DeviceType {
+    GenericXRDevice= 0,
+    GenericXRController= 1,
+    GenericXRRemote= 2,
+}
+enum TrackedPose {
+    LeftEye= 0,
+    RightEye= 1,
+    Center= 2,
+    Head= 3,
+    LeftPose= 4,
+    RightPose= 5,
+    ColorCamera= 6,
+    DepthCameraDeprecated= 7,
+    FisheyeCameraDeprected= 8,
+    DeviceDeprecated= 9,
+    RemotePose= 10,
+}
+enum TrackingType {
+    RotationAndPosition,
+    RotationOnly,
+    PositionOnly,
+}
+enum UpdateType {
+    UpdateAndBeforeRender,
+    Update,
+    BeforeRender,
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- TrackedPoseDriver
+TrackedPoseDriver --> "deviceType" DeviceType
+TrackedPoseDriver --> "poseSource" TrackedPose
+TrackedPoseDriver --> "poseProviderComponent" BasePoseProvider
+TrackedPoseDriver --> "trackingType" TrackingType
+TrackedPoseDriver --> "updateType" UpdateType
+TrackedPoseDriver --> "originPose" Pose
+TrackedPoseDriverDataDescription +-- PoseData
+PoseData --> "PoseNames<string>" "List`1"
+PoseData --> "Poses<TrackedPoseDriver.TrackedPose>" "List`1"
+TrackedPoseDriver +-- DeviceType
+TrackedPoseDriver +-- TrackedPose
+TrackedPoseDriver +-- TrackingType
+TrackedPoseDriver +-- UpdateType
+@enduml

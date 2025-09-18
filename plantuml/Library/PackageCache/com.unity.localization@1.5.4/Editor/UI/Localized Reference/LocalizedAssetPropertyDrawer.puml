@@ -1,0 +1,11 @@
+@startuml
+class LocalizedAssetPropertyDrawer {
+    + <<override>> CreatePropertyData(property:SerializedProperty) : Data
+    + <<override>> GetPropertyHeight(data:Data, property:SerializedProperty, label:GUIContent) : float
+}
+class "LocalizedAsset`1"<T> {
+}
+class "LocalizedReferencePropertyDrawer`1"<T> {
+}
+"LocalizedReferencePropertyDrawer`1" "<AssetTableCollection>" <|-- LocalizedAssetPropertyDrawer
+@enduml

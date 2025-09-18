@@ -1,0 +1,5 @@
+@startuml
+class FinishEventArgsTests {
+    + Constructor(placementId:string, showResult:ShowResult) : void
+}
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+class FileRegistry {
+    + FileRegistry()
+    + GetFilePaths() : IEnumerable<string>
+    + AddFile(path:string) : void
+    + RemoveFile(path:string) : void
+    + GetFilePathForBundle(bundleName:string) : string
+    + ReplaceBundleEntry(bundleName:string, newFileRegistryEntry:string) : bool
+}
+@enduml

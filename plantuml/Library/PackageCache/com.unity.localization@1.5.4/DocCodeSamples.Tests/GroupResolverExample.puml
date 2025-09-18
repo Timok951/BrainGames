@@ -1,0 +1,8 @@
+@startuml
+class GroupResolverExample {
+    + localAssetsGroup : string = "Localization-Local"
+    + remoteAssetsGroup : string = "Localization-Remote"
+    + <<override>> GetExpectedGroupName(locales:IList<LocaleIdentifier>, asset:Object, aaSettings:AddressableAssetSettings) : string
+}
+GroupResolver <|-- GroupResolverExample
+@enduml

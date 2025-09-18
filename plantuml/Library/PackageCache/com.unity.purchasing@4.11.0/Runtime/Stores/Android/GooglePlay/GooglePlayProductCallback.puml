@@ -1,0 +1,7 @@
+@startuml
+class GooglePlayProductCallback {
+    + SetStoreConfiguration(configuration:IGooglePlayConfigurationInternal) : void
+    + NotifyQueryProductDetailsFailed(retryCount:int) : void
+}
+IGoogleProductCallback <|-- GooglePlayProductCallback
+@enduml

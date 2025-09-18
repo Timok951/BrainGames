@@ -1,0 +1,18 @@
+@startuml
+class GroupsPopupWindow {
+    + Initialize(settings:AddressableAssetSettings, entries:List<AddressableAssetEntry>, setInitialSelection:bool, stayOpenAfterSelection:bool, action:Action<AddressableAssetSettings, List<AddressableAssetEntry>, AddressableAssetGroup>) : void
+    + SetPosition(location:Vector2) : void
+}
+class GroupsPopupTreeItem {
+    + GroupsPopupTreeItem(id:int, depth:int, displayName:string, group:AddressableAssetGroup, folderTexture:Texture2D)
+}
+class GroupsPopupTreeView {
+    + GroupsPopupTreeView(state:TreeViewState, popup:GroupsPopupWindow)
+    + <<override>> OnGUI(rect:Rect) : void
+}
+EditorWindow <|-- GroupsPopupWindow
+GroupsPopupWindow +-- GroupsPopupTreeItem
+TreeViewItem <|-- GroupsPopupTreeItem
+GroupsPopupWindow +-- GroupsPopupTreeView
+TreeView <|-- GroupsPopupTreeView
+@enduml

@@ -1,0 +1,5 @@
+@startuml
+class AssetUtils <<static>> {
+    + {static} <<readonly>> CoreLibraryFolderPath : string
+}
+@enduml

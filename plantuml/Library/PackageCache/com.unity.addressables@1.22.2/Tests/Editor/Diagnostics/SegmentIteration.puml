@@ -1,0 +1,9 @@
+@startuml
+class SegmentIterationTests {
+    + EmptyStream_ReturnsNoSegments() : void
+    + FirstSampleBeforeStartFrame_IsFirstSegmentAndCropped() : void
+    + LastSampleBeforeLastEndFrame_LastSegmentSpansToEndOfFrame() : void
+    + MultipleSamples_SegmentPerSample() : void
+    + SegmentBeforeStartFrame_IsIgnored() : void
+}
+@enduml

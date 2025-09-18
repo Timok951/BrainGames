@@ -4,11 +4,12 @@ using UnityEditorInternal;
 using UnityEngine;
 
 
-/* <summary>
- A static class for managing user data and authentication state in the game.
-Provides access to user information such as nickname, email, scores, and level progress.
- Handles login status and logout functionality, as well as initialization of data from PlayerPrefs.
- </summary>*/
+
+///<sumary>
+/// A static class for managing user data and authentication state in the game.
+///Provides access to user information such as nickname, email, scores, and level progress.
+///Handles login status and logout functionality, as well as initialization of data from PlayerPrefs.
+///</sumary>
 
 public static class DBManager 
 {

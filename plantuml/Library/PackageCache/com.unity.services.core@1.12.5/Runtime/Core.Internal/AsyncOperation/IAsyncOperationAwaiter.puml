@@ -1,0 +1,8 @@
+@startuml
+interface IAsyncOperationAwaiter {
+}
+interface "IAsyncOperationAwaiter`1"<out T> {
+}
+ICriticalNotifyCompletion <|-- IAsyncOperationAwaiter
+ICriticalNotifyCompletion <|-- "IAsyncOperationAwaiter`1"
+@enduml

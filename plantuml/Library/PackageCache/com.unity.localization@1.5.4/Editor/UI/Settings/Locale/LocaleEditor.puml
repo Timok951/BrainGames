@@ -1,0 +1,18 @@
+@startuml
+class LocaleEditor {
+    + <<override>> OnInspectorGUI() : void
+}
+class Styles <<static>> {
+}
+LocaleEditor +-- Styles
+Styles o-> "code" GUIContent
+Styles o-> "cultureNotFoundLabel" GUIContent
+Styles o-> "cultureInfo" GUIContent
+Styles o-> "formatCurrency" GUIContent
+Styles o-> "formatDateTime" GUIContent
+Styles o-> "formatNumber" GUIContent
+Styles o-> "formatterCode" GUIContent
+Styles o-> "formatCultureInfo" GUIContent
+Styles o-> "sortOrder" GUIContent
+Styles o-> "emptyCultureInfo" GUIContent
+@enduml

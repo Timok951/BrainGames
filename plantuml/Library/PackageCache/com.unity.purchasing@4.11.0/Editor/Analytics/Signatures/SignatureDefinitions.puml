@@ -1,0 +1,4 @@
+@startuml
+class SignatureDefinitions <<static>> {
+}
+@enduml

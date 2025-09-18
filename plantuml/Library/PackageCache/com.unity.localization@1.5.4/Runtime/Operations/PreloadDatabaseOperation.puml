@@ -1,0 +1,14 @@
+@startuml
+class "PreloadDatabaseOperation`2"<TTable,TEntry> {
+    + PreloadDatabaseOperation()
+    + Init(database:LocalizedDatabase<TTable, TEntry>) : void
+}
+class "WaitForCurrentOperationAsyncOperationBase`1"<T> {
+}
+class "DetailedLocalizationTable`1"<T> {
+}
+class "ObjectPool`1"<T> {
+}
+"WaitForCurrentOperationAsyncOperationBase`1" "<LocalizedDatabase<TTable, TEntry>>" <|-- "PreloadDatabaseOperation`2"
+"PreloadDatabaseOperation`2" o-> "Pool<PreloadDatabaseOperation<TTable, TEntry>>" "ObjectPool`1"
+@enduml

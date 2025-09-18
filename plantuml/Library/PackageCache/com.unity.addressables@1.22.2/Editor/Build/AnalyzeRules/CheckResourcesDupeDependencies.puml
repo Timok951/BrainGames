@@ -1,0 +1,11 @@
+@startuml
+class CheckResourcesDupeDependencies {
+    + <<override>> ruleName : string <<get>>
+    + <<override>> CanFix : bool <<get>>
+    + <<override>> RefreshAnalysis(settings:AddressableAssetSettings) : List<AnalyzeResult>
+    + <<override>> FixIssues(settings:AddressableAssetSettings) : void
+}
+class RegisterCheckResourcesDupeDependencies {
+}
+BundleRuleBase <|-- CheckResourcesDupeDependencies
+@enduml

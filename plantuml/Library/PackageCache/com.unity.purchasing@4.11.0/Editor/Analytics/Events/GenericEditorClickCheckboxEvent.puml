@@ -1,0 +1,15 @@
+@startuml
+class GenericEditorClickCheckboxEvent {
+    + <<virtual>> GetSignature() : EditorAnalyticsDataSignature
+    + CreateEventParams(platformName:string, packageKey:string) : object
+}
+struct GenericEditorClickCheckboxParams {
+    + name : string
+    + tool : string
+    + component : string
+    + value : bool
+    + platform : string
+}
+IEditorAnalyticsEvent <|-- GenericEditorClickCheckboxEvent
+GenericEditorClickCheckboxEvent +-- GenericEditorClickCheckboxParams
+@enduml

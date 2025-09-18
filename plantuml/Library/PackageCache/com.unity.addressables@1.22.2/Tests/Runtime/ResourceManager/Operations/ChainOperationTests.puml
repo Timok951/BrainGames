@@ -1,0 +1,6 @@
+@startuml
+class ChainOperationTests {
+    + ChainOperationWithTypedDependency_DoesNotReturnInvalidDependencyHandles() : void
+    + ChainOperationWithTypelessDependency_DoesNotReturnInvalidDependencyHandles() : void
+}
+@enduml

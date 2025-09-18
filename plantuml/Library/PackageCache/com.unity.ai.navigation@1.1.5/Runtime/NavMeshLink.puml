@@ -1,0 +1,14 @@
+@startuml
+class NavMeshLink {
+    + agentTypeID : int <<get>> <<set>>
+    + width : float <<get>> <<set>>
+    + costModifier : int <<get>> <<set>>
+    + bidirectional : bool <<get>> <<set>>
+    + autoUpdate : bool <<get>> <<set>>
+    + area : int <<get>> <<set>>
+    + UpdateLink() : void
+}
+MonoBehaviour <|-- NavMeshLink
+NavMeshLink --> "startPoint" Vector3
+NavMeshLink --> "endPoint" Vector3
+@enduml

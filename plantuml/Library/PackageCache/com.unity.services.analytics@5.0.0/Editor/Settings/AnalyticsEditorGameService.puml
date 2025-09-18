@@ -1,0 +1,15 @@
+@startuml
+struct AnalyticsIdentifier {
+    + GetKey() : string
+}
+class AnalyticsEditorGameService {
+    + Name : string <<get>>
+    + RequiresCoppaCompliance : bool <<get>>
+    + HasDashboard : bool <<get>>
+    + GetFormattedDashboardUrl() : string
+}
+IEditorGameServiceIdentifier <|-- AnalyticsIdentifier
+IEditorGameService <|-- AnalyticsEditorGameService
+AnalyticsEditorGameService --> "Identifier" IEditorGameServiceIdentifier
+AnalyticsEditorGameService --> "Enabler" IEditorGameServiceEnabler
+@enduml

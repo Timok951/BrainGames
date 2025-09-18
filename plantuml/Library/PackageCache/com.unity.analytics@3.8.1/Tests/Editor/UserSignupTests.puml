@@ -1,0 +1,7 @@
+@startuml
+class AnalyticsEventTests <<partial>> {
+    + UserSignup_AuthorizationNetworkStringTest(network:string) : void
+    + UserSignup_AuthorizationNetworkEnumTest(network:AuthorizationNetwork) : void
+    + UserSignup_CustomDataTest() : void
+}
+@enduml

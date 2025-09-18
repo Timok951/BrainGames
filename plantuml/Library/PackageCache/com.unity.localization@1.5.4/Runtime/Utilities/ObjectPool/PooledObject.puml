@@ -1,0 +1,5 @@
+@startuml
+struct "PooledObject`1"<T> {
+}
+IDisposable <|-- "PooledObject`1"
+@enduml

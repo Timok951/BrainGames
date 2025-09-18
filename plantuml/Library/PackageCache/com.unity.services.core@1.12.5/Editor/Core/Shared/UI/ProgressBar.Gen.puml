@@ -1,0 +1,9 @@
+@startuml
+class ProgressBar <<sealed>> {
+    + OperationInfo : string <<get>> <<set>>
+    + ProgressBar(title:string, operationInfo:string, totalSteps:int)
+    + CompleteStep() : void
+    + Dispose() : void
+}
+IProgressBar <|-- ProgressBar
+@enduml

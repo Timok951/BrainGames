@@ -1,0 +1,8 @@
+@startuml
+class ManagedReferenceUtility <<static>> {
+    + {static} GetType(managedReferenceFullTypename:string) : Type
+    + {static} GetDisplayName(type:Type) : GUIContent
+    + {static} GetDisplayName(managedReferenceFullTypename:string) : GUIContent
+}
+ManagedReferenceUtility o-> "Empty" GUIContent
+@enduml

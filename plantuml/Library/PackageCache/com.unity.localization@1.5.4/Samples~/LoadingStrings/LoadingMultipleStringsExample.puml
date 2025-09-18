@@ -1,0 +1,6 @@
+@startuml
+class LoadingMultipleStringsExample {
+    + stringTableCollectionName : string = "My Strings"
+}
+MonoBehaviour <|-- LoadingMultipleStringsExample
+@enduml

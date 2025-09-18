@@ -1,0 +1,6 @@
+@startuml
+class SkAdNetworkLocalSourceProvider {
+    + SkAdNetworkLocalSourceProvider()
+    + GetSources(filename:string, extension:string) : IEnumerable<SkAdNetworkLocalSource>
+}
+@enduml

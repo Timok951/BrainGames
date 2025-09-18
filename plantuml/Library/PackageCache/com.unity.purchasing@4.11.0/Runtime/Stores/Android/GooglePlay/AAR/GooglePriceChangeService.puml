@@ -1,0 +1,6 @@
+@startuml
+class GooglePriceChangeService {
+    + PriceChange(product:ProductDefinition, onPriceChangedListener:Action<IGoogleBillingResult>) : void
+}
+IGooglePriceChangeService <|-- GooglePriceChangeService
+@enduml

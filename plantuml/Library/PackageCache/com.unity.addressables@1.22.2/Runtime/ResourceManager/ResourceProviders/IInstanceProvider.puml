@@ -1,0 +1,14 @@
+@startuml
+struct InstantiationParameters {
+    + InstantiateInWorldPosition : bool <<get>>
+    + SetPositionRotation : bool <<get>>
+    + InstantiationParameters(parent:Transform, instantiateInWorldSpace:bool)
+    + InstantiationParameters(position:Vector3, rotation:Quaternion, parent:Transform)
+    + Instantiate(source:TObject) : TObject
+}
+interface IInstanceProvider {
+}
+InstantiationParameters --> "Position" Vector3
+InstantiationParameters --> "Rotation" Quaternion
+InstantiationParameters --> "Parent" Transform
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+class CustomLocaleUIWindow {
+    + {static} ShowWindow() : void
+    + OnEnable() : void
+}
+EditorWindow <|-- CustomLocaleUIWindow
+@enduml

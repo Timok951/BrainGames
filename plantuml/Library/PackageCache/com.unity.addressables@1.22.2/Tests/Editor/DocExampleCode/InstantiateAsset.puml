@@ -1,0 +1,9 @@
+@startuml
+class InstantiateFromKey {
+    + key : string
+}
+class SelfCleanup {
+}
+MonoBehaviour <|-- InstantiateFromKey
+MonoBehaviour <|-- SelfCleanup
+@enduml

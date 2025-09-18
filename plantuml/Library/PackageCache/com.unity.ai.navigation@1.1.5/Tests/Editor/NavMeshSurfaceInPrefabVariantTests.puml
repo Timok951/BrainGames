@@ -1,0 +1,10 @@
+@startuml
+class NavMeshSurfaceInPrefabVariantTests {
+    + OneTimeSetup() : void
+    + OneTimeTearDown() : void
+    + SetupVariantOfPrefabWithNavMesh() : IEnumerator
+    + TearDown() : IEnumerator
+    + NavMeshSurfacePrefabVariant_WhenFreshAndRebaked_ParentAssetUnchanged(runMode:RunMode) : IEnumerator
+    + NavMeshSurfacePrefabVariant_WhenCustomizedAndRebaked_OldAssetDiscardedAndParentAssetUnchanged(runMode:RunMode) : IEnumerator
+}
+@enduml

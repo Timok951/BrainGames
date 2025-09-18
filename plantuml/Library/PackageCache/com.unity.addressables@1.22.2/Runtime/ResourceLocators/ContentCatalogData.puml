@@ -1,0 +1,45 @@
+@startuml
+class ContentCatalogDataEntry {
+    + InternalId : string <<get>> <<set>>
+    + Provider : string <<get>>
+    + Data : object <<get>> <<set>>
+    + ContentCatalogDataEntry(type:Type, internalId:string, provider:string, keys:IEnumerable<object>, dependencies:IEnumerable<object>, extraData:object)
+}
+class ContentCatalogData {
+    + LocalHash : string
+    + BuildResultHash : string <<get>> <<set>>
+    + ProviderId : string <<get>> <<internal set>>
+    + ContentCatalogData(id:string)
+    + ContentCatalogData()
+    + CreateLocator(providerSuffix:string) : ResourceLocationMap
+}
+class "List`1"<T> {
+}
+struct Bucket {
+    + dataOffset : int
+}
+class CompactLocation {
+    + InternalId : string <<get>>
+    + ProviderId : string <<get>>
+    + HasDependencies : bool <<get>>
+    + DependencyHashCode : int <<get>>
+    + Data : object <<get>>
+    + PrimaryKey : string <<get>> <<set>>
+    + <<override>> ToString() : string
+    + Hash(t:Type) : int
+    + CompactLocation(locator:ResourceLocationMap, internalId:string, providerId:string, dependencyKey:object, data:object, depHash:int, primaryKey:string, type:Type)
+}
+class "IList`1"<T> {
+}
+ContentCatalogDataEntry --> "Keys<object>" "List`1"
+ContentCatalogDataEntry --> "Dependencies<object>" "List`1"
+ContentCatalogDataEntry --> "ResourceType" Type
+ContentCatalogData --> "InstanceProviderData" ObjectInitializationData
+ContentCatalogData --> "SceneProviderData" ObjectInitializationData
+ContentCatalogData --> "ResourceProviderData<ObjectInitializationData>" "List`1"
+ContentCatalogData +-- Bucket
+ContentCatalogData +-- CompactLocation
+IResourceLocation <|-- CompactLocation
+CompactLocation --> "Dependencies<IResourceLocation>" "IList`1"
+CompactLocation --> "ResourceType" Type
+@enduml

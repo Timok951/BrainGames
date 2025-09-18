@@ -1,0 +1,6 @@
+@startuml
+class SystemLocaleSelector {
+    + GetStartupLocale(availableLocales:ILocalesProvider) : Locale
+}
+IStartupLocaleSelector <|-- SystemLocaleSelector
+@enduml

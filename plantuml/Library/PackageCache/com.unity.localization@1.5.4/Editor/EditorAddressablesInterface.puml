@@ -1,0 +1,11 @@
+@startuml
+class EditorAddressablesInterface {
+}
+class InMemoryResourceLocation {
+    + InMemoryResourceLocation(name:string, id:string, providerId:string, t:Type, dependencies:IResourceLocation[])
+}
+AddressablesInterface <|-- EditorAddressablesInterface
+EditorAddressablesInterface +-- InMemoryResourceLocation
+ResourceLocationBase <|-- InMemoryResourceLocation
+InMemoryResourceLocation --> "Asset" Object
+@enduml

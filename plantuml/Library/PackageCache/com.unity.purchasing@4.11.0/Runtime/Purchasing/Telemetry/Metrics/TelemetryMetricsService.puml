@@ -1,0 +1,8 @@
+@startuml
+class TelemetryMetricsService {
+    + TelemetryMetricsService(telemetryMetricsInstanceWrapper:ITelemetryMetricsInstanceWrapper)
+    + ExecuteTimedAction(timedAction:Action, metricDefinition:TelemetryMetricDefinition) : void
+    + CreateAndStartMetricEvent(metricDefinition:TelemetryMetricDefinition) : ITelemetryMetricEvent
+}
+ITelemetryMetricsService <|-- TelemetryMetricsService
+@enduml

@@ -1,0 +1,8 @@
+@startuml
+abstract class "WaitForCurrentOperationAsyncOperationBase`1"<TObject> {
+}
+class "AsyncOperationBase`1"<T> {
+}
+"AsyncOperationBase`1" "<TObject>" <|-- "WaitForCurrentOperationAsyncOperationBase`1"
+"WaitForCurrentOperationAsyncOperationBase`1" --> "Dependency" AsyncOperationHandle
+@enduml

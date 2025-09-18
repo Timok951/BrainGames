@@ -1,0 +1,22 @@
+@startuml
+class GameplayManager {
+    + levelmaxsize : int = 11
+    + hasGameFinished : bool
+    + BoardSize : float <<get>>
+    + GetHighLightColor(colorId:int) : Color
+    + GetColorId(i:int, j:int) : int
+    + ClickedBack(button:Button) : void
+    + ClickedRestart(button:Button) : void
+    + ClickedNextLevel(button:Button) : void
+    + Animate(target:GameObject, onComplete:System.Action, duration:float) : void
+}
+class "Dictionary`2"<T1,T2> {
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- GameplayManager
+GameplayManager --> "Instance" GameplayManager
+GameplayManager --> "_nodeGrid<Vector2Int,Node>" "Dictionary`2"
+GameplayManager --> "Nodes<Vector2Int,Node>" "Dictionary`2"
+GameplayManager --> "NodeColors<Color>" "List`1"
+@enduml

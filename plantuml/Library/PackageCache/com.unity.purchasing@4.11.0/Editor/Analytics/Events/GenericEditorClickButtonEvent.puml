@@ -1,0 +1,15 @@
+@startuml
+class GenericEditorClickButtonEvent {
+    + <<virtual>> GetSignature() : EditorAnalyticsDataSignature
+    + CreateEventParams(platformName:string, packageKey:string) : object
+}
+struct GenericEditorClickButtonParams {
+    + action : string
+    + tool : string
+    + component : string
+    + option : string
+    + platform : string
+}
+IEditorAnalyticsEvent <|-- GenericEditorClickButtonEvent
+GenericEditorClickButtonEvent +-- GenericEditorClickButtonParams
+@enduml

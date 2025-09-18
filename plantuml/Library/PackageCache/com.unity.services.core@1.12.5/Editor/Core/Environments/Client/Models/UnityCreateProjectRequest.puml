@@ -1,0 +1,12 @@
+@startuml
+class UnityCreateProjectRequest {
+    + UnityCreateProjectRequest(name:string, coppa:CoppaOptions)
+    + Name : string <<get>>
+}
+enum CoppaOptions {
+    Compliant= 1,
+    NotCompliant= 2,
+}
+UnityCreateProjectRequest --> "Coppa" CoppaOptions
+UnityCreateProjectRequest +-- CoppaOptions
+@enduml

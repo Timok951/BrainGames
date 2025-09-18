@@ -1,0 +1,20 @@
+@startuml
+interface IDiskCache {
+}
+interface IFileSystemCalls {
+}
+class FileSystemCalls {
+    + CanAccessFileSystem() : bool
+    + FileExists(path:string) : bool
+    + DeleteFile(path:string) : void
+    + OpenFileForWriting(path:string) : Stream
+    + OpenFileForReading(path:string) : Stream
+}
+class DiskCache {
+    + Write(eventEndIndices:List<int>, payload:Stream) : void
+    + Clear() : void
+    + Read(eventEndIndices:List<int>, buffer:Stream) : bool
+}
+IFileSystemCalls <|-- FileSystemCalls
+IDiskCache <|-- DiskCache
+@enduml

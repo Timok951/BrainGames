@@ -1,0 +1,9 @@
+@startuml
+class PreserveDependencyAttribute <<sealed>> {
+    + PreserveDependencyAttribute(memberSignature:string)
+    + PreserveDependencyAttribute(memberSignature:string, typeName:string)
+    + PreserveDependencyAttribute(memberSignature:string, typeName:string, assembly:string)
+    + Condition : string <<get>> <<set>>
+}
+Attribute <|-- PreserveDependencyAttribute
+@enduml

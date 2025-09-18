@@ -1,0 +1,32 @@
+@startuml
+class ResourceLocationBase {
+    + InternalId : string <<get>>
+    + ProviderId : string <<get>>
+    + HasDependencies : bool <<get>>
+    + Data : object <<get>> <<set>>
+    + PrimaryKey : string <<get>> <<set>>
+    + DependencyHashCode : int <<get>>
+    + Hash(t:Type) : int
+    + <<override>> ToString() : string
+    + ResourceLocationBase(name:string, id:string, providerId:string, t:Type, dependencies:IResourceLocation[])
+    + ComputeDependencyHash() : void
+}
+class LocationWrapper {
+    + LocationWrapper(location:IResourceLocation)
+    + InternalId : string <<get>>
+    + ProviderId : string <<get>>
+    + DependencyHashCode : int <<get>>
+    + HasDependencies : bool <<get>>
+    + Data : object <<get>>
+    + PrimaryKey : string <<get>>
+    + Hash(resultType:Type) : int
+}
+class "IList`1"<T> {
+}
+IResourceLocation <|-- ResourceLocationBase
+ResourceLocationBase --> "Dependencies<IResourceLocation>" "IList`1"
+ResourceLocationBase --> "ResourceType" Type
+IResourceLocation <|-- LocationWrapper
+LocationWrapper --> "Dependencies<IResourceLocation>" "IList`1"
+LocationWrapper --> "ResourceType" Type
+@enduml

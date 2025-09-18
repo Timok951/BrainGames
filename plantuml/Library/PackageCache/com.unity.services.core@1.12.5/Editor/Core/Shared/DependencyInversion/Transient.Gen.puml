@@ -1,0 +1,8 @@
+@startuml
+class Transient {
+    + Transient(factory:Func<IServiceProvider, object>, globalScope:Scope)
+    + Build(provider:IServiceProvider, scope:Scope) : object
+    + <<override>> ToString() : string
+}
+IServiceFactory <|-- Transient
+@enduml

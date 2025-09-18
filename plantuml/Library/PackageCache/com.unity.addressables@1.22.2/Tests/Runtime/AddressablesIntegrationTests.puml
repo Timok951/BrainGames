@@ -1,0 +1,22 @@
+@startuml
+abstract class AddressablesIntegrationTests <<partial>> {
+    + <<virtual>> Setup() : void
+    + <<virtual>> DeleteTempFiles() : void
+    + TearDown() : void
+    + initializationComplete : bool
+}
+class AddressablesIntegrationPlayer {
+    + GetDownloadSize_CalculatesCachedBundles() : IEnumerator
+    + GetDownloadSize_WithList_CalculatesCachedBundles() : IEnumerator
+    + GetDownloadSize_WithList_CalculatesCorrectSize_WhenAssetsReferenceSameBundle() : IEnumerator
+}
+class DumbUpdateOperation {
+    + CallComplete() : void
+}
+class "AsyncOperationBase`1"<T> {
+}
+IPrebuildSetup <|-- AddressablesIntegrationTests
+AddressablesIntegrationTests <|-- AddressablesIntegrationPlayer
+AddressablesIntegrationTests +-- DumbUpdateOperation
+"AsyncOperationBase`1" "<List<IResourceLocator>>" <|-- DumbUpdateOperation
+@enduml

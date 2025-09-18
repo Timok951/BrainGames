@@ -1,0 +1,43 @@
+@startuml
+class NestedVariablesGroup {
+    + TryGetValue(name:string, value:IVariable) : bool
+}
+class VariableNameValuePair {
+    + name : string
+    + <<override>> ToString() : string
+}
+class VariablesGroupAsset {
+    + Count : int <<get>>
+    + IsReadOnly : bool <<get>>
+    + GetSourceValue(_:ISelectorInfo) : object
+    + TryGetValue(name:string, value:IVariable) : bool
+    + Add(name:string, variable:IVariable) : void
+    + Add(item:KeyValuePair<string, IVariable>) : void
+    + Remove(name:string) : bool
+    + Remove(item:KeyValuePair<string, IVariable>) : bool
+    + ContainsKey(name:string) : bool
+    + Contains(item:KeyValuePair<string, IVariable>) : bool
+    + CopyTo(array:KeyValuePair<string, IVariable>[], arrayIndex:int) : void
+    + GetEnumerator() : IEnumerator
+    + ContainsName(name:string) : bool
+    + Clear() : void
+    + OnBeforeSerialize() : void
+    + OnAfterDeserialize() : void
+}
+class "Variable`1"<T> {
+}
+class "IDictionary`2"<T1,T2> {
+}
+class "ICollection`1"<T> {
+}
+"Variable`1" "<VariablesGroupAsset>" <|-- NestedVariablesGroup
+IVariableGroup <|-- NestedVariablesGroup
+VariableNameValuePair --> "variable" IVariable
+ScriptableObject <|-- VariablesGroupAsset
+IVariableGroup <|-- VariablesGroupAsset
+IVariable <|-- VariablesGroupAsset
+"IDictionary`2" "<string,IVariable>" <|-- VariablesGroupAsset
+ISerializationCallbackReceiver <|-- VariablesGroupAsset
+VariablesGroupAsset --> "Keys<string>" "ICollection`1"
+VariablesGroupAsset --> "Values<IVariable>" "ICollection`1"
+@enduml

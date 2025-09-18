@@ -1,0 +1,33 @@
+@startuml
+class AddressableAssetBuildResult {
+    + Duration : double <<get>> <<set>>
+    + LocationCount : int <<get>> <<set>>
+    + Error : string <<get>> <<set>>
+    + OutputPath : string <<get>> <<set>>
+    + {static} CreateResult(settingsPath:string, locCount:int, err:string) : TResult
+    + {static} CreateResult() : TResult
+}
+class AddressablesPlayModeBuildResult {
+}
+class AddressablesPlayerBuildResult {
+    + IsUpdateContentBuild : bool <<get>> <<set>>
+    + RemoteCatalogHashFilePath : string <<get>> <<internal set>>
+    + RemoteCatalogJsonFilePath : string <<get>> <<internal set>>
+    + ContentStateFilePath : string <<get>> <<internal set>>
+}
+class BundleBuildResult {
+    + FilePath : string
+    + InternalBundleName : string
+    + Crc : uint
+    + Hash : string
+}
+class "List`1"<T> {
+}
+IDataBuilderResult <|-- AddressableAssetBuildResult
+AddressableAssetBuildResult --> "FileRegistry" FileRegistry
+AddressableAssetBuildResult <|-- AddressablesPlayModeBuildResult
+AddressableAssetBuildResult <|-- AddressablesPlayerBuildResult
+AddressablesPlayerBuildResult --> "AssetBundleBuildResults<BundleBuildResult>" "List`1"
+AddressablesPlayerBuildResult +-- BundleBuildResult
+BundleBuildResult --> "SourceAssetGroup" AddressableAssetGroup
+@enduml

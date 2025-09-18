@@ -1,0 +1,14 @@
+@startuml
+class UnityCreateAddressRequest {
+    + UnityCreateAddressRequest(firstName:string, lastName:string, email:string, street:string, locality:string, postalCode:string, country:string, phoneNumer:string, region:string)
+    + FirstName : string <<get>>
+    + LastName : string <<get>>
+    + Email : string <<get>>
+    + PhoneNumer : string <<get>>
+    + Street : string <<get>>
+    + Locality : string <<get>>
+    + PostalCode : string <<get>>
+    + Country : string <<get>>
+    + Region : string <<get>>
+}
+@enduml

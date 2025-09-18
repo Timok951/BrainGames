@@ -1,0 +1,7 @@
+@startuml
+abstract class UnityPurchasing {
+    + {static} Initialize(listener:IStoreListener, builder:ConfigurationBuilder) : void
+    + {static} Initialize(listener:IDetailedStoreListener, builder:ConfigurationBuilder) : void
+    + {static} ClearTransactionLog() : void
+}
+@enduml

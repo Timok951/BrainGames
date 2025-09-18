@@ -1,0 +1,6 @@
+@startuml
+class GooglePurchaseService {
+    + Purchase(product:ProductDefinition, oldProduct:Product?, desiredProrationMode:GooglePlayProrationMode?) : void
+}
+IGooglePurchaseService <|-- GooglePurchaseService
+@enduml

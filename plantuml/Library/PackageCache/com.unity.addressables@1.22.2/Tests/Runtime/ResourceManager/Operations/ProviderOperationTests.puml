@@ -1,0 +1,56 @@
+@startuml
+class ManualPercentCompleteOperation {
+    + ManualPercentCompleteOperation(percentComplete:float)
+    + m_PercentComplete : float
+}
+class ProviderOperationTests {
+    + OneTimeSetup() : void
+    + OneTimeTeardown() : void
+    + Setup() : void
+    + TearDown() : void
+    + WhenDependency_ProvideCalledAfterDependencyFinishes() : void
+    + OnDestroyed_DepOpReleasedAndProviderReleased() : void
+    + WhenDependentOpFails_ProvideIsNotCalled() : void
+    + WhenDependentOpFails_AndProviderSupportsFailedDependencies_OperationContinues() : void
+    + WhenProviderCompletesInsideProvideCall_CallbackIsNotDeferred() : void
+    + WhenProviderCompletesOutsideProvideCall_CallbackIsImmediate() : void
+    + UsingProviderHandleWithInvalidVersion_ThrowsException() : void
+    + GetDependency_InsertsDependenciesIntoList() : void
+    + ProviderOperation_PercentComplete_DoesNotDecreaseAfterPercentCallbackIsSet() : void
+    + WhenProviderCallsComplete_AndTypeIsIncorrect_Throws() : void
+    + WhenProviderThrowsExceptionOnProvide_OperationFails() : void
+    + WhenProviderThrowsExceptionInProgressCallback_ProgressReturnsZero() : void
+    + ProvideWithoutSpecifiedType_UsesDefaultProviderType() : void
+    + ProvideHandle_CompleteWithExactType_Succeeds() : void
+    + ProvideHandle_CompleteWithDerivedTypeAsResult_Succeeds() : void
+    + ProvideHandle_CompleteWithBaseTypeAsResult_Succeeds() : void
+    + ProvideHandle_CompleteWithNullForReferencedType_Succeeds() : void
+    + ProvideHandle_CompleteWithNonAssignableType_Throws() : void
+    + ProvideResource_WhenDependencyFailsToLoad_AndProviderCannotLoadWithFailedDependencies_ProvideNotCalled() : void
+    + ProvideResource_WhenDependencyFailsToLoad_AndProviderCanLoadWithFailedDependencies_ProviderStillProvides() : void
+    + ProvideResource_ReceiveDiagnosticsCallback_IGenericProviderOperationHasLocation() : void
+    + ProvideResource_ReceiveDiagnosticsCallback_CreateAndComplete() : void
+    + ProvideResource_ReceiveDiagnosticsCallback_MultipleCallbacks() : void
+    + ProvideResources_CanLoadAndUnloadMultipleResources() : void
+    + ProvideResource_CanLoadNestedDepdendencies() : void
+    + ProvideResource_WhenSomeDependenciesFail_SuccessfulDependenciesRelease() : void
+    + ProvideResources_PartialSuccess_AllowsForSomeFailures() : void
+    + ProvideResources_ReleaseDependenciesOnFailure_DoesApplyToLocationDependencies() : void
+    + ProvideResources_DoNotReleaseDependenciesOnFailure_DoesApplyToLocationDependencies() : void
+    + ProvideResources_DoNotReleaseDependenciesOnFailure_ReleaseAllLocationsAfterCallingRelease() : void
+    + ProvideResources_ReleaseDependenciesOnFailure_DoesNotOverReleaseAfterCallingRelease() : void
+}
+class "AsyncOperationBase`1"<T> {
+}
+class Type1 {
+}
+class Type2 {
+}
+class Type3 {
+}
+"AsyncOperationBase`1" "<GameObject>" <|-- ManualPercentCompleteOperation
+ProviderOperationTests +-- Type1
+ProviderOperationTests +-- Type2
+ProviderOperationTests +-- Type3
+Type2 <|-- Type3
+@enduml

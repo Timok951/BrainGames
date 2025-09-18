@@ -1,0 +1,30 @@
+@startuml
+class SeedXRInputBindings {
+    {static} + GenerateXRBindingsMenuItem() : void
+    + GenerateXRBindings() : void
+}
+class InputAxis {
+    + name : string = ""
+    + descriptiveName : string = ""
+    + descriptiveNegativeName : string = ""
+    + negativeButton : string = ""
+    + positiveButton : string = ""
+    + altNegativeButton : string = ""
+    + altPositiveButton : string = ""
+    + gravity : float = 0.0f
+    + dead : float = 0.001f
+    + sensitivity : float = 1.0f
+    + snap : bool = false
+    + invert : bool = false
+    + type : int = 0
+    + axis : int = 0
+    + joyNum : int = 0
+}
+struct BindingData {
+    + newDataIndex : int
+    + inputManagerIndex : int
+    + exists : bool
+}
+SeedXRInputBindings +-- InputAxis
+SeedXRInputBindings +-- BindingData
+@enduml

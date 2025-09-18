@@ -1,0 +1,7 @@
+@startuml
+class GoogleConnectionRetryPolicy {
+    + GoogleConnectionRetryPolicy(baseRetryDelay:int, maxRetryDelay:int, exponentialFactor:int)
+    + Invoke(actionToTry:Action<Action>, onRetryAction:Action?) : void
+}
+IRetryPolicy <|-- GoogleConnectionRetryPolicy
+@enduml

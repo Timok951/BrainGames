@@ -1,0 +1,5 @@
+@startuml
+class RuntimePlatformMappingServiceTests {
+    + RuntimePlatformMappingService_EqualsDesiredAddressablesPlatform(platform:RuntimePlatform, desiredPlatform:AddressablesPlatform) : void
+}
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+enum TableReferenceMethod {
+    Guid,
+    Name,
+}
+enum EntryReferenceMethod {
+    Id,
+    Key,
+}
+@enduml

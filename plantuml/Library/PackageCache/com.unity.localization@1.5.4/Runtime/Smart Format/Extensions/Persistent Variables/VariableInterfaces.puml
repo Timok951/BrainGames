@@ -1,0 +1,12 @@
+@startuml
+interface IVariableGroup {
+}
+interface IVariable {
+}
+interface IMetadataVariable {
+}
+interface IVariableValueChanged {
+}
+IVariable <|-- IMetadataVariable
+IVariable <|-- IVariableValueChanged
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+struct ProjectState {
+    + UserId : string
+    + UserName : string
+    + AccessToken : string
+    + ProjectId : string
+    + ProjectName : string
+    + OrganizationId : string
+    + OrganizationName : string
+    + ProjectBound : bool
+    + IsOnline : bool
+    + IsLoggedIn : bool
+    + ProjectState(userId:string, userName:string, accessToken:string, projectId:string, projectName:string, organizationId:string, organizationName:string, projectBound:bool, isOnline:bool, isLoggedIn:bool)
+    + HasDiff(projectStateObj:ProjectState) : bool
+}
+@enduml

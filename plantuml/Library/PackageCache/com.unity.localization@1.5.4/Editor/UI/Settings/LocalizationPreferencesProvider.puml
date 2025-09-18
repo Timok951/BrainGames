@@ -1,0 +1,7 @@
+@startuml
+class LocalizationPreferencesProvider {
+    + LocalizationPreferencesProvider()
+    + <<override>> OnGUI(searchContext:string) : void
+}
+SettingsProvider <|-- LocalizationPreferencesProvider
+@enduml

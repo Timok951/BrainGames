@@ -1,0 +1,18 @@
+@startuml
+class GenerateBundlePackingTests {
+    + OneTimeSetUp() : void
+    + OneTimeTearDown() : void
+    + WhenReferencesAreUnique_FilterReferencesForAsset_ReturnsReferences() : void
+    + WhenReferencesContainsDefaultResources_FilterReferencesForAsset_PrunesDefaultResources() : void
+    + WhenReferencesContainsAssetsInBundles_FilterReferencesForAsset_PrunesAssetsInBundles() : void
+    + WhenReferencesDoesNotContainAssetsInBundles_FilterReferences_PrunesNothingAndReturnsNothing() : void
+    + WhenReferencesContainsRefsIncludedByNonCircularAssets_FilterReferencesForAsset_PrunesRefsIncludedByNonCircularAssets() : void
+    + WhenReferencesContainsRefsIncludedByCircularAssetsWithLowerGuid_FilterReferencesForAsset_PrunesRefsIncludedByCircularAssetsWithLowerGuid() : void
+    + WhenReferencesContainsRefsIncludedByCircularAssetsWithHigherGuid_FilterReferencesForAsset_DoesNotPruneRefsIncludedByCircularAssetsWithHigherGuid() : void
+    + WhenReferencesContainsPreviousSceneObjects_FilterReferencesForAsset_PrunesPreviousSceneObjects() : void
+    + WhenReferencesContainPreviousSceneAssetDependencies_FilterReferencesForAsset_PrunesPreviousAssetDependencies(containsPreviousSceneAsset:bool) : void
+    + WhenPrefabContainsDuplicateTypes_GetSortedSceneObjectIdentifiers_DoesNotThorwError() : void
+    + BuildCacheUtility_GetSortedUniqueTypesForObjects_ReturnsUniqueAndSortedTypeArray() : void
+    + BuildCacheUtility_GetMainTypeForObjects_ReturnsUniqueAndSortedTypeArray() : void
+}
+@enduml

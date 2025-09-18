@@ -1,0 +1,5 @@
+@startuml
+class EventGraphListViewTests {
+    + DataStreamEntry_IdEqualsDataSetObjectId() : void
+}
+@enduml

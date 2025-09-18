@@ -1,0 +1,12 @@
+@startuml
+class "ComponentReference`1"<TComponent> {
+    + ComponentReference(guid:string)
+    + <<new>> InstantiateAsync(position:Vector3, rotation:Quaternion, parent:Transform) : AsyncOperationHandle<TComponent>
+    + <<new>> InstantiateAsync(parent:Transform, instantiateInWorldSpace:bool) : AsyncOperationHandle<TComponent>
+    + LoadAssetAsync() : AsyncOperationHandle<TComponent>
+    + <<override>> ValidateAsset(obj:Object) : bool
+    + <<override>> ValidateAsset(path:string) : bool
+    + ReleaseInstance(op:AsyncOperationHandle<TComponent>) : void
+}
+AssetReference <|-- "ComponentReference`1"
+@enduml

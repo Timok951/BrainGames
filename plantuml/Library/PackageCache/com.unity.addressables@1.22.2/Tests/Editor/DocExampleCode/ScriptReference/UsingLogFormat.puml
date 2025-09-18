@@ -1,0 +1,5 @@
+@startuml
+class UsingLogFormat {
+    + UsingLogFormatSample() : void
+}
+@enduml

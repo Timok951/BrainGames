@@ -1,0 +1,18 @@
+@startuml
+class AddressablesInterface {
+    + {static} Acquire(handle:AsyncOperationHandle) : void
+    + {static} Release(handle:AsyncOperationHandle) : void
+    + {static} SafeRelease(handle:AsyncOperationHandle) : void
+    + {static} ReleaseAndReset(handle:AsyncOperationHandle<TObject>) : void
+    + {static} CreateGroupOperation(asyncOperations:List<AsyncOperationHandle>) : AsyncOperationHandle<IList<AsyncOperationHandle>>
+    + {static} LoadResourceLocationsWithLabelsAsync(labels:IEnumerable, mode:Addressables.MergeMode, type:Type) : AsyncOperationHandle<IList<IResourceLocation>>
+    + {static} LoadTableLocationsAsync(tableName:string, id:LocaleIdentifier, type:Type) : AsyncOperationHandle<IList<IResourceLocation>>
+    + {static} LoadAssetsFromLocations(locations:IList<IResourceLocation>, callback:Action<TObject>) : AsyncOperationHandle<IList<TObject>>
+    + {static} LoadAssetFromGUID(guid:string) : AsyncOperationHandle<TObject>
+    + {static} LoadAssetFromName(name:string) : AsyncOperationHandle<TObject>
+    + {static} LoadTableFromLocation(location:IResourceLocation) : AsyncOperationHandle<TObject>
+    + {static} LoadAssetsWithLabel(label:string, callback:Action<TObject>) : AsyncOperationHandle<IList<TObject>>
+}
+AddressablesInterface --> "Instance" AddressablesInterface
+AddressablesInterface --> "ResourceManager" ResourceManager
+@enduml

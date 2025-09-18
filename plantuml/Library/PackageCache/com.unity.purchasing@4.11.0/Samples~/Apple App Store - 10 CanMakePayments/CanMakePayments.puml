@@ -1,0 +1,7 @@
+@startuml
+class CanMakePayments {
+    + AskCanMakePayments() : void
+}
+MonoBehaviour <|-- CanMakePayments
+CanMakePayments --> "canMakePaymentsText" Text
+@enduml

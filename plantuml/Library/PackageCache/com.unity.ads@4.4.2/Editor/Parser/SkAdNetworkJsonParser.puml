@@ -1,0 +1,17 @@
+@startuml
+class SkAdNetworkJsonParser {
+    + GetExtension() : string
+    + ParseSource(source:ISkAdNetworkSource) : HashSet<string>
+}
+class SkAdNetworkIdArray {
+}
+class SkAdNetworkInfo {
+    + skadnetwork_id : string
+}
+class "List`1"<T> {
+}
+ISkAdNetworkParser <|-- SkAdNetworkJsonParser
+SkAdNetworkJsonParser +-- SkAdNetworkIdArray
+SkAdNetworkIdArray --> "skadnetwork_ids<SkAdNetworkInfo>" "List`1"
+SkAdNetworkJsonParser +-- SkAdNetworkInfo
+@enduml

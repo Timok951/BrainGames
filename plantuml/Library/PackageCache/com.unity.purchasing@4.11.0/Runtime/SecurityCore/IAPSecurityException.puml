@@ -1,0 +1,10 @@
+@startuml
+class IAPSecurityException {
+    + IAPSecurityException()
+    + IAPSecurityException(message:string)
+}
+class InvalidSignatureException {
+}
+Exception <|-- IAPSecurityException
+IAPSecurityException <|-- InvalidSignatureException
+@enduml

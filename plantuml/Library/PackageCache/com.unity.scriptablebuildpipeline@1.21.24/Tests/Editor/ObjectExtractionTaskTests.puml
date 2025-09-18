@@ -1,0 +1,20 @@
+@startuml
+class ObjectExtractionTaskTests {
+    + CreateMonoScriptBundle_ExtractsMonoScripts_FromAssetInfo() : void
+    + CreateMonoScriptBundle_ExtractsMonoScripts_FromSceneInfo() : void
+    + CreateMonoScriptBundle_DoesNotExtractMonoScripts_FromDefaultResources() : void
+}
+class ExtractionDependencyData {
+}
+class ExtractionObjectLayout {
+}
+class "Dictionary`2"<T1,T2> {
+}
+ObjectExtractionTaskTests +-- ExtractionDependencyData
+TestDependencyDataBase <|-- ExtractionDependencyData
+ExtractionDependencyData --> "AssetInfo<GUID,AssetLoadInfo>" "Dictionary`2"
+ExtractionDependencyData --> "SceneInfo<GUID,SceneDependencyInfo>" "Dictionary`2"
+ObjectExtractionTaskTests +-- ExtractionObjectLayout
+TestBundleExplictObjectLayout <|-- ExtractionObjectLayout
+ExtractionObjectLayout --> "ExplicitObjectLocation<ObjectIdentifier,string>" "Dictionary`2"
+@enduml

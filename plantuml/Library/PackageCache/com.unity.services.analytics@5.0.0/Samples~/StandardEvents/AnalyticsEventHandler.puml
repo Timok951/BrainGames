@@ -1,0 +1,22 @@
+@startuml
+class AnalyticsEventHandler {
+    + GiveConsent() : void
+    + RecordMinimalAdImpressionEvent() : void
+    + RecordCompleteAdImpressionEvent() : void
+    + RecordSaleTransactionWithOnlyRequiredValues() : void
+    + RecordSaleTransactionWithRealCurrency() : void
+    + RecordSaleTransactionWithVirtualCurrency() : void
+    + RecordSaleTransactionWithMultipleVirtualCurrencies() : void
+    + RecordSaleEventWithOneItem() : void
+    + RecordSaleEventWithMultipleItems() : void
+    + RecordSaleEventWithOptionalParameters() : void
+    + RecordAcquisitionSourceEventWithOnlyRequiredValues() : void
+    + RecordAcquisitionSourceEventWithOptionalParameters() : void
+    + RecordPurchaseEventWithOneItem() : void
+    + RecordPurchaseEventWithMultipleItems() : void
+    + RecordPurchaseEventWithMultipleCurrencies() : void
+    + RecordCustomEventWithNoParameters() : void
+    + RecordCustomEventWithParameters() : void
+}
+MonoBehaviour <|-- AnalyticsEventHandler
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+class LoginResponse {
+    + Status : string <<get>> <<set>>
+    + Nick : string <<get>> <<set>>
+    + Email : string <<get>> <<set>>
+    + InfinityScore : int <<get>> <<set>>
+    + ColorsortLevels : int <<get>> <<set>>
+    + LevelScore : int <<get>> <<set>>
+    + ConnectLevels : int <<get>> <<set>>
+    + PipesLevels : int <<get>> <<set>>
+}
+@enduml

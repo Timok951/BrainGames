@@ -1,0 +1,9 @@
+@startuml
+class DataBuilderInputTests {
+    + BuildInput_FailsWithNullSettings() : void
+    + BuildInput_CreatesProperBuildData() : void
+    + BuildInput_ReadsProfilerEventState() : void
+    + CreateResult_AssignsAllCorrectData() : void
+}
+AddressableAssetTestBase <|-- DataBuilderInputTests
+@enduml

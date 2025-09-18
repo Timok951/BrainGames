@@ -1,0 +1,7 @@
+@startuml
+class "GenericPool`1"<T> {
+    + {static} Get() : T
+    + {static} Get(value:T) : PooledObject<T>
+    + {static} Release(toRelease:T) : void
+}
+@enduml

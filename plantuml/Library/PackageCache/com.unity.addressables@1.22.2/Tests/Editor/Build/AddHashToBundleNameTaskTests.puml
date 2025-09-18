@@ -1,0 +1,6 @@
+@startuml
+class AddHashToBundleNameTaskTests {
+    + AddHashToBundleNameTask_DoesNotChangeHash_WhenAssetsChangeOrder() : void
+}
+AddressableBuildTaskTestBase <|-- AddHashToBundleNameTaskTests
+@enduml

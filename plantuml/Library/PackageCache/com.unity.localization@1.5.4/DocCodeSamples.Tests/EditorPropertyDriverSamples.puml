@@ -1,0 +1,6 @@
+@startuml
+class EditModeSupportExample {
+}
+MonoBehaviour <|-- EditModeSupportExample
+EditModeSupportExample --> "localizedString" LocalizedString
+@enduml

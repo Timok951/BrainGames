@@ -1,0 +1,6 @@
+@startuml
+class VisualElementsWrapper {
+    + VisualElementsWrapper(rootView:VisualElement)
+}
+VisualElementsWrapper --> "Root" VisualElement
+@enduml

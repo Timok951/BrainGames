@@ -1,0 +1,7 @@
+@startuml
+class GooglePlayStoreFinishTransactionService {
+    + SetStoreCallback(storeCallback:IStoreCallback?) : void
+    + FinishTransaction(product:ProductDefinition?, purchaseToken:string?) : void
+}
+IGooglePlayStoreFinishTransactionService <|-- GooglePlayStoreFinishTransactionService
+@enduml

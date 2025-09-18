@@ -1,0 +1,8 @@
+@startuml
+class LabelMaskPopupContent {
+    + LabelMaskPopupContent(activatorRect:Rect, settings:AddressableAssetSettings, e:List<AddressableAssetEntry>, count:Dictionary<string, int>)
+    + <<override>> GetWindowSize() : Vector2
+    + <<override>> OnGUI(fullRect:Rect) : void
+}
+PopupWindowContent <|-- LabelMaskPopupContent
+@enduml

@@ -1,0 +1,5 @@
+@startuml
+class NavMeshModifierEditor {
+    + <<override>> OnInspectorGUI() : void
+}
+@enduml

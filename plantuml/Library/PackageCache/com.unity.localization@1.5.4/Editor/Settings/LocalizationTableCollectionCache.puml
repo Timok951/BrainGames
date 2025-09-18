@@ -1,0 +1,20 @@
+@startuml
+class LocalizationTableCollectionCache {
+    + LocalizationTableCollectionCache()
+    + FindStringTableCollection(tableReference:TableReference) : StringTableCollection
+    + FindAssetTableCollection(tableReference:TableReference) : AssetTableCollection
+    + FindCollectionForSharedTableData(sharedTableData:SharedTableData) : LocalizationTableCollection
+    + FindCollectionForTable(table:LocalizationTable) : LocalizationTableCollection
+    + FindCollectionForInstanceId(tableInstanceID:int) : LocalizationTableCollection
+    + FindCollectionFromDependencyGuid(tableGuid:string) : LocalizationTableCollection
+    + FindLooseTablesUsingSharedTableData(sharedTableData:SharedTableData, foundTables:IList<LocalizationTable>) : void
+    + Clear() : void
+}
+class "List`1"<T> {
+}
+class "Dictionary`2"<T1,T2> {
+}
+LocalizationTableCollectionCache --> "AssetTableCollections<AssetTableCollection>" "List`1"
+LocalizationTableCollectionCache --> "StringTableCollections<StringTableCollection>" "List`1"
+LocalizationTableCollectionCache --> "CollectionDependencies<string,LocalizationTableCollection>" "Dictionary`2"
+@enduml

@@ -1,0 +1,8 @@
+@startuml
+class DictionaryExtensions <<static>> {
+    + {static} MergeNoOverride(self:TDictionary, dictionary:IDictionary<TKey, TValue>) : TDictionary
+    + {static} MergeAllowOverride(self:TDictionary, dictionary:IDictionary<TKey, TValue>) : TDictionary
+    + {static} ValueEquals(x:IDictionary<TKey, TValue>, y:IDictionary<TKey, TValue>) : bool
+    + {static} ValueEquals(x:IDictionary<TKey, TValue>, y:IDictionary<TKey, TValue>, valueComparer:TComparer) : bool
+}
+@enduml

@@ -1,0 +1,6 @@
+@startuml
+class GooglePlayValidator {
+    + GooglePlayValidator(rsaKey:byte[])
+    + Validate(receipt:string, signature:string) : GooglePlayReceipt
+}
+@enduml

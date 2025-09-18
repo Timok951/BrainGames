@@ -1,0 +1,12 @@
+@startuml
+class LocaleGeneratorWindow {
+    + {static} ShowWindow() : void
+}
+class Texts {
+    + <<const>> progressTitle : string = "Generating Locales"
+    + <<const>> saveDialog : string = "Save locales to folder"
+}
+EditorWindow <|-- LocaleGeneratorWindow
+LocaleGeneratorWindow +-- Texts
+Texts o-> "generateLocalesButton" GUIContent
+@enduml

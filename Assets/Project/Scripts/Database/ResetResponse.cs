@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Assets.Project.Scripts.Database
 {
+
+    ///<summary>
+    ///Reset server response
+    /// </summary>
     internal class ResetResponse
     {
         public string Status { get; set; }

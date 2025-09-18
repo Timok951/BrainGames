@@ -1,0 +1,7 @@
+@startuml
+class GenerateSubAssetPathMaps {
+    + Version : int <<get>>
+    + Run() : ReturnCode
+}
+IBuildTask <|-- GenerateSubAssetPathMaps
+@enduml

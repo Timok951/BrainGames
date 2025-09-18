@@ -1,0 +1,25 @@
+@startuml
+interface IGenericProviderOperation {
+}
+class "ProviderOperation`1"<TObject> {
+    + ProvideHandleVersion : int <<get>>
+    + SetDownloadProgressCallback(callback:Func<DownloadStatus>) : void
+    + SetWaitForCompletionCallback(callback:Func<bool>) : void
+    + ProviderOperation()
+    + <<override>> GetDependencies(deps:List<AsyncOperationHandle>) : void
+    + GetDependencies(dstList:IList<object>) : void
+    + DependencyCount : int <<get>>
+    + GetDependency(index:int) : TDepObject
+    + SetProgressCallback(callback:Func<float>) : void
+    + ProviderCompleted(result:T, status:bool, e:Exception) : void
+    + Init(rm:ResourceManager, provider:IResourceProvider, location:IResourceLocation, depOp:AsyncOperationHandle<IList<AsyncOperationHandle>>) : void
+    + Init(rm:ResourceManager, provider:IResourceProvider, location:IResourceLocation, depOp:AsyncOperationHandle<IList<AsyncOperationHandle>>, releaseDependenciesOnFailure:bool) : void
+}
+class "AsyncOperationBase`1"<T> {
+}
+"AsyncOperationBase`1" "<TObject>" <|-- "ProviderOperation`1"
+IGenericProviderOperation <|-- "ProviderOperation`1"
+ICachable <|-- "ProviderOperation`1"
+"ProviderOperation`1" --> "Location" IResourceLocation
+"ProviderOperation`1" --> "RequestedType" Type
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+class LocalizationImportMenuAttribute {
+}
+class LocalizationExportMenuAttribute {
+}
+class LocalizationEntryMenuAttribute {
+}
+Attribute <|-- LocalizationImportMenuAttribute
+Attribute <|-- LocalizationExportMenuAttribute
+Attribute <|-- LocalizationEntryMenuAttribute
+@enduml

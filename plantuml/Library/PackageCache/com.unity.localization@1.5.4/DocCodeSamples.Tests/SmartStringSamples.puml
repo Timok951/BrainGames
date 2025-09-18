@@ -1,0 +1,46 @@
+@startuml
+class SmartStringSamples {
+    + MarkSmart() : void
+    + MultipleArguments() : void
+    + SourceOrderExample() : void
+    + DictionaryExample() : void
+    + {static} DefaultSourceArguments() : void
+    + {static} DictionarySourceArguments() : void
+    + {static} ListSourceArguments() : void
+    + {static} ReflectionSourceArguments() : void
+    + {static} TupleSourceArguments() : void
+    + {static} ConditionalFormatterArguments() : void
+    + {static} IsMatchFormatterArguments() : void
+    + {static} ListFormatterArguments() : void
+    + {static} PluralFormatterArguments() : void
+    + {static} SubStringFormatterArgument() : void
+    + {static} TemplateFormatterArgument() : void
+    + {static} TimeFormatterArgument() : void
+}
+class Address {
+    + StreetAddress : string <<get>> <<set>>
+    + City : string <<get>> <<set>>
+    + State : string <<get>> <<set>>
+    + Zip : string <<get>> <<set>>
+}
+class Person {
+    + FirstName : string <<get>> <<set>>
+    + LastName : string <<get>> <<set>>
+    + MiddleName : string <<get>> <<set>>
+    + FullName : string <<get>> <<set>>
+    + Name : string <<get>>
+    + Age : int <<get>>
+    + NumberOfFriends : int <<get>>
+}
+class Person {
+    + Age : int = 39
+    + Name : string = "Juan Pérez"
+}
+class "List`1"<T> {
+}
+Person --> "Birthday" DateTime
+Person --> "Address" Address
+Person --> "Friends<Person>" "List`1"
+Person --> "Spouse" Person
+SmartStringSamples +-- Person
+@enduml

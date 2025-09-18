@@ -1,0 +1,6 @@
+@startuml
+class CcdNotFoundTest {
+    + SetUp() : void
+    + VerifyCCDDisabled() : void
+}
+@enduml

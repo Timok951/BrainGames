@@ -1,0 +1,44 @@
+@startuml
+struct LocaleIdentifier {
+    + Code : string <<get>>
+    + LocaleIdentifier(code:string)
+    + LocaleIdentifier(culture:CultureInfo)
+    + LocaleIdentifier(systemLanguage:SystemLanguage)
+    + <<override>> ToString() : string
+    + <<override>> Equals(obj:object) : bool
+    + Equals(other:LocaleIdentifier) : bool
+    + <<override>> GetHashCode() : int
+    + CompareTo(other:LocaleIdentifier) : int
+}
+class Locale {
+    + SortOrder : ushort <<get>> <<set>>
+    + LocaleName : string <<get>> <<set>>
+    + <<virtual>> GetFallback() : Locale
+    + GetFallbacks() : IEnumerable<Locale>
+    + UseCustomFormatter : bool <<get>> <<set>>
+    + CustomFormatterCode : string <<get>> <<set>>
+    + {static} CreateLocale(code:string) : Locale
+    + {static} CreateLocale(identifier:LocaleIdentifier) : Locale
+    + {static} CreateLocale(language:SystemLanguage) : Locale
+    + {static} CreateLocale(cultureInfo:CultureInfo) : Locale
+    + CompareTo(other:Locale) : int
+    + OnAfterDeserialize() : void
+    + OnBeforeSerialize() : void
+    + <<override>> ToString() : string
+    + Equals(other:Locale) : bool
+}
+class "IEquatable`1"<T> {
+}
+class "IComparable`1"<T> {
+}
+"IEquatable`1" "<LocaleIdentifier>" <|-- LocaleIdentifier
+"IComparable`1" "<LocaleIdentifier>" <|-- LocaleIdentifier
+LocaleIdentifier --> "CultureInfo" CultureInfo
+ScriptableObject <|-- Locale
+"IEquatable`1" "<Locale>" <|-- Locale
+"IComparable`1" "<Locale>" <|-- Locale
+ISerializationCallbackReceiver <|-- Locale
+Locale --> "Identifier" LocaleIdentifier
+Locale --> "Metadata" MetadataCollection
+Locale --> "Formatter" IFormatProvider
+@enduml
