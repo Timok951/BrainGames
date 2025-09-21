@@ -27,6 +27,8 @@ namespace Connect.Core
         [SerializeField] private GameObject _levelPanelConnect;
         [SerializeField] private GameObject _levelPanelColorsort;
         [SerializeField] private GameObject _levelPanelPipes;
+        [SerializeField] private GameObject _levelPanelNumberLink;
+
         [SerializeField] private GameObject _AuthorithationPannel;
         [SerializeField] private GameObject _registerPannel;
         [SerializeField] private GameObject _loginPannel;
@@ -115,7 +117,6 @@ namespace Connect.Core
             enbut.onClick.AddListener(() => CliclkChangeLocale(localeIdus, enbut));
             rubtn.onClick.AddListener(() => CliclkChangeLocale(localeIdrus, rubtn));
 
-            // Восстановление сохраненного языка
             int savedLocaleID = PlayerPrefs.GetInt("SelectedLocaleID", localeIdus);
             StartCoroutine(SetLocale(savedLocaleID));
         }
@@ -132,8 +133,9 @@ namespace Connect.Core
             _AuthorithationPannel.SetActive(false);
             _loginPannel.SetActive(false);
             _levelPanelColorsort.SetActive(false);
-
             _titlePanel.SetActive(true);
+            _levelPanelNumberLink.SetActive(false);
+
         }
         #endregion
 
@@ -278,6 +280,18 @@ namespace Connect.Core
             });
         }
 
+        public void ClickedNumberLink(Button button)
+        {
+            AnimationDotWeen.AnimateAndSwitch(button, () =>
+            {
+                _titlePanel.SetActive(false);
+                _choosegamescreen.SetActive(false);
+                _levelPanelNumberLink.SetActive(true);
+                _levelTitleImage.color = CurrentColor;
+                LevelOpened?.Invoke();
+            });
+        }
+
         public void ClickedLeaderboard(Button button)
         {
             AnimationDotWeen.AnimateAndSwitch(button, () =>
@@ -394,12 +408,16 @@ namespace Connect.Core
             PlayerPrefs.DeleteKey("ColorsortLevels");
             PlayerPrefs.DeleteKey("ConnectLevels");
             PlayerPrefs.DeleteKey("PipesLevels");
+            PlayerPrefs.DeleteKey("NumberLinksLevels");
+
 
             for (int i = 1; i <= 100; i++)
             {
                 PlayerPrefs.DeleteKey("Level" + i + "Connect");
                 PlayerPrefs.DeleteKey("Level" + i + "Colorsort");
                 PlayerPrefs.DeleteKey("Level" + i + "Pipes");
+                PlayerPrefs.DeleteKey("Level" + i + "NumberLinks");
+
             }
 
             PlayerPrefs.Save();
@@ -438,6 +456,7 @@ namespace Connect.Core
                         PlayerPrefs.SetInt("ColorsortLevels", 0);
                         PlayerPrefs.SetInt("ConnectLevels", 0);
                         PlayerPrefs.SetInt("PipesLevels", 0);
+                        PlayerPrefs.SetInt("NumberLinksLevels", 0);
 
                         PlayerPrefs.Save();
 
@@ -511,6 +530,9 @@ namespace Connect.Core
                                 DBManager.colorsortLevels = loginData.ColorsortLevels;
                                 DBManager.connectLevels = loginData.ConnectLevels;
                                 DBManager.pipesLevels = loginData.PipesLevels;
+                                DBManager.numberLinksLevels = loginData.NumberLinksLevels;
+
+
                                 DBManager.levelscore = loginData.LevelScore;
 
                                 PlayerPrefs.SetString("Nick", loginData.Nick);
@@ -521,6 +543,7 @@ namespace Connect.Core
                                 PlayerPrefs.SetInt("ColorsortLevels", loginData.ColorsortLevels);
                                 PlayerPrefs.SetInt("ConnectLevels", loginData.ConnectLevels);
                                 PlayerPrefs.SetInt("PipesLevels", loginData.PipesLevels);
+                                PlayerPrefs.SetInt("NumberLinksLevels", loginData.NumberLinksLevels);
 
                                 for (int i = 1; i <= loginData.ConnectLevels; i++)
                                     PlayerPrefs.SetInt("Level" + i + "Connect", 1);
@@ -528,6 +551,8 @@ namespace Connect.Core
                                     PlayerPrefs.SetInt("Level" + i + "Colorsort", 1);
                                 for (int i = 1; i <= loginData.PipesLevels; i++)
                                     PlayerPrefs.SetInt("Level" + i + "Pipes", 1);
+                                for (int i = 1; i <= loginData.NumberLinksLevels; i++)
+                                    PlayerPrefs.SetInt("Level" + i + "NumberLinks", 1);
 
                                 PlayerPrefs.Save();
 
@@ -536,6 +561,7 @@ namespace Connect.Core
                                     GameManager.Instance.CurrentLevelConnect = loginData.ConnectLevels;
                                     GameManager.Instance.CurrentLevelColorsort = loginData.ColorsortLevels;
                                     GameManager.Instance.CurrentLevelPipes = loginData.PipesLevels;
+                                    GameManager.Instance.CurrentLevelNumberLinks = loginData.NumberLinksLevels;
                                 }
 
                                 int localColorsortLevels = PlayerPrefs.GetInt("ColorsortLevels", 0);
@@ -589,12 +615,14 @@ namespace Connect.Core
             DBManager.pipesLevels = PlayerPrefs.GetInt("PipesLevels", 0);
             DBManager.levelscore = PlayerPrefs.GetInt("LevelScore", 0);
             DBManager.infinityscore = PlayerPrefs.GetInt("InfinityScore", 0);
+            DBManager.numberLinksLevels = PlayerPrefs.GetInt("NumberLinksLevels", 0);
 
             if (GameManager.Instance != null)
             {
                 GameManager.Instance.CurrentLevelConnect = DBManager.connectLevels;
                 GameManager.Instance.CurrentLevelColorsort = DBManager.colorsortLevels;
                 GameManager.Instance.CurrentLevelPipes = DBManager.pipesLevels;
+                GameManager.Instance.CurrentLevelNumberLinks = DBManager.numberLinksLevels;
             }
 
             if (DBManager.LoggedIn)
@@ -613,12 +641,15 @@ namespace Connect.Core
             DBManager.pipesLevels = loginData.PipesLevels;
             DBManager.levelscore = loginData.LevelScore;
             DBManager.infinityscore = loginData.InfinityScore;
+            DBManager.numberLinksLevels = loginData.NumberLinksLevels;
+
 
             PlayerPrefs.SetInt("ColorsortLevels", loginData.ColorsortLevels);
             PlayerPrefs.SetInt("ConnectLevels", loginData.ConnectLevels);
             PlayerPrefs.SetInt("PipesLevels", loginData.PipesLevels);
             PlayerPrefs.SetInt("LevelScore", loginData.LevelScore);
             PlayerPrefs.SetInt("InfinityScore", loginData.InfinityScore);
+            PlayerPrefs.SetInt("NumberLinksLevels", loginData.NumberLinksLevels);
             PlayerPrefs.Save();
 
             if (GameManager.Instance != null)
@@ -626,6 +657,7 @@ namespace Connect.Core
                 GameManager.Instance.CurrentLevelConnect = loginData.ConnectLevels;
                 GameManager.Instance.CurrentLevelColorsort = loginData.ColorsortLevels;
                 GameManager.Instance.CurrentLevelPipes = loginData.PipesLevels;
+                GameManager.Instance.CurrentLevelNumberLinks = loginData.NumberLinksLevels;
             }
 
             SaveLoginData(loginData);
@@ -642,6 +674,7 @@ namespace Connect.Core
             PlayerPrefs.SetInt("ColorsortLevels", loginData.ColorsortLevels);
             PlayerPrefs.SetInt("ConnectLevels", loginData.ConnectLevels);
             PlayerPrefs.SetInt("PipesLevels", loginData.PipesLevels);
+            PlayerPrefs.SetInt("NumberLinksLevels", loginData.NumberLinksLevels);
             PlayerPrefs.Save();
         }
 

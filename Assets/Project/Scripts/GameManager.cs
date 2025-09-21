@@ -4,15 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
-using Newtonsoft.Json; 
-using Assets.Project.Scripts.Database; 
+using Newtonsoft.Json;
+using Assets.Project.Scripts.Database;
 
 namespace Connect.Core
 {
-
-    ///<summarry> 
-     ///Class for working with levels, unlocking them
-     ///<sumarry>
+    ///<summary> 
+    ///Class for working with levels, unlocking them
+    ///</summary>
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
@@ -37,46 +36,34 @@ namespace Connect.Core
             CurrentLevelConnect = PlayerPrefs.GetInt("ConnectLevels", 1);
             CurrentLevelColorsort = PlayerPrefs.GetInt("ColorsortLevels", 1);
             CurrentLevelPipes = PlayerPrefs.GetInt("PipesLevels", 1);
-
-
+            CurrentLevelNumberLinks = PlayerPrefs.GetInt("NumberLinksLevels", 1);
 
             LevelsConnect = new Dictionary<string, LevelData>();
             if (_allLevelsconnect != null && _allLevelsconnect.Levels != null)
             {
                 foreach (var item in _allLevelsconnect.Levels)
-                {
                     LevelsConnect[item.LevelName] = item;
-                }
-            }
-            else
-            {
-                Debug.LogError("_allLevelsconnect or its Levels is null");
             }
 
             LevelsColorSort = new Dictionary<string, LevelColorSort>();
             if (_allLevelscolorsort != null && _allLevelscolorsort.Levels != null)
             {
                 foreach (var item in _allLevelscolorsort.Levels)
-                {
                     LevelsColorSort[item.LevelName] = item;
-                }
-            }
-            else
-            {
-                Debug.LogError("_allLevelscolorsort or its Levels is null");
             }
 
             LevelsPipes = new Dictionary<string, LevelDataPipe>();
             if (_allLevelspipes != null && _allLevelspipes.LevelsPipes != null)
             {
                 foreach (var item in _allLevelspipes.LevelsPipes)
-                {
                     LevelsPipes[item.LevelName] = item;
-                }
             }
-            else
+
+            LevelsNumberLinks = new Dictionary<string, NumberLinkLevel>();
+            if (_allLevelsNumberLinks != null && _allLevelsNumberLinks.Levels != null)
             {
-                Debug.LogError("_allLevelspipes or its LevelsPipes is null");
+                foreach (var item in _allLevelsNumberLinks.Levels)
+                    LevelsNumberLinks[item.LevelName] = item;
             }
 
             if (DBManager.LoggedIn && !string.IsNullOrEmpty(PlayerPrefs.GetString("Nick", "")))
@@ -114,58 +101,38 @@ namespace Connect.Core
         private string levelNameConnect = "Connect";
         private string levelNameColosort = "Colorsort";
         private string levelNamePipes = "Pipes";
+        private string levelNameNumberLinks = "NumberLinks";
+
         [HideInInspector] public int CurrentLevelConnect;
         [HideInInspector] public int CurrentLevelColorsort;
         [HideInInspector] public int CurrentLevelPipes;
+        [HideInInspector] public int CurrentLevelNumberLinks;
 
-        public bool IsLevelUnlockedConnect(int level)
-        {
-            string levelName = "Level" + level.ToString();
-            return PlayerPrefs.GetInt(levelName + levelNameConnect, level == 1 ? 1 : 0) == 1;
-        }
+        public bool IsLevelUnlockedConnect(int level) =>
+            PlayerPrefs.GetInt("Level" + level + levelNameConnect, level == 1 ? 1 : 0) == 1;
 
-        public bool IsLevelUnlockedColorsort(int level)
-        {
-            string levelName = "Level" + level.ToString();
-            return PlayerPrefs.GetInt(levelName + levelNameColosort, level == 1 ? 1 : 0) == 1;
-        }
+        public bool IsLevelUnlockedColorsort(int level) =>
+            PlayerPrefs.GetInt("Level" + level + levelNameColosort, level == 1 ? 1 : 0) == 1;
 
-        public bool IsLevelUnlockedPipes(int level)
-        {
-            string levelName = "Level" + level.ToString();
-            return PlayerPrefs.GetInt(levelName + levelNamePipes, level == 1 ? 1 : 0) == 1;
-        }
+        public bool IsLevelUnlockedPipes(int level) =>
+            PlayerPrefs.GetInt("Level" + level + levelNamePipes, level == 1 ? 1 : 0) == 1;
+
+        public bool IsLevelUnlockedNumberLinks(int level) =>
+            PlayerPrefs.GetInt("Level" + level + levelNameNumberLinks, level == 1 ? 1 : 0) == 1;
 
         #region FOR_DAILY_GAME
-        public void SetCurrentLevelConnect(int levelIndex)
-        {
-            CurrentLevelConnect = levelIndex;
-            Debug.Log($"Set CurrentLevelConnect to {CurrentLevelConnect}");
-        }
-
-        public void SetCurrentLevelColorSort(int levelIndex)
-        {
-            CurrentLevelColorsort = levelIndex;
-            Debug.Log($"Set CurrentLevelColorsort to {CurrentLevelColorsort}");
-        }
-
-        public void SetCurrentLevelPipes(int levelIndex)
-        {
-            CurrentLevelPipes = levelIndex;
-            Debug.Log($"Set CurrentLevelPipes to {CurrentLevelPipes}");
-        }
+        public void SetCurrentLevelConnect(int levelIndex) => CurrentLevelConnect = levelIndex;
+        public void SetCurrentLevelColorSort(int levelIndex) => CurrentLevelColorsort = levelIndex;
+        public void SetCurrentLevelPipes(int levelIndex) => CurrentLevelPipes = levelIndex;
+        public void SetCurrentLevelNumberLinks(int levelIndex) => CurrentLevelNumberLinks = levelIndex;
         #endregion
 
         public void UnlockLevelConnect()
         {
-            if (CurrentLevelConnect >= LevelsConnect.Count)
-            {
-                Debug.LogWarning("UnlockLevelConnect: Max level reached");
-                return;
-            }
+            if (CurrentLevelConnect >= LevelsConnect.Count) return;
 
             CurrentLevelConnect++;
-            string levelName = "Level" + CurrentLevelConnect.ToString();
+            string levelName = "Level" + CurrentLevelConnect;
             PlayerPrefs.SetInt(levelName + levelNameConnect, 1);
             DBManager.connectLevels = CurrentLevelConnect;
             DBManager.levelscore += 100;
@@ -174,24 +141,15 @@ namespace Connect.Core
             PlayerPrefs.SetInt("LevelScore", DBManager.levelscore);
             PlayerPrefs.Save();
 
-            Debug.Log($"Unlocked level: {levelName + levelNameConnect}, LevelScore: {DBManager.levelscore}");
-
-            if (DBManager.LoggedIn)
-            {
-                StartCoroutine(UpdateServerData());
-            }
+            if (DBManager.LoggedIn) StartCoroutine(UpdateServerData());
         }
 
         public void UnlockLevelColorsort()
         {
-            if (CurrentLevelColorsort >= LevelsColorSort.Count)
-            {
-                Debug.LogWarning("UnlockLevelColorsort: Max level reached");
-                return;
-            }
+            if (CurrentLevelColorsort >= LevelsColorSort.Count) return;
 
             CurrentLevelColorsort++;
-            string levelName = "Level" + CurrentLevelColorsort.ToString();
+            string levelName = "Level" + CurrentLevelColorsort;
             PlayerPrefs.SetInt(levelName + levelNameColosort, 1);
             DBManager.colorsortLevels = CurrentLevelColorsort;
             DBManager.levelscore += 100;
@@ -199,25 +157,16 @@ namespace Connect.Core
             PlayerPrefs.SetInt("ColorsortLevels", DBManager.colorsortLevels);
             PlayerPrefs.SetInt("LevelScore", DBManager.levelscore);
             PlayerPrefs.Save();
-            Debug.Log($"Unlocked level: {levelName + levelNameColosort}");
 
-            if (DBManager.LoggedIn)
-            {
-                StartCoroutine(UpdateServerData());
-            }
+            if (DBManager.LoggedIn) StartCoroutine(UpdateServerData());
         }
 
         public void UnlockLevelPipes()
         {
-            if (CurrentLevelPipes >= LevelsPipes.Count)
-            {
-                Debug.LogWarning("UnlockLevelPipes: Max level reached");
-                return;
-            }
+            if (CurrentLevelPipes >= LevelsPipes.Count) return;
 
-            Debug.Log($"Before unlocking: CurrentLevelPipes = {CurrentLevelPipes}");
             CurrentLevelPipes++;
-            string levelName = "Level" + CurrentLevelPipes.ToString();
+            string levelName = "Level" + CurrentLevelPipes;
             PlayerPrefs.SetInt(levelName + levelNamePipes, 1);
             DBManager.pipesLevels = CurrentLevelPipes;
             DBManager.levelscore += 100;
@@ -225,12 +174,25 @@ namespace Connect.Core
             PlayerPrefs.SetInt("PipesLevels", DBManager.pipesLevels);
             PlayerPrefs.SetInt("LevelScore", DBManager.levelscore);
             PlayerPrefs.Save();
-            Debug.Log($"Level {CurrentLevelPipes} unlocked. LevelScore: {DBManager.levelscore}");
 
-            if (DBManager.LoggedIn)
-            {
-                StartCoroutine(UpdateServerData());
-            }
+            if (DBManager.LoggedIn) StartCoroutine(UpdateServerData());
+        }
+
+        public void UnlockLevelNumberLinks()
+        {
+            if (CurrentLevelNumberLinks >= LevelsNumberLinks.Count) return;
+
+            CurrentLevelNumberLinks++;
+            string levelName = "Level" + CurrentLevelNumberLinks;
+            PlayerPrefs.SetInt(levelName + levelNameNumberLinks, 1);
+            DBManager.numberLinksLevels = CurrentLevelNumberLinks;
+            DBManager.levelscore += 100;
+
+            PlayerPrefs.SetInt("NumberLinksLevels", DBManager.numberLinksLevels);
+            PlayerPrefs.SetInt("LevelScore", DBManager.levelscore);
+            PlayerPrefs.Save();
+
+            if (DBManager.LoggedIn) StartCoroutine(UpdateServerData());
         }
 
         public IEnumerator UpdateServerData()
@@ -242,11 +204,8 @@ namespace Connect.Core
             form.AddField("colorsortLevels", DBManager.colorsortLevels);
             form.AddField("connectLevels", DBManager.connectLevels);
             form.AddField("pipesLevels", DBManager.pipesLevels);
+            form.AddField("numberLinksLevels", DBManager.numberLinksLevels);
             form.AddField("infinityscore", DBManager.infinityscore);
-
-            Debug.Log($"Sending to server: nick={DBManager.nick ?? "null"}, levelscore={DBManager.levelscore}, " +
-                      $"colorsortLevels={DBManager.colorsortLevels}, connectLevels={DBManager.connectLevels}, " +
-                      $"pipesLevels={DBManager.pipesLevels}, infinityscore={DBManager.infinityscore}");
 
             using (UnityWebRequest www = UnityWebRequest.Post(url, form))
             {
@@ -256,33 +215,13 @@ namespace Connect.Core
                 if (www.result == UnityWebRequest.Result.Success)
                 {
                     string response = www.downloadHandler.text;
-                    Debug.Log($"UpdateServerData: Response received: {response}");
-
-                    if (string.IsNullOrEmpty(response))
-                    {
-                        Debug.LogError("UpdateServerData: Server returned empty response");
-                        yield break;
-                    }
-
                     try
                     {
                         UpdateResponse updateResponse = JsonConvert.DeserializeObject<UpdateResponse>(response);
-                        if (updateResponse == null)
-                        {
-                            Debug.LogError("UpdateServerData: Deserialization returned null");
-                            yield break;
-                        }
-
-                        Debug.Log($"UpdateServerData: Status: {updateResponse.Status}, Message: {updateResponse.Message}");
-
-                        if (updateResponse.Status == "0")
-                        {
+                        if (updateResponse != null && updateResponse.Status == "0")
                             Debug.Log("UpdateServerData: Server data updated successfully");
-                        }
                         else
-                        {
-                            Debug.LogWarning($"UpdateServerData: Server reported failure - {updateResponse.Message}");
-                        }
+                            Debug.LogWarning($"UpdateServerData: Failed - {updateResponse?.Message}");
                     }
                     catch (JsonException e)
                     {
@@ -298,10 +237,7 @@ namespace Connect.Core
 
         private class BypassCertificate : CertificateHandler
         {
-            protected override bool ValidateCertificate(byte[] certificateData)
-            {
-                return true;
-            }
+            protected override bool ValidateCertificate(byte[] certificateData) => true;
         }
         #endregion
 
@@ -309,113 +245,66 @@ namespace Connect.Core
         [SerializeField] private LevelData DefaultLevel;
         [SerializeField] private LevelColorSort DefaultLevelColorSort;
         [SerializeField] private LevelDataPipe DefaultLevelPipe;
+        [SerializeField] private NumberLinkLevel DefaultLevelNumberLink;
 
         [SerializeField] private LevelList _allLevelsconnect;
         [SerializeField] private AllLevelsPipes _allLevelspipes;
         [SerializeField] private AllLevelsColorSort _allLevelscolorsort;
+        [SerializeField] private AllLevelsNumberLink _allLevelsNumberLinks;
 
         private Dictionary<string, LevelData> LevelsConnect;
         private Dictionary<string, LevelColorSort> LevelsColorSort;
         private Dictionary<string, LevelDataPipe> LevelsPipes;
+        private Dictionary<string, NumberLinkLevel> LevelsNumberLinks;
 
         public LevelData GetLevelConnect()
         {
-            string levelName = "Level" + CurrentLevelConnect.ToString();
-            if (LevelsConnect.ContainsKey(levelName))
-            {
-                return LevelsConnect[levelName];
-            }
-            if (DefaultLevel != null)
-            {
-                Debug.LogWarning($"Level {levelName} not found, returning DefaultLevel");
-                return DefaultLevel;
-            }
-            Debug.LogError($"Level {levelName} not found and DefaultLevel is null");
-            return null;
+            string levelName = "Level" + CurrentLevelConnect;
+            if (LevelsConnect.ContainsKey(levelName)) return LevelsConnect[levelName];
+            return DefaultLevel;
         }
 
         public LevelColorSort GetLevelColorSort()
         {
-            string levelName = "Level" + CurrentLevelColorsort.ToString();
-            if (LevelsColorSort.ContainsKey(levelName))
-            {
-                return LevelsColorSort[levelName];
-            }
-            if (DefaultLevelColorSort != null)
-            {
-                Debug.LogWarning($"Level {levelName} not found, returning DefaultLevelColorSort");
-                return DefaultLevelColorSort;
-            }
-            Debug.LogError($"Level {levelName} not found and DefaultLevelColorSort is null");
-            return null;
+            string levelName = "Level" + CurrentLevelColorsort;
+            if (LevelsColorSort.ContainsKey(levelName)) return LevelsColorSort[levelName];
+            return DefaultLevelColorSort;
         }
 
         public LevelDataPipe GetLevelPipes()
         {
-            string levelName = "Level" + CurrentLevelPipes.ToString();
-            if (LevelsPipes.ContainsKey(levelName))
-            {
-                return LevelsPipes[levelName];
-            }
-            if (DefaultLevelPipe != null)
-            {
-                Debug.LogWarning($"Level {levelName} not found, returning DefaultLevelPipe");
-                return DefaultLevelPipe;
-            }
-            Debug.LogError($"Level {levelName} not found and DefaultLevelPipe is null");
-            return null;
+            string levelName = "Level" + CurrentLevelPipes;
+            if (LevelsPipes.ContainsKey(levelName)) return LevelsPipes[levelName];
+            return DefaultLevelPipe;
+        }
+
+        public NumberLinkLevel GetLevelNumberLinks()
+        {
+            string levelName = "Level" + CurrentLevelNumberLinks;
+            if (LevelsNumberLinks.ContainsKey(levelName)) return LevelsNumberLinks[levelName];
+            return DefaultLevelNumberLink;
         }
         #endregion
 
-        public int GetRandomLevelIndexConnect()
-        {
-            int maxLevel = LevelsConnect.Count;
-            return Random.Range(1, maxLevel + 1);
-        }
-
-        public int GetRandomLevelIndexColorSort()
-        {
-            int maxLevel = LevelsColorSort.Count;
-            return Random.Range(1, maxLevel + 1);
-        }
-
-        public int GetRandomLevelIndexPipes()
-        {
-            int maxLevel = LevelsPipes.Count;
-            return Random.Range(1, maxLevel + 1);
-        }
+        public int GetRandomLevelIndexConnect() => Random.Range(1, LevelsConnect.Count + 1);
+        public int GetRandomLevelIndexColorSort() => Random.Range(1, LevelsColorSort.Count + 1);
+        public int GetRandomLevelIndexPipes() => Random.Range(1, LevelsPipes.Count + 1);
+        public int GetRandomLevelIndexNumberLinks() => Random.Range(1, LevelsNumberLinks.Count + 1);
 
         #region SCENE_LOAD
         private const string MainMenu = "MainMenu";
         private const string Gameplay = "GameplayConnect";
         private const string GameplayColorsort = "GameplayColorsort";
         private const string GameplayPipes = "PipesGameplay";
+        private const string GameplayNumberLinks = "NumberlinkGameplay";
 
-        public void GoToMainMenu()
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(MainMenu);
+        public void GoToMainMenu() => SceneManager.LoadScene(MainMenu);
+        public void GoToGameplayConnect() => SceneManager.LoadScene(Gameplay);
+        public void GoToGameplayColorSort() => SceneManager.LoadScene(GameplayColorsort);
+        public void GoToGameplayPipes() => SceneManager.LoadScene(GameplayPipes);
+        public void GoToGameplayNumberLinks() => SceneManager.LoadScene(GameplayNumberLinks);
 
-        }
-
-        public void GoToGameplayConnect()
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(Gameplay);
-        }
-
-        public void GoToGameplayColorSort()
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(GameplayColorsort);
-        }
-
-        public void GoToGameplayPipes()
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(GameplayPipes);
-        }
-
-        public void GoToDailyChallenge()
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("DailyChallengeScene");
-        }
+        public void GoToDailyChallenge() => SceneManager.LoadScene("DailyChallengeScene");
         #endregion
     }
 }

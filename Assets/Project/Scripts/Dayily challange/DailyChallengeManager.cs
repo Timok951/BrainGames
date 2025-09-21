@@ -78,7 +78,6 @@ namespace Connect.Core
             if (_winText == null) Debug.LogError("_winText is not assigned!");
             Debug.Log("Daily challenge awake");
 
-            // Настройка локализации для _timerText
             UpdateTimerText();
         }
 

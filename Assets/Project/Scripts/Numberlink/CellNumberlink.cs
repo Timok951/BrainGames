@@ -220,6 +220,30 @@ namespace Connect.Core
 
         }
 
+        private void StretchEdgeFromStart(SpriteRenderer sprite, Vector2Int offset)
+{
+    float length = 0f;
+
+    if (Mathf.Abs(offset.x) > Mathf.Abs(offset.y))
+    {
+        // горизонтальная линия
+        length = Mathf.Abs(offset.x) * GameplayNumberlink.Instance.Edgesize;
+        sprite.size = new Vector2(length, sprite.size.y);
+
+        // сдвигаем спрайт так, чтобы начало было на клетке
+        sprite.transform.localPosition = new Vector3(length / 2f, 0, 0);
+    }
+    else
+    {
+        // вертикальная линия
+        length = Mathf.Abs(offset.y) * GameplayNumberlink.Instance.Edgesize;
+        sprite.size = new Vector2(sprite.size.x, length);
+
+        // сдвигаем спрайт так, чтобы начало было на клетке
+        sprite.transform.localPosition = new Vector3(0, length / 2f, 0);
+    }
+}
+
     }
 
 }

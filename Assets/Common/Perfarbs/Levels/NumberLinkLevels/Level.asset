@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Level
   m_EditorClassIdentifier: 
   LevelName: Level1
-  Rows: 3
-  Columns: 3
-  Data: 010000000000000001000000000000000000000000000000000000000000000000000000
+  Rows: 2
+  Columns: 2
+  Data: 01000000010000000100000001000000

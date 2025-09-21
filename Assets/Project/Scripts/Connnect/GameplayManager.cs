@@ -43,6 +43,24 @@ namespace Connect.Core
         {
             Instance = this;
 
+
+
+            if (_titleText == null)
+            {
+                Debug.LogError("_titleText is not assigned!");
+            }
+            else
+            {
+                _titleText.text = "Level " + GameManager.Instance.CurrentLevelConnect.ToString();
+            }
+
+            if (_titleText != null)
+            {
+                int currentLevelIndex = GameManager.Instance.CurrentLevelNumberLinks ; 
+                _titleText.text = $"Level {currentLevelIndex}";
+            }
+
+
             hasGameFinished = false;
             _winText.SetActive(false);
             _titleText.gameObject.SetActive(true);

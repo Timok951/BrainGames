@@ -20,5 +20,7 @@ namespace Assets.Project.Scripts.Database
         public int LevelScore { get; set; }
         public int ConnectLevels { get; set; }
         public int PipesLevels { get; set; }
+        public int NumberLinksLevels { get; set; }
+
     }
 }
