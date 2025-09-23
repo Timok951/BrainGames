@@ -31,6 +31,14 @@ MonoBehaviour:
     m_Key: ConnectNumbers
     m_Metadata:
       m_Items: []
+  - m_Id: 57507562144907264
+    m_Key: OneStroke
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57507743691161600
+    m_Key: Paint
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

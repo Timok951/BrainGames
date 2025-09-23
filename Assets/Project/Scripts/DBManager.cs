@@ -16,7 +16,11 @@ public static class DBManager
     public static int colorsortLevels;
     public static int connectLevels;
     public static int pipesLevels;
-    public static int numberLinksLevels; 
+    public static int numberLinksLevels;
+    public static int oneStrokeLevels;
+    public static int paintLevels;
+
+
 
     public static bool LoggedIn => !string.IsNullOrEmpty(nick);
 
@@ -43,6 +47,10 @@ public static class DBManager
         connectLevels = PlayerPrefs.GetInt("ConnectLevels", 0);
         pipesLevels = PlayerPrefs.GetInt("PipesLevels", 0);
         numberLinksLevels = PlayerPrefs.GetInt("NumberlinkLevels", 0);
+        oneStrokeLevels = PlayerPrefs.GetInt("OneStrokeLevels", 0);
+        paintLevels = PlayerPrefs.GetInt("PaintLevles", 0);
+
+
     }
 
     /// <summary>
@@ -67,6 +75,14 @@ public static class DBManager
             case "Numberlink":
                 numberLinksLevels = Mathf.Max(numberLinksLevels, level);
                 PlayerPrefs.SetInt("NumberlinkLevels", numberLinksLevels);
+                break;
+            case "OneStroke":
+                oneStrokeLevels = Mathf.Max(oneStrokeLevels, level);
+                PlayerPrefs.SetInt("OneStrokeLevels", oneStrokeLevels);
+                break;
+            case "Paint":
+                paintLevels = Mathf.Max(paintLevels, level);
+                PlayerPrefs.SetInt("PaintLevles", paintLevels);
                 break;
         }
 

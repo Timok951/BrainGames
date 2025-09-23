@@ -34,6 +34,14 @@ MonoBehaviour:
     m_Localized: CONNECTNUMBERS
     m_Metadata:
       m_Items: []
+  - m_Id: 57507562144907264
+    m_Localized: ONESTROKE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57507743691161600
+    m_Localized: PAINT
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

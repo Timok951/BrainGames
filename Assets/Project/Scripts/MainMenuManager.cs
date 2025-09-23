@@ -28,6 +28,10 @@ namespace Connect.Core
         [SerializeField] private GameObject _levelPanelColorsort;
         [SerializeField] private GameObject _levelPanelPipes;
         [SerializeField] private GameObject _levelPanelNumberLink;
+        [SerializeField] private GameObject _levelPanelOneStroke;
+        [SerializeField] private GameObject _levelPanelPaint;
+
+
 
         [SerializeField] private GameObject _AuthorithationPannel;
         [SerializeField] private GameObject _registerPannel;
@@ -292,6 +296,30 @@ namespace Connect.Core
             });
         }
 
+        public void ClickedOneStroke(Button button)
+        {
+            AnimationDotWeen.AnimateAndSwitch(button, () =>
+            {
+                _titlePanel.SetActive(false);
+                _choosegamescreen.SetActive(false);
+                _levelPanelOneStroke.SetActive(true);
+                _levelTitleImage.color = CurrentColor;
+                LevelOpened?.Invoke();
+            });
+        }
+
+        public void ClickedPaint(Button button)
+        {
+            AnimationDotWeen.AnimateAndSwitch(button, () =>
+            {
+                _titlePanel.SetActive(false);
+                _choosegamescreen.SetActive(false);
+                _levelPanelPaint.SetActive(true);
+                _levelTitleImage.color = CurrentColor;
+                LevelOpened?.Invoke();
+            });
+        }
+
         public void ClickedLeaderboard(Button button)
         {
             AnimationDotWeen.AnimateAndSwitch(button, () =>
@@ -395,6 +423,7 @@ namespace Connect.Core
         }
         #endregion
 
+        // дописать с использованием чата гпт
         #region DATABASE_WORK
         public void CallRegister()
         {
@@ -409,7 +438,8 @@ namespace Connect.Core
             PlayerPrefs.DeleteKey("ConnectLevels");
             PlayerPrefs.DeleteKey("PipesLevels");
             PlayerPrefs.DeleteKey("NumberLinksLevels");
-
+            PlayerPrefs.DeleteKey("OneStrokeLevels");
+            PlayerPrefs.DeleteKey("PaintLevels");
 
             for (int i = 1; i <= 100; i++)
             {

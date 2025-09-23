@@ -97,8 +97,8 @@ namespace Connect.Common
             {
                 Vector3 mousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
                 Vector2Int gridPos = new Vector2Int(
-                    Mathf.FloorToInt(mousePos.x + 0.5f),
-                    Mathf.FloorToInt(mousePos.y + 0.5f)
+                    Mathf.FloorToInt(mousePos.y + 0.5f),
+                    Mathf.FloorToInt(mousePos.x + 0.5f)
                     );
 
                 if (!IsValid(gridPos))

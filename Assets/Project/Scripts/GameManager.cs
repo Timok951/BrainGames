@@ -37,6 +37,9 @@ namespace Connect.Core
             CurrentLevelColorsort = PlayerPrefs.GetInt("ColorsortLevels", 1);
             CurrentLevelPipes = PlayerPrefs.GetInt("PipesLevels", 1);
             CurrentLevelNumberLinks = PlayerPrefs.GetInt("NumberLinksLevels", 1);
+            CurrentLevelNumberLinks = PlayerPrefs.GetInt("OneStrokeLevels", 1);
+            CurrentLevelNumberLinks = PlayerPrefs.GetInt("PaintLevels", 1);
+
 
             LevelsConnect = new Dictionary<string, LevelData>();
             if (_allLevelsconnect != null && _allLevelsconnect.Levels != null)
@@ -64,6 +67,13 @@ namespace Connect.Core
             {
                 foreach (var item in _allLevelsNumberLinks.Levels)
                     LevelsNumberLinks[item.LevelName] = item;
+            }
+
+            LevelsOneStroke = new Dictionary<string, LevelOneStroke>();
+            if (_allLevelsOneStorke != null && _allLevelsOneStorke.Levels != null)
+            {
+                foreach (var item in _allLevelsOneStorke.Levels)
+                    LevelsOneStroke[item.LevelName] = item;
             }
 
             if (DBManager.LoggedIn && !string.IsNullOrEmpty(PlayerPrefs.GetString("Nick", "")))
@@ -102,11 +112,17 @@ namespace Connect.Core
         private string levelNameColosort = "Colorsort";
         private string levelNamePipes = "Pipes";
         private string levelNameNumberLinks = "NumberLinks";
+        private string levelNameOneStroke = "OneStroke";
+        private string levelNamePaint = "Paint";
+
+
 
         [HideInInspector] public int CurrentLevelConnect;
         [HideInInspector] public int CurrentLevelColorsort;
         [HideInInspector] public int CurrentLevelPipes;
         [HideInInspector] public int CurrentLevelNumberLinks;
+        [HideInInspector] public int CurrentLevelOneStroke;
+        [HideInInspector] public int CurrenLevelPaint;
 
         public bool IsLevelUnlockedConnect(int level) =>
             PlayerPrefs.GetInt("Level" + level + levelNameConnect, level == 1 ? 1 : 0) == 1;
@@ -119,6 +135,10 @@ namespace Connect.Core
 
         public bool IsLevelUnlockedNumberLinks(int level) =>
             PlayerPrefs.GetInt("Level" + level + levelNameNumberLinks, level == 1 ? 1 : 0) == 1;
+        public bool IsLevelUnlockedOneStroke(int level) =>
+            PlayerPrefs.GetInt("Level" + level + levelNameOneStroke, level == 1 ? 1 : 0) == 1;
+        public bool IsLevelUnlockedPaint(int level) =>
+                PlayerPrefs.GetInt("Level" + level + levelNamePaint, level == 1 ? 1 : 0) == 1;
 
         #region FOR_DAILY_GAME
         public void SetCurrentLevelConnect(int levelIndex) => CurrentLevelConnect = levelIndex;
@@ -194,6 +214,39 @@ namespace Connect.Core
 
             if (DBManager.LoggedIn) StartCoroutine(UpdateServerData());
         }
+        public void UnlockLevelOneStroke()
+        {
+            if (CurrentLevelOneStroke >= LevelsOneStroke.Count) return;
+
+            CurrentLevelNumberLinks++;
+            string levelName = "Level" + CurrentLevelOneStroke;
+            PlayerPrefs.SetInt(levelName + levelNameOneStroke, 1);
+            DBManager.oneStrokeLevels = CurrentLevelOneStroke;
+            DBManager.levelscore += 100;
+
+            PlayerPrefs.SetInt("OneStrokeLevels", DBManager.oneStrokeLevels);
+            PlayerPrefs.SetInt("LevelScore", DBManager.levelscore);
+            PlayerPrefs.Save();
+
+            if (DBManager.LoggedIn) StartCoroutine(UpdateServerData());
+        }
+
+        public void UnlockLevelPaint()
+        {
+            if (CurrenLevelPaint >= LevelsPaint.Count) return;
+
+            CurrentLevelNumberLinks++;
+            string levelName = "Level" + CurrenLevelPaint;
+            PlayerPrefs.SetInt(levelName + LevelsPaint, 1);
+            DBManager.numberLinksLevels = CurrenLevelPaint;
+            DBManager.levelscore += 100;
+
+            PlayerPrefs.SetInt("PaintLevels", DBManager.paintLevels);
+            PlayerPrefs.SetInt("LevelScore", DBManager.paintLevels);
+            PlayerPrefs.Save();
+
+            if (DBManager.LoggedIn) StartCoroutine(UpdateServerData());
+        }
 
         public IEnumerator UpdateServerData()
         {
@@ -205,6 +258,10 @@ namespace Connect.Core
             form.AddField("connectLevels", DBManager.connectLevels);
             form.AddField("pipesLevels", DBManager.pipesLevels);
             form.AddField("numberLinksLevels", DBManager.numberLinksLevels);
+            form.AddField("oneStorkeLevels", DBManager.oneStrokeLevels);
+            form.AddField("paintLevels", DBManager.paintLevels);
+
+
             form.AddField("infinityscore", DBManager.infinityscore);
 
             using (UnityWebRequest www = UnityWebRequest.Post(url, form))
@@ -246,16 +303,28 @@ namespace Connect.Core
         [SerializeField] private LevelColorSort DefaultLevelColorSort;
         [SerializeField] private LevelDataPipe DefaultLevelPipe;
         [SerializeField] private NumberLinkLevel DefaultLevelNumberLink;
+        [SerializeField] private LevelOneStroke DefaultLevelOneStroke;
+        [SerializeField] private PaintLevel DefaultLevelPaint;
+
+
 
         [SerializeField] private LevelList _allLevelsconnect;
         [SerializeField] private AllLevelsPipes _allLevelspipes;
         [SerializeField] private AllLevelsColorSort _allLevelscolorsort;
         [SerializeField] private AllLevelsNumberLink _allLevelsNumberLinks;
+        [SerializeField] private AllLevelsOneStorke _allLevelsOneStorke;
+        [SerializeField] private AllLevelsPaint _allLevelsPainte;
+
+
 
         private Dictionary<string, LevelData> LevelsConnect;
         private Dictionary<string, LevelColorSort> LevelsColorSort;
         private Dictionary<string, LevelDataPipe> LevelsPipes;
         private Dictionary<string, NumberLinkLevel> LevelsNumberLinks;
+        private Dictionary<string, LevelOneStroke> LevelsOneStroke;
+        private Dictionary<string, PaintLevel> LevelsPaint;
+
+
 
         public LevelData GetLevelConnect()
         {
@@ -284,6 +353,20 @@ namespace Connect.Core
             if (LevelsNumberLinks.ContainsKey(levelName)) return LevelsNumberLinks[levelName];
             return DefaultLevelNumberLink;
         }
+
+        public LevelOneStroke GetLevelOneStroke()
+        {
+            string levelName = "Level" + CurrentLevelOneStroke;
+            if (LevelsOneStroke.ContainsKey(levelName)) return LevelsOneStroke[levelName];
+            return DefaultLevelOneStroke;
+        }
+
+        public PaintLevel GetLevelPaint()
+        {
+            string levelName = "Level" + CurrenLevelPaint;
+            if (LevelsOneStroke.ContainsKey(levelName)) return LevelsPaint[levelName];
+            return DefaultLevelPaint;
+        }
         #endregion
 
         public int GetRandomLevelIndexConnect() => Random.Range(1, LevelsConnect.Count + 1);
@@ -297,13 +380,18 @@ namespace Connect.Core
         private const string GameplayColorsort = "GameplayColorsort";
         private const string GameplayPipes = "PipesGameplay";
         private const string GameplayNumberLinks = "NumberlinkGameplay";
+        private const string OneStroke = "OneStroke";
+        private const string Paint = "Paint";
+
+
 
         public void GoToMainMenu() => SceneManager.LoadScene(MainMenu);
         public void GoToGameplayConnect() => SceneManager.LoadScene(Gameplay);
         public void GoToGameplayColorSort() => SceneManager.LoadScene(GameplayColorsort);
         public void GoToGameplayPipes() => SceneManager.LoadScene(GameplayPipes);
         public void GoToGameplayNumberLinks() => SceneManager.LoadScene(GameplayNumberLinks);
-
+        public void GoToGameplayOneStroke() => SceneManager.LoadScene(OneStroke);
+        public void GoToGameplayPaint() => SceneManager.LoadScene(Paint);
         public void GoToDailyChallenge() => SceneManager.LoadScene("DailyChallengeScene");
         #endregion
     }
