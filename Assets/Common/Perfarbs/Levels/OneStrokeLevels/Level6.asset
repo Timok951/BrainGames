@@ -10,22 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f09d709b4c1a98e40a9ccb343de048e8, type: 3}
-  m_Name: Level2
+  m_Name: Level6
   m_EditorClassIdentifier: 
-  LevelName: Level2
+  LevelName: Level6
   Row: 3
   Col: 3
   Points:
   - {x: 0.5, y: 0.5, z: 0, w: 0}
-  - {x: 2.5, y: 0.5, z: 0, w: 1}
-  - {x: 2.5, y: 2.5, z: 0, w: 2}
-  - {x: 0.5, y: 2.5, z: 0, w: 3}
-  - {x: 1.3686689, y: 4.1360226, z: 0, w: 4}
+  - {x: 1.7251414, y: 1.9971856, z: 0, w: 1}
+  - {x: 3.1135097, y: 0.9652909, z: 0, w: 2}
+  - {x: 2.0065675, y: -0.27298307, z: 0, w: 3}
+  - {x: 0.2804886, y: -1.304878, z: 0, w: 4}
+  - {x: 1.8752356, y: -1.7176356, z: 0, w: 5}
+  - {x: 3.2823648, y: -0.57317066, z: 0, w: 6}
   Edges:
   - {x: 0, y: 1}
   - {x: 1, y: 2}
-  - {x: 2, y: 3}
-  - {x: 3, y: 0}
+  - {x: 0, y: 3}
+  - {x: 3, y: 2}
+  - {x: 2, y: 6}
+  - {x: 3, y: 5}
+  - {x: 0, y: 4}
   - {x: 0, y: 2}
-  - {x: 3, y: 4}
-  - {x: 4, y: 2}
+  - {x: 4, y: 5}
+  - {x: 5, y: 6}

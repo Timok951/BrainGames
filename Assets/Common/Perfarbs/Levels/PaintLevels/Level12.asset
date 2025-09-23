@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f09d709b4c1a98e40a9ccb343de048e8, type: 3}
-  m_Name: Level2 3
+  m_Script: {fileID: 11500000, guid: ce9fc7e5262cbd84280b70e5d9b6f129, type: 3}
+  m_Name: Level12
   m_EditorClassIdentifier: 
-  LevelName: 
-  Row: 0
-  Col: 0
-  Points: []
-  Edges: []
+  LevelName: Level2
+  Row: 3
+  Col: 3
+  Start: {x: 0, y: 0}
+  Data: 000000000000000000000000000000000100000000000000000000000000000000000000

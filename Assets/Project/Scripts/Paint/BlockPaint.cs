@@ -19,9 +19,17 @@ namespace Connect.Core
         [SerializeField] private Color _blockedColor;
         [SerializeField] private Color _activeColor;
 
-        public void OnServerInitialized()
+        public void Init(int fill)
         {
-            
+            Blocked = fill == 1;
+            Filled = Blocked;
+            _blockSprite.color = Blocked ? _blockedColor : _emptyColor;
+        }
+
+        public void Add()
+        {
+            Filled = true;
+            _blockSprite.color = _activeColor;
         }
 
 

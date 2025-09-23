@@ -42,7 +42,7 @@ namespace Connect.Core
             points = new Dictionary<int, PointOneStroke>();
             edges = new Dictionary<Vector2Int, EdgeOneStroke>();
             currentId = -1;
-            CreateLevel();
+//CreateLevel();
             SpawnLevel();
 
         }
@@ -216,10 +216,10 @@ namespace Connect.Core
 
             if (Input.GetKeyDown(KeyCode.W)) {
             
-                if(startPoint == null || endPoint == null) return;
+                if(startSpawnPoint == null || endSpawnPoint == null) return;
                 if (startSpawnPoint.Id == endSpawnPoint.Id) return;
                 Vector2Int normal = new Vector2Int(startSpawnPoint.Id, endSpawnPoint.Id);
-                Vector2Int reversed = new Vector2Int(startSpawnPoint.Id, endSpawnPoint.Id);
+                Vector2Int reversed = new Vector2Int(endSpawnPoint.Id, startSpawnPoint.Id);
                 if (edges.ContainsKey(normal)) return;
                 EdgeOneStroke spawnEdge = Instantiate(_edgePrefab);
                 edges[normal] = spawnEdge;

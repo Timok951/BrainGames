@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f09d709b4c1a98e40a9ccb343de048e8, type: 3}
-  m_Name: Level2
+  m_Name: Level4
   m_EditorClassIdentifier: 
-  LevelName: Level2
+  LevelName: Level4
   Row: 3
   Col: 3
   Points:
@@ -20,7 +20,9 @@ MonoBehaviour:
   - {x: 2.5, y: 0.5, z: 0, w: 1}
   - {x: 2.5, y: 2.5, z: 0, w: 2}
   - {x: 0.5, y: 2.5, z: 0, w: 3}
-  - {x: 1.3686689, y: 4.1360226, z: 0, w: 4}
+  - {x: 1.218575, y: 4.3048778, z: 0, w: 4}
+  - {x: 2.4756107, y: 4.3236394, z: 0, w: 5}
+  - {x: 3.094748, y: 2.1472797, z: 0, w: 6}
   Edges:
   - {x: 0, y: 1}
   - {x: 1, y: 2}
@@ -28,4 +30,7 @@ MonoBehaviour:
   - {x: 3, y: 0}
   - {x: 0, y: 2}
   - {x: 3, y: 4}
-  - {x: 4, y: 2}
+  - {x: 4, y: 5}
+  - {x: 5, y: 2}
+  - {x: 5, y: 6}
+  - {x: 1, y: 6}
