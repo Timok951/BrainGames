@@ -44,6 +44,8 @@ namespace Connect.Core{
 
         private void Awake()
         {
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = 60;
             hasGameFinished = false;
             points = new Dictionary<int, PointOneStroke>();
             edges = new Dictionary<Vector2Int, EdgeOneStroke>();

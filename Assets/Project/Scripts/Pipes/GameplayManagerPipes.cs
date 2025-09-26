@@ -42,6 +42,8 @@ namespace Connect.Core
         private void Awake()
         {
 
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = 60;
             DOTween.Init(true, true, LogBehaviour.ErrorsOnly);
 
             DOTween.KillAll();

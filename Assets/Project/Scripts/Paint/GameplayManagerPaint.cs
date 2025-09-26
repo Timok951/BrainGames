@@ -7,7 +7,10 @@ using UnityEngine.Localization;
 using UnityEngine.UI;
 
 namespace Connect.Core
-{
+{ 
+    /// <summary>
+    /// Gameplaymanager for paint Gamemode
+    /// </summary>
     public class GameplayManagerPaint : MonoBehaviour
     {
         public static GameplayManagerPaint Instance;
@@ -36,6 +39,9 @@ namespace Connect.Core
 
         private void Awake()
         {
+            QualitySettings.vSyncCount = 0; 
+            Application.targetFrameRate = 60;
+
             Instance = this;
             hasGameFinished = false;
             CanClick = true;
