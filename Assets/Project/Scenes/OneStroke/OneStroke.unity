@@ -241,14 +241,14 @@ PrefabInstance:
     - target: {fileID: 9181362445036856809, guid: 7646284e4ee8a064daa2160df3e03e1e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 746845606}
     - target: {fileID: 9181362445036856809, guid: 7646284e4ee8a064daa2160df3e03e1e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ClickedRestart
       objectReference: {fileID: 0}
     - target: {fileID: 9181362445036856809, guid: 7646284e4ee8a064daa2160df3e03e1e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Connect.Core.GameplayNumberlink, Connect.Core
+      value: Connect.Core.GameplayManagerOneStroke, Connect.Core
       objectReference: {fileID: 0}
     - target: {fileID: 9181362445036856809, guid: 7646284e4ee8a064daa2160df3e03e1e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
@@ -534,7 +534,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 12
   m_TargetDisplay: 0
 --- !u!224 &435135963
 RectTransform:
@@ -825,7 +825,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' OneStroke'
+  m_text: " \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf774c3c009d5af4491f0630933194b8, type: 2}
   m_sharedMaterial: {fileID: 7306233757045348071, guid: cf774c3c009d5af4491f0630933194b8, type: 2}
@@ -1135,14 +1135,14 @@ PrefabInstance:
     - target: {fileID: 7190881803725137534, guid: b201c1610adaffe4694149f43666407d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 746845606}
     - target: {fileID: 7190881803725137534, guid: b201c1610adaffe4694149f43666407d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ClickedNextLevel
       objectReference: {fileID: 0}
     - target: {fileID: 7190881803725137534, guid: b201c1610adaffe4694149f43666407d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Connect.Core.GameplayNumberlink, Connect.Core
+      value: Connect.Core.GameplayManagerOneStroke, Connect.Core
       objectReference: {fileID: 0}
     - target: {fileID: 7190881803725137534, guid: b201c1610adaffe4694149f43666407d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument

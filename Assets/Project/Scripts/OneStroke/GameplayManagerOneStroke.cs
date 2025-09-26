@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
 namespace Connect.Core{
@@ -14,6 +16,7 @@ namespace Connect.Core{
         /// Base Logic for One stroke Game
         /// </summary>
         #region startMethods
+        private LocalizedString _levelLocalized;
 
         [Header("UI")]
         [SerializeField] private GameObject _winText;
@@ -38,6 +41,7 @@ namespace Connect.Core{
         #endregion
 
         #region awakeMethods
+
         private void Awake()
         {
             hasGameFinished = false;
@@ -45,9 +49,40 @@ namespace Connect.Core{
             edges = new Dictionary<Vector2Int, EdgeOneStroke>();
             _highlight.gameObject.SetActive(false);
             currentId = -1;
-            SpawnLevel();
 
         }
+
+        private void Start()
+        {
+            _isDailyChallengeMode = DailyChallengeManager.Instance != null;
+
+
+
+            _level = GameManager.Instance.GetLevelOneStroke();
+            SpawnLevel();
+
+            if (_titleText == null)
+            {
+                Debug.LogError("_titleText not assigned!");
+                return;
+            }
+
+            _levelLocalized = new LocalizedString("Gameplay", "Level");
+            _levelLocalized.Arguments = new object[] { GameManager.Instance.CurrentLevelOneStroke };
+            _levelLocalized.StringChanged += (value) => _titleText.text = value;
+
+            var table = LocalizationSettings.StringDatabase.GetTable("Gameplay");
+            if (table == null)
+                Debug.LogError("Localization table 'Gameplay' not found!");
+            else if (table.GetEntry("Level") == null)
+                Debug.LogError("Localization key 'Level' not found!");
+
+            _titleText.gameObject.SetActive(true);
+            _levelLocalized.RefreshString();
+            Debug.Log("GameplayManagerOneStroke Awake called");
+        }
+
+
 
         private void SpawnLevel()
         {
@@ -88,14 +123,35 @@ namespace Connect.Core{
                 if (!item.Value.Filled)
                     return;
             }
+
             hasGameFinished = true;
             _winText.SetActive(true);
 
+            if (!_isDailyChallengeMode)
+            {
+                GameManager.Instance.UnlockLevelOneStroke();
+            }
+            else if (DailyChallengeManager.Instance != null)
+            {
+                DailyChallengeManager.Instance.OnModeCompleted();
+            }
         }
+
 
 
         private void Update()
         {
+            if (_isDailyChallengeMode)
+            {
+                if (_nextLevelButton != null) _nextLevelButton.SetActive(false);
+                if (_restartButton != null) _restartButton.SetActive(false);
+                if (_backButton != null) _backButton.SetActive(false);
+                if (_winText != null) _winText.SetActive(false);
+                if (_titleText != null) _titleText.gameObject.SetActive(false);
+            }
+
+            _levelLocalized.RefreshString();
+
             if (hasGameFinished) return;
 
             if (Input.GetMouseButtonDown(0))
@@ -105,19 +161,28 @@ namespace Connect.Core{
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 
-                RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-                if (!hit)
+                Collider2D hit = Physics2D.OverlapPoint(mousePos2D, LayerMask.GetMask("Points"));
+                if (hit == null)
                 {
-                    Debug.Log("No collider hit!");
+                    Debug.Log("No point hit!");
                     return;
                 }
 
-                startPoint = hit.collider.GetComponent<PointOneStroke>();
+                startPoint = hit.GetComponent<PointOneStroke>();
                 if (startPoint == null)
                 {
                     Debug.Log("Clicked object is not PointOneStroke");
                     return;
                 }
+
+                Debug.Log($"Start point selected: {startPoint.Id}");
+
+                _highlight.gameObject.SetActive(true);
+                _highlight.positionCount = 2;
+                _highlight.SetPosition(0, startPoint.Position);
+                _highlight.SetPosition(1, startPoint.Position);
+
+
 
                 Debug.Log($"Start point selected: {startPoint.Id}");
 
@@ -192,6 +257,26 @@ namespace Connect.Core{
                 currentId = -1;
 
                 CheckWin();
+            }
+
+            if (startPoint == null && !hasGameFinished)
+            {
+                bool incomplete = false;
+                foreach (var edge in edges.Values)
+                {
+                    if (!edge.Filled)
+                    {
+                        incomplete = true;
+                        break;
+                    }
+                }
+
+                if (incomplete)
+                {
+                    Debug.Log("Level incomplete, resetting...");
+                    ClearLevel();
+                    SpawnLevel();
+                }
             }
         }
 
@@ -282,6 +367,40 @@ namespace Connect.Core{
             });
         }
 
+        public void ClickedRestart(Button button)
+        {
+            AnimateAndSwitch(button, () =>
+            {
+                GameManager.Instance.GoToGameplayOneStroke();
+            });
+        }
+
+        public void ClickedNextLevel(Button button)
+        {
+            if (!hasGameFinished) return;
+
+            AnimateAndSwitch(button, () =>
+            {
+                GameManager.Instance.GoToGameplayOneStroke();
+            });
+        }
+
+        private void ClearLevel()
+        {
+            foreach (var point in points.Values)
+                if (point != null) Destroy(point.gameObject);
+            points.Clear();
+
+            foreach (var edge in edges.Values)
+                if (edge != null) Destroy(edge.gameObject);
+            edges.Clear();
+
+            _highlight.gameObject.SetActive(false);
+            startPoint = null;
+            endPoint = null;
+            currentId = -1;
+            hasGameFinished = false;
+        }
 
 
 

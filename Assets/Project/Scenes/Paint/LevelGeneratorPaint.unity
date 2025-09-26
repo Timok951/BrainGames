@@ -276,9 +276,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2367a9598b91a9642a31db6e4ae2d689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _row: 7
-  _col: 5
-  _level: {fileID: 11400000, guid: 8c89adf8f4c135e41858d7ec1770716e, type: 2}
+  _row: 5
+  _col: 8
+  _level: {fileID: 11400000, guid: 8ed51d472255ab241be0d8919030cf27, type: 2}
   _blockPrefab: {fileID: 5583784050564558450, guid: 9d3a2ca96fb5274499b246171925c3bc, type: 3}
   _player: {fileID: 653584532}
 --- !u!4 &523980623

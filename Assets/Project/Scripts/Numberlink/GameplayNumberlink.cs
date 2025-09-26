@@ -56,10 +56,10 @@ namespace Connect.Core
             Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left
         };
 
+        
+
         private void Awake()
         {
-
-
 
             Instance = this;
             hasGameFinished = false;

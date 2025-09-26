@@ -1,14 +1,11 @@
 using Connect.Core;
 using DG.Tweening;
-using log4net.Core;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Connect.Common;
 using UnityEngine;
 using UnityEngine.UIElements;
-using UnityEditor.UI;
-using UnityEngine.UI;
 using Button = UnityEngine.UI.Button;
 using UnityEngine.Localization;
 

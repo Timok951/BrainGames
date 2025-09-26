@@ -41,6 +41,7 @@ namespace Connect.Core
         #region START_METHODS
         private void Awake()
         {
+
             DOTween.Init(true, true, LogBehaviour.ErrorsOnly);
 
             DOTween.KillAll();

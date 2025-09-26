@@ -22,6 +22,7 @@ public static class DBManager
 
 
 
+
     public static bool LoggedIn => !string.IsNullOrEmpty(nick);
 
     public static void LoggedOut()

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29565e197a20bf4da25436c4bc0d211, type: 3}
+  m_Name: AllLevelsPaint
+  m_EditorClassIdentifier: 
+  Levels:
+  - {fileID: 11400000, guid: d29bc986842698940b29d7aaab46eccf, type: 2}
+  - {fileID: 11400000, guid: 782fc26cbbe426b4cae908803d82465b, type: 2}
+  - {fileID: 11400000, guid: f7cd179380e057543946cf3a31811e3d, type: 2}
+  - {fileID: 11400000, guid: 1f1f3f443c81c344f889ac733905f841, type: 2}
+  - {fileID: 11400000, guid: 2d978106ea4d04741a8717e6ee5775ca, type: 2}
+  - {fileID: 11400000, guid: 55385d4936b26294a8b6899ae5304761, type: 2}
+  - {fileID: 11400000, guid: 06c295744234be041a89a0263f51ff06, type: 2}
+  - {fileID: 11400000, guid: a2eb03ca96fb7154d99c8233ac770daa, type: 2}
+  - {fileID: 11400000, guid: 8ed51d472255ab241be0d8919030cf27, type: 2}

@@ -21,6 +21,9 @@ namespace Assets.Project.Scripts.Database
         public int ConnectLevels { get; set; }
         public int PipesLevels { get; set; }
         public int NumberLinksLevels { get; set; }
+        public int OneStrokeLevels {get; set; }
+
+        public int PaintLevels { get; set; }    
 
     }
 }

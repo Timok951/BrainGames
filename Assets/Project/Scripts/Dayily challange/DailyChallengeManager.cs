@@ -1,5 +1,4 @@
-using Connect.Common;
-using DG.Tweening;
+﻿using Connect.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using DG.Tweening;
 
 namespace Connect.Core
 {
@@ -16,15 +15,13 @@ namespace Connect.Core
     /// </summary>
     public class DailyChallengeManager : MonoBehaviour
     {
-        #region variables
         public static DailyChallengeManager Instance;
+
         [SerializeField] private TMP_Text _timerText;
         [SerializeField] private TMP_Text _winText;
-
         [SerializeField] private GameObject _challengeUI;
 
         private Tween playStartTween;
-        private Tween playNextTween;
 
         private float _timer;
         private bool _isTimerRunning;
@@ -34,64 +31,66 @@ namespace Connect.Core
         private int _pipesLevel;
         private int _colorSortLevel;
         private int _connectLevel;
+        private int _oneStrokeLevel;
+        private int _paintLevel;
+        private int _numberlinkLevel;
 
-        private const string DAILY_SCORE_KEY = "DailyChallengeScore";
+        private const string DAILY_SCORE_KEY = "LevelScore";
+        private const string LastDailyChallengeDateKey = "LastDailyChallengeDate";
+        private const float MAX_TIME = 180f;
+        private const int MAX_DAILY_SCORE = 500;
 
         private List<string> _modSequence = new List<string>()
         {
-            "PipesGameplay",
-            "GameplayColorSort",
-            "GameplayConnect"
+            "PipesGameplay"
+
+                      // "GameplayColorSort",
+            //"OneStroke",
+            //"Paint",
+            //"NumberlinkGameplay",
+            //"GameplayConnect",
+
         };
 
-        private const int MAX_DAILY_SCORE = 500;
-        private const float MAX_TIME = 180f;
-
-        private const string LastDailyChallengeDateKey = "LastDailyChallengeDate";
-        private const string CHALLENGE_AVAILABLE = "DailyChallengeAvailable";
-        #endregion
-
-        #region START_METHODS
         private void Awake()
         {
-
             Instance = this;
+
+
             _winText.gameObject.SetActive(false);
             _hasChallengeFinished = false;
             _CurrentModeIndex = 0;
             _timer = 0f;
             _isTimerRunning = false;
+
             _pipesLevel = GameManager.Instance.GetRandomLevelIndexPipes();
             _colorSortLevel = GameManager.Instance.GetRandomLevelIndexColorSort();
             _connectLevel = GameManager.Instance.GetRandomLevelIndexConnect();
+            _oneStrokeLevel = GameManager.Instance.GetRandomLevelIndexOneStroke();
+            _paintLevel = GameManager.Instance.GetRandomLevelIndexPaint();
+            _numberlinkLevel = GameManager.Instance.GetRandomLevelIndexNumberLinks();
 
-            if (_challengeUI != null)
-            {
-                _challengeUI.SetActive(true);
-            }
-            else
-            {
-                Debug.LogError("_challengeUI is not assigned!");
-            }
-
-            if (_timerText == null) Debug.LogError("_timerText is not assigned!");
-            if (_winText == null) Debug.LogError("_winText is not assigned!");
-            Debug.Log("Daily challenge awake");
+            if (_challengeUI != null) _challengeUI.SetActive(true);
 
             UpdateTimerText();
         }
 
         private void Start()
         {
-            if (IschallengeAvailable())
-            {
+            if (IsChallengeAvailable())
                 StartChallenge();
-            }
             else
             {
-                Debug.Log("Daily Challenge is not available today. Returning to Main Menu.");
-                GameManager.Instance.GoToMainMenu();
+                ReturnToMainMenu();
             }
+        }
+
+        private void Update()
+        {
+            if (_hasChallengeFinished || !_isTimerRunning) return;
+
+            _timer += Time.deltaTime;
+            UpdateTimerText();
         }
 
         private void StartChallenge()
@@ -100,34 +99,104 @@ namespace Connect.Core
             LoadCurrentMode();
         }
 
-        private void LoadCurrentMode()
+        private void ClearPreviousLevelObjects()
         {
-            if (_CurrentModeIndex < _modSequence.Count)
+            foreach (var obj in GameObject.FindObjectsOfType<GameObject>())
             {
-                switch (_modSequence[_CurrentModeIndex])
-                {
-                    case "PipesGameplay":
-                        GameManager.Instance.SetCurrentLevelPipes(_pipesLevel);
-                        break;
-                    case "GameplayColorSort":
-                        GameManager.Instance.SetCurrentLevelColorSort(_colorSortLevel);
-                        break;
-                    case "GameplayConnect":
-                        GameManager.Instance.SetCurrentLevelConnect(_connectLevel);
-                        break;
-                }
-                SceneManager.LoadScene(_modSequence[_CurrentModeIndex], LoadSceneMode.Additive);
+                if (obj.name.Contains("Edge(Clone)") || obj.name.Contains("Point(Clone)"))
+                    Destroy(obj);
             }
         }
-        #endregion
 
-        #region Update Methods
-        private void Update()
+        private void LoadCurrentMode()
         {
-            if (_hasChallengeFinished || !_isTimerRunning) return;
+            if (_CurrentModeIndex >= _modSequence.Count) return;
 
-            _timer += Time.deltaTime;
-            UpdateTimerText();
+            if (_CurrentModeIndex > 0)
+            {
+                string prevSceneName = _modSequence[_CurrentModeIndex - 1];
+                if (SceneManager.GetSceneByName(prevSceneName).isLoaded)
+                    SceneManager.UnloadSceneAsync(prevSceneName);
+            }
+
+            ClearPreviousLevelObjects();
+
+            switch (_modSequence[_CurrentModeIndex])
+            {
+                case "PipesGameplay":
+                    GameManager.Instance.SetCurrentLevelPipes(_pipesLevel);
+                    break;
+                case "GameplayColorSort":
+                    GameManager.Instance.SetCurrentLevelColorSort(_colorSortLevel);
+                    break;
+                case "OneStroke":
+                    GameManager.Instance.SetCurrentLevelOneStroke(_oneStrokeLevel);
+                    break;
+                case "Paint":
+                    GameManager.Instance.SetCurrentLevelPaint(_paintLevel);
+                    break;
+                case "NumberlinkGameplay":
+                    GameManager.Instance.SetCurrentLevelNumberLinks(_numberlinkLevel);
+                    break;
+                case "GameplayConnect":
+                    GameManager.Instance.SetCurrentLevelConnect(_connectLevel);
+                    break;
+            }
+
+            SceneManager.LoadScene(_modSequence[_CurrentModeIndex], LoadSceneMode.Additive);
+        }
+
+        public void OnModeCompleted()
+        {
+            _CurrentModeIndex++;
+            if (_CurrentModeIndex < _modSequence.Count)
+                LoadCurrentMode();
+            else
+                CompleteChallenge();
+        }
+
+        private void CompleteChallenge()
+        {
+            if (_hasChallengeFinished) return;
+
+            _hasChallengeFinished = true;
+            _isTimerRunning = false;
+
+            int score = CalculateDailyScore(_timer);
+
+            DBManager.levelscore += score;
+
+            PlayerPrefs.SetInt(DAILY_SCORE_KEY, DBManager.levelscore);
+            PlayerPrefs.Save();
+
+            Debug.Log($"[DailyChallenge] CompleteChallenge called. DailyScore: {score}, LevelScore: {DBManager.levelscore}");
+
+            _winText.gameObject.SetActive(true);
+            var winLocalized = new LocalizedString("Gameplay", "ChallengeCompleted")
+            {
+                Arguments = new object[] { $"{Mathf.Floor(_timer / 60):00}:{Mathf.Floor(_timer % 60):00}", score }
+            };
+            _winText.text = winLocalized.GetLocalizedString();
+
+            if (DBManager.LoggedIn && !string.IsNullOrEmpty(DBManager.nick))
+                StartCoroutine(UpdateServerAndReturn());
+            else
+                Invoke(nameof(ReturnToMainMenu), 5f);
+        }
+
+        private IEnumerator UpdateServerAndReturn()
+        {
+            if (!string.IsNullOrEmpty(DBManager.nick))
+                yield return GameManager.Instance.UpdateServerData();
+
+            Invoke(nameof(ReturnToMainMenu), 5f);
+        }
+
+        private int CalculateDailyScore(float timeTaken)
+        {
+            if (timeTaken >= MAX_TIME) return 0;
+            float factor = 1f - (timeTaken / MAX_TIME);
+            return Mathf.RoundToInt(MAX_DAILY_SCORE * factor);
         }
 
         private void UpdateTimerText()
@@ -138,133 +207,50 @@ namespace Connect.Core
             };
             _timerText.text = timerLocalized.GetLocalizedString();
         }
-        #endregion
 
-        #region Completed_Methods
-        public void OnModeCompleted()
-        {
-            SceneManager.UnloadSceneAsync(_modSequence[_CurrentModeIndex]);
-            _CurrentModeIndex++;
-
-            if (_CurrentModeIndex < _modSequence.Count)
-            {
-                LoadCurrentMode();
-            }
-            else
-            {
-                CompleteChallenge();
-            }
-        }
-
-        private void CompleteChallenge()
-        {
-            _hasChallengeFinished = true;
-            _isTimerRunning = false;
-            int dailyScore = CalculateDailyScore(_timer);
-            int currentDailyScore = PlayerPrefs.GetInt(DAILY_SCORE_KEY, 0);
-            if (dailyScore > currentDailyScore)
-            {
-                PlayerPrefs.SetInt(DAILY_SCORE_KEY, dailyScore);
-                DBManager.levelscore += dailyScore;
-                PlayerPrefs.SetInt("LevelScore", DBManager.levelscore);
-                PlayerPrefs.Save();
-
-                if (DBManager.LoggedIn && GameManager.Instance != null)
-                {
-                    StartCoroutine(GameManager.Instance.UpdateServerData());
-                }
-            }
-            _winText.gameObject.SetActive(true);
-
-            var winLocalized = new LocalizedString("Gameplay", "ChallengeCompleted")
-            {
-                Arguments = new object[] { $"{Mathf.Floor(_timer / 60):00}:{Mathf.Floor(_timer % 60):00}", dailyScore }
-            };
-            _winText.text = winLocalized.GetLocalizedString();
-
-            PlayerPrefs.SetString(LastDailyChallengeDateKey, DateTime.Now.ToString("yyyy-MM-dd"));
-            PlayerPrefs.Save();
-            Invoke(nameof(ReturnToMainMenu), 5f);
-            Debug.Log("game has finished");
-        }
-
-        private int CalculateDailyScore(float timeTaken)
-        {
-            if (timeTaken >= MAX_TIME) return 0;
-            float scoreFactor = 1f - (timeTaken / MAX_TIME);
-            return Mathf.RoundToInt(MAX_DAILY_SCORE * scoreFactor);
-        }
-
-        private void ReturnToMainMenu()
-        {
-            Debug.Log(LastDailyChallengeDateKey + DateTime.Now.ToString("yyyy-MM-dd"));
-            GameManager.Instance.GoToMainMenu();
-        }
-        #endregion
-
-        #region DailyChallenge Availability
-        private bool IschallengeAvailable()
+        private bool IsChallengeAvailable()
         {
             string lastDateStr = PlayerPrefs.GetString(LastDailyChallengeDateKey, "");
-
-            if (string.IsNullOrEmpty(lastDateStr))
-            {
-                Debug.Log("No previous challenge date found. Challenge is available.");
-                return true;
-            }
+            if (string.IsNullOrEmpty(lastDateStr)) return true;
 
             try
             {
                 DateTime lastDate = DateTime.ParseExact(lastDateStr, "yyyy-MM-dd", null);
-                DateTime today = DateTime.Now.Date;
-                Debug.Log($"Last challenge date: {lastDate}, Today: {today}");
-                return today > lastDate;
+                return DateTime.Now.Date > lastDate;
             }
-            catch (FormatException e)
+            catch
             {
-                Debug.LogError($"Failed to parse date '{lastDateStr}': {e.Message}. Resetting date.");
                 PlayerPrefs.DeleteKey(LastDailyChallengeDateKey);
                 PlayerPrefs.Save();
                 return true;
             }
         }
-        #endregion
 
-        #region Testing
         [ContextMenu("Reset Daily Challenge")]
         private void ResetChallenge()
         {
             PlayerPrefs.DeleteKey(LastDailyChallengeDateKey);
-            PlayerPrefs.DeleteKey(CHALLENGE_AVAILABLE);
             PlayerPrefs.DeleteKey(DAILY_SCORE_KEY);
-            Debug.Log("Daily Challenge reset!");
         }
-        #endregion
 
-        #region BUTTON_FUNCTIONS
         public void ClickedBack(UnityEngine.UI.Button button)
         {
             AnimateAndSwitch(button, () =>
             {
-                if (!_hasChallengeFinished)
-                {
-                    _isTimerRunning = false;
+                if (!_hasChallengeFinished && _CurrentModeIndex < _modSequence.Count)
                     SceneManager.UnloadSceneAsync(_modSequence[_CurrentModeIndex]);
-                }
+
                 PlayerPrefs.SetString(LastDailyChallengeDateKey, DateTime.Now.ToString("yyyy-MM-dd"));
                 PlayerPrefs.Save();
-                Invoke(nameof(ReturnToMainMenu), 0.2f);
-                Debug.Log("game has finished");
+                ReturnToMainMenu();
             });
         }
-        #endregion
 
-        public void Animate(GameObject target, System.Action onComplete, float duration = 1f)
+        private void ReturnToMainMenu() => GameManager.Instance.GoToMainMenu();
+
+        public void Animate(UnityEngine.GameObject target, Action onComplete, float duration = 1f)
         {
-            if (playStartTween != null && playStartTween.IsActive())
-            {
-                playStartTween.Kill();
-            }
+            if (playStartTween != null && playStartTween.IsActive()) playStartTween.Kill();
 
             playStartTween = target.transform
                 .DOScale(1.1f, 0.1f)
@@ -275,17 +261,12 @@ namespace Connect.Core
             playStartTween.Play();
         }
 
-        private void AnimateAndSwitch(UnityEngine.UI.Button button, System.Action switchAction)
+        private void AnimateAndSwitch(UnityEngine.UI.Button button, Action switchAction)
         {
             if (button != null)
-            {
                 Animate(button.gameObject, switchAction);
-            }
             else
-            {
-                Debug.LogError("Button is null");
                 switchAction?.Invoke();
-            }
         }
     }
 }

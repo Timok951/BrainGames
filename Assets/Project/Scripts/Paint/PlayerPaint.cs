@@ -1,51 +1,56 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 namespace Connect.Core
 {
-
     /// <summary>
-    /// Player logic for paint mode
+    /// Player logic for Paint mode
     /// </summary>
     public class PlayerPaint : MonoBehaviour
     {
         [HideInInspector] public Vector2Int Pos;
 
-        [SerializeField] private float _moveTime;
+        [SerializeField] private float _moveTime = 0.2f;
         [SerializeField] private AnimationCurve _speedCurve;
 
-        public void Init(Vector2Int start)
+        private int maxRow;
+        private int maxCol;
+
+        public void Init(Vector2Int start, int rowCount, int colCount)
         {
             Pos = start;
-            transform.position = new Vector3(Pos.y, Pos.x, 0f);
+            transform.position = new Vector3(Pos.x, Pos.y, 0f);
+            maxRow = rowCount;
+            maxCol = colCount;
         }
 
         public IEnumerator Move(Vector2Int offset, int distance)
         {
-            Pos += offset;
-            float totalTime = Mathf.Abs(distance) * _moveTime;
-            float speed = 1 / totalTime;
-            float timeElapsed = 0f;
-            Vector3 startPos = transform.position;
-            Vector3 endPos = new Vector3(Pos.y, Pos.x, 0f);
-            Vector3 offsetPos = endPos - startPos; 
-            while(timeElapsed < 1f)
+            Vector2Int step = new Vector2Int(
+                offset.x != 0 ? (offset.x > 0 ? 1 : -1) : 0,
+                offset.y != 0 ? (offset.y > 0 ? 1 : -1) : 0
+            );
+
+            for (int i = 0; i < distance; i++)
             {
-                transform.position = startPos + offsetPos * _speedCurve.Evaluate(timeElapsed);
-                int x = Mathf.FloorToInt(transform.position.x + 0.5f);
-                int y = Mathf.FloorToInt(transform.position.y + 0.5f);
-                GameplayManagerPaint.Instance.HighLightBlock(x, y);
-                timeElapsed += speed * Time.deltaTime;
-                yield return null;
+                Pos += step;
+                Vector3 startPos = transform.position;
+                Vector3 targetPos = new Vector3(Pos.x, Pos.y, 0f);
+                float t = 0f;
+
+                while (t < 1f)
+                {
+                    t += Time.deltaTime / _moveTime;
+                    transform.position = Vector3.Lerp(startPos, targetPos, _speedCurve.Evaluate(t));
+                    yield return null;
+                }
+
+                transform.position = targetPos;
+                GameplayManagerPaint.Instance.HighLightBlock(Pos);
             }
-            transform.position = endPos;
+
             GameplayManagerPaint.Instance.CanClick = true;
             GameplayManagerPaint.Instance.CheckWin();
-
         }
-
     }
 }
-

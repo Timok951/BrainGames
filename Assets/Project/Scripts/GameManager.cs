@@ -1,4 +1,4 @@
-using Connect.Common;
+﻿using Connect.Common;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,9 +37,8 @@ namespace Connect.Core
             CurrentLevelColorsort = PlayerPrefs.GetInt("ColorsortLevels", 1);
             CurrentLevelPipes = PlayerPrefs.GetInt("PipesLevels", 1);
             CurrentLevelNumberLinks = PlayerPrefs.GetInt("NumberLinksLevels", 1);
-            CurrentLevelNumberLinks = PlayerPrefs.GetInt("OneStrokeLevels", 1);
-            CurrentLevelNumberLinks = PlayerPrefs.GetInt("PaintLevels", 1);
-
+            CurrentLevelOneStroke = PlayerPrefs.GetInt("OneStrokeLevels", 1); 
+            CurrenLevelPaint = PlayerPrefs.GetInt("PaintLevels", 1);         
 
             LevelsConnect = new Dictionary<string, LevelData>();
             if (_allLevelsconnect != null && _allLevelsconnect.Levels != null)
@@ -74,6 +73,13 @@ namespace Connect.Core
             {
                 foreach (var item in _allLevelsOneStorke.Levels)
                     LevelsOneStroke[item.LevelName] = item;
+            }
+
+            LevelsPaint = new Dictionary<string, PaintLevel>();
+            if (_allLevelsPaint != null && _allLevelsPaint.Levels != null)
+            {
+                foreach (var item in _allLevelsPaint.Levels)
+                    LevelsPaint[item.LevelName] = item;
             }
 
             if (DBManager.LoggedIn && !string.IsNullOrEmpty(PlayerPrefs.GetString("Nick", "")))
@@ -145,6 +151,12 @@ namespace Connect.Core
         public void SetCurrentLevelColorSort(int levelIndex) => CurrentLevelColorsort = levelIndex;
         public void SetCurrentLevelPipes(int levelIndex) => CurrentLevelPipes = levelIndex;
         public void SetCurrentLevelNumberLinks(int levelIndex) => CurrentLevelNumberLinks = levelIndex;
+        public void SetCurrentLevelOneStroke(int levelIndex) => CurrentLevelOneStroke = levelIndex;
+
+        public void SetCurrentLevelPaint(int levelIndex) => CurrenLevelPaint = levelIndex;
+
+
+
         #endregion
 
         public void UnlockLevelConnect()
@@ -218,7 +230,7 @@ namespace Connect.Core
         {
             if (CurrentLevelOneStroke >= LevelsOneStroke.Count) return;
 
-            CurrentLevelNumberLinks++;
+            CurrentLevelOneStroke++;
             string levelName = "Level" + CurrentLevelOneStroke;
             PlayerPrefs.SetInt(levelName + levelNameOneStroke, 1);
             DBManager.oneStrokeLevels = CurrentLevelOneStroke;
@@ -235,14 +247,14 @@ namespace Connect.Core
         {
             if (CurrenLevelPaint >= LevelsPaint.Count) return;
 
-            CurrentLevelNumberLinks++;
+            CurrenLevelPaint++;
             string levelName = "Level" + CurrenLevelPaint;
-            PlayerPrefs.SetInt(levelName + LevelsPaint, 1);
-            DBManager.numberLinksLevels = CurrenLevelPaint;
+            PlayerPrefs.SetInt(levelName + levelNamePaint, 1);
+            DBManager.paintLevels = CurrenLevelPaint;
             DBManager.levelscore += 100;
 
             PlayerPrefs.SetInt("PaintLevels", DBManager.paintLevels);
-            PlayerPrefs.SetInt("LevelScore", DBManager.paintLevels);
+            PlayerPrefs.SetInt("LevelScore", DBManager.levelscore);
             PlayerPrefs.Save();
 
             if (DBManager.LoggedIn) StartCoroutine(UpdateServerData());
@@ -250,18 +262,30 @@ namespace Connect.Core
 
         public IEnumerator UpdateServerData()
         {
+            string nickToSend = DBManager.nick;
+            if (string.IsNullOrEmpty(nickToSend))
+            {
+                nickToSend = PlayerPrefs.GetString("Nick", "");
+                if (string.IsNullOrEmpty(nickToSend))
+                {
+                    Debug.LogWarning("[UpdateServerData] Nick is empty both in DBManager and PlayerPrefs! Server update aborted.");
+                    yield break;
+                }
+            }
+
+            Debug.Log("Starting server update...");
+            Debug.Log($"[UpdateServerData] Sending nick: {nickToSend}, infinityscore={DBManager.infinityscore}");
+
             string url = "http://93.81.252.217/unity/update_score_and_levels.php";
             WWWForm form = new WWWForm();
-            form.AddField("nick", DBManager.nick ?? "");
+            form.AddField("nick", nickToSend);
             form.AddField("levelscore", DBManager.levelscore);
             form.AddField("colorsortLevels", DBManager.colorsortLevels);
             form.AddField("connectLevels", DBManager.connectLevels);
             form.AddField("pipesLevels", DBManager.pipesLevels);
             form.AddField("numberLinksLevels", DBManager.numberLinksLevels);
-            form.AddField("oneStorkeLevels", DBManager.oneStrokeLevels);
+            form.AddField("oneStrokeLevels", DBManager.oneStrokeLevels);
             form.AddField("paintLevels", DBManager.paintLevels);
-
-
             form.AddField("infinityscore", DBManager.infinityscore);
 
             using (UnityWebRequest www = UnityWebRequest.Post(url, form))
@@ -272,6 +296,7 @@ namespace Connect.Core
                 if (www.result == UnityWebRequest.Result.Success)
                 {
                     string response = www.downloadHandler.text;
+                    Debug.Log($"[UpdateServerData] Server response: {response}");
                     try
                     {
                         UpdateResponse updateResponse = JsonConvert.DeserializeObject<UpdateResponse>(response);
@@ -291,6 +316,8 @@ namespace Connect.Core
                 }
             }
         }
+
+
 
         private class BypassCertificate : CertificateHandler
         {
@@ -313,7 +340,7 @@ namespace Connect.Core
         [SerializeField] private AllLevelsColorSort _allLevelscolorsort;
         [SerializeField] private AllLevelsNumberLink _allLevelsNumberLinks;
         [SerializeField] private AllLevelsOneStorke _allLevelsOneStorke;
-        [SerializeField] private AllLevelsPaint _allLevelsPainte;
+        [SerializeField] private AllLevelsPaint _allLevelsPaint;
 
 
 
@@ -364,7 +391,7 @@ namespace Connect.Core
         public PaintLevel GetLevelPaint()
         {
             string levelName = "Level" + CurrenLevelPaint;
-            if (LevelsOneStroke.ContainsKey(levelName)) return LevelsPaint[levelName];
+            if (LevelsPaint.ContainsKey(levelName)) return LevelsPaint[levelName];
             return DefaultLevelPaint;
         }
         #endregion
@@ -373,6 +400,10 @@ namespace Connect.Core
         public int GetRandomLevelIndexColorSort() => Random.Range(1, LevelsColorSort.Count + 1);
         public int GetRandomLevelIndexPipes() => Random.Range(1, LevelsPipes.Count + 1);
         public int GetRandomLevelIndexNumberLinks() => Random.Range(1, LevelsNumberLinks.Count + 1);
+        public int GetRandomLevelIndexOneStroke() => Random.Range(1, LevelsOneStroke.Count + 1);
+        public int GetRandomLevelIndexPaint() => Random.Range(1, LevelsPaint.Count + 1);
+
+
 
         #region SCENE_LOAD
         private const string MainMenu = "MainMenu";

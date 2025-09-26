@@ -1,4 +1,3 @@
-using Codice.CM.Common;
 using Connect.Common;
 using DG.Tweening;
 using System.Collections;
@@ -193,7 +192,6 @@ namespace Connect.Core
 
                 points[id] = Instantiate(_pointPrefab);
                 points[id].Init(spawnPos, id);
-                EditorUtility.SetDirty(_level);
             }
             if (Input.GetKeyDown(KeyCode.A)) {
 
@@ -227,7 +225,6 @@ namespace Connect.Core
                 spawnEdge.Init(points[normal.x].Position, points[normal.y].Position);
                 spawnEdge.gameObject.SetActive(true);
                 _level.Edges.Add(normal);
-                EditorUtility.SetDirty(_level);
             }
         }
 
