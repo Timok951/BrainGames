@@ -1,5 +1,0 @@
-@startuml
-class BurstMathTests {
-    + WithinRangeTest(start:float, end:float, num:float, res:bool) : void
-}
-@enduml

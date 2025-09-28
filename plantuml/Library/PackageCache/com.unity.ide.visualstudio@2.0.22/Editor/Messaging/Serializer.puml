@@ -1,8 +1,0 @@
-@startuml
-class Serializer {
-    + Serializer()
-    + WriteInt32(i:int) : void
-    + WriteString(s:string) : void
-    + Buffer() : byte[]
-}
-@enduml

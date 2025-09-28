@@ -1,5 +1,0 @@
-@startuml
-class DocumentationGenerator <<static>> {
-    + {static} GenerateDocumentation(projectPath:string) : string
-}
-@enduml

@@ -1,4 +1,0 @@
-@startuml
-class ChangesetsSelection <<static>> {
-}
-@enduml

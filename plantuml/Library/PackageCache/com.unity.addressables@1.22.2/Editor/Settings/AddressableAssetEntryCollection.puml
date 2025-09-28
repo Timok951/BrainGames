@@ -1,8 +1,0 @@
-@startuml
-class AddressableAssetEntryCollection {
-}
-class "List`1"<T> {
-}
-ScriptableObject <|-- AddressableAssetEntryCollection
-AddressableAssetEntryCollection --> "Entries<AddressableAssetEntry>" "List`1"
-@enduml

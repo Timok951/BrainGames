@@ -1,6 +1,0 @@
-@startuml
-class XmlLinkedProperty {
-}
-XmlLinkedMember <|-- XmlLinkedProperty
-XmlLinkedProperty --> "Accessors" XmlLinkedAccessors
-@enduml

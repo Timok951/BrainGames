@@ -1,6 +1,0 @@
-@startuml
-class PersistentVariablesSourcePropertyDrawer {
-    + <<override>> CreatePropertyGUI(property:SerializedProperty) : VisualElement
-}
-PropertyDrawer <|-- PersistentVariablesSourcePropertyDrawer
-@enduml

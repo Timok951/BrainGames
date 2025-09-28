@@ -1,5 +1,0 @@
-@startuml
-class SharedEditorTextureDictionary <<sealed>> {
-    + SharedEditorTextureDictionary()
-}
-@enduml

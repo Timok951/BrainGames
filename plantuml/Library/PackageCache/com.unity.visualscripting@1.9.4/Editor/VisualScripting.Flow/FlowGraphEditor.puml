@@ -1,6 +1,0 @@
-@startuml
-class FlowGraphEditor {
-    + FlowGraphEditor(metadata:Metadata)
-}
-GraphEditor <|-- FlowGraphEditor
-@enduml

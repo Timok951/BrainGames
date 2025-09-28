@@ -1,5 +1,0 @@
-@startuml
-class UniversalStructs <<static>> {
-}
-UniversalStructs o-> "Varyings" StructDescriptor
-@enduml

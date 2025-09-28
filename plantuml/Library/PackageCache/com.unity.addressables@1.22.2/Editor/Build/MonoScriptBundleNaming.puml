@@ -1,8 +1,0 @@
-@startuml
-enum MonoScriptBundleNaming {
-    Disabled,
-    ProjectName,
-    DefaultGroupGuid,
-    Custom,
-}
-@enduml

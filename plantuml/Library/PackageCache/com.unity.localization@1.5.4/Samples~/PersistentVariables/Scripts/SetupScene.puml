@@ -1,6 +1,0 @@
-@startuml
-class SetupScene {
-}
-MonoBehaviour <|-- SetupScene
-SetupScene --> "group" VariablesGroupAsset
-@enduml

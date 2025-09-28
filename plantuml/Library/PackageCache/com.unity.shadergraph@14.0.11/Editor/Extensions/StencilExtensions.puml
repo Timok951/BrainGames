@@ -1,5 +1,0 @@
-@startuml
-class StencilExtensions <<static>> {
-    + {static} ToShaderString(descriptor:StencilDescriptor) : string
-}
-@enduml

@@ -1,9 +1,0 @@
-@startuml
-class OnMouseDrag <<sealed>> {
-}
-class "GameObjectEventUnit`1"<T> {
-}
-"GameObjectEventUnit`1" "<EmptyEventArgs>" <|-- OnMouseDrag
-IMouseEventUnit <|-- OnMouseDrag
-OnMouseDrag --> "MessageListenerType" Type
-@enduml

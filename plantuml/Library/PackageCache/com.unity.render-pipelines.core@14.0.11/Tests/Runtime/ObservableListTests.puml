@@ -1,5 +1,0 @@
-@startuml
-class ObservableListTests {
-    + ObservableList_CompletelyCleared() : void
-}
-@enduml

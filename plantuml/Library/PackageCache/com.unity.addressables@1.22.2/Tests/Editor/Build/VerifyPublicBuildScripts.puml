@@ -1,7 +1,0 @@
-@startuml
-class VerifyPublicBuildScripts {
-    + SetUp() : void
-    + TearDown() : void
-    + Verify_BuildScript_HasNoInternalApis(buildScriptPath:string) : IEnumerator
-}
-@enduml

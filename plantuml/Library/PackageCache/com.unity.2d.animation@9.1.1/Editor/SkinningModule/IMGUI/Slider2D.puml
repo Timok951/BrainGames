@@ -1,5 +1,0 @@
-@startuml
-class Slider2D {
-    + {static} Do(controlID:int, position:Vector2, drawCapFunction:Handles.CapFunction) : Vector2
-}
-@enduml

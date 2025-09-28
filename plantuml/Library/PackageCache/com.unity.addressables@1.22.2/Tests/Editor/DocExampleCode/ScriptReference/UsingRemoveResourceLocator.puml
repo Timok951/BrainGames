@@ -1,5 +1,0 @@
-@startuml
-class UsingRemoveResourceLocator {
-    + UsingRemoveResourceLocatorSample() : void
-}
-@enduml

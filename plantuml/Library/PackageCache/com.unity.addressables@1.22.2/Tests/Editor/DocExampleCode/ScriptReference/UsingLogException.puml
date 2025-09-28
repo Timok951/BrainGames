@@ -1,6 +1,0 @@
-@startuml
-class UsingLogException {
-    + LogExceptionDebugLogging(isErrored:bool) : void
-    + <<async>> LogExceptionSuccessfulTask(isErrored:bool) : Task<Material>
-}
-@enduml

@@ -1,9 +1,0 @@
-@startuml
-class OfflineUiHelper <<static>> {
-    + {static} AddOfflineUI(offlineContainer:VisualElement, buttonClickAction:Action) : void
-}
-class UiClass <<static>> {
-    + <<const>> Button : string = "submit-button"
-}
-OfflineUiHelper +-- UiClass
-@enduml

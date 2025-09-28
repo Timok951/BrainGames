@@ -1,5 +1,0 @@
-@startuml
-interface IUnityLifecycleManager {
-}
-IDisposable <|-- IUnityLifecycleManager
-@enduml

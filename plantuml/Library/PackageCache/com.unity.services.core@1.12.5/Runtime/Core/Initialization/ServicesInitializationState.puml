@@ -1,7 +1,0 @@
-@startuml
-enum ServicesInitializationState {
-    Uninitialized,
-    Initializing,
-    Initialized,
-}
-@enduml

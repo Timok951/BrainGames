@@ -1,6 +1,0 @@
-@startuml
-class LifecycleNotifier {
-}
-MonoBehaviour <|-- LifecycleNotifier
-LifecycleNotifier --> "OnDestroyCallback" Action
-@enduml

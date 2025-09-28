@@ -1,7 +1,0 @@
-@startuml
-abstract class PlatformsAndStoresServiceSettingsBlock {
-    + {static} CreateStateSpecificBlock(enabled:bool) : PlatformsAndStoresServiceSettingsBlock
-    + GetUIBlockElement() : VisualElement
-}
-IPurchasingSettingsUIBlock <|-- PlatformsAndStoresServiceSettingsBlock
-@enduml

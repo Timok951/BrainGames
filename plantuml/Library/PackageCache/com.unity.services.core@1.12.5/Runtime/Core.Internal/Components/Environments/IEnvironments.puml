@@ -1,5 +1,0 @@
-@startuml
-interface IEnvironments {
-}
-IServiceComponent <|-- IEnvironments
-@enduml

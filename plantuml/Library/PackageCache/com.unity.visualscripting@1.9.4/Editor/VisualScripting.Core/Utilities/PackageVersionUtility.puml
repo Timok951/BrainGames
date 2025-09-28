@@ -1,5 +1,0 @@
-@startuml
-class PackageVersionUtility <<static>> {
-}
-PackageVersionUtility --> "version" SemanticVersion
-@enduml

@@ -1,8 +1,0 @@
-@startuml
-interface IWriteData {
-}
-interface IBundleWriteData {
-}
-IContextObject <|-- IWriteData
-IWriteData <|-- IBundleWriteData
-@enduml

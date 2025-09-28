@@ -1,5 +1,0 @@
-@startuml
-class TestRunCanceledException {
-}
-Exception <|-- TestRunCanceledException
-@enduml

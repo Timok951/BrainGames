@@ -1,5 +1,0 @@
-@startuml
-class DisabledDiagnostics {
-}
-IDiagnostics <|-- DisabledDiagnostics
-@enduml

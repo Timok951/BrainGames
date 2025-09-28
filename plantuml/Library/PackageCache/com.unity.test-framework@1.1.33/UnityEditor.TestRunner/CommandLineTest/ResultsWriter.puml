@@ -1,6 +1,0 @@
-@startuml
-class ResultsWriter {
-    + WriteResultToFile(result:ITestResultAdaptor, filePath:string) : void
-    + WriteResultToStream(result:ITestResultAdaptor, streamWriter:StreamWriter, settings:XmlWriterSettings) : void
-}
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class SystemEnvironmentPathUtils <<static>> {
-    + {static} DoesEnvironmentPathContain(filePath:string) : bool
-    + {static} AddProcessToPath(processPath:string) : void
-}
-@enduml

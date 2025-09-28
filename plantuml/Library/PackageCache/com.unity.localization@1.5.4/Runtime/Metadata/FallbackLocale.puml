@@ -1,8 +1,0 @@
-@startuml
-class FallbackLocale {
-    + FallbackLocale()
-    + FallbackLocale(fallback:Locale)
-}
-IMetadata <|-- FallbackLocale
-FallbackLocale --> "Locale" Locale
-@enduml

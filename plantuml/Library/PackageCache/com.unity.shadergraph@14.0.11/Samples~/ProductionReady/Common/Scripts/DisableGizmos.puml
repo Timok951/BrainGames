@@ -1,5 +1,0 @@
-@startuml
-class PRSDisableGizmos {
-}
-MonoBehaviour <|-- PRSDisableGizmos
-@enduml

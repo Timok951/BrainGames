@@ -1,6 +1,0 @@
-@startuml
-interface IGraphParentElement {
-}
-IGraphElement <|-- IGraphParentElement
-IGraphParent <|-- IGraphParentElement
-@enduml

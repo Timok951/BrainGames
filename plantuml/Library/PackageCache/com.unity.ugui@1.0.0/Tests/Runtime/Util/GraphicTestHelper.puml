@@ -1,5 +1,0 @@
-@startuml
-class GraphicTestHelper <<static>> {
-    + {static} TestOnPopulateMeshDefaultBehavior(graphic:Graphic, vh:VertexHelper) : void
-}
-@enduml

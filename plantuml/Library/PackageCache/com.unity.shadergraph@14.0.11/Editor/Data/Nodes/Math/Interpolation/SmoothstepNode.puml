@@ -1,6 +1,0 @@
-@startuml
-class SmoothstepNode {
-    + SmoothstepNode()
-}
-CodeFunctionNode <|-- SmoothstepNode
-@enduml

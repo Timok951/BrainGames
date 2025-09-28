@@ -1,6 +1,0 @@
-@startuml
-class TimeDilationBehaviour {
-    + timeScale : float = 1f
-}
-PlayableBehaviour <|-- TimeDilationBehaviour
-@enduml

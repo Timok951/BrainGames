@@ -66,7 +66,7 @@ namespace Connect.Core
             hasGameFinished = false;
 
             _highlightSprite.gameObject.SetActive(false);
-            Connect.Common.NumberLinkLevel currentLevel = GameManager.Instance.GetLevelNumberLinks();
+            NumberLinkLevel currentLevel = GameManager.Instance.GetLevelNumberLinks();
 
             int currentLevelIndex = GameManager.Instance.CurrentLevelNumberLinks;
 

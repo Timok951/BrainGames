@@ -1,6 +1,0 @@
-@startuml
-class EqualityHandler {
-    + EqualityHandler()
-}
-BinaryOperatorHandler <|-- EqualityHandler
-@enduml

@@ -1,9 +1,0 @@
-@startuml
-class MonoBehaviourCallbackHooks {
-}
-class "ComponentSingleton`1"<T> {
-}
-class "Action`1"<T> {
-}
-"ComponentSingleton`1" "<MonoBehaviourCallbackHooks>" <|-- MonoBehaviourCallbackHooks
-@enduml

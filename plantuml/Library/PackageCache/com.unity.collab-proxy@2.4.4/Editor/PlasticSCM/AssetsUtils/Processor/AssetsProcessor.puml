@@ -1,4 +1,0 @@
-@startuml
-class AssetsProcessors <<static>> {
-}
-@enduml

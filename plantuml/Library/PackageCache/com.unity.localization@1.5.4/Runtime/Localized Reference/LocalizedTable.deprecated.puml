@@ -1,7 +1,0 @@
-@startuml
-abstract class "LocalizedTable`2"<TTable,TEntry> <<partial>> {
-}
-class "DetailedLocalizationTable`1"<T> {
-}
-"LocalizedTable`2" --> "CurrentLoadingOperation<TTable>" "AsyncOperationHandle`1"
-@enduml

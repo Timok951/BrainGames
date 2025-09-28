@@ -1,6 +1,0 @@
-@startuml
-class MachineDescription {
-}
-Description <|-- MachineDescription
-IMachineDescription <|-- MachineDescription
-@enduml

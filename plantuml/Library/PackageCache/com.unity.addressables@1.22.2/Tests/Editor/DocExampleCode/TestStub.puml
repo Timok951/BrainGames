@@ -1,5 +1,0 @@
-@startuml
-class TestStub {
-    + RequiredTest() : void
-}
-@enduml

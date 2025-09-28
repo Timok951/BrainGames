@@ -1,5 +1,0 @@
-@startuml
-class InspectorDelayedAttribute <<sealed>> {
-}
-Attribute <|-- InspectorDelayedAttribute
-@enduml

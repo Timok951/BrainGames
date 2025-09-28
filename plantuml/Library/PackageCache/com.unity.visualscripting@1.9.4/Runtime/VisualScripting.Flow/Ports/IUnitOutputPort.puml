@@ -1,5 +1,0 @@
-@startuml
-interface IUnitOutputPort {
-}
-IUnitPort <|-- IUnitOutputPort
-@enduml

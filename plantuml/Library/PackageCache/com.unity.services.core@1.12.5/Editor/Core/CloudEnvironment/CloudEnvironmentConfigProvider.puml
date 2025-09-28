@@ -1,5 +1,0 @@
-@startuml
-class CloudEnvironmentConfigProvider {
-}
-IConfigurationProvider <|-- CloudEnvironmentConfigProvider
-@enduml

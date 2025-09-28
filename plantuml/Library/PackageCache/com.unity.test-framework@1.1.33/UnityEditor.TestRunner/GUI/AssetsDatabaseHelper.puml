@@ -1,6 +1,0 @@
-@startuml
-class AssetsDatabaseHelper {
-    + OpenAssetInItsDefaultExternalEditor(assetPath:string, line:int) : void
-}
-IAssetsDatabaseHelper <|-- AssetsDatabaseHelper
-@enduml

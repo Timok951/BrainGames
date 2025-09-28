@@ -1,6 +1,0 @@
-@startuml
-class SwapFullSkin {
-}
-MonoBehaviour <|-- SwapFullSkin
-SwapFullSkin --> "spriteLibraryTarget" SpriteLibrary
-@enduml

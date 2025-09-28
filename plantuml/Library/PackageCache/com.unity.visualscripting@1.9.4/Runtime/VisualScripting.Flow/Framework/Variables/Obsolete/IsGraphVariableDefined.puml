@@ -1,8 +1,0 @@
-@startuml
-class IsGraphVariableDefined <<sealed>> {
-    + IsGraphVariableDefined()
-    + IsGraphVariableDefined(defaultName:string)
-}
-IsVariableDefinedUnit <|-- IsGraphVariableDefined
-IGraphVariableUnit <|-- IsGraphVariableDefined
-@enduml

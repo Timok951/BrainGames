@@ -1,6 +1,0 @@
-@startuml
-class NonGameServicesAnalyticsPackageKeyHolder {
-    + GetPackageKey() : string
-}
-IAnalyticsPackageKeyHolder <|-- NonGameServicesAnalyticsPackageKeyHolder
-@enduml

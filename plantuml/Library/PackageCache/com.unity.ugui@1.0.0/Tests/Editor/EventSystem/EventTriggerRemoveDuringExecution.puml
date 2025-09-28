@@ -1,5 +1,0 @@
-@startuml
-class EventTriggerRemoveDuringExecution {
-    + EventTrigger_DoesNotThrowExceptionWhenRemovingEventDuringExecution() : void
-}
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class ParentCanvasIsSane {
-    + TestSetup() : void
-    + RecalculatingAlphaOnReparentedInactiveObjectsDoesNotCrash() : IEnumerator
-}
-@enduml

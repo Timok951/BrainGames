@@ -1,5 +1,0 @@
-@startuml
-class GooglePlay {
-    + <<const>> Name : string = "GooglePlay"
-}
-@enduml

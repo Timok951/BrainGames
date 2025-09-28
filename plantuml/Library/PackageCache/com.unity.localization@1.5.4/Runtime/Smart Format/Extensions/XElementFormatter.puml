@@ -1,7 +1,0 @@
-@startuml
-class XElementFormatter {
-    + XElementFormatter()
-    + <<override>> TryEvaluateFormat(formattingInfo:IFormattingInfo) : bool
-}
-FormatterBase <|-- XElementFormatter
-@enduml

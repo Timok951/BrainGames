@@ -1,9 +1,0 @@
-@startuml
-class ServiceRegistry {
-    + ServiceRegistry()
-    + ServiceRegistry(serviceTypeHashToInstance:Dictionary<int, object>)
-    + RegisterService(service:T) : void
-    + GetService() : T
-}
-IServiceRegistry <|-- ServiceRegistry
-@enduml

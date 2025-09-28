@@ -1,7 +1,0 @@
-@startuml
-class PhysicsRaycasterTests {
-    + TestSetup() : void
-    + PhysicsRaycasterDoesNotCastOutsideCameraViewRect() : void
-    + TearDown() : void
-}
-@enduml

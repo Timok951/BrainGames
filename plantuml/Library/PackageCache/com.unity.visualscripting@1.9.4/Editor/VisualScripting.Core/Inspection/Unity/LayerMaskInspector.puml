@@ -1,7 +1,0 @@
-@startuml
-class LayerMaskInspector {
-    + LayerMaskInspector(metadata:Metadata)
-    + <<override>> GetAdaptiveWidth() : float
-}
-Inspector <|-- LayerMaskInspector
-@enduml

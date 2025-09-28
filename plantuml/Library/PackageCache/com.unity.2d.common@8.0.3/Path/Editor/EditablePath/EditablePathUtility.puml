@@ -1,5 +1,0 @@
-@startuml
-class EditablePathUtility {
-    + {static} Mod(x:int, m:int) : int
-}
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class SemanticVersionInspector <<sealed>> {
-    + SemanticVersionInspector(metadata:Metadata)
-}
-Inspector <|-- SemanticVersionInspector
-@enduml

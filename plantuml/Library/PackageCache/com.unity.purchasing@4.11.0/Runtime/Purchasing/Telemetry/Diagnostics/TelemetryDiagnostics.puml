@@ -1,7 +1,0 @@
-@startuml
-class TelemetryDiagnostics {
-    + TelemetryDiagnostics(telemetryDiagnosticsInstanceWrapper:ITelemetryDiagnosticsInstanceWrapper)
-    + SendDiagnostic(diagnosticName:string, e:Exception) : void
-}
-ITelemetryDiagnostics <|-- TelemetryDiagnostics
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-abstract class AbstractIAPButtonEditor {
-}
-Editor <|-- AbstractIAPButtonEditor
-@enduml

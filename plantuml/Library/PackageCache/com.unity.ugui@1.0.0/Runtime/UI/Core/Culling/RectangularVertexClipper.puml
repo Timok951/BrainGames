@@ -1,5 +1,0 @@
-@startuml
-class RectangularVertexClipper {
-    + GetCanvasRect(t:RectTransform, c:Canvas) : Rect
-}
-@enduml

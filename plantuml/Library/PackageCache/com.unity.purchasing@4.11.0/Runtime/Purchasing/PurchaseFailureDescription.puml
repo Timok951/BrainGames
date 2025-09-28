@@ -1,8 +1,0 @@
-@startuml
-class PurchaseFailureDescription {
-    + PurchaseFailureDescription(productId:string, reason:PurchaseFailureReason, message:string)
-    + productId : string <<get>>
-    + message : string <<get>>
-}
-PurchaseFailureDescription --> "reason" PurchaseFailureReason
-@enduml

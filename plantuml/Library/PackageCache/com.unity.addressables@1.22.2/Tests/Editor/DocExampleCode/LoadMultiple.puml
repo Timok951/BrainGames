@@ -1,9 +1,0 @@
-@startuml
-class LoadMultiple {
-    + Start() : IEnumerator
-}
-class "List`1"<T> {
-}
-MonoBehaviour <|-- LoadMultiple
-LoadMultiple o-> "keys<string>" "List`1"
-@enduml

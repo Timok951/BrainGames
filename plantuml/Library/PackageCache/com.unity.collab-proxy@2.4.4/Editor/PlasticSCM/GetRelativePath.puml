@@ -1,4 +1,0 @@
-@startuml
-class GetRelativePath <<static>> {
-}
-@enduml

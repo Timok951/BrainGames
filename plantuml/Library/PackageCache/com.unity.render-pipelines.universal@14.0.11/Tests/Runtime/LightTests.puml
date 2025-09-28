@@ -1,5 +1,0 @@
-@startuml
-class LightTests {
-    + TestMainLightRenderingLayerMaskSyncWithUniversalLightAndShadowLayers() : void
-}
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class WindowClose {
-    + WindowClose()
-}
-Exception <|-- WindowClose
-@enduml

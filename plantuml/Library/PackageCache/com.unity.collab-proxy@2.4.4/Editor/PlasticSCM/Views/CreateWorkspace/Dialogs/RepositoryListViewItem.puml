@@ -1,5 +1,0 @@
-@startuml
-class RepositoryListViewItem {
-}
-TreeViewItem <|-- RepositoryListViewItem
-@enduml

@@ -1,9 +1,0 @@
-@startuml
-class CoreMetrics {
-    + SendAllPackagesInitSuccessMetric() : void
-    + SendAllPackagesInitTimeMetric(initTimeSeconds:double) : void
-    + SendInitTimeMetricForPackage(packageType:Type, initTimeSeconds:double) : void
-    + Initialize(configuration:IProjectConfiguration, factory:IMetricsFactory, corePackageType:Type) : void
-}
-CoreMetrics --> "Instance" CoreMetrics
-@enduml

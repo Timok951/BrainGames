@@ -1,7 +1,0 @@
-@startuml
-class WindowDraggable {
-    + WindowDraggable(handle:VisualElement, container:VisualElement)
-}
-MouseManipulator <|-- WindowDraggable
-WindowDraggable --> "OnDragFinished" Action
-@enduml

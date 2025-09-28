@@ -1,6 +1,0 @@
-@startuml
-class TimeFormatterPropertyDrawer {
-    + <<override>> CreatePropertyGUI(property:SerializedProperty) : VisualElement
-}
-PropertyDrawer <|-- TimeFormatterPropertyDrawer
-@enduml

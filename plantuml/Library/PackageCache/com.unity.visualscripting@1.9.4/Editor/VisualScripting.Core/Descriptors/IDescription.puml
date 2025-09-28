@@ -1,8 +1,0 @@
-@startuml
-interface IDescription {
-}
-class XDescription <<static>> {
-    + {static} ToGUIContent(description:IDescription) : GUIContent
-    + {static} ToGUIContent(description:IDescription, iconSize:int) : GUIContent
-}
-@enduml

@@ -1,9 +1,0 @@
-@startuml
-struct RendererListHandle {
-    + IsValid() : bool
-}
-struct RendererListResource {
-}
-RendererListResource --> "desc" CoreRendererListDesc
-RendererListResource --> "rendererList" CoreRendererList
-@enduml

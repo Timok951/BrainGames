@@ -1,6 +1,0 @@
-@startuml
-class MergeLinksListView {
-    + <<override>> GetRows() : IList<TreeViewItem>
-}
-TreeView <|-- MergeLinksListView
-@enduml

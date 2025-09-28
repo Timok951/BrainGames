@@ -1,6 +1,0 @@
-@startuml
-class CompatibilityBuildPipeline <<static>> {
-    + {static} BuildAssetBundles(outputPath:string, assetBundleOptions:BuildAssetBundleOptions, targetPlatform:BuildTarget) : CompatibilityAssetBundleManifest
-    + {static} BuildAssetBundles(outputPath:string, builds:AssetBundleBuild[], assetBundleOptions:BuildAssetBundleOptions, targetPlatform:BuildTarget) : CompatibilityAssetBundleManifest
-}
-@enduml

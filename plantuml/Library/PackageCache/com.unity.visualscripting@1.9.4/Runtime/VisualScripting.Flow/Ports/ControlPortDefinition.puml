@@ -1,6 +1,0 @@
-@startuml
-abstract class ControlPortDefinition {
-}
-UnitPortDefinition <|-- ControlPortDefinition
-IUnitControlPortDefinition <|-- ControlPortDefinition
-@enduml

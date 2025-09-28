@@ -1,7 +1,0 @@
-@startuml
-class SoundManager {
-    + PlaySound(clip:AudioClip) : void
-}
-MonoBehaviour <|-- SoundManager
-SoundManager --> "instance" SoundManager
-@enduml

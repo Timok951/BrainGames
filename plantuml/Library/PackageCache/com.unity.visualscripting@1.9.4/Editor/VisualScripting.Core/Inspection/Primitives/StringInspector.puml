@@ -1,7 +1,0 @@
-@startuml
-class StringInspector {
-    + StringInspector(metadata:Metadata)
-    + <<override>> GetAdaptiveWidth() : float
-}
-Inspector <|-- StringInspector
-@enduml

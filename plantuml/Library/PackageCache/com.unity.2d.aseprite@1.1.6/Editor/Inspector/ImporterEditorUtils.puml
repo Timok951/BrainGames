@@ -1,5 +1,0 @@
-@startuml
-class ImporterEditorUtils <<static>> {
-    + {static} AddSkinUssClass(element:VisualElement) : void
-}
-@enduml

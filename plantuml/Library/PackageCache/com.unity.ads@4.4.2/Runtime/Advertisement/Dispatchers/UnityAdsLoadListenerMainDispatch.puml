@@ -1,8 +1,0 @@
-@startuml
-class UnityAdsLoadListenerMainDispatch {
-    + UnityAdsLoadListenerMainDispatch(loadListener:IUnityAdsLoadListener, lifecycleManager:IUnityLifecycleManager)
-    + OnUnityAdsAdLoaded(placementId:string) : void
-    + OnUnityAdsFailedToLoad(placementId:string, error:UnityAdsLoadError, message:string) : void
-}
-IUnityAdsLoadListener <|-- UnityAdsLoadListenerMainDispatch
-@enduml

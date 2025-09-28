@@ -1,8 +1,0 @@
-@startuml
-class UsingStreamingAssetsSubFolder {
-}
-class StreamingAssetBuilds {
-    + {static} GetBuiltPlatforms() : string[]
-}
-UsingStreamingAssetsSubFolder +-- StreamingAssetBuilds
-@enduml

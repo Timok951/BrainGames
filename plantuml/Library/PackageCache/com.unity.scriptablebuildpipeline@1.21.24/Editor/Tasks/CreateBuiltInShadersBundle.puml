@@ -1,9 +1,0 @@
-@startuml
-class CreateBuiltInShadersBundle {
-    + Version : int <<get>>
-    + ShaderBundleName : string <<get>> <<set>>
-    + CreateBuiltInShadersBundle(bundleName:string)
-    + Run() : ReturnCode
-}
-IBuildTask <|-- CreateBuiltInShadersBundle
-@enduml

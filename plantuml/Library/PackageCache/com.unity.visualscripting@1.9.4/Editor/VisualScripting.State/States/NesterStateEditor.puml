@@ -1,6 +1,0 @@
-@startuml
-class NesterStateEditor {
-    + NesterStateEditor(metadata:Metadata)
-}
-StateEditor <|-- NesterStateEditor
-@enduml

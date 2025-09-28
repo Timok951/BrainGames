@@ -1,8 +1,0 @@
-@startuml
-class SpriteLibCombineCache {
-}
-class "List`1"<T> {
-}
-ScriptableObject <|-- SpriteLibCombineCache
-SpriteLibCombineCache --> "library<SpriteLibCategoryOverride>" "List`1"
-@enduml

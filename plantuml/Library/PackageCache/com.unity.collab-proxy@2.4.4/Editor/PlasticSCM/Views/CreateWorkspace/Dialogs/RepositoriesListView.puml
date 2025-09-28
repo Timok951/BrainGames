@@ -1,9 +1,0 @@
-@startuml
-class RepositoriesListView {
-    + <<override>> GetRows() : IList<TreeViewItem>
-}
-class "IPlasticTable`1"<T> {
-}
-TreeView <|-- RepositoriesListView
-"IPlasticTable`1" "<RepositoryInfo>" <|-- RepositoriesListView
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class ToggleEditor {
-    + <<override>> OnInspectorGUI() : void
-}
-SelectableEditor <|-- ToggleEditor
-@enduml

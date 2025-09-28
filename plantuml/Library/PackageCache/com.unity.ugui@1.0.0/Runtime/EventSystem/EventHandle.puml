@@ -1,6 +1,0 @@
-@startuml
-enum EventHandle {
-    Unused= 0,
-    Used= 1,
-}
-@enduml

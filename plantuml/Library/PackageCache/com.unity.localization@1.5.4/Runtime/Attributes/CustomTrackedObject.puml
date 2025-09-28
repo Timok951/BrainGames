@@ -1,6 +1,0 @@
-@startuml
-class CustomTrackedObjectAttribute {
-    + CustomTrackedObjectAttribute(type:Type, supportsInheritedTypes:bool)
-}
-Attribute <|-- CustomTrackedObjectAttribute
-@enduml

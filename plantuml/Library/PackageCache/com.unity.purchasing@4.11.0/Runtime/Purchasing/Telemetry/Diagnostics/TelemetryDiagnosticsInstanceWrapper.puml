@@ -1,8 +1,0 @@
-@startuml
-class TelemetryDiagnosticsInstanceWrapper {
-    + TelemetryDiagnosticsInstanceWrapper(logger:ILogger, util:IUtil)
-    + SetDiagnosticsInstance(diagnosticsInstance:IDiagnostics) : void
-    + SendDiagnostic(diagnosticName:string, diagnosticException:string) : void
-}
-ITelemetryDiagnosticsInstanceWrapper <|-- TelemetryDiagnosticsInstanceWrapper
-@enduml

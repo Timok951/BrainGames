@@ -1,6 +1,0 @@
-@startuml
-class Preload {
-    + Start() : IEnumerator
-}
-MonoBehaviour <|-- Preload
-@enduml

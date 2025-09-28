@@ -1,5 +1,0 @@
-@startuml
-class MigrationDialog {
-}
-PlasticDialog <|-- MigrationDialog
-@enduml

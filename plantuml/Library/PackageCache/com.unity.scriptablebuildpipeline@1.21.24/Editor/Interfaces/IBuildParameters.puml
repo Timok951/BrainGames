@@ -1,8 +1,0 @@
-@startuml
-interface IBuildParameters {
-}
-interface IBundleBuildParameters {
-}
-IContextObject <|-- IBuildParameters
-IBuildParameters <|-- IBundleBuildParameters
-@enduml

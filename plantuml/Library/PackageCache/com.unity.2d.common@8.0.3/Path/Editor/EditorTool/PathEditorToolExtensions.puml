@@ -1,6 +1,0 @@
-@startuml
-class PathEditorToolExtensions <<static>> {
-    + {static} CycleTangentMode(pathEditorTool:PathEditorTool<T>) : void
-    + {static} MirrorTangent(pathEditorTool:PathEditorTool<T>) : void
-}
-@enduml

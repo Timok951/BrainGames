@@ -1,9 +1,0 @@
-@startuml
-class BuildLayoutHelpers {
-    + {static} EnumerateAssets(layout:BuildLayout) : IEnumerable<BuildLayout.ExplicitAsset>
-    + {static} EnumerateAssets(bundle:BuildLayout.Bundle) : IEnumerable<BuildLayout.ExplicitAsset>
-    + {static} EnumerateBundles(layout:BuildLayout) : IEnumerable<BuildLayout.Bundle>
-    + {static} EnumerateFiles(layout:BuildLayout) : IEnumerable<BuildLayout.File>
-    + {static} GetAssetType(ofType:Type) : AssetType
-}
-@enduml

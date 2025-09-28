@@ -1,9 +1,0 @@
-@startuml
-class CustomPropertyDrawerInspector {
-    + CustomPropertyDrawerInspector(metadata:Metadata)
-    + <<override>> Initialize() : void
-    + <<override>> Dispose() : void
-    + <<override>> GetAdaptiveWidth() : float
-}
-Inspector <|-- CustomPropertyDrawerInspector
-@enduml

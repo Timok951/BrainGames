@@ -1,5 +1,0 @@
-@startuml
-class EditorProgressControls {
-}
-IProgressControls <|-- EditorProgressControls
-@enduml

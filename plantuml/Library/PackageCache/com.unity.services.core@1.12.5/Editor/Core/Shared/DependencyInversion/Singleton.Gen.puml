@@ -1,8 +1,0 @@
-@startuml
-class Singleton {
-    + Singleton(factory:Func<IServiceProvider, object>, globalScope:Scope)
-    + Build(provider:IServiceProvider, _:Scope) : object
-    + <<override>> ToString() : string
-}
-IServiceFactory <|-- Singleton
-@enduml

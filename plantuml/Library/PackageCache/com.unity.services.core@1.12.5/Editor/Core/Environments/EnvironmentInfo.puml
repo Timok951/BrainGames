@@ -1,8 +1,0 @@
-@startuml
-struct EnvironmentInfo {
-    + <<readonly>> Name : string
-    + <<readonly>> IsDefault : bool
-    + EnvironmentInfo(name:string, id:Guid, isDefault:bool)
-}
-EnvironmentInfo --> "Id" Guid
-@enduml

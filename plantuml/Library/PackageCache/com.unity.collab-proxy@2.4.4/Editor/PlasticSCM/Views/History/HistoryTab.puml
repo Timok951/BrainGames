@@ -1,7 +1,0 @@
-@startuml
-class HistoryTab {
-}
-IRefreshableView <|-- HistoryTab
-IOpenMenuOperations <|-- HistoryTab
-IHistoryViewMenuOperations <|-- HistoryTab
-@enduml

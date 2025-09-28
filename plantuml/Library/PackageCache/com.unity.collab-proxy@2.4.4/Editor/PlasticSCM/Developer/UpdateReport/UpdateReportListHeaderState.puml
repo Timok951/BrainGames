@@ -1,9 +1,0 @@
-@startuml
-enum ErrorsListColumn {
-    Path,
-}
-class UpdateReportListHeaderState {
-}
-MultiColumnHeaderState <|-- UpdateReportListHeaderState
-ISerializationCallbackReceiver <|-- UpdateReportListHeaderState
-@enduml

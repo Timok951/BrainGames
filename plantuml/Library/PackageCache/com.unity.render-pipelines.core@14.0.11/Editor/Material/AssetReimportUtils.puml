@@ -1,5 +1,0 @@
-@startuml
-class AssetReimportUtils <<static>> {
-    + {static} ReimportAll(duration:double, numberOfAssetsReimported:uint, importNeedDelegate:Func<string, bool>) : void
-}
-@enduml

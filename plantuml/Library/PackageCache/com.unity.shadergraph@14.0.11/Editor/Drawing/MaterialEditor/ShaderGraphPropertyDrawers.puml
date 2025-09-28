@@ -1,6 +1,0 @@
-@startuml
-class ShaderGraphPropertyDrawers <<static>> {
-    + {static} DrawShaderGraphGUI(materialEditor:MaterialEditor, properties:IEnumerable<MaterialProperty>) : void
-    + {static} DrawShaderGraphGUI(materialEditor:MaterialEditor, properties:IEnumerable<MaterialProperty>, categoryDatas:IEnumerable<MinimalCategoryData>) : void
-}
-@enduml

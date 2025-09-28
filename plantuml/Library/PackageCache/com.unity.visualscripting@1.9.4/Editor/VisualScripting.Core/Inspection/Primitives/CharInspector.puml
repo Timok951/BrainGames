@@ -1,6 +1,0 @@
-@startuml
-class CharInspector {
-    + CharInspector(metadata:Metadata)
-}
-Inspector <|-- CharInspector
-@enduml

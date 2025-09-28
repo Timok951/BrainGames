@@ -1,5 +1,0 @@
-@startuml
-class Pipeline {
-}
-ScriptableObject <|-- Pipeline
-@enduml

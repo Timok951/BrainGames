@@ -1,6 +1,0 @@
-@startuml
-abstract class GetVariableUnit {
-}
-VariableUnit <|-- GetVariableUnit
-GetVariableUnit --> "value" ValueOutput
-@enduml

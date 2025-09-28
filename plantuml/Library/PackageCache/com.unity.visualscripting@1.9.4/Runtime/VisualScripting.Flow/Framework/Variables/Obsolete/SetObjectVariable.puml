@@ -1,9 +1,0 @@
-@startuml
-class SetObjectVariable <<sealed>> {
-    + SetObjectVariable()
-    + SetObjectVariable(name:string)
-}
-SetVariableUnit <|-- SetObjectVariable
-IObjectVariableUnit <|-- SetObjectVariable
-SetObjectVariable --> "source" ValueInput
-@enduml

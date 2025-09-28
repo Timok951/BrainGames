@@ -1,7 +1,0 @@
-@startuml
-class InstanceIDNode {
-    + <<override>> hasPreview : bool <<get>>
-    + InstanceIDNode()
-}
-CodeFunctionNode <|-- InstanceIDNode
-@enduml

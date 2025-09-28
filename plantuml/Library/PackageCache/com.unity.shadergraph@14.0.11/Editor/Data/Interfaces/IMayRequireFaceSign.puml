@@ -1,7 +1,0 @@
-@startuml
-interface IMayRequireFaceSign {
-}
-class IMayRequireFaceSignExtensions <<static>> {
-    + {static} RequiresFaceSign(slot:MaterialSlot) : bool
-}
-@enduml

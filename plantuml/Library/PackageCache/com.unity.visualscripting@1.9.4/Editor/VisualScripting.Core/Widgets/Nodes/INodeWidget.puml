@@ -1,5 +1,0 @@
-@startuml
-interface INodeWidget {
-}
-IGraphElementWidget <|-- INodeWidget
-@enduml

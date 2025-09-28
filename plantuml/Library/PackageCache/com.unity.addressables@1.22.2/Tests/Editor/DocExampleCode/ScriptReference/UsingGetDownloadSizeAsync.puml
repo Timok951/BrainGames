@@ -1,5 +1,0 @@
-@startuml
-class UsingGetDownloadSizeAsync {
-    + UsingGetDownloadSizeAsyncSample() : void
-}
-@enduml

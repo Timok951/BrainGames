@@ -1,8 +1,0 @@
-@startuml
-class IAPButtonMenu <<static>> {
-    + {static} GameObjectCreateUnityIAPButton() : void
-    + {static} GameObjectCreateUnityCodelessIAPButton() : void
-    + {static} CreateUnityIAPButton() : void
-    + {static} CreateUnityCodelessIAPButton() : void
-}
-@enduml

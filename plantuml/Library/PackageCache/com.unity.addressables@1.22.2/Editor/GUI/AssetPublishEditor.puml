@@ -1,5 +1,0 @@
-@startuml
-class AssetPublishEditor {
-    + OnGUI(pos:Rect) : bool
-}
-@enduml

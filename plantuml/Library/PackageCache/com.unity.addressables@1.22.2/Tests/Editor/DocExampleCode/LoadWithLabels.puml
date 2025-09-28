@@ -1,8 +1,0 @@
-@startuml
-class LoadWithLabels {
-}
-class "List`1"<T> {
-}
-MonoBehaviour <|-- LoadWithLabels
-LoadWithLabels o-> "keys<string>" "List`1"
-@enduml

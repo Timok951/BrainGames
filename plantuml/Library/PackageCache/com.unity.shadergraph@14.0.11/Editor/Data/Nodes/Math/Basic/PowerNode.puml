@@ -1,6 +1,0 @@
-@startuml
-class PowerNode {
-    + PowerNode()
-}
-CodeFunctionNode <|-- PowerNode
-@enduml

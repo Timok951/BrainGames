@@ -1,9 +1,0 @@
-@startuml
-class VariableDeclaration <<sealed>> {
-    + VariableDeclaration()
-    + VariableDeclaration(name:string, value:object)
-    + name : string <<get>>
-    + value : object <<get>> <<set>>
-}
-VariableDeclaration --> "typeHandle" SerializableType
-@enduml

@@ -1,7 +1,0 @@
-@startuml
-enum ShaderBundleNaming {
-    ProjectName,
-    DefaultGroupGuid,
-    Custom,
-}
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-class LocalizationSettingsEditor {
-    + <<override>> CreateInspectorGUI() : VisualElement
-}
-@enduml

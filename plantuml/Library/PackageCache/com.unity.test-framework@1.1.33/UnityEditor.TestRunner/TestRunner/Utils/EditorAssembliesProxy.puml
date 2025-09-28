@@ -1,5 +1,0 @@
-@startuml
-class EditorAssembliesProxy {
-}
-IEditorAssembliesProxy <|-- EditorAssembliesProxy
-@enduml

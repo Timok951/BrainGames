@@ -1,8 +1,0 @@
-@startuml
-class JsonObject {
-    + GetAsString() : string
-    + GetAs(deserializationSettings:DeserializationSettings) : T
-    + GetAs() : T
-}
-IDeserializable <|-- JsonObject
-@enduml

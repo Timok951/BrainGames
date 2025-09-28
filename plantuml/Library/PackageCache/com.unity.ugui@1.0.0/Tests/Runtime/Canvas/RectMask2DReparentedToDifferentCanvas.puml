@@ -1,7 +1,0 @@
-@startuml
-class RectMask2DReparentedToDifferentCanvas {
-    + TestSetup() : void
-    + TearDown() : void
-    + ReparentingRectMask2D_UpdatesCanvas() : void
-}
-@enduml

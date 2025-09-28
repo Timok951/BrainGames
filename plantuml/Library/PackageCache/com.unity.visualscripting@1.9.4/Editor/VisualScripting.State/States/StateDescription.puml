@@ -1,5 +1,0 @@
-@startuml
-class StateDescription <<sealed>> {
-}
-GraphElementDescription <|-- StateDescription
-@enduml

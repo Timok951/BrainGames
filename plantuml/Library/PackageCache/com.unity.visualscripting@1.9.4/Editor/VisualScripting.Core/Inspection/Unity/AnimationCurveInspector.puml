@@ -1,7 +1,0 @@
-@startuml
-class AnimationCurveInspector {
-    + AnimationCurveInspector(metadata:Metadata)
-    + <<override>> Initialize() : void
-}
-Inspector <|-- AnimationCurveInspector
-@enduml

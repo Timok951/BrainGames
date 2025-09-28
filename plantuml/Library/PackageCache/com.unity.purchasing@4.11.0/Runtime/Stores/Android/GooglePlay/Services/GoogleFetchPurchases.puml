@@ -1,8 +1,0 @@
-@startuml
-class GoogleFetchPurchases {
-    + SetStoreCallback(storeCallback:IStoreCallback) : void
-    + FetchPurchases() : void
-    + FetchPurchases(onQueryPurchaseSucceed:Action<List<Product>>) : void
-}
-IGoogleFetchPurchases <|-- GoogleFetchPurchases
-@enduml

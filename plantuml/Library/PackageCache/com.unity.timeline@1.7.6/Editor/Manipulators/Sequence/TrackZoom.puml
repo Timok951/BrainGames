@@ -1,5 +1,0 @@
-@startuml
-class TrackZoom {
-}
-Manipulator <|-- TrackZoom
-@enduml

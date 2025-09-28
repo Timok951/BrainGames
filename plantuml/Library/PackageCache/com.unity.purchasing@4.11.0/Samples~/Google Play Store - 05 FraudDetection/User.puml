@@ -1,6 +1,0 @@
-@startuml
-class User {
-    + AccountId : string
-    + ProfileId : string
-}
-@enduml

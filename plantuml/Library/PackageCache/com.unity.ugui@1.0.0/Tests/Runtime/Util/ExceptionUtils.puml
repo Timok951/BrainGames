@@ -1,5 +1,0 @@
-@startuml
-class ExceptionUtils {
-    + {static} PreserveStackTrace(e:Exception) : void
-}
-@enduml

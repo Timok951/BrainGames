@@ -1,7 +1,0 @@
-@startuml
-struct CoreRegistration {
-    + DependsOn() : CoreRegistration
-    + OptionallyDependsOn() : CoreRegistration
-    + ProvidesComponent() : CoreRegistration
-}
-@enduml

@@ -1,7 +1,0 @@
-@startuml
-class ModelPreviewer {
-    + ModelPreviewer(assetPrefab:GameObject, clips:AnimationClip[])
-    + DrawPreview(r:Rect, background:GUIStyle) : void
-    + Dispose() : void
-}
-@enduml

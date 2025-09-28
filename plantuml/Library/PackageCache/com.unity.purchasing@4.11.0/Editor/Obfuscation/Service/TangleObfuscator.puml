@@ -1,9 +1,0 @@
-@startuml
-class TangleObfuscator <<static>> {
-    + {static} Obfuscate(data:byte[], order:int[], rkey:int) : byte[]
-}
-class InvalidOrderArray {
-}
-TangleObfuscator +-- InvalidOrderArray
-Exception <|-- InvalidOrderArray
-@enduml

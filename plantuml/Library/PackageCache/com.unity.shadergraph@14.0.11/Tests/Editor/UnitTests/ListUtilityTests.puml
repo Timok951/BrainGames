@@ -1,6 +1,0 @@
-@startuml
-class ListUtilityTests {
-    + ListSlice() : void
-    + ListRemoveAllFromRange() : void
-}
-@enduml

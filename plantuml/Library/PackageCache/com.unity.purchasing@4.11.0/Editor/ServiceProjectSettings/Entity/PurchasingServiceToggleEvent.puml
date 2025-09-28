@@ -1,6 +1,0 @@
-@startuml
-enum PurchasingServiceToggleEvent {
-    Disabled,
-    Enabled,
-}
-@enduml

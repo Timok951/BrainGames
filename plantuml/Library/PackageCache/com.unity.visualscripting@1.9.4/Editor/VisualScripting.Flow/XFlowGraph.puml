@@ -1,5 +1,0 @@
-@startuml
-class XFlowGraph <<static>> {
-    + {static} GetUnitsRecursive(flowGraph:FlowGraph, recursion:Recursion) : IEnumerable<IUnit>
-}
-@enduml

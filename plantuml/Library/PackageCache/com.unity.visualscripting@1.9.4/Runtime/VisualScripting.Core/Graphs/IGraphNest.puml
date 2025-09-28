@@ -1,5 +1,0 @@
-@startuml
-interface IGraphNest {
-}
-IAotStubbable <|-- IGraphNest
-@enduml

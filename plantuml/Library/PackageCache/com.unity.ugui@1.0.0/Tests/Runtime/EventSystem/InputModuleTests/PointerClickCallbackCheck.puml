@@ -1,8 +1,0 @@
-@startuml
-class PointerClickCallbackCheck {
-    + pointerDown : bool = false
-    + OnPointerDown(eventData:PointerEventData) : void
-}
-MonoBehaviour <|-- PointerClickCallbackCheck
-IPointerDownHandler <|-- PointerClickCallbackCheck
-@enduml

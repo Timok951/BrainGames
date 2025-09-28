@@ -1,6 +1,0 @@
-@startuml
-class InequalityHandler {
-    + InequalityHandler()
-}
-BinaryOperatorHandler <|-- InequalityHandler
-@enduml

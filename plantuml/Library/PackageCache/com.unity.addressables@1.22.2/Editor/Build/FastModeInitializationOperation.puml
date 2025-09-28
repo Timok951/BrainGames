@@ -1,8 +1,0 @@
-@startuml
-class FastModeInitializationOperation {
-    + FastModeInitializationOperation(addressables:AddressablesImpl, settings:AddressableAssetSettings)
-}
-class "AsyncOperationBase`1"<T> {
-}
-"AsyncOperationBase`1" "<IResourceLocator>" <|-- FastModeInitializationOperation
-@enduml

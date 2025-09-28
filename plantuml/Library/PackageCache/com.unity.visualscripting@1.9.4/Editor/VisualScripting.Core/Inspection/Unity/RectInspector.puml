@@ -1,7 +1,0 @@
-@startuml
-class RectInspector {
-    + RectInspector(metadata:Metadata)
-    + <<override>> GetAdaptiveWidth() : float
-}
-Inspector <|-- RectInspector
-@enduml

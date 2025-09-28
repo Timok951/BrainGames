@@ -1,6 +1,0 @@
-@startuml
-class CoreRenderPipelinePreferences <<static>> {
-    + {static} <<readonly>> corePreferencePath : string = "Preferences/Core Render Pipeline"
-    + {static} Open() : void
-}
-@enduml

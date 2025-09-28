@@ -1,7 +1,0 @@
-@startuml
-class AnalyticsEventTests <<partial>> {
-    + LevelComplete_LevelIndexTest(levelIndex:int) : void
-    + LevelComplete_LevelNameTest(levelName:string) : void
-    + LevelComplete_CustomDataTest() : void
-}
-@enduml

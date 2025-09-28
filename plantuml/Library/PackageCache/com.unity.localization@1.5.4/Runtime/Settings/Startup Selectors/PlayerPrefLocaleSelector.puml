@@ -1,9 +1,0 @@
-@startuml
-class PlayerPrefLocaleSelector {
-    + PlayerPreferenceKey : string <<get>> <<set>>
-    + PostInitialization(settings:LocalizationSettings) : void
-    + GetStartupLocale(availableLocales:ILocalesProvider) : Locale
-}
-IStartupLocaleSelector <|-- PlayerPrefLocaleSelector
-IInitialize <|-- PlayerPrefLocaleSelector
-@enduml

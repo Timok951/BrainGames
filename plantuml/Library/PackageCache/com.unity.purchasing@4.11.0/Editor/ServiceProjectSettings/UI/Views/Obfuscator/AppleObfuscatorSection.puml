@@ -1,5 +1,0 @@
-@startuml
-class AppleObfuscatorSection {
-}
-AbstractObfuscatorSection <|-- AppleObfuscatorSection
-@enduml

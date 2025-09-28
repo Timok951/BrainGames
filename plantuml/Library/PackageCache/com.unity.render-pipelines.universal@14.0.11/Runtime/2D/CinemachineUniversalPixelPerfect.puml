@@ -1,5 +1,0 @@
-@startuml
-class CinemachineUniversalPixelPerfect {
-}
-MonoBehaviour <|-- CinemachineUniversalPixelPerfect
-@enduml

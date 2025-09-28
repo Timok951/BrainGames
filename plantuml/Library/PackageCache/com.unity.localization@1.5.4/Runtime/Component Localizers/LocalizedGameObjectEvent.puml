@@ -1,7 +1,0 @@
-@startuml
-class LocalizedGameObjectEvent {
-}
-class "LocalizedAssetEvent`3"<T1,T2,T3> {
-}
-"LocalizedAssetEvent`3" "<GameObject,LocalizedGameObject,UnityEventGameObject>" <|-- LocalizedGameObjectEvent
-@enduml

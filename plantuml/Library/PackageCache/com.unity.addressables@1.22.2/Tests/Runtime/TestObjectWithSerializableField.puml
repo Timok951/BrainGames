@@ -1,8 +1,0 @@
-@startuml
-class TestObjectWithSerializableField {
-    {static} + Create(name:string) : TestObjectWithSerializableField
-}
-class SerializableClass {
-}
-ScriptableObject <|-- TestObjectWithSerializableField
-@enduml

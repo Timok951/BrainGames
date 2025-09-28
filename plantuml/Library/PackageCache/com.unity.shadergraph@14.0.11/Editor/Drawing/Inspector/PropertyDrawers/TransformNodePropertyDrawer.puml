@@ -1,5 +1,0 @@
-@startuml
-class TransformNodePropertyDrawer {
-}
-AbstractMaterialNodePropertyDrawer <|-- TransformNodePropertyDrawer
-@enduml

@@ -1,8 +1,0 @@
-@startuml
-class DescriptorAttribute <<sealed>> {
-    + DescriptorAttribute(type:Type)
-}
-Attribute <|-- DescriptorAttribute
-IDecoratorAttribute <|-- DescriptorAttribute
-DescriptorAttribute --> "type" Type
-@enduml

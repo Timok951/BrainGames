@@ -1,8 +1,0 @@
-@startuml
-abstract class PointerEventUnit {
-}
-class "GameObjectEventUnit`1"<T> {
-}
-"GameObjectEventUnit`1" "<PointerEventData>" <|-- PointerEventUnit
-PointerEventUnit --> "data" ValueOutput
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-class EnvironmentsApi <<static>> {
-}
-EnvironmentsApi --> "Instance" IEnvironmentsApi
-@enduml

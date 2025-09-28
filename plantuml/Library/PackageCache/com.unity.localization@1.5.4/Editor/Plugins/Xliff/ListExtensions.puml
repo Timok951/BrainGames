@@ -1,6 +1,0 @@
-@startuml
-class ListExtensions <<static>> {
-    + {static} GetItemCount(list:IList<object>) : int
-    + {static} GetItem(list:IList<object>, n:int) : T
-}
-@enduml

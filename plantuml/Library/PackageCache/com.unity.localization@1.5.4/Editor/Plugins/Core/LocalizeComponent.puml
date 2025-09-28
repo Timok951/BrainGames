@@ -1,4 +1,0 @@
-@startuml
-class LocalizeComponent <<static>> {
-}
-@enduml

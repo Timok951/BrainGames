@@ -1,7 +1,0 @@
-@startuml
-enum ShowResult {
-    Failed,
-    Skipped,
-    Finished,
-}
-@enduml

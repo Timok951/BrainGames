@@ -1,5 +1,0 @@
-@startuml
-class UnityWebRequestHelpers <<static>> {
-    + {static} GetAwaiter(asyncOp:UnityWebRequestAsyncOperation) : TaskAwaiter<HttpClientResponse>
-}
-@enduml

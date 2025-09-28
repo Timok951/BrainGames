@@ -1,8 +1,0 @@
-@startuml
-interface IDiscovery {
-}
-class VSCodeDiscovery {
-    + PathCallback() : CodeEditor.Installation[]
-}
-IDiscovery <|-- VSCodeDiscovery
-@enduml

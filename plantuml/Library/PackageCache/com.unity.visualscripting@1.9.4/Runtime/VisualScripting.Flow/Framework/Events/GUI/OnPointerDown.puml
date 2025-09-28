@@ -1,6 +1,0 @@
-@startuml
-class OnPointerDown <<sealed>> {
-}
-PointerEventUnit <|-- OnPointerDown
-OnPointerDown --> "MessageListenerType" Type
-@enduml

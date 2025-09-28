@@ -1,9 +1,0 @@
-@startuml
-class TimeFormatter {
-    + TimeFormatter()
-    + DefaultTwoLetterISOLanguageName : string <<get>> <<set>>
-    + <<override>> TryEvaluateFormat(formattingInfo:IFormattingInfo) : bool
-}
-FormatterBase <|-- TimeFormatter
-TimeFormatter --> "DefaultFormatOptions" TimeSpanFormatOptions
-@enduml

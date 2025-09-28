@@ -1,8 +1,0 @@
-@startuml
-enum TypeSet {
-    AllTypes,
-    RuntimeTypes,
-    SettingsTypes,
-    SettingsAssembliesTypes,
-}
-@enduml

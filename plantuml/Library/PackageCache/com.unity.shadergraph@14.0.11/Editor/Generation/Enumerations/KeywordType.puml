@@ -1,6 +1,0 @@
-@startuml
-enum KeywordType {
-    Boolean,
-    Enum,
-}
-@enduml

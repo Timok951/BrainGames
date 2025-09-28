@@ -1,9 +1,0 @@
-@startuml
-class DumpToText {
-}
-class CustomDumper_BuildUsageTagSet {
-}
-interface ICustomDumper {
-}
-DumpToText +-- ICustomDumper
-@enduml

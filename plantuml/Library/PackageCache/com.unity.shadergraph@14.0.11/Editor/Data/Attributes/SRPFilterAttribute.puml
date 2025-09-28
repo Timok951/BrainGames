@@ -1,6 +1,0 @@
-@startuml
-class SRPFilterAttribute {
-    + SRPFilterAttribute(WorksWithSRP:Type[])
-}
-ContextFilterableAttribute <|-- SRPFilterAttribute
-@enduml

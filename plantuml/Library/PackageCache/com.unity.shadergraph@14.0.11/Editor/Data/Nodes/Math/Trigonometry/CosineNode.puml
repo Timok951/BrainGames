@@ -1,6 +1,0 @@
-@startuml
-class CosineNode {
-    + CosineNode()
-}
-CodeFunctionNode <|-- CosineNode
-@enduml

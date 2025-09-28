@@ -1,9 +1,0 @@
-@startuml
-class AnalyticsEventTests <<partial>> {
-    + AdOffer_RewardedTest(rewarded:bool) : void
-    + AdOffer_NetworkStringTest(network:string) : void
-    + AdOffer_NetworkEnumTest(network:AdvertisingNetwork) : void
-    + AdOffer_PlacementIdTest(placementId:string) : void
-    + AdOffer_CustomDataTest() : void
-}
-@enduml

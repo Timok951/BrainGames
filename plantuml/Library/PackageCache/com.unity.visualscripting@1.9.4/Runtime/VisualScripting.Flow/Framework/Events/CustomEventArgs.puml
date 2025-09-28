@@ -1,6 +1,0 @@
-@startuml
-struct CustomEventArgs {
-    + <<readonly>> name : string
-    + CustomEventArgs(name:string, arguments:object[])
-}
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class DecrementHandler <<sealed>> {
-    + DecrementHandler()
-}
-UnaryOperatorHandler <|-- DecrementHandler
-@enduml

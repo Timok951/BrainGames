@@ -1,5 +1,0 @@
-@startuml
-class JsonHelper <<static>> {
-    + {static} TryJsonDeserialize(self:IJsonSerializer, json:string, value:T) : bool
-}
-@enduml

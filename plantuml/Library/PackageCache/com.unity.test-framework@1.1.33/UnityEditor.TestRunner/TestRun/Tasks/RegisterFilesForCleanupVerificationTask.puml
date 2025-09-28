@@ -1,6 +1,0 @@
-@startuml
-class RegisterFilesForCleanupVerificationTask {
-    + <<override>> Execute(testJobData:TestJobData) : IEnumerator
-}
-FileCleanupVerifierTaskBase <|-- RegisterFilesForCleanupVerificationTask
-@enduml

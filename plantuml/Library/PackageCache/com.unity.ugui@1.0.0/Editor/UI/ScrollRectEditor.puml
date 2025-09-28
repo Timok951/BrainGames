@@ -1,6 +1,0 @@
-@startuml
-class ScrollRectEditor {
-    + <<override>> OnInspectorGUI() : void
-}
-Editor <|-- ScrollRectEditor
-@enduml

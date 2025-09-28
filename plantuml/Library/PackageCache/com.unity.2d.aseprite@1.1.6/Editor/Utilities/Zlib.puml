@@ -1,5 +1,0 @@
-@startuml
-class Zlib <<static>> {
-    + {static} Decompress(compressedData:byte[]) : byte[]
-}
-@enduml

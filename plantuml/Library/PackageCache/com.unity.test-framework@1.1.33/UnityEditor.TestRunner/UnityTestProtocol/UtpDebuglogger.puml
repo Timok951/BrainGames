@@ -1,6 +1,0 @@
-@startuml
-class UtpDebugLogger {
-    + Log(msg:Message) : void
-}
-IUtpLogger <|-- UtpDebugLogger
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-enum PositionSource {
-    Default,
-    Predisplacement,
-}
-@enduml

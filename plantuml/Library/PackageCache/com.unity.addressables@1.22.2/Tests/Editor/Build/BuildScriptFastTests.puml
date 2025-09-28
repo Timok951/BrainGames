@@ -1,6 +1,0 @@
-@startuml
-class BuildScriptFastTests {
-    + FastModeScript_CannotBuildPlayerContent() : void
-}
-AddressableAssetTestBase <|-- BuildScriptFastTests
-@enduml

@@ -1,8 +1,0 @@
-@startuml
-class DataNotReadyException {
-    + Text : string <<get>>
-    + DataNotReadyException()
-    + DataNotReadyException(text:string)
-}
-Exception <|-- DataNotReadyException
-@enduml

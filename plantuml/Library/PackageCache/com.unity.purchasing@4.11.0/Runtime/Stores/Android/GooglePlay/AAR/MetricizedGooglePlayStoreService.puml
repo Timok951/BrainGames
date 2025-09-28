@@ -1,8 +1,0 @@
-@startuml
-class MetricizedGooglePlayStoreService {
-    + <<override>> RetrieveProducts(products:ReadOnlyCollection<ProductDefinition>, onProductsReceived:Action<List<ProductDescription>>, onRetrieveProductsFailed:Action<GoogleRetrieveProductsFailureReason, GoogleBillingResponseCode>) : void
-    + <<override>> Purchase(product:ProductDefinition, oldProduct:Product, desiredProrationMode:GooglePlayProrationMode?) : void
-    + <<override>> ConfirmSubscriptionPriceChange(product:ProductDefinition, onPriceChangeAction:Action<IGoogleBillingResult>) : void
-}
-GooglePlayStoreService <|-- MetricizedGooglePlayStoreService
-@enduml

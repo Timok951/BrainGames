@@ -1,5 +1,0 @@
-@startuml
-interface IGraphEventListenerData {
-}
-IGraphData <|-- IGraphEventListenerData
-@enduml

@@ -1,7 +1,0 @@
-@startuml
-class RenamedFromAttribute <<sealed>> {
-    + RenamedFromAttribute(previousName:string)
-    + previousName : string <<get>>
-}
-Attribute <|-- RenamedFromAttribute
-@enduml

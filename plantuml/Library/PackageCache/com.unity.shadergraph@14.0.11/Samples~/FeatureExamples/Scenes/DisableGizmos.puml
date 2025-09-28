@@ -1,5 +1,0 @@
-@startuml
-class DisableGizmos {
-}
-MonoBehaviour <|-- DisableGizmos
-@enduml

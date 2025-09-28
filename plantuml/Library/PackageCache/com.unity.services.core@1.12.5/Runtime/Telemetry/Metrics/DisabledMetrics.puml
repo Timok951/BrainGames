@@ -1,5 +1,0 @@
-@startuml
-class DisabledMetrics {
-}
-IMetrics <|-- DisabledMetrics
-@enduml

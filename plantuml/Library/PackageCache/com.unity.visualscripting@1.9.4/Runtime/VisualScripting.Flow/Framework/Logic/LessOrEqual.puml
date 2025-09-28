@@ -1,6 +1,0 @@
-@startuml
-class LessOrEqual <<sealed>> {
-}
-BinaryComparisonUnit <|-- LessOrEqual
-LessOrEqual --> "comparison" ValueOutput
-@enduml

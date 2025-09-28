@@ -1,7 +1,0 @@
-@startuml
-class Discovery <<static>> {
-    + {static} GetVisualStudioInstallations() : IEnumerable<IVisualStudioInstallation>
-    + {static} TryDiscoverInstallation(editorPath:string, installation:IVisualStudioInstallation) : bool
-    + {static} Initialize() : void
-}
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-interface ITestRunSettings {
-}
-IDisposable <|-- ITestRunSettings
-@enduml

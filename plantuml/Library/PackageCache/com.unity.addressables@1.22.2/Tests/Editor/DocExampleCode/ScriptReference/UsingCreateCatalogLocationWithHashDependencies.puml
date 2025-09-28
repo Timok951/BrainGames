@@ -1,5 +1,0 @@
-@startuml
-class UsingCreateCatalogLocationWithHashDependencies {
-    + UsingCreateCatalogLocationWithHashDependenciesSample() : void
-}
-@enduml

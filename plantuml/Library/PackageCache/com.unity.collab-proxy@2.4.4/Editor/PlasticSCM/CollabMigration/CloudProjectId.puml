@@ -1,4 +1,0 @@
-@startuml
-class CloudProjectId <<static>> {
-}
-@enduml

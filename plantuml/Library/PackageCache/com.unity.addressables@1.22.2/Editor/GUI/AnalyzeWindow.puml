@@ -1,6 +1,0 @@
-@startuml
-class AnalyzeWindow {
-    + {static} RegisterNewRule() : void
-}
-EditorWindow <|-- AnalyzeWindow
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-class SignalAsset {
-}
-ScriptableObject <|-- SignalAsset
-@enduml

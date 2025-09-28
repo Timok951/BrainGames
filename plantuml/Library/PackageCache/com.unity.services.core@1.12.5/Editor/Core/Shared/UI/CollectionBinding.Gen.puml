@@ -1,9 +1,0 @@
-@startuml
-class "CollectionBinding`1"<TItem> {
-    + CollectionBinding(element:VisualElement)
-    + BindCollectionChanged(collectionChanged:Action<IReadOnlyObservable<TItem>, NotifyCollectionChangedEventArgs>) : void
-}
-class "EventBinding`1"<T> {
-}
-"EventBinding`1" "<IReadOnlyObservable<TItem>>" <|-- "CollectionBinding`1"
-@enduml

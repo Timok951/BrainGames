@@ -1,5 +1,0 @@
-@startuml
-class SwapCollectionExtensions <<static>> {
-    + {static} TrySwap(list:IList<TValue>, from:int, to:int, error:Exception) : bool
-}
-@enduml

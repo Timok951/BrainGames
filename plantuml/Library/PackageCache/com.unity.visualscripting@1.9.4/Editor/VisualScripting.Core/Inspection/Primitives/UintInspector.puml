@@ -1,8 +1,0 @@
-@startuml
-class UintInspector {
-    + UintInspector(metadata:Metadata)
-}
-class "DiscreteNumberInspector`1"<T> {
-}
-"DiscreteNumberInspector`1" "<uint>" <|-- UintInspector
-@enduml

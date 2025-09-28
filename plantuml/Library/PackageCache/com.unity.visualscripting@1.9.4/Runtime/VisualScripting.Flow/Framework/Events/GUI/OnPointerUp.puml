@@ -1,6 +1,0 @@
-@startuml
-class OnPointerUp <<sealed>> {
-}
-PointerEventUnit <|-- OnPointerUp
-OnPointerUp --> "MessageListenerType" Type
-@enduml

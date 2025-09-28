@@ -1,4 +1,0 @@
-@startuml
-interface "IElementAdderMenuCommand`1"<TContext> {
-}
-@enduml

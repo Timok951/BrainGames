@@ -1,5 +1,0 @@
-@startuml
-class CreateSceneUtility {
-    + {static} CreateScene(sceneName:string, delegateToExecute:Action) : void
-}
-@enduml

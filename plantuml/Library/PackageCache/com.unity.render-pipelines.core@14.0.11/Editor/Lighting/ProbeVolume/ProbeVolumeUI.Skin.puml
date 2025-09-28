@@ -1,7 +1,0 @@
-@startuml
-class ProbeVolumeUI <<static>> <<partial>> {
-}
-class Styles <<static>> {
-}
-ProbeVolumeUI +-- Styles
-@enduml

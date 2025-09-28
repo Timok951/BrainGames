@@ -1,7 +1,0 @@
-@startuml
-class NotEqual <<sealed>> {
-    + NotEqual()
-}
-BinaryComparisonUnit <|-- NotEqual
-NotEqual --> "comparison" ValueOutput
-@enduml

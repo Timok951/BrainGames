@@ -1,9 +1,0 @@
-@startuml
-class ServiceProvider {
-    + ServiceProvider(factories:IReadOnlyDictionary<Type, IServiceFactory>, scope:Scope)
-    + GetService(serviceType:Type) : object
-    + CreateScope() : IScopedServiceProvider
-    + Dispose() : void
-}
-IScopedServiceProvider <|-- ServiceProvider
-@enduml

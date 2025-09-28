@@ -1,5 +1,0 @@
-@startuml
-class InitializeAfterPluginsAttribute <<sealed>> {
-}
-Attribute <|-- InitializeAfterPluginsAttribute
-@enduml

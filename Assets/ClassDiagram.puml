@@ -1,0 +1,1595 @@
+﻿@startuml
+class ClassDiagramGenerator {
+    - _outerScroll : Vector2
+    - _scriptScroll : Vector2
+    - _scanTarget : DefaultAsset
+    - _bgTex : Texture2D
+    + Name : string
+    + BaseClass : string
+    + IsAbstract : bool
+    + IsInterface : bool
+    + Summary : string
+    + Name : string
+    + Type : string
+    + Visibility : string
+    + Name : string
+    + Type : string
+    + Visibility : string
+    + Name : string
+    + ReturnType : string
+    + Visibility : string
+    + Name : string
+    + Type : string
+    - GetHeaderIcon() : Texture2D
+    - OnEnable() : void
+    - EnsureThemeAssets() : void
+    - OnGUI() : void
+    - GenerateDiagram(format : ExportFormat) : void
+    + ParseClasses(content : string) : List<UmlClass>
+}
+class UmlClass {
+    - _outerScroll : Vector2
+    - _scriptScroll : Vector2
+    - _scanTarget : DefaultAsset
+    - _bgTex : Texture2D
+    + Name : string
+    + BaseClass : string
+    + IsAbstract : bool
+    + IsInterface : bool
+    + Summary : string
+    + Name : string
+    + Type : string
+    + Visibility : string
+    + Name : string
+    + Type : string
+    + Visibility : string
+    + Name : string
+    + ReturnType : string
+    + Visibility : string
+    + Name : string
+    + Type : string
+    - GetHeaderIcon() : Texture2D
+    - OnEnable() : void
+    - EnsureThemeAssets() : void
+    - OnGUI() : void
+    - GenerateDiagram(format : ExportFormat) : void
+    + ParseClasses(content : string) : List<UmlClass>
+}
+class UmlField {
+    - _outerScroll : Vector2
+    - _scriptScroll : Vector2
+    - _scanTarget : DefaultAsset
+    - _bgTex : Texture2D
+    + Name : string
+    + BaseClass : string
+    + IsAbstract : bool
+    + IsInterface : bool
+    + Summary : string
+    + Name : string
+    + Type : string
+    + Visibility : string
+    + Name : string
+    + Type : string
+    + Visibility : string
+    + Name : string
+    + ReturnType : string
+    + Visibility : string
+    + Name : string
+    + Type : string
+    - GetHeaderIcon() : Texture2D
+    - OnEnable() : void
+    - EnsureThemeAssets() : void
+    - OnGUI() : void
+    - GenerateDiagram(format : ExportFormat) : void
+    + ParseClasses(content : string) : List<UmlClass>
+}
+class UmlProperty {
+    - _outerScroll : Vector2
+    - _scriptScroll : Vector2
+    - _scanTarget : DefaultAsset
+    - _bgTex : Texture2D
+    + Name : string
+    + BaseClass : string
+    + IsAbstract : bool
+    + IsInterface : bool
+    + Summary : string
+    + Name : string
+    + Type : string
+    + Visibility : string
+    + Name : string
+    + Type : string
+    + Visibility : string
+    + Name : string
+    + ReturnType : string
+    + Visibility : string
+    + Name : string
+    + Type : string
+    - GetHeaderIcon() : Texture2D
+    - OnEnable() : void
+    - EnsureThemeAssets() : void
+    - OnGUI() : void
+    - GenerateDiagram(format : ExportFormat) : void
+    + ParseClasses(content : string) : List<UmlClass>
+}
+class UmlMethod {
+    - _outerScroll : Vector2
+    - _scriptScroll : Vector2
+    - _scanTarget : DefaultAsset
+    - _bgTex : Texture2D
+    + Name : string
+    + BaseClass : string
+    + IsAbstract : bool
+    + IsInterface : bool
+    + Summary : string
+    + Name : string
+    + Type : string
+    + Visibility : string
+    + Name : string
+    + Type : string
+    + Visibility : string
+    + Name : string
+    + ReturnType : string
+    + Visibility : string
+    + Name : string
+    + Type : string
+    - GetHeaderIcon() : Texture2D
+    - OnEnable() : void
+    - EnsureThemeAssets() : void
+    - OnGUI() : void
+    - GenerateDiagram(format : ExportFormat) : void
+    + ParseClasses(content : string) : List<UmlClass>
+}
+class UmlParameter {
+    - _outerScroll : Vector2
+    - _scriptScroll : Vector2
+    - _scanTarget : DefaultAsset
+    - _bgTex : Texture2D
+    + Name : string
+    + BaseClass : string
+    + IsAbstract : bool
+    + IsInterface : bool
+    + Summary : string
+    + Name : string
+    + Type : string
+    + Visibility : string
+    + Name : string
+    + Type : string
+    + Visibility : string
+    + Name : string
+    + ReturnType : string
+    + Visibility : string
+    + Name : string
+    + Type : string
+    - GetHeaderIcon() : Texture2D
+    - OnEnable() : void
+    - EnsureThemeAssets() : void
+    - OnGUI() : void
+    - GenerateDiagram(format : ExportFormat) : void
+    + ParseClasses(content : string) : List<UmlClass>
+}
+class CSharpParser {
+    - _outerScroll : Vector2
+    - _scriptScroll : Vector2
+    - _scanTarget : DefaultAsset
+    - _bgTex : Texture2D
+    + Name : string
+    + BaseClass : string
+    + IsAbstract : bool
+    + IsInterface : bool
+    + Summary : string
+    + Name : string
+    + Type : string
+    + Visibility : string
+    + Name : string
+    + Type : string
+    + Visibility : string
+    + Name : string
+    + ReturnType : string
+    + Visibility : string
+    + Name : string
+    + Type : string
+    - GetHeaderIcon() : Texture2D
+    - OnEnable() : void
+    - EnsureThemeAssets() : void
+    - OnGUI() : void
+    - GenerateDiagram(format : ExportFormat) : void
+    + ParseClasses(content : string) : List<UmlClass>
+}
+class PlantUmlGenerator {
+    - _outerScroll : Vector2
+    - _scriptScroll : Vector2
+    - _scanTarget : DefaultAsset
+    - _bgTex : Texture2D
+    + Name : string
+    + BaseClass : string
+    + IsAbstract : bool
+    + IsInterface : bool
+    + Summary : string
+    + Name : string
+    + Type : string
+    + Visibility : string
+    + Name : string
+    + Type : string
+    + Visibility : string
+    + Name : string
+    + ReturnType : string
+    + Visibility : string
+    + Name : string
+    + Type : string
+    - GetHeaderIcon() : Texture2D
+    - OnEnable() : void
+    - EnsureThemeAssets() : void
+    - OnGUI() : void
+    - GenerateDiagram(format : ExportFormat) : void
+    + ParseClasses(content : string) : List<UmlClass>
+}
+class ScriptEntry {
+    + Path : string
+    + Scan(folder : string, extension : string) : void
+    + AddFiles(paths : IEnumerable<string>) : void
+    + GetSelected() : List<ScriptEntry>
+}
+class ScriptSelectionManager {
+    + Path : string
+    + Scan(folder : string, extension : string) : void
+    + AddFiles(paths : IEnumerable<string>) : void
+    + GetSelected() : List<ScriptEntry>
+}
+class AllLevelsColorSort {
+    + Levels : List<LevelColorSort>
+}
+class LevelColorSort {
+    + LevelName : string
+    + BackgroundColor : Color
+    + TopLeftColor : Color
+    + TopRightColor : Color
+    + BottomLeftColor : Color
+    + BottomRightColor : Color
+    + Row : int
+    + Col : int
+    + LockedCells : List<Vector2Int>
+}
+class LevelData {
+    + LevelName : string
+    + Edges : List<Edge>
+    + Points : List<Vector2Int>
+}
+class LevelList {
+    + Levels : List<LevelData>
+}
+class AllLevelsNumberLink {
+    + Levels : List<NumberLinkLevel>
+}
+class NumberLinkLevel {
+    + LevelName : string
+    + Rows : int
+    + Columns : int
+    + Data : List<int>
+}
+class AllLevelsOneStorke {
+    + Levels : List<LevelOneStroke>
+}
+class LevelOneStroke {
+    + LevelName : string
+    + Points : List<Vector4>
+    + Edges : List<Vector2Int>
+}
+class AllLevelsPaint {
+    + Levels : List<PaintLevel>
+}
+class PaintLevel {
+    + LevelName : string
+    + Row : int
+    + Col : int
+    + Start : Vector2Int
+    + Data : List<int>
+}
+class AllLevelsPipes {
+    + LevelsPipes : List<LevelDataPipe>
+}
+class LevelDataPipe {
+    + LevelName : string
+    + Row : int
+    + Col : int
+    + Data : List<int>
+}
+class PlantUMLConnectScanner {
+    + FullName : string
+    + BaseClass : string
+}
+class SourceClass {
+    + FullName : string
+    + BaseClass : string
+}
+class MonoBehaviour {
+    + FullName : string
+    + BaseClass : string
+}
+class ScriptableObject {
+    + FullName : string
+    + BaseClass : string
+}
+class CertificateHandler {
+    + FullName : string
+    + BaseClass : string
+}
+class DOTweenModuleAudio {
+}
+class DOTweenModuleEPOOutline {
+}
+class DOTweenModulePhysics {
+}
+class DOTweenModulePhysics2D {
+}
+class DOTweenModuleSprite {
+}
+class DOTweenModuleUI {
+}
+class Utils {
+}
+class DOTweenModuleUnityVersion {
+}
+' DOTweenModuleUnityVersion: </summary>
+class DOTweenCYInstruction {
+}
+class WaitForCompletion {
+}
+class WaitForRewind {
+}
+class WaitForKill {
+}
+class WaitForElapsedLoops {
+}
+class WaitForPosition {
+}
+class WaitForStart {
+}
+class DOTweenModuleUtils {
+}
+' DOTweenModuleUtils: </summary>
+class Physics {
+}
+class AnimationDotWeen {
+    - playStartTween : Tween
+    - playNextTween : Tween
+    + Animate(target : GameObject, onComplete : System.Action, duration : float) : void
+    + AnimateAndSwitch(button : Button, switchAction : System.Action) : void
+}
+class for {
+}
+class DBManager {
+}
+' DBManager: </summary>
+class GameManager {
+    + CurrentLevelConnect : int
+    + CurrentLevelColorsort : int
+    + CurrentLevelPipes : int
+    + CurrentLevelNumberLinks : int
+    + CurrentLevelOneStroke : int
+    + CurrenLevelPaint : int
+    - DefaultLevel : LevelData
+    - DefaultLevelColorSort : LevelColorSort
+    - DefaultLevelPipe : LevelDataPipe
+    - DefaultLevelNumberLink : NumberLinkLevel
+    - DefaultLevelOneStroke : LevelOneStroke
+    - DefaultLevelPaint : PaintLevel
+    - _allLevelsconnect : LevelList
+    - _allLevelspipes : AllLevelsPipes
+    - _allLevelscolorsort : AllLevelsColorSort
+    - _allLevelsNumberLinks : AllLevelsNumberLink
+    - _allLevelsOneStorke : AllLevelsOneStorke
+    - _allLevelsPaint : AllLevelsPaint
+    - Awake() : void
+    - Init() : void
+    - SyncWithServerOnStart() : IEnumerator
+    + IsLevelUnlockedConnect(level : int) : bool
+    + IsLevelUnlockedColorsort(level : int) : bool
+    + IsLevelUnlockedPipes(level : int) : bool
+    + IsLevelUnlockedNumberLinks(level : int) : bool
+    + IsLevelUnlockedOneStroke(level : int) : bool
+    + IsLevelUnlockedPaint(level : int) : bool
+    + SetCurrentLevelConnect(levelIndex : int) : void
+    + SetCurrentLevelColorSort(levelIndex : int) : void
+    + SetCurrentLevelPipes(levelIndex : int) : void
+    + SetCurrentLevelNumberLinks(levelIndex : int) : void
+    + SetCurrentLevelOneStroke(levelIndex : int) : void
+    + SetCurrentLevelPaint(levelIndex : int) : void
+    + UnlockLevelConnect() : void
+    + UnlockLevelColorsort() : void
+    + UnlockLevelPipes() : void
+    + UnlockLevelNumberLinks() : void
+    + UnlockLevelOneStroke() : void
+    + UnlockLevelPaint() : void
+    + UpdateServerData() : IEnumerator
+    + GetLevelConnect() : LevelData
+    + GetLevelColorSort() : LevelColorSort
+    + GetLevelPipes() : LevelDataPipe
+    + GetLevelNumberLinks() : NumberLinkLevel
+    + GetLevelOneStroke() : LevelOneStroke
+    + GetLevelPaint() : PaintLevel
+    + GetRandomLevelIndexConnect() : int
+    + GetRandomLevelIndexColorSort() : int
+    + GetRandomLevelIndexPipes() : int
+    + GetRandomLevelIndexNumberLinks() : int
+    + GetRandomLevelIndexOneStroke() : int
+    + GetRandomLevelIndexPaint() : int
+    + GoToMainMenu() : void
+    + GoToGameplayConnect() : void
+    + GoToGameplayColorSort() : void
+    + GoToGameplayPipes() : void
+    + GoToGameplayNumberLinks() : void
+    + GoToGameplayOneStroke() : void
+    + GoToGameplayPaint() : void
+    + GoToDailyChallenge() : void
+}
+' GameManager: </summary>
+class BypassCertificate {
+    + CurrentLevelConnect : int
+    + CurrentLevelColorsort : int
+    + CurrentLevelPipes : int
+    + CurrentLevelNumberLinks : int
+    + CurrentLevelOneStroke : int
+    + CurrenLevelPaint : int
+    - DefaultLevel : LevelData
+    - DefaultLevelColorSort : LevelColorSort
+    - DefaultLevelPipe : LevelDataPipe
+    - DefaultLevelNumberLink : NumberLinkLevel
+    - DefaultLevelOneStroke : LevelOneStroke
+    - DefaultLevelPaint : PaintLevel
+    - _allLevelsconnect : LevelList
+    - _allLevelspipes : AllLevelsPipes
+    - _allLevelscolorsort : AllLevelsColorSort
+    - _allLevelsNumberLinks : AllLevelsNumberLink
+    - _allLevelsOneStorke : AllLevelsOneStorke
+    - _allLevelsPaint : AllLevelsPaint
+    - Awake() : void
+    - Init() : void
+    - SyncWithServerOnStart() : IEnumerator
+    + IsLevelUnlockedConnect(level : int) : bool
+    + IsLevelUnlockedColorsort(level : int) : bool
+    + IsLevelUnlockedPipes(level : int) : bool
+    + IsLevelUnlockedNumberLinks(level : int) : bool
+    + IsLevelUnlockedOneStroke(level : int) : bool
+    + IsLevelUnlockedPaint(level : int) : bool
+    + SetCurrentLevelConnect(levelIndex : int) : void
+    + SetCurrentLevelColorSort(levelIndex : int) : void
+    + SetCurrentLevelPipes(levelIndex : int) : void
+    + SetCurrentLevelNumberLinks(levelIndex : int) : void
+    + SetCurrentLevelOneStroke(levelIndex : int) : void
+    + SetCurrentLevelPaint(levelIndex : int) : void
+    + UnlockLevelConnect() : void
+    + UnlockLevelColorsort() : void
+    + UnlockLevelPipes() : void
+    + UnlockLevelNumberLinks() : void
+    + UnlockLevelOneStroke() : void
+    + UnlockLevelPaint() : void
+    + UpdateServerData() : IEnumerator
+    + GetLevelConnect() : LevelData
+    + GetLevelColorSort() : LevelColorSort
+    + GetLevelPipes() : LevelDataPipe
+    + GetLevelNumberLinks() : NumberLinkLevel
+    + GetLevelOneStroke() : LevelOneStroke
+    + GetLevelPaint() : PaintLevel
+    + GetRandomLevelIndexConnect() : int
+    + GetRandomLevelIndexColorSort() : int
+    + GetRandomLevelIndexPipes() : int
+    + GetRandomLevelIndexNumberLinks() : int
+    + GetRandomLevelIndexOneStroke() : int
+    + GetRandomLevelIndexPaint() : int
+    + GoToMainMenu() : void
+    + GoToGameplayConnect() : void
+    + GoToGameplayColorSort() : void
+    + GoToGameplayPipes() : void
+    + GoToGameplayNumberLinks() : void
+    + GoToGameplayOneStroke() : void
+    + GoToGameplayPaint() : void
+    + GoToDailyChallenge() : void
+}
+class MainMenuManager {
+    - _titlePanel : GameObject
+    - _levelPanelConnect : GameObject
+    - _levelPanelColorsort : GameObject
+    - _levelPanelPipes : GameObject
+    - _levelPanelNumberLink : GameObject
+    - _levelPanelOneStroke : GameObject
+    - _levelPanelPaint : GameObject
+    - _AuthorithationPannel : GameObject
+    - _registerPannel : GameObject
+    - _loginPannel : GameObject
+    - _profilePannel : GameObject
+    - _passwordchangepannel : GameObject
+    - _passwordchangepannelunnokwn : GameObject
+    - _syncPanel : GameObject
+    - _syncMessage : TMP_Text
+    - _keepLocalButton : Button
+    - _updateFromDbButton : Button
+    + nickfieldlogin : TMP_InputField
+    + passwordfieldlogin : TMP_InputField
+    + nickfield : TMP_InputField
+    + passwordfield : TMP_InputField
+    + emailfield : TMP_InputField
+    + registerbutton : Button
+    + LoginButton : Button
+    - _leaderboardPannel : GameObject
+    - _choosegamescreen : GameObject
+    - _leaderboardContent : Transform
+    - _leaderboardRowPrefab : GameObject
+    - _emailResetField : TMP_InputField
+    - _sendCodeButton : Button
+    - _resetCodeField : TMP_InputField
+    - _newPasswordField : TMP_InputField
+    - _confirmResetButton : Button
+    - _resetMessageText : TMP_Text
+    - _loginerrortext : TMP_Text
+    - _registererrortext : TMP_Text
+    - _yourdatatext : TMP_Text
+    - localeIdrus : int
+    - localeIdus : int
+    - enbut : Button
+    - rubtn : Button
+    + LevelOpened : UnityAction
+    + CurrentColor : Color
+    - _levelTitleText : TMP_Text
+    + CliclkChangeLocale(localeID : int, button : Button) : void
+    - Awake() : void
+    - MainMenuShow() : void
+    + ClickedPlay(button : Button) : void
+    + ClickedBackToTitle(button : Button) : void
+    + ClickedBackToGamemodes(button : Button) : void
+    + QuitGame(button : Button) : void
+    + ClickedConnect(button : Button) : void
+    + ClickedColorSort(button : Button) : void
+    + ClickLogin(button : Button) : void
+    - ClickForgotPassword() : void
+    + CLickProfile(button : Button) : void
+    + ClickedPipes(button : Button) : void
+    + ClickedDailyChallenge(button : Button) : void
+    + ClickedNumberLink(button : Button) : void
+    + ClickedOneStroke(button : Button) : void
+    + ClickedPaint(button : Button) : void
+    + ClickedLeaderboard(button : Button) : void
+    - UpdateAndCheckServer(nick : string, password : string) : IEnumerator
+    + AthorisationEnable() : void
+    + Registration(button : Button) : void
+    + Authorisation() : void
+    + ClickForgetPassword(button : Button) : void
+    + ClickChangePassword() : void
+    + CallRegister() : void
+    - ClearLevelPrefs() : void
+    + CallLogin(button : Button) : void
+    + Login(nick : string, password : string) : IEnumerator
+    - KeepLocalData(loginData : LoginResponse) : void
+    - UpdateFromDb(loginData : LoginResponse) : void
+    - SaveLoginData(loginData : LoginResponse) : void
+    - ShowSyncPanel(loginData : LoginResponse, localColorsort : int, localConnect : int, localPipes : int) : void
+    - SetupInputField(inputField : TMP_InputField, keyboardType : TouchScreenKeyboardType, isPassword : bool) : void
+    + VerifyInputs() : void
+    + VerifyInputsforChangepassword() : void
+    + VerivyInputsfroChangepasswordbutton() : void
+    + VerifyInputsLogin() : void
+    - CheckServerData(nick : string, password : string) : IEnumerator
+    + ClickLogout(button : Button) : void
+    - DisplayLeaderboard(entries : LeaderboardEntry[]) : void
+    - FetchLeaderboard() : IEnumerator
+    + ChangePasswordUnKnown() : void
+    + SendResetCode() : void
+    - SendResetCodeCoroutine(email : string) : IEnumerator
+    - ConfirmPasswordReset() : void
+    - ResetPasswordCoroutine(email : string, code : string, newPassword : string) : IEnumerator
+}
+' MainMenuManager: </summary>
+class BypassCertificate {
+    - _titlePanel : GameObject
+    - _levelPanelConnect : GameObject
+    - _levelPanelColorsort : GameObject
+    - _levelPanelPipes : GameObject
+    - _levelPanelNumberLink : GameObject
+    - _levelPanelOneStroke : GameObject
+    - _levelPanelPaint : GameObject
+    - _AuthorithationPannel : GameObject
+    - _registerPannel : GameObject
+    - _loginPannel : GameObject
+    - _profilePannel : GameObject
+    - _passwordchangepannel : GameObject
+    - _passwordchangepannelunnokwn : GameObject
+    - _syncPanel : GameObject
+    - _syncMessage : TMP_Text
+    - _keepLocalButton : Button
+    - _updateFromDbButton : Button
+    + nickfieldlogin : TMP_InputField
+    + passwordfieldlogin : TMP_InputField
+    + nickfield : TMP_InputField
+    + passwordfield : TMP_InputField
+    + emailfield : TMP_InputField
+    + registerbutton : Button
+    + LoginButton : Button
+    - _leaderboardPannel : GameObject
+    - _choosegamescreen : GameObject
+    - _leaderboardContent : Transform
+    - _leaderboardRowPrefab : GameObject
+    - _emailResetField : TMP_InputField
+    - _sendCodeButton : Button
+    - _resetCodeField : TMP_InputField
+    - _newPasswordField : TMP_InputField
+    - _confirmResetButton : Button
+    - _resetMessageText : TMP_Text
+    - _loginerrortext : TMP_Text
+    - _registererrortext : TMP_Text
+    - _yourdatatext : TMP_Text
+    - localeIdrus : int
+    - localeIdus : int
+    - enbut : Button
+    - rubtn : Button
+    + LevelOpened : UnityAction
+    + CurrentColor : Color
+    - _levelTitleText : TMP_Text
+    + CliclkChangeLocale(localeID : int, button : Button) : void
+    - Awake() : void
+    - MainMenuShow() : void
+    + ClickedPlay(button : Button) : void
+    + ClickedBackToTitle(button : Button) : void
+    + ClickedBackToGamemodes(button : Button) : void
+    + QuitGame(button : Button) : void
+    + ClickedConnect(button : Button) : void
+    + ClickedColorSort(button : Button) : void
+    + ClickLogin(button : Button) : void
+    - ClickForgotPassword() : void
+    + CLickProfile(button : Button) : void
+    + ClickedPipes(button : Button) : void
+    + ClickedDailyChallenge(button : Button) : void
+    + ClickedNumberLink(button : Button) : void
+    + ClickedOneStroke(button : Button) : void
+    + ClickedPaint(button : Button) : void
+    + ClickedLeaderboard(button : Button) : void
+    - UpdateAndCheckServer(nick : string, password : string) : IEnumerator
+    + AthorisationEnable() : void
+    + Registration(button : Button) : void
+    + Authorisation() : void
+    + ClickForgetPassword(button : Button) : void
+    + ClickChangePassword() : void
+    + CallRegister() : void
+    - ClearLevelPrefs() : void
+    + CallLogin(button : Button) : void
+    + Login(nick : string, password : string) : IEnumerator
+    - KeepLocalData(loginData : LoginResponse) : void
+    - UpdateFromDb(loginData : LoginResponse) : void
+    - SaveLoginData(loginData : LoginResponse) : void
+    - ShowSyncPanel(loginData : LoginResponse, localColorsort : int, localConnect : int, localPipes : int) : void
+    - SetupInputField(inputField : TMP_InputField, keyboardType : TouchScreenKeyboardType, isPassword : bool) : void
+    + VerifyInputs() : void
+    + VerifyInputsforChangepassword() : void
+    + VerivyInputsfroChangepasswordbutton() : void
+    + VerifyInputsLogin() : void
+    - CheckServerData(nick : string, password : string) : IEnumerator
+    + ClickLogout(button : Button) : void
+    - DisplayLeaderboard(entries : LeaderboardEntry[]) : void
+    - FetchLeaderboard() : IEnumerator
+    + ChangePasswordUnKnown() : void
+    + SendResetCode() : void
+    - SendResetCodeCoroutine(email : string) : IEnumerator
+    - ConfirmPasswordReset() : void
+    - ResetPasswordCoroutine(email : string, code : string, newPassword : string) : IEnumerator
+}
+class SoundManager {
+    - _effectSource : AudioSource
+    - Awake() : void
+    + PlaySound(clip : AudioClip) : void
+}
+class Cell {
+    + Color : Color
+    + Position : Vector2Int
+    + startAnimation : Tween
+    + startMoveAnimation : Tween
+    + selectedMoveAnimation : Tween
+    + moveAnimation : Tween
+    - _bgSprite : SpriteRenderer
+    - _lockIcon : SpriteRenderer
+    - _isLocked : bool
+    + Init(color : Color, x : int, y : int, offsetX : float, offsetY : float, isLocked : bool) : void
+    + AnimateStartPosition(offsetX : float, offsetY : float) : void
+    + GameFinished() : void
+    + SelectedMoveStart() : void
+    + SelectedMoveEnd() : void
+    + SelectedMove(offset : Vector2) : void
+    + MoveEnd() : void
+    - UpdateLockIcon() : void
+}
+' Cell: </summary>
+class GameplayManagerColorSort {
+    - _currentLevelData : LevelColorSort
+    - _levelText : TMP_Text
+    - _winText : TMP_Text
+    - _movesText : TMP_Text
+    - _gridParent : Transform
+    - _nextButton : Transform
+    - _restartButton : Transform
+    - _backButton : Transform
+    - _playButtonTransform : Transform
+    - _cellPrefab : Cell
+    - leveldate : string
+    - moveNum : int
+    - bestNum : int
+    - hasGameFinished : bool
+    - canMove : bool
+    - canStartClicking : bool
+    - cells : Cell[,]
+    - correctColors : Color[,]
+    - selectedCell : Cell
+    - movedCell : Cell
+    - startPos : Vector2
+    - palystartTween : Tween
+    - palyendTween : Tween
+    + offsetX : float
+    + offsetY : float
+    - _isDailyChallengeMode : bool
+    - hasGameStarted : bool
+    - playStartTween : Tween
+    - playNextTween : Tween
+    - Awake() : void
+    - Start() : void
+    + ClickedPlayButton() : void
+    - WaitForInitialAnimation() : IEnumerator
+    - SpawnCells() : void
+    - PerformSwaps() : void
+    - AnimateCells() : void
+    - Update() : void
+    - CheckWin() : void
+    + ClickedBack(button : Button) : void
+    + ClickedRestart(button : Button) : void
+    + ClickedNextLevel(button : Button) : void
+    + Animate(target : GameObject, onComplete : System.Action, duration : float) : void
+    - AnimateAndSwitch(button : Button, switchAction : System.Action) : void
+}
+' GameplayManagerColorSort: </summary>
+class LevelButtonColorsort {
+    - _button : Button
+    - _inactiveColor : Color
+    - _image : Image
+    - isLevelUnlocked : bool
+    - currentLevel : int
+    - Awake() : void
+    - OnEnable() : void
+    - OnDisable() : void
+    - LevelOpened() : void
+    - Clicked() : void
+}
+class GameplayManager {
+    + hasGameFinished : bool
+    - playStartTween : Tween
+    - playNextTween : Tween
+    - _titleText : TMP_Text
+    - _clickHighlight : SpriteRenderer
+    - _nextLevelButton : GameObject
+    - _restartButton : GameObject
+    - _backButton : GameObject
+    - _isDailyChallengeMode : bool
+    - CurrentLevelData : LevelData
+    - _nodePrefab : Node
+    - _nodes : List<Node>
+    + NodeColors : List<Color>
+    - startNode : Node
+    - Awake() : void
+    - SpawndBoard() : void
+    - AdjustCameraToFitBoard(currentLevelSize : int) : void
+    - SpawnNodes() : void
+    + GetHighLightColor(colorId : int) : Color
+    + GetColorId(i : int, j : int) : int
+    - Update() : void
+    - IsWithinBoardBounds(position : Vector2Int) : bool
+    - CheckWin() : void
+    - AreNodesConnected(start : Node, end : Node, visited : HashSet<Node>) : bool
+    + ClickedBack(button : Button) : void
+    + ClickedRestart(button : Button) : void
+    + ClickedNextLevel(button : Button) : void
+    + Animate(target : GameObject, onComplete : System.Action, duration : float) : void
+    - AnimateAndSwitch(button : Button, switchAction : System.Action) : void
+}
+' GameplayManager: </summary>
+class LevelButtonConnect {
+    - _button : Button
+    - _inactiveColor : Color
+    - _image : Image
+    - isLevelUnlocked : bool
+    - currentLevel : int
+    - Awake() : void
+    - OnEnable() : void
+    - OnDisable() : void
+    - LevelOpened() : void
+    - Clicked() : void
+}
+' LevelButtonConnect: </summary>
+class Node {
+    - _point : GameObject
+    - _topEdge : GameObject
+    - _bottomEdge : GameObject
+    - _leftEdge : GameObject
+    - _rightEdge : GameObject
+    - _highlight : GameObject
+    + colorId : int
+    + ConnectedNodes : List<Node>
+    + Pos2D : Vector2Int { get; set; }
+    ~ Init() : void
+    + SetColorForPoint(colorIdForSpawnNode : int) : void
+    + SetEdge(offset : Vector2Int, node : Node) : void
+    + UpdateInput(connectedNode : Node) : void
+    - WouldCreateCycle(connectedNode : Node) : bool
+    - CheckCycle(node : Node, visited : HashSet<Node>) : bool
+    - AddEdge(connectedNode : Node) : void
+    - DeleteChain(startNode : Node, visited : HashSet<Node>) : void
+    - RemoveEdge(node : Node) : void
+    - RemoveConnection(startNode : Node, targetNode : Node) : void
+    - RemoveChainToStart(targetNode : Node) : void
+    - DeleteNode() : void
+    + IsConnectedToEndNode(checkedNode : List<Node>) : bool
+    - FindStartNode(node : Node, visited : HashSet<Node>) : Node
+    - CollectChainToTarget(current : Node, target : Node, nodesToRemove : List<Node>, visited : HashSet<Node>) : void
+    ~ SolveHighlight() : void
+    - CollectChain(current : Node, visited : HashSet<Node>, allNodes : List<Node>) : void
+}
+class LeaderboardEntry {
+    + Nick : string { get; set; }
+    + TotalScore : int { get; set; }
+}
+class LeaderboardResponse {
+    + Status : string { get; set; }
+    + Leaderboard : LeaderboardEntry[] { get; set; }
+}
+' LeaderboardResponse: </summary>
+class LoginResponse {
+    + Status : string { get; set; }
+    + Nick : string { get; set; }
+    + Email : string { get; set; }
+    + InfinityScore : int { get; set; }
+    + ColorsortLevels : int { get; set; }
+    + LevelScore : int { get; set; }
+    + ConnectLevels : int { get; set; }
+    + PipesLevels : int { get; set; }
+    + NumberLinksLevels : int { get; set; }
+    + OneStrokeLevels : int { get; set; }
+    + PaintLevels : int { get; set; }
+}
+' LoginResponse: </summary>
+class ResetResponse {
+    + Status : string { get; set; }
+    + Message : string { get; set; }
+}
+' ResetResponse: </summary>
+class UpdateResponse {
+    + Status : string { get; set; }
+    + Message : string { get; set; }
+}
+class DailyChallengeManager {
+    - _timerText : TMP_Text
+    - _winText : TMP_Text
+    - _challengeUI : GameObject
+    - playStartTween : Tween
+    - _timer : float
+    - _isTimerRunning : bool
+    - _CurrentModeIndex : int
+    - _hasChallengeFinished : bool
+    - _pipesLevel : int
+    - _colorSortLevel : int
+    - _connectLevel : int
+    - _oneStrokeLevel : int
+    - _paintLevel : int
+    - _numberlinkLevel : int
+    - Awake() : void
+    - Start() : void
+    - Update() : void
+    - StartChallenge() : void
+    - ClearPreviousLevelObjects() : void
+    - LoadCurrentMode() : void
+    + OnModeCompleted() : void
+    - CompleteChallenge() : void
+    - UpdateServerAndReturn() : IEnumerator
+    - CalculateDailyScore(timeTaken : float) : int
+    - UpdateTimerText() : void
+    - IsChallengeAvailable() : bool
+    - ResetChallenge() : void
+    + ClickedBack(button : UnityEngine.UI.Button) : void
+    - ReturnToMainMenu() : void
+    + Animate(target : UnityEngine.GameObject, onComplete : Action, duration : float) : void
+    - AnimateAndSwitch(button : UnityEngine.UI.Button, switchAction : Action) : void
+}
+' DailyChallengeManager: </summary>
+class CellNumberlink {
+    + Row : int
+    + Column : int
+    - _numberText : TMP_Text
+    - _cellSprite : SpriteRenderer
+    - _right1 : GameObject
+    - _right2 : GameObject
+    - _top1 : GameObject
+    - _top2 : GameObject
+    - _left1 : GameObject
+    - _left2 : GameObject
+    - _bottom1 : GameObject
+    - _bottom2 : GameObject
+    - _defaultColor : Color
+    - _solvedColor : Color
+    - _inCorrectColor : Color
+    - number : int
+    + Init(row : int, col : int, num : int) : void
+    + Init() : void
+    + AddEdge(direction : int) : void
+    + RemoveEdge(direction : int) : void
+    + RemoveAllEdges() : void
+    - ChangeSpriteSize(sprite : SpriteRenderer, size : float) : void
+    + IsValidCell(cell : CellNumberlink, direction : int) : bool
+    - StretchEdgeFromStart(sprite : SpriteRenderer, offset : Vector2Int) : void
+}
+' CellNumberlink: </summary>
+class GameplayNumberlink {
+    + hasGameFinished : bool
+    - _levelLocalized : LocalizedString
+    - playStartTween : Tween
+    - _cellprefab : CellNumberlink
+    - _bgSprite : SpriteRenderer
+    - _highlightSprite : SpriteRenderer
+    - _highlightSize : Vector2
+    - _levelData : LevelDataNumberLinks
+    - _cellGap : float
+    - _cellSize : float
+    - _levelGap : float
+    - _winText : GameObject
+    - _nextLevelButton : GameObject
+    - _restartButton : GameObject
+    - _backButton : GameObject
+    - _titleText : TMP_Text
+    - _isDailyChallengeMode : bool
+    - leveGrid : int[,]
+    - cellGrid : CellNumberlink[,]
+    - startCell : CellNumberlink
+    - startPos : Vector2
+    + data : List<int>
+    - Awake() : void
+    - SpawnLevel() : void
+    - Update() : void
+    - TryRemoveEdgeAtMouse(mousePos : Vector3) : void
+    - RemoveEdgesAround(cell : CellNumberlink) : void
+    - Checkwin() : void
+    + ClickedRestart(button : Button) : void
+    + ClickedNextLevel(button : Button) : void
+    + ClickedBack(button : Button) : void
+    - GetDirectionIndex(offsetDirection : Vector2Int) : int
+    - GetOffset(offset : Vector2, offsetDirection : Vector2Int) : float
+    - GetDirection(offset : Vector2) : Vector2Int
+    + GetAdjacentCell(row : int, col : int, direction : int) : CellNumberlink
+    + IsValid(pos : Vector2Int) : bool
+    + Animate(target : GameObject, onComplete : System.Action, duration : float) : void
+    - AnimateAndSwitch(button : Button, switchAction : System.Action) : void
+}
+' GameplayNumberlink: </summary>
+class LevelButtonNumberLinks {
+    - _button : Button
+    - _levelText : TMP_Text
+    - _inactiveColor : Color
+    - _image : Image
+    - isLevelUnlocked : bool
+    - currentLevel : int
+    - Awake() : void
+    - Start() : void
+    - OnDisable() : void
+    - LevelOpened() : void
+    - Clicked() : void
+}
+class EdgeOneStroke {
+    + Filled : bool
+    - _line : LineRenderer
+    - _startColor : Gradient
+    - _activeColor : Gradient
+    + Init(start : Vector3, end : Vector3) : void
+    + Add() : void
+}
+class GameplayManagerOneStroke {
+    - _levelLocalized : LocalizedString
+    - _winText : GameObject
+    - _nextLevelButton : GameObject
+    - _restartButton : GameObject
+    - _backButton : GameObject
+    - _titleText : TMP_Text
+    - _isDailyChallengeMode : bool
+    - _level : LevelOneStroke
+    - _edgePrefab : EdgeOneStroke
+    - _pointPrefab : PointOneStroke
+    - _highlight : LineRenderer
+    - currentId : int
+    - hasGameFinished : bool
+    - playStartTween : Tween
+    - Awake() : void
+    - Start() : void
+    - SpawnLevel() : void
+    - CheckWin() : void
+    - Update() : void
+    - IsStartAdd() : bool
+    - IsEndAdd() : bool
+    + Animate(target : GameObject, onComplete : System.Action, duration : float) : void
+    - AnimateAndSwitch(button : Button, switchAction : System.Action) : void
+    + ClickedBack(button : Button) : void
+    + ClickedRestart(button : Button) : void
+    + ClickedNextLevel(button : Button) : void
+    - ClearLevel() : void
+}
+class LevelGenerator {
+    - _isDailyChallengeMode : bool
+    - _level : LevelOneStroke
+    - _edgePrefab : EdgeOneStroke
+    - _pointPrefab : PointOneStroke
+    - currentId : int
+    - hasGameFinished : bool
+    - Awake() : void
+    - SpawnLevel() : void
+    - CheckWin() : void
+    - Update() : void
+    - IsStartAdd() : bool
+    - IsEndAdd() : bool
+    - CreateLevel() : void
+}
+' LevelGenerator: </summary>
+class NewBehaviourScript {
+}
+class OneStrokeLevelButtonScript {
+    - _button : Button
+    - _levelText : TMP_Text
+    - _inactiveColor : Color
+    - _image : Image
+    - isLevelUnlocked : bool
+    - currentLevel : int
+    - Awake() : void
+    - Start() : void
+    - OnDisable() : void
+    - LevelOpened() : void
+    - Clicked() : void
+}
+' OneStrokeLevelButtonScript: </summary>
+class PointOneStroke {
+    + Id : int
+    + Position : Vector3
+    + Init(pos : Vector3, id : int) : void
+}
+class BlockPaint {
+    + Blocked : bool
+    + Filled : bool
+    - _blockSprite : SpriteRenderer
+    - _emptyColor : Color
+    - _blockedColor : Color
+    - _activeColor : Color
+    + Init(fill : int) : void
+    + Add() : void
+}
+' BlockPaint: </summary>
+class GameplayManagerPaint {
+    + CanClick : bool
+    - _levelLocalized : LocalizedString
+    - _level : PaintLevel
+    - _blockPrefab : BlockPaint
+    - _player : PlayerPaint
+    - _winText : GameObject
+    - _nextLevelButton : GameObject
+    - _restartButton : GameObject
+    - _backButton : GameObject
+    - _titleText : TMP_Text
+    - blocks : BlockPaint[,]
+    - hasGameFinished : bool
+    - playStartTween : Tween
+    - _isDailyChallengeMode : bool
+    - Awake() : void
+    - SpawnLevel() : void
+    - Update() : void
+    - GetDirection() : Vector2Int
+    - GetOffsetEndPos(direction : Vector2Int) : Vector2Int
+    - IsValid(pos : Vector2Int) : bool
+    + HighLightBlock(pos : Vector2Int) : void
+    + CheckWin() : void
+    + ClickedRestart(button : Button) : void
+    + ClickedNextLevel(button : Button) : void
+    + ClickedBack(button : Button) : void
+    - Animate(target : GameObject, onComplete : System.Action, duration : float) : void
+    - AnimateAndSwitch(button : Button, switchAction : System.Action) : void
+}
+' GameplayManagerPaint: </summary>
+class LevelButtonPaint {
+    - _button : Button
+    - _levelText : TMP_Text
+    - _inactiveColor : Color
+    - _image : Image
+    - isLevelUnlocked : bool
+    - currentLevel : int
+    - Awake() : void
+    - Start() : void
+    - OnDisable() : void
+    - LevelOpened() : void
+    - Clicked() : void
+}
+' LevelButtonPaint: </summary>
+class PaintLevelGenerator {
+    - _level : PaintLevel
+    - _blockPrefab : BlockPaint
+    - _player : PlayerPaint
+    - blocks : BlockPaint[,]
+    - Awake() : void
+    - CreateLevel() : void
+    - SpawnLevel() : void
+    - Update() : void
+    - HandleLeftClick() : void
+    - HandleRightClick() : void
+    - IsValid(pos : Vector2Int) : bool
+}
+' PaintLevelGenerator: </summary>
+class PlayerPaint {
+    + Pos : Vector2Int
+    - _speedCurve : AnimationCurve
+    - maxRow : int
+    - maxCol : int
+    + Init(start : Vector2Int, rowCount : int, colCount : int) : void
+    + Move(offset : Vector2Int, distance : int) : IEnumerator
+}
+' PlayerPaint: </summary>
+class GameplayManagerPipes {
+    - _titleText : TMP_Text
+    - _winText : TMP_Text
+    - _cellPrefab : Pipe
+    - _nextLevelButton : GameObject
+    - _restartButton : GameObject
+    - _backButton : GameObject
+    - playStartTween : Tween
+    - playNextTween : Tween
+    - titleTween : Tween
+    - buttonPulseTween : Tween
+    - hasGameFinished : bool
+    - pipes : Pipe[,]
+    - startPipes : List<Pipe>
+    - _isDailyChallengeMode : bool
+    - _currentLevelData : LevelDataPipe
+    - Awake() : void
+    - SpawnLevel() : void
+    - Update() : void
+    - ShowHint() : IEnumerator
+    - CheckFill() : void
+    - CheckWin() : void
+    + ClickedBack(button : UnityEngine.UI.Button) : void
+    + ClickedRestart(button : Button) : void
+    + ClickedNextLevel(button : UnityEngine.UI.Button) : void
+    + Animate(target : GameObject, onComplete : System.Action, duration : float) : void
+    - AnimateAndSwitch(button : Button, switchAction : System.Action) : void
+}
+' GameplayManagerPipes: </summary>
+class LevelButtonPipes {
+    - _button : Button
+    - _inactiveColor : Color
+    - _image : Image
+    - isLevelUnlocked : bool
+    - currentLevel : int
+    - Awake() : void
+    - OnEnable() : void
+    - OnDisable() : void
+    - LevelOpened() : void
+    - Clicked() : void
+}
+class Pipe {
+    + IsFilled : bool
+    + PipeType : int
+    - rotation : int
+    - emptySprite : SpriteRenderer
+    - filledSprite : SpriteRenderer
+    - connectBoxes : List<Transform>
+    ~ Init(pipe : int) : void
+    + UpdateInput() : void
+    + UpdateFilled() : void
+    + ConnectedPipes() : List<Pipe>
+}
+class Benchmark01_UGUI {
+    + canvas : Canvas
+    + TMProFont : TMP_FontAsset
+    + TextMeshFont : Font
+    - m_textMeshPro : TextMeshProUGUI
+    - m_textContainer : TextContainer
+    - m_textMesh : Text
+    - m_string : string
+    - m_frame : int
+    - m_material01 : Material
+    - m_material02 : Material
+}
+class Benchmark02 {
+    + IsTextObjectScaleStatic : bool
+    - floatingText_Script : TextMeshProFloatingText
+}
+class Benchmark03 {
+    + Benchmark : BenchmarkType
+    + SourceFont : Font
+}
+class Benchmark04 {
+    - m_Transform : Transform
+    - floatingText_Script : TextMeshProFloatingText
+    + material : Material
+}
+class CameraController {
+    - cameraTransform : Transform
+    - dummyTarget : Transform
+    + CameraTarget : Transform
+    - previousSmoothing : bool
+    - desiredPosition : Vector3
+    - mouseX : float
+    - mouseY : float
+    - moveVector : Vector3
+    - mouseWheel : float
+    - prev_ZoomDelta : float
+}
+class ChatController {
+    + ChatInputField : TMP_InputField
+    + ChatDisplayOutput : TMP_Text
+    + ChatScrollbar : Scrollbar
+}
+class DropdownSample {
+    + OnButtonClick() : void
+}
+class EnvMapAnimator {
+    - TranslationSpeeds : Vector3
+    + RotationSpeeds : Vector3
+    - m_textMeshPro : TMP_Text
+    - m_material : Material
+}
+class ObjectSpin {
+    - m_transform : Transform
+    - m_time : float
+    - m_prevPOS : Vector3
+    - m_initial_Rotation : Vector3
+    - m_initial_Position : Vector3
+    - m_lightColor : Color32
+    + Motion : MotionType
+}
+class ShaderPropAnimator {
+    - m_Renderer : Renderer
+    - m_Material : Material
+    + GlowCurve : AnimationCurve
+    + m_frame : float
+}
+class SimpleScript {
+    - m_textMeshPro : TextMeshPro
+    - m_FontAsset : TMP_FontAsset
+    - m_frame : float
+}
+class SkewTextExample {
+    - m_TextComponent : TMP_Text
+    - CopyAnimationCurve(curve : AnimationCurve) : AnimationCurve
+}
+class TeleType {
+    - m_textMeshPro : TMP_Text
+}
+class TextConsoleSimulator {
+    - m_TextComponent : TMP_Text
+    - hasTextChanged : bool
+}
+class TextMeshProFloatingText {
+    + TheFont : Font
+    - m_floatingText : GameObject
+    - m_textMeshPro : TextMeshPro
+    - m_textMesh : TextMesh
+    - m_transform : Transform
+    - m_floatingText_Transform : Transform
+    - m_cameraTransform : Transform
+    + SpawnType : int
+    + IsTextObjectScaleStatic : bool
+    + DisplayTextMeshProFloatingText() : IEnumerator
+    + DisplayTextMeshFloatingText() : IEnumerator
+}
+class TextMeshSpawner {
+    + TheFont : Font
+    - floatingText_Script : TextMeshProFloatingText
+}
+class TMPro_InstructionOverlay {
+    - m_TextMeshPro : TextMeshPro
+    - m_textContainer : TextContainer
+    - m_frameCounter_transform : Transform
+    - m_camera : Camera
+    - last_AnchorPosition : FpsCounterAnchorPositions
+}
+class TMP_DigitValidator {
+}
+class TMP_ExampleScript_01 {
+    + ObjectType : objectType
+    + isStatic : bool
+    - m_text : TMP_Text
+    - m_inputfield : TMP_InputField
+    - count : int
+}
+class TMP_FrameRateCounter {
+    - htmlColorTag : string
+    - m_TextMeshPro : TextMeshPro
+    - m_frameCounter_transform : Transform
+    - m_camera : Camera
+    - last_AnchorPosition : FpsCounterAnchorPositions
+}
+class TMP_PhoneNumberValidator {
+}
+class TMP_TextEventCheck {
+    + TextEventHandler : TMP_TextEventHandler
+    - m_TextComponent : TMP_Text
+}
+class TMP_TextEventHandler {
+    - m_TextComponent : TMP_Text
+    - m_Camera : Camera
+    - m_Canvas : Canvas
+    + OnPointerEnter(eventData : PointerEventData) : void
+    + OnPointerExit(eventData : PointerEventData) : void
+    - SendOnCharacterSelection(character : char, characterIndex : int) : void
+    - SendOnSpriteSelection(character : char, characterIndex : int) : void
+    - SendOnWordSelection(word : string, charIndex : int, length : int) : void
+    - SendOnLineSelection(line : string, charIndex : int, length : int) : void
+    - SendOnLinkSelection(linkID : string, linkText : string, linkIndex : int) : void
+}
+class CharacterSelectionEvent {
+    - m_TextComponent : TMP_Text
+    - m_Camera : Camera
+    - m_Canvas : Canvas
+    + OnPointerEnter(eventData : PointerEventData) : void
+    + OnPointerExit(eventData : PointerEventData) : void
+    - SendOnCharacterSelection(character : char, characterIndex : int) : void
+    - SendOnSpriteSelection(character : char, characterIndex : int) : void
+    - SendOnWordSelection(word : string, charIndex : int, length : int) : void
+    - SendOnLineSelection(line : string, charIndex : int, length : int) : void
+    - SendOnLinkSelection(linkID : string, linkText : string, linkIndex : int) : void
+}
+class SpriteSelectionEvent {
+    - m_TextComponent : TMP_Text
+    - m_Camera : Camera
+    - m_Canvas : Canvas
+    + OnPointerEnter(eventData : PointerEventData) : void
+    + OnPointerExit(eventData : PointerEventData) : void
+    - SendOnCharacterSelection(character : char, characterIndex : int) : void
+    - SendOnSpriteSelection(character : char, characterIndex : int) : void
+    - SendOnWordSelection(word : string, charIndex : int, length : int) : void
+    - SendOnLineSelection(line : string, charIndex : int, length : int) : void
+    - SendOnLinkSelection(linkID : string, linkText : string, linkIndex : int) : void
+}
+class WordSelectionEvent {
+    - m_TextComponent : TMP_Text
+    - m_Camera : Camera
+    - m_Canvas : Canvas
+    + OnPointerEnter(eventData : PointerEventData) : void
+    + OnPointerExit(eventData : PointerEventData) : void
+    - SendOnCharacterSelection(character : char, characterIndex : int) : void
+    - SendOnSpriteSelection(character : char, characterIndex : int) : void
+    - SendOnWordSelection(word : string, charIndex : int, length : int) : void
+    - SendOnLineSelection(line : string, charIndex : int, length : int) : void
+    - SendOnLinkSelection(linkID : string, linkText : string, linkIndex : int) : void
+}
+class LineSelectionEvent {
+    - m_TextComponent : TMP_Text
+    - m_Camera : Camera
+    - m_Canvas : Canvas
+    + OnPointerEnter(eventData : PointerEventData) : void
+    + OnPointerExit(eventData : PointerEventData) : void
+    - SendOnCharacterSelection(character : char, characterIndex : int) : void
+    - SendOnSpriteSelection(character : char, characterIndex : int) : void
+    - SendOnWordSelection(word : string, charIndex : int, length : int) : void
+    - SendOnLineSelection(line : string, charIndex : int, length : int) : void
+    - SendOnLinkSelection(linkID : string, linkText : string, linkIndex : int) : void
+}
+class LinkSelectionEvent {
+    - m_TextComponent : TMP_Text
+    - m_Camera : Camera
+    - m_Canvas : Canvas
+    + OnPointerEnter(eventData : PointerEventData) : void
+    + OnPointerExit(eventData : PointerEventData) : void
+    - SendOnCharacterSelection(character : char, characterIndex : int) : void
+    - SendOnSpriteSelection(character : char, characterIndex : int) : void
+    - SendOnWordSelection(word : string, charIndex : int, length : int) : void
+    - SendOnLineSelection(line : string, charIndex : int, length : int) : void
+    - SendOnLinkSelection(linkID : string, linkText : string, linkIndex : int) : void
+}
+class TMP_TextInfoDebugTool {
+    + ShowCharacters : bool
+    + ShowWords : bool
+    + ShowLinks : bool
+    + ShowLines : bool
+    + ShowMeshBounds : bool
+    + ShowTextBounds : bool
+    + ObjectStats : string
+    - m_TextComponent : TMP_Text
+    - m_Transform : Transform
+    - m_TextInfo : TMP_TextInfo
+    - m_ScaleMultiplier : float
+    - m_HandleSize : float
+}
+class TMP_TextSelector_A {
+    - m_TextMeshPro : TextMeshPro
+    - m_Camera : Camera
+    - m_isHoveringObject : bool
+    + OnPointerEnter(eventData : PointerEventData) : void
+    + OnPointerExit(eventData : PointerEventData) : void
+}
+class TMP_TextSelector_B {
+    + TextPopup_Prefab_01 : RectTransform
+    - m_TextPopup_RectTransform : RectTransform
+    - m_TextPopup_TMPComponent : TextMeshProUGUI
+    - m_TextMeshPro : TextMeshProUGUI
+    - m_Canvas : Canvas
+    - m_Camera : Camera
+    - isHoveringObject : bool
+    - m_matrix : Matrix4x4
+    - m_cachedMeshInfoVertexData : TMP_MeshInfo[]
+    + OnPointerEnter(eventData : PointerEventData) : void
+    + OnPointerExit(eventData : PointerEventData) : void
+    + OnPointerClick(eventData : PointerEventData) : void
+    + OnPointerUp(eventData : PointerEventData) : void
+}
+class TMP_UiFrameRateCounter {
+    - htmlColorTag : string
+    - m_TextMeshPro : TextMeshProUGUI
+    - m_frameCounter_transform : RectTransform
+    - last_AnchorPosition : FpsCounterAnchorPositions
+}
+class VertexColorCycler {
+    - m_TextComponent : TMP_Text
+}
+class VertexJitter {
+    - m_TextComponent : TMP_Text
+    - hasTextChanged : bool
+    + angleRange : float
+    + angle : float
+    + speed : float
+}
+class VertexShakeA {
+    - m_TextComponent : TMP_Text
+    - hasTextChanged : bool
+}
+class VertexShakeB {
+    - m_TextComponent : TMP_Text
+    - hasTextChanged : bool
+}
+class VertexZoom {
+    - m_TextComponent : TMP_Text
+    - hasTextChanged : bool
+}
+class WarpTextExample {
+    - m_TextComponent : TMP_Text
+    - CopyAnimationCurve(curve : AnimationCurve) : AnimationCurve
+}
+EditorWindow <|-- ClassDiagramGenerator
+ScriptableObject <|-- AllLevelsColorSort
+ScriptableObject <|-- LevelColorSort
+ScriptableObject <|-- LevelData
+ScriptableObject <|-- LevelList
+ScriptableObject <|-- AllLevelsNumberLink
+ScriptableObject <|-- NumberLinkLevel
+ScriptableObject <|-- AllLevelsOneStorke
+ScriptableObject <|-- LevelOneStroke
+ScriptableObject <|-- AllLevelsPaint
+ScriptableObject <|-- PaintLevel
+ScriptableObject <|-- AllLevelsPipes
+ScriptableObject <|-- LevelDataPipe
+EditorWindow <|-- PlantUMLConnectScanner
+CustomYieldInstruction <|-- WaitForCompletion
+CustomYieldInstruction <|-- WaitForRewind
+CustomYieldInstruction <|-- WaitForKill
+CustomYieldInstruction <|-- WaitForElapsedLoops
+CustomYieldInstruction <|-- WaitForPosition
+CustomYieldInstruction <|-- WaitForStart
+MonoBehaviour <|-- GameManager
+CertificateHandler <|-- BypassCertificate
+MonoBehaviour <|-- MainMenuManager
+CertificateHandler <|-- BypassCertificate
+MonoBehaviour <|-- SoundManager
+MonoBehaviour <|-- Cell
+MonoBehaviour <|-- GameplayManagerColorSort
+MonoBehaviour <|-- LevelButtonColorsort
+MonoBehaviour <|-- GameplayManager
+MonoBehaviour <|-- LevelButtonConnect
+MonoBehaviour <|-- Node
+MonoBehaviour <|-- DailyChallengeManager
+MonoBehaviour <|-- CellNumberlink
+MonoBehaviour <|-- GameplayNumberlink
+MonoBehaviour <|-- LevelButtonNumberLinks
+MonoBehaviour <|-- EdgeOneStroke
+MonoBehaviour <|-- GameplayManagerOneStroke
+MonoBehaviour <|-- LevelGenerator
+MonoBehaviour <|-- NewBehaviourScript
+MonoBehaviour <|-- OneStrokeLevelButtonScript
+MonoBehaviour <|-- PointOneStroke
+MonoBehaviour <|-- BlockPaint
+MonoBehaviour <|-- GameplayManagerPaint
+MonoBehaviour <|-- LevelButtonPaint
+MonoBehaviour <|-- PaintLevelGenerator
+MonoBehaviour <|-- PlayerPaint
+MonoBehaviour <|-- GameplayManagerPipes
+MonoBehaviour <|-- LevelButtonPipes
+MonoBehaviour <|-- Pipe
+MonoBehaviour <|-- Benchmark01_UGUI
+MonoBehaviour <|-- Benchmark02
+MonoBehaviour <|-- Benchmark03
+MonoBehaviour <|-- Benchmark04
+MonoBehaviour <|-- CameraController
+MonoBehaviour <|-- ChatController
+MonoBehaviour <|-- DropdownSample
+MonoBehaviour <|-- EnvMapAnimator
+MonoBehaviour <|-- ObjectSpin
+MonoBehaviour <|-- ShaderPropAnimator
+MonoBehaviour <|-- SimpleScript
+MonoBehaviour <|-- SkewTextExample
+MonoBehaviour <|-- TeleType
+MonoBehaviour <|-- TextConsoleSimulator
+MonoBehaviour <|-- TextMeshProFloatingText
+MonoBehaviour <|-- TextMeshSpawner
+MonoBehaviour <|-- TMPro_InstructionOverlay
+TMP_InputValidator <|-- TMP_DigitValidator
+MonoBehaviour <|-- TMP_ExampleScript_01
+MonoBehaviour <|-- TMP_FrameRateCounter
+TMP_InputValidator <|-- TMP_PhoneNumberValidator
+MonoBehaviour <|-- TMP_TextEventCheck
+MonoBehaviour <|-- TMP_TextEventHandler
+IPointerEnterHandler <|.. TMP_TextEventHandler
+IPointerExitHandler <|.. TMP_TextEventHandler
+UnityEvent <|-- CharacterSelectionEvent
+UnityEvent <|-- SpriteSelectionEvent
+UnityEvent <|-- WordSelectionEvent
+UnityEvent <|-- LineSelectionEvent
+UnityEvent <|-- LinkSelectionEvent
+MonoBehaviour <|-- TMP_TextInfoDebugTool
+MonoBehaviour <|-- TMP_TextSelector_A
+IPointerEnterHandler <|.. TMP_TextSelector_A
+IPointerExitHandler <|.. TMP_TextSelector_A
+MonoBehaviour <|-- TMP_TextSelector_B
+IPointerEnterHandler <|.. TMP_TextSelector_B
+IPointerExitHandler <|.. TMP_TextSelector_B
+IPointerClickHandler <|.. TMP_TextSelector_B
+IPointerUpHandler <|.. TMP_TextSelector_B
+MonoBehaviour <|-- TMP_UiFrameRateCounter
+MonoBehaviour <|-- VertexColorCycler
+MonoBehaviour <|-- VertexJitter
+MonoBehaviour <|-- VertexShakeA
+MonoBehaviour <|-- VertexShakeB
+MonoBehaviour <|-- VertexZoom
+MonoBehaviour <|-- WarpTextExample
+GameManager --> LevelData : field
+GameManager --> LevelColorSort : field
+GameManager --> LevelDataPipe : field
+GameManager --> NumberLinkLevel : field
+GameManager --> LevelOneStroke : field
+GameManager --> PaintLevel : field
+GameManager --> LevelList : field
+GameManager --> AllLevelsPipes : field
+GameManager --> AllLevelsColorSort : field
+GameManager --> AllLevelsNumberLink : field
+GameManager --> AllLevelsOneStorke : field
+GameManager --> AllLevelsPaint : field
+BypassCertificate --> LevelData : field
+BypassCertificate --> LevelColorSort : field
+BypassCertificate --> LevelDataPipe : field
+BypassCertificate --> NumberLinkLevel : field
+BypassCertificate --> LevelOneStroke : field
+BypassCertificate --> PaintLevel : field
+BypassCertificate --> LevelList : field
+BypassCertificate --> AllLevelsPipes : field
+BypassCertificate --> AllLevelsColorSort : field
+BypassCertificate --> AllLevelsNumberLink : field
+BypassCertificate --> AllLevelsOneStorke : field
+BypassCertificate --> AllLevelsPaint : field
+MainMenuManager --> LoginResponse : parameter
+BypassCertificate --> LoginResponse : parameter
+GameplayManagerColorSort --> LevelColorSort : field
+GameplayManagerColorSort --> Cell : field
+GameplayManager --> LevelData : field
+GameplayManager --> Node : field
+GameplayManager --> Node : parameter
+GameplayNumberlink --> CellNumberlink : field
+GameplayNumberlink --> CellNumberlink : parameter
+GameplayManagerOneStroke --> LevelOneStroke : field
+GameplayManagerOneStroke --> EdgeOneStroke : field
+GameplayManagerOneStroke --> PointOneStroke : field
+LevelGenerator --> LevelOneStroke : field
+LevelGenerator --> EdgeOneStroke : field
+LevelGenerator --> PointOneStroke : field
+GameplayManagerPaint --> PaintLevel : field
+GameplayManagerPaint --> BlockPaint : field
+GameplayManagerPaint --> PlayerPaint : field
+PaintLevelGenerator --> PaintLevel : field
+PaintLevelGenerator --> BlockPaint : field
+PaintLevelGenerator --> PlayerPaint : field
+GameplayManagerPipes --> Pipe : field
+GameplayManagerPipes --> LevelDataPipe : field
+Benchmark02 --> TextMeshProFloatingText : field
+Benchmark04 --> TextMeshProFloatingText : field
+TextMeshSpawner --> TextMeshProFloatingText : field
+TMP_TextEventCheck --> TMP_TextEventHandler : field
+@enduml

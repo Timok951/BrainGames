@@ -1,6 +1,0 @@
-@startuml
-class SignalReceiverHeader {
-    + SignalReceiverHeader(state:MultiColumnHeaderState)
-}
-MultiColumnHeader <|-- SignalReceiverHeader
-@enduml

@@ -1,7 +1,0 @@
-@startuml
-interface IMayRequireVertexID {
-}
-class MayRequireVertexIDExtensions <<static>> {
-    + {static} RequiresVertexID(slot:MaterialSlot) : bool
-}
-@enduml

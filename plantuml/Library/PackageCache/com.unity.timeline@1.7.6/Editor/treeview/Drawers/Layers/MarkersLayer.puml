@@ -1,8 +1,0 @@
-@startuml
-class MarkersLayer {
-    + MarkersLayer(layerOrder:Layer, parent:IRowGUI)
-}
-class "ItemsLayer`1"<T> {
-}
-"ItemsLayer`1" "<TimelineItemGUI>" <|-- MarkersLayer
-@enduml

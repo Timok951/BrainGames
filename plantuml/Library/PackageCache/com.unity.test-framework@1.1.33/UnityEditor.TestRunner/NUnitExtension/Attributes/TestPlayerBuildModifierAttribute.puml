@@ -1,6 +1,0 @@
-@startuml
-class TestPlayerBuildModifierAttribute {
-    + TestPlayerBuildModifierAttribute(type:Type)
-}
-Attribute <|-- TestPlayerBuildModifierAttribute
-@enduml

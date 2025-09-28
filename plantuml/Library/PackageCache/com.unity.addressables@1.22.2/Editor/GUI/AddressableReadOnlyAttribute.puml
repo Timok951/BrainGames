@@ -1,9 +1,0 @@
-@startuml
-class AddressableReadOnly {
-}
-class AddressableReadOnlyDrawer {
-    + <<override>> OnGUI(position:Rect, property:SerializedProperty, label:GUIContent) : void
-}
-PropertyAttribute <|-- AddressableReadOnly
-PropertyDrawer <|-- AddressableReadOnlyDrawer
-@enduml

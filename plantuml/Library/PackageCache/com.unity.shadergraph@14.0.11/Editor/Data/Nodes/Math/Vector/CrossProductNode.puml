@@ -1,6 +1,0 @@
-@startuml
-class CrossProductNode {
-    + CrossProductNode()
-}
-CodeFunctionNode <|-- CrossProductNode
-@enduml

@@ -1,7 +1,0 @@
-@startuml
-class EnvironmentValidator {
-    + EnvironmentValidator(projectInfo:IProjectInfo, fetcher:IEnvironmentFetcher, environmentService:IEnvironmentService, accessTokens:IAccessTokens)
-    + <<async>> ValidateEnvironmentAsync() : Task<ValidationResult>
-}
-IEnvironmentValidator <|-- EnvironmentValidator
-@enduml

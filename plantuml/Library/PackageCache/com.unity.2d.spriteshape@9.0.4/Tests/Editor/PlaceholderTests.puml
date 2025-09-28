@@ -1,5 +1,0 @@
-@startuml
-class SpriteShapePlaceholder {
-    + PlaceHolderTest() : void
-}
-@enduml

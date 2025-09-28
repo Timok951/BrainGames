@@ -1,7 +1,0 @@
-@startuml
-struct UndoScope {
-    + UndoScope(name:string, createUndo:bool)
-    + Dispose() : void
-}
-IDisposable <|-- UndoScope
-@enduml

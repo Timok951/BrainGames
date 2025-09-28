@@ -1,6 +1,0 @@
-@startuml
-class InitializeGamingServices {
-}
-MonoBehaviour <|-- InitializeGamingServices
-InitializeGamingServices --> "informationText" Text
-@enduml

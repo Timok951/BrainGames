@@ -1,4 +1,0 @@
-@startuml
-class AttributeHelper <<static>> {
-}
-@enduml

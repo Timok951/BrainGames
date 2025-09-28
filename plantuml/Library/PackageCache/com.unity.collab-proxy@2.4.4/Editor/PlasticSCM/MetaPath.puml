@@ -1,4 +1,0 @@
-@startuml
-class MetaPath <<static>> {
-}
-@enduml

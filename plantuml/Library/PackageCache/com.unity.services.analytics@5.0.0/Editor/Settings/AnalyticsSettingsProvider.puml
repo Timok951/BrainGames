@@ -1,7 +1,0 @@
-@startuml
-class AnalyticsSettingsProvider {
-    + {static} CreateSettingsProvider() : SettingsProvider
-    + <<override>> OnActivate(searchContext:string, rootElement:VisualElement) : void
-}
-EditorGameServiceSettingsProvider <|-- AnalyticsSettingsProvider
-@enduml

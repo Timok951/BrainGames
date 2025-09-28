@@ -1,4 +1,0 @@
-@startuml
-class XRSystemUniversal <<static>> {
-}
-@enduml

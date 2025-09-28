@@ -1,6 +1,0 @@
-@startuml
-class XUnitOptionProvider <<static>> {
-    + {static} Option(unit:IUnit) : IUnitOption
-    + {static} Option(unit:IUnit) : IUnitOption
-}
-@enduml

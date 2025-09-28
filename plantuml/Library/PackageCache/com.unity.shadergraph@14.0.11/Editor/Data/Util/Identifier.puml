@@ -1,9 +1,0 @@
-@startuml
-struct Identifier {
-    + Identifier(index:int, version:uint)
-    + IncrementVersion() : void
-    + version : uint <<get>>
-    + index : int <<get>>
-    + valid : bool <<get>>
-}
-@enduml

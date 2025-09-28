@@ -1,7 +1,0 @@
-@startuml
-enum Asn1EndOfIndefiniteLengthNodeType {
-    EndOfStream,
-    EndOfNodeFooter,
-    NotEnd,
-}
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class SelfControllerEditor {
-    + <<override>> OnInspectorGUI() : void
-}
-Editor <|-- SelfControllerEditor
-@enduml

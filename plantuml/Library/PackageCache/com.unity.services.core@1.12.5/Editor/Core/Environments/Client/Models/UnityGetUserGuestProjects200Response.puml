@@ -1,9 +1,0 @@
-@startuml
-class UnityGetUserGuestProjects200Response {
-    + UnityGetUserGuestProjects200Response(total:int, results:List<UnityUserGuestProjectV1>)
-    + Total : int <<get>>
-}
-class "List`1"<T> {
-}
-UnityGetUserGuestProjects200Response --> "Results<UnityUserGuestProjectV1>" "List`1"
-@enduml

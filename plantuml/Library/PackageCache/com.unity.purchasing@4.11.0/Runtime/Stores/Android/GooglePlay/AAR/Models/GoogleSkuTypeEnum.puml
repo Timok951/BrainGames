@@ -1,4 +1,0 @@
-@startuml
-class GoogleSkuTypeEnum <<static>> {
-}
-@enduml

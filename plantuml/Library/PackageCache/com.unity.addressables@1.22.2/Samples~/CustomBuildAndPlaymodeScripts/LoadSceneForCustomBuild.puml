@@ -1,6 +1,0 @@
-@startuml
-class LoadSceneForCustomBuild {
-    + SceneKey : string
-}
-MonoBehaviour <|-- LoadSceneForCustomBuild
-@enduml

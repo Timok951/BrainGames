@@ -1,7 +1,0 @@
-@startuml
-class FileUsage {
-    + Path : string
-}
-class UsageUtility <<static>> {
-}
-@enduml

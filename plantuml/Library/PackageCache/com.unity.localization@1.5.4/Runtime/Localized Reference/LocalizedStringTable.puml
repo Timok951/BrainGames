@@ -1,9 +1,0 @@
-@startuml
-class LocalizedStringTable {
-    + LocalizedStringTable()
-    + LocalizedStringTable(tableReference:TableReference)
-}
-class "LocalizedTable`2"<T1,T2> {
-}
-"LocalizedTable`2" "<StringTable,StringTableEntry>" <|-- LocalizedStringTable
-@enduml

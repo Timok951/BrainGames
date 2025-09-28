@@ -1,5 +1,0 @@
-@startuml
-class OperatePackageVersionConfigProvider {
-}
-IConfigurationProvider <|-- OperatePackageVersionConfigProvider
-@enduml

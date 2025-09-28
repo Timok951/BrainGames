@@ -1,6 +1,0 @@
-@startuml
-class TMP_TextEventCheck {
-}
-MonoBehaviour <|-- TMP_TextEventCheck
-TMP_TextEventCheck --> "TextEventHandler" TMP_TextEventHandler
-@enduml

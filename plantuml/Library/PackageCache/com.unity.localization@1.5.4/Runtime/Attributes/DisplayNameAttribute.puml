@@ -1,8 +1,0 @@
-@startuml
-class DisplayNameAttribute {
-    + Name : string <<get>> <<set>>
-    + IconPath : string <<get>> <<set>>
-    + DisplayNameAttribute(name:string, iconPath:string)
-}
-Attribute <|-- DisplayNameAttribute
-@enduml

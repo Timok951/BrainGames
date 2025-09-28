@@ -1,5 +1,0 @@
-@startuml
-class AddressablesAssetPostProcessor {
-}
-AssetPostprocessor <|-- AddressablesAssetPostProcessor
-@enduml

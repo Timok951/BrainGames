@@ -1,5 +1,0 @@
-@startuml
-class SwitchStoreEditorWindow {
-}
-EditorWindow <|-- SwitchStoreEditorWindow
-@enduml

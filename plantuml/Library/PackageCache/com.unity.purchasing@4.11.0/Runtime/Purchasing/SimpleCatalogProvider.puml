@@ -1,6 +1,0 @@
-@startuml
-class SimpleCatalogProvider {
-    + FetchProducts(callback:Action<HashSet<ProductDefinition>>) : void
-}
-ICatalogProvider <|-- SimpleCatalogProvider
-@enduml

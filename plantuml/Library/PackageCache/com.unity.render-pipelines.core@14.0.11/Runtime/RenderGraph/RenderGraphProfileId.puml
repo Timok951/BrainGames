@@ -1,8 +1,0 @@
-@startuml
-enum RenderGraphProfileId {
-    CompileRenderGraph,
-    ExecuteRenderGraph,
-    RenderGraphClear,
-    RenderGraphClearDebug,
-}
-@enduml

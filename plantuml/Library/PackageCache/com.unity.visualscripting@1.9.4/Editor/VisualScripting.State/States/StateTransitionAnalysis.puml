@@ -1,6 +1,0 @@
-@startuml
-class StateTransitionAnalysis <<sealed>> {
-    + isTraversed : bool <<get>> <<set>>
-}
-GraphElementAnalysis <|-- StateTransitionAnalysis
-@enduml

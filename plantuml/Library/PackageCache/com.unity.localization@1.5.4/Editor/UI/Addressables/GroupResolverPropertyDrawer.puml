@@ -1,6 +1,0 @@
-@startuml
-class GroupResolverPropertyDrawer {
-    + <<override>> CreatePropertyGUI(property:SerializedProperty) : VisualElement
-}
-PropertyDrawer <|-- GroupResolverPropertyDrawer
-@enduml

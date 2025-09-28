@@ -1,6 +1,0 @@
-@startuml
-class SerializationVersionAttribute {
-    + SerializationVersionAttribute(versionString:string, previousModels:Type[])
-}
-fsObjectAttribute <|-- SerializationVersionAttribute
-@enduml

@@ -1,4 +1,0 @@
-@startuml
-class ApplePriceTiers <<static>> {
-}
-@enduml

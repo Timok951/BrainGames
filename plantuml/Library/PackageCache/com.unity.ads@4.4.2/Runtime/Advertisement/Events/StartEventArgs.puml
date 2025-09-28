@@ -1,7 +1,0 @@
-@startuml
-class StartEventArgs {
-    + placementId : string <<get>>
-    + StartEventArgs(placementId:string)
-}
-EventArgs <|-- StartEventArgs
-@enduml

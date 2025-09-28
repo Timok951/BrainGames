@@ -1,8 +1,0 @@
-@startuml
-class SmartSettings {
-    + ConvertCharacterStringLiterals : bool <<get>> <<set>>
-}
-SmartSettings --> "FormatErrorAction" ErrorAction
-SmartSettings --> "ParseErrorAction" ErrorAction
-SmartSettings --> "CaseSensitivity" CaseSensitivityType
-@enduml

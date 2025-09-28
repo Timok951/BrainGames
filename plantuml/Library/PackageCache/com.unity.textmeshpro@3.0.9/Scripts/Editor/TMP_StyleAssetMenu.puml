@@ -1,5 +1,0 @@
-@startuml
-class TMP_StyleAssetMenu <<static>> {
-    + {static} CreateTextMeshProObjectPerform() : void
-}
-@enduml

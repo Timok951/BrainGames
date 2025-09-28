@@ -1,7 +1,0 @@
-@startuml
-class IncludeInSettingsAttribute <<sealed>> {
-    + IncludeInSettingsAttribute(include:bool)
-    + include : bool <<get>>
-}
-Attribute <|-- IncludeInSettingsAttribute
-@enduml

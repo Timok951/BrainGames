@@ -1,5 +1,0 @@
-@startuml
-interface IServerEnvironmentId {
-}
-IEnvironmentId <|-- IServerEnvironmentId
-@enduml

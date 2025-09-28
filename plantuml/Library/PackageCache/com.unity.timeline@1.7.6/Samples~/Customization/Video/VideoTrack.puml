@@ -1,6 +1,0 @@
-@startuml
-class VideoTrack {
-    + <<override>> CreateTrackMixer(graph:PlayableGraph, go:GameObject, inputCount:int) : Playable
-}
-TrackAsset <|-- VideoTrack
-@enduml

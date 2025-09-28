@@ -1,5 +1,0 @@
-@startuml
-class EditorGameServiceDashboardHelper <<static>> {
-    + {static} OpenDashboard(editorGameService:IEditorGameService) : void
-}
-@enduml

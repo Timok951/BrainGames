@@ -1,6 +1,0 @@
-@startuml
-class TestSeededInput {
-    + SeededInput_FillsOutCompleteData() : void
-    + SeededInput_DoesntAddDuplicates() : void
-}
-@enduml

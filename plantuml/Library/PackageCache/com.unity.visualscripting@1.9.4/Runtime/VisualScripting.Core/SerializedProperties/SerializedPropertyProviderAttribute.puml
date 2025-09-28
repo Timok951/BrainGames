@@ -1,8 +1,0 @@
-@startuml
-class SerializedPropertyProviderAttribute <<sealed>> {
-    + SerializedPropertyProviderAttribute(type:Type)
-}
-Attribute <|-- SerializedPropertyProviderAttribute
-IDecoratorAttribute <|-- SerializedPropertyProviderAttribute
-SerializedPropertyProviderAttribute --> "type" Type
-@enduml

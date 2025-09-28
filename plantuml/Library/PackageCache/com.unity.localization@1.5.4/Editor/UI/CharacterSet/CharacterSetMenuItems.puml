@@ -1,6 +1,0 @@
-@startuml
-class CharacterSetMenuItems <<static>> {
-    + {static} ExportCollection(command:MenuCommand) : void
-    + {static} ExportStringTable(command:MenuCommand) : void
-}
-@enduml

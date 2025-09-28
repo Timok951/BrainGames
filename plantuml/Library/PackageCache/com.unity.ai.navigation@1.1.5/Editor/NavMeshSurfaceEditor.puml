@@ -1,9 +1,0 @@
-@startuml
-class NavMeshSurfaceEditor {
-    + <<override>> OnInspectorGUI() : void
-    + {static} CreateNavMeshSurface(menuCommand:MenuCommand) : void
-}
-class Styles {
-}
-NavMeshSurfaceEditor +-- Styles
-@enduml

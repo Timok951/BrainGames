@@ -1,6 +1,0 @@
-@startuml
-class CeilingNode {
-    + CeilingNode()
-}
-CodeFunctionNode <|-- CeilingNode
-@enduml

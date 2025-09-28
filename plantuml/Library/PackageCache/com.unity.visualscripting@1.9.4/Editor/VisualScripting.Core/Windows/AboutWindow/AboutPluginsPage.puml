@@ -1,6 +1,0 @@
-@startuml
-class AboutPluginsPage {
-    + AboutPluginsPage(plugins:IEnumerable<Plugin>)
-}
-ListPage <|-- AboutPluginsPage
-@enduml

@@ -1,8 +1,0 @@
-@startuml
-class PointerExitCallbackCheck {
-    + OnPointerExit(eventData:PointerEventData) : void
-}
-MonoBehaviour <|-- PointerExitCallbackCheck
-IPointerExitHandler <|-- PointerExitCallbackCheck
-PointerExitCallbackCheck --> "pointerData" PointerEventData
-@enduml

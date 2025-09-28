@@ -1,5 +1,0 @@
-@startuml
-class StringExtensionMethods <<static>> {
-    + {static} ReplaceWhiteSpaces(str:string, replacement:string) : string
-}
-@enduml

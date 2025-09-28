@@ -1,9 +1,0 @@
-@startuml
-struct TextureResolution {
-    + width : int
-    + height : int
-    + TextureResolution(width:int, height:int)
-    + TextureResolution(side:int)
-    + <<override>> ToString() : string
-}
-@enduml

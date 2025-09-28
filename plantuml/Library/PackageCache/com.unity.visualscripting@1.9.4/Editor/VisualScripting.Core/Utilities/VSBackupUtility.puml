@@ -1,7 +1,0 @@
-@startuml
-class VSBackupUtility {
-    + {static} Backup() : void
-    + {static} Find() : List<string>
-    + {static} BackupAssetsFolder(backupLabel:string) : void
-}
-@enduml

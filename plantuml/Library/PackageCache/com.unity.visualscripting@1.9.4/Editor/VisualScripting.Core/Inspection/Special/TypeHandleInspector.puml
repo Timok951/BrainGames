@@ -1,8 +1,0 @@
-@startuml
-class TypeHandleInspector {
-    + TypeHandleInspector(metadata:Metadata)
-    + <<override>> Initialize() : void
-    + <<override>> GetAdaptiveWidth() : float
-}
-Inspector <|-- TypeHandleInspector
-@enduml

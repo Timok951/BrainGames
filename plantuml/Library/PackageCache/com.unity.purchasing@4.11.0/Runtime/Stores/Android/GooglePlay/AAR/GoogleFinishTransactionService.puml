@@ -1,6 +1,0 @@
-@startuml
-class GoogleFinishTransactionService {
-    + <<async>> FinishTransaction(product:ProductDefinition, purchaseToken:string, onTransactionFinished:Action<IGoogleBillingResult, IGooglePurchase>) : void
-}
-IGoogleFinishTransactionService <|-- GoogleFinishTransactionService
-@enduml

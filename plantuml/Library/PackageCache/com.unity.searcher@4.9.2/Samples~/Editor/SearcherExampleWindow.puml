@@ -1,7 +1,0 @@
-@startuml
-class SearcherExampleWindow {
-    + {static} ShowExampleWindow() : void
-    + OnEnable() : void
-}
-EditorWindow <|-- SearcherExampleWindow
-@enduml

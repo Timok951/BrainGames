@@ -1,4 +1,0 @@
-@startuml
-interface IExtensionProvider {
-}
-@enduml

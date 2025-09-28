@@ -1,8 +1,0 @@
-@startuml
-class TriggerCustomEventDescriptor {
-    + TriggerCustomEventDescriptor(trigger:TriggerCustomEvent)
-}
-class "UnitDescriptor`1"<T> {
-}
-"UnitDescriptor`1" "<TriggerCustomEvent>" <|-- TriggerCustomEventDescriptor
-@enduml

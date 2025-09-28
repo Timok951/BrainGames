@@ -1,6 +1,0 @@
-@startuml
-class EllipseNode {
-    + EllipseNode()
-}
-CodeFunctionNode <|-- EllipseNode
-@enduml

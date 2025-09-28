@@ -1,4 +1,0 @@
-@startuml
-class EditorGUIBridge <<static>> {
-}
-@enduml

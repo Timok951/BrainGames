@@ -1,8 +1,0 @@
-@startuml
-class ChatController {
-}
-MonoBehaviour <|-- ChatController
-ChatController --> "ChatInputField" TMP_InputField
-ChatController --> "ChatDisplayOutput" TMP_Text
-ChatController --> "ChatScrollbar" Scrollbar
-@enduml

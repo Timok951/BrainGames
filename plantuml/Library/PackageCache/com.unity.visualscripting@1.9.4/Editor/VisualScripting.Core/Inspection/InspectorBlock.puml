@@ -1,7 +1,0 @@
-@startuml
-struct InspectorBlock {
-    + InspectorBlock(metadata:Metadata, position:Rect)
-}
-InspectorBlock --> "metadata" Metadata
-InspectorBlock --> "position" Rect
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class ProductionTokenExchangeUrls {
-    + ServicesGatewayTokenExchangeUrl : string <<get>>
-}
-ITokenExchangeUrls <|-- ProductionTokenExchangeUrls
-@enduml

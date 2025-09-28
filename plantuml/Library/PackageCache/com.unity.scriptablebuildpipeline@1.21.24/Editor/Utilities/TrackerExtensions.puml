@@ -1,7 +1,0 @@
-@startuml
-class TrackerExtensions <<static>> {
-    + {static} HumanReadable(camelCased:string) : string
-    + {static} UpdateTaskUnchecked(tracker:IProgressTracker, taskTitle:string) : bool
-    + {static} UpdateInfoUnchecked(tracker:IProgressTracker, taskInfo:string) : bool
-}
-@enduml

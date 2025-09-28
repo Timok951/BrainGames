@@ -1,6 +1,0 @@
-@startuml
-struct EditorPrefBool {
-    + value : bool <<get>> <<set>>
-    + EditorPrefBool(key:string, defaultValue:bool)
-}
-@enduml

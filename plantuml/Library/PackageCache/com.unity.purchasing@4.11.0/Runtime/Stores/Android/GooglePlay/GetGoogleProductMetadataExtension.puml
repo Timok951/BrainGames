@@ -1,5 +1,0 @@
-@startuml
-class GetGoogleProductMetadataExtension <<static>> {
-    + {static} GetGoogleProductMetadata(productMetadata:ProductMetadata) : GoogleProductMetadata
-}
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class fsJsonParser {
-    + {static} Parse(input:string, data:fsData) : fsResult
-    + {static} Parse(input:string) : fsData
-}
-@enduml

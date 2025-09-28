@@ -1,7 +1,0 @@
-@startuml
-class BuildUtility {
-    + {static} IsEditorAssembly(assembly:System.Reflection.Assembly) : bool
-    + {static} GetNameWithHashNaming(schemaBundleNaming:BundledAssetGroupSchema.BundleNamingStyle, hash:string, sourceBundleName:string) : string
-    + {static} CheckModifiedScenesAndAskToSave() : bool
-}
-@enduml

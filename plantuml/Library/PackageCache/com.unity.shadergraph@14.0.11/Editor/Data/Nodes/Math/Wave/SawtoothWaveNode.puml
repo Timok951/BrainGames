@@ -1,6 +1,0 @@
-@startuml
-class SawtoothWaveNode {
-    + SawtoothWaveNode()
-}
-CodeFunctionNode <|-- SawtoothWaveNode
-@enduml

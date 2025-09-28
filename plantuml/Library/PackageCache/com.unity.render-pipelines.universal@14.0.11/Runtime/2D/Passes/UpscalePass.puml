@@ -1,9 +1,0 @@
-@startuml
-class UpscalePass {
-    + UpscalePass(evt:RenderPassEvent, blitMaterial:Material)
-    + Setup(colorTargetHandle:RTHandle, width:int, height:int, mode:FilterMode, renderingData:RenderingData, upscaleHandle:RTHandle) : void
-    + Dispose() : void
-    + <<override>> Execute(context:ScriptableRenderContext, renderingData:RenderingData) : void
-}
-ScriptableRenderPass <|-- UpscalePass
-@enduml

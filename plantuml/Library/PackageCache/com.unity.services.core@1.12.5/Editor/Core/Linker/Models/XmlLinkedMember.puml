@@ -1,6 +1,0 @@
-@startuml
-abstract class XmlLinkedMember {
-    + Signature : string <<get>> <<set>>
-    + Name : string <<get>> <<set>>
-}
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class GenerateSpriteShapes {
-    + destroyOnCompletion : bool = true
-}
-MonoBehaviour <|-- GenerateSpriteShapes
-@enduml

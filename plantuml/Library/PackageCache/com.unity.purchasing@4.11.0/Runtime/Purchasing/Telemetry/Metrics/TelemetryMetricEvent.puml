@@ -1,7 +1,0 @@
-@startuml
-class TelemetryMetricEvent {
-    + StartMetric() : void
-    + StopAndSendMetric() : void
-}
-ITelemetryMetricEvent <|-- TelemetryMetricEvent
-@enduml

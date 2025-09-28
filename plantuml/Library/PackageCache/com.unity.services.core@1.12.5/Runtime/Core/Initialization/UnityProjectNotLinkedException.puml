@@ -1,7 +1,0 @@
-@startuml
-class UnityProjectNotLinkedException {
-    + UnityProjectNotLinkedException()
-    + UnityProjectNotLinkedException(message:string)
-}
-ServicesInitializationException <|-- UnityProjectNotLinkedException
-@enduml

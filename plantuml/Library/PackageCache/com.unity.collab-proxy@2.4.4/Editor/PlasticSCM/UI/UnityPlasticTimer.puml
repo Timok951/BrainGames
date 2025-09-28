@@ -1,8 +1,0 @@
-@startuml
-class UnityPlasticTimerBuilder {
-}
-class UnityPlasticTimer {
-}
-IPlasticTimerBuilder <|-- UnityPlasticTimerBuilder
-IPlasticTimer <|-- UnityPlasticTimer
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class TitleAttribute {
-    + TitleAttribute(title:string[])
-}
-ContextFilterableAttribute <|-- TitleAttribute
-@enduml

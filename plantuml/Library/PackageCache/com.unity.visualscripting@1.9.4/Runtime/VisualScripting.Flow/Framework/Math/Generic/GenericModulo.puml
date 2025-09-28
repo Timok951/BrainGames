@@ -1,8 +1,0 @@
-@startuml
-class GenericModulo <<sealed>> {
-    + <<override>> Operation(a:object, b:object) : object
-}
-class "Modulo`1"<T> {
-}
-"Modulo`1" "<object>" <|-- GenericModulo
-@enduml

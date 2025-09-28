@@ -1,5 +1,0 @@
-@startuml
-class Color <<static>> {
-    + <<const>> Transparent : int = 0
-}
-@enduml

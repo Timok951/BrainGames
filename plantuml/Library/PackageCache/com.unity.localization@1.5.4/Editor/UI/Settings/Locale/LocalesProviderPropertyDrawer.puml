@@ -1,6 +1,0 @@
-@startuml
-class LocalesProviderPropertyDrawer {
-    + <<override>> CreatePropertyGUI(property:SerializedProperty) : VisualElement
-}
-PropertyDrawer <|-- LocalesProviderPropertyDrawer
-@enduml

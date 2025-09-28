@@ -1,6 +1,0 @@
-@startuml
-class MaskChunk {
-}
-BaseChunk <|-- MaskChunk
-MaskChunk --> "chunkType" ChunkTypes
-@enduml

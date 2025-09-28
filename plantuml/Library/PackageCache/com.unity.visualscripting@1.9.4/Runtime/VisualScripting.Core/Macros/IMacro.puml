@@ -1,7 +1,0 @@
-@startuml
-interface IMacro {
-}
-IGraphRoot <|-- IMacro
-ISerializationDependency <|-- IMacro
-IAotStubbable <|-- IMacro
-@enduml

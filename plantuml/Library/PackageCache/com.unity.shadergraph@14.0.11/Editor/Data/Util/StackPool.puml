@@ -1,6 +1,0 @@
-@startuml
-class "StackPool`1"<T> <<static>> {
-    + {static} Get() : Stack<T>
-    + {static} Release(toRelease:Stack<T>) : void
-}
-@enduml

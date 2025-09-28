@@ -1,5 +1,0 @@
-@startuml
-class UnityOnButtonClickMessageListener <<sealed>> {
-}
-MessageListener <|-- UnityOnButtonClickMessageListener
-@enduml

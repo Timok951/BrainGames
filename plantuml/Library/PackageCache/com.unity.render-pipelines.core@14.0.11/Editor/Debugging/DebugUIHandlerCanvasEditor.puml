@@ -1,6 +1,0 @@
-@startuml
-class DebugUIHandlerCanvasEditor <<sealed>> {
-    + <<override>> OnInspectorGUI() : void
-}
-Editor <|-- DebugUIHandlerCanvasEditor
-@enduml

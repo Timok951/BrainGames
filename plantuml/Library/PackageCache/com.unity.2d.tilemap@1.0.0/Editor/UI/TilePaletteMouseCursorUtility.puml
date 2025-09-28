@@ -1,7 +1,0 @@
-@startuml
-class TilePaletteMouseCursorUtility {
-}
-class MouseStyles <<static>> {
-}
-TilePaletteMouseCursorUtility +-- MouseStyles
-@enduml

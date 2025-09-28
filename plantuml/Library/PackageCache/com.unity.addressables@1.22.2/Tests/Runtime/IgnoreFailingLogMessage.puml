@@ -1,7 +1,0 @@
-@startuml
-class IgnoreFailingLogMessage {
-    + IgnoreFailingLogMessage()
-    + Dispose() : void
-}
-IDisposable <|-- IgnoreFailingLogMessage
-@enduml

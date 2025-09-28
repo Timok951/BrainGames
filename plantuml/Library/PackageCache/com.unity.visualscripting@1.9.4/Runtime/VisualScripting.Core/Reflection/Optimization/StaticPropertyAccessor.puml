@@ -1,9 +1,0 @@
-@startuml
-class "StaticPropertyAccessor`1"<TProperty> {
-    + StaticPropertyAccessor(propertyInfo:PropertyInfo)
-    + Compile() : void
-    + GetValue(target:object) : object
-    + SetValue(target:object, value:object) : void
-}
-IOptimizedAccessor <|-- "StaticPropertyAccessor`1"
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-interface IMicrosoftExtensions {
-}
-IStoreExtension <|-- IMicrosoftExtensions
-@enduml

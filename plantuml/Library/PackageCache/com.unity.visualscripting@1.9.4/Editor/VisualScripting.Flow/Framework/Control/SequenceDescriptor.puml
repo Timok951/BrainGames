@@ -1,8 +1,0 @@
-@startuml
-class SequenceDescriptor {
-    + SequenceDescriptor(unit:Sequence)
-}
-class "UnitDescriptor`1"<T> {
-}
-"UnitDescriptor`1" "<Sequence>" <|-- SequenceDescriptor
-@enduml

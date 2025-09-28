@@ -1,6 +1,0 @@
-@startuml
-class MiscellaneousTopics {
-    + Start() : IEnumerator
-}
-MonoBehaviour <|-- MiscellaneousTopics
-@enduml

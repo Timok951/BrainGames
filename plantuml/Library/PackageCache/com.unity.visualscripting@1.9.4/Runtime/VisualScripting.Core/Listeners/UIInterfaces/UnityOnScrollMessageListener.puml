@@ -1,7 +1,0 @@
-@startuml
-class UnityOnScrollMessageListener <<sealed>> {
-    + OnScroll(eventData:PointerEventData) : void
-}
-MessageListener <|-- UnityOnScrollMessageListener
-IScrollHandler <|-- UnityOnScrollMessageListener
-@enduml

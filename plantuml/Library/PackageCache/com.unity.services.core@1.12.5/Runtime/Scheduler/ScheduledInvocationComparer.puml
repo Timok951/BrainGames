@@ -1,8 +1,0 @@
-@startuml
-class ScheduledInvocationComparer {
-    + Compare(x:ScheduledInvocation, y:ScheduledInvocation) : int
-}
-class "IComparer`1"<T> {
-}
-"IComparer`1" "<ScheduledInvocation>" <|-- ScheduledInvocationComparer
-@enduml

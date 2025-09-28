@@ -1,7 +1,0 @@
-@startuml
-class CommandLineLocaleSelector {
-    + CommandLineArgument : string <<get>> <<set>>
-    + GetStartupLocale(availableLocales:ILocalesProvider) : Locale
-}
-IStartupLocaleSelector <|-- CommandLineLocaleSelector
-@enduml

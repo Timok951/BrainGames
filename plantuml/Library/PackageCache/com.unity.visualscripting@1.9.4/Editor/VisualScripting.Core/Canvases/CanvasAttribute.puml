@@ -1,8 +1,0 @@
-@startuml
-class CanvasAttribute <<sealed>> {
-    + CanvasAttribute(type:Type)
-}
-Attribute <|-- CanvasAttribute
-IDecoratorAttribute <|-- CanvasAttribute
-CanvasAttribute --> "type" Type
-@enduml

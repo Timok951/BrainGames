@@ -1,5 +1,0 @@
-@startuml
-class "TelemetryQueue`1"<TTelemetryEventParams> {
-    + TelemetryQueue(sendTelemetryEvent:Action<TTelemetryEventParams>)
-}
-@enduml

@@ -1,9 +1,0 @@
-@startuml
-abstract class FormatterBase {
-    + {abstract} TryEvaluateFormat(formattingInfo:IFormattingInfo) : bool
-    + <<virtual>> OnAfterDeserialize() : void
-    + OnBeforeSerialize() : void
-}
-IFormatter <|-- FormatterBase
-ISerializationCallbackReceiver <|-- FormatterBase
-@enduml

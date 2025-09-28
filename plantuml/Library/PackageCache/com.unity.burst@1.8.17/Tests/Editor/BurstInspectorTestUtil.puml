@@ -1,4 +1,0 @@
-@startuml
-class BurstInspectorTestUtil <<static>> {
-}
-@enduml

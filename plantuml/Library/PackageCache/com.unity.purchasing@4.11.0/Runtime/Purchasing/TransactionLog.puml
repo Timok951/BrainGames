@@ -1,8 +1,0 @@
-@startuml
-class TransactionLog {
-    + TransactionLog(logger:ILogger, persistentDataPath:string)
-    + Clear() : void
-    + HasRecordOf(transactionID:string) : bool
-    + Record(transactionID:string) : void
-}
-@enduml

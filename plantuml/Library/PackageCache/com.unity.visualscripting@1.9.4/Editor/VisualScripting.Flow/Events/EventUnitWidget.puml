@@ -1,8 +1,0 @@
-@startuml
-class EventUnitWidget <<sealed>> {
-    + EventUnitWidget(canvas:FlowCanvas, unit:IEventUnit)
-}
-class "UnitWidget`1"<T> {
-}
-"UnitWidget`1" "<IEventUnit>" <|-- EventUnitWidget
-@enduml

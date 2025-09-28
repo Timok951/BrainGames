@@ -1,7 +1,0 @@
-@startuml
-class ExponentialRetryPolicy {
-    + ExponentialRetryPolicy(baseRetryDelay:int, maxRetryDelay:int, exponentialFactor:int)
-    + Invoke(actionToTry:Action<Action>, onRetryAction:Action?) : void
-}
-IRetryPolicy <|-- ExponentialRetryPolicy
-@enduml

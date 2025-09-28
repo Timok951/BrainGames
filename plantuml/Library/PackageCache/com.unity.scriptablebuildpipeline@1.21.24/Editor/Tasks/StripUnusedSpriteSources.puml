@@ -1,7 +1,0 @@
-@startuml
-class StripUnusedSpriteSources {
-    + Version : int <<get>>
-    + Run() : ReturnCode
-}
-IBuildTask <|-- StripUnusedSpriteSources
-@enduml

@@ -1,8 +1,0 @@
-@startuml
-class QuerySkuDetailsService {
-    + QueryAsyncSku(product:ProductDefinition, onSkuDetailsResponse:Action<List<AndroidJavaObject>>) : void
-    + QueryAsyncSku(products:ReadOnlyCollection<ProductDefinition>, onSkuDetailsResponse:Action<List<ProductDescription>>) : void
-    + QueryAsyncSku(products:ReadOnlyCollection<ProductDefinition>, onSkuDetailsResponse:Action<List<AndroidJavaObject>>) : void
-}
-IQuerySkuDetailsService <|-- QuerySkuDetailsService
-@enduml

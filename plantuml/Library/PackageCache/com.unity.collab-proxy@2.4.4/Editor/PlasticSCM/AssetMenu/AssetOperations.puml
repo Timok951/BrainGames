@@ -1,9 +1,0 @@
-@startuml
-class AssetOperations {
-}
-interface IAssetSelection {
-}
-IAssetMenuOperations <|-- AssetOperations
-IAssetFilesFilterPatternsMenuOperations <|-- AssetOperations
-AssetOperations +-- IAssetSelection
-@enduml

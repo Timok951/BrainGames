@@ -1,6 +1,0 @@
-@startuml
-class EnvironmentAnalyticsSender {
-    + SendEvent(parameters:object) : AnalyticsResult
-}
-IAnalyticsSender <|-- EnvironmentAnalyticsSender
-@enduml

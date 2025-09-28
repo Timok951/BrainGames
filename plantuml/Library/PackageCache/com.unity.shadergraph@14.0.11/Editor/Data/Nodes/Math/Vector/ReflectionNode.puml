@@ -1,6 +1,0 @@
-@startuml
-class ReflectionNode {
-    + ReflectionNode()
-}
-CodeFunctionNode <|-- ReflectionNode
-@enduml

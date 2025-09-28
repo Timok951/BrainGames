@@ -1,5 +1,0 @@
-@startuml
-class ImagePackerDebugEditor {
-}
-EditorWindow <|-- ImagePackerDebugEditor
-@enduml

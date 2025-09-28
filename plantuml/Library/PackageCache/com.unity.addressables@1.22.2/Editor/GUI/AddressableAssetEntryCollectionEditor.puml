@@ -1,6 +1,0 @@
-@startuml
-class AddressableAssetEntryCollectionEditor {
-    + <<override>> OnInspectorGUI() : void
-}
-Editor <|-- AddressableAssetEntryCollectionEditor
-@enduml

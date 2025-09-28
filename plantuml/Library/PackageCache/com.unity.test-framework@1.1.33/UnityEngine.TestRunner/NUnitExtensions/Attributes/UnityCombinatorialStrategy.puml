@@ -1,7 +1,0 @@
-@startuml
-class UnityCombinatorialStrategy {
-    + <<new>> GetTestCases(sources:IEnumerable[]) : IEnumerable<ITestCaseData>
-}
-CombinatorialStrategy <|-- UnityCombinatorialStrategy
-ICombiningStrategy <|-- UnityCombinatorialStrategy
-@enduml

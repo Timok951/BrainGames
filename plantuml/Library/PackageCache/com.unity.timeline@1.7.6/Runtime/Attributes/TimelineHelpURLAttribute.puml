@@ -1,6 +1,0 @@
-@startuml
-class TimelineHelpURLAttribute {
-    + TimelineHelpURLAttribute(type:Type)
-}
-Attribute <|-- TimelineHelpURLAttribute
-@enduml

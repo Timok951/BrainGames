@@ -1,9 +1,0 @@
-@startuml
-class BuildScript <<static>> {
-}
-class AddressablesBuildScriptHooks <<static>> {
-}
-class "Action`1"<T> {
-}
-BuildScript --> "buildCompleted<AddressableAssetBuildResult>" "Action`1"
-@enduml

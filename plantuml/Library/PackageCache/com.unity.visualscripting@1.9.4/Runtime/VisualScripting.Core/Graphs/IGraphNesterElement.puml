@@ -1,6 +1,0 @@
-@startuml
-interface IGraphNesterElement {
-}
-IGraphParentElement <|-- IGraphNesterElement
-IGraphNester <|-- IGraphNesterElement
-@enduml

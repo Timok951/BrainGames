@@ -1,6 +1,0 @@
-@startuml
-class RuntimeTestRunnerFilter {
-    + synchronousOnly : bool = false
-    + BuildNUnitFilter() : ITestFilter
-}
-@enduml

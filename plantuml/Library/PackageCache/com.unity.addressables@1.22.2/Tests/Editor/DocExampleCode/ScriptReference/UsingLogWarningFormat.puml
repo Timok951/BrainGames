@@ -1,5 +1,0 @@
-@startuml
-class UsingLogWarningFormat {
-    + UsingLogWarningFormatSample() : void
-}
-@enduml

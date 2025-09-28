@@ -1,6 +1,0 @@
-@startuml
-class UniversalGlobalSettingsEditor <<sealed>> {
-    + <<override>> OnInspectorGUI() : void
-}
-Editor <|-- UniversalGlobalSettingsEditor
-@enduml

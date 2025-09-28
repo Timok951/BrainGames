@@ -1,5 +1,0 @@
-@startuml
-class MouseUpdate {
-}
-MonoBehaviour <|-- MouseUpdate
-@enduml

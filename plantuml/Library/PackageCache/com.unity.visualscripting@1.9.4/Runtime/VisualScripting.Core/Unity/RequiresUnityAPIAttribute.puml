@@ -1,6 +1,0 @@
-@startuml
-class RequiresUnityAPIAttribute <<sealed>> {
-    + RequiresUnityAPIAttribute()
-}
-Attribute <|-- RequiresUnityAPIAttribute
-@enduml

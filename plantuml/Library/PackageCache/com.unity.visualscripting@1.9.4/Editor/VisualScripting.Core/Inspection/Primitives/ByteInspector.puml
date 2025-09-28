@@ -1,8 +1,0 @@
-@startuml
-class ByteInspector {
-    + ByteInspector(metadata:Metadata)
-}
-class "DiscreteNumberInspector`1"<T> {
-}
-"DiscreteNumberInspector`1" "<byte>" <|-- ByteInspector
-@enduml

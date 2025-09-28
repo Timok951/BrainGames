@@ -1,4 +1,0 @@
-@startuml
-interface IAccessTokens {
-}
-@enduml

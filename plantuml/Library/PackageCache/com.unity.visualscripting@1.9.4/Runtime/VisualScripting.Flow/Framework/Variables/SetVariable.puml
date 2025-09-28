@@ -1,9 +1,0 @@
-@startuml
-class SetVariable <<sealed>> {
-}
-UnifiedVariableUnit <|-- SetVariable
-SetVariable --> "assign" ControlInput
-SetVariable --> "input" ValueInput
-SetVariable --> "assigned" ControlOutput
-SetVariable --> "output" ValueOutput
-@enduml

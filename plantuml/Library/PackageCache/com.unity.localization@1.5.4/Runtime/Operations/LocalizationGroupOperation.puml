@@ -1,7 +1,0 @@
-@startuml
-class LocalizationGroupOperation {
-}
-class "ObjectPool`1"<T> {
-}
-LocalizationGroupOperation o-> "Pool<LocalizationGroupOperation>" "ObjectPool`1"
-@enduml

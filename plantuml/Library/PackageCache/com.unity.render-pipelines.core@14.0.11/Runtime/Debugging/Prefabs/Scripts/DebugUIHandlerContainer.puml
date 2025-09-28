@@ -1,6 +1,0 @@
-@startuml
-class DebugUIHandlerContainer {
-}
-MonoBehaviour <|-- DebugUIHandlerContainer
-DebugUIHandlerContainer --> "contentHolder" RectTransform
-@enduml

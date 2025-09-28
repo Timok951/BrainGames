@@ -1,7 +1,0 @@
-@startuml
-struct TelemetryMetricDefinition {
-    + MetricName : string <<get>>
-    + TelemetryMetricDefinition(metricName:string, metricType:TelemetryMetricTypes)
-}
-TelemetryMetricDefinition --> "MetricType" TelemetryMetricTypes
-@enduml

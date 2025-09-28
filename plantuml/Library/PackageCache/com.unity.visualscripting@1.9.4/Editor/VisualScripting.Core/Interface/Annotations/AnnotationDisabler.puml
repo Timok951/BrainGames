@@ -1,5 +1,0 @@
-@startuml
-class AnnotationDisabler {
-    + {static} DisableGizmos() : void
-}
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-interface IPluginModule {
-}
-IPluginLinked <|-- IPluginModule
-@enduml

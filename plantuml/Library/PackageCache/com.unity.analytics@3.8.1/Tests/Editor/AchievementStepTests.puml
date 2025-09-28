@@ -1,7 +1,0 @@
-@startuml
-class AnalyticsEventTests <<partial>> {
-    + AchievementStep_StepIndexTest(stepIndex:int) : void
-    + AchievementStep_AchievementIdTest(achievementId:string) : void
-    + AchievementStep_CustomDataTest() : void
-}
-@enduml

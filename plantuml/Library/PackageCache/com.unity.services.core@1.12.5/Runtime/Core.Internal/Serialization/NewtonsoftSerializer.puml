@@ -1,8 +1,0 @@
-@startuml
-class NewtonsoftSerializer {
-    + NewtonsoftSerializer(settings:JsonSerializerSettings)
-    + SerializeObject(value:T) : string
-    + DeserializeObject(value:string) : T
-}
-IJsonSerializer <|-- NewtonsoftSerializer
-@enduml

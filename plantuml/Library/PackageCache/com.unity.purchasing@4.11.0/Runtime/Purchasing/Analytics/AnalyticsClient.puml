@@ -1,8 +1,0 @@
-@startuml
-class AnalyticsClient {
-    + AnalyticsClient(analytics:IAnalyticsAdapter, legacyAnalytics:IAnalyticsAdapter)
-    + OnPurchaseSucceeded(product:Product) : void
-    + OnPurchaseFailed(product:Product, description:PurchaseFailureDescription) : void
-}
-IAnalyticsClient <|-- AnalyticsClient
-@enduml

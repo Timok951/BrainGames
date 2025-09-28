@@ -1,6 +1,0 @@
-@startuml
-class DecalUpdateCulledSystem {
-    + DecalUpdateCulledSystem(entityManager:DecalEntityManager)
-    + Execute() : void
-}
-@enduml

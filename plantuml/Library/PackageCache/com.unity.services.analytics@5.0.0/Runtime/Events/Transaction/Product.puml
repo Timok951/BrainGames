@@ -1,9 +1,0 @@
-@startuml
-struct Product {
-    + RealCurrency : RealCurrency?
-}
-class "List`1"<T> {
-}
-Product --> "VirtualCurrencies<VirtualCurrency>" "List`1"
-Product --> "Items<Item>" "List`1"
-@enduml

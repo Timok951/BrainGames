@@ -1,6 +1,0 @@
-@startuml
-class EditorEnumeratorTestWorkItem {
-    + EditorEnumeratorTestWorkItem(test:TestMethod, filter:ITestFilter)
-}
-UnityWorkItem <|-- EditorEnumeratorTestWorkItem
-@enduml

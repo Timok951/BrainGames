@@ -1,7 +1,0 @@
-@startuml
-class AnalyticsUserIdServiceComponent {
-    + AnalyticsUserIdServiceComponent(analyticsService:IAnalyticsService)
-    + GetAnalyticsUserId() : string
-}
-IAnalyticsUserId <|-- AnalyticsUserIdServiceComponent
-@enduml

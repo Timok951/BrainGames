@@ -1,7 +1,0 @@
-@startuml
-class GizmoUtility <<static>> {
-    + {static} GetHandleColor(baseColor:Color) : Color
-    + {static} GetWireframeColor(baseColor:Color) : Color
-    + {static} GetWireframeColorBehindObjects(baseColor:Color) : Color
-}
-@enduml

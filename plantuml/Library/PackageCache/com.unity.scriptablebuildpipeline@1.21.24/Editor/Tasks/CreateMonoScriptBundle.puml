@@ -1,9 +1,0 @@
-@startuml
-class CreateMonoScriptBundle {
-    + Version : int <<get>>
-    + MonoScriptBundleName : string <<get>> <<set>>
-    + CreateMonoScriptBundle(bundleName:string)
-    + Run() : ReturnCode
-}
-IBuildTask <|-- CreateMonoScriptBundle
-@enduml

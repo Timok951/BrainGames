@@ -1,6 +1,0 @@
-@startuml
-class OrgDataTests {
-    + ParseOrgData_ReturnsValidOrgData() : void
-    + ParseOrgData_ThrowsException() : void
-}
-@enduml

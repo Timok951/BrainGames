@@ -1,8 +1,0 @@
-@startuml
-class RequestFailedException {
-    + ErrorCode : int <<get>>
-    + RequestFailedException(errorCode:int, message:string)
-    + RequestFailedException(errorCode:int, message:string, innerException:Exception)
-}
-Exception <|-- RequestFailedException
-@enduml

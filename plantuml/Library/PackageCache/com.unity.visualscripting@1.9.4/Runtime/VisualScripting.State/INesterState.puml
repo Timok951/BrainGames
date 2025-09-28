@@ -1,6 +1,0 @@
-@startuml
-interface INesterState {
-}
-IState <|-- INesterState
-IGraphNesterElement <|-- INesterState
-@enduml

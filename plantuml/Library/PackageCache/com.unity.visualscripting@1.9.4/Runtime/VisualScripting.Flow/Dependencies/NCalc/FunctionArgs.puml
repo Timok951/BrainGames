@@ -1,8 +1,0 @@
-@startuml
-class FunctionArgs {
-    + Result : object <<get>> <<set>>
-    + HasResult : bool <<get>> <<set>>
-    + EvaluateParameters(flow:Flow) : object[]
-}
-EventArgs <|-- FunctionArgs
-@enduml

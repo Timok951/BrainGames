@@ -1,5 +1,0 @@
-@startuml
-class U2DExtrasPlaceholder {
-    + PlaceHolderTest() : void
-}
-@enduml

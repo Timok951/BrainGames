@@ -1,6 +1,0 @@
-@startuml
-class EnvMapAnimator {
-}
-MonoBehaviour <|-- EnvMapAnimator
-EnvMapAnimator --> "RotationSpeeds" Vector3
-@enduml

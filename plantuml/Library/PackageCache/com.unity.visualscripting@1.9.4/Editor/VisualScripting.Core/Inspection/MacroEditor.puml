@@ -1,6 +1,0 @@
-@startuml
-class MacroEditor {
-    + MacroEditor(metadata:Metadata)
-}
-Inspector <|-- MacroEditor
-@enduml

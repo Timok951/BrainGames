@@ -1,8 +1,0 @@
-@startuml
-class TMP_UpdateRegistry {
-    + {static} RegisterCanvasElementForLayoutRebuild(element:ICanvasElement) : void
-    + {static} RegisterCanvasElementForGraphicRebuild(element:ICanvasElement) : void
-    + {static} UnRegisterCanvasElementForRebuild(element:ICanvasElement) : void
-}
-TMP_UpdateRegistry --> "instance" TMP_UpdateRegistry
-@enduml

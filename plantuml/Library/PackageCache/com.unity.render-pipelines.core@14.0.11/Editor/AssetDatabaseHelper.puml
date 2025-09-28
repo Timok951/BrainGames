@@ -1,5 +1,0 @@
-@startuml
-class AssetDatabaseHelper <<static>> {
-    + {static} FindAssets(extension:string) : IEnumerable<T>
-}
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-class MergeCategoryTreeViewItem {
-}
-TreeViewItem <|-- MergeCategoryTreeViewItem
-@enduml

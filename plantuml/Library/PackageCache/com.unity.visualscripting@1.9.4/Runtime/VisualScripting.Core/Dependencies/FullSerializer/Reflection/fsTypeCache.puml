@@ -1,4 +1,0 @@
-@startuml
-class fsTypeCache <<static>> {
-}
-@enduml

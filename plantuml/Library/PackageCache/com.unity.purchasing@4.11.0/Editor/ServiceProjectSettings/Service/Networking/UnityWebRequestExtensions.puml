@@ -1,7 +1,0 @@
-@startuml
-class UnityWebRequestExtensions <<static>> {
-    + {static} IsResultTransferSuccess(request:UnityWebRequest) : bool
-    + {static} IsResultProtocolError(request:UnityWebRequest) : bool
-    + {static} IsResponseCodeOk(request:UnityWebRequest) : bool
-}
-@enduml

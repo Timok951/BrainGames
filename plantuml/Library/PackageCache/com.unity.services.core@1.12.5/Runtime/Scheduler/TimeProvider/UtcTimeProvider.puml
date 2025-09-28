@@ -1,6 +1,0 @@
-@startuml
-class UtcTimeProvider {
-}
-ITimeProvider <|-- UtcTimeProvider
-UtcTimeProvider --> "Now" DateTime
-@enduml

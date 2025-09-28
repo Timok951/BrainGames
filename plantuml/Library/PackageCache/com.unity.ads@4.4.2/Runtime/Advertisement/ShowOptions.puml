@@ -1,5 +1,0 @@
-@startuml
-class ShowOptions {
-    + gamerSid : string <<get>> <<set>>
-}
-@enduml

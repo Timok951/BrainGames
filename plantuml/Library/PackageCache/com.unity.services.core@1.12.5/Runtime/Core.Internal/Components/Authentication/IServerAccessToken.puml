@@ -1,6 +1,0 @@
-@startuml
-interface IServerAccessToken {
-}
-IAccessToken <|-- IServerAccessToken
-IAccessTokenObserver <|-- IServerAccessToken
-@enduml

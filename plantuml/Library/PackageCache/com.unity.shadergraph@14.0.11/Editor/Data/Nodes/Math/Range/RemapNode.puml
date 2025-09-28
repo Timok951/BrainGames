@@ -1,6 +1,0 @@
-@startuml
-class RemapNode {
-    + RemapNode()
-}
-CodeFunctionNode <|-- RemapNode
-@enduml

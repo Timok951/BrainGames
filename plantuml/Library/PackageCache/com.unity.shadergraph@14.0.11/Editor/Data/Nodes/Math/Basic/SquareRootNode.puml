@@ -1,6 +1,0 @@
-@startuml
-class SquareRootNode {
-    + SquareRootNode()
-}
-CodeFunctionNode <|-- SquareRootNode
-@enduml

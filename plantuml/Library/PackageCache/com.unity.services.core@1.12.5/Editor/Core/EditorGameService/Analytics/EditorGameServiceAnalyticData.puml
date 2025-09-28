@@ -1,7 +1,0 @@
-@startuml
-struct EditorGameServiceAnalyticData {
-    + action : string
-    + component : string
-    + package : string
-}
-@enduml

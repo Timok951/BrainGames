@@ -1,7 +1,0 @@
-@startuml
-class StringBuilderPool <<static>> {
-    + {static} Get() : StringBuilder
-    + {static} Get(value:StringBuilder) : PooledObject<StringBuilder>
-    + {static} Release(toRelease:StringBuilder) : void
-}
-@enduml

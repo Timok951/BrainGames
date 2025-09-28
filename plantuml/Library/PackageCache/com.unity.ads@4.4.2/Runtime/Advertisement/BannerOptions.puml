@@ -1,7 +1,0 @@
-@startuml
-class BannerOptions {
-}
-BannerOptions --> "showCallback" BannerCallback
-BannerOptions --> "hideCallback" BannerCallback
-BannerOptions --> "clickCallback" BannerCallback
-@enduml

@@ -1,8 +1,0 @@
-@startuml
-class FinishEventArgs {
-    + placementId : string <<get>>
-    + FinishEventArgs(placementId:string, showResult:ShowResult)
-}
-EventArgs <|-- FinishEventArgs
-FinishEventArgs --> "showResult" ShowResult
-@enduml

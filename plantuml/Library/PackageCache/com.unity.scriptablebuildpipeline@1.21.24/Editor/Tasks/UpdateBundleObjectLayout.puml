@@ -1,7 +1,0 @@
-@startuml
-class UpdateBundleObjectLayout {
-    + Version : int <<get>>
-    + Run() : ReturnCode
-}
-IBuildTask <|-- UpdateBundleObjectLayout
-@enduml

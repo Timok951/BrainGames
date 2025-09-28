@@ -1,5 +1,0 @@
-@startuml
-class TestSubObject {
-}
-ScriptableObject <|-- TestSubObject
-@enduml

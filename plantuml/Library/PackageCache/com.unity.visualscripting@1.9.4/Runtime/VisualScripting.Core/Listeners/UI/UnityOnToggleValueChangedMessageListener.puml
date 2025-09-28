@@ -1,5 +1,0 @@
-@startuml
-class UnityOnToggleValueChangedMessageListener <<sealed>> {
-}
-MessageListener <|-- UnityOnToggleValueChangedMessageListener
-@enduml

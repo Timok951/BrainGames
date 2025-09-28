@@ -1,9 +1,0 @@
-@startuml
-class GradientShaderProperty {
-    + GradientShaderProperty()
-}
-class "AbstractShaderProperty`1"<T> {
-}
-"AbstractShaderProperty`1" "<Gradient>" <|-- GradientShaderProperty
-GradientShaderProperty --> "propertyType" PropertyType
-@enduml

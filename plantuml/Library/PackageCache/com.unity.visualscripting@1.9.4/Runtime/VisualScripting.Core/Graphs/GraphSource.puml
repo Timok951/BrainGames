@@ -1,6 +1,0 @@
-@startuml
-enum GraphSource {
-    Embed,
-    Macro,
-}
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-class UnityOnBecameInvisibleMessageListener <<sealed>> {
-}
-MessageListener <|-- UnityOnBecameInvisibleMessageListener
-@enduml

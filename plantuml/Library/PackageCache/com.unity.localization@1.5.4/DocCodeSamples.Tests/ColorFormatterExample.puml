@@ -1,6 +1,0 @@
-@startuml
-class ColorFormatter {
-    + <<override>> TryEvaluateFormat(formattingInfo:IFormattingInfo) : bool
-}
-FormatterBase <|-- ColorFormatter
-@enduml

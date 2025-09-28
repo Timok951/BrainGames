@@ -1,8 +1,0 @@
-@startuml
-class UnityGetEnvironments200Response {
-    + UnityGetEnvironments200Response(results:List<UnityEnvironmentV1>)
-}
-class "List`1"<T> {
-}
-UnityGetEnvironments200Response --> "Results<UnityEnvironmentV1>" "List`1"
-@enduml

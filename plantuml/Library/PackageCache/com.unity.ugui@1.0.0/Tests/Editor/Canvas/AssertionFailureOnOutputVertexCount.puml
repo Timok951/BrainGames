@@ -1,6 +1,0 @@
-@startuml
-class AssertionFailureOnOutputVertexCount {
-    + AssertionFailureOnOutputVertexCountTest() : void
-    + TearDown() : void
-}
-@enduml

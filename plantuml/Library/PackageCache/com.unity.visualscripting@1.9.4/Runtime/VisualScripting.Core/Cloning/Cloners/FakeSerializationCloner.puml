@@ -1,8 +1,0 @@
-@startuml
-class FakeSerializationCloner <<sealed>> {
-    + <<override>> BeforeClone(type:Type, original:object) : void
-    + <<override>> AfterClone(type:Type, clone:object) : void
-}
-ReflectedCloner <|-- FakeSerializationCloner
-FakeSerializationCloner o-> "config" fsConfig
-@enduml

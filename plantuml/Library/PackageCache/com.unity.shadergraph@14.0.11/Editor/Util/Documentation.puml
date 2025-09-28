@@ -1,5 +1,0 @@
-@startuml
-class Documentation {
-}
-DocumentationInfo <|-- Documentation
-@enduml

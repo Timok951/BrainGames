@@ -1,9 +1,0 @@
-@startuml
-class UnhandledLogMessageException {
-    + UnhandledLogMessageException(log:LogEvent)
-    + <<override>> StackTrace : string <<get>>
-}
-ResultStateException <|-- UnhandledLogMessageException
-UnhandledLogMessageException --> "LogEvent" LogEvent
-UnhandledLogMessageException --> "ResultState" ResultState
-@enduml

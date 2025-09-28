@@ -1,7 +1,0 @@
-@startuml
-class PluginModuleDependencyAttribute {
-    + PluginModuleDependencyAttribute(moduleType:Type)
-}
-Attribute <|-- PluginModuleDependencyAttribute
-PluginModuleDependencyAttribute --> "moduleType" Type
-@enduml

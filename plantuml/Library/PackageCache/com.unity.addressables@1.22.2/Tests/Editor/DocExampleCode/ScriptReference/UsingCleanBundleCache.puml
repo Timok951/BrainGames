@@ -1,7 +1,0 @@
-@startuml
-class UsingCleanBundleCache {
-    + {static} CleanBundleCache(catalogsIds:IEnumerable<string>) : AsyncOperationHandle<bool>
-    + UsingCleanBundleCacheForAllCatalogs() : void
-    + UsingCleanBundleCacheWithcatalogIds() : void
-}
-@enduml

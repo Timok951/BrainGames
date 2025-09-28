@@ -1,9 +1,0 @@
-@startuml
-abstract class SetVariableUnit {
-}
-VariableUnit <|-- SetVariableUnit
-SetVariableUnit --> "assign" ControlInput
-SetVariableUnit --> "input" ValueInput
-SetVariableUnit --> "assigned" ControlOutput
-SetVariableUnit --> "output" ValueOutput
-@enduml

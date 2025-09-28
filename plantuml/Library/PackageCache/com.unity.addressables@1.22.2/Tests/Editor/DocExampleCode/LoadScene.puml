@@ -1,6 +1,0 @@
-@startuml
-class LoadSceneByAddress {
-    + key : string
-}
-MonoBehaviour <|-- LoadSceneByAddress
-@enduml

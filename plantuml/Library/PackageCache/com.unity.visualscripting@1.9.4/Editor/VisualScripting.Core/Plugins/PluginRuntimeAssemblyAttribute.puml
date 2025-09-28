@@ -1,7 +1,0 @@
-@startuml
-class PluginRuntimeAssemblyAttribute {
-    + PluginRuntimeAssemblyAttribute(name:string)
-}
-Attribute <|-- PluginRuntimeAssemblyAttribute
-PluginRuntimeAssemblyAttribute --> "assemblyName" LooseAssemblyName
-@enduml

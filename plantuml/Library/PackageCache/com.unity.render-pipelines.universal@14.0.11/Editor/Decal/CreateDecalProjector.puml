@@ -1,5 +1,0 @@
-@startuml
-class CreateDecalProjector <<static>> {
-    + {static} CreateDecal(menuCommand:MenuCommand) : void
-}
-@enduml

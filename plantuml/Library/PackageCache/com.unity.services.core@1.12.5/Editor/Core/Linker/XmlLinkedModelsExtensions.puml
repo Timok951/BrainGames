@@ -1,6 +1,0 @@
-@startuml
-class XmlLinkedModelsExtensions <<static>> {
-    + {static} SetFullName(self:XmlLinkedAssembly, assembly:Assembly) : XmlLinkedAssembly
-    + {static} SetPreserve(self:XmlLinkedAssembly, preserve:XmlLinkedPreserve?) : XmlLinkedAssembly
-}
-@enduml

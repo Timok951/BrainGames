@@ -1,5 +1,0 @@
-@startuml
-class PurchaseEventArgs {
-}
-PurchaseEventArgs --> "purchasedProduct" Product
-@enduml

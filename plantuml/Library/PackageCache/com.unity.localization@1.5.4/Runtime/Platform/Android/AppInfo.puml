@@ -1,6 +1,0 @@
-@startuml
-class AppInfo {
-}
-IMetadata <|-- AppInfo
-AppInfo --> "DisplayName" LocalizedString
-@enduml

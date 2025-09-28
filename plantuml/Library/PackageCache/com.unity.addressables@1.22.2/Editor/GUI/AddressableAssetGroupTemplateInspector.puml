@@ -1,6 +1,0 @@
-@startuml
-class AddressableAssetGroupTemplateInspector {
-    + <<override>> OnInspectorGUI() : void
-}
-Editor <|-- AddressableAssetGroupTemplateInspector
-@enduml

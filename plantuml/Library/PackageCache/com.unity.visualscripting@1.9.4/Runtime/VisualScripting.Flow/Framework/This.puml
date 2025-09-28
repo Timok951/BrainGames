@@ -1,6 +1,0 @@
-@startuml
-class This <<sealed>> {
-}
-Unit <|-- This
-This --> "self" ValueOutput
-@enduml

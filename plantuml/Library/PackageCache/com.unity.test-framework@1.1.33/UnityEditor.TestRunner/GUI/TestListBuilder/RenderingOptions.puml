@@ -1,9 +1,0 @@
-@startuml
-class RenderingOptions {
-    + nameFilter : string
-    + showSucceeded : bool
-    + showFailed : bool
-    + showIgnored : bool
-    + showNotRunned : bool
-}
-@enduml

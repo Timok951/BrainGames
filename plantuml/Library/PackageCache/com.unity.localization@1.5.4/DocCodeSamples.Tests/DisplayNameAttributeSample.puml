@@ -1,5 +1,0 @@
-@startuml
-class MetadataWithDisplayName {
-}
-IMetadata <|-- MetadataWithDisplayName
-@enduml

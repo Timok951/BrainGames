@@ -1,5 +1,0 @@
-@startuml
-class JsonProductDescriptionsDeserializer {
-    + DeserializeProductDescriptions(json:string) : List<ProductDescription>
-}
-@enduml

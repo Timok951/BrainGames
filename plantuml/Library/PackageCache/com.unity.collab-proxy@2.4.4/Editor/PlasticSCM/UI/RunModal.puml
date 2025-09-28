@@ -1,4 +1,0 @@
-@startuml
-class RunModal <<static>> {
-}
-@enduml

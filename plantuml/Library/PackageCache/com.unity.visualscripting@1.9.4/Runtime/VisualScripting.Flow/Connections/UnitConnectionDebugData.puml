@@ -1,8 +1,0 @@
-@startuml
-class UnitConnectionDebugData {
-    + lastInvokeFrame : int <<get>> <<set>>
-    + lastInvokeTime : float <<get>> <<set>>
-}
-IUnitConnectionDebugData <|-- UnitConnectionDebugData
-UnitConnectionDebugData --> "runtimeException" Exception
-@enduml

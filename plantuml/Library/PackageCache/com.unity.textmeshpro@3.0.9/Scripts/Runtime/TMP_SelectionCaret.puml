@@ -1,6 +1,0 @@
-@startuml
-class TMP_SelectionCaret {
-    + <<override>> Cull(clipRect:Rect, validRect:bool) : void
-}
-MaskableGraphic <|-- TMP_SelectionCaret
-@enduml

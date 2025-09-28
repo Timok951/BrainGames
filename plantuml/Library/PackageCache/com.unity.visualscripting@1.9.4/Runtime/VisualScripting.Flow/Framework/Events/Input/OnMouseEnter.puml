@@ -1,9 +1,0 @@
-@startuml
-class OnMouseEnter <<sealed>> {
-}
-class "GameObjectEventUnit`1"<T> {
-}
-"GameObjectEventUnit`1" "<EmptyEventArgs>" <|-- OnMouseEnter
-IMouseEventUnit <|-- OnMouseEnter
-OnMouseEnter --> "MessageListenerType" Type
-@enduml

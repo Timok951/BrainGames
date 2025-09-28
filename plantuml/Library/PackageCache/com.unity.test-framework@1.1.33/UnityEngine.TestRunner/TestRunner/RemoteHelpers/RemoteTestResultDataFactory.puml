@@ -1,7 +1,0 @@
-@startuml
-class RemoteTestResultDataFactory {
-    + CreateFromTestResult(result:ITestResult) : RemoteTestResultDataWithTestData
-    + CreateFromTest(test:ITest) : RemoteTestResultDataWithTestData
-}
-IRemoteTestResultDataFactory <|-- RemoteTestResultDataFactory
-@enduml

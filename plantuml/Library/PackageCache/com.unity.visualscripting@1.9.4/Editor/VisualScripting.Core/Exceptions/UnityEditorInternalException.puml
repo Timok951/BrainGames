@@ -1,6 +1,0 @@
-@startuml
-class UnityEditorInternalException {
-    + UnityEditorInternalException(innerException:Exception)
-}
-Exception <|-- UnityEditorInternalException
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-class LudiqScriptableObjectEditor {
-}
-LudiqRootObjectEditor <|-- LudiqScriptableObjectEditor
-@enduml

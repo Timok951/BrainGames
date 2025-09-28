@@ -1,4 +1,0 @@
-@startuml
-class TrackAssetRecordingExtensions <<static>> {
-}
-@enduml

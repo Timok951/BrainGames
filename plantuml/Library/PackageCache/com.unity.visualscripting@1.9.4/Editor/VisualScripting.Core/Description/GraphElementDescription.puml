@@ -1,6 +1,0 @@
-@startuml
-abstract class GraphElementDescription {
-}
-Description <|-- GraphElementDescription
-IGraphElementDescription <|-- GraphElementDescription
-@enduml

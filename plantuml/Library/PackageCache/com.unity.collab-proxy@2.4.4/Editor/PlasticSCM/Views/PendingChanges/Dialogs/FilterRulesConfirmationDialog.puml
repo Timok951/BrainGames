@@ -1,5 +1,0 @@
-@startuml
-class FilterRulesConfirmationDialog {
-}
-PlasticDialog <|-- FilterRulesConfirmationDialog
-@enduml

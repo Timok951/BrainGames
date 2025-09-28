@@ -1,7 +1,0 @@
-@startuml
-class EditorCompilationInterfaceProxy {
-    + GetAllEditorScriptAssemblies() : ScriptAssembly[]
-    + GetAllPrecompiledAssemblies() : PrecompiledAssembly[]
-}
-IEditorCompilationInterfaceProxy <|-- EditorCompilationInterfaceProxy
-@enduml

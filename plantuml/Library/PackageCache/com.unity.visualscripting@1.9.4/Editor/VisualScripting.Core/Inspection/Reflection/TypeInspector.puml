@@ -1,8 +1,0 @@
-@startuml
-class TypeInspector <<sealed>> {
-    + TypeInspector(metadata:Metadata)
-    + <<override>> Initialize() : void
-    + <<override>> GetAdaptiveWidth() : float
-}
-Inspector <|-- TypeInspector
-@enduml

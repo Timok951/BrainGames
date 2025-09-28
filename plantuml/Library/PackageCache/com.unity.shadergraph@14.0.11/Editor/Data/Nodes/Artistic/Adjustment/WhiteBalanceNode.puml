@@ -1,6 +1,0 @@
-@startuml
-class WhiteBalanceNode {
-    + WhiteBalanceNode()
-}
-CodeFunctionNode <|-- WhiteBalanceNode
-@enduml

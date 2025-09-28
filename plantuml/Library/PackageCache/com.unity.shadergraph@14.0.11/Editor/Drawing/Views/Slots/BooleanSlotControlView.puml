@@ -1,6 +1,0 @@
-@startuml
-class BooleanSlotControlView {
-    + BooleanSlotControlView(slot:BooleanMaterialSlot)
-}
-VisualElement <|-- BooleanSlotControlView
-@enduml

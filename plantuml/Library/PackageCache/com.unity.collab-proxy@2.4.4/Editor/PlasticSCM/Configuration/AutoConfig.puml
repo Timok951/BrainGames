@@ -1,4 +1,0 @@
-@startuml
-class AutoConfig <<static>> {
-}
-@enduml

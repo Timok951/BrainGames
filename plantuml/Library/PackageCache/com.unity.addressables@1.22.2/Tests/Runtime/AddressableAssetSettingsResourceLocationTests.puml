@@ -1,5 +1,0 @@
-@startuml
-abstract class AddressableAssetSettingsResourceLocationTests {
-}
-AddressablesTestFixture <|-- AddressableAssetSettingsResourceLocationTests
-@enduml

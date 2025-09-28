@@ -1,7 +1,0 @@
-@startuml
-class IsNanNode {
-    + IsNanNode()
-    + <<override>> hasPreview : bool <<get>>
-}
-CodeFunctionNode <|-- IsNanNode
-@enduml

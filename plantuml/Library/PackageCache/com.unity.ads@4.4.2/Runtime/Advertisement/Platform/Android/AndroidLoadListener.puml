@@ -1,8 +1,0 @@
-@startuml
-class AndroidLoadListener {
-    + AndroidLoadListener(loadListener:IUnityAdsLoadListener)
-    + onUnityAdsAdLoaded(placementId:string) : void
-    + onUnityAdsFailedToLoad(placementId:string, error:AndroidJavaObject, message:string) : void
-}
-AndroidJavaProxy <|-- AndroidLoadListener
-@enduml

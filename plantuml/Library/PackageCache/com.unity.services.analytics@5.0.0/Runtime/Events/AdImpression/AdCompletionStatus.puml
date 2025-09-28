@@ -1,7 +1,0 @@
-@startuml
-enum AdCompletionStatus {
-    Completed= 0,
-    Partial= 1,
-    Incomplete= 2,
-}
-@enduml

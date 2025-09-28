@@ -1,6 +1,0 @@
-@startuml
-class OnSelect <<sealed>> {
-}
-GenericGuiEventUnit <|-- OnSelect
-OnSelect --> "MessageListenerType" Type
-@enduml

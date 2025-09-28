@@ -1,6 +1,0 @@
-@startuml
-class HyperbolicSineNode {
-    + HyperbolicSineNode()
-}
-CodeFunctionNode <|-- HyperbolicSineNode
-@enduml

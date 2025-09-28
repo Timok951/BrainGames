@@ -1,8 +1,0 @@
-@startuml
-class OnBecameInvisible <<sealed>> {
-}
-class "GameObjectEventUnit`1"<T> {
-}
-"GameObjectEventUnit`1" "<EmptyEventArgs>" <|-- OnBecameInvisible
-OnBecameInvisible --> "MessageListenerType" Type
-@enduml

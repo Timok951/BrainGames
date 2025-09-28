@@ -1,6 +1,0 @@
-@startuml
-class GreaterThanOrEqualHandler {
-    + GreaterThanOrEqualHandler()
-}
-BinaryOperatorHandler <|-- GreaterThanOrEqualHandler
-@enduml

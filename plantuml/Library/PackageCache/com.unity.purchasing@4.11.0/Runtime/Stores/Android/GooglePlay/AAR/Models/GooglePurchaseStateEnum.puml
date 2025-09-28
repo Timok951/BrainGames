@@ -1,4 +1,0 @@
-@startuml
-class GooglePurchaseStateEnum <<static>> {
-}
-@enduml

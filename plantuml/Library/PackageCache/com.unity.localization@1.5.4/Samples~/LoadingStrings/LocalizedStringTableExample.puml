@@ -1,6 +1,0 @@
-@startuml
-class LocalizedStringTableExample {
-}
-MonoBehaviour <|-- LocalizedStringTableExample
-LocalizedStringTableExample o-> "stringTable" LocalizedStringTable
-@enduml

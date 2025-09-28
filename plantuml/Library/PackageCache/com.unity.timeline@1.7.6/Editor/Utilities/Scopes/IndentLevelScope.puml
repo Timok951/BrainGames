@@ -1,7 +1,0 @@
-@startuml
-struct IndentLevelScope {
-    + IndentLevelScope(newValue:int)
-    + Dispose() : void
-}
-IDisposable <|-- IndentLevelScope
-@enduml

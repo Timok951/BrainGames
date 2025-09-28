@@ -1,7 +1,0 @@
-@startuml
-class UnifiedReceipt {
-    + Payload : string
-    + Store : string
-    + TransactionID : string
-}
-@enduml

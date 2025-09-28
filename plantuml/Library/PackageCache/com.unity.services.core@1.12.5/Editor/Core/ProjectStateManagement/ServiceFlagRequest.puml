@@ -1,7 +1,0 @@
-@startuml
-class ServiceFlagRequest {
-    + ServiceFlagRequest(serializer:IJsonSerializer)
-    + FetchServiceFlags() : IAsyncOperation<IDictionary<string, bool>>
-}
-IServiceFlagRequest <|-- ServiceFlagRequest
-@enduml

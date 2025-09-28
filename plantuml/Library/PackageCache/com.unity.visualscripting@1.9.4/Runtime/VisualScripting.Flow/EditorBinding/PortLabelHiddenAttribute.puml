@@ -1,5 +1,0 @@
-@startuml
-class PortLabelHiddenAttribute {
-}
-Attribute <|-- PortLabelHiddenAttribute
-@enduml

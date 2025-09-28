@@ -1,7 +1,0 @@
-@startuml
-interface IMachine {
-}
-IGraphRoot <|-- IMachine
-IGraphNester <|-- IMachine
-IAotStubbable <|-- IMachine
-@enduml

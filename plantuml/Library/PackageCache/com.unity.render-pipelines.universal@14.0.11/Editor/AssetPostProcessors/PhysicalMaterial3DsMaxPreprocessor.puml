@@ -1,8 +1,0 @@
-@startuml
-class PhysicalMaterial3DsMaxPreprocessor {
-    + <<override>> GetVersion() : uint
-    + <<override>> GetPostprocessOrder() : int
-    + OnPreprocessMaterialDescription(description:MaterialDescription, material:Material, clips:AnimationClip[]) : void
-}
-AssetPostprocessor <|-- PhysicalMaterial3DsMaxPreprocessor
-@enduml

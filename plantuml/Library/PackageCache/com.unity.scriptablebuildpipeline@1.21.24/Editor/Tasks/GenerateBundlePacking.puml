@@ -1,7 +1,0 @@
-@startuml
-class GenerateBundlePacking {
-    + Version : int <<get>>
-    + Run() : ReturnCode
-}
-IBuildTask <|-- GenerateBundlePacking
-@enduml

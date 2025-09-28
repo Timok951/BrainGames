@@ -1,7 +1,0 @@
-@startuml
-class HistoryListView {
-    + <<override>> GetRows() : IList<TreeViewItem>
-    + <<override>> OnGUI(rect:Rect) : void
-}
-TreeView <|-- HistoryListView
-@enduml

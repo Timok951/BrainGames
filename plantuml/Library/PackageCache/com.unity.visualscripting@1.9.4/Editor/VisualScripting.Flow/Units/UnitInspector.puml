@@ -1,6 +1,0 @@
-@startuml
-class UnitInspector {
-    + UnitInspector(metadata:Metadata)
-}
-ReflectedInspector <|-- UnitInspector
-@enduml

@@ -1,8 +1,0 @@
-@startuml
-class ShaderSubGraphMetadata {
-}
-class "List`1"<T> {
-}
-ScriptableObject <|-- ShaderSubGraphMetadata
-ShaderSubGraphMetadata --> "assetDependencies<Object>" "List`1"
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-class SearcherTreeUtility <<static>> {
-    + {static} CreateFromFlatList(items:List<SearcherItem>) : List<SearcherItem>
-}
-@enduml

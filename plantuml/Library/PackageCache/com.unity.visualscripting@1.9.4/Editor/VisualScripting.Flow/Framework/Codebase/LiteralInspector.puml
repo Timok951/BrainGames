@@ -1,7 +1,0 @@
-@startuml
-class LiteralInspector <<sealed>> {
-    + LiteralInspector(metadata:Metadata)
-    + <<override>> GetAdaptiveWidth() : float
-}
-Inspector <|-- LiteralInspector
-@enduml

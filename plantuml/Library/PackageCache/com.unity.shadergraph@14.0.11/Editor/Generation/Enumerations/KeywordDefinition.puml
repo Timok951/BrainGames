@@ -1,7 +1,0 @@
-@startuml
-enum KeywordDefinition {
-    ShaderFeature,
-    MultiCompile,
-    Predefined,
-}
-@enduml

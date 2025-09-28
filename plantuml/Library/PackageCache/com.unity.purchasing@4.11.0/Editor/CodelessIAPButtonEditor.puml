@@ -1,7 +1,0 @@
-@startuml
-class CodelessIAPButtonEditor {
-    + OnEnable() : void
-    + <<override>> OnInspectorGUI() : void
-}
-AbstractIAPButtonEditor <|-- CodelessIAPButtonEditor
-@enduml

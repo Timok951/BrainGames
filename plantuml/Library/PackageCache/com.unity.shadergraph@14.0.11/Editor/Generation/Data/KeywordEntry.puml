@@ -1,8 +1,0 @@
-@startuml
-struct KeywordEntry {
-    + id : int
-    + displayName : string
-    + referenceName : string
-    + KeywordEntry(displayName:string, referenceName:string)
-}
-@enduml

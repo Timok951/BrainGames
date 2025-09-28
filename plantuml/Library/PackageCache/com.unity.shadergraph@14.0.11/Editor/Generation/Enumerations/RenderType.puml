@@ -1,9 +1,0 @@
-@startuml
-enum RenderType {
-    Opaque,
-    Transparent,
-    TransparentCutout,
-    Background,
-    Overlay,
-}
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-class CreateDecalShaderGraph <<static>> {
-    + {static} CreateLitGraph() : void
-}
-@enduml

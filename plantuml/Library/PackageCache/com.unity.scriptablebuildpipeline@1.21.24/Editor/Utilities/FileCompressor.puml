@@ -1,6 +1,0 @@
-@startuml
-class FileCompressor {
-    + {static} Compress(directoryPath:string, archiveFilePath:string) : bool
-    + {static} Decompress(archiveFilePath:string, directoryPath:string) : bool
-}
-@enduml

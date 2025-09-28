@@ -1,6 +1,0 @@
-@startuml
-enum CodelessButtonType {
-    Purchase,
-    Restore,
-}
-@enduml

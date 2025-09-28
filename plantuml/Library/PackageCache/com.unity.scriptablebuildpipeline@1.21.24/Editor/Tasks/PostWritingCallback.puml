@@ -1,7 +1,0 @@
-@startuml
-class PostWritingCallback {
-    + Version : int <<get>>
-    + Run() : ReturnCode
-}
-IBuildTask <|-- PostWritingCallback
-@enduml

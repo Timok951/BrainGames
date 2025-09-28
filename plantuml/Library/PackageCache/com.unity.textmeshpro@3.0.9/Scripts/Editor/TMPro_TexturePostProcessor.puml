@@ -1,5 +1,0 @@
-@startuml
-class TMPro_TexturePostProcessor {
-}
-AssetPostprocessor <|-- TMPro_TexturePostProcessor
-@enduml

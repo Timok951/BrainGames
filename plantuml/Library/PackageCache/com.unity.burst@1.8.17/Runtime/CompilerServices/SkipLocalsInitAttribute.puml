@@ -1,5 +1,0 @@
-@startuml
-class SkipLocalsInitAttribute {
-}
-Attribute <|-- SkipLocalsInitAttribute
-@enduml

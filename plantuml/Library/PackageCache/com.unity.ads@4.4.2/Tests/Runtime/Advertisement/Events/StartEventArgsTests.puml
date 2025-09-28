@@ -1,5 +1,0 @@
-@startuml
-class StartEventArgsTests {
-    + Constructor(placementId:string) : void
-}
-@enduml

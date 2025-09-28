@@ -1,7 +1,0 @@
-@startuml
-class UserWarningGooglePlayStore {
-    + UpdateWarningText() : void
-}
-MonoBehaviour <|-- UserWarningGooglePlayStore
-UserWarningGooglePlayStore --> "warningText" Text
-@enduml

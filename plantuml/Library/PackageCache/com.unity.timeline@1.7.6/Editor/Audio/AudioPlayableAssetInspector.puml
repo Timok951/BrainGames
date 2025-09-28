@@ -1,6 +1,0 @@
-@startuml
-class AudioPlayableAssetInspector {
-    + <<override>> OnPlayableAssetChangedInInspector() : void
-}
-BasicAssetInspector <|-- AudioPlayableAssetInspector
-@enduml

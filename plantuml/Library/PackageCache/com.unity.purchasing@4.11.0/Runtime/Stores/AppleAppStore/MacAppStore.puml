@@ -1,5 +1,0 @@
-@startuml
-class MacAppStore {
-    + <<const>> Name : string = "MacAppStore"
-}
-@enduml

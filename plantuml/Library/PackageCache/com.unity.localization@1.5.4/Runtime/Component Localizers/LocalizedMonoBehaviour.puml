@@ -1,5 +1,0 @@
-@startuml
-class LocalizedMonoBehaviour {
-}
-MonoBehaviour <|-- LocalizedMonoBehaviour
-@enduml

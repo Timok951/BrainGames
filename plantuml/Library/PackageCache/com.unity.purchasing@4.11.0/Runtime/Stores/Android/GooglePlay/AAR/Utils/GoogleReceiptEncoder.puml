@@ -1,4 +1,0 @@
-@startuml
-class GoogleReceiptEncoder <<static>> {
-}
-@enduml

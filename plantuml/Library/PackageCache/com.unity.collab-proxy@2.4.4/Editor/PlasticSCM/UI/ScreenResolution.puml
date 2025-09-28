@@ -1,4 +1,0 @@
-@startuml
-class ScreenResolution <<static>> {
-}
-@enduml

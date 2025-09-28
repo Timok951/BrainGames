@@ -1,6 +1,0 @@
-@startuml
-interface IRetryPolicyProvider {
-}
-interface "IRetryPolicy`1"<T> {
-}
-@enduml

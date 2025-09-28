@@ -1,7 +1,0 @@
-@startuml
-class ReflectionSource {
-    + ReflectionSource(formatter:SmartFormatter)
-    + TryEvaluateSelector(selectorInfo:ISelectorInfo) : bool
-}
-ISource <|-- ReflectionSource
-@enduml

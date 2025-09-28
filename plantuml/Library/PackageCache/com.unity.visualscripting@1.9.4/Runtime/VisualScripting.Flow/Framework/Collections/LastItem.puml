@@ -1,8 +1,0 @@
-@startuml
-class LastItem <<sealed>> {
-    + First(flow:Flow) : object
-}
-Unit <|-- LastItem
-LastItem --> "collection" ValueInput
-LastItem --> "lastItem" ValueOutput
-@enduml

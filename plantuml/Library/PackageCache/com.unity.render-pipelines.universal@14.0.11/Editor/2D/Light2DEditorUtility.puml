@@ -1,6 +1,0 @@
-@startuml
-class Light2DEditorUtility <<static>> {
-    + {static} GetRenderer2DData() : Renderer2DData
-    + {static} IsUsing2DRenderer() : bool
-}
-@enduml

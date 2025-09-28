@@ -1,5 +1,0 @@
-@startuml
-class SwitchModeTool {
-}
-BaseTool <|-- SwitchModeTool
-@enduml

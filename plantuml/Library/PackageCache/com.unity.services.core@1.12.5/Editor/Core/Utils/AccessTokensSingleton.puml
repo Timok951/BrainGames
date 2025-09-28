@@ -1,8 +1,0 @@
-@startuml
-class AccessTokensSingleton {
-    + GetGenesisToken() : string
-    + <<async>> GetServicesGatewayTokenAsync() : Task<string>
-}
-IAccessTokens <|-- AccessTokensSingleton
-AccessTokensSingleton --> "Instance" IAccessTokens
-@enduml

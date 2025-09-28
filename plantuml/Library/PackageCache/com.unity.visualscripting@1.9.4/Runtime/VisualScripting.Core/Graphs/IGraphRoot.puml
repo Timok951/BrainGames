@@ -1,5 +1,0 @@
-@startuml
-interface IGraphRoot {
-}
-IGraphParent <|-- IGraphRoot
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-interface IBranchUnit {
-}
-IUnit <|-- IBranchUnit
-@enduml

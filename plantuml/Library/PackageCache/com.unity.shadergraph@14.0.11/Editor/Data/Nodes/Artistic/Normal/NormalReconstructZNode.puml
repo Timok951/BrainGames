@@ -1,6 +1,0 @@
-@startuml
-class NormalReconstructZNode {
-    + NormalReconstructZNode()
-}
-CodeFunctionNode <|-- NormalReconstructZNode
-@enduml

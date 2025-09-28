@@ -1,4 +1,0 @@
-@startuml
-class StaticDelegateRegistry <<static>> <<partial>> {
-}
-@enduml

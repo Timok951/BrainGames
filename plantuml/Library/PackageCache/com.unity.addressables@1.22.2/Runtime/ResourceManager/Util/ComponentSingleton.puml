@@ -1,8 +1,0 @@
-@startuml
-abstract class "ComponentSingleton`1"<T> {
-    + {static} Exists : bool <<get>>
-    + {static} Instance : T <<get>>
-    + {static} DestroySingleton() : void
-}
-MonoBehaviour <|-- "ComponentSingleton`1"
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-interface IStateDebugData {
-}
-IGraphElementDebugData <|-- IStateDebugData
-@enduml

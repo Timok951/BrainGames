@@ -1,6 +1,0 @@
-@startuml
-class EnumerableTestState {
-    + Repeat : int
-    + Retry : int
-}
-@enduml

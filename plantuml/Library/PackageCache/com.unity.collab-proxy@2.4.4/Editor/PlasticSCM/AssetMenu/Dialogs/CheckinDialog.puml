@@ -1,8 +1,0 @@
-@startuml
-class CheckinDialog {
-}
-class MetaCache {
-}
-PlasticDialog <|-- CheckinDialog
-CheckinDialog +-- MetaCache
-@enduml

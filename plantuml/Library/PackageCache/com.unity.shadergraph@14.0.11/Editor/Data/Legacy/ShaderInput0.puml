@@ -1,5 +1,0 @@
-@startuml
-class ShaderInput0 {
-}
-ShaderInput0 --> "m_Guid" SerializableGuid
-@enduml

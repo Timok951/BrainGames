@@ -1,7 +1,0 @@
-@startuml
-class DecalTests {
-    + Setup() : void
-    + Cleanup() : void
-    + DecalDestroyEmptyChunk() : void
-}
-@enduml

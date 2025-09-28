@@ -1,5 +1,0 @@
-@startuml
-class Jog {
-}
-Manipulator <|-- Jog
-@enduml

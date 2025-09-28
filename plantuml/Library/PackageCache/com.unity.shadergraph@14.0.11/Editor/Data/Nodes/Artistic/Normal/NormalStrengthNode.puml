@@ -1,6 +1,0 @@
-@startuml
-class NormalStrengthNode {
-    + NormalStrengthNode()
-}
-CodeFunctionNode <|-- NormalStrengthNode
-@enduml

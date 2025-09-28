@@ -1,5 +1,0 @@
-@startuml
-class LocalBuildCacheTests {
-}
-BuildCacheTestBase <|-- LocalBuildCacheTests
-@enduml

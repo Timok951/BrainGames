@@ -1,8 +1,0 @@
-@startuml
-class UnityListOrganizationFavoriteProjects200Response {
-    + UnityListOrganizationFavoriteProjects200Response(results:List<UnityProjectV1>)
-}
-class "List`1"<T> {
-}
-UnityListOrganizationFavoriteProjects200Response --> "Results<UnityProjectV1>" "List`1"
-@enduml

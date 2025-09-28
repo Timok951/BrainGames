@@ -1,6 +1,0 @@
-@startuml
-class UniversalRenderPipelineLightEditor {
-    + <<override>> OnInspectorGUI() : void
-}
-LightEditor <|-- UniversalRenderPipelineLightEditor
-@enduml

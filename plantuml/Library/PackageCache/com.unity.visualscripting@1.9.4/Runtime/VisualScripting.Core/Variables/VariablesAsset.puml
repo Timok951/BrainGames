@@ -1,6 +1,0 @@
-@startuml
-class VariablesAsset <<sealed>> {
-}
-LudiqScriptableObject <|-- VariablesAsset
-VariablesAsset o-> "declarations" VariableDeclarations
-@enduml

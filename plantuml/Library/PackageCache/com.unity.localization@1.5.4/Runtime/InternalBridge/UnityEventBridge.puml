@@ -1,5 +1,0 @@
-@startuml
-class UnityEventBridge <<static>> {
-    + {static} GetPersistentListenerState(unityEvent:UnityEventBase, index:int) : UnityEventCallState
-}
-@enduml

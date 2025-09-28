@@ -1,5 +1,0 @@
-@startuml
-class SpritePackageEditorTests {
-    + SpriteEditorWindow_IsLoadedFromDll() : void
-}
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class Draggable {
-    + Draggable(handler:Action<Vector2>, outputDeltaMovement:bool)
-}
-MouseManipulator <|-- Draggable
-@enduml

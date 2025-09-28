@@ -1,5 +1,0 @@
-@startuml
-class SignalTrack {
-}
-MarkerTrack <|-- SignalTrack
-@enduml

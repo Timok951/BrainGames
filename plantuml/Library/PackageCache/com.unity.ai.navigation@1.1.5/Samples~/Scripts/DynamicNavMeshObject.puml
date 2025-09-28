@@ -1,5 +1,0 @@
-@startuml
-class DynamicNavMeshObject {
-}
-MonoBehaviour <|-- DynamicNavMeshObject
-@enduml

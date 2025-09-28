@@ -1,9 +1,0 @@
-@startuml
-class "InstancePropertyAccessor`2"<TTarget,TProperty> {
-    + InstancePropertyAccessor(propertyInfo:PropertyInfo)
-    + Compile() : void
-    + GetValue(target:object) : object
-    + SetValue(target:object, value:object) : void
-}
-IOptimizedAccessor <|-- "InstancePropertyAccessor`2"
-@enduml

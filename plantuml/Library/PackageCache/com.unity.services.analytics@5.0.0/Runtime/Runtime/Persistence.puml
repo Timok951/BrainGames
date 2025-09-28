@@ -1,9 +1,0 @@
-@startuml
-interface IPersistence {
-}
-class PlayerPrefsPersistence {
-    + SaveValue(key:string, value:int) : void
-    + LoadValue(key:string) : int
-}
-IPersistence <|-- PlayerPrefsPersistence
-@enduml

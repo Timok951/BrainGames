@@ -1,9 +1,0 @@
-@startuml
-class AppleValidator {
-    + AppleValidator(appleRootCertificate:byte[])
-    + Validate(receiptData:byte[]) : AppleReceipt
-}
-class AppleReceiptParser {
-    + Parse(receiptData:byte[]) : AppleReceipt
-}
-@enduml

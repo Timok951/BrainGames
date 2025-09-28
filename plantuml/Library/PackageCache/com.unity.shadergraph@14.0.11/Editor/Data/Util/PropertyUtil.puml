@@ -1,5 +1,0 @@
-@startuml
-class PropertyUtil <<static>> {
-    + {static} ToConcreteShaderValueType(propertyType:PropertyType) : ConcreteSlotValueType
-}
-@enduml

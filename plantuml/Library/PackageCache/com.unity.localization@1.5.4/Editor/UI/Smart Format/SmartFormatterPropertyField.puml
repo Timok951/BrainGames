@@ -1,6 +1,0 @@
-@startuml
-class SmartFormatterPropertyField {
-    + <<override>> CreatePropertyGUI(property:SerializedProperty) : VisualElement
-}
-PropertyDrawer <|-- SmartFormatterPropertyField
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class GraphOutput <<sealed>> {
-    + <<override>> canDefine : bool <<get>>
-}
-Unit <|-- GraphOutput
-@enduml

@@ -1,4 +1,0 @@
-@startuml
-class UnityTestProtocolStarter <<static>> {
-}
-@enduml

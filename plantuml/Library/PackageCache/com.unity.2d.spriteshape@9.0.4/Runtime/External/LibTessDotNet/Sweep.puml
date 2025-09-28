@@ -1,7 +1,0 @@
-@startuml
-class Tess <<partial>> {
-}
-class ActiveRegion {
-}
-Tess +-- ActiveRegion
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-class EditorWindowWithHelpButton {
-}
-EditorWindow <|-- EditorWindowWithHelpButton
-@enduml

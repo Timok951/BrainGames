@@ -1,6 +1,0 @@
-@startuml
-class DependencyNotFoundException {
-    + DependencyNotFoundException(serviceType:Type)
-}
-Exception <|-- DependencyNotFoundException
-@enduml

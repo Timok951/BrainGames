@@ -1,5 +1,0 @@
-@startuml
-class LayoutOverlayUtility <<static>> {
-    + {static} CreateButton(name:string, clickEvent:Action, tooltip:string, text:string, imageResourcePath:string, stylesheetPath:string) : Button
-}
-@enduml

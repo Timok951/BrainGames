@@ -1,5 +1,0 @@
-@startuml
-class UnityOnMouseUpMessageListener <<sealed>> {
-}
-MessageListener <|-- UnityOnMouseUpMessageListener
-@enduml

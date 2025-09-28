@@ -1,6 +1,0 @@
-@startuml
-interface IAssetFilesFilterPatternsMenuOperations {
-}
-class AssetFilesFilterPatternsMenuBuilder {
-}
-@enduml

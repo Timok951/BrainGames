@@ -1,6 +1,0 @@
-@startuml
-class DotProductNode {
-    + DotProductNode()
-}
-CodeFunctionNode <|-- DotProductNode
-@enduml

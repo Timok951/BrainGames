@@ -1,7 +1,0 @@
-@startuml
-class SubscriptionGroup {
-    + SubscriptionGroup(storeController:IStoreController, extensionsProvider:IExtensionProvider, upgradeSubscriptionProrationMode:GooglePlayProrationMode, downgradeSubscriptionProrationMode:GooglePlayProrationMode, subscriptionIds:string[])
-    + BuySubscription(newSubscriptionId:string) : void
-    + CurrentSubscriptionId() : string
-}
-@enduml

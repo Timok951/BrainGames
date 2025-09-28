@@ -1,5 +1,0 @@
-@startuml
-class ChangeCategoryTreeViewItem {
-}
-TreeViewItem <|-- ChangeCategoryTreeViewItem
-@enduml

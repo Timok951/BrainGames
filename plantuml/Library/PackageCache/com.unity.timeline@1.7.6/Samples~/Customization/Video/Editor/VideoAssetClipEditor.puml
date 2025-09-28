@@ -1,6 +1,0 @@
-@startuml
-class VideoAssetClipEditor {
-    + <<override>> DrawBackground(clip:TimelineClip, region:ClipBackgroundRegion) : void
-}
-ClipEditor <|-- VideoAssetClipEditor
-@enduml

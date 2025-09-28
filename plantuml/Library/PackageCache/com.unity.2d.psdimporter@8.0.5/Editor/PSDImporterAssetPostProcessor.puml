@@ -1,6 +1,0 @@
-@startuml
-class PSDImporterAssetPostProcessor {
-    + <<override>> GetPostprocessOrder() : int
-}
-AssetPostprocessor <|-- PSDImporterAssetPostProcessor
-@enduml

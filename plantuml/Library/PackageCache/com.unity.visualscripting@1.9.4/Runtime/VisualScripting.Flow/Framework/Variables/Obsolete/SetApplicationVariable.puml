@@ -1,8 +1,0 @@
-@startuml
-class SetApplicationVariable <<sealed>> {
-    + SetApplicationVariable()
-    + SetApplicationVariable(defaultName:string)
-}
-SetVariableUnit <|-- SetApplicationVariable
-IApplicationVariableUnit <|-- SetApplicationVariable
-@enduml

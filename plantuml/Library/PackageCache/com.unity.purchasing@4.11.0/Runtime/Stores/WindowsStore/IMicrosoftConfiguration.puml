@@ -1,5 +1,0 @@
-@startuml
-interface IMicrosoftConfiguration {
-}
-IStoreConfiguration <|-- IMicrosoftConfiguration
-@enduml

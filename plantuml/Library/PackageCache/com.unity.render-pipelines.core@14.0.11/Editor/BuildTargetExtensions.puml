@@ -1,5 +1,0 @@
-@startuml
-class BuildTargetExtensions <<static>> {
-    + {static} TryGetRenderPipelineAssets(buildTarget:BuildTarget, srpAssets:List<T>) : bool
-}
-@enduml

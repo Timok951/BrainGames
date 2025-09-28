@@ -1,9 +1,0 @@
-@startuml
-interface IPropertyKeyDataSource {
-}
-abstract class BasePropertyKeyDataSource {
-    + <<virtual>> GetKeys() : float[]
-    + <<virtual>> GetDescriptions() : Dictionary<float, string>
-}
-IPropertyKeyDataSource <|-- BasePropertyKeyDataSource
-@enduml

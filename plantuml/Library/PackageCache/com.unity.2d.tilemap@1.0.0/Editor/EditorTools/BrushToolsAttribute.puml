@@ -1,6 +1,0 @@
-@startuml
-class BrushToolsAttribute {
-    + BrushToolsAttribute(tools:Type[])
-}
-Attribute <|-- BrushToolsAttribute
-@enduml

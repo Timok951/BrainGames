@@ -1,5 +1,0 @@
-@startuml
-class Is {
-    + {static} AllocatingGCMemory() : AllocatingGCMemoryConstraint
-}
-@enduml

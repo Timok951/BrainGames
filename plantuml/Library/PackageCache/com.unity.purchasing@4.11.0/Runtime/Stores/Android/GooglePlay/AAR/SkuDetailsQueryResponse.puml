@@ -1,8 +1,0 @@
-@startuml
-class SkuDetailsQueryResponse {
-    + AddResponse(billingResult:IGoogleBillingResult, skuDetails:IEnumerable<AndroidJavaObject>) : void
-    + SkuDetails() : List<AndroidJavaObject>
-    + IsRecoverable() : bool
-}
-ISkuDetailsQueryResponse <|-- SkuDetailsQueryResponse
-@enduml

@@ -1,7 +1,0 @@
-@startuml
-class ExporterWindow {
-    + {static} ShowWindow() : ExporterWindow
-}
-EditorWindow <|-- ExporterWindow
-ExporterWindow --> "SelectedTables" ProjectCollectionsTableSelector
-@enduml

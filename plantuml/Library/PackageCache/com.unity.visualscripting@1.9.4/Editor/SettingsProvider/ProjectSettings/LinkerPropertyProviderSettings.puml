@@ -1,6 +1,0 @@
-@startuml
-class LinkerPropertyProviderSettings {
-    + LinkerPropertyProviderSettings(coreConfig:BoltCoreConfiguration)
-    + OnGUI() : void
-}
-@enduml

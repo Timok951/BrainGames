@@ -1,6 +1,0 @@
-@startuml
-class TMP_ColorGradientEditor {
-    + <<override>> OnInspectorGUI() : void
-}
-Editor <|-- TMP_ColorGradientEditor
-@enduml

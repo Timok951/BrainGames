@@ -1,6 +1,0 @@
-@startuml
-class InspectorToggleLeftAttribute <<sealed>> {
-    + InspectorToggleLeftAttribute()
-}
-Attribute <|-- InspectorToggleLeftAttribute
-@enduml

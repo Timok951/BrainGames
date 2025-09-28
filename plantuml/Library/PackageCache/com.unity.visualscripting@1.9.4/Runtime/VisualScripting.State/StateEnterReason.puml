@@ -1,7 +1,0 @@
-@startuml
-enum StateEnterReason {
-    Start,
-    Branch,
-    Forced,
-}
-@enduml

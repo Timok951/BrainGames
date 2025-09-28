@@ -1,8 +1,0 @@
-@startuml
-class ElementResizer {
-    + isEnabled : bool <<get>> <<set>>
-    + ElementResizer(resizedElement:VisualElement, direction:ResizableElement.Resizer)
-}
-Manipulator <|-- ElementResizer
-ElementResizer --> "resizedElement" VisualElement
-@enduml

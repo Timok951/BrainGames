@@ -1,7 +1,0 @@
-@startuml
-class DefaultFormatter {
-    + DefaultFormatter()
-    + <<override>> TryEvaluateFormat(formattingInfo:IFormattingInfo) : bool
-}
-FormatterBase <|-- DefaultFormatter
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class LocalizationSettingsMenuItems {
-    + {static} CreateAssetWithMakeActiveDialog() : void
-    + {static} CreateLocalizationAsset() : LocalizationSettings
-}
-@enduml

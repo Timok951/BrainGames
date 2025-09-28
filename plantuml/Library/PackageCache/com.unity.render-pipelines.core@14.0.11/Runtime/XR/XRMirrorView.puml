@@ -1,4 +1,0 @@
-@startuml
-class XRMirrorView <<static>> {
-}
-@enduml

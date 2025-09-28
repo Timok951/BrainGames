@@ -1,5 +1,0 @@
-@startuml
-class PRSAlignSceneView {
-}
-MonoBehaviour <|-- PRSAlignSceneView
-@enduml

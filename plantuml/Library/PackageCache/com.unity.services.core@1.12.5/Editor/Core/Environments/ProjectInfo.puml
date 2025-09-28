@@ -1,7 +1,0 @@
-@startuml
-class ProjectInfo {
-    + ProjectId : string <<get>>
-    + ProjectName : string <<get>>
-}
-IProjectInfo <|-- ProjectInfo
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-class SwitchModeConfirmationDialog {
-}
-PlasticDialog <|-- SwitchModeConfirmationDialog
-@enduml

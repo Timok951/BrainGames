@@ -1,6 +1,0 @@
-@startuml
-class ContextObjectSerializationTests {
-    + GetIContextObjectTypes() : Type[]
-    + IContextObjects_SupportSerialization() : void
-}
-@enduml

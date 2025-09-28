@@ -1,6 +1,0 @@
-@startuml
-class AnalyticsEventTests <<partial>> {
-    + ChatMessageSent_NoArgsTest() : void
-    + ChatMessageSent_CustomDataTest() : void
-}
-@enduml

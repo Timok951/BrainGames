@@ -1,8 +1,0 @@
-@startuml
-class SkAdNetworkLocalSource {
-    + Path : string <<get>>
-    + SkAdNetworkLocalSource(path:string)
-    + Open() : Stream
-}
-ISkAdNetworkSource <|-- SkAdNetworkLocalSource
-@enduml

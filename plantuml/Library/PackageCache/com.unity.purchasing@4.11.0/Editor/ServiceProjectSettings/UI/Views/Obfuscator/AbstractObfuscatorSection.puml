@@ -1,4 +1,0 @@
-@startuml
-abstract class AbstractObfuscatorSection {
-}
-@enduml

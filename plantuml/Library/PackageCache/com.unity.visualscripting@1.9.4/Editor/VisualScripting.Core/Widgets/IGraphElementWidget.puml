@@ -1,5 +1,0 @@
-@startuml
-interface IGraphElementWidget {
-}
-IWidget <|-- IGraphElementWidget
-@enduml

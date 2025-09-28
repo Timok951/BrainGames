@@ -1,6 +1,0 @@
-@startuml
-class AotIncompatibleAttribute <<sealed>> {
-    + AotIncompatibleAttribute()
-}
-Attribute <|-- AotIncompatibleAttribute
-@enduml

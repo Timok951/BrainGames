@@ -1,5 +1,0 @@
-@startuml
-class UnitySetUpAttribute {
-}
-NUnitAttribute <|-- UnitySetUpAttribute
-@enduml

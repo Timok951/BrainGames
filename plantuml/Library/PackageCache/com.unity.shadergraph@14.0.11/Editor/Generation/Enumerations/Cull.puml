@@ -1,7 +1,0 @@
-@startuml
-enum Cull {
-    Back,
-    Front,
-    Off,
-}
-@enduml

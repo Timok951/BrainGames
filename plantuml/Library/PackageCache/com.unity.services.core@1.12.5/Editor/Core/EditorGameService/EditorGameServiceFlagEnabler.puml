@@ -1,9 +1,0 @@
-@startuml
-abstract class EditorGameServiceFlagEnabler {
-    + Enable() : void
-    + Disable() : void
-    + {abstract} IsEnabled() : bool
-    +  <<event>> ServiceFlagRequestComplete : Action 
-}
-IEditorGameServiceEnabler <|-- EditorGameServiceFlagEnabler
-@enduml

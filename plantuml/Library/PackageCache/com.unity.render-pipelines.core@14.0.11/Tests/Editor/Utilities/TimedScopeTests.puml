@@ -1,6 +1,0 @@
-@startuml
-class TimedScopeTests {
-    + <<unsafe>> SimpleTimeCheckFromPtr() : void
-    + SimpleTimeCheckFromRef() : void
-}
-@enduml

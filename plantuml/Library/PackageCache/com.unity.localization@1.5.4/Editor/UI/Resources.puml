@@ -1,7 +1,0 @@
-@startuml
-class Resources <<static>> {
-    + {static} GetTemplateAsset(templateFilename:string) : VisualTreeAsset
-    + {static} GetStyleSheetAsset(name:string) : StyleSheet
-    + {static} GetTemplate(templateFilename:string) : VisualElement
-}
-@enduml

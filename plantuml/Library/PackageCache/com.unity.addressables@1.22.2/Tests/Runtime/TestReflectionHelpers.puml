@@ -1,5 +1,0 @@
-@startuml
-class TestReflectionHelpers <<static>> {
-    + {static} SetResritctMainThreadFileIO(errorOnMainThreadFileIO:bool) : void
-}
-@enduml

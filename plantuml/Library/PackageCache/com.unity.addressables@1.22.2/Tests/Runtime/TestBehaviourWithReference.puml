@@ -1,6 +1,0 @@
-@startuml
-class TestBehaviourWithReference {
-}
-MonoBehaviour <|-- TestBehaviourWithReference
-TestBehaviourWithReference --> "Reference" Object
-@enduml

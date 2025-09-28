@@ -1,8 +1,0 @@
-@startuml
-class ProgressLoggingTracker {
-    + ProgressLoggingTracker()
-    + <<override>> UpdateTask(taskTitle:string) : bool
-    + <<override>> UpdateInfo(taskInfo:string) : bool
-}
-ProgressTracker <|-- ProgressLoggingTracker
-@enduml

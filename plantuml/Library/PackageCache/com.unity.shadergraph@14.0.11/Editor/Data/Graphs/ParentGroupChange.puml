@@ -1,7 +1,0 @@
-@startuml
-struct ParentGroupChange {
-}
-ParentGroupChange --> "groupItem" IGroupItem
-ParentGroupChange --> "oldGroup" GroupData
-ParentGroupChange --> "newGroup" GroupData
-@enduml

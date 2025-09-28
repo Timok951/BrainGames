@@ -1,6 +1,0 @@
-@startuml
-class GraphInputInspector {
-    + GraphInputInspector(metadata:Metadata)
-}
-Inspector <|-- GraphInputInspector
-@enduml

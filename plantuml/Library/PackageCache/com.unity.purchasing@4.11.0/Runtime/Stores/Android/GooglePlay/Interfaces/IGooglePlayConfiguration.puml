@@ -1,5 +1,0 @@
-@startuml
-interface IGooglePlayConfiguration {
-}
-IStoreConfiguration <|-- IGooglePlayConfiguration
-@enduml

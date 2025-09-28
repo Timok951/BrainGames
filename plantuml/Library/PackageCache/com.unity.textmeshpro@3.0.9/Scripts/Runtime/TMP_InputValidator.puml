@@ -1,6 +1,0 @@
-@startuml
-abstract class TMP_InputValidator {
-    + {abstract} Validate(text:string, pos:int, ch:char) : char
-}
-ScriptableObject <|-- TMP_InputValidator
-@enduml

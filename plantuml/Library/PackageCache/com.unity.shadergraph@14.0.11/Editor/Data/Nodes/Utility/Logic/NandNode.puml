@@ -1,7 +1,0 @@
-@startuml
-class NandNode {
-    + NandNode()
-    + <<override>> hasPreview : bool <<get>>
-}
-CodeFunctionNode <|-- NandNode
-@enduml

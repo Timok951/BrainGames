@@ -1,5 +1,0 @@
-@startuml
-class AnalyticsServiceInstance <<partial>> {
-    + AcquisitionSource(acquisitionSourceParameters:AcquisitionSourceParameters) : void
-}
-@enduml

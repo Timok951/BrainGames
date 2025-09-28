@@ -1,5 +1,0 @@
-@startuml
-class SerializableGuid {
-    + m_GuidSerialized : string
-}
-@enduml

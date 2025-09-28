@@ -1,5 +1,0 @@
-@startuml
-class AssetBundleUtility <<static>> {
-    + {static} IsLoaded(bundle:AssetBundle) : bool
-}
-@enduml

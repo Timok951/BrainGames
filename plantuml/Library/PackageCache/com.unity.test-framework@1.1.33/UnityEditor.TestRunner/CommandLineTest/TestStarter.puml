@@ -1,4 +1,0 @@
-@startuml
-class TestStarter <<static>> {
-}
-@enduml

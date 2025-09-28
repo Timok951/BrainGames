@@ -1,7 +1,0 @@
-@startuml
-class DeserializationException {
-    + DeserializationException()
-    + DeserializationException(message:string)
-}
-Exception <|-- DeserializationException
-@enduml

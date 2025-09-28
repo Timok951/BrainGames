@@ -1,5 +1,0 @@
-@startuml
-class CreateSpriteCustomLitShaderGraph <<static>> {
-    + {static} CreateSpriteLitGraph() : void
-}
-@enduml

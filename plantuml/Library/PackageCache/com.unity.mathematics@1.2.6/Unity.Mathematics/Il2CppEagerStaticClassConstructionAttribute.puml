@@ -1,5 +1,0 @@
-@startuml
-class Il2CppEagerStaticClassConstructionAttribute {
-}
-Attribute <|-- Il2CppEagerStaticClassConstructionAttribute
-@enduml

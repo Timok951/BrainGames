@@ -1,6 +1,0 @@
-@startuml
-class EditorPropertyDriver <<static>> {
-    + {static} RegisterProperty(target:Object, propertyPath:string) : void
-    + {static} UnregisterProperty(target:Object, propertyPath:string) : void
-}
-@enduml

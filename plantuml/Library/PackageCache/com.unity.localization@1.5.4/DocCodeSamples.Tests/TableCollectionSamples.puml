@@ -1,5 +1,0 @@
-@startuml
-class TableCollectionSamples <<static>> {
-    + {static} CreateCSV(command:MenuCommand) : void
-}
-@enduml

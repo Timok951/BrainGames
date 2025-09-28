@@ -1,9 +1,0 @@
-@startuml
-enum MissingMemberHandling {
-    Error,
-    Ignore,
-}
-class DeserializationSettings {
-}
-DeserializationSettings o-> "MissingMemberHandling" MissingMemberHandling
-@enduml

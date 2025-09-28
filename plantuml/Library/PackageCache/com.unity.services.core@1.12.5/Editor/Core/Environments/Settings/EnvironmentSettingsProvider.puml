@@ -1,5 +1,0 @@
-@startuml
-class EnvironmentSettingsProvider {
-}
-EditorGameServiceSettingsProvider <|-- EnvironmentSettingsProvider
-@enduml

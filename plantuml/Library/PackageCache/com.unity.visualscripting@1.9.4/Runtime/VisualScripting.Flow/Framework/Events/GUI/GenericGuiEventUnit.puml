@@ -1,8 +1,0 @@
-@startuml
-abstract class GenericGuiEventUnit {
-}
-class "GameObjectEventUnit`1"<T> {
-}
-"GameObjectEventUnit`1" "<BaseEventData>" <|-- GenericGuiEventUnit
-GenericGuiEventUnit --> "data" ValueOutput
-@enduml

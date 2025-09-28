@@ -1,7 +1,0 @@
-@startuml
-struct GUIColorOverride {
-    + GUIColorOverride(newColor:Color)
-    + Dispose() : void
-}
-IDisposable <|-- GUIColorOverride
-@enduml

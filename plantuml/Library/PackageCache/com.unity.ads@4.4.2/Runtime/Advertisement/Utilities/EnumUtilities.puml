@@ -1,5 +1,0 @@
-@startuml
-class EnumUtilities <<static>> {
-    + {static} GetEnumFromAndroidJavaObject(androidJavaObject:AndroidJavaObject, defaultValue:T) : T
-}
-@enduml

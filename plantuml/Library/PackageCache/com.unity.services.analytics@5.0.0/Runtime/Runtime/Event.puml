@@ -1,8 +1,0 @@
-@startuml
-class Event {
-    + Event(name:string, version:int?)
-    + Name : string <<get>>
-    + Version : int? <<get>>
-}
-Event --> "Parameters" EventData
-@enduml

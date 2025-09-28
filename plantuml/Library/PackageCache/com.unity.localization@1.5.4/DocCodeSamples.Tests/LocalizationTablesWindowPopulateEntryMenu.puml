@@ -1,8 +1,0 @@
-@startuml
-class RequiresTranslating {
-}
-class EntryMenuExample {
-    + {static} PopulateEntryMenu(collection:LocalizationTableCollection, table:LocalizationTable, id:long, menu:GenericMenu) : void
-}
-SharedTableEntryMetadata <|-- RequiresTranslating
-@enduml

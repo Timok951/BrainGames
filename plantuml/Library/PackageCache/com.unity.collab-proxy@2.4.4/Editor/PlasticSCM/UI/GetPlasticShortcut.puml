@@ -1,4 +1,0 @@
-@startuml
-class GetPlasticShortcut <<static>> {
-}
-@enduml

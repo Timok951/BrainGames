@@ -1,4 +1,0 @@
-@startuml
-class TreeHeaderColumns <<static>> {
-}
-@enduml

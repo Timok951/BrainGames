@@ -1,8 +1,0 @@
-@startuml
-class IsApplicationVariableDefined <<sealed>> {
-    + IsApplicationVariableDefined()
-    + IsApplicationVariableDefined(defaultName:string)
-}
-IsVariableDefinedUnit <|-- IsApplicationVariableDefined
-IApplicationVariableUnit <|-- IsApplicationVariableDefined
-@enduml

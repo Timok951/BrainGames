@@ -1,6 +1,0 @@
-@startuml
-struct RealCurrency {
-    + RealCurrencyType : string
-}
-RealCurrency --> "RealCurrencyAmount" Int64
-@enduml

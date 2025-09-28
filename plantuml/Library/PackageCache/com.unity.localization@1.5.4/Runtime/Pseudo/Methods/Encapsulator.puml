@@ -1,8 +1,0 @@
-@startuml
-class Encapsulator {
-    + Start : string <<get>> <<set>>
-    + End : string <<get>> <<set>>
-    + Transform(message:Message) : void
-}
-IPseudoLocalizationMethod <|-- Encapsulator
-@enduml

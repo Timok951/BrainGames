@@ -1,6 +1,0 @@
-@startuml
-class TestObject {
-    + {static} Create(name:string, assetPath:string) : TestObject
-}
-ScriptableObject <|-- TestObject
-@enduml

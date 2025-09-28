@@ -1,7 +1,0 @@
-@startuml
-class CollectionExtension {
-    + <<virtual>> Initialize() : void
-    + <<virtual>> Destroy() : void
-}
-CollectionExtension --> "TargetCollection" LocalizationTableCollection
-@enduml

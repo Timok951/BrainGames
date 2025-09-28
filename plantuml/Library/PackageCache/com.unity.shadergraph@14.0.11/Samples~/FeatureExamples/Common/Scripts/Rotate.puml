@@ -1,5 +1,0 @@
-@startuml
-class Rotate {
-}
-MonoBehaviour <|-- Rotate
-@enduml

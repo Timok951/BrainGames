@@ -1,6 +1,0 @@
-@startuml
-class HideResourceFoldersScope {
-    + HideResourceFoldersScope()
-}
-IDisposable <|-- HideResourceFoldersScope
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class MethodNotFoundException {
-    + MethodNotFoundException(type:Type, methodName:string)
-}
-Exception <|-- MethodNotFoundException
-@enduml

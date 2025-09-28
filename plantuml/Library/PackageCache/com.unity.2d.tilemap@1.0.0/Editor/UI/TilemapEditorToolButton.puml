@@ -1,6 +1,0 @@
-@startuml
-class TilemapEditorToolButton {
-    + TilemapEditorToolButton(tool:TilemapEditorTool)
-}
-EditorToolbarToggle <|-- TilemapEditorToolButton
-@enduml

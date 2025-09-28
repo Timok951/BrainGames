@@ -1,7 +1,0 @@
-@startuml
-class LocalizedAssetTablePropertyDrawer {
-}
-class "LocalizedTablePropertyDrawer`1"<T> {
-}
-"LocalizedTablePropertyDrawer`1" "<AssetTableCollection>" <|-- LocalizedAssetTablePropertyDrawer
-@enduml

@@ -1,8 +1,0 @@
-@startuml
-interface IGraph {
-}
-IDisposable <|-- IGraph
-IPrewarmable <|-- IGraph
-IAotStubbable <|-- IGraph
-ISerializationDepender <|-- IGraph
-@enduml

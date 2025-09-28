@@ -1,6 +1,0 @@
-@startuml
-class LoadWithEvent {
-    + address : string
-}
-MonoBehaviour <|-- LoadWithEvent
-@enduml

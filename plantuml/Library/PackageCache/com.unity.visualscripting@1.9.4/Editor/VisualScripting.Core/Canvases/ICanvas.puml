@@ -1,6 +1,0 @@
-@startuml
-interface ICanvas {
-}
-IDisposable <|-- ICanvas
-IDragAndDropHandler <|-- ICanvas
-@enduml

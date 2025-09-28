@@ -1,8 +1,0 @@
-@startuml
-class ProgressControlsForViews {
-}
-class Data {
-}
-IProgressControls <|-- ProgressControlsForViews
-ProgressControlsForViews +-- Data
-@enduml

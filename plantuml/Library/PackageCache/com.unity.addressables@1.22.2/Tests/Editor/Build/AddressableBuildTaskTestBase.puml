@@ -1,6 +1,0 @@
-@startuml
-class AddressableBuildTaskTestBase {
-    + Setup() : void
-    + Teardown() : void
-}
-@enduml

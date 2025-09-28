@@ -1,9 +1,0 @@
-@startuml
-class FakeAppleConfiguration {
-    + appReceipt : string <<get>>
-    + canMakePayments : bool <<get>>
-    + SetApplePromotionalPurchaseInterceptorCallback(callback:Action<Product>) : void
-    + SetEntitlementsRevokedListener(callback:Action<List<Product>>) : void
-}
-IAppleConfiguration <|-- FakeAppleConfiguration
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class PosterizeNode {
-    + PosterizeNode()
-}
-CodeFunctionNode <|-- PosterizeNode
-@enduml

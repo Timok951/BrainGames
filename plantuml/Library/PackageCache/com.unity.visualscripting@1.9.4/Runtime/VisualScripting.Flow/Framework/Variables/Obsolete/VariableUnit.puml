@@ -1,8 +1,0 @@
-@startuml
-abstract class VariableUnit {
-    + defaultName : string <<get>>
-}
-Unit <|-- VariableUnit
-IVariableUnit <|-- VariableUnit
-VariableUnit --> "name" ValueInput
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class MissingValuePortInputException <<sealed>> {
-    + MissingValuePortInputException(key:string)
-}
-Exception <|-- MissingValuePortInputException
-@enduml

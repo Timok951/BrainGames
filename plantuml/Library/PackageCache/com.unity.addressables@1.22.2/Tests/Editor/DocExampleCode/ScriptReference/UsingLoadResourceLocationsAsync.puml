@@ -1,5 +1,0 @@
-@startuml
-class UsingLoadResourceLocationsAsync {
-    + UsingLoadResourceLocationsAsyncSample() : void
-}
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class SkuDetailsConverter {
-    + ConvertOnQuerySkuDetailsResponse(skus:IEnumerable<AndroidJavaObject>) : List<ProductDescription>
-}
-ISkuDetailsConverter <|-- SkuDetailsConverter
-@enduml

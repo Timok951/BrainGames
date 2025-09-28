@@ -1,6 +1,0 @@
-@startuml
-class SceneRenderPipelineEditor {
-    + <<override>> CreateInspectorGUI() : VisualElement
-}
-Editor <|-- SceneRenderPipelineEditor
-@enduml

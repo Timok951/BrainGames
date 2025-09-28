@@ -1,7 +1,0 @@
-@startuml
-enum AsyncOperationStatus {
-    None,
-    Succeeded,
-    Failed,
-}
-@enduml

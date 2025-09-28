@@ -1,6 +1,0 @@
-@startuml
-class PRSSamplesWindow {
-    + {static} OpenSamplesShowcaseWindow() : PRSSamplesWindow
-}
-EditorWindow <|-- PRSSamplesWindow
-@enduml

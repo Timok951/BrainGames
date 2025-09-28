@@ -1,7 +1,0 @@
-@startuml
-class UnityOnDropMessageListener <<sealed>> {
-    + OnDrop(eventData:PointerEventData) : void
-}
-MessageListener <|-- UnityOnDropMessageListener
-IDropHandler <|-- UnityOnDropMessageListener
-@enduml

@@ -1,9 +1,0 @@
-@startuml
-class ResourceLocationData {
-    + InternalId : string <<get>>
-    + Provider : string <<get>>
-    + Data : object <<get>> <<set>>
-    + ResourceLocationData(keys:string[], id:string, provider:Type, t:Type, dependencies:string[])
-}
-ResourceLocationData --> "ResourceType" Type
-@enduml

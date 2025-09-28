@@ -1,7 +1,0 @@
-@startuml
-abstract class VectorShaderProperty {
-}
-class "AbstractShaderProperty`1"<T> {
-}
-"AbstractShaderProperty`1" "<Vector4>" <|-- VectorShaderProperty
-@enduml

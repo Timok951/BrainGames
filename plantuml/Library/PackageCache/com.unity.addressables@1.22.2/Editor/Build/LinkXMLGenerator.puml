@@ -1,8 +1,0 @@
-@startuml
-class LinkXmlGenerator {
-    + <<new>> AddTypes(types:Type[]) : void
-    + <<new>> AddTypes(types:IEnumerable<Type>) : void
-    + <<new>> SetTypeConversion(a:Type, b:Type) : void
-    + <<new>> Save(path:string) : void
-}
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class PluginUtility <<static>> {
-    + {static} OrderByDependencies(plugins:IEnumerable<Plugin>) : IEnumerable<Plugin>
-    + {static} ResolveDependencies(plugins:IEnumerable<Plugin>) : IEnumerable<Plugin>
-}
-@enduml

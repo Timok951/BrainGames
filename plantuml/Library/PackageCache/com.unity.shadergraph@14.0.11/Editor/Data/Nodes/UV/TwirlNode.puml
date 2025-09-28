@@ -1,6 +1,0 @@
-@startuml
-class TwirlNode {
-    + TwirlNode()
-}
-CodeFunctionNode <|-- TwirlNode
-@enduml

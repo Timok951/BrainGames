@@ -1,9 +1,0 @@
-@startuml
-class EnvironmentServiceRegistry {
-    + EnvironmentServiceRegistry()
-    + <<override>> Register(collection:ServiceCollection) : void
-}
-class "AbstractRuntimeServices`1"<T> {
-}
-"AbstractRuntimeServices`1" "<EnvironmentServiceRegistry>" <|-- EnvironmentServiceRegistry
-@enduml

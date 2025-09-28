@@ -1,5 +1,0 @@
-@startuml
-class UnityOnDropdownValueChangedMessageListener <<sealed>> {
-}
-MessageListener <|-- UnityOnDropdownValueChangedMessageListener
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-class PlaceHolder {
-    + PlaceHolderTest() : void
-}
-@enduml

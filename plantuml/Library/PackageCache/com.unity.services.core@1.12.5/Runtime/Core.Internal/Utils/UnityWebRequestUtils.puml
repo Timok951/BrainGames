@@ -1,7 +1,0 @@
-@startuml
-class UnityWebRequestUtils <<static>> {
-    + <<const>> JsonContentType : string = "application/json"
-    + {static} HasSucceeded(self:UnityWebRequest) : bool
-    + {static} GetTextAsync(uri:string) : Task<string>
-}
-@enduml

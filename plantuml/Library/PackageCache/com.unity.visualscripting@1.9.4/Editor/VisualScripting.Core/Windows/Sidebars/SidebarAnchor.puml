@@ -1,6 +1,0 @@
-@startuml
-enum SidebarAnchor {
-    Left,
-    Right,
-}
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class ScriptingRuntimeProxy {
-    + GetAllUserAssemblies() : string[]
-}
-IScriptingRuntimeProxy <|-- ScriptingRuntimeProxy
-@enduml

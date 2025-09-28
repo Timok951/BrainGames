@@ -1,6 +1,0 @@
-@startuml
-class CorePackageRegistry <<sealed>> {
-    + Register(package:TPackage) : CoreRegistration
-}
-CorePackageRegistry --> "Instance" CorePackageRegistry
-@enduml

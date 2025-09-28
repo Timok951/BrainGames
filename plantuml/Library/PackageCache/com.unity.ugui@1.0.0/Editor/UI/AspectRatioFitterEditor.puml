@@ -1,6 +1,0 @@
-@startuml
-class AspectRatioFitterEditor {
-    + <<override>> OnInspectorGUI() : void
-}
-SelfControllerEditor <|-- AspectRatioFitterEditor
-@enduml

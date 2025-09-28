@@ -1,8 +1,0 @@
-@startuml
-abstract class LoopUnit {
-}
-Unit <|-- LoopUnit
-LoopUnit --> "enter" ControlInput
-LoopUnit --> "exit" ControlOutput
-LoopUnit --> "body" ControlOutput
-@enduml

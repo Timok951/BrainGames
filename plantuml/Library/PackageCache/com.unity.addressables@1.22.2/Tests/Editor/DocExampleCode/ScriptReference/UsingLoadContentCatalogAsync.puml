@@ -1,5 +1,0 @@
-@startuml
-class UsingLoadContentCatalogAsync {
-    + UsingLoadContentCatalogAsyncSample() : void
-}
-@enduml

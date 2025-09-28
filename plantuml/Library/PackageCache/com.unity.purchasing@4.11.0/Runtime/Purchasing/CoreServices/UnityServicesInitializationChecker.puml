@@ -1,7 +1,0 @@
-@startuml
-class UnityServicesInitializationChecker {
-    + UnityServicesInitializationChecker(logger:ILogger)
-    + CheckAndLogWarning() : void
-}
-IUnityServicesInitializationChecker <|-- UnityServicesInitializationChecker
-@enduml

@@ -1,7 +1,0 @@
-@startuml
-class BuildPlayerScripts {
-    + Version : int <<get>>
-    + Run() : ReturnCode
-}
-IBuildTask <|-- BuildPlayerScripts
-@enduml

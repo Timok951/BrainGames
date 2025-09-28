@@ -1,5 +1,0 @@
-@startuml
-class IosAppInfoExample {
-    + {static} ConfigureAppInfo() : void
-}
-@enduml

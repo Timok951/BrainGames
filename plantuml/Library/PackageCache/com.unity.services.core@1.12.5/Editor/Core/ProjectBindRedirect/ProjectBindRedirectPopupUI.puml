@@ -1,5 +1,0 @@
-@startuml
-class ProjectBindRedirectPopupUI {
-    + ProjectBindRedirectPopupUI(parentElement:VisualElement, closeAction:Action, installedPackages:List<string>, editorGameServiceAnalyticsSender:IEditorGameServiceAnalyticsSender)
-}
-@enduml

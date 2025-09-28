@@ -1,8 +1,0 @@
-@startuml
-class AllLevelsColorSort {
-}
-class "List`1"<T> {
-}
-ScriptableObject <|-- AllLevelsColorSort
-AllLevelsColorSort --> "Levels<LevelColorSort>" "List`1"
-@enduml

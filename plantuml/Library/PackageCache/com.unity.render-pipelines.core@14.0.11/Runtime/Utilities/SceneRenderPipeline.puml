@@ -1,5 +1,0 @@
-@startuml
-class SceneRenderPipeline {
-}
-MonoBehaviour <|-- SceneRenderPipeline
-@enduml

@@ -1,7 +1,0 @@
-@startuml
-class OnPreprocessBuildAnalytics <<static>> {
-}
-struct Data {
-}
-OnPreprocessBuildAnalytics +-- Data
-@enduml

@@ -1,7 +1,0 @@
-@startuml
-class DiffTreeView {
-    + <<override>> GetRows() : IList<TreeViewItem>
-    + <<override>> OnGUI(rect:Rect) : void
-}
-TreeView <|-- DiffTreeView
-@enduml

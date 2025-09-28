@@ -1,6 +1,0 @@
-@startuml
-class Keyboard <<static>> {
-}
-class Mouse {
-}
-@enduml

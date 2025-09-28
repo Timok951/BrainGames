@@ -1,7 +1,0 @@
-@startuml
-enum ProductType {
-    Consumable,
-    NonConsumable,
-    Subscription,
-}
-@enduml

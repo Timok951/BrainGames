@@ -1,7 +1,0 @@
-@startuml
-class TestMustExpectAllLogsAttribute {
-    + TestMustExpectAllLogsAttribute(mustExpect:bool)
-    + MustExpect : bool <<get>>
-}
-Attribute <|-- TestMustExpectAllLogsAttribute
-@enduml

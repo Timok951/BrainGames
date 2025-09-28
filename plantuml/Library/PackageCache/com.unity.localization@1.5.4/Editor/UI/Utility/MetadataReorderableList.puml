@@ -1,7 +1,0 @@
-@startuml
-class MetadataReorderableList {
-    + MetadataReorderableList(property:SerializedProperty, metadataType:MetadataTypeAttribute)
-    + {static} PopulateAddMetadataMenu(menu:GenericMenu, allowedType:MetadataType, listProperty:SerializedProperty, metadataTypes:IList<Type>, addCallback:Action<Type>) : void
-}
-ManagedReferenceReorderableList <|-- MetadataReorderableList
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class UniversalAdditionLightDataEditor {
-    + <<override>> OnInspectorGUI() : void
-}
-Editor <|-- UniversalAdditionLightDataEditor
-@enduml

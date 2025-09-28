@@ -1,5 +1,0 @@
-@startuml
-class UnityThreadUtils <<static>> {
-    + {static} IsRunningOnUnityThread : bool <<get>>
-}
-@enduml

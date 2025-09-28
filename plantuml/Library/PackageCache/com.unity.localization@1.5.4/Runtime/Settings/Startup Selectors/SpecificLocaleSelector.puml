@@ -1,7 +1,0 @@
-@startuml
-class SpecificLocaleSelector {
-    + GetStartupLocale(availableLocales:ILocalesProvider) : Locale
-}
-IStartupLocaleSelector <|-- SpecificLocaleSelector
-SpecificLocaleSelector --> "LocaleId" LocaleIdentifier
-@enduml

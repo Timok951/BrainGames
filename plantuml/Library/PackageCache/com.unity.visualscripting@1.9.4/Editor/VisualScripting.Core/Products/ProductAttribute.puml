@@ -1,7 +1,0 @@
-@startuml
-class ProductAttribute {
-    + ProductAttribute(id:string)
-    + id : string <<get>>
-}
-Attribute <|-- ProductAttribute
-@enduml

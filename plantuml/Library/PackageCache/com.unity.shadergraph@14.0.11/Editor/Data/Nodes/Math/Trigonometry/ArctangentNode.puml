@@ -1,6 +1,0 @@
-@startuml
-class ArctangentNode {
-    + ArctangentNode()
-}
-CodeFunctionNode <|-- ArctangentNode
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class SerializeAttribute {
-    + SerializeAttribute()
-}
-Attribute <|-- SerializeAttribute
-@enduml

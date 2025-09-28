@@ -1,7 +1,0 @@
-@startuml
-class CheckMeshColorsAndColors32Match {
-    + TestSetup() : void
-    + TearDown() : void
-    + CheckMeshColorsAndColors32Matches() : IEnumerator
-}
-@enduml

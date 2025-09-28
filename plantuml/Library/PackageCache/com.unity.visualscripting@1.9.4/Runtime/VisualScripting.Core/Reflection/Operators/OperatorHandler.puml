@@ -1,8 +1,0 @@
-@startuml
-abstract class OperatorHandler {
-    + name : string <<get>>
-    + verb : string <<get>>
-    + symbol : string <<get>>
-    + customMethodName : string <<get>>
-}
-@enduml

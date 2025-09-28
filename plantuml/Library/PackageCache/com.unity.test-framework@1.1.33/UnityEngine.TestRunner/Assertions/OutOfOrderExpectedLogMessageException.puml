@@ -1,8 +1,0 @@
-@startuml
-class OutOfOrderExpectedLogMessageException {
-    + OutOfOrderExpectedLogMessageException(log:LogEvent, nextExpected:LogMatch)
-    + <<override>> StackTrace : string <<get>>
-}
-ResultStateException <|-- OutOfOrderExpectedLogMessageException
-OutOfOrderExpectedLogMessageException --> "ResultState" ResultState
-@enduml

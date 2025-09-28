@@ -1,6 +1,0 @@
-@startuml
-class SceneWithNestedLayoutElementsLoadScript {
-    + isStartCalled : bool <<get>>
-}
-MonoBehaviour <|-- SceneWithNestedLayoutElementsLoadScript
-@enduml

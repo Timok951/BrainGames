@@ -1,9 +1,0 @@
-@startuml
-class ClearDictionary <<sealed>> {
-}
-Unit <|-- ClearDictionary
-ClearDictionary --> "enter" ControlInput
-ClearDictionary --> "dictionaryInput" ValueInput
-ClearDictionary --> "dictionaryOutput" ValueOutput
-ClearDictionary --> "exit" ControlOutput
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-class ClientDiffTreeViewItem {
-}
-TreeViewItem <|-- ClientDiffTreeViewItem
-@enduml

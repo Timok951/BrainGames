@@ -1,8 +1,0 @@
-@startuml
-class ProfileValueReferenceDrawer {
-    + <<override>> OnGUI(position:Rect, property:SerializedProperty, label:GUIContent) : void
-    + OnGUIMultiple(position:Rect, property:SerializedProperty, label:GUIContent, showMixed:bool) : void
-    + <<override>> GetPropertyHeight(property:SerializedProperty, label:GUIContent) : float
-}
-PropertyDrawer <|-- ProfileValueReferenceDrawer
-@enduml

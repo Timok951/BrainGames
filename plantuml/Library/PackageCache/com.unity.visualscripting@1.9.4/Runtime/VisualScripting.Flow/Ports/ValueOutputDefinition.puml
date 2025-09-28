@@ -1,6 +1,0 @@
-@startuml
-class ValueOutputDefinition <<sealed>> {
-}
-ValuePortDefinition <|-- ValueOutputDefinition
-IUnitOutputPortDefinition <|-- ValueOutputDefinition
-@enduml

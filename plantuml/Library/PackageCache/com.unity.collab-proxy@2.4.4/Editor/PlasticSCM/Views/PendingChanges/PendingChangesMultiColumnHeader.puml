@@ -1,5 +1,0 @@
-@startuml
-class PendingChangesMultiColumnHeader {
-}
-MultiColumnHeader <|-- PendingChangesMultiColumnHeader
-@enduml

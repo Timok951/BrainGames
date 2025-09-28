@@ -1,9 +1,0 @@
-@startuml
-class CoroutineExecutor {
-    + referenceCount : int
-}
-class "Queue`1"<T> {
-}
-MonoBehaviour <|-- CoroutineExecutor
-CoroutineExecutor o-> "queue<Action>" "Queue`1"
-@enduml

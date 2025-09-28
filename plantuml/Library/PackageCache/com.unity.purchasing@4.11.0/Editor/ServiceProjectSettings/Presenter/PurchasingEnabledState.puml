@@ -1,6 +1,0 @@
-@startuml
-class PurchasingEnabledState {
-    + PurchasingEnabledState(stateMachine:SimpleStateMachine<bool>)
-}
-BasePurchasingState <|-- PurchasingEnabledState
-@enduml

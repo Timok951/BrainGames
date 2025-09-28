@@ -1,6 +1,0 @@
-@startuml
-class BuildTasksRunner <<static>> {
-    + {static} Run(pipeline:IList<IBuildTask>, context:IBuildContext) : ReturnCode
-    + {static} Validate(pipeline:IList<IBuildTask>, context:IBuildContext) : ReturnCode
-}
-@enduml

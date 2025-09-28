@@ -1,5 +1,0 @@
-@startuml
-class DisabledDiagnosticsFactory {
-}
-IDiagnosticsFactory <|-- DisabledDiagnosticsFactory
-@enduml

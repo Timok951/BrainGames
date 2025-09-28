@@ -1,5 +1,0 @@
-@startuml
-interface IInstallationId {
-}
-IServiceComponent <|-- IInstallationId
-@enduml

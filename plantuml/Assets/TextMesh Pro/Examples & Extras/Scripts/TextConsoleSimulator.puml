@@ -1,5 +1,0 @@
-@startuml
-class TextConsoleSimulator {
-}
-MonoBehaviour <|-- TextConsoleSimulator
-@enduml

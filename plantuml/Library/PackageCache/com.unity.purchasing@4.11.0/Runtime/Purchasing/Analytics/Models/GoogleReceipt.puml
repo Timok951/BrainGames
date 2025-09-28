@@ -1,6 +1,0 @@
-@startuml
-class GoogleReceipt {
-    + json : string
-    + signature : string
-}
-@enduml

@@ -1,8 +1,0 @@
-@startuml
-class GooglePurchaseBuilder {
-    + GooglePurchaseBuilder(cachedQuerySkuDetailsService:IGoogleCachedQuerySkuDetailsService, logger:ILogger)
-    + BuildPurchases(purchases:IEnumerable<AndroidJavaObject>) : IEnumerable<IGooglePurchase>
-    + BuildPurchase(purchase:AndroidJavaObject) : IGooglePurchase
-}
-IGooglePurchaseBuilder <|-- GooglePurchaseBuilder
-@enduml

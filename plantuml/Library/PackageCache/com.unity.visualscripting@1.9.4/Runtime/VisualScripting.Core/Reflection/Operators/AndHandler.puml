@@ -1,6 +1,0 @@
-@startuml
-class AndHandler {
-    + AndHandler()
-}
-BinaryOperatorHandler <|-- AndHandler
-@enduml

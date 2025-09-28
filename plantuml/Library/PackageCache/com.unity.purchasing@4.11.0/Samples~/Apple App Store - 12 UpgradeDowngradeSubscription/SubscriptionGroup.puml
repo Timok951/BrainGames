@@ -1,7 +1,0 @@
-@startuml
-class SubscriptionGroup {
-    + SubscriptionGroup(storeController:IStoreController, extensionsProvider:IExtensionProvider, subscriptionIds:string[])
-    + BuySubscription(newSubscriptionId:string) : void
-    + CurrentSubscriptionId() : string
-}
-@enduml

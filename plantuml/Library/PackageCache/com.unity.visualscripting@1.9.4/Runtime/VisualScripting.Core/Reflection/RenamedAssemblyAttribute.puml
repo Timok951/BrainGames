@@ -1,8 +1,0 @@
-@startuml
-class RenamedAssemblyAttribute <<sealed>> {
-    + RenamedAssemblyAttribute(previousName:string, newName:string)
-    + previousName : string <<get>>
-    + newName : string <<get>>
-}
-Attribute <|-- RenamedAssemblyAttribute
-@enduml

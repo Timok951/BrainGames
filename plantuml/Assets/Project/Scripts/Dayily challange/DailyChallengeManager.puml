@@ -1,9 +1,0 @@
-@startuml
-class DailyChallengeManager {
-    + OnModeCompleted() : void
-    + ClickedBack(button:UnityEngine.UI.Button) : void
-    + Animate(target:GameObject, onComplete:System.Action, duration:float) : void
-}
-MonoBehaviour <|-- DailyChallengeManager
-DailyChallengeManager --> "Instance" DailyChallengeManager
-@enduml

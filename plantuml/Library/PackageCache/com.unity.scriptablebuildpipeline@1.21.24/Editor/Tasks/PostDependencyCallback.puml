@@ -1,7 +1,0 @@
-@startuml
-class PostDependencyCallback {
-    + Version : int <<get>>
-    + Run() : ReturnCode
-}
-IBuildTask <|-- PostDependencyCallback
-@enduml

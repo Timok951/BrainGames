@@ -1,6 +1,0 @@
-@startuml
-class DivisionHandler <<sealed>> {
-    + DivisionHandler()
-}
-BinaryOperatorHandler <|-- DivisionHandler
-@enduml

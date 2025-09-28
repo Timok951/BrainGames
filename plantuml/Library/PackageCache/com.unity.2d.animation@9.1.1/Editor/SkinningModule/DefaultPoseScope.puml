@@ -1,7 +1,0 @@
-@startuml
-class DefaultPoseScope {
-    + DefaultPoseScope(skeleton:SkeletonCache, useLocalPose:bool)
-    + Dispose() : void
-}
-IDisposable <|-- DefaultPoseScope
-@enduml

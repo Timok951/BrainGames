@@ -1,6 +1,0 @@
-@startuml
-class StateAnalysis <<sealed>> {
-    + isEntered : bool <<get>> <<set>>
-}
-GraphElementAnalysis <|-- StateAnalysis
-@enduml

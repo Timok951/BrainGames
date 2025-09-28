@@ -1,9 +1,0 @@
-@startuml
-class UnitFooterPortsAttribute <<sealed>> {
-    + ControlInputs : bool <<get>> <<set>> = false
-    + ControlOutputs : bool <<get>> <<set>> = false
-    + ValueInputs : bool <<get>> <<set>> = true
-    + ValueOutputs : bool <<get>> <<set>> = true
-}
-Attribute <|-- UnitFooterPortsAttribute
-@enduml

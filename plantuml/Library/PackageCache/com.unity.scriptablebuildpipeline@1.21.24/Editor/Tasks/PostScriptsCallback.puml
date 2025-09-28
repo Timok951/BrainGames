@@ -1,7 +1,0 @@
-@startuml
-class PostScriptsCallback {
-    + Version : int <<get>>
-    + Run() : ReturnCode
-}
-IBuildTask <|-- PostScriptsCallback
-@enduml

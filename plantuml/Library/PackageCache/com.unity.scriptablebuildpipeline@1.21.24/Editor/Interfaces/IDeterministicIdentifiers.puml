@@ -1,5 +1,0 @@
-@startuml
-interface IDeterministicIdentifiers {
-}
-IContextObject <|-- IDeterministicIdentifiers
-@enduml

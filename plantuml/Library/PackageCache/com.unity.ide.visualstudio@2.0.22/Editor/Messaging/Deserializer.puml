@@ -1,8 +1,0 @@
-@startuml
-class Deserializer {
-    + Deserializer(buffer:byte[])
-    + ReadInt32() : int
-    + ReadString() : string
-    + CanReadMore() : bool
-}
-@enduml

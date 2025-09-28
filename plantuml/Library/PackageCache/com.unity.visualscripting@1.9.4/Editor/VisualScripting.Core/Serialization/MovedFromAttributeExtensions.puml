@@ -1,5 +1,0 @@
-@startuml
-class MovedFromAttributeExtensions <<static>> {
-    + {static} GetData(@this:MovedFromAttribute, autoUpdateAPI:bool, sourceNamespace:string, sourceAssembly:string, sourceClassName:string) : void
-}
-@enduml

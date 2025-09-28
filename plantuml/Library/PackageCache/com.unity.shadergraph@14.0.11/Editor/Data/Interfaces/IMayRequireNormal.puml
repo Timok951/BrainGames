@@ -1,7 +1,0 @@
-@startuml
-interface IMayRequireNormal {
-}
-class MayRequireNormalExtensions <<static>> {
-    + {static} RequiresNormal(slot:MaterialSlot) : NeededCoordinateSpace
-}
-@enduml

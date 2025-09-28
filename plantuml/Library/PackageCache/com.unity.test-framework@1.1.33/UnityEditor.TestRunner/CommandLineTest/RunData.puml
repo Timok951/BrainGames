@@ -1,9 +1,0 @@
-@startuml
-class RunData {
-    + isRunning : bool
-}
-class "ScriptableSingleton`1"<T> {
-}
-"ScriptableSingleton`1" "<RunData>" <|-- RunData
-RunData --> "executionSettings" ExecutionSettings
-@enduml

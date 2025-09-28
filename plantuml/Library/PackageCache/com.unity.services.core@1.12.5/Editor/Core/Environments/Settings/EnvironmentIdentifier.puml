@@ -1,6 +1,0 @@
-@startuml
-struct EnvironmentIdentifier {
-    + GetKey() : string
-}
-IEditorGameServiceIdentifier <|-- EnvironmentIdentifier
-@enduml

@@ -1,4 +1,0 @@
-@startuml
-interface "IRequiresData`1"<T> {
-}
-@enduml

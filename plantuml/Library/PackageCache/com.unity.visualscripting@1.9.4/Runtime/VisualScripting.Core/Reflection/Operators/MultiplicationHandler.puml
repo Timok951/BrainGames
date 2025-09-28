@@ -1,6 +1,0 @@
-@startuml
-class MultiplicationHandler <<sealed>> {
-    + MultiplicationHandler()
-}
-BinaryOperatorHandler <|-- MultiplicationHandler
-@enduml

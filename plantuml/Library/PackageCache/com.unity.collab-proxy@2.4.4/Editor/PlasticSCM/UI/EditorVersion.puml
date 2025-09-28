@@ -1,5 +1,0 @@
-@startuml
-class EditorVersion {
-    + <<override>> ToString() : string
-}
-@enduml

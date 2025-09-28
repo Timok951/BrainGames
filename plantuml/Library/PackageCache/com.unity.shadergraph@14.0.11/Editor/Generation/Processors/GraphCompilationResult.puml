@@ -1,7 +1,0 @@
-@startuml
-struct IntArray {
-}
-class GraphCompilationResult {
-    + GenerateCode(outputIndices:int[]) : string
-}
-@enduml

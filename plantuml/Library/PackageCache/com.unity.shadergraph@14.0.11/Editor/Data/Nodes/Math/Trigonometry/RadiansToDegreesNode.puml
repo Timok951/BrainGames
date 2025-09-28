@@ -1,6 +1,0 @@
-@startuml
-class RadiansToDegreesNode {
-    + RadiansToDegreesNode()
-}
-CodeFunctionNode <|-- RadiansToDegreesNode
-@enduml

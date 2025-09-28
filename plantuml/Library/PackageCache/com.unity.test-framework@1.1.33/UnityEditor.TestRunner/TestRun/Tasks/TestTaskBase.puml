@@ -1,6 +1,0 @@
-@startuml
-abstract class TestTaskBase {
-    + SupportsResumingEnumerator : bool
-    + {abstract} Execute(testJobData:TestJobData) : IEnumerator
-}
-@enduml

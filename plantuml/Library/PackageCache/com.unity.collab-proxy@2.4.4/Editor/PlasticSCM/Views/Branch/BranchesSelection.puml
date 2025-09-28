@@ -1,4 +1,0 @@
-@startuml
-class BranchesSelection <<static>> {
-}
-@enduml

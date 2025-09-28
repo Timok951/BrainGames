@@ -1,5 +1,0 @@
-@startuml
-class TeamEditionConfigurationWindow {
-}
-EditorWindow <|-- TeamEditionConfigurationWindow
-@enduml

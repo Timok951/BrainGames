@@ -1,6 +1,0 @@
-@startuml
-class ControlPlayableUtility <<static>> {
-    + {static} DetectCycle(asset:ControlPlayableAsset, director:PlayableDirector, set:HashSet<PlayableDirector>) : bool
-    + {static} GetPlayableAssets(director:PlayableDirector) : IEnumerable<ControlPlayableAsset>
-}
-@enduml

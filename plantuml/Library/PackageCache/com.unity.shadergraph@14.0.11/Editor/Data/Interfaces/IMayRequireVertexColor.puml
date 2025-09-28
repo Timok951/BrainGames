@@ -1,7 +1,0 @@
-@startuml
-interface IMayRequireVertexColor {
-}
-class MayRequireVertexColorExtensions <<static>> {
-    + {static} RequiresVertexColor(slot:MaterialSlot) : bool
-}
-@enduml

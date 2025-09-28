@@ -1,8 +1,0 @@
-@startuml
-class SkinningXMLSerializer {
-    + CanDeserialize(data:string) : bool
-    + Deserialize(data:string) : SkinningCopyData
-    + Serialize(skinningData:SkinningCopyData) : string
-}
-ISkinningSerializer <|-- SkinningXMLSerializer
-@enduml

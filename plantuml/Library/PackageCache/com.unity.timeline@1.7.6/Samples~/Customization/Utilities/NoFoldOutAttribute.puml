@@ -1,5 +1,0 @@
-@startuml
-class NoFoldOutAttribute {
-}
-PropertyAttribute <|-- NoFoldOutAttribute
-@enduml

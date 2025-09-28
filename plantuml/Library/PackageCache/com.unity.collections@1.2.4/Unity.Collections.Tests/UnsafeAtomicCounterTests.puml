@@ -1,6 +1,0 @@
-@startuml
-class UnsafeCounterTests {
-    + <<unsafe>> UnsafeAtomicCounter32_AddSub() : void
-    + <<unsafe>> UnsafeAtomicCounter64_AddSub() : void
-}
-@enduml

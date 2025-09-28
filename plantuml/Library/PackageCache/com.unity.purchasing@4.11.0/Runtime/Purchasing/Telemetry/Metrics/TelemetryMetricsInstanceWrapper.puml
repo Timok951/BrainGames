@@ -1,8 +1,0 @@
-@startuml
-class TelemetryMetricsInstanceWrapper {
-    + TelemetryMetricsInstanceWrapper(logger:ILogger, util:IUtil)
-    + SetMetricsInstance(metricsInstance:IMetrics) : void
-    + SendMetric(metricType:TelemetryMetricTypes, metricName:string, metricTimeSeconds:double) : void
-}
-ITelemetryMetricsInstanceWrapper <|-- TelemetryMetricsInstanceWrapper
-@enduml

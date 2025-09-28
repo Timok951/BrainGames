@@ -1,7 +1,0 @@
-@startuml
-class XmlLinkerModel {
-}
-class "List`1"<T> {
-}
-XmlLinkerModel --> "Assemblies<XmlLinkedAssembly>" "List`1"
-@enduml

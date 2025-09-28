@@ -1,6 +1,0 @@
-@startuml
-class GridLayoutGroupEditor {
-    + <<override>> OnInspectorGUI() : void
-}
-Editor <|-- GridLayoutGroupEditor
-@enduml

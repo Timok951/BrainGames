@@ -1,5 +1,0 @@
-@startuml
-class GuiEnabled {
-}
-IDisposable <|-- GuiEnabled
-@enduml

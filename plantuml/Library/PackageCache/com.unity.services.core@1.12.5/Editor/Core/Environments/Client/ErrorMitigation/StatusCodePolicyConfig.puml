@@ -1,8 +1,0 @@
-@startuml
-class StatusCodePolicyConfig {
-    + HandleStatusCode(code:long) : void
-    + DontHandleStatusCode(code:long) : void
-    + Clear() : void
-    + IsHandledStatusCode(code:long) : bool
-}
-@enduml

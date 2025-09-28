@@ -1,5 +1,0 @@
-@startuml
-abstract class BaseDelegator {
-    + Abort() : void
-}
-@enduml

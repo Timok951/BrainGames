@@ -1,6 +1,0 @@
-@startuml
-class TrackPropertyCurvesDataSource {
-    + TrackPropertyCurvesDataSource(track:TrackAsset)
-}
-BasePropertyKeyDataSource <|-- TrackPropertyCurvesDataSource
-@enduml

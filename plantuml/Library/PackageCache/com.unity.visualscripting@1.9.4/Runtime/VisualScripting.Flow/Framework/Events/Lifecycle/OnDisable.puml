@@ -1,7 +1,0 @@
-@startuml
-class OnDisable <<sealed>> {
-}
-class "MachineEventUnit`1"<T> {
-}
-"MachineEventUnit`1" "<EmptyEventArgs>" <|-- OnDisable
-@enduml

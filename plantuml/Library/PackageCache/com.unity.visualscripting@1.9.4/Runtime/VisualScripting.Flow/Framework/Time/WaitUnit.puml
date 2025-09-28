@@ -1,7 +1,0 @@
-@startuml
-abstract class WaitUnit {
-}
-Unit <|-- WaitUnit
-WaitUnit --> "enter" ControlInput
-WaitUnit --> "exit" ControlOutput
-@enduml

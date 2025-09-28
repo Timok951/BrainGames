@@ -1,6 +1,0 @@
-@startuml
-class CurrentTime {
-    + GetSourceValue(_:ISelectorInfo) : object
-}
-IVariable <|-- CurrentTime
-@enduml

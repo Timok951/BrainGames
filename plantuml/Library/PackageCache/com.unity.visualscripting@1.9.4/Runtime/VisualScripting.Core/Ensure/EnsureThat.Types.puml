@@ -1,8 +1,0 @@
-@startuml
-class EnsureThat <<partial>> {
-    + IsOfType(param:T, expectedType:Type) : void
-    + IsOfType(param:Type, expectedType:Type) : void
-    + IsOfType(param:object) : void
-    + IsOfType(param:Type) : void
-}
-@enduml

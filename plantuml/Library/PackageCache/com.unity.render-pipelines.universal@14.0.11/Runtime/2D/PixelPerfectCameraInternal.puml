@@ -1,9 +1,0 @@
-@startuml
-interface IPixelPerfectCamera {
-}
-class PixelPerfectCameraInternal {
-    + OnBeforeSerialize() : void
-    + OnAfterDeserialize() : void
-}
-ISerializationCallbackReceiver <|-- PixelPerfectCameraInternal
-@enduml

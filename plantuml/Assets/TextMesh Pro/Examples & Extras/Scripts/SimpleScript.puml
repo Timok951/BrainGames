@@ -1,5 +1,0 @@
-@startuml
-class SimpleScript {
-}
-MonoBehaviour <|-- SimpleScript
-@enduml

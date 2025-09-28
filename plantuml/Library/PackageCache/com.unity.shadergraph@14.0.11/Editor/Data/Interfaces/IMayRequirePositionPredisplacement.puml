@@ -1,7 +1,0 @@
-@startuml
-interface IMayRequirePositionPredisplacement {
-}
-class MayRequirePositionPredisplacementExtensions <<static>> {
-    + {static} RequiresPositionPredisplacement(slot:MaterialSlot) : NeededCoordinateSpace
-}
-@enduml

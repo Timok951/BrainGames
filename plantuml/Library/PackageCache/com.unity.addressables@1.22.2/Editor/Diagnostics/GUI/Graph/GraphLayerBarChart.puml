@@ -1,7 +1,0 @@
-@startuml
-class GraphLayerBarChartMesh {
-    + GraphLayerBarChartMesh(stream:int, name:string, description:string, color:Color)
-    + <<override>> Draw(dataSet:EventDataSet, rect:Rect, startFrame:int, frameCount:int, inspectFrame:int, expanded:bool, material:Material, maxValue:int) : void
-}
-GraphLayerBase <|-- GraphLayerBarChartMesh
-@enduml

@@ -1,9 +1,0 @@
-@startuml
-class ExclusiveOr <<sealed>> {
-    + Operation(flow:Flow) : bool
-}
-Unit <|-- ExclusiveOr
-ExclusiveOr --> "a" ValueInput
-ExclusiveOr --> "b" ValueInput
-ExclusiveOr --> "result" ValueOutput
-@enduml

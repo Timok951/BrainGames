@@ -1,5 +1,0 @@
-@startuml
-class SettingsProviderGUIScope {
-    + SettingsProviderGUIScope()
-}
-@enduml

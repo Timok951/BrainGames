@@ -1,6 +1,0 @@
-@startuml
-class AssetNotPersistentException {
-    + AssetNotPersistentException(target:UnityEngine.Object)
-}
-Exception <|-- AssetNotPersistentException
-@enduml

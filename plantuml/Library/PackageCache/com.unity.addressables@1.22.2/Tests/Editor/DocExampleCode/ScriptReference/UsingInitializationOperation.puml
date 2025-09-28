@@ -1,7 +1,0 @@
-@startuml
-class UsingInitializationOperation {
-}
-class "AsyncOperationHandle`1"<T> {
-}
-UsingInitializationOperation --> "InitializationOperation<IResourceLocator>" "AsyncOperationHandle`1"
-@enduml

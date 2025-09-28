@@ -1,5 +1,0 @@
-@startuml
-interface ISGResizable {
-}
-IResizable <|-- ISGResizable
-@enduml

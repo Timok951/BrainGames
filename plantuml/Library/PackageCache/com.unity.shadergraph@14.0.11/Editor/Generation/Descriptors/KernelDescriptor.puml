@@ -1,7 +1,0 @@
-@startuml
-struct KernelDescriptor {
-    + name : string
-    + templatePath : string
-}
-KernelDescriptor --> "passDescriptorReference" PassDescriptor
-@enduml

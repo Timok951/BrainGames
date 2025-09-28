@@ -1,7 +1,0 @@
-@startuml
-interface IMayRequireMeshUV {
-}
-class MayRequireMeshUVExtensions <<static>> {
-    + {static} RequiresMeshUV(slot:MaterialSlot, channel:UVChannel) : bool
-}
-@enduml

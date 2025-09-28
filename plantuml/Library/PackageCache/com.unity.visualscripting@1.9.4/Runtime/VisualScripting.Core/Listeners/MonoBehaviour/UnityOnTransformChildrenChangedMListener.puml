@@ -1,5 +1,0 @@
-@startuml
-class UnityOnTransformChildrenChangedMessageListener <<sealed>> {
-}
-MessageListener <|-- UnityOnTransformChildrenChangedMessageListener
-@enduml

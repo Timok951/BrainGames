@@ -1,5 +1,0 @@
-@startuml
-interface ISharedMetadata {
-}
-IMetadata <|-- ISharedMetadata
-@enduml

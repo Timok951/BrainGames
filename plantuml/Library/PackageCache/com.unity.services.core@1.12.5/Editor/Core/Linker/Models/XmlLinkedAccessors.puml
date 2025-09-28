@@ -1,7 +1,0 @@
-@startuml
-enum XmlLinkedAccessors {
-    All= default,
-    Get,
-    Set,
-}
-@enduml

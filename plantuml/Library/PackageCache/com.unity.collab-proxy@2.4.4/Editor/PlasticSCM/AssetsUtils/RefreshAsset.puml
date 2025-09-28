@@ -1,4 +1,0 @@
-@startuml
-class RefreshAsset <<static>> {
-}
-@enduml

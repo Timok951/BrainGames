@@ -1,8 +1,0 @@
-@startuml
-class AotStubWriterAttribute <<sealed>> {
-    + AotStubWriterAttribute(type:Type)
-}
-Attribute <|-- AotStubWriterAttribute
-IDecoratorAttribute <|-- AotStubWriterAttribute
-AotStubWriterAttribute --> "type" Type
-@enduml

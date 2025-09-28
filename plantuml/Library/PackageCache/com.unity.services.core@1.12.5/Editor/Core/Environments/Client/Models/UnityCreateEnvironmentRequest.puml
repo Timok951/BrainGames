@@ -1,6 +1,0 @@
-@startuml
-class UnityCreateEnvironmentRequest {
-    + UnityCreateEnvironmentRequest(name:string)
-    + Name : string <<get>>
-}
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class UpdateReportListView {
-    + <<override>> GetRows() : IList<TreeViewItem>
-}
-TreeView <|-- UpdateReportListView
-@enduml

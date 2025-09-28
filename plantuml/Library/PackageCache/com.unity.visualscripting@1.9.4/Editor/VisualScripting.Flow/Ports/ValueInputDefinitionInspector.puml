@@ -1,6 +1,0 @@
-@startuml
-class ValueInputDefinitionInspector <<sealed>> {
-    + ValueInputDefinitionInspector(metadata:Metadata)
-}
-ValuePortDefinitionInspector <|-- ValueInputDefinitionInspector
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-abstract class "EventBinding`1"<T> {
-    + Source : T <<get>> <<set>>
-}
-@enduml

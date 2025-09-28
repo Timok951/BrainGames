@@ -1,6 +1,0 @@
-@startuml
-enum CaseSensitivityType {
-    CaseSensitive,
-    CaseInsensitive,
-}
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class TestRunnerApiListener {
-    + {static} RetrieveTestList(mode:string) : void
-    + {static} ExecuteTests(command:string) : void
-}
-@enduml

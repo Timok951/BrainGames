@@ -1,5 +1,0 @@
-@startuml
-class NavMeshSurfaceVolumeUpdater {
-}
-MonoBehaviour <|-- NavMeshSurfaceVolumeUpdater
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-class SampleTexture2DNodePropertyDrawer {
-}
-AbstractMaterialNodePropertyDrawer <|-- SampleTexture2DNodePropertyDrawer
-@enduml

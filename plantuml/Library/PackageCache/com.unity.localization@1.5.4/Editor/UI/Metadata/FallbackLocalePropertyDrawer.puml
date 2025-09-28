@@ -1,6 +1,0 @@
-@startuml
-class FallbackLocalePropertyDrawer {
-    + <<override>> OnGUI(position:Rect, property:SerializedProperty, label:GUIContent) : void
-}
-PropertyDrawer <|-- FallbackLocalePropertyDrawer
-@enduml

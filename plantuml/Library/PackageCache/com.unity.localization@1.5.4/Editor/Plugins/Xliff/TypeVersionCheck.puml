@@ -1,5 +1,0 @@
-@startuml
-class TypeVersionCheck <<static>> {
-    + {static} GetConcreteTypeThrowIfTypeVersionMismatch(value:object) : TExpected
-}
-@enduml

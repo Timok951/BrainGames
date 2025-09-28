@@ -1,7 +1,0 @@
-@startuml
-class SheetsServiceProvider <<partial>> {
-    + SetOAuthCrendtials(credentialsJson:string) : void
-    + SetOAuthCrendtials(clientId:string, clientSecret:string) : void
-    + AuthoizeOAuth() : void
-}
-@enduml

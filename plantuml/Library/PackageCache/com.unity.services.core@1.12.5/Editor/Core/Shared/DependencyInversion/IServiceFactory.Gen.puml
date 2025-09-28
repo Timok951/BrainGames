@@ -1,4 +1,0 @@
-@startuml
-interface IServiceFactory {
-}
-@enduml

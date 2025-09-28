@@ -1,5 +1,0 @@
-@startuml
-class UsingResourceManager {
-    + UsingResourceManagerSample() : void
-}
-@enduml

@@ -1,7 +1,0 @@
-@startuml
-class DrawAssetOverlay <<static>> {
-}
-class DrawOverlayIcon <<static>> {
-}
-DrawAssetOverlay +-- DrawOverlayIcon
-@enduml

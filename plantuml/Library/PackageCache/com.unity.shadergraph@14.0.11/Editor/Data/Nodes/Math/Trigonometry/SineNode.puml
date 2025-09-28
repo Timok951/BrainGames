@@ -1,6 +1,0 @@
-@startuml
-class SineNode {
-    + SineNode()
-}
-CodeFunctionNode <|-- SineNode
-@enduml

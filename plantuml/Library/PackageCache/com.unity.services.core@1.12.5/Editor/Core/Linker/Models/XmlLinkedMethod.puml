@@ -1,5 +1,0 @@
-@startuml
-class XmlLinkedMethod {
-}
-XmlLinkedMember <|-- XmlLinkedMethod
-@enduml

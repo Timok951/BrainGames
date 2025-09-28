@@ -1,8 +1,0 @@
-@startuml
-class ContentUpdateGroupSchema {
-    + StaticContent : bool <<get>> <<set>>
-    + <<override>> OnGUI() : void
-    + <<override>> OnGUIMultiple(otherSchemas:List<AddressableAssetGroupSchema>) : void
-}
-AddressableAssetGroupSchema <|-- ContentUpdateGroupSchema
-@enduml

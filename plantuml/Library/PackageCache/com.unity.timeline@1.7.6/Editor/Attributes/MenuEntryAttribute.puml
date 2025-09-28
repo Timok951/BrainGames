@@ -1,6 +1,0 @@
-@startuml
-class MenuEntryAttribute {
-    + MenuEntryAttribute(path:string, priority:int)
-}
-Attribute <|-- MenuEntryAttribute
-@enduml

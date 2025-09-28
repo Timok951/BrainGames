@@ -1,6 +1,0 @@
-@startuml
-abstract class BasePurchasingState {
-}
-class "SimpleStateMachine`1"<T> {
-}
-@enduml

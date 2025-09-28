@@ -1,7 +1,0 @@
-@startuml
-class UnityUploadIconV1201Response {
-    + UnityUploadIconV1201Response(filename:string, iconUrl:string)
-    + Filename : string <<get>>
-    + IconUrl : string <<get>>
-}
-@enduml

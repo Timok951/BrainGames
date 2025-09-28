@@ -1,7 +1,0 @@
-@startuml
-enum TypeQualifier {
-    Name,
-    Namespace,
-    GlobalNamespace,
-}
-@enduml

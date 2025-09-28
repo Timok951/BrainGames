@@ -1,6 +1,0 @@
-@startuml
-class UpdateResponse {
-    + Status : string <<get>> <<set>>
-    + Message : string <<get>> <<set>>
-}
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-class TypeUtility <<static>> {
-    + {static} PopulateMenuWithCreateItems(menu:GenericMenu, baseType:Type, selected:Action<Type>, requiredAttribute:Type) : void
-}
-@enduml

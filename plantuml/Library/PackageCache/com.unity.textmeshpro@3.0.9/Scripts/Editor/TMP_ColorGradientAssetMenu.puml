@@ -1,5 +1,0 @@
-@startuml
-class TMP_ColorGradientAssetMenu <<static>> {
-    + {static} CreateColorGradient(context:MenuCommand) : void
-}
-@enduml

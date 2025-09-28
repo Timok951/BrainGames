@@ -1,5 +1,0 @@
-@startuml
-class NoAliasAttribute {
-}
-Attribute <|-- NoAliasAttribute
-@enduml

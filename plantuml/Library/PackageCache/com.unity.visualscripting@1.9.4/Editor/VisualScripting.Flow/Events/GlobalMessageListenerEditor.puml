@@ -1,6 +1,0 @@
-@startuml
-class GlobalMessageListenerEditor {
-    + <<override>> OnInspectorGUI() : void
-}
-Editor <|-- GlobalMessageListenerEditor
-@enduml

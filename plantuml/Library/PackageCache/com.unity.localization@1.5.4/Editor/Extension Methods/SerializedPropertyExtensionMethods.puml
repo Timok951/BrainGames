@@ -1,9 +1,0 @@
-@startuml
-class SerializedPropertyExtensionMethods <<static>> {
-    + {static} GetActualObjectForSerializedProperty(property:SerializedProperty, field:System.Reflection.FieldInfo) : TObject
-    + {static} AddArrayElement(property:SerializedProperty) : SerializedProperty
-    + {static} InsertArrayElement(property:SerializedProperty, index:int) : SerializedProperty
-    + {static} GetValueAsString(property:SerializedProperty) : string
-    + {static} ApplyPropertyModification(property:SerializedProperty, modification:PropertyModification) : void
-}
-@enduml

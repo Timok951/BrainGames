@@ -1,6 +1,0 @@
-@startuml
-class TilingAndOffsetNode {
-    + TilingAndOffsetNode()
-}
-CodeFunctionNode <|-- TilingAndOffsetNode
-@enduml

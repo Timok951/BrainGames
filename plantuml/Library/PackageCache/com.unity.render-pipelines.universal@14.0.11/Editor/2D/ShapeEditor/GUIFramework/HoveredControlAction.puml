@@ -1,7 +1,0 @@
-@startuml
-abstract class HoveredControlAction {
-    + HoveredControlAction(control:Control)
-}
-GUIAction <|-- HoveredControlAction
-HoveredControlAction --> "hoveredControl" Control
-@enduml

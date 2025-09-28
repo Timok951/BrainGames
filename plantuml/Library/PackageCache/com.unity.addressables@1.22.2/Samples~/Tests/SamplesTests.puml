@@ -1,6 +1,0 @@
-@startuml
-abstract class SamplesTests {
-    + Samples_GetAddressFromAssetReference_ReturnsCorrectAddress() : IEnumerator
-}
-AddressablesTestFixture <|-- SamplesTests
-@enduml

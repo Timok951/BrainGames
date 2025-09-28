@@ -1,6 +1,0 @@
-@startuml
-class TextureSlotControlView {
-    + TextureSlotControlView(slot:Texture2DInputMaterialSlot)
-}
-VisualElement <|-- TextureSlotControlView
-@enduml

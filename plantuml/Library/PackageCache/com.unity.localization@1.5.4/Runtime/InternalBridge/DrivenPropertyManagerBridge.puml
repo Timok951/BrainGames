@@ -1,7 +1,0 @@
-@startuml
-class DrivenPropertyManagerBridge {
-    + {static} RegisterProperty(driver:Object, target:Object, propertyPath:string) : void
-    + {static} UnregisterProperty(driver:Object, target:Object, propertyPath:string) : void
-    + {static} UnregisterProperties(driver:Object) : void
-}
-@enduml

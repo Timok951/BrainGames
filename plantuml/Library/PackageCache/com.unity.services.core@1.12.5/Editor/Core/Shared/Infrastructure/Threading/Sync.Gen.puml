@@ -1,5 +1,0 @@
-@startuml
-class Sync <<static>> {
-    + {static} RunInBackgroundThread(action:Func<Task<T>>) : Task<T>
-}
-@enduml

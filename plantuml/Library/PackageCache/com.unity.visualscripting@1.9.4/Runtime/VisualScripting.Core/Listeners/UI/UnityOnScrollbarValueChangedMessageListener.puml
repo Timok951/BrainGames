@@ -1,5 +1,0 @@
-@startuml
-class UnityOnScrollbarValueChangedMessageListener <<sealed>> {
-}
-MessageListener <|-- UnityOnScrollbarValueChangedMessageListener
-@enduml

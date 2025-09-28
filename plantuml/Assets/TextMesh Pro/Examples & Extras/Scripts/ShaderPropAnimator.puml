@@ -1,7 +1,0 @@
-@startuml
-class ShaderPropAnimator {
-    + m_frame : float
-}
-MonoBehaviour <|-- ShaderPropAnimator
-ShaderPropAnimator --> "GlowCurve" AnimationCurve
-@enduml

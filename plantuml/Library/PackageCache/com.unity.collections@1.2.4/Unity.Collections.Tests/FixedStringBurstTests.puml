@@ -1,5 +1,0 @@
-@startuml
-class FixedStringBurstTests {
-    + TestBurstAppend() : void
-}
-@enduml

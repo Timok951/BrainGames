@@ -1,6 +1,0 @@
-@startuml
-class Diagnostics {
-    + SendDiagnostic(name:string, message:string, tags:IDictionary<string, string>) : void
-}
-IDiagnostics <|-- Diagnostics
-@enduml

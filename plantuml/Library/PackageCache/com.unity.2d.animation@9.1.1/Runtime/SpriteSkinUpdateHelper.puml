@@ -1,5 +1,0 @@
-@startuml
-class SpriteSkinUpdateHelper {
-}
-MonoBehaviour <|-- SpriteSkinUpdateHelper
-@enduml

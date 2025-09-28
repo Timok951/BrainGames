@@ -1,9 +1,0 @@
-@startuml
-class fsPropertyAttribute {
-    + fsPropertyAttribute()
-    + fsPropertyAttribute(name:string)
-    + Name : string
-}
-Attribute <|-- fsPropertyAttribute
-fsPropertyAttribute --> "Converter" Type
-@enduml

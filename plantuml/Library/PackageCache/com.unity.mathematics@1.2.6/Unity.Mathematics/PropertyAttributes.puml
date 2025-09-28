@@ -1,6 +1,0 @@
-@startuml
-class PostNormalizeAttribute {
-}
-class DoNotNormalizeAttribute {
-}
-@enduml

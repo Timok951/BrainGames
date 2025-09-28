@@ -1,6 +1,0 @@
-@startuml
-class AnalyticsEventTests <<partial>> {
-    + PushNotificationClick_MessageIdTest(messageId:string) : void
-    + PushNotificationClick_CustomDataTest() : void
-}
-@enduml

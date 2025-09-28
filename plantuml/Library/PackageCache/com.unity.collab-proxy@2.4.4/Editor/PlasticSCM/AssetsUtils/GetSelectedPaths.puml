@@ -1,4 +1,0 @@
-@startuml
-class GetSelectedPaths <<static>> {
-}
-@enduml

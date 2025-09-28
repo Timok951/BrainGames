@@ -1,6 +1,0 @@
-@startuml
-class OrganizationHandler {
-    + Key : string <<get>>
-}
-IOrganizationHandler <|-- OrganizationHandler
-@enduml

@@ -1,4 +1,0 @@
-@startuml
-class VCSPlugin <<static>> {
-}
-@enduml

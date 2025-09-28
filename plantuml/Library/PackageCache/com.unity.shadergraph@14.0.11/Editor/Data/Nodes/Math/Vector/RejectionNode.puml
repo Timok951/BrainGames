@@ -1,6 +1,0 @@
-@startuml
-class RejectionNode {
-    + RejectionNode()
-}
-CodeFunctionNode <|-- RejectionNode
-@enduml

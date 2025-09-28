@@ -1,7 +1,0 @@
-@startuml
-class StartupSelectorExample {
-    + GetStartupLocale(availableLocales:ILocalesProvider) : Locale
-}
-IStartupLocaleSelector <|-- StartupSelectorExample
-StartupSelectorExample --> "language" SystemLanguage
-@enduml

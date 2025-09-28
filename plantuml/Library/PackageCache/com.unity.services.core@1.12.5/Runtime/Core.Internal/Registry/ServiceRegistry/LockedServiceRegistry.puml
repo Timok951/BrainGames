@@ -1,8 +1,0 @@
-@startuml
-class LockedServiceRegistry {
-    + LockedServiceRegistry(registryToLock:IServiceRegistry)
-    + RegisterService(service:T) : void
-    + GetService() : T
-}
-IServiceRegistry <|-- LockedServiceRegistry
-@enduml

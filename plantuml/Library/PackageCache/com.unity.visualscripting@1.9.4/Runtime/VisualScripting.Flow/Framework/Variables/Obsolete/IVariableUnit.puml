@@ -1,5 +1,0 @@
-@startuml
-interface IVariableUnit {
-}
-IUnit <|-- IVariableUnit
-@enduml

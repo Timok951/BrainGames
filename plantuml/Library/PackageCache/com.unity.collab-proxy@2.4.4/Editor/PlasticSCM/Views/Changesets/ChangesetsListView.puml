@@ -1,7 +1,0 @@
-@startuml
-class ChangesetsListView {
-    + <<override>> GetRows() : IList<TreeViewItem>
-    + <<override>> OnGUI(rect:Rect) : void
-}
-TreeView <|-- ChangesetsListView
-@enduml

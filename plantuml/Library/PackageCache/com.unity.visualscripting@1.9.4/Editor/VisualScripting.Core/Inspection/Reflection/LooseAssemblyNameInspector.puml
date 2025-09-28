@@ -1,6 +1,0 @@
-@startuml
-class LooseAssemblyNameInspector <<sealed>> {
-    + LooseAssemblyNameInspector(metadata:Metadata)
-}
-Inspector <|-- LooseAssemblyNameInspector
-@enduml

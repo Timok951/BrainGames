@@ -1,9 +1,0 @@
-@startuml
-class ProductCollection {
-    + WithID(id:string) : Product
-    + WithStoreSpecificID(id:string) : Product
-}
-class "HashSet`1"<T> {
-}
-ProductCollection o-> "set<Product>" "HashSet`1"
-@enduml

@@ -1,8 +1,0 @@
-@startuml
-class ThreadingManagerTasks {
-    + ThreadingTasks_SameQueues_ExecuteSequentially(queue:object) : void
-    + ThreadingTasks_SaveQueue_RunsInParallelWith_UploadQueue() : void
-    + ThreadingTasks_PruneQueue_RunsAfter_SaveAndUploadQueue() : void
-    + WhenPruneTaskActive_SaveAndUploadTasksWaitForPruneCompletion() : void
-}
-@enduml

@@ -1,7 +1,0 @@
-@startuml
-class NoiseSineWaveNode {
-    + <<override>> latestVersion : int <<get>>
-    + NoiseSineWaveNode()
-}
-CodeFunctionNode <|-- NoiseSineWaveNode
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class EnvironmentNotFoundException {
-    + EnvironmentNotFoundException(message:string)
-}
-Exception <|-- EnvironmentNotFoundException
-@enduml

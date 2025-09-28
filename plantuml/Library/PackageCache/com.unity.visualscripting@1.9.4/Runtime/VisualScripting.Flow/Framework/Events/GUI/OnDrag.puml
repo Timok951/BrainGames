@@ -1,6 +1,0 @@
-@startuml
-class OnDrag <<sealed>> {
-}
-PointerEventUnit <|-- OnDrag
-OnDrag --> "MessageListenerType" Type
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class "AdminApiHeaders`1"<T> {
-    + AdminApiHeaders(gatewayToken:string)
-    + ToDictionary() : IDictionary<string, string>
-}
-@enduml

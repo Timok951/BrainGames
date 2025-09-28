@@ -1,7 +1,0 @@
-@startuml
-class FileSystem {
-    + GetOrCreateFileContent(path:string) : string
-    + SaveFile(path:string, fileContent:string) : void
-}
-IFileSystem <|-- FileSystem
-@enduml

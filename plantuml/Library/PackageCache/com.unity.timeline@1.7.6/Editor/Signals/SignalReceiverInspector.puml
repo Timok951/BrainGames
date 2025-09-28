@@ -1,6 +1,0 @@
-@startuml
-class SignalReceiverInspector {
-    + <<override>> OnInspectorGUI() : void
-}
-Editor <|-- SignalReceiverInspector
-@enduml

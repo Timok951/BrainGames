@@ -1,8 +1,0 @@
-@startuml
-class TrackAssetExamples_HideAPI {
-}
-class CustomAnimationTrack {
-}
-TrackAssetExamples_HideAPI +-- CustomAnimationTrack
-TrackAsset <|-- CustomAnimationTrack
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class ApplicationQuit {
-    +  <<event>> OnApplicationQuitEventHandler : UnityAction 
-}
-MonoBehaviour <|-- ApplicationQuit
-@enduml

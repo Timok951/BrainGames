@@ -1,5 +1,0 @@
-@startuml
-class StackTraceFilter <<static>> {
-    + {static} Filter(inputStackTrace:string) : string
-}
-@enduml

@@ -1,9 +1,0 @@
-@startuml
-class AnalyticsEventTests <<partial>> {
-    + PostAdAction_RewardedTest(rewarded:bool) : void
-    + PostAdAction_NetworkStringTest(network:string) : void
-    + PostAdAction_NetworkEnumTest(network:AdvertisingNetwork) : void
-    + PostAdAction_PlacementIdTest(placementId:string) : void
-    + PostAdAction_CustomDataTest() : void
-}
-@enduml

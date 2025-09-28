@@ -1,5 +1,0 @@
-@startuml
-interface IAccessToken {
-}
-IServiceComponent <|-- IAccessToken
-@enduml

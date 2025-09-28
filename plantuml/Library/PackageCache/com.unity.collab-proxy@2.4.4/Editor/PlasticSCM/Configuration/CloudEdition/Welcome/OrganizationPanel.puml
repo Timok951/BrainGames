@@ -1,5 +1,0 @@
-@startuml
-class OrganizationPanel {
-}
-VisualElement <|-- OrganizationPanel
-@enduml

@@ -1,7 +1,0 @@
-@startuml
-class ProfilesEditor {
-    + {static} ValueGUILayout(settings:AddressableAssetSettings, label:string, currentId:string) : string
-    + {static} CalcGUIHeight(settings:AddressableAssetSettings, label:string, currentId:string) : float
-    + {static} ValueGUI(rect:Rect, settings:AddressableAssetSettings, label:string, currentId:string, wasChanged:bool) : string
-}
-@enduml

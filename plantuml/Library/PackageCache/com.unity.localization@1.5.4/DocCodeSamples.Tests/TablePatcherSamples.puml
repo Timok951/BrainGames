@@ -1,9 +1,0 @@
-@startuml
-class CustomTablePatcher {
-    + PostprocessTable(table:LocalizationTable) : void
-}
-class AssignCustomTablePatcherExample <<static>> {
-    + {static} AssignTablePostprocessor() : void
-}
-ITablePostprocessor <|-- CustomTablePatcher
-@enduml

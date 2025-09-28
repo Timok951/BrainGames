@@ -1,4 +1,0 @@
-@startuml
-class GetAvatar <<static>> {
-}
-@enduml

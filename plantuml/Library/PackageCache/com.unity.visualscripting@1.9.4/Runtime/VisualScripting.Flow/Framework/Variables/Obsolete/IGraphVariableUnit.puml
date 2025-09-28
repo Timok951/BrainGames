@@ -1,5 +1,0 @@
-@startuml
-interface IGraphVariableUnit {
-}
-IVariableUnit <|-- IGraphVariableUnit
-@enduml

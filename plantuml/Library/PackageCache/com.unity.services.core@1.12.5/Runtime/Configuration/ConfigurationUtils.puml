@@ -1,6 +1,0 @@
-@startuml
-class ConfigurationUtils <<static>> {
-    + <<const>> ConfigFileName : string = "UnityServicesProjectConfiguration.json"
-}
-ConfigurationUtils o-> "ConfigurationLoader" IConfigurationLoader
-@enduml

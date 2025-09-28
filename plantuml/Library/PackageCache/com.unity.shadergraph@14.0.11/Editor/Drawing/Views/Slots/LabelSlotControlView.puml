@@ -1,6 +1,0 @@
-@startuml
-class LabelSlotControlView {
-    + LabelSlotControlView(label:string)
-}
-VisualElement <|-- LabelSlotControlView
-@enduml

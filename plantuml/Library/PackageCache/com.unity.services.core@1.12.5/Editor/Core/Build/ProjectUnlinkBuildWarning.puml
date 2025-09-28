@@ -1,9 +1,0 @@
-@startuml
-class ProjectUnlinkBuildWarning {
-    + callbackOrder : int <<get>>
-    + ProjectUnlinkBuildWarning()
-    + ProjectUnlinkBuildWarning(projectStateRequest:IProjectStateRequest)
-    + OnPreprocessBuild(report:BuildReport) : void
-}
-IPreprocessBuildWithReport <|-- ProjectUnlinkBuildWarning
-@enduml

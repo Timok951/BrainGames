@@ -1,6 +1,0 @@
-@startuml
-class ProjectSettingsProvider {
-    + {static} CreateProjectSettingProvider() : SettingsProvider
-}
-Editor <|-- ProjectSettingsProvider
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class FullNameFilter {
-    + FullNameFilter(expectedValue:string)
-    + <<override>> Match(test:ITest) : bool
-}
-@enduml

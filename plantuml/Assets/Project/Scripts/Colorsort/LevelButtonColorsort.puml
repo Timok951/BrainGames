@@ -1,5 +1,0 @@
-@startuml
-class LevelButtonColorsort {
-}
-MonoBehaviour <|-- LevelButtonColorsort
-@enduml

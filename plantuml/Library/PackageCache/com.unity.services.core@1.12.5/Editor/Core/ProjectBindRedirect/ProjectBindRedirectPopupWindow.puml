@@ -1,5 +1,0 @@
-@startuml
-class ProjectBindRedirectPopupWindow {
-}
-EditorWindow <|-- ProjectBindRedirectPopupWindow
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-enum ServicesType {
-    Default,
-    Instance,
-}
-@enduml

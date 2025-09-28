@@ -1,6 +1,0 @@
-@startuml
-class RoundedPolygonNode {
-    + RoundedPolygonNode()
-}
-CodeFunctionNode <|-- RoundedPolygonNode
-@enduml

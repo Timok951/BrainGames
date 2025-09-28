@@ -1,8 +1,0 @@
-@startuml
-class ValidationResult <<sealed>> {
-    + Failed : bool <<get>>
-    + ErrorMessage : string <<get>>
-    + ValidationResult()
-    + ValidationResult(errorMessage:string)
-}
-@enduml

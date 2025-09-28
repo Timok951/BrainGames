@@ -1,9 +1,0 @@
-@startuml
-class CheckResourcesDupeDependenciesTests {
-    + CheckResourcesDupe_GetsCorrectResourcePaths() : void
-    + CheckResourcesDupe_ResourcesDependenciesMatchWithExplicitBundleDependencies() : void
-    + CheckResourcesDupe_ResourcesDependenciesMatchWithImplicitBundleDependencies() : void
-    + CheckResourcesDupe_AllResourcesDependenciesAreReturned() : void
-}
-AddressableAssetTestBase <|-- CheckResourcesDupeDependenciesTests
-@enduml

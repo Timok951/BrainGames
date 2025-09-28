@@ -1,7 +1,0 @@
-@startuml
-class MatrixDeterminantNode {
-    + MatrixDeterminantNode()
-    + <<override>> hasPreview : bool <<get>>
-}
-CodeFunctionNode <|-- MatrixDeterminantNode
-@enduml

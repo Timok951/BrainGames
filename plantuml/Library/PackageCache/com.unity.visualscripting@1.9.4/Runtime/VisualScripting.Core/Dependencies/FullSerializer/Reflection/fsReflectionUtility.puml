@@ -1,5 +1,0 @@
-@startuml
-class fsReflectionUtility <<static>> {
-    + {static} GetInterface(type:Type, interfaceType:Type) : Type
-}
-@enduml

@@ -1,7 +1,0 @@
-@startuml
-class SliderTests {
-    + Setup() : void
-    + TearDown() : void
-    + SetSliderValueWithoutNotifyWillNotNotify() : void
-}
-@enduml

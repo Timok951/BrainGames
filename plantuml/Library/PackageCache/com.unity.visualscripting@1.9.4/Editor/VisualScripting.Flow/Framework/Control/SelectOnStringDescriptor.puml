@@ -1,8 +1,0 @@
-@startuml
-class SelectOnStringDescriptor {
-    + SelectOnStringDescriptor(unit:SelectOnString)
-}
-class "SelectUnitDescriptor`1"<T> {
-}
-"SelectUnitDescriptor`1" "<string>" <|-- SelectOnStringDescriptor
-@enduml

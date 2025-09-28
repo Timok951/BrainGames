@@ -1,6 +1,0 @@
-@startuml
-enum FullscreenShaderPass {
-    Blit,
-    DrawProcedural,
-}
-@enduml

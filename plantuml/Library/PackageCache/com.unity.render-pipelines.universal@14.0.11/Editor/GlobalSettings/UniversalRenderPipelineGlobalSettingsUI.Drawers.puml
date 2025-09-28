@@ -1,6 +1,0 @@
-@startuml
-class UniversalRenderPipelineGlobalSettingsUI <<partial>> {
-}
-class "CoreEditorDrawer`1"<T> {
-}
-@enduml

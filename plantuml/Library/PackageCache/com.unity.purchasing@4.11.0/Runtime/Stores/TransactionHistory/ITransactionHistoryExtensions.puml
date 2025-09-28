@@ -1,5 +1,0 @@
-@startuml
-interface ITransactionHistoryExtensions {
-}
-IStoreExtension <|-- ITransactionHistoryExtensions
-@enduml

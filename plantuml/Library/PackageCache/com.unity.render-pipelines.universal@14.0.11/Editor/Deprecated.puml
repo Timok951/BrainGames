@@ -1,8 +1,0 @@
-@startuml
-class ForwardRendererDataEditor {
-    + <<override>> OnInspectorGUI() : void
-}
-class EditorUtils <<static>> <<partial>> {
-}
-ScriptableRendererDataEditor <|-- ForwardRendererDataEditor
-@enduml

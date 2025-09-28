@@ -1,4 +1,0 @@
-@startuml
-class RerunCallbackInitializer <<static>> {
-}
-@enduml

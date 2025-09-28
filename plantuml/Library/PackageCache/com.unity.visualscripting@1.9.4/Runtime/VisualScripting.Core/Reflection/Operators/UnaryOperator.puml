@@ -1,9 +1,0 @@
-@startuml
-enum UnaryOperator {
-    LogicalNegation,
-    NumericNegation,
-    Increment,
-    Decrement,
-    Plus,
-}
-@enduml

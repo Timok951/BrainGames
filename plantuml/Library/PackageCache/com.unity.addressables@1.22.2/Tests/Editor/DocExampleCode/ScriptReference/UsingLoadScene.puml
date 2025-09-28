@@ -1,5 +1,0 @@
-@startuml
-class UsingLoadScene {
-    + UsingLoadSceneSample() : void
-}
-@enduml

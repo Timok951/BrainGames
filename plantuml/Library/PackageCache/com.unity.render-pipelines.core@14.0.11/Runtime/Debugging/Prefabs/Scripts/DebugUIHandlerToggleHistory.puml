@@ -1,5 +1,0 @@
-@startuml
-class DebugUIHandlerToggleHistory {
-}
-DebugUIHandlerToggle <|-- DebugUIHandlerToggleHistory
-@enduml

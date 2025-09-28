@@ -1,5 +1,0 @@
-@startuml
-class TimelineShortcutAttribute {
-    + TimelineShortcutAttribute(id:string, defaultKeyCode:KeyCode, defaultShortcutModifiers:ShortcutModifiers)
-}
-@enduml

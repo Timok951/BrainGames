@@ -1,4 +1,0 @@
-@startuml
-class InspectorUtility <<static>> {
-}
-@enduml

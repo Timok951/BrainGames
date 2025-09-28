@@ -1,7 +1,0 @@
-@startuml
-struct StructDescriptor {
-    + name : string
-    + packFields : bool
-    + populateWithCustomInterpolators : bool
-}
-@enduml

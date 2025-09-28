@@ -1,6 +1,0 @@
-@startuml
-class IsVariableDefined <<sealed>> {
-}
-UnifiedVariableUnit <|-- IsVariableDefined
-IsVariableDefined --> "isVariableDefined" ValueOutput
-@enduml

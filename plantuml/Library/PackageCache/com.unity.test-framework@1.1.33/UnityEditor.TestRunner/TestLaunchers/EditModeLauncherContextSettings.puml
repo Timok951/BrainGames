@@ -1,7 +1,0 @@
-@startuml
-class EditModeLauncherContextSettings {
-    + EditModeLauncherContextSettings()
-    + Dispose() : void
-}
-IDisposable <|-- EditModeLauncherContextSettings
-@enduml

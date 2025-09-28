@@ -1,4 +1,0 @@
-@startuml
-class Renderer2DData <<partial>> {
-}
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class Filter {
-    + targetPlatform : BuildTarget?
-}
-Filter --> "testMode" TestMode
-@enduml

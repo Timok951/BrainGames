@@ -1,6 +1,0 @@
-@startuml
-class AsepriteImporter <<partial>> {
-}
-ScriptedImporter <|-- AsepriteImporter
-ISpriteEditorDataProvider <|-- AsepriteImporter
-@enduml

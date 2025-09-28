@@ -1,8 +1,0 @@
-@startuml
-class RectExtensionMethods <<static>> {
-    + {static} MoveToNextLine(rect:Rect) : void
-    + {static} SplitHorizontalFixedWidthRight(rect:Rect, rightWidth:float, padding:float) : (Rect left, Rect right)
-    + {static} SplitHorizontal(rect:Rect, leftAmount:float, padding:float) : (Rect left, Rect right)
-    + {static} SplitIntoThreeParts(rect:Rect, leftAmount:float, padding:float) : (Rect left, Rect center, Rect right)
-}
-@enduml

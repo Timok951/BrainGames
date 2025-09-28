@@ -1,7 +1,0 @@
-@startuml
-struct SpriteShapeGeometryInfo {
-}
-class SpriteShapeGeometryCache {
-}
-MonoBehaviour <|-- SpriteShapeGeometryCache
-@enduml

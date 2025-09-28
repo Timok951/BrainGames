@@ -1,7 +1,0 @@
-@startuml
-class CrossPlatformValidator {
-    + CrossPlatformValidator(googlePublicKey:byte[], appleRootCert:byte[], appBundleId:string)
-    + CrossPlatformValidator(googlePublicKey:byte[], appleRootCert:byte[], googleBundleId:string, appleBundleId:string)
-    + Validate(unityIAPReceipt:string) : IPurchaseReceipt[]
-}
-@enduml

@@ -1,4 +1,0 @@
-@startuml
-class DrawHelpPanel <<static>> {
-}
-@enduml

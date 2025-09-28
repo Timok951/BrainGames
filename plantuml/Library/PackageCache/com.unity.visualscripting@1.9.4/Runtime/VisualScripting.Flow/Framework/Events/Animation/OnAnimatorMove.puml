@@ -1,8 +1,0 @@
-@startuml
-class OnAnimatorMove <<sealed>> {
-}
-class "GameObjectEventUnit`1"<T> {
-}
-"GameObjectEventUnit`1" "<EmptyEventArgs>" <|-- OnAnimatorMove
-OnAnimatorMove --> "MessageListenerType" Type
-@enduml

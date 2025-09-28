@@ -1,8 +1,0 @@
-@startuml
-class SetSceneVariable <<sealed>> {
-    + SetSceneVariable()
-    + SetSceneVariable(defaultName:string)
-}
-SetVariableUnit <|-- SetSceneVariable
-ISceneVariableUnit <|-- SetSceneVariable
-@enduml

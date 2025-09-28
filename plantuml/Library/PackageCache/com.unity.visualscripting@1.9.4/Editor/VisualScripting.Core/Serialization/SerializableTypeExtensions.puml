@@ -1,5 +1,0 @@
-@startuml
-class SerializableTypeExtensions <<static>> {
-    + {static} Resolve(self:SerializableType) : Type
-}
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class FakeMicrosoftExtensions {
-    + RestoreTransactions() : void
-}
-IMicrosoftExtensions <|-- FakeMicrosoftExtensions
-@enduml

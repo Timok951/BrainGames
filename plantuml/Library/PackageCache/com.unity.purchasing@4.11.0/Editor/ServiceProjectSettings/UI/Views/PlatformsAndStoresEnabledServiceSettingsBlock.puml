@@ -1,5 +1,0 @@
-@startuml
-class PlatformsAndStoresEnabledServiceSettingsBlock {
-}
-PlatformsAndStoresServiceSettingsBlock <|-- PlatformsAndStoresEnabledServiceSettingsBlock
-@enduml

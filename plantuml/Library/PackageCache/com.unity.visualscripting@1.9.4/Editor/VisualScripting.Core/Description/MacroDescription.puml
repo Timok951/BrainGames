@@ -1,6 +1,0 @@
-@startuml
-class MacroDescription {
-}
-Description <|-- MacroDescription
-IMacroDescription <|-- MacroDescription
-@enduml

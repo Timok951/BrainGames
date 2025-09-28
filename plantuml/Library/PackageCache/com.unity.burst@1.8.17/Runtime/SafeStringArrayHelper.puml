@@ -1,6 +1,0 @@
-@startuml
-class SafeStringArrayHelper <<static>> {
-    + {static} SerialiseStringArraySafe(array:string[]) : string
-    + {static} DeserialiseStringArraySafe(input:string) : string[]
-}
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-class UnityOnScrollRectValueChangedMessageListener <<sealed>> {
-}
-MessageListener <|-- UnityOnScrollRectValueChangedMessageListener
-@enduml

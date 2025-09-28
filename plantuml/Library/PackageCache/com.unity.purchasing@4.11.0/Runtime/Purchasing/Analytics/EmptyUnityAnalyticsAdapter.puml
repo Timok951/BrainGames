@@ -1,7 +1,0 @@
-@startuml
-class EmptyAnalyticsAdapter {
-    + SendTransactionEvent(product:Product) : void
-    + SendTransactionFailedEvent(product:Product, reason:PurchaseFailureDescription) : void
-}
-IAnalyticsAdapter <|-- EmptyAnalyticsAdapter
-@enduml

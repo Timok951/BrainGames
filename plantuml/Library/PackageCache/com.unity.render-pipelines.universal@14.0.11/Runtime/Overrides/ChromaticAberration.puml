@@ -1,9 +1,0 @@
-@startuml
-class ChromaticAberration <<sealed>> {
-    + IsActive() : bool
-    + IsTileCompatible() : bool
-}
-VolumeComponent <|-- ChromaticAberration
-IPostProcessComponent <|-- ChromaticAberration
-ChromaticAberration o-> "intensity" ClampedFloatParameter
-@enduml

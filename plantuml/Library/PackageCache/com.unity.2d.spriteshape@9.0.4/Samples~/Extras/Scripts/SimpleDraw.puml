@@ -1,6 +1,0 @@
-@startuml
-class SimpleDraw {
-    + minimumDistance : float = 1.0f
-}
-MonoBehaviour <|-- SimpleDraw
-@enduml

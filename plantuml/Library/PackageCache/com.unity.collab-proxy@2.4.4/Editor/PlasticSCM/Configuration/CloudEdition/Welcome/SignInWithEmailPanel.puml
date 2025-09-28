@@ -1,5 +1,0 @@
-@startuml
-class SignInWithEmailPanel {
-}
-VisualElement <|-- SignInWithEmailPanel
-@enduml

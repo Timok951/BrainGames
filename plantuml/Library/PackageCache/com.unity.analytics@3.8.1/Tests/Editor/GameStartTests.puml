@@ -1,6 +1,0 @@
-@startuml
-class AnalyticsEventTests <<partial>> {
-    + GameStart_NoArgsTest() : void
-    + GameStart_CustomDataTest() : void
-}
-@enduml

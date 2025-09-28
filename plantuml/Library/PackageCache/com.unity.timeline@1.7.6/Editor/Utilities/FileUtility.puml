@@ -1,4 +1,0 @@
-@startuml
-class FileUtility <<static>> {
-}
-@enduml

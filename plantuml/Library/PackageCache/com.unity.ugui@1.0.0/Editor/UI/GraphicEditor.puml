@@ -1,6 +1,0 @@
-@startuml
-class GraphicEditor {
-    + <<override>> OnInspectorGUI() : void
-}
-Editor <|-- GraphicEditor
-@enduml

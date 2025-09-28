@@ -1,5 +1,0 @@
-@startuml
-class IncomingChangesNotifier {
-}
-IIncomingChangesNotifier <|-- IncomingChangesNotifier
-@enduml

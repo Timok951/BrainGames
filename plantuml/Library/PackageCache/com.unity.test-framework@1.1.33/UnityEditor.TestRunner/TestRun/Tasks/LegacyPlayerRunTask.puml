@@ -1,6 +1,0 @@
-@startuml
-class LegacyPlayerRunTask {
-    + <<override>> Execute(testJobData:TestJobData) : IEnumerator
-}
-TestTaskBase <|-- LegacyPlayerRunTask
-@enduml

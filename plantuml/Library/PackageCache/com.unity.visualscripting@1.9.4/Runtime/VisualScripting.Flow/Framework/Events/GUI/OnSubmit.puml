@@ -1,6 +1,0 @@
-@startuml
-class OnSubmit <<sealed>> {
-}
-GenericGuiEventUnit <|-- OnSubmit
-OnSubmit --> "MessageListenerType" Type
-@enduml

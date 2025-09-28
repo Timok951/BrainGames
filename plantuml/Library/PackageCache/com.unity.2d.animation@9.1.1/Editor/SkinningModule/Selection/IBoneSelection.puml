@@ -1,7 +1,0 @@
-@startuml
-interface IBoneSelection {
-}
-class "ITransformSelection`1"<T> {
-}
-"ITransformSelection`1" "<BoneCache>" <|-- IBoneSelection
-@enduml

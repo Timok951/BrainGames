@@ -1,7 +1,0 @@
-@startuml
-class DisableUndoScope {
-    + DisableUndoScope(cacheUndo:ICacheUndo)
-    + Dispose() : void
-}
-IDisposable <|-- DisableUndoScope
-@enduml

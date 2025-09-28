@@ -1,5 +1,0 @@
-@startuml
-class UsingLogError {
-    + UsingLogErrorSample() : void
-}
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class HostingServicesAddServiceWindow {
-    + Initialize(settings:AddressableAssetSettings) : void
-}
-EditorWindow <|-- HostingServicesAddServiceWindow
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-class PlayableTrack {
-}
-TrackAsset <|-- PlayableTrack
-@enduml

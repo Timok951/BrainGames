@@ -1,6 +1,0 @@
-@startuml
-class ProbeVolumeAssetEditor {
-    + <<override>> OnInspectorGUI() : void
-}
-Editor <|-- ProbeVolumeAssetEditor
-@enduml

@@ -1,7 +1,0 @@
-@startuml
-abstract class "MethodBaseStubWriter`1"<TMethodBase> {
-}
-class "MemberInfoStubWriter`1"<T> {
-}
-"MemberInfoStubWriter`1" "<TMethodBase>" <|-- "MethodBaseStubWriter`1"
-@enduml

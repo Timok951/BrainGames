@@ -1,7 +1,0 @@
-@startuml
-class LogWriter {
-    + Stop() : void
-    + Dispose() : void
-}
-IDisposable <|-- LogWriter
-@enduml

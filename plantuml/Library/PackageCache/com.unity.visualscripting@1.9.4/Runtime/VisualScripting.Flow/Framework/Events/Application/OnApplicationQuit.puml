@@ -1,7 +1,0 @@
-@startuml
-class OnApplicationQuit <<sealed>> {
-}
-class "GlobalEventUnit`1"<T> {
-}
-"GlobalEventUnit`1" "<EmptyEventArgs>" <|-- OnApplicationQuit
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class SerializeAsAttribute {
-    + SerializeAsAttribute(name:string)
-}
-fsPropertyAttribute <|-- SerializeAsAttribute
-@enduml

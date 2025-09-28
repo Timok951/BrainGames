@@ -1,9 +1,0 @@
-@startuml
-class And <<sealed>> {
-    + Operation(flow:Flow) : bool
-}
-Unit <|-- And
-And --> "a" ValueInput
-And --> "b" ValueInput
-And --> "result" ValueOutput
-@enduml

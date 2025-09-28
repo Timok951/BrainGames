@@ -1,5 +1,0 @@
-@startuml
-class AssetPreviewBridge <<static>> {
-    + {static} GetAssetPreviewFromGUID(guid:string) : Texture2D
-}
-@enduml

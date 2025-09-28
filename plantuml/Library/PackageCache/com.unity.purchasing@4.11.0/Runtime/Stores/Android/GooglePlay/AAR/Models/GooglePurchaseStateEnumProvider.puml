@@ -1,7 +1,0 @@
-@startuml
-class GooglePurchaseStateEnumProvider {
-    + Purchased() : int
-    + Pending() : int
-}
-IGooglePurchaseStateEnumProvider <|-- GooglePurchaseStateEnumProvider
-@enduml

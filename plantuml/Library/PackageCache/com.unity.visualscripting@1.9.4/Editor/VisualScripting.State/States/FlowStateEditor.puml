@@ -1,6 +1,0 @@
-@startuml
-class FlowStateEditor <<sealed>> {
-    + FlowStateEditor(metadata:Metadata)
-}
-NesterStateEditor <|-- FlowStateEditor
-@enduml

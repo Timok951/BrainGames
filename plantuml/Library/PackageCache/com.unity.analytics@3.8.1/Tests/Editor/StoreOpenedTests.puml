@@ -1,6 +1,0 @@
-@startuml
-class AnalyticsEventTests <<partial>> {
-    + StoreOpened_StoreTypeTest(storeType:StoreType) : void
-    + StoreOpened_CustomDataTest() : void
-}
-@enduml

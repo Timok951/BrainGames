@@ -1,4 +1,0 @@
-@startuml
-class "TreeViewItemIds`2"<C,I> {
-}
-@enduml

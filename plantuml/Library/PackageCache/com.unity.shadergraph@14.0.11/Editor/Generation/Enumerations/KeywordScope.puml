@@ -1,6 +1,0 @@
-@startuml
-enum KeywordScope {
-    Local,
-    Global,
-}
-@enduml

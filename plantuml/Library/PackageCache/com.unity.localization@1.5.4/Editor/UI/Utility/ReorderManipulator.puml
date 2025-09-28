@@ -1,6 +1,0 @@
-@startuml
-class ReorderManipulator {
-    + ReorderManipulator(list:ReorderableList)
-}
-MouseManipulator <|-- ReorderManipulator
-@enduml

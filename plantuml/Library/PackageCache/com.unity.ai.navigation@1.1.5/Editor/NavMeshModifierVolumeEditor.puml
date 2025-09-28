@@ -1,6 +1,0 @@
-@startuml
-class NavMeshModifierVolumeEditor {
-    + <<override>> OnInspectorGUI() : void
-    + {static} CreateNavMeshModifierVolume(menuCommand:MenuCommand) : void
-}
-@enduml

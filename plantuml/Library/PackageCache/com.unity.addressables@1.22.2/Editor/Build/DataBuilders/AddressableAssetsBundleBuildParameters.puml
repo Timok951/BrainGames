@@ -1,7 +1,0 @@
-@startuml
-class AddressableAssetsBundleBuildParameters {
-    + AddressableAssetsBundleBuildParameters(aaSettings:AddressableAssetSettings, bundleToAssetGroup:Dictionary<string, string>, target:BuildTarget, group:BuildTargetGroup, outputFolder:string)
-    + <<override>> GetCompressionForIdentifier(identifier:string) : BuildCompression
-}
-BundleBuildParameters <|-- AddressableAssetsBundleBuildParameters
-@enduml

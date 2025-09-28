@@ -1,6 +1,0 @@
-@startuml
-class BranchNode {
-    + BranchNode()
-}
-CodeFunctionNode <|-- BranchNode
-@enduml

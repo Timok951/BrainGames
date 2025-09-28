@@ -1,5 +1,0 @@
-@startuml
-class HandleDownloadError {
-}
-MonoBehaviour <|-- HandleDownloadError
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class AnalyticsEventTests <<partial>> {
-    + PushNotificationEnable_NoArgsTest() : void
-    + PushNotificationEnable_CustomDataTest() : void
-}
-@enduml

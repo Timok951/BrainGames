@@ -1,5 +1,0 @@
-@startuml
-class AnimatorControllerGeneration <<static>> {
-    + {static} Generate(ctx:AssetImportContext, assetName:string, rootGameObject:GameObject, generateModelPrefab:bool) : void
-}
-@enduml

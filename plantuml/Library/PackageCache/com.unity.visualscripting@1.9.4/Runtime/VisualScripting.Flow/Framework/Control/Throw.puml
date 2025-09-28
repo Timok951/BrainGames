@@ -1,9 +1,0 @@
-@startuml
-class Throw <<sealed>> {
-    + custom : bool <<get>> <<set>>
-}
-Unit <|-- Throw
-Throw --> "enter" ControlInput
-Throw --> "message" ValueInput
-Throw --> "exception" ValueInput
-@enduml

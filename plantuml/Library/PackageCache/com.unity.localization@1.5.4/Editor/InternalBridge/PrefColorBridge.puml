@@ -1,7 +1,0 @@
-@startuml
-class PrefColorBridge <<static>> {
-}
-PrefColorBridge --> "DrivenProperty" Color
-PrefColorBridge --> "VariantProperty" Color
-PrefColorBridge --> "VariantWithOverrideProperty" Color
-@enduml

@@ -1,8 +1,0 @@
-@startuml
-class InitalizationObjectsOperation {
-    + Init(rtdOp:AsyncOperationHandle<ResourceManagerRuntimeData>, addressables:AddressablesImpl) : void
-}
-class "AsyncOperationBase`1"<T> {
-}
-"AsyncOperationBase`1" "<bool>" <|-- InitalizationObjectsOperation
-@enduml

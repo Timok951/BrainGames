@@ -1,5 +1,0 @@
-@startuml
-abstract class StaticActionInvokerBase {
-}
-StaticInvokerBase <|-- StaticActionInvokerBase
-@enduml

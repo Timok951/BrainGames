@@ -1,7 +1,0 @@
-@startuml
-class PlatformUtility <<static>> {
-    + {static} <<readonly>> supportsJit : bool
-    + {static} IsEditor(platform:RuntimePlatform) : bool
-    + {static} IsStandalone(platform:RuntimePlatform) : bool
-}
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-class AdsDashboardUrls <<static>> {
-    + {static} GetOverviewUrl() : string
-}
-@enduml

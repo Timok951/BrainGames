@@ -1,8 +1,0 @@
-@startuml
-class UnityWebRequestOperation {
-    + UnityWebRequestOperation(webRequest:UnityWebRequest)
-}
-class "AsyncOperationBase`1"<T> {
-}
-"AsyncOperationBase`1" "<UnityWebRequest>" <|-- UnityWebRequestOperation
-@enduml

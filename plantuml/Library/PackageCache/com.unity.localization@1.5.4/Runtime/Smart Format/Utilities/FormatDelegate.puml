@@ -1,8 +1,0 @@
-@startuml
-class FormatDelegate {
-    + FormatDelegate(getFormat:Func<string, string>)
-    + FormatDelegate(getFormat:Func<string, IFormatProvider, string>)
-    + ToString(format:string, formatProvider:IFormatProvider) : string
-}
-IFormattable <|-- FormatDelegate
-@enduml

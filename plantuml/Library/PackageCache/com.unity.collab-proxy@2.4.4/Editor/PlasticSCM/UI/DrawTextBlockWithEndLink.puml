@@ -1,4 +1,0 @@
-@startuml
-class DrawTextBlockWithEndLink <<static>> {
-}
-@enduml

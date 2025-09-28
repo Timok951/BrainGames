@@ -1,7 +1,0 @@
-@startuml
-class SkAdNetworkUrlParser {
-    + GetExtension() : string
-    + ParseSource(source:ISkAdNetworkSource) : HashSet<string>
-}
-ISkAdNetworkParser <|-- SkAdNetworkUrlParser
-@enduml

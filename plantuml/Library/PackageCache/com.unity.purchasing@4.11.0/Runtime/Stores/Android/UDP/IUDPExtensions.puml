@@ -1,5 +1,0 @@
-@startuml
-interface IUDPExtensions {
-}
-IStoreExtension <|-- IUDPExtensions
-@enduml

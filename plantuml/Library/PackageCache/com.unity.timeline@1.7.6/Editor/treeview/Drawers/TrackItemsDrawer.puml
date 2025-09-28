@@ -1,9 +1,0 @@
-@startuml
-struct TrackItemsDrawer {
-    + TrackItemsDrawer(parent:IRowGUI)
-    + Draw(rect:Rect, state:WindowState) : void
-}
-class "List`1"<T> {
-}
-TrackItemsDrawer --> "clips<TimelineClipGUI>" "List`1"
-@enduml

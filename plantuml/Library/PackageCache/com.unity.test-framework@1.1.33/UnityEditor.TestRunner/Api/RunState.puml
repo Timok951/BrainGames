@@ -1,9 +1,0 @@
-@startuml
-enum RunState {
-    NotRunnable,
-    Runnable,
-    Explicit,
-    Skipped,
-    Ignored,
-}
-@enduml

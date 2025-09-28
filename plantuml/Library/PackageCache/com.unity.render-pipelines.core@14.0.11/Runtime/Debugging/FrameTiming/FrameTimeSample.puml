@@ -1,7 +1,0 @@
-@startuml
-struct FrameTimeSample {
-}
-class FrameTimeSampleHistory {
-    + FrameTimeSampleHistory(initialCapacity:int)
-}
-@enduml

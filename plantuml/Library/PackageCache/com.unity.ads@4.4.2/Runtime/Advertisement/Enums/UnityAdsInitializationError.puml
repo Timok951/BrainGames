@@ -1,8 +1,0 @@
-@startuml
-enum UnityAdsInitializationError {
-    UNKNOWN,
-    INTERNAL_ERROR,
-    INVALID_ARGUMENT,
-    AD_BLOCKER_DETECTED,
-}
-@enduml

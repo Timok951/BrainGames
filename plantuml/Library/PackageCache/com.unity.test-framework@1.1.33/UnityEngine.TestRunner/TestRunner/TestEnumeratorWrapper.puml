@@ -1,6 +1,0 @@
-@startuml
-class TestEnumeratorWrapper {
-    + TestEnumeratorWrapper(testMethod:TestMethod)
-    + GetEnumerator(context:ITestExecutionContext) : IEnumerator
-}
-@enduml

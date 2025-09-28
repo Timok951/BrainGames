@@ -1,7 +1,0 @@
-@startuml
-class InvalidConnectionException {
-    + InvalidConnectionException()
-    + InvalidConnectionException(message:string)
-}
-Exception <|-- InvalidConnectionException
-@enduml

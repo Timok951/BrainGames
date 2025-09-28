@@ -1,7 +1,0 @@
-@startuml
-class BlackbodyNode {
-    + BlackbodyNode()
-    + <<override>> hasPreview : bool <<get>>
-}
-CodeFunctionNode <|-- BlackbodyNode
-@enduml

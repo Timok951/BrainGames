@@ -1,4 +1,0 @@
-@startuml
-interface "ISelectable`1"<T> {
-}
-@enduml

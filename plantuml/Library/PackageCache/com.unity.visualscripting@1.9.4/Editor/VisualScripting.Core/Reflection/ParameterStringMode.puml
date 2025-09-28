@@ -1,6 +1,0 @@
-@startuml
-enum ParameterStringMode {
-    Types,
-    Names,
-}
-@enduml

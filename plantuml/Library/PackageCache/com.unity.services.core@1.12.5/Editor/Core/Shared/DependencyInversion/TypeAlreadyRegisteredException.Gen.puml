@@ -1,6 +1,0 @@
-@startuml
-class TypeAlreadyRegisteredException {
-    + TypeAlreadyRegisteredException(type:Type)
-}
-Exception <|-- TypeAlreadyRegisteredException
-@enduml

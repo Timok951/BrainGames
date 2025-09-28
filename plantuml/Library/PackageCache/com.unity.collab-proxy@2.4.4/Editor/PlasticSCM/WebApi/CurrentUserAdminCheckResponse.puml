@@ -1,6 +1,0 @@
-@startuml
-class CurrentUserAdminCheckResponse {
-    + IsCurrentUserAdmin : bool <<get>> <<set>>
-    + OrganizationName : string <<get>> <<set>>
-}
-@enduml

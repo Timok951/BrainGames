@@ -1,5 +1,0 @@
-@startuml
-interface IAndroidStoreSelection {
-}
-IStoreConfiguration <|-- IAndroidStoreSelection
-@enduml

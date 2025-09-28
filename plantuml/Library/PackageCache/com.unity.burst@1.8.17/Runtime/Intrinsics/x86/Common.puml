@@ -1,4 +1,0 @@
-@startuml
-class X86 <<unsafe>> <<static>> <<partial>> {
-}
-@enduml

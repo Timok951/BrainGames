@@ -1,4 +1,0 @@
-@startuml
-interface IDrawer {
-}
-@enduml

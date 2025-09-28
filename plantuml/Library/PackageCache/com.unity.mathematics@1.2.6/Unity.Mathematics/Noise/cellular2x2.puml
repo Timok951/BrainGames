@@ -1,5 +1,0 @@
-@startuml
-class noise <<static>> <<partial>> {
-    + {static} cellular2x2(P:float2) : float2
-}
-@enduml

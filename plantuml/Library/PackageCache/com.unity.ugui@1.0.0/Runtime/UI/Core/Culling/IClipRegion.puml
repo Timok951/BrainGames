@@ -1,6 +1,0 @@
-@startuml
-interface IClipper {
-}
-interface IClippable {
-}
-@enduml

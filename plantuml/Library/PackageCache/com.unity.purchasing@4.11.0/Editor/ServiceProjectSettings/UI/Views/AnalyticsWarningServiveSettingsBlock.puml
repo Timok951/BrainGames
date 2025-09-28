@@ -1,6 +1,0 @@
-@startuml
-class AnalyticsWarningSettingsBlock {
-    + GetUIBlockElement() : VisualElement
-}
-IPurchasingSettingsUIBlock <|-- AnalyticsWarningSettingsBlock
-@enduml

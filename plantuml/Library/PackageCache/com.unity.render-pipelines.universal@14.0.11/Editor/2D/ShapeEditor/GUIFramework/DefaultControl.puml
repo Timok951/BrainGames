@@ -1,7 +1,0 @@
-@startuml
-abstract class DefaultControl {
-    + {static} <<readonly>> kPickDistance : float = 5f
-    + DefaultControl(name:string)
-}
-Control <|-- DefaultControl
-@enduml

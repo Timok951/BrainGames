@@ -1,7 +1,0 @@
-@startuml
-class TimelineAssetEditionMode {
-    + <<override>> TrackState(state:WindowState) : TimelineModeGUIState
-    + TimelineAssetEditionMode()
-}
-TimelineInactiveMode <|-- TimelineAssetEditionMode
-@enduml

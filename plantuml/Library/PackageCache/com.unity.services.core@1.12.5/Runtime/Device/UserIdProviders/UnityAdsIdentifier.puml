@@ -1,6 +1,0 @@
-@startuml
-class UnityAdsIdentifier {
-    + UserId : string <<get>> <<set>>
-}
-IUserIdentifierProvider <|-- UnityAdsIdentifier
-@enduml

@@ -1,9 +1,0 @@
-@startuml
-class TMP_FontFeatureTable {
-    + TMP_FontFeatureTable()
-    + SortGlyphPairAdjustmentRecords() : void
-}
-class "List`1"<T> {
-}
-TMP_FontFeatureTable --> "glyphPairAdjustmentRecords<TMP_GlyphPairAdjustmentRecord>" "List`1"
-@enduml

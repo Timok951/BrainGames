@@ -1,4 +1,0 @@
-@startuml
-class UniversalRenderPipeline <<sealed>> <<partial>> {
-}
-@enduml

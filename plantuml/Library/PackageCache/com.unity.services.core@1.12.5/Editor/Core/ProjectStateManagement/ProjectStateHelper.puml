@@ -1,8 +1,0 @@
-@startuml
-class ProjectStateHelper {
-    + IsProjectOnlyPartiallyBound(projectState:ProjectState) : bool
-    + IsProjectBeingBound(previousProjectState:ProjectState?, currentProjectState:ProjectState) : bool
-    + IsProjectBeingUnbound(cachedProjectState:ProjectState?, currentProjectState:ProjectState) : bool
-}
-IProjectStateHelper <|-- ProjectStateHelper
-@enduml

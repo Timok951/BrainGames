@@ -1,7 +1,0 @@
-@startuml
-abstract class MatrixShaderProperty {
-}
-class "AbstractShaderProperty`1"<T> {
-}
-"AbstractShaderProperty`1" "<Matrix4x4>" <|-- MatrixShaderProperty
-@enduml

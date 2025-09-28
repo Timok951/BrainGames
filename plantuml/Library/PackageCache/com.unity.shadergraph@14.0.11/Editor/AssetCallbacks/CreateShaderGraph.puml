@@ -1,5 +1,0 @@
-@startuml
-class CreateShaderGraph <<static>> {
-    + {static} CreateBlankShaderGraph() : void
-}
-@enduml

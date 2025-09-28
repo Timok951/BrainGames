@@ -1,4 +1,0 @@
-@startuml
-class DrawTreeViewItem <<static>> {
-}
-@enduml

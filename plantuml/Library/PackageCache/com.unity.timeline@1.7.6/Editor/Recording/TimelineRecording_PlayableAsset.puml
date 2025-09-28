@@ -1,4 +1,0 @@
-@startuml
-class TimelineRecording <<static>> <<partial>> {
-}
-@enduml

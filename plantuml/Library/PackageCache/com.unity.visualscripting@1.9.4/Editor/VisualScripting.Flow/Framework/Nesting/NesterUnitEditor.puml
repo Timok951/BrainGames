@@ -1,6 +1,0 @@
-@startuml
-class NesterUnitEditor {
-    + NesterUnitEditor(metadata:Metadata)
-}
-UnitEditor <|-- NesterUnitEditor
-@enduml

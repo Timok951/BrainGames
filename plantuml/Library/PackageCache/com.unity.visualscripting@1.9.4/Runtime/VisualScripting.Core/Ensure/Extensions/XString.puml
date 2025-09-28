@@ -1,4 +1,0 @@
-@startuml
-class XString <<static>> {
-}
-@enduml

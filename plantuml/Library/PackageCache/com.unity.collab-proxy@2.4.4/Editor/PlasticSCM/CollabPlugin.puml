@@ -1,5 +1,0 @@
-@startuml
-class CollabPlugin <<static>> {
-    + {static} IsEnabled() : bool
-}
-@enduml

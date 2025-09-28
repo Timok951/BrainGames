@@ -1,8 +1,0 @@
-@startuml
-class InstallationId {
-    + InstallationId()
-    + GetOrCreateIdentifier() : string
-    + CreateIdentifier() : void
-}
-IInstallationId <|-- InstallationId
-@enduml

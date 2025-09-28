@@ -1,7 +1,0 @@
-@startuml
-class CanvasElementsMaintainValidPositionsWhenCameraOrthoSizeIsZero {
-    + TestSetup() : void
-    + TearDown() : void
-    + TestCanvasElementsMaintainValidPositionsWhenCameraOrthoSizeIsZero() : IEnumerator
-}
-@enduml

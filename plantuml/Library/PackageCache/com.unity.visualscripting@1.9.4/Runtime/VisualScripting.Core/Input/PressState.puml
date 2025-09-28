@@ -1,7 +1,0 @@
-@startuml
-enum PressState {
-    Hold,
-    Down,
-    Up,
-}
-@enduml

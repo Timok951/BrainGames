@@ -1,6 +1,0 @@
-@startuml
-class GraphGroupInspector {
-    + GraphGroupInspector(metadata:Metadata)
-}
-ReflectedInspector <|-- GraphGroupInspector
-@enduml

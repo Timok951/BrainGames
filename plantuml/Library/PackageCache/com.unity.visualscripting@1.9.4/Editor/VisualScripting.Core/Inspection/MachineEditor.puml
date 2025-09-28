@@ -1,6 +1,0 @@
-@startuml
-class MachineEditor {
-    + MachineEditor(metadata:Metadata)
-}
-Inspector <|-- MachineEditor
-@enduml

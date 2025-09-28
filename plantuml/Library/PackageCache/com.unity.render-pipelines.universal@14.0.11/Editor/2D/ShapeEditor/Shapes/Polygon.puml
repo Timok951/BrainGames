@@ -1,7 +1,0 @@
-@startuml
-struct Polygon {
-    + isOpenEnded : bool
-}
-IShape <|-- Polygon
-Polygon o-> "empty" Polygon
-@enduml

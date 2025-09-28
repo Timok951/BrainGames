@@ -1,5 +1,0 @@
-@startuml
-class TMP_BitmapShaderGUI {
-}
-TMP_BaseShaderGUI <|-- TMP_BitmapShaderGUI
-@enduml

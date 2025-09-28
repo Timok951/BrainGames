@@ -1,5 +1,0 @@
-@startuml
-class WaitingSignInPanel {
-}
-VisualElement <|-- WaitingSignInPanel
-@enduml

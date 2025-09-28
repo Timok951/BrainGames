@@ -1,4 +1,0 @@
-@startuml
-interface "IMaterialSlotHasValue`1"<T> {
-}
-@enduml

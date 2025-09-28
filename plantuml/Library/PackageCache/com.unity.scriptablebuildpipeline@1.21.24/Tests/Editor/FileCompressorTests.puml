@@ -1,8 +1,0 @@
-@startuml
-class FileCompressorTests {
-    + OneTimeSetUp() : void
-    + OneTimeTearDown() : void
-    + CompressAndDecompressCanHandleSubdirectories() : void
-    + TrailingSlashDoesNotChangeResults() : void
-}
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class CanvasResizeCorrectlyForRenderTexture {
-    + CanvasResizeCorrectly() : void
-    + TearDown() : void
-}
-@enduml

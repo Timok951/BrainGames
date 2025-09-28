@@ -1,5 +1,0 @@
-@startuml
-class TMP_ContextMenus {
-}
-Editor <|-- TMP_ContextMenus
-@enduml

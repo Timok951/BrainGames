@@ -1,4 +1,0 @@
-@startuml
-class PrecisionUtil <<static>> {
-}
-@enduml

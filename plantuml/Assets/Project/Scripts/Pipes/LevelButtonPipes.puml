@@ -1,5 +1,0 @@
-@startuml
-class LevelButtonPipes {
-}
-MonoBehaviour <|-- LevelButtonPipes
-@enduml

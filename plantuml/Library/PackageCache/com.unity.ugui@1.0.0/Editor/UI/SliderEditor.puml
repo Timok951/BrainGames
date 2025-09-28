@@ -1,6 +1,0 @@
-@startuml
-class SliderEditor {
-    + <<override>> OnInspectorGUI() : void
-}
-SelectableEditor <|-- SliderEditor
-@enduml

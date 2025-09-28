@@ -1,6 +1,0 @@
-@startuml
-class StringDatabaseGetLocalizedStringExample {
-    + useCoroutine : bool
-}
-MonoBehaviour <|-- StringDatabaseGetLocalizedStringExample
-@enduml

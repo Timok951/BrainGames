@@ -1,7 +1,0 @@
-@startuml
-class Equal <<sealed>> {
-    + Equal()
-}
-BinaryComparisonUnit <|-- Equal
-Equal --> "comparison" ValueOutput
-@enduml

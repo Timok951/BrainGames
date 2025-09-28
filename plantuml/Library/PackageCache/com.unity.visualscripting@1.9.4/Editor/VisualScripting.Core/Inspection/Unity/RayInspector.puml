@@ -1,7 +1,0 @@
-@startuml
-class RayInspector {
-    + RayInspector(metadata:Metadata)
-    + <<override>> GetAdaptiveWidth() : float
-}
-Inspector <|-- RayInspector
-@enduml

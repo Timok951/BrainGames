@@ -1,5 +1,0 @@
-@startuml
-class Factory {
-    + {static} Create(mocked:bool) : IWindowsIAP
-}
-@enduml

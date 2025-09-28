@@ -1,8 +1,0 @@
-@startuml
-class MetricizedGooglePlayStoreExtensions {
-    + <<override>> UpgradeDowngradeSubscription(oldSku:string, newSku:string, desiredProrationMode:GooglePlayProrationMode) : void
-    + <<override>> RestoreTransactions(callback:Action<bool>?) : void
-    + <<override>> RestoreTransactions(callback:Action<bool, string?>?) : void
-}
-GooglePlayStoreExtensions <|-- MetricizedGooglePlayStoreExtensions
-@enduml

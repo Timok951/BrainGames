@@ -1,7 +1,0 @@
-@startuml
-class NavMeshLinkEditor {
-    + <<override>> OnInspectorGUI() : void
-    + OnSceneGUI() : void
-    + {static} CreateNavMeshLink(menuCommand:MenuCommand) : void
-}
-@enduml

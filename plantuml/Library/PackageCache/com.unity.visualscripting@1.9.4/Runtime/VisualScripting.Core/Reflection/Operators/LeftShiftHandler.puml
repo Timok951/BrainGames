@@ -1,6 +1,0 @@
-@startuml
-class LeftShiftHandler {
-    + LeftShiftHandler()
-}
-BinaryOperatorHandler <|-- LeftShiftHandler
-@enduml

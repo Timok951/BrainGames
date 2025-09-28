@@ -1,6 +1,0 @@
-@startuml
-class EnsureThat <<partial>> {
-    + IsNull(value:T) : void
-    + IsNotNull(value:T) : void
-}
-@enduml

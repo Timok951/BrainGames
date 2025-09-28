@@ -1,6 +1,0 @@
-@startuml
-class DDXYNode {
-    + DDXYNode()
-}
-CodeFunctionNode <|-- DDXYNode
-@enduml

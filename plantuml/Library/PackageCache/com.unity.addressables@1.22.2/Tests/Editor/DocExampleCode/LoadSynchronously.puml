@@ -1,6 +1,0 @@
-@startuml
-class LoadSynchronously {
-    + address : string
-}
-MonoBehaviour <|-- LoadSynchronously
-@enduml

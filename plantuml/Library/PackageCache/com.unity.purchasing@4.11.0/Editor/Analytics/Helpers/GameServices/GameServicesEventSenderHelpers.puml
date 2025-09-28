@@ -1,4 +1,0 @@
-@startuml
-class GameServicesEventSenderHelpers <<static>> {
-}
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-class TestNode {
-}
-AbstractMaterialNode <|-- TestNode
-@enduml

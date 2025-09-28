@@ -1,6 +1,0 @@
-@startuml
-class PropertyConnectionStateSlotControlView {
-    + PropertyConnectionStateSlotControlView(slot:PropertyConnectionStateMaterialSlot)
-}
-VisualElement <|-- PropertyConnectionStateSlotControlView
-@enduml

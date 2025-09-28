@@ -1,6 +1,0 @@
-@startuml
-class VariablesEditor <<sealed>> {
-    + VariablesEditor(metadata:Metadata)
-}
-Inspector <|-- VariablesEditor
-@enduml

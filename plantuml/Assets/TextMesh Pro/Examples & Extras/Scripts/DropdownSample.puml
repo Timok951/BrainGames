@@ -1,6 +1,0 @@
-@startuml
-class DropdownSample {
-    + OnButtonClick() : void
-}
-MonoBehaviour <|-- DropdownSample
-@enduml

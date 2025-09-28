@@ -1,6 +1,0 @@
-@startuml
-class Dummy {
-    + Dummy()
-    + Dummy(parameter:string)
-}
-@enduml

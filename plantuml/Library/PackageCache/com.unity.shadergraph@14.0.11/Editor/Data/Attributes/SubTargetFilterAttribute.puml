@@ -1,6 +1,0 @@
-@startuml
-class SubTargetFilterAttribute {
-    + SubTargetFilterAttribute(WorksWithSubTargets:Type[])
-}
-ContextFilterableAttribute <|-- SubTargetFilterAttribute
-@enduml

@@ -1,8 +1,0 @@
-@startuml
-class AddressableAssetBuildSettings {
-    + compileScriptsInVirtualMode : bool <<get>> <<set>>
-    + cleanupStreamingAssetsAfterBuilds : bool <<get>> <<set>>
-    + LogResourceManagerExceptions : bool <<get>> <<set>>
-    + bundleBuildPath : string <<get>> <<set>>
-}
-@enduml

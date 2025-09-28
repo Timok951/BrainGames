@@ -1,9 +1,0 @@
-@startuml
-class MetaData <<sealed>> {
-    + category : string <<get>>
-    + MetaData(category:string)
-    + Set(key:string, value:object) : void
-    + Get(key:string) : object
-    + Values() : IDictionary<string, object>
-}
-@enduml

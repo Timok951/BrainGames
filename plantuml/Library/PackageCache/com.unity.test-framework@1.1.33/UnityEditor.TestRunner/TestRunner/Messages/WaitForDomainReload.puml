@@ -1,9 +1,0 @@
-@startuml
-class WaitForDomainReload {
-    + WaitForDomainReload()
-    + ExpectDomainReload : bool <<get>>
-    + ExpectedPlaymodeState : bool <<get>>
-    + Perform() : IEnumerator
-}
-IEditModeTestYieldInstruction <|-- WaitForDomainReload
-@enduml

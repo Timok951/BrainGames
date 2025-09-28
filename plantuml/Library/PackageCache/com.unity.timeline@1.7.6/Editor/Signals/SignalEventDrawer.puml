@@ -1,5 +1,0 @@
-@startuml
-class SignalEventDrawer {
-}
-UnityEventDrawer <|-- SignalEventDrawer
-@enduml

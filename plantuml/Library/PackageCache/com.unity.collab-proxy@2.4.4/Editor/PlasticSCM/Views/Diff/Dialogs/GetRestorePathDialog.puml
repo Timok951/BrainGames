@@ -1,5 +1,0 @@
-@startuml
-class GetRestorePathDialog {
-}
-PlasticDialog <|-- GetRestorePathDialog
-@enduml

@@ -1,7 +1,0 @@
-@startuml
-struct VirtualCurrency {
-    + VirtualCurrencyName : string
-}
-VirtualCurrency --> "VirtualCurrencyType" VirtualCurrencyType
-VirtualCurrency --> "VirtualCurrencyAmount" Int64
-@enduml

@@ -1,9 +1,0 @@
-@startuml
-class ReflectionFieldAccessor <<sealed>> {
-    + ReflectionFieldAccessor(fieldInfo:FieldInfo)
-    + Compile() : void
-    + GetValue(target:object) : object
-    + SetValue(target:object, value:object) : void
-}
-IOptimizedAccessor <|-- ReflectionFieldAccessor
-@enduml

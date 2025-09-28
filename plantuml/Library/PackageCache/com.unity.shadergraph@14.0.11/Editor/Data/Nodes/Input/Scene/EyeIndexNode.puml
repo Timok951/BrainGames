@@ -1,7 +1,0 @@
-@startuml
-class EyeIndexNode {
-    + <<override>> hasPreview : bool <<get>>
-    + EyeIndexNode()
-}
-CodeFunctionNode <|-- EyeIndexNode
-@enduml

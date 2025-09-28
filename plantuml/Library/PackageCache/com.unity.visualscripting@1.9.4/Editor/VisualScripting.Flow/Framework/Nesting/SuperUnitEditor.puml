@@ -1,6 +1,0 @@
-@startuml
-class SuperUnitEditor <<sealed>> {
-    + SuperUnitEditor(metadata:Metadata)
-}
-NesterUnitEditor <|-- SuperUnitEditor
-@enduml

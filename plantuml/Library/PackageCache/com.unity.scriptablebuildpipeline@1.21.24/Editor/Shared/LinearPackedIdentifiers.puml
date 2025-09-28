@@ -1,9 +1,0 @@
-@startuml
-class LinearPackedIdentifiers {
-    + Index : long <<get>> <<set>>
-    + LinearPackedIdentifiers(index:long)
-    + <<virtual>> GenerateInternalFileName(name:string) : string
-    + <<virtual>> SerializationIndexFromObjectIdentifier(objectID:ObjectIdentifier) : long
-}
-IDeterministicIdentifiers <|-- LinearPackedIdentifiers
-@enduml

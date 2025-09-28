@@ -1,5 +1,0 @@
-@startuml
-class DelegateUtility <<static>> {
-    + {static} Cast(source:Delegate, type:Type) : Delegate
-}
-@enduml

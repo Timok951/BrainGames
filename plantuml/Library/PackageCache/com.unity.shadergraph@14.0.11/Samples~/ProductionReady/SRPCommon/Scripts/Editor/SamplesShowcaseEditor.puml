@@ -1,8 +1,0 @@
-@startuml
-class PRSSamplesShowcaseEditor {
-    + UpdateSamplesInspector() : void
-    + <<override>> CreateInspectorGUI() : VisualElement
-    + {static} IsLinkFile(linkID:string) : bool
-}
-Editor <|-- PRSSamplesShowcaseEditor
-@enduml

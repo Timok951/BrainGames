@@ -1,5 +1,0 @@
-@startuml
-interface IGraphWithVariables {
-}
-IGraph <|-- IGraphWithVariables
-@enduml

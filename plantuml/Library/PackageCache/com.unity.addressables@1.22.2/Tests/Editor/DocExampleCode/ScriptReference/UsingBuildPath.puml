@@ -1,5 +1,0 @@
-@startuml
-class UsingBuildPath {
-    + GetBuiltContentAddressablesVersion() : string
-}
-@enduml

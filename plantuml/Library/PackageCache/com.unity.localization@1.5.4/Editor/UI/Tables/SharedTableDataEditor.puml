@@ -1,5 +1,0 @@
-@startuml
-class SharedTableDataEditor {
-    + <<override>> OnInspectorGUI() : void
-}
-@enduml

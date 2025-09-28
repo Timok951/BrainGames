@@ -1,5 +1,0 @@
-@startuml
-interface IAppleConfiguration {
-}
-IStoreConfiguration <|-- IAppleConfiguration
-@enduml

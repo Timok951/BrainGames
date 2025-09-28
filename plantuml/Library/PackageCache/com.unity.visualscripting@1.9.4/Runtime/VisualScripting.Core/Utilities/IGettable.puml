@@ -1,8 +1,0 @@
-@startuml
-interface IGettable {
-}
-class XGettable <<static>> {
-    + {static} GetValue(gettable:IGettable, type:Type) : object
-    + {static} GetValue(gettable:IGettable) : T
-}
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class TMPro_TextContainerEditor {
-    + <<override>> OnInspectorGUI() : void
-}
-Editor <|-- TMPro_TextContainerEditor
-@enduml

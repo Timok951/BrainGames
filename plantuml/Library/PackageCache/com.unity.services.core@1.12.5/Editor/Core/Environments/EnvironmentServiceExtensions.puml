@@ -1,7 +1,0 @@
-@startuml
-class EnvironmentServiceExtensions <<static>> {
-    + {static} ActiveEnvironmentInfo(service:IEnvironmentService) : EnvironmentInfo?
-    + {static} EnvironmentInfoFromId(service:IEnvironmentService, environmentId:Guid?) : EnvironmentInfo?
-    + {static} EnvironmentInfoFromName(service:IEnvironmentService, environmentName:string) : EnvironmentInfo?
-}
-@enduml

@@ -1,9 +1,0 @@
-@startuml
-enum MoveDirection {
-    Left,
-    Up,
-    Right,
-    Down,
-    None,
-}
-@enduml

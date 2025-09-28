@@ -1,8 +1,0 @@
-@startuml
-class ProgressControlsForDialogs {
-}
-class Data {
-}
-IProgressControls <|-- ProgressControlsForDialogs
-ProgressControlsForDialogs +-- Data
-@enduml

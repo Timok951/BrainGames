@@ -1,6 +1,0 @@
-@startuml
-struct ChannelToken {
-    + ChannelName : string
-    + Token : string
-}
-@enduml

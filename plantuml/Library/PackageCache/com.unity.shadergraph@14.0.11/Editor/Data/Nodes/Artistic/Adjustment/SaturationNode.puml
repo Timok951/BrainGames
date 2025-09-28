@@ -1,6 +1,0 @@
-@startuml
-class SaturationNode {
-    + SaturationNode()
-}
-CodeFunctionNode <|-- SaturationNode
-@enduml

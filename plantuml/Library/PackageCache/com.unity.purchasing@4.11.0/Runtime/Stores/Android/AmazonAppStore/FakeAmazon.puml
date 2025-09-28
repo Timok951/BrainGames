@@ -1,9 +1,0 @@
-@startuml
-class FakeAmazonExtensions {
-    + WriteSandboxJSON(products:HashSet<ProductDefinition>) : void
-    + NotifyUnableToFulfillUnavailableProduct(transactionID:string) : void
-    + amazonUserId : string <<get>>
-}
-IAmazonExtensions <|-- FakeAmazonExtensions
-IAmazonConfiguration <|-- FakeAmazonExtensions
-@enduml

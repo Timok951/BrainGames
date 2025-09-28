@@ -1,5 +1,0 @@
-@startuml
-class PlayerTestAssemblyProvider {
-    + GetUserAssemblies() : List<IAssemblyWrapper>
-}
-@enduml

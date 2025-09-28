@@ -1,5 +1,0 @@
-@startuml
-class UsingLoadAssets {
-    + UsingLoadAssetsSample() : void
-}
-@enduml

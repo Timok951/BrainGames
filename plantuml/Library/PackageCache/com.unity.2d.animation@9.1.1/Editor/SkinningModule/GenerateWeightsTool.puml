@@ -1,6 +1,0 @@
-@startuml
-class GenerateWeightsTool {
-    + <<override>> Initialize(layout:LayoutOverlay) : void
-}
-MeshToolWrapper <|-- GenerateWeightsTool
-@enduml

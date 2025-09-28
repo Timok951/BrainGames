@@ -1,6 +1,0 @@
-@startuml
-class DebugUtility <<static>> {
-    + {static} logPath : string <<get>>
-    + {static} LogToFile(message:string) : void
-}
-@enduml

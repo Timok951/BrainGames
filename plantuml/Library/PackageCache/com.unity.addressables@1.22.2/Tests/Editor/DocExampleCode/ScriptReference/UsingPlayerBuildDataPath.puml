@@ -1,7 +1,0 @@
-@startuml
-class CustomLocationBuildScript {
-    + {static} CustomLocationBuildRoot : string <<get>>
-    + <<override>> Name : string <<get>>
-}
-BuildScriptPackedMode <|-- CustomLocationBuildScript
-@enduml

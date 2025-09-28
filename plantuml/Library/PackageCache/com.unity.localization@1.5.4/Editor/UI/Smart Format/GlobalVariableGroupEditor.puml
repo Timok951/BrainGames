@@ -1,5 +1,0 @@
-@startuml
-class GlobalVariableGroupEditor {
-    + <<override>> CreateInspectorGUI() : VisualElement
-}
-@enduml

@@ -1,8 +1,0 @@
-@startuml
-class EnvironmentSaveSystem {
-    + EnvironmentSaveSystem(fileSystem:IFileSystem)
-    + SaveEnvironment(environment:string) : void
-    + LoadEnvironment() : string
-}
-IEnvironmentSaveSystem <|-- EnvironmentSaveSystem
-@enduml

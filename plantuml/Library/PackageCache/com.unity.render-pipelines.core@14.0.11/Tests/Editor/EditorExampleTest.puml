@@ -1,6 +1,0 @@
-@startuml
-class EditorExampleTest {
-    + EditorSampleTestSimplePasses() : void
-    + EditorSampleTestWithEnumeratorPasses() : IEnumerator
-}
-@enduml

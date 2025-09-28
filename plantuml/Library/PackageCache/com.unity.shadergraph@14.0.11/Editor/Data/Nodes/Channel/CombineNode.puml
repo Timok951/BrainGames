@@ -1,6 +1,0 @@
-@startuml
-class CombineNode {
-    + CombineNode()
-}
-CodeFunctionNode <|-- CombineNode
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-class SettingsUIUtils <<static>> {
-    + {static} CloneUIFromTemplate(templatePath:string) : VisualElement
-}
-@enduml

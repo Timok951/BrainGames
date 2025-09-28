@@ -1,6 +1,0 @@
-@startuml
-class TestListTreeViewGUI {
-    + TestListTreeViewGUI(testListTree:TreeViewController)
-}
-TreeViewGUI <|-- TestListTreeViewGUI
-@enduml

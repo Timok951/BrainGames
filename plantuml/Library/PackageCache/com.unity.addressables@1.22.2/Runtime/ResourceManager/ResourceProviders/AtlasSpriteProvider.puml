@@ -1,7 +1,0 @@
-@startuml
-class AtlasSpriteProvider {
-    + <<override>> Provide(providerInterface:ProvideHandle) : void
-    + <<override>> Release(location:IResourceLocation, obj:object) : void
-}
-ResourceProviderBase <|-- AtlasSpriteProvider
-@enduml

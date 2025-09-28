@@ -1,6 +1,0 @@
-@startuml
-class TilePaletteActiveTargetsButton {
-    + TilePaletteActiveTargetsButton()
-}
-EditorToolbarDropdown <|-- TilePaletteActiveTargetsButton
-@enduml

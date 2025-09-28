@@ -1,8 +1,0 @@
-@startuml
-class SuperStateDescriptor {
-    + SuperStateDescriptor(state:SuperState)
-}
-class "NesterStateDescriptor`1"<T> {
-}
-"NesterStateDescriptor`1" "<SuperState>" <|-- SuperStateDescriptor
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class LocksTab <<sealed>> {
-}
-IRefreshableView <|-- LocksTab
-ILockMenuOperations <|-- LocksTab
-@enduml

@@ -1,7 +1,0 @@
-@startuml
-class Factories <<static>> {
-    + {static} Default(sp:IServiceProvider) : T
-    + {static} Default(sp:IServiceProvider) : TInterface
-    + {static} InitializeInstance(sp:IServiceProvider, instance:object) : void
-}
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-abstract class "DiscreteNumberInspector`1"<T> {
-    + <<override>> GetAdaptiveWidth() : float
-}
-Inspector <|-- "DiscreteNumberInspector`1"
-@enduml

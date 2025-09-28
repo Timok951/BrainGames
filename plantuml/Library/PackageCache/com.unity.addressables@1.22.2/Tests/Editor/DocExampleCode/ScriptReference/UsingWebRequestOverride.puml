@@ -1,5 +1,0 @@
-@startuml
-class PrivateWebRequestOverride {
-}
-MonoBehaviour <|-- PrivateWebRequestOverride
-@enduml

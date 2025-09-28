@@ -1,6 +1,0 @@
-@startuml
-class FloorNode {
-    + FloorNode()
-}
-CodeFunctionNode <|-- FloorNode
-@enduml

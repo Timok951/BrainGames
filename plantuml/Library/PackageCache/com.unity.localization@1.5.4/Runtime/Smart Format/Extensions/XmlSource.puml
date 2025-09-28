@@ -1,7 +1,0 @@
-@startuml
-class XmlSource {
-    + XmlSource(formatter:SmartFormatter)
-    + TryEvaluateSelector(selectorInfo:ISelectorInfo) : bool
-}
-ISource <|-- XmlSource
-@enduml

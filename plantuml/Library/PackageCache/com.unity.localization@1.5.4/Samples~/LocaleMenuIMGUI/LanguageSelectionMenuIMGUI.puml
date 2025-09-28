@@ -1,9 +1,0 @@
-@startuml
-class LanguageSelectionMenuIMGUI {
-    + useActiveLocalizationSettings : bool = false
-}
-MonoBehaviour <|-- LanguageSelectionMenuIMGUI
-LanguageSelectionMenuIMGUI o-> "windowRect" Rect
-LanguageSelectionMenuIMGUI o-> "selectColor" Color
-LanguageSelectionMenuIMGUI o-> "defaultColor" Color
-@enduml

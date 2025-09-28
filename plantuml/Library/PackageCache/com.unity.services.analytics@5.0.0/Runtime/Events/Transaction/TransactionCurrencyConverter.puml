@@ -1,5 +1,0 @@
-@startuml
-class TransactionCurrencyConverter {
-    + Convert(currencyCode:string, value:double) : long
-}
-@enduml

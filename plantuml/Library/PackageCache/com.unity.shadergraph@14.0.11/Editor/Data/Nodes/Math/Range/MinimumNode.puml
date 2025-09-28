@@ -1,6 +1,0 @@
-@startuml
-class MinimumNode {
-    + MinimumNode()
-}
-CodeFunctionNode <|-- MinimumNode
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-class EncryptionConfigurationDialog {
-}
-PlasticDialog <|-- EncryptionConfigurationDialog
-@enduml

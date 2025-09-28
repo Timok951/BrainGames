@@ -1,8 +1,0 @@
-@startuml
-class PreserveTags {
-    + Opening : char <<get>> <<set>>
-    + Closing : char <<get>> <<set>>
-    + Transform(message:Message) : void
-}
-IPseudoLocalizationMethod <|-- PreserveTags
-@enduml

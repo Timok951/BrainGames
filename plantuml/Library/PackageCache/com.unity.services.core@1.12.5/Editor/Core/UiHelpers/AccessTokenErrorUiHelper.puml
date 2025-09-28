@@ -1,5 +1,0 @@
-@startuml
-class AccessTokenErrorUiHelper <<static>> {
-    + {static} AddAccessTokenErrorUI(accessTokenErrorContainer:VisualElement) : void
-}
-@enduml

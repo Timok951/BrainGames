@@ -1,6 +1,0 @@
-@startuml
-class CloudProjectId {
-    + GetCloudProjectId() : string
-}
-ICloudProjectId <|-- CloudProjectId
-@enduml

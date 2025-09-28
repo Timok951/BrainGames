@@ -1,8 +1,0 @@
-@startuml
-class AssetAddress <<static>> {
-    + {static} IsSubAsset(address:string) : bool
-    + {static} GetGuid(address:string) : string
-    + {static} GetSubAssetName(address:string) : string
-    + {static} FormatAddress(guid:string, subAssetName:string) : string
-}
-@enduml

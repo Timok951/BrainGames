@@ -1,6 +1,0 @@
-@startuml
-class AnalyticsServiceInstance <<partial>> {
-    + Transaction(transactionParameters:TransactionParameters) : void
-    + ConvertCurrencyToMinorUnits(currencyCode:string, value:double) : long
-}
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-class TriplanarNodePropertyDrawer {
-}
-AbstractMaterialNodePropertyDrawer <|-- TriplanarNodePropertyDrawer
-@enduml

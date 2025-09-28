@@ -1,7 +1,0 @@
-@startuml
-class UsingAddResourceLocator {
-    + {static} AddResourceLocator(locator:IResourceLocator, localCatalogHash:string, remoteCatalogLocation:IResourceLocation) : void
-    + AddFileLocatorToAddressables() : void
-    + LoadDataUsingAddedLocator() : IEnumerator
-}
-@enduml

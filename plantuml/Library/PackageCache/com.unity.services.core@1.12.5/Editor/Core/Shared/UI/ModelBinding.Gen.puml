@@ -1,9 +1,0 @@
-@startuml
-class "ModelBinding`1"<TModel> {
-    + ModelBinding(element:VisualElement)
-    + BindProperty(name:string, update:Action<TModel>) : void
-}
-class "EventBinding`1"<T> {
-}
-"EventBinding`1" "<TModel>" <|-- "ModelBinding`1"
-@enduml

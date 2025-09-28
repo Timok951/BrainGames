@@ -1,6 +1,0 @@
-@startuml
-class CoreRegistryInitializer {
-    + CoreRegistryInitializer(registry:CoreRegistry, sortedPackageTypeHashes:List<int>)
-    + <<async>> InitializeRegistryAsync() : Task<List<PackageInitializationInfo>>
-}
-@enduml

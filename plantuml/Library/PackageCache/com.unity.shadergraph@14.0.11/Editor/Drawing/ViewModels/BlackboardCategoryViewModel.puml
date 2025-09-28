@@ -1,7 +1,0 @@
-@startuml
-class BlackboardCategoryViewModel {
-    + ResetViewModelData() : void
-}
-ISGViewModel <|-- BlackboardCategoryViewModel
-BlackboardCategoryViewModel --> "parentView" VisualElement
-@enduml

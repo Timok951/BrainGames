@@ -1,5 +1,0 @@
-@startuml
-class SdkVersion <<static>> {
-    + {static} <<readonly>> SDK_VERSION : string = "5.0.0"
-}
-@enduml

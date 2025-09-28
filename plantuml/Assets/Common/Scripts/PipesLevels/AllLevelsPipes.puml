@@ -1,8 +1,0 @@
-@startuml
-class AllLevelsPipes {
-}
-class "List`1"<T> {
-}
-ScriptableObject <|-- AllLevelsPipes
-AllLevelsPipes --> "LevelsPipes<LevelDataPipe>" "List`1"
-@enduml

@@ -1,6 +1,0 @@
-@startuml
-class EventTriggerEditor {
-    + <<override>> OnInspectorGUI() : void
-}
-Editor <|-- EventTriggerEditor
-@enduml

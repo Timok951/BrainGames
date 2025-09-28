@@ -1,6 +1,0 @@
-@startuml
-class RuntimeProfilerTestBase {
-    + Setup() : void
-    + TearDown() : void
-}
-@enduml

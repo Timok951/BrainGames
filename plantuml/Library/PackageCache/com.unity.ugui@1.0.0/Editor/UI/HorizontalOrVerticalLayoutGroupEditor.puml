@@ -1,6 +1,0 @@
-@startuml
-class HorizontalOrVerticalLayoutGroupEditor {
-    + <<override>> OnInspectorGUI() : void
-}
-Editor <|-- HorizontalOrVerticalLayoutGroupEditor
-@enduml

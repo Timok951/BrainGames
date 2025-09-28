@@ -1,5 +1,0 @@
-@startuml
-class OrganizationProvider <<static>> {
-}
-OrganizationProvider --> "Organization" IOrganizationHandler
-@enduml
