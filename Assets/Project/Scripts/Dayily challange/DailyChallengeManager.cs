@@ -42,13 +42,13 @@ namespace Connect.Core
 
         private List<string> _modSequence = new List<string>()
         {
-            "PipesGameplay"
+            "PipesGameplay",
 
-                      // "GameplayColorSort",
-            //"OneStroke",
-            //"Paint",
-            //"NumberlinkGameplay",
-            //"GameplayConnect",
+                   "GameplayColorSort",
+           "OneStroke",
+            "Paint",
+            "NumberlinkGameplay",
+            "GameplayConnect",
 
         };
 
